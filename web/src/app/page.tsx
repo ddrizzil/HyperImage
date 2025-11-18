@@ -49,7 +49,7 @@ export default function HomePage() {
       {/* Stats Section */}
       <section className="bg-white py-12 border-b">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-4 mb-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-4">
             <div className="text-center">
               <div className="text-4xl font-bold text-primary-800 mb-2">
                 {stats.totalTechniques}
@@ -75,9 +75,13 @@ export default function HomePage() {
               <div className="text-gray-600">References</div>
             </div>
           </div>
-          
-          {/* What I'm Reading Box */}
-          <div className="max-w-md mx-auto">
+        </div>
+      </section>
+
+      {/* What I'm Reading Section */}
+      <section className="py-8 bg-gray-50 border-b">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto">
             <ReadingFeed />
           </div>
         </div>
