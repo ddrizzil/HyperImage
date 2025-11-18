@@ -85,37 +85,42 @@ export function TechniqueContent({ technique }: { technique: Technique }) {
               <h4 className="font-semibold mb-2">Interaction Depth</h4>
               {typeof technique.fundamentalPhysics?.interactionDepth === 'string' ? (
                 <p className="text-gray-700">{technique.fundamentalPhysics.interactionDepth}</p>
-              ) : technique.fundamentalPhysics?.interactionDepth && typeof technique.fundamentalPhysics.interactionDepth === 'object' ? (
-                <div className="space-y-3">
-                  {technique.fundamentalPhysics.interactionDepth.description && (
-                    <MarkdownContent content={technique.fundamentalPhysics.interactionDepth.description} />
-                  )}
-                  {technique.fundamentalPhysics.interactionDepth.materialSpecific && Array.isArray(technique.fundamentalPhysics.interactionDepth.materialSpecific) && (
-                    <div className="mt-4">
-                      <strong className="text-sm">Material-Specific Information:</strong>
-                      <div className="mt-2 space-y-3">
-                        {technique.fundamentalPhysics.interactionDepth.materialSpecific.map((material: any, idx: number) => (
-                          <div key={idx} className="border-l-2 border-blue-400 pl-3">
-                            <strong className="text-sm">{material.material}:</strong>
-                            {material.penetrationDepth && (
-                              <p className="text-sm text-gray-700 mt-1">
-                                <strong>Penetration Depth:</strong> {material.penetrationDepth}
-                              </p>
-                            )}
-                            {material.visualizedFeatures && (
-                              <p className="text-sm text-gray-700 mt-1">
-                                <strong>Visualized Features:</strong> {material.visualizedFeatures}
-                              </p>
-                            )}
+              ) : (() => {
+                const interactionDepth = technique.fundamentalPhysics?.interactionDepth
+                if (interactionDepth && typeof interactionDepth === 'object' && !Array.isArray(interactionDepth) && 'description' in interactionDepth) {
+                  const depthObj = interactionDepth as { description?: string; materialSpecific?: Array<{ material: string; penetrationDepth?: string; visualizedFeatures?: string }> }
+                  return (
+                    <div className="space-y-3">
+                      {depthObj.description && (
+                        <MarkdownContent content={depthObj.description} />
+                      )}
+                      {depthObj.materialSpecific && Array.isArray(depthObj.materialSpecific) && (
+                        <div className="mt-4">
+                          <strong className="text-sm">Material-Specific Information:</strong>
+                          <div className="mt-2 space-y-3">
+                            {depthObj.materialSpecific.map((material: any, idx: number) => (
+                              <div key={idx} className="border-l-2 border-blue-400 pl-3">
+                                <strong className="text-sm">{material.material}:</strong>
+                                {material.penetrationDepth && (
+                                  <p className="text-sm text-gray-700 mt-1">
+                                    <strong>Penetration Depth:</strong> {material.penetrationDepth}
+                                  </p>
+                                )}
+                                {material.visualizedFeatures && (
+                                  <p className="text-sm text-gray-700 mt-1">
+                                    <strong>Visualized Features:</strong> {material.visualizedFeatures}
+                                  </p>
+                                )}
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              ) : (
-                <p className="text-gray-700">No interaction depth information available.</p>
-              )}
+                  )
+                }
+                return <p className="text-gray-700">No interaction depth information available.</p>
+              })()}
             </div>
             <div className="bg-gray-50 p-4 rounded-lg">
               <h4 className="font-semibold mb-2">Spatial Resolution</h4>
@@ -245,38 +250,39 @@ export function TechniqueContent({ technique }: { technique: Technique }) {
           {(technique.instrumentation.optics || technique.instrumentation.opticalSystem) && (
             <>
               <h3>Optical System</h3>
-              {typeof (technique.instrumentation.optics || technique.instrumentation.opticalSystem) === 'string' ? (
-                <p>{technique.instrumentation.optics || technique.instrumentation.opticalSystem}</p>
-              ) : (technique.instrumentation.optics || technique.instrumentation.opticalSystem) && typeof (technique.instrumentation.optics || technique.instrumentation.opticalSystem) === 'object' ? (
-                <div className="space-y-4">
-                  {(technique.instrumentation.opticalSystem?.components || technique.instrumentation.optics?.components) && Array.isArray((technique.instrumentation.opticalSystem?.components || technique.instrumentation.optics?.components)) && (
-                    <div>
-                      <strong>Components:</strong>
-                      <ul className="list-disc list-inside mt-2 ml-4 space-y-2">
-                        {(technique.instrumentation.opticalSystem?.components || technique.instrumentation.optics?.components).map((component: string, idx: number) => (
-                          <li key={idx}>
-                            <MarkdownContent content={component} />
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {(technique.instrumentation.opticalSystem?.beamPath || technique.instrumentation.optics?.beamPath) && 
-                   typeof (technique.instrumentation.opticalSystem?.beamPath || technique.instrumentation.optics?.beamPath) === 'string' && (
-                    <div>
-                      <strong>Beam Path:</strong>
-                      <MarkdownContent content={(technique.instrumentation.opticalSystem?.beamPath || technique.instrumentation.optics?.beamPath)} />
-                    </div>
-                  )}
-                  {(technique.instrumentation.opticalSystem?.focusing || technique.instrumentation.optics?.focusing) && 
-                   typeof (technique.instrumentation.opticalSystem?.focusing || technique.instrumentation.optics?.focusing) === 'string' && (
-                    <div>
-                      <strong>Focusing:</strong>
-                      <MarkdownContent content={(technique.instrumentation.opticalSystem?.focusing || technique.instrumentation.optics?.focusing)} />
-                    </div>
-                  )}
-                </div>
-              ) : null}
+              {(() => {
+                const optics = technique.instrumentation.optics || technique.instrumentation.opticalSystem
+                return typeof optics === 'string' ? (
+                  <p>{optics}</p>
+                ) : optics && typeof optics === 'object' && !Array.isArray(optics) && 'components' in optics ? (
+                  <div className="space-y-4">
+                    {optics.components && Array.isArray(optics.components) && (
+                      <div>
+                        <strong>Components:</strong>
+                        <ul className="list-disc list-inside mt-2 ml-4 space-y-2">
+                          {optics.components.map((component: string, idx: number) => (
+                            <li key={idx}>
+                              <MarkdownContent content={component} />
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {optics.beamPath && typeof optics.beamPath === 'string' && (
+                      <div>
+                        <strong>Beam Path:</strong>
+                        <MarkdownContent content={optics.beamPath} />
+                      </div>
+                    )}
+                    {optics.focusing && typeof optics.focusing === 'string' && (
+                      <div>
+                        <strong>Focusing:</strong>
+                        <MarkdownContent content={optics.focusing} />
+                      </div>
+                    )}
+                  </div>
+                ) : null
+              })()}
             </>
           )}
 
@@ -590,31 +596,34 @@ export function TechniqueContent({ technique }: { technique: Technique }) {
 
           <h3>Preprocessing</h3>
           {Array.isArray(technique.dataAnalysis.preprocessing) && technique.dataAnalysis.preprocessing.length > 0 ? (
-            typeof technique.dataAnalysis.preprocessing[0] === 'string' ? (
-              <ul>
-                {technique.dataAnalysis.preprocessing.map((step: string, idx: number) => (
-                  <li key={idx}>{step}</li>
-                ))}
-              </ul>
-            ) : (
-              <div className="space-y-4">
-                {technique.dataAnalysis.preprocessing.map((item: any, idx: number) => (
-                  <div key={idx} className="border-l-4 border-blue-500 pl-4">
-                    <h4 className="font-semibold text-lg mb-2">
-                      {item.step || `Step ${idx + 1}`}
-                    </h4>
-                    {item.description && (
-                      <MarkdownContent content={item.description} />
-                    )}
-                    {item.software && (
-                      <p className="text-sm text-gray-600 mt-2">
-                        <strong>Software:</strong> {item.software}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )
+            (() => {
+              const firstItem = technique.dataAnalysis.preprocessing[0]
+              return typeof firstItem === 'string' ? (
+                <ul>
+                  {(technique.dataAnalysis.preprocessing as string[]).map((step: string, idx: number) => (
+                    <li key={idx}>{step}</li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="space-y-4">
+                  {(technique.dataAnalysis.preprocessing as Array<{ step?: string; description?: string; software?: string }>).map((item: any, idx: number) => (
+                    <div key={idx} className="border-l-4 border-blue-500 pl-4">
+                      <h4 className="font-semibold text-lg mb-2">
+                        {item.step || `Step ${idx + 1}`}
+                      </h4>
+                      {item.description && (
+                        <MarkdownContent content={item.description} />
+                      )}
+                      {item.software && (
+                        <p className="text-sm text-gray-600 mt-2">
+                          <strong>Software:</strong> {item.software}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )
+            })()
           ) : (
             <p>No preprocessing information available.</p>
           )}
@@ -704,9 +713,21 @@ export function TechniqueContent({ technique }: { technique: Technique }) {
 
           <h3>Material Types</h3>
           <ul>
-            {(technique.applications.materialTypes || []).map((material, idx) => (
-              <li key={idx}>{material}</li>
-            ))}
+            {(technique.applications.materialTypes || []).map((material, idx) => {
+              if (typeof material === 'string') {
+                return <li key={idx}>{material}</li>
+              } else if (material && typeof material === 'object' && 'material' in material) {
+                const mat = material as { material?: string; suitability?: string; notes?: string }
+                return (
+                  <li key={idx}>
+                    <strong>{mat.material}</strong>
+                    {mat.suitability && <span className="ml-2 text-sm text-gray-600">({mat.suitability})</span>}
+                    {mat.notes && <p className="text-sm text-gray-700 mt-1 ml-4">{mat.notes}</p>}
+                  </li>
+                )
+              }
+              return null
+            })}
           </ul>
 
           {technique.applications.caseStudies && technique.applications.caseStudies.length > 0 && (
@@ -717,9 +738,31 @@ export function TechniqueContent({ technique }: { technique: Technique }) {
                   <div key={idx} className="bg-gray-50 p-6 rounded-lg">
                     <h4 className="font-semibold mb-2">{study.title}</h4>
                     <p className="text-gray-700 mb-2">{study.description}</p>
-                    {study.reference && (
-                      <p className="text-sm text-gray-600 italic">{study.reference}</p>
-                    )}
+                    {study.reference && (() => {
+                      const ref = study.reference as any
+                      const citation = typeof ref === 'string' 
+                        ? ref 
+                        : typeof ref === 'object' && ref && 'citation' in ref
+                        ? ref.citation
+                        : JSON.stringify(ref)
+                      const doi = typeof ref === 'object' && ref && 'doi' in ref ? ref.doi : null
+                      return (
+                        <p className="text-sm text-gray-600 italic">
+                          {citation}
+                          {doi && (
+                            <a
+                              href={`https://doi.org/${doi}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary-600 hover:text-primary-800 ml-2 inline-flex items-center gap-1"
+                            >
+                              DOI: {doi}
+                              <ExternalLink className="h-3 w-3" />
+                            </a>
+                          )}
+                        </p>
+                      )
+                    })()}
                   </div>
                 ))}
               </div>
@@ -875,27 +918,92 @@ export function TechniqueContent({ technique }: { technique: Technique }) {
         <section id="references" className="scroll-mt-20 mt-12">
           <h2>References & Resources</h2>
 
+          {technique.references.foundationalPapers && technique.references.foundationalPapers.length > 0 && (
+            <>
+              <h3>Foundational Papers</h3>
+              <ul className="space-y-2">
+                {technique.references.foundationalPapers.map((paper: any, idx) => {
+                  const citation = typeof paper === 'string' ? paper : (typeof paper.citation === 'string' ? paper.citation : JSON.stringify(paper.citation || paper))
+                  const doi = typeof paper === 'object' && paper ? paper.doi : null
+                  const notes = typeof paper === 'object' && paper && 'significance' in paper ? paper.significance : null
+                  return (
+                    <li key={idx} className="text-sm">
+                      {citation}
+                      {doi && (
+                        <a
+                          href={`https://doi.org/${doi}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-600 hover:text-primary-800 ml-2 inline-flex items-center gap-1"
+                        >
+                          DOI: {doi}
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      )}
+                      {notes && <span className="text-gray-600 ml-2">— {notes}</span>}
+                    </li>
+                  )
+                })}
+              </ul>
+            </>
+          )}
+
           {technique.references.keyPapers && technique.references.keyPapers.length > 0 && (
             <>
               <h3>Key Papers</h3>
               <ul className="space-y-2">
-                {technique.references.keyPapers.map((paper, idx) => (
-                  <li key={idx} className="text-sm">
-                    {paper.citation}
-                    {paper.doi && (
-                      <a
-                        href={`https://doi.org/${paper.doi}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary-600 hover:text-primary-800 ml-2 inline-flex items-center gap-1"
-                      >
-                        DOI: {paper.doi}
-                        <ExternalLink className="h-3 w-3" />
-                      </a>
-                    )}
-                    {paper.notes && <span className="text-gray-600 ml-2">— {paper.notes}</span>}
-                  </li>
-                ))}
+                {technique.references.keyPapers.map((paper: any, idx) => {
+                  const citation = typeof paper === 'string' ? paper : (typeof paper.citation === 'string' ? paper.citation : JSON.stringify(paper.citation || paper))
+                  const doi = typeof paper === 'object' && paper ? paper.doi : null
+                  const notes = typeof paper === 'object' && paper && 'notes' in paper ? paper.notes : null
+                  return (
+                    <li key={idx} className="text-sm">
+                      {citation}
+                      {doi && (
+                        <a
+                          href={`https://doi.org/${doi}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-600 hover:text-primary-800 ml-2 inline-flex items-center gap-1"
+                        >
+                          DOI: {doi}
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      )}
+                      {notes && <span className="text-gray-600 ml-2">— {notes}</span>}
+                    </li>
+                  )
+                })}
+              </ul>
+            </>
+          )}
+
+          {technique.references.methodologyReviews && technique.references.methodologyReviews.length > 0 && (
+            <>
+              <h3>Methodology Reviews</h3>
+              <ul className="space-y-2">
+                {technique.references.methodologyReviews.map((review: any, idx) => {
+                  const citation = typeof review === 'string' ? review : (typeof review.citation === 'string' ? review.citation : JSON.stringify(review.citation || review))
+                  const doi = typeof review === 'object' && review ? review.doi : null
+                  const notes = typeof review === 'object' && review && 'scope' in review ? review.scope : null
+                  return (
+                    <li key={idx} className="text-sm">
+                      {citation}
+                      {doi && (
+                        <a
+                          href={`https://doi.org/${doi}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-600 hover:text-primary-800 ml-2 inline-flex items-center gap-1"
+                        >
+                          DOI: {doi}
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      )}
+                      {notes && <span className="text-gray-600 ml-2">— {notes}</span>}
+                    </li>
+                  )
+                })}
               </ul>
             </>
           )}
@@ -904,22 +1012,58 @@ export function TechniqueContent({ technique }: { technique: Technique }) {
             <>
               <h3>Reviews</h3>
               <ul className="space-y-2">
-                {technique.references.reviews.map((review, idx) => (
-                  <li key={idx} className="text-sm">
-                    {review.citation}
-                    {review.doi && (
-                      <a
-                        href={`https://doi.org/${review.doi}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary-600 hover:text-primary-800 ml-2 inline-flex items-center gap-1"
-                      >
-                        DOI: {review.doi}
-                        <ExternalLink className="h-3 w-3" />
-                      </a>
-                    )}
-                  </li>
-                ))}
+                {technique.references.reviews.map((review: any, idx) => {
+                  const citation = typeof review === 'string' ? review : (typeof review.citation === 'string' ? review.citation : JSON.stringify(review.citation || review))
+                  const doi = typeof review === 'object' && review ? review.doi : null
+                  const notes = typeof review === 'object' && review && 'notes' in review ? review.notes : null
+                  return (
+                    <li key={idx} className="text-sm">
+                      {citation}
+                      {doi && (
+                        <a
+                          href={`https://doi.org/${doi}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-600 hover:text-primary-800 ml-2 inline-flex items-center gap-1"
+                        >
+                          DOI: {doi}
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      )}
+                      {notes && <span className="text-gray-600 ml-2">— {notes}</span>}
+                    </li>
+                  )
+                })}
+              </ul>
+            </>
+          )}
+
+          {technique.references.recentApplications && technique.references.recentApplications.length > 0 && (
+            <>
+              <h3>Recent Applications</h3>
+              <ul className="space-y-2">
+                {technique.references.recentApplications.map((paper: any, idx) => {
+                  const citation = typeof paper === 'string' ? paper : (typeof paper.citation === 'string' ? paper.citation : JSON.stringify(paper.citation || paper))
+                  const doi = typeof paper === 'object' && paper ? paper.doi : null
+                  const notes = typeof paper === 'object' && paper && 'summary' in paper ? paper.summary : null
+                  return (
+                    <li key={idx} className="text-sm">
+                      {citation}
+                      {doi && (
+                        <a
+                          href={`https://doi.org/${doi}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-600 hover:text-primary-800 ml-2 inline-flex items-center gap-1"
+                        >
+                          DOI: {doi}
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      )}
+                      {notes && <span className="text-gray-600 ml-2">— {notes}</span>}
+                    </li>
+                  )
+                })}
               </ul>
             </>
           )}

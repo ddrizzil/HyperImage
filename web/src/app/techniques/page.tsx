@@ -4,9 +4,9 @@ import { getAllTechniques, getAllCategories, searchTechniques } from '@/lib/tech
 import Link from 'next/link'
 import { Search, Camera, Radio } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 
-export default function TechniquesPage() {
+function TechniquesContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '')
@@ -181,6 +181,21 @@ export default function TechniquesPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function TechniquesPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading techniques...</p>
+        </div>
+      </div>
+    }>
+      <TechniquesContent />
+    </Suspense>
   )
 }
 

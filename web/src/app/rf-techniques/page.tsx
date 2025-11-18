@@ -1,61 +1,10 @@
-'use client'
-
-import { getAllRFTechniques, getAllRFCategories, searchRFTechniques } from '@/lib/rf-techniques'
+import { getAllRFTechniques, getAllRFCategories } from '@/lib/rf-techniques'
 import Link from 'next/link'
-import { Search, Radio, Wifi } from 'lucide-react'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { Radio, Wifi } from 'lucide-react'
 
 export default function RFTechniquesPage() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '')
-  
-  const category = searchParams.get('category') || ''
-  const q = searchParams.get('q') || ''
-
-  // Sync search query with URL params
-  useEffect(() => {
-    setSearchQuery(searchParams.get('q') || '')
-  }, [searchParams])
-
-  let techniques = getAllRFTechniques()
+  const techniques = getAllRFTechniques()
   const categories = getAllRFCategories()
-
-  // Apply filters
-  if (category) {
-    techniques = techniques.filter((t) => t.category === category)
-  }
-
-  if (q) {
-    techniques = searchRFTechniques(q)
-  }
-
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newCategory = e.target.value
-    const params = new URLSearchParams(searchParams.toString())
-    
-    if (newCategory) {
-      params.set('category', newCategory)
-    } else {
-      params.delete('category')
-    }
-    
-    router.push(`/rf-techniques?${params.toString()}`)
-  }
-
-  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const params = new URLSearchParams(searchParams.toString())
-    
-    if (searchQuery) {
-      params.set('q', searchQuery)
-    } else {
-      params.delete('q')
-    }
-    
-    router.push(`/rf-techniques?${params.toString()}`)
-  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -87,38 +36,6 @@ export default function RFTechniquesPage() {
           </div>
         </div>
 
-        {/* Search and Filters */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1">
-              <form onSubmit={handleSearchSubmit} className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search RF techniques..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                />
-              </form>
-            </div>
-            <div className="flex gap-2">
-              <select
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
-                value={category}
-                onChange={handleCategoryChange}
-              >
-                <option value="">All Categories</option>
-                {categories.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-
         {/* Results */}
         {techniques.length > 0 ? (
           <>
@@ -128,10 +45,9 @@ export default function RFTechniquesPage() {
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {techniques.map((technique) => (
-                <Link
+                <div
                   key={technique.id}
-                  href={`/rf-techniques/${technique.id}`}
-                  className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
+                  className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
                 >
                   <div className="flex items-start justify-between mb-3">
                     <h3 className="text-xl font-semibold text-primary-800">{technique.name}</h3>
@@ -163,7 +79,7 @@ export default function RFTechniquesPage() {
                       </span>
                     ))}
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </>
@@ -195,4 +111,3 @@ export default function RFTechniquesPage() {
     </div>
   )
 }
-

@@ -26,13 +26,33 @@ export interface Equation {
   variables: EquationVariable[]
 }
 
+export interface InteractionDepthObject {
+  description?: string
+  materialSpecific?: Array<{
+    material: string
+    penetrationDepth?: string
+    visualizedFeatures?: string
+  }>
+}
+
+export interface SpatialResolutionObject {
+  lateral?: string
+  depth?: string
+  limitingFactors?: string[]
+}
+
+export interface SensitivityObject {
+  description?: string
+}
+
 export interface FundamentalPhysics {
   principle: string // Markdown with LaTeX
   physicalPhenomenon: string
   equations: Equation[] // LaTeX equations with variable definitions
-  interactionDepth: string
-  spatialResolution: string
-  detectionLimit?: string
+  interactionDepth: string | InteractionDepthObject
+  spatialResolution: string | SpatialResolutionObject
+  detectionLimit?: string | { description?: string }
+  sensitivity?: string | SensitivityObject
 }
 
 export interface CommercialSystem {
@@ -41,10 +61,30 @@ export interface CommercialSystem {
   notes?: string
 }
 
+export interface SourceObject {
+  type?: string
+  specifications?: string
+  powerRange?: string
+}
+
+export interface DetectorObject {
+  type?: string
+  spectralRange?: string
+  efficiency?: string
+  resolution?: string
+}
+
+export interface OpticalSystemObject {
+  components?: string[]
+  beamPath?: string
+  focusing?: string
+}
+
 export interface Instrumentation {
-  source: string
-  detector: string
-  optics?: string
+  source: string | SourceObject
+  detector: string | DetectorObject
+  optics?: string | OpticalSystemObject
+  opticalSystem?: OpticalSystemObject
   criticalComponents: string[]
   typicalConfiguration: string // Markdown
   commercialSystems?: CommercialSystem[]
@@ -56,12 +96,41 @@ export interface TypicalParameter {
   notes?: string
 }
 
+export interface SamplePreparationObject {
+  samplingRequired?: boolean
+  sampleSize?: string
+  mountingProcedure?: string
+  surfacePreparation?: string
+  contaminationConcerns?: string
+}
+
+export interface MeasurementProtocolStep {
+  stepNumber?: number
+  title?: string
+  description?: string
+  duration?: string
+  criticalParameters?: string[]
+}
+
+export interface MeasurementProtocolObject {
+  steps: MeasurementProtocolStep[]
+}
+
+export interface OperatingParameter {
+  parameter: string
+  typicalValue?: string
+  value?: string
+  range?: string
+  notes?: string
+}
+
 export interface Methodology {
-  samplePreparation: string[]
-  measurementProtocol: string // Markdown, step-by-step
-  typicalParameters: TypicalParameter[]
-  calibration: string
-  qualityControl: string[]
+  samplePreparation: string[] | SamplePreparationObject
+  measurementProtocol: string | MeasurementProtocolObject
+  typicalParameters?: TypicalParameter[]
+  operatingParameters?: OperatingParameter[]
+  calibration: string | { standards?: string; frequency?: string; procedure?: string }
+  qualityControl: string[] | { checkpoints?: string[]; commonArtifacts?: Array<{ artifact: string; cause?: string; mitigation?: string }>; troubleshooting?: Array<{ problem: string; solution: string }> }
 }
 
 export interface SoftwareTool {
@@ -70,12 +139,32 @@ export interface SoftwareTool {
   notes?: string
 }
 
+export interface RawDataFormatObject {
+  fileFormats?: string[]
+  dataStructure?: string
+  typicalFileSize?: string
+}
+
+export interface PreprocessingStep {
+  step?: string
+  description?: string
+  software?: string
+}
+
+export interface AnalysisWorkflowObject {
+  steps: Array<{
+    step?: string
+    description?: string
+    software?: string
+  }>
+}
+
 export interface DataAnalysis {
-  rawDataFormat: string
-  preprocessing: string[]
-  analysisWorkflow: string // Markdown
+  rawDataFormat: string | RawDataFormatObject
+  preprocessing: string[] | PreprocessingStep[]
+  analysisWorkflow: string | AnalysisWorkflowObject
   softwareTools: SoftwareTool[]
-  interpretationGuidelines: string
+  interpretationGuidelines: string | string[]
   commonPitfalls: string[]
 }
 
@@ -100,7 +189,8 @@ export interface MultimodalCombination {
 
 export interface Multimodal {
   complementaryTechniques: string[] // IDs of other techniques
-  commonCombinations: MultimodalCombination[]
+  commonCombinations?: MultimodalCombination[]
+  standardCombinations?: MultimodalCombination[]
 }
 
 export interface KeyPaper {
@@ -120,9 +210,12 @@ export interface OnlineResource {
 }
 
 export interface References {
-  keyPapers: KeyPaper[]
-  reviews: Review[]
-  onlineResources: OnlineResource[]
+  foundationalPapers?: KeyPaper[]
+  keyPapers?: KeyPaper[]
+  methodologyReviews?: Review[]
+  reviews?: Review[]
+  recentApplications?: KeyPaper[]
+  onlineResources?: OnlineResource[]
 }
 
 /**
