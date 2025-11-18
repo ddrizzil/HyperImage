@@ -12,10 +12,7 @@ export function TechniqueContent({ technique }: { technique: Technique }) {
       <div className="technique-notice">
         <p>
           <em>Note: This is a learning reference. While information is verified against scientific literature, 
-          always consult primary sources and domain experts for critical applications.{' '}
-          <a href="/about#accuracy" className="text-primary-600 hover:text-primary-800 underline">
-            About this resource →
-          </a></em>
+          always consult primary sources and domain experts for critical applications.</em>
         </p>
       </div>
 
