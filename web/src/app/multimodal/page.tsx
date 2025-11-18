@@ -33,6 +33,15 @@ export default function MultimodalPage() {
           </p>
         </div>
 
+        {/* Multimodal Notice */}
+        <div className="multimodal-notice mb-8">
+          <p>
+            <strong>About These Combinations:</strong> Multi-modal approaches are my primary research interest and 
+            intellectual focus. Examples here include established combinations from literature alongside speculative 
+            applications I'm exploring. Distinction between "proven" and "potential" combinations is noted in each entry.
+          </p>
+        </div>
+
         <div className="space-y-6">
           {Array.from(combinations.entries()).map(([key, combos]) => {
             const techniqueIds = key.split('+')

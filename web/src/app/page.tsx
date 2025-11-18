@@ -26,6 +26,23 @@ export default function HomePage() {
               Comprehensive reference documentation for scientific analysis techniques
               in conservation science and artwork analysis
             </p>
+            
+            {/* Disclaimer Banner */}
+            <div className="info-banner max-w-3xl mx-auto mt-8 mb-8 text-left bg-white/10 backdrop-blur-sm border-white/20 text-primary-50">
+              <p className="text-white"><strong>Personal Learning Resource – Public Access</strong></p>
+              <p className="text-primary-100">
+                This is my personal technical reference, built to systematically learn measurement science across domains. 
+                I'm sharing it publicly in case others find it useful, but this is <strong className="text-white">not an authoritative reference</strong>—it 
+                represents my current understanding as I learn heritage science, RF techniques, and multi-modal imaging.
+              </p>
+              <p className="text-primary-100">
+                <strong className="text-white">You're welcome to use this resource</strong>, but please verify information against primary sources for critical applications. 
+                If you find errors or have suggestions, I welcome feedback: <a href="mailto:daniel@example.com" className="text-white hover:text-primary-200 underline">daniel@example.com</a>.
+              </p>
+              <p className="last-updated text-primary-200">
+                Active work in progress – Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} – Some sections comprehensive, others placeholders
+              </p>
+            </div>
 
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto">

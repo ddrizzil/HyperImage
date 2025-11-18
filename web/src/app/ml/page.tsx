@@ -20,6 +20,17 @@ export default function MLPage() {
           </div>
         </div>
 
+        {/* ML Section Notice */}
+        <div className="ml-notice mb-8">
+          <p>
+            <strong>About This Section:</strong> This documents machine learning architectures I'm studying for 
+            measurement science applications. Examples emphasize cross-domain patterns (RF → heritage → medical). 
+            For comprehensive ML education, see established resources (Fast.ai, Deep Learning Book). This section 
+            focuses on practical applications to measurement data, with emphasis on my own work and inspirations 
+            (Aygul et al., multi-task learning).
+          </p>
+        </div>
+
         {/* Table of Contents */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4 text-gray-900">Contents</h2>

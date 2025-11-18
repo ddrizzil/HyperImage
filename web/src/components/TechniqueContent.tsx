@@ -8,6 +8,17 @@ import { getAllTechniques } from '@/lib/techniques'
 export function TechniqueContent({ technique }: { technique: Technique }) {
   return (
     <div className="prose prose-lg max-w-none">
+      {/* Technique Notice */}
+      <div className="technique-notice">
+        <p>
+          <em>Note: This is a learning reference. While information is verified against scientific literature, 
+          always consult primary sources and domain experts for critical applications.{' '}
+          <a href="/about#accuracy" className="text-primary-600 hover:text-primary-800 underline">
+            About this resource →
+          </a></em>
+        </p>
+      </div>
+
       {/* Overview Section */}
       <section id="overview" className="scroll-mt-20">
         <h2>Overview</h2>

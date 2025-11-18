@@ -18,6 +18,7 @@ export function Navigation() {
     { href: '/pages', label: 'Pigments & Chemistry' },
     { href: '/multimodal', label: 'Multimodal' },
     { href: '/ml', label: 'Machine Learning' },
+    { href: '/about', label: 'About' },
   ]
 
   return (

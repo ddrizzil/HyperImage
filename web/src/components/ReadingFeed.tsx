@@ -108,6 +108,21 @@ export function ReadingFeed() {
         <BookOpen className="w-5 h-5 text-primary-600" />
         <h3 className="text-lg font-semibold text-gray-900">What I'm Reading</h3>
       </div>
+      
+      {/* Reading Notice */}
+      <div className="reading-notice mb-4">
+        <p className="text-sm mb-2">
+          <strong>About This Digest:</strong> This is my personal daily paper digest—algorithmically selected from 
+          20+ journal feeds based on keyword scoring. Not all papers are equally relevant; some are highly applicable, 
+          others tangential. This represents what crosses my desk each morning as I learn, shared in case others find 
+          the cross-domain coverage useful.
+        </p>
+        <p className="text-sm">
+          <strong>Selection is automated</strong> (not hand-curated), so quality and relevance vary. Consider this a 
+          starting point for discovering papers across heritage science, RF/imaging, and adjacent fields—not a vetted 
+          collection of "best" papers.
+        </p>
+      </div>
       <div className="space-y-3">
         {items.map((item, index) => (
           <div key={index} className="border-l-2 border-primary-200 pl-3 py-1">
