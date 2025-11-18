@@ -1,0 +1,314 @@
+---
+title: "Optical Design: Overview and Foundations"
+slug: "design/00-overview-and-foundations"
+category: "Design"
+---
+
+## Overview
+
+Optical design is the discipline of creating optical systems that meet specific performance requirements. It bridges fundamental physics (Maxwell's equations, wave propagation) with engineering constraints (manufacturing tolerances, cost, size). This module establishes the theoretical foundations that unify ray optics, wave optics, and photon optics, providing the mathematical framework for all subsequent design work.
+
+## The Purpose of Optical Design
+
+Optical design serves two primary goals:
+
+**Scientific Design:** Maximize fundamental performance metrics (resolution, sensitivity, throughput) subject to physical limits (diffraction, étendue conservation, quantum noise). Examples: space telescopes, gravitational wave interferometers, quantum optics experiments.
+
+**Engineering Design:** Balance performance, cost, manufacturability, and reliability. Examples: camera lenses, microscope objectives, laser systems, consumer optics.
+
+Both approaches require understanding the same fundamental physics, but differ in optimization priorities and constraint handling.
+
+## Taxonomy of Optical Systems
+
+### Imaging Optics
+
+- **Finite Conjugate:** Object and image at finite distances (camera lenses, microscopes)
+- **Infinite Conjugate:** Object at infinity, finite image (telescopes, collimators)
+- **Afocal:** Both object and image at infinity (beam expanders, binoculars)
+
+### Non-Imaging Optics
+
+- **Illumination:** Maximize light transfer (LED optics, solar concentrators)
+- **Light Collection:** Maximize étendue (light pipes, fiber optics)
+- **Beam Shaping:** Control intensity distribution (laser beam homogenizers)
+
+### Hybrid Systems
+
+- **Fourier Optics:** 4f systems, spatial filtering
+- **Interferometric:** OCT, holography, phase imaging
+- **Computational:** Coded apertures, light field, computational imaging
+
+## Unification: Rays, Waves, and Photons
+
+### Ray Optics (Geometric Limit)
+
+Rays represent the direction of energy flow. Valid when:
+- Wavelength $\lambda \ll$ feature sizes
+- Diffraction negligible
+- Coherence length $\ll$ system dimensions
+
+**Fundamental Law:** Fermat's principle (path of least time):
+$$\delta \int n(\mathbf{r}) \, ds = 0$$
+
+This yields Snell's law and all geometric optics.
+
+### Wave Optics (Physical Limit)
+
+Describes interference, diffraction, and coherence. Based on Maxwell's equations:
+$$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$$
+$$\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \epsilon_0 \frac{\partial \mathbf{E}}{\partial t}$$
+
+**Scalar Wave Equation:**
+$$\nabla^2 E - \frac{n^2}{c^2} \frac{\partial^2 E}{\partial t^2} = 0$$
+
+**Huygens-Fresnel Principle:** Every point on a wavefront acts as a secondary source.
+
+### Photon Optics (Quantum Limit)
+
+When photon number is small or quantum effects matter:
+- **Photon Energy:** $E = h\nu = \frac{hc}{\lambda}$
+- **Photon Momentum:** $p = \frac{h}{\lambda}$
+- **Uncertainty Principle:** $\Delta x \Delta p \geq \hbar/2$
+
+**Connection:** Ray optics emerges from wave optics in the short-wavelength limit. Wave optics emerges from quantum optics in the classical (high photon number) limit.
+
+## Maxwell's Equations in Materials
+
+### Macroscopic Maxwell Equations
+
+In a material medium with permittivity $\epsilon(\mathbf{r}, \omega)$ and permeability $\mu(\mathbf{r}, \omega)$:
+
+**Gauss's Law (Electric):**
+$$\nabla \cdot (\epsilon \mathbf{E}) = \rho_{\text{free}}$$
+
+**Gauss's Law (Magnetic):**
+$$\nabla \cdot (\mu \mathbf{H}) = 0$$
+
+**Faraday's Law:**
+$$\nabla \times \mathbf{E} = -\mu \frac{\partial \mathbf{H}}{\partial t}$$
+
+**Ampère's Law:**
+$$\nabla \times \mathbf{H} = \mathbf{J}_{\text{free}} + \epsilon \frac{\partial \mathbf{E}}{\partial t}$$
+
+### Boundary Conditions
+
+At an interface between media 1 and 2:
+
+**Tangential E-field:**
+$$E_{1t} = E_{2t}$$
+
+**Tangential H-field:**
+$$H_{1t} = H_{2t} \quad \text{(if no surface current)}$$
+
+**Normal D-field:**
+$$D_{1n} - D_{2n} = \sigma_{\text{free}}$$
+
+**Normal B-field:**
+$$B_{1n} = B_{2n}$$
+
+These boundary conditions determine reflection and transmission coefficients (Fresnel equations).
+
+### Poynting Vector and Energy Flow
+
+The Poynting vector represents energy flux:
+$$\vec{S} = \frac{1}{\mu_0}\vec{E} \times \vec{B} = \frac{1}{\mu_0}\vec{E} \times \mu_0\vec{H} = \vec{E} \times \vec{H}$$
+
+For a plane wave in a medium with refractive index $n$:
+$$|\vec{S}| = \frac{1}{2} \epsilon_0 c n |E_0|^2 = I$$
+
+where $I$ is the irradiance (power per unit area).
+
+**Time-averaged Poynting vector:**
+$$\langle \vec{S} \rangle = \frac{1}{2} \text{Re}(\vec{E} \times \vec{H}^*)$$
+
+## Refractive Index Models
+
+### Sellmeier Equation
+
+Most accurate for transparent materials over broad wavelength ranges:
+
+$$n^2(\lambda) = 1 + \sum_{i=1}^{N} \frac{B_i \lambda^2}{\lambda^2 - C_i}$$
+
+where $B_i$ and $C_i$ are material-specific coefficients. For typical glasses, $N=3$ (three resonances: UV, visible, IR).
+
+**Example (BK7 glass):**
+$$n^2 = 1 + \frac{1.03961212 \lambda^2}{\lambda^2 - 0.00600069867} + \frac{0.231792344 \lambda^2}{\lambda^2 - 0.0200179144} + \frac{1.01046945 \lambda^2}{\lambda^2 - 103.560653}$$
+
+### Cauchy Equation
+
+Simpler, valid for limited wavelength ranges (no absorption):
+
+$$n(\lambda) = A + \frac{B}{\lambda^2} + \frac{C}{\lambda^4} + \cdots$$
+
+where $A$, $B$, $C$ are empirical constants. Good for visible wavelengths away from resonances.
+
+### Lorentz Oscillator Model
+
+Physical model based on atomic/molecular resonances:
+
+$$n^2(\omega) = 1 + \frac{N e^2}{\epsilon_0 m} \sum_j \frac{f_j}{\omega_j^2 - \omega^2 - i \gamma_j \omega}$$
+
+where:
+- $N$ = number density of oscillators
+- $e$ = electron charge
+- $m$ = electron mass
+- $f_j$ = oscillator strength for resonance $j$
+- $\omega_j$ = resonance frequency
+- $\gamma_j$ = damping coefficient
+
+The imaginary part gives absorption: $\kappa = \text{Im}(n)$.
+
+### Dispersion Relations
+
+**Group velocity:**
+$$v_g = \frac{d\omega}{dk} = \frac{c}{n + \omega \frac{dn}{d\omega}}$$
+
+**Group velocity dispersion (GVD):**
+$$\text{GVD} = \frac{d^2 k}{d\omega^2} = \frac{\lambda^3}{2\pi c^2} \frac{d^2 n}{d\lambda^2}$$
+
+Important for pulse propagation and chromatic aberration.
+
+## Polarization and Jones/Mueller Calculus
+
+### Jones Calculus
+
+Represents fully polarized light as a 2D complex vector:
+
+$$\mathbf{J} = \begin{pmatrix} E_x e^{i\phi_x} \\ E_y e^{i\phi_y} \end{pmatrix} = \begin{pmatrix} J_x \\ J_y \end{pmatrix}$$
+
+**Linear polarizer (horizontal):**
+$$\mathbf{M} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$$
+
+**Quarter-wave plate (fast axis horizontal):**
+$$\mathbf{M} = \begin{pmatrix} 1 & 0 \\ 0 & i \end{pmatrix}$$
+
+**Rotation matrix:**
+$$\mathbf{R}(\theta) = \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{pmatrix}$$
+
+Output: $\mathbf{J}_{\text{out}} = \mathbf{M} \mathbf{J}_{\text{in}}$
+
+### Mueller Calculus
+
+Represents any polarization state (including partially polarized) as a 4×1 Stokes vector:
+
+$$\mathbf{S} = \begin{pmatrix} S_0 \\ S_1 \\ S_2 \\ S_3 \end{pmatrix} = \begin{pmatrix} I \\ I_H - I_V \\ I_{+45} - I_{-45} \\ I_R - I_L \end{pmatrix}$$
+
+where $I$ is total intensity, subscripts indicate polarization components.
+
+**Mueller matrix** (4×4) describes polarization-changing elements:
+$$\mathbf{S}_{\text{out}} = \mathbf{M} \mathbf{S}_{\text{in}}$$
+
+**Example: Linear polarizer at 45°:**
+$$\mathbf{M} = \frac{1}{2} \begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 \\ 1 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}$$
+
+**Degree of polarization:**
+$$P = \frac{\sqrt{S_1^2 + S_2^2 + S_3^2}}{S_0}$$
+
+## Fundamental Limits
+
+### Diffraction Limit
+
+**Rayleigh criterion:** Two point sources are just resolved when the first minimum of one Airy disk coincides with the center of the other:
+
+$$\theta_{\text{min}} = 1.22 \frac{\lambda}{D}$$
+
+where $D$ is the aperture diameter.
+
+**Spatial resolution:**
+$$\delta x = 1.22 \frac{\lambda f}{D} = 1.22 \frac{\lambda}{\text{NA}}$$
+
+where NA = numerical aperture.
+
+### Radiance Conservation (Conservation of Brightness)
+
+**Radiance** (brightness) is defined as:
+$$L = \frac{d^2 \Phi}{dA \, d\Omega \cos\theta}$$
+
+where:
+- $\Phi$ = power
+- $A$ = area
+- $\Omega$ = solid angle
+- $\theta$ = angle from surface normal
+
+**Conservation law:** In a lossless optical system:
+$$L_{\text{out}} = L_{\text{in}}$$
+
+This is a fundamental limit: you cannot increase brightness with passive optics.
+
+### Étendue (Optical Throughput)
+
+**Étendue** (geometric extent) is conserved in any optical system:
+
+$$G = n^2 A \Omega = n^2 \int \int \cos\theta \, dA \, d\Omega$$
+
+where $n$ is the refractive index.
+
+**Conservation:** $G_{\text{in}} = G_{\text{out}}$ (for lossless systems)
+
+This limits light collection and concentration.
+
+**Relationship to radiance:**
+$$\Phi = L \cdot \frac{G}{n^2}$$
+
+### Abbe Sine Condition
+
+For aplanatic imaging (no coma, spherical aberration):
+$$n y \sin u = n' y' \sin u'$$
+
+where $y$, $y'$ are object/image heights, $u$, $u'$ are ray angles.
+
+This is necessary (but not sufficient) for perfect imaging.
+
+## Relationship Between Ray and Wave Optics
+
+### Eikonal Equation
+
+In the geometric optics limit ($\lambda \to 0$), the wave equation reduces to the eikonal equation:
+
+$$(\nabla S)^2 = n^2(\mathbf{r})$$
+
+where $S(\mathbf{r})$ is the eikonal (optical path length function).
+
+**Rays** are curves perpendicular to surfaces of constant $S$:
+$$\frac{d}{ds}\left(n \frac{d\mathbf{r}}{ds}\right) = \nabla n$$
+
+This is the ray equation, equivalent to Fermat's principle.
+
+### Wavefront and Ray Connection
+
+- **Wavefront:** Surface of constant phase $\phi(\mathbf{r}) = \text{constant}$
+- **Rays:** Perpendicular to wavefronts, direction of energy flow
+- **Optical path length:** $S = \int n \, ds$ along a ray
+
+### Transition to Physical Optics
+
+When feature sizes approach $\lambda$, wave effects become important:
+
+**Fresnel number:**
+$$N_F = \frac{a^2}{\lambda z}$$
+
+- $N_F \gg 1$: Geometric optics valid
+- $N_F \sim 1$: Fresnel diffraction
+- $N_F \ll 1$: Fraunhofer diffraction
+
+## Design Workflow Overview
+
+1. **Requirements:** Resolution, field of view, wavelength range, constraints
+2. **Paraxial Design:** First-order layout, focal lengths, principal planes
+3. **Aberration Correction:** Third-order (Seidel) analysis, optimization
+4. **Tolerancing:** Manufacturing variations, alignment sensitivity
+5. **Performance Analysis:** MTF, spot diagrams, wavefront error
+6. **Optimization:** Merit function, global/local search
+7. **Finalization:** Drawings, specifications, assembly procedures
+
+## Summary
+
+Optical design requires understanding:
+- **Ray optics** for layout and first-order design
+- **Wave optics** for diffraction, interference, coherence
+- **Material properties** (dispersion, birefringence, absorption)
+- **Fundamental limits** (diffraction, étendue, radiance)
+- **Unification** through Maxwell's equations and the eikonal limit
+
+These foundations enable systematic design of imaging and non-imaging optical systems, from simple lenses to complex multi-element objectives and computational imaging systems.
+

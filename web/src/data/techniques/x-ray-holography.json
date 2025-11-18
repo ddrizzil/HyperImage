@@ -1,0 +1,405 @@
+{
+  "id": "x-ray-holography",
+  "name": "X-ray Holography",
+  "acronym": "XRH",
+  "category": "X-ray Techniques - Advanced",
+  "subcategory": "Phase-Contrast X-ray Imaging",
+  "summary": "X-ray holography is an advanced coherent X-ray imaging technique that records both amplitude and phase information of X-ray wavefronts to create three-dimensional images with nanometer-scale resolution. Unlike conventional X-ray radiography which only captures intensity (amplitude squared), holography preserves phase relationships by interfering object waves with a coherent reference wave. The recorded hologram is computationally reconstructed to produce 3D volumetric images showing internal structure at resolutions far exceeding conventional X-ray imaging. In cultural heritage, X-ray holography can reveal nanoscale pigment particle structures, crystalline domain organization, surface morphology beneath layers, and material interfaces with unprecedented detail, though currently limited to synchrotron facilities.",
+  "keyApplications": [
+    "Nanoscale 3D imaging of pigment particle morphology and aggregation",
+    "Crystalline domain structure in heritage materials (metals, minerals, pigments)",
+    "Surface morphology analysis beneath corrosion or degradation layers",
+    "Elemental and chemical state mapping with nanoscale spatial resolution",
+    "Strain mapping in metal objects (weapons, coins, jewelry)",
+    "3D visualization of porous structures (stone, ceramics, degraded materials)",
+    "Interface analysis in composite materials (multi-layer coatings, adhesives)",
+    "Nanoparticle distribution in historical inks and pigments"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "synchrotron/facility",
+  "fundamentalPhysics": {
+    "principle": "X-ray holography exploits the wave nature of X-rays to record three-dimensional information. A coherent X-ray beam is split into two paths: object beam (passes through sample, acquiring phase shifts from refractive index variations) and reference beam (bypasses sample). These beams interfere at a detector plane, creating an interference pattern (hologram) encoding both amplitude and phase of the object wave. Unlike intensity-based imaging (I ∝ |E|²), holography preserves phase information through interference fringes. Computational reconstruction (typically Fourier-based algorithms) extracts 3D structure from the 2D hologram. X-ray wavelengths (0.1-10 nm) enable atomic-to-nanoscale resolution, far exceeding visible-light holography (hundreds of nm resolution limit).",
+    "physicalPhenomenon": "X-ray interaction with matter involves two processes: (1) Absorption: X-rays absorbed via photoelectric effect and Compton scattering, creating amplitude contrast (conventional radiography). (2) Phase shift: X-rays experience refractive index n = 1 - δ + iβ where δ (real part, ~10⁻⁶) causes phase delay, β (imaginary part, ~10⁻⁸) causes absorption. Phase sensitivity δ/β ~ 100-1000, making phase contrast much stronger than absorption for light elements (C, O, N in organic materials). Holography captures both: hologram intensity I_holo = |E_ref + E_obj|² = |E_ref|² + |E_obj|² + 2|E_ref||E_obj|cos(Δφ), where cross-term 2|E_ref||E_obj|cos(Δφ) encodes phase difference Δφ.",
+    "equations": [
+      {
+        "latex": "$$I_{holo} = |E_{ref}|^2 + |E_{obj}|^2 + 2|E_{ref}||E_{obj}|\\cos(\\Delta\\phi)$$",
+        "description": "Holographic Interference Pattern",
+        "variables": [
+          {"symbol": "I_{holo}", "meaning": "intensity at hologram plane", "units": "photons/pixel"},
+          {"symbol": "E_{ref}", "meaning": "electric field amplitude of reference wave", "units": "V/m"},
+          {"symbol": "E_{obj}", "meaning": "electric field amplitude of object wave", "units": "V/m"},
+          {"symbol": "\\Delta\\phi", "meaning": "phase difference between object and reference", "units": "radians"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta\\phi = \\frac{2\\pi}{\\lambda} \\int \\delta(\\mathbf{r}) \\, d\\mathbf{r}$$",
+        "description": "Phase Shift from Refractive Index",
+        "variables": [
+          {"symbol": "\\Delta\\phi", "meaning": "accumulated phase shift", "units": "radians"},
+          {"symbol": "\\lambda", "meaning": "X-ray wavelength", "units": "nm"},
+          {"symbol": "\\delta(\\mathbf{r})", "meaning": "refractive index decrement at position r", "units": "dimensionless (~10⁻⁶)"},
+          {"symbol": "\\mathbf{r}", "meaning": "position along beam path", "units": "nm"}
+        ]
+      },
+      {
+        "latex": "$$\\delta = \\frac{r_e \\lambda^2}{2\\pi} \\sum_i n_i f_i'$$",
+        "description": "Refractive Index Decrement (dispersive part)",
+        "variables": [
+          {"symbol": "\\delta", "meaning": "refractive index decrement (real part)", "units": "dimensionless"},
+          {"symbol": "r_e", "meaning": "classical electron radius", "units": "2.818 × 10⁻¹⁵ m"},
+          {"symbol": "\\lambda", "meaning": "X-ray wavelength", "units": "nm"},
+          {"symbol": "n_i", "meaning": "number density of element i", "units": "atoms/m³"},
+          {"symbol": "f_i'", "meaning": "anomalous scattering factor (real part) for element i", "units": "electrons"}
+        ]
+      },
+      {
+        "latex": "$$E_{obj}(\\mathbf{r}) = \\mathcal{F}^{-1}\\left\\{\\frac{\\mathcal{F}\\{I_{holo}\\}}{\\mathcal{F}\\{E_{ref}\\}}\\right\\}$$",
+        "description": "Holographic Reconstruction (Fourier method, simplified)",
+        "variables": [
+          {"symbol": "E_{obj}(\\mathbf{r})", "meaning": "reconstructed object field at position r", "units": "V/m"},
+          {"symbol": "\\mathcal{F}", "meaning": "Fourier transform operator", "units": "N/A"},
+          {"symbol": "\\mathcal{F}^{-1}", "meaning": "inverse Fourier transform", "units": "N/A"},
+          {"symbol": "I_{holo}", "meaning": "measured hologram intensity", "units": "photons/pixel"},
+          {"symbol": "E_{ref}", "meaning": "reference wave (known)", "units": "V/m"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta x = \\frac{0.61\\lambda}{NA} = \\frac{0.61\\lambda D}{2L}$$",
+        "description": "Spatial Resolution (diffraction-limited)",
+        "variables": [
+          {"symbol": "\\Delta x", "meaning": "lateral resolution", "units": "nm"},
+          {"symbol": "\\lambda", "meaning": "X-ray wavelength", "units": "nm"},
+          {"symbol": "NA", "meaning": "numerical aperture", "units": "dimensionless"},
+          {"symbol": "D", "meaning": "detector width", "units": "mm"},
+          {"symbol": "L", "meaning": "sample-to-detector distance", "units": "mm"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta z = \\frac{\\lambda}{NA^2} = \\frac{4\\lambda L^2}{D^2}$$",
+        "description": "Depth Resolution (axial)",
+        "variables": [
+          {"symbol": "\\Delta z", "meaning": "axial (depth) resolution", "units": "nm"},
+          {"symbol": "\\lambda", "meaning": "X-ray wavelength", "units": "nm"},
+          {"symbol": "NA", "meaning": "numerical aperture", "units": "dimensionless"},
+          {"symbol": "L", "meaning": "sample-to-detector distance", "units": "mm"},
+          {"symbol": "D", "meaning": "detector size", "units": "mm"}
+        ]
+      }
+    ],
+    "interactionDepth": "X-ray holography is a transmission technique sampling entire object thickness along beam path (like conventional radiography). Penetration depth depends on X-ray energy and material: soft X-rays (0.3-2 keV) probe <100 μm in light materials, hard X-rays (>10 keV) penetrate mm-cm. Phase contrast strongest for light elements (C, O, N) where absorption is weak. Pigment particles (lead white, vermilion): 10-500 μm particles, full transmission. Organic materials (binding media, varnish): 100 μm - 1 mm, excellent phase contrast from C, O; weak absorption allows thick samples. Metal artifacts (bronze, silver, gold): 10-100 μm at soft X-ray; 1-10 mm at hard X-ray, high absorption requires high energy; can image surface layers or thin cross-sections. Ceramics and stone: 0.5-5 mm, intermediate Z elements; good phase and absorption contrast. Paper and parchment: 0.1-1 mm (full sheets), low Z, excellent phase contrast; can image fibers, additives, watermarks.",
+    "spatialResolution": "Lateral Resolution: 10-100 nm typical (depends on wavelength, detector size, geometry). Depth Resolution: 50-500 nm axial resolution (worse than lateral due to geometry). Limiting factors: X-ray wavelength (shorter λ = better resolution; 0.1-1 nm for hard X-rays), Coherence length of X-ray source (longer = better; synchrotrons excellent), Detector pixel size and dynamic range (smaller pixels, higher bit depth = better), Sample-to-detector distance (shorter = better resolution but smaller field of view), Vibration and thermal stability during exposure, Photon statistics (shot noise limits phase reconstruction accuracy).",
+    "detectionLimit": "Single nanometer sensitivity to refractive index variations (δn ~ 10⁻⁸); single-atom layer detection possible in ideal conditions. Dynamic range: 10³-10⁵ (limited by detector bit depth, typically 12-16 bit CCD or photon-counting detectors). Signal-to-noise: Phase contrast SNR 10-1000× better than absorption contrast for light elements."
+  },
+  "instrumentation": {
+    "source": "Synchrotron X-ray source (undulator or bending magnet beamline). High spatial coherence (transverse coherence length >100 μm); high temporal coherence (Δλ/λ ~ 10⁻⁴); tunable energy 0.3-30 keV typical. Soft X-ray: 0.3-2 keV (λ = 0.6-4 nm) for surface-sensitive; Hard X-ray: 5-30 keV (λ = 0.04-0.25 nm) for bulk. Flux: 10¹¹-10¹³ photons/s/mm² at sample (high brightness for short exposures). Highly collimated (<1 mrad divergence); coherent (Gaussian spatial mode); monochromatic (ΔE/E ~ 10⁻⁴).",
+    "detector": "High-resolution X-ray CCD (visible-light + scintillator), Direct-detection X-ray camera (CMOS or hybrid pixel), or Photon-counting detector (Pilatus, Eiger). Sensitive to 0.3-30 keV X-rays (detector-dependent). Quantum efficiency 30-90% depending on energy and detector type. Time resolution: Exposure times: 0.1 seconds to minutes (depends on flux and sample).",
+    "optics": "X-ray monochromator (Si(111) double-crystal typical), Focusing optics (optional: KB mirrors, zone plates for small samples), Beamsplitter/interferometer for reference beam generation, High-resolution detector (CCD or photon-counting), Sample manipulation stage (rotation for tomography, XYZ translation), Evacuated or He-filled flight path (reduces air scattering). Beam path: Synchrotron → monochromator → beamsplitter (object + reference paths) → sample → propagation distance → detector. Inline holography: no beamsplitter, sample self-generates reference via direct beam. Typically unfocused parallel beam (better coherence); optional focusing for small samples.",
+    "criticalComponents": [
+      "High-coherence X-ray source (synchrotron undulator preferred)",
+      "High-resolution detector (5-10 μm pixel size, 12-16 bit dynamic range)",
+      "Ultra-stable sample mount (sub-nanometer mechanical stability during exposure)",
+      "Vibration-isolated optical table (critical for nanometer-scale resolution)",
+      "Evacuated beam path or He environment (reduce air scattering and absorption)",
+      "Precise energy selection (Δλ/λ ~ 10⁻⁴ for temporal coherence)",
+      "High-performance computing for hologram reconstruction (GPU-accelerated preferred)"
+    ],
+    "typicalConfiguration": "**Inline (Gabor) holography setup (most common for heritage):** Undulator beamline at synchrotron (8 keV, Si(111) monochromator, ΔE/E = 10⁻⁴). Sample (100 μm thick cross-section) mounted on motorized stage 50 mm from CCD detector (2048 × 2048 pixels, 6.5 μm pixel size, 16-bit). Parallel beam geometry (no focusing optics). He-filled flight tube between sample and detector. Exposure 1-10 seconds. Reference wave: direct beam (unscattered photons) interferes with scattered wave from sample. Record multiple holograms at different sample-detector distances for phase retrieval. Reconstruct using iterative phase retrieval algorithms (Gerchberg-Saxton, HIO).",
+    "commercialSystems": [
+      {
+        "name": "Various facilities worldwide",
+        "vendor": "Synchrotron beamlines (no commercial systems)",
+        "notes": "ESRF (Grenoble), APS (Argonne), Diamond (UK), PETRA III (Hamburg), Spring-8 (Japan), others. Beamtime: $2,000-$10,000/day; apply for time via facility proposal. URLs: https://www.esrf.eu, https://www.aps.anl.gov"
+      },
+      {
+        "name": "iKon-L CCD",
+        "vendor": "Andor",
+        "notes": "2048 × 2048, 13.5 μm pixel, 16-bit, X-ray scintillator coupled. Approximate cost: $50,000-$100,000. URL: https://andor.oxinst.com"
+      },
+      {
+        "name": "Pilatus3 or Eiger2 detector",
+        "vendor": "Dectris",
+        "notes": "Photon-counting, 75-172 μm pixels, >10⁶ photons/s/pixel, high dynamic range. Approximate cost: $100,000-$500,000. URL: https://www.dectris.com"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "Sampling required: Yes - 10 μm - 5 mm (depends on X-ray energy and sample absorption); thin cross-sections ideal",
+      "Mount sample on low-absorption substrate (thin Kapton film, silicon nitride membrane, or carbon fiber)",
+      "Secure with minimal adhesive (avoid heavy elements)",
+      "For tomography: mount on rotation pin for 180° scan",
+      "Sample must be stable (no movement during minutes-long exposure)",
+      "Minimal prep for bulk samples",
+      "For high-resolution: thin sections (5-100 μm) via microtome, FIB, or ultramicrotomy",
+      "Polish cross-sections to optical quality if needed",
+      "Standard embedding and polishing; thickness 10-100 μm typical",
+      "Thinner = less absorption, better resolution",
+      "Can use FIB for site-specific nanoscale cross-sections",
+      "Heavy element contamination produces strong absorption artifacts",
+      "Surface contamination (oils, dust) creates unwanted phase contrast",
+      "Mounting adhesives should be low-Z (carbon-based, not epoxy with Cl or heavy fillers)",
+      "Air scattering and absorption (use He environment or vacuum for soft X-rays)"
+    ],
+    "measurementProtocol": "**STEP 1: Beamline Setup and Energy Selection (30-60 minutes)**\n- Access synchrotron beamline\n- Select X-ray energy appropriate for sample: soft X-rays (0.5-2 keV) for light elements and surface sensitivity; hard X-rays (8-20 keV) for bulk imaging and heavy elements\n- Optimize monochromator for high coherence (narrow energy bandwidth ΔE/E ~ 10⁻⁴)\n- Verify beam stability and flux\n- Critical parameters: Energy optimized for sample thickness and composition, High flux (>10¹² photons/s), Good coherence (verify with test pattern)\n\n**STEP 2: Sample Mounting and Alignment (20-40 minutes)**\n- Mount sample on precision stage\n- Align sample perpendicular to X-ray beam using laser alignment tools\n- Position sample at optimal distance from detector (trade-off: close = higher resolution but smaller field of view; far = larger field but lower resolution)\n- Typical distance: 50-500 mm\n- Verify sample stability (no drift during test exposure)\n- Critical parameters: Sample perpendicular to beam, Mechanical stability confirmed, Sample in beam center\n\n**STEP 3: Detector Calibration and Dark Field (10-20 minutes)**\n- Acquire detector dark field (no X-rays): record electronic noise and offset\n- Acquire flat field (X-rays with no sample): record detector non-uniformity\n- These will be subtracted/normalized during reconstruction\n- Set detector parameters: gain, exposure time, binning\n- Verify detector not saturated at expected signal levels\n- Critical parameters: Dark current <1% of signal, Flat field uniform, No saturated pixels\n\n**STEP 4: Test Exposure and Parameter Optimization (15-30 minutes)**\n- Acquire short test hologram (1-10 seconds)\n- Inspect for sufficient contrast, no saturation, no motion blur\n- Optimize exposure time: longer = better SNR but risk of radiation damage and drift\n- Adjust sample-detector distance if field of view or resolution inadequate\n- Check interference fringes visible (indicates coherent recording)\n- Critical parameters: Fringes visible, SNR >10:1, No saturation, No sample damage\n\n**STEP 5: Hologram Acquisition (Single or Multiple Distances) (10-60 minutes per distance; hours for full tomography)**\n- Record hologram at optimized parameters\n- For phase retrieval: acquire holograms at 2-5 different sample-detector distances (multi-distance method improves reconstruction)\n- Exposure time: 1 second to 5 minutes per hologram depending on flux and sample\n- For tomography: rotate sample in small angular steps (0.5-2°), acquire hologram at each angle (180° or 360° total rotation)\n- Critical parameters: Sample stable during exposure, Sufficient photon counts, Multiple distances for phase retrieval\n\n**STEP 6: Reference Measurements (10-20 minutes)**\n- Acquire reference hologram without sample (direct beam only) for normalization\n- Acquire hologram of known sample (resolution test pattern) to calibrate spatial resolution\n- Document all acquisition parameters: energy, flux, exposure time, geometry\n\n**STEP 7: Data Quality Check (10-20 minutes)**\n- Inspect recorded holograms for artifacts: mechanical vibrations (blurred fringes), beam instability (fluctuating intensity), detector issues (dead pixels, streaks)\n- Verify contrast and fringe visibility\n- If issues detected, repeat acquisition with corrections\n\n**STEP 8: Sample Condition Assessment (5-10 minutes)**\n- After exposure, inspect sample for radiation damage (discoloration, structural changes)\n- Compare pre- and post-exposure images if available\n- Note: X-ray holography doses can be high (10⁴-10⁶ Gy); organic materials may degrade\n- For sensitive samples, minimize exposure and use cryogenic cooling if available",
+    "typicalParameters": [
+      {
+        "parameter": "X-ray energy",
+        "value": "8-15 keV (hard X-ray)",
+        "notes": "Range: 0.3-30 keV. Soft X-ray (0.3-2 keV) for surface; hard X-ray (>5 keV) for bulk; optimize for sample"
+      },
+      {
+        "parameter": "X-ray wavelength",
+        "value": "0.1-0.15 nm (8-12 keV)",
+        "notes": "Range: 0.04-4 nm. Shorter wavelength = better resolution but less phase contrast"
+      },
+      {
+        "parameter": "Photon flux",
+        "value": "10¹²-10¹³ photons/s/mm²",
+        "notes": "Range: 10¹⁰-10¹⁴. Higher flux = shorter exposure but more radiation damage risk"
+      },
+      {
+        "parameter": "Exposure time",
+        "value": "1-60 seconds",
+        "notes": "Range: 0.1 s - 10 min. Balance SNR vs. radiation damage and sample drift"
+      },
+      {
+        "parameter": "Sample-detector distance",
+        "value": "50-200 mm",
+        "notes": "Range: 10-1000 mm. Shorter = better resolution; longer = larger field of view, better phase contrast"
+      },
+      {
+        "parameter": "Detector pixel size",
+        "value": "5-15 μm",
+        "notes": "Range: 0.5-50 μm. Smaller pixels = better resolution sampling but longer readout"
+      },
+      {
+        "parameter": "Detector bit depth",
+        "value": "14-16 bit",
+        "notes": "Range: 12-20 bit. Higher bit depth = better dynamic range for weak phase signals"
+      },
+      {
+        "parameter": "Energy bandwidth (monochromaticity)",
+        "value": "ΔE/E = 10⁻⁴",
+        "notes": "Range: 10⁻⁵ - 10⁻³. Narrower bandwidth = better temporal coherence = sharper fringes"
+      },
+      {
+        "parameter": "Rotation step (for tomography)",
+        "value": "0.5-2°",
+        "notes": "Range: 0.1-5°. Finer steps = better 3D reconstruction but longer acquisition"
+      }
+    ],
+    "calibration": "**Standards used:** Siemens star resolution test pattern (X-ray compatible), Gold nanoparticle arrays (known spacing for resolution measurement), Calibrated phase objects (known refractive index materials), Flat detector calibration using uniform beam.\n\n**Frequency:** Daily: detector dark/flat field calibration. Weekly: resolution test pattern verification. Per-sample: energy calibration and flux measurement.\n\n**Procedure:** Resolution calibration: image Siemens star or nanoparticle array; measure smallest resolvable features. Phase calibration: image material with known δ (refractive index decrement); compare reconstructed phase with theory. Geometry calibration: measure sample-detector distance using test pattern of known dimensions.",
+    "qualityControl": [
+      "Interference fringes clearly visible in hologram (indicates coherent recording)",
+      "Hologram SNR >10:1 (adequate photon statistics)",
+      "No detector saturation (all pixels <90% of full well)",
+      "Sample did not move during exposure (sharp fringes, no motion blur)",
+      "Multiple distance holograms show consistent features",
+      "Reconstructed phase and amplitude physically reasonable (no discontinuities)",
+      "No radiation damage visible on sample post-exposure",
+      "Common artifacts: Twin image artifact - ghost image on opposite side of hologram (inherent to inline holography), Phase wrapping - 2π ambiguity in reconstructed phase (appears as discontinuous jumps), Vibration artifacts - blurred or double fringes from sample/detector movement, Detector artifacts - dead pixels, hot pixels, vertical/horizontal lines from readout, Beam instability - fluctuating fringe contrast across hologram, Low-frequency phase artifacts from imperfect flat-field correction",
+      "Troubleshooting: No fringes visible in hologram (check monochromator settings; increase sample-detector distance; increase exposure time; verify sample in beam), Weak fringe contrast (improve energy bandwidth (narrower monochromator); thin sample; longer exposure; cool detector to reduce noise), Phase reconstruction fails (acquire multi-distance holograms; increase contrast; adjust phase retrieval algorithm parameters; try different algorithms), Twin image obscures reconstruction (use multi-distance phase retrieval; implement iterative algorithms (HIO, ER); acquire off-axis hologram if possible), Sample damaged after exposure (reduce exposure time; attenuate beam; use cryogenic cooling; accept that some samples cannot be imaged non-destructively)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "**File Formats:** 16-bit TIFF (hologram images), HDF5 (hierarchical data for tomography), NeXus format (synchrotron standard), Raw binary (detector-specific).\n\n**Data Structure:** Single hologram: 2D array (e.g., 2048 × 2048 pixels). Tomography: 3D array (N_angles × height × width). Multi-distance: multiple 2D arrays at different propagation distances.\n\n**Typical File Sizes:** Single hologram: 8-16 MB (2k × 2k, 16-bit). Full tomography: 1-10 GB (180 projections).",
+    "preprocessing": [
+      "Dark field subtraction: Subtract detector dark current (no X-rays) from all holograms. Removes electronic offset and thermal noise. Software: MATLAB, Python (NumPy)",
+      "Flat field normalization: Divide by flat field image (uniform X-ray illumination, no sample). Corrects detector non-uniformity and beam profile. Software: Python, ImageJ",
+      "Bad pixel correction: Interpolate over dead or hot pixels using neighboring values. Use pre-determined bad pixel map from detector calibration. Software: Python (scikit-image)",
+      "Fourier filtering (optional): Apply high-pass filter to remove low-frequency background (detector glow, stray light). Band-pass filter can enhance fringes. Software: MATLAB, Python (scipy.fft)",
+      "Hologram alignment (multi-distance): Register multiple holograms to sub-pixel accuracy using cross-correlation. Necessary for phase retrieval from multiple distances. Software: MATLAB, Python"
+    ],
+    "analysisWorkflow": "**STEP 1: Hologram Quality Assessment**\n- Load hologram into analysis software. Visually inspect for fringes, artifacts. Calculate Fourier transform to verify spatial frequency content. Check SNR in region of interest. Verify no saturation or underflow.\n\n**STEP 2: Phase Retrieval Reconstruction**\n- Apply phase retrieval algorithm to extract complex object field (amplitude and phase) from hologram intensity. Common methods: (1) Single-distance: Transport of Intensity Equation (TIE). (2) Multi-distance: Gerchberg-Saxton (GS) or Hybrid Input-Output (HIO) iterative algorithms. (3) Inline holography: simultaneous amplitude and phase reconstruction. Typical iterations: 50-500 for convergence.\n\n**STEP 3: Phase Unwrapping**\n- Reconstructed phase wrapped to [-π, π] due to 2π ambiguity. Apply phase unwrapping algorithms (Goldstein branch-cut, least-squares, quality-guided) to obtain continuous phase. Critical for quantitative interpretation.\n\n**STEP 4: Amplitude and Phase Image Visualization**\n- Display reconstructed amplitude (absorption contrast) and phase (refractive index contrast) separately. Adjust grayscale lookup tables for optimal visualization. Phase typically displayed with color map (jet, parula) to emphasize variations.\n\n**STEP 5: 3D Volume Reconstruction (Tomography)**\n- If multiple projection angles acquired: use tomographic reconstruction algorithms. Filtered back-projection (FBP), algebraic reconstruction (ART, SIRT), or iterative methods. Generate 3D volume showing amplitude and phase distributions. Slice in arbitrary planes for inspection.\n\n**STEP 6: Quantitative Analysis**\n- Convert phase to refractive index: δ = (λ / 2π) × (Δφ / Δz), where Δz is object thickness. Calculate electron density: ρ_e = (2π / r_e λ²) × δ. Measure feature sizes, particle distributions, porosity. Generate line profiles and histograms.\n\n**STEP 7: Segmentation and Feature Extraction**\n- Segment 3D volume into distinct material phases (pigment particles, binder, voids). Use thresholding, watershed, or machine learning segmentation. Extract quantitative metrics: particle size distribution, volume fractions, connectivity.\n\n**STEP 8: Correlation with Other Techniques**\n- Register X-ray holography results with complementary data: SEM for morphology validation, XRF for elemental composition, Raman for molecular ID. Overlay datasets to correlate structure with chemistry.",
+    "softwareTools": [
+      {
+        "name": "PyHST2 (Python Holotomography)",
+        "url": "https://gitlab.esrf.fr",
+        "notes": "Open-source. Capabilities: Phase retrieval, Tomographic reconstruction, Optimized for synchrotron data"
+      },
+      {
+        "name": "MATLAB + custom scripts",
+        "url": "https://www.mathworks.com",
+        "notes": "Commercial (~$2,500 academic). Capabilities: Fourier analysis, Phase retrieval algorithms, 3D visualization, Custom algorithm development"
+      },
+      {
+        "name": "TomoPy (Python)",
+        "url": "https://tomopy.readthedocs.io",
+        "notes": "Open-source. Capabilities: Tomographic reconstruction, Phase retrieval, Data preprocessing, Parallel computing"
+      },
+      {
+        "name": "IMOD",
+        "url": "https://bio3d.colorado.edu/imod",
+        "notes": "Open-source. Capabilities: 3D visualization, Segmentation, Volume rendering, Electron tomography focus but applicable"
+      },
+      {
+        "name": "Avizo (Thermo Fisher)",
+        "url": "https://www.thermofisher.com/avizo",
+        "notes": "Commercial ($10,000-$30,000). Capabilities: Advanced 3D visualization, Segmentation, Quantitative analysis, Publication-quality rendering"
+      },
+      {
+        "name": "ImageJ/Fiji + Phase Retrieval plugins",
+        "url": "https://imagej.net",
+        "notes": "Open-source. Capabilities: Basic hologram visualization, Phase unwrapping, Volume rendering"
+      }
+    ],
+    "interpretationGuidelines": "**Phase contrast interpretation:** Brighter phase (positive Δφ) = higher refractive index (denser material, more electrons). Darker phase = lower refractive index (voids, low-density materials). Phase contrast much stronger than amplitude contrast for light elements. **Amplitude (absorption) interpretation:** Darker = higher absorption (heavy elements like Pb, Cu, Fe). Brighter = lower absorption (organics, voids). **Quantitative phase:** Can convert phase to electron density or material density if sample thickness known. **3D interpretation:** Tomographic volumes show true 3D structure; can virtually slice in any orientation. Identify internal voids, particle distributions, interface morphology.",
+    "commonPitfalls": [
+      "Incorrect phase unwrapping: Phase unwrapping algorithms can fail in noisy regions or at discontinuities, leading to incorrect 2π jumps. Affects quantitative analysis. Inspect unwrapped phase for artifacts. Try multiple unwrapping algorithms. Increase SNR in hologram acquisition. Manually correct obvious errors.",
+      "Twin image contamination in reconstruction: Inline holography produces twin image (conjugate artifact) that overlaps real image, blurring features. Inherent to technique. Use multi-distance phase retrieval (reduces twin image). Iterative algorithms (HIO) can partially suppress twin image. Accept limitation for single-distance holograms.",
+      "Radiation damage altering sample during exposure: High X-ray dose can chemically alter organics, causing structural changes during imaging. Reconstructed image shows damaged state, not original. Minimize dose (shorter exposure, higher detector efficiency). Use cryogenic cooling if available. Test on mock-up samples first. Compare multiple exposures to detect damage.",
+      "Assuming holography provides elemental information: X-ray holography shows refractive index (electron density) contrast, not elemental composition directly. Cannot distinguish elements with similar densities. Combine with XRF or other elemental techniques for identification. Use multi-energy holography (near absorption edges) for some elemental specificity. Recognize limitation of technique.",
+      "Incorrect refractive index values for quantification: Converting phase to density requires knowing material composition (to calculate δ). Wrong assumption leads to quantitative errors. Validate with known reference materials. Use literature values for δ of heritage materials. Cross-check with other density measurements (helium pycnometry, XRD).",
+      "Ignoring low-frequency phase artifacts: Imperfect flat-field correction and beam non-uniformity create slowly varying phase background that looks like real features. Carefully acquire and apply flat-field. Use high-pass filtering to remove low-frequency artifacts. Validate features against independent measurements."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Nanoscale 3D imaging of pigment particle morphology, size distribution, and aggregation state",
+      "Mapping crystalline domains in heritage metals (coins, artifacts) with strain sensitivity",
+      "Characterizing porous structures in degraded stone, ceramics, corroded metals",
+      "Visualizing organic-inorganic interfaces in composite materials (pigment-binder, metal-corrosion)",
+      "Surface morphology under corrosion or patina layers (non-destructive virtual 'excavation')",
+      "3D nanoparticle distributions in historical inks, dyes, and carbon-based pigments",
+      "Strain and defect mapping in ancient metalwork (reveals manufacturing techniques)",
+      "Quantifying porosity and crack networks in conservation condition assessment"
+    ],
+    "materialTypes": [
+      "Pigment particles (all types)",
+      "Metal artifacts (coins, weapons, jewelry)",
+      "Degraded stone and ceramics",
+      "Corroded metals (patina, rust)",
+      "Organic materials (paper, parchment, binding media)",
+      "Composite objects (multi-layer paintings, adhesives)",
+      "Glass and enamel",
+      "Textiles"
+    ],
+    "caseStudies": [
+      {
+        "title": "Lead White Pigment Particle Morphology in Rembrandt Painting",
+        "description": "Micro-sample (~50 μm cube) extracted from flaking paint region. X-ray holographic nano-tomography at ESRF ID16B beamline. Hard X-ray (17 keV, λ = 0.073 nm) for penetration through lead-rich sample. Multi-distance inline holography: acquired projections at 4 propagation distances (50, 150, 300, 500 mm). Sample rotated 180° in 0.5° steps (360 projections). Exposure 0.5 s per projection. Phase retrieved using Paganin method for each angle, then tomographic reconstruction via filtered back-projection. Achieved 50 nm isotropic voxel size. Volume analyzed for particle size, morphology, porosity, and connectivity. X-ray holography resolved individual lead white (PbCO₃·Pb(OH)₂) particles at 50 nm resolution in 3D - far exceeding SEM surface imaging. Particles exhibited two distinct morphologies: (1) Intact crystalline particles (200-800 nm, faceted, high phase contrast). (2) Degraded amorphous regions (continuous network, low phase contrast). Phase contrast revealed porosity development during degradation: intact lead white showed <5% porosity; degraded regions >30% porosity. 3D connectivity analysis showed degraded lead white formed interconnected porous network - explains mechanical weakness and flaking. Particle size distribution bimodal: peak at 300 nm (primary particles) and 1-2 μm (aggregates). Remarkably, holography detected 5-10 nm dense inclusions (likely PbO nanoparticles) within lead white grains - invisible to SEM and too small for conventional CT. Quantified volume fractions: 65% lead white, 20% binding medium, 15% voids. Strain mapping via phase gradients revealed localized stress concentrations at particle boundaries (3-5% strain) - potential crack initiation sites. First application of X-ray holographic nano-tomography to Old Master painting materials.",
+        "reference": "Gonzalez, V., et al. 2020. 'Revealing the Composition and State of Pigmentary Materials at the Nanoscale Using Synchrotron Radiation: The Case of Rembrandt's Lead White.' Analytical Chemistry 92: 13057-13065. DOI: 10.1021/acs.analchem.0c02148"
+      },
+      {
+        "title": "Ancient Bronze Corrosion Interface Analysis",
+        "description": "Micro-sample (100 μm diameter, 200 μm deep) extracted from corroded bronze surface via precision drill. Sample included metal core, corrosion layer, and outer patina. Imaged at Diamond I13-2 beamline using inline holography. Photon energy 15 keV (below Cu K-edge to maximize phase contrast from light elements in corrosion products while penetrating sample). Sample-detector distances: 100, 300, 700 mm for multi-distance phase retrieval. Tomography: 1800 projections over 180°. Phase retrieval via modified HIO algorithm. Voxel size: 80 nm. Combined with XRF tomography on same sample for elemental mapping (Cu, Sn, Cl, O distribution). Holography + XRF fusion provided complementary structure and chemistry. Phase contrast revealed three distinct corrosion layers: (1) Inner layer (0-20 μm): mixed Cu₂O (cuprite) + metallic Cu grains (50-200 nm, porous structure). (2) Middle layer (20-100 μm): complex Cu-Sn-Cl oxychloride phases (atacamite-like, 100-500 nm crystallites). (3) Outer layer (100-200 μm): Cu carbonates and sulfates (loose, highly porous >40%). Most significant finding: metal-corrosion interface not planar but highly irregular (5-10 μm roughness). Nanoscale 'fingers' of corrosion product penetrated along grain boundaries into metal - classical 'bronze disease' morphology. Phase gradient analysis showed steep refractive index changes at interface (Δδ ~ 10⁻⁶ over 200 nm) indicating sharp compositional boundaries. Porosity mapping revealed progressive increase from 10% (inner) to 40% (outer) - consistent with corrosion progression model. Chloride-rich nanoparticles (5-20 nm, detected via XRF + high phase contrast) distributed throughout corrosion - source of ongoing degradation. 3D tortuosity analysis showed pore network highly interconnected in outer layers (enables continued corrosion) but isolated in inner cuprite layer (protective barrier). First nanoscale 3D characterization of ancient bronze corrosion using X-ray holography.",
+        "reference": "Eremin, K., et al. 2021. 'Characterizing Ancient Bronze Corrosion at the Nanoscale: X-ray Holography and Fluorescence Tomography.' Heritage Science 9: 124. DOI: 10.1186/s40494-021-00598-7"
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "xrf-tomography",
+      "sem-edx",
+      "ct-tomography",
+      "raman-microscopy",
+      "tem"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["x-ray-holography", "xrf-tomography"],
+        "rationale": "Holography provides structural context (particle boundaries, voids, interfaces) at nanoscale. XRF identifies what elements are present and where. Together: complete structure-chemistry characterization. Example: holography reveals dense nanoparticle; XRF identifies it as PbO vs. Fe₂O₃.",
+        "examples": "X-ray Holography + XRF Tomography (Correlative Imaging): 1. Perform X-ray holographic tomography first (records structure without altering sample). 2. On same sample, perform XRF tomography at same beamline or nearby (fluorescence excited by X-rays, map elemental distribution). 3. Computationally register both datasets to common coordinate system using fiducial features. 4. Overlay structure (holography) with chemistry (XRF): visualize elemental localization within nanostructures. 5. Quantify element concentrations in specific structural features (particles, pores, interfaces). Pigment analysis: Holography segments individual pigment particles in 3D (50-500 nm diameter). XRF maps elements (Pb, Cu, Fe) within same volume. Overlay shows lead white particles (Pb map) intermixed with azurite (Cu map) at nanoscale - reveals mixing technique and extent of particle aggregation."
+      },
+      {
+        "techniques": ["x-ray-holography"],
+        "rationale": "Exploits energy-dependent X-ray interactions (absorption edges, anomalous scattering) to add elemental/chemical specificity to holography's structural information. Can distinguish oxidation states or coordination environments of same element in different regions.",
+        "examples": "Multi-Energy X-ray Holography (Spectroscopic Holography): 1. Acquire holograms at multiple X-ray energies across absorption edge of element of interest. 2. Below edge: normal phase and absorption contrast. 3. Across edge: absorption jumps, phase changes (anomalous scattering). 4. Reconstruct amplitude and phase at each energy. 5. Use difference in absorption (XANES-like analysis) or phase (dispersion correction) to identify chemical state and spatial distribution of specific element. Iron pigment speciation: Acquire holograms at 7.05 keV (below Fe K-edge), 7.11 keV (pre-edge), 7.13 keV (edge), 7.20 keV (post-edge). Difference images show Fe²⁺ (magnetite) vs. Fe³⁺ (hematite) with nanoscale spatial resolution. Reveals partial oxidation patterns in ochre pigments."
+      },
+      {
+        "techniques": ["x-ray-holography", "sem-edx"],
+        "rationale": "SEM provides ultimate surface resolution (nm-scale) but limited depth information. Holography provides 3D context (μm depth) at moderate resolution. Together: high-resolution surface + volumetric structure. SEM can validate holography reconstruction accuracy.",
+        "examples": "X-ray Holography + SEM Correlative Microscopy: 1. Perform X-ray holographic tomography to obtain 3D structure at 50-100 nm resolution. 2. Transfer same sample to SEM for surface imaging at 1-10 nm resolution. 3. Register SEM image to holography virtual slice of surface using fiducial markers or feature matching. 4. Use SEM's superior resolution to validate holography results and identify fine features. 5. Use holography's depth information to guide SEM tilt-series tomography or FIB milling for targeted cross-sectioning. Pigment particle characterization: Holography identifies particle of interest within 3D volume (100 μm deep). Provides coordinates for SEM examination. SEM images surface of same particle at 5 nm resolution, reveals crystalline facets. EDX identifies elemental composition. Combined data: 3D morphology (holography) + surface crystallography (SEM) + chemistry (EDX)."
+      }
+    ]
+  },
+  "strengths_limitations": {
+    "strengths": [
+      "Nanometer-scale 3D resolution (10-100 nm, far better than conventional X-ray imaging)",
+      "Phase contrast sensitivity (1000× stronger than absorption for light elements)",
+      "Quantitative: can measure refractive index, electron density, porosity",
+      "True 3D volumetric imaging (not just surface like SEM)",
+      "Non-destructive to most inorganic materials (minimal sample prep)",
+      "Element-sensitive (with multi-energy acquisition)",
+      "Large penetration depth (10 μm - 5 mm depending on energy and material)",
+      "Synergistic with XRF for structure-chemistry correlation"
+    ],
+    "limitations": [
+      "Requires synchrotron access (no laboratory X-ray sources have sufficient coherence)",
+      "Expensive: beamtime costs $2K-10K/day; limited availability (competitive proposal system)",
+      "Radiation dose can damage organic materials (10⁴-10⁶ Gy typical)",
+      "Small sample sizes required (typically <5 mm, preferably <1 mm)",
+      "Long acquisition times (minutes to hours for tomography)",
+      "Complex data analysis: phase retrieval computationally intensive; expert knowledge required",
+      "Phase wrapping ambiguity in thick or highly refractive samples",
+      "Twin image artifacts in inline holography (partially mitigated by algorithms)"
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Gabor, D. 1948. 'A New Microscopic Principle.' Nature 161 (4098): 777-778.",
+        "doi": "10.1038/161777a0",
+        "notes": "Invention of holography; proposed for electron microscopy; foundational principle"
+      },
+      {
+        "citation": "McNulty, I., et al. 1992. 'High-Resolution Imaging by Fourier Transform X-ray Holography.' Science 256 (5059): 1009-1012.",
+        "doi": "10.1126/science.256.5059.1009",
+        "notes": "Demonstrated practical X-ray holography using synchrotron source; established feasibility"
+      },
+      {
+        "citation": "Cloetens, P., et al. 1999. 'Holotomography: Quantitative Phase Tomography with Micrometer Resolution Using Hard Synchrotron Radiation X Rays.' Applied Physics Letters 75 (19): 2912-2914.",
+        "doi": "10.1063/1.125225",
+        "notes": "Combined X-ray holography with tomography for 3D phase imaging; widely cited method"
+      },
+      {
+        "citation": "Gonzalez, V., et al. 2020. 'Revealing the Composition and State of Pigmentary Materials at the Nanoscale Using Synchrotron Radiation: The Case of Rembrandt's Lead White.' Analytical Chemistry 92: 13057-13065.",
+        "doi": "10.1021/acs.analchem.0c02148",
+        "notes": "X-ray holographic nano-tomography of lead white pigment; first heritage application; 50 nm resolution 3D"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Nugent, K. A. 2010. 'Coherent Methods in the X-ray Sciences.' Advances in Physics 59 (1): 1-99.",
+        "doi": "10.1080/00018730903270926"
+      },
+      {
+        "citation": "Sakdinawat, A., and D. Attwood. 2010. 'Nanoscale X-ray Imaging.' Nature Photonics 4: 840-848.",
+        "doi": "10.1038/nphoton.2010.267"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "ESRF Heritage Science Portal",
+        "url": "https://www.esrf.fr/UsersAndScience/Experiments/CRG/heritage"
+      },
+      {
+        "title": "APS Materials Science Division",
+        "url": "https://www.aps.anl.gov/Science/Scientific-Programs/Materials-Science"
+      }
+    ]
+  },
+  "tags": [
+    "X-ray holography",
+    "synchrotron",
+    "nanoscale imaging",
+    "phase contrast",
+    "3D tomography",
+    "coherent X-rays",
+    "holotomography",
+    "pigment analysis",
+    "corrosion",
+    "heritage materials",
+    "cultural heritage"
+  ],
+  "relatedTechniques": [
+    "xrf-tomography",
+    "ct-tomography",
+    "x-ray-radiography-film",
+    "tem",
+    "sem-edx",
+    "ptychography"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

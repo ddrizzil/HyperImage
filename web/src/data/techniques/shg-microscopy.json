@@ -1,0 +1,391 @@
+{
+  "id": "shg-microscopy",
+  "name": "Second Harmonic Generation (SHG) Microscopy",
+  "acronym": "SHG",
+  "category": "Nonlinear Optical Microscopy",
+  "subcategory": "Harmonic Generation Imaging",
+  "summary": "Second harmonic generation microscopy is a label-free nonlinear optical technique that generates contrast from non-centrosymmetric molecular structures by converting two incident photons of frequency ω into a single photon at frequency 2ω. In cultural heritage, SHG provides molecular-level structural information about fibrillar proteins (collagen in parchment, sizing), crystalline pigments with broken symmetry, and cellulose fiber orientation in paper and canvas, all without fluorescent labeling or staining. The technique offers intrinsic 3D sectioning capability and minimal photodamage due to near-infrared excitation.",
+  "keyApplications": [
+    "Imaging collagen structure in parchment and leather degradation studies",
+    "Mapping canvas sizing materials (animal glue collagen)",
+    "Detecting cellulose fiber orientation and crystallinity in paper and textiles",
+    "Characterizing non-centrosymmetric crystalline pigments (vermilion, malachite)",
+    "Assessing protein-based consolidants and adhesives penetration",
+    "Monitoring environmental damage to protein and cellulose substrates",
+    "Distinguishing original vs. restored collagen-based materials"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "laboratory-only",
+  "fundamentalPhysics": {
+    "principle": "SHG is a second-order nonlinear optical process where two photons of the same frequency (ω) interact simultaneously with a non-centrosymmetric material to generate a single photon at exactly twice the frequency (2ω, half the wavelength). Unlike fluorescence, SHG is a parametric process - no energy is absorbed, making it inherently non-destructive. The process is coherent (phase-matched), instantaneous (femtosecond response), and highly specific to ordered, non-centrosymmetric structures. The SHG signal intensity scales as the square of the incident intensity, requiring high peak powers achievable with femtosecond pulsed lasers. In biological and heritage materials, collagen fibrils, cellulose crystallites, and certain pigment crystals are the primary SHG sources.",
+    "physicalPhenomenon": "SHG arises from the second-order nonlinear susceptibility χ⁽²⁾, which is non-zero only in materials lacking inversion symmetry. When intense light (10¹²-10¹⁴ W/cm²) interacts with such materials, the induced polarization P contains a term proportional to E², generating second harmonic light. Key molecular sources: (1) Collagen Type I - triple helix structure breaks centrosymmetry; signal enhanced by fibrillar organization. (2) Cellulose - crystalline regions with aligned chains. (3) Non-centrosymmetric crystals - specific pigments like cinnabar (HgS, trigonal), malachite (Cu₂CO₃(OH)₂, monoclinic).",
+    "equations": [
+      {
+        "latex": "$$P^{(2)}(2\\omega) = \\epsilon_0 \\chi^{(2)} E^2(\\omega)$$",
+        "description": "Second-Order Nonlinear Polarization",
+        "variables": [
+          {"symbol": "P^{(2)}(2\\omega)", "meaning": "induced polarization at second harmonic frequency", "units": "C/m²"},
+          {"symbol": "\\epsilon_0", "meaning": "permittivity of free space", "units": "8.854 × 10⁻¹² F/m"},
+          {"symbol": "\\chi^{(2)}", "meaning": "second-order nonlinear susceptibility tensor", "units": "m/V"},
+          {"symbol": "E(\\omega)", "meaning": "electric field amplitude at fundamental frequency", "units": "V/m"}
+        ]
+      },
+      {
+        "latex": "$$I_{SHG} \\propto (I_\\omega)^2 \\cdot (\\chi^{(2)})^2 \\cdot L^2 \\cdot \\text{sinc}^2\\left(\\frac{\\Delta k L}{2}\\right)$$",
+        "description": "SHG Intensity Dependence",
+        "variables": [
+          {"symbol": "I_{SHG}", "meaning": "second harmonic intensity", "units": "W/cm²"},
+          {"symbol": "I_\\omega", "meaning": "fundamental beam intensity", "units": "W/cm²"},
+          {"symbol": "\\chi^{(2)}", "meaning": "second-order susceptibility", "units": "m/V"},
+          {"symbol": "L", "meaning": "interaction length (coherence length)", "units": "μm"},
+          {"symbol": "\\Delta k", "meaning": "phase mismatch (k₂ω - 2kω)", "units": "rad/μm"}
+        ]
+      },
+      {
+        "latex": "$$\\lambda_{SHG} = \\frac{\\lambda_{exc}}{2}$$",
+        "description": "Wavelength Conversion",
+        "variables": [
+          {"symbol": "\\lambda_{SHG}", "meaning": "second harmonic wavelength", "units": "nm"},
+          {"symbol": "\\lambda_{exc}", "meaning": "excitation wavelength", "units": "nm"}
+        ]
+      },
+      {
+        "latex": "$$L_c = \\frac{\\pi}{|\\Delta k|} = \\frac{\\lambda}{4|n_{2\\omega} - n_\\omega|}$$",
+        "description": "Coherence Length (phase matching distance)",
+        "variables": [
+          {"symbol": "L_c", "meaning": "coherence length", "units": "μm"},
+          {"symbol": "\\Delta k", "meaning": "wave vector mismatch", "units": "rad/μm"},
+          {"symbol": "\\lambda", "meaning": "fundamental wavelength", "units": "nm"},
+          {"symbol": "n_{2\\omega}", "meaning": "refractive index at SHG wavelength", "units": "dimensionless"},
+          {"symbol": "n_\\omega", "meaning": "refractive index at fundamental wavelength", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$z_{res} = \\frac{2\\lambda n}{NA^2}$$",
+        "description": "Axial (Depth) Resolution",
+        "variables": [
+          {"symbol": "z_{res}", "meaning": "axial resolution", "units": "μm"},
+          {"symbol": "\\lambda", "meaning": "excitation wavelength", "units": "nm"},
+          {"symbol": "n", "meaning": "refractive index of medium", "units": "dimensionless"},
+          {"symbol": "NA", "meaning": "numerical aperture of objective", "units": "dimensionless"}
+        ]
+      }
+    ],
+    "interactionDepth": "SHG penetration depth depends on NIR excitation light scattering in the sample. Typical imaging depth is 50-200 μm in biological tissues; deeper in transparent materials. Forward-detected SHG (F-SHG) probes thicker samples than backward (epi-detected) SHG. Depth is limited by scattering of NIR light and absorption at visible SHG wavelength during detection. Collagen (parchment, leather): 50-150 μm typical, excellent signal from fibrillar collagen; depth limited by scattering. Canvas (sized with animal glue): 20-80 μm into fibers, SHG from collagen sizing penetrating fiber surfaces. Paper (cellulose fibers): 30-100 μm, crystalline cellulose produces SHG; oriented fibers give strong signal. Paint cross-sections: 100-300 μm, can image through transparent layers to detect pigment crystals. Pigment particles (crystalline): Surface to ~50 μm, strong SHG from non-centrosymmetric crystals like cinnabar.",
+    "spatialResolution": "Lateral Resolution: 0.3-0.5 μm (diffraction-limited; depends on NA and excitation wavelength ~800 nm). Depth Resolution: 0.8-2 μm axial resolution (intrinsic 3D sectioning from nonlinear excitation). Limiting factors: Numerical aperture of objective (higher NA = better resolution), Excitation wavelength (NIR: 700-1000 nm typical), Scattering in sample (reduces resolution at depth), Pulse width (femtosecond pulses required for nonlinear process), Signal-to-noise ratio at low SHG signals.",
+    "detectionLimit": "Single collagen fibril detectable (~100 nm diameter); minimum organized molecular ensemble ~10³-10⁴ molecules. Dynamic range: 10³-10⁴ (limited by detector dynamic range and laser power range). Signal-to-noise: SNR 20-100:1 for collagen in typical samples; lower for weakly SHG-active materials."
+  },
+  "instrumentation": {
+    "source": "Mode-locked femtosecond pulsed laser (Ti:Sapphire or fiber laser). 80-100 MHz repetition rate; 100-200 fs pulse duration; tunable 700-1000 nm. Excitation: 700-1000 nm (NIR); typical 800 nm for collagen, 880 nm for cellulose. Average power at sample: 5-50 mW (peak power: 5-50 kW due to short pulses). Gaussian TEM₀₀ mode; linearly or circularly polarized; <1 nm bandwidth.",
+    "detector": "Photomultiplier tube (PMT), Hybrid detector (GaAsP), or Electron-multiplying CCD (EMCCD) for widefield. Sensitive to 350-650 nm (second harmonic is in visible range). Efficiency: PMT 20-40% QE at SHG wavelengths; Hybrid 40-60% QE. Time resolution: Nanosecond for photon counting mode; gated detection to reduce background.",
+    "optics": "Scan mirrors (galvanometer or resonant scanners), High-NA water or oil immersion objective (1.0-1.4 NA), Dichroic mirrors (separate excitation from SHG), Bandpass filters (SHG wavelength isolation), Beam expander to fill objective back aperture. Beam path: Laser → beam expander → scan mirrors → scan lens → tube lens → dichroic → objective → sample. SHG collected through same objective (epi) or condenser (forward). Diffraction-limited tight focus via high-NA objective; focal volume ~0.5 femtoliters.",
+    "criticalComponents": [
+      "Femtosecond laser with power stability <1% RMS",
+      "High-NA objective lens (oil immersion 60×/1.4 NA or water immersion 60×/1.2 NA)",
+      "Short-pass dichroic beamsplitter (reflects NIR, transmits visible SHG)",
+      "Narrow bandpass filter centered at λ_exc/2 (e.g., 400 ± 10 nm for 800 nm excitation)",
+      "Non-descanned detection path (PMT close to objective for maximum collection)",
+      "Motorized Z-stage for 3D sectioning (nanometer precision)",
+      "Environmental chamber (maintain humidity for hydrated biological samples)"
+    ],
+    "typicalConfiguration": "**Standard SHG microscope:** Upright or inverted laser-scanning confocal platform adapted for multiphoton imaging. Ti:Sapphire laser (800 nm, 100 fs, 80 MHz) coupled to scan head. Sample on motorized stage with Z-piezo. Epi-detection: PMT positioned after objective, before scan mirrors (non-descanned). Forward detection (F-SHG): transmission PMT with condenser lens below sample. Bandpass filter 390-410 nm for 800 nm excitation. Image acquisition: 512 × 512 pixels at 1-10 Hz frame rate.",
+    "commercialSystems": [
+      {
+        "name": "TCS SP8 DIVE with FALCON",
+        "vendor": "Leica Microsystems",
+        "notes": "Multiphoton/SHG, 4-channel spectral detection, FLIM-capable, motorized stage. Approximate cost: $500,000-$700,000. URL: https://www.leica-microsystems.com"
+      },
+      {
+        "name": "LSM 980 with multiphoton/SHG",
+        "vendor": "Zeiss",
+        "notes": "Airyscan detector, spectral unmixing, tile scanning, environmental control. Approximate cost: $450,000-$650,000. URL: https://www.zeiss.com/microscopy"
+      },
+      {
+        "name": "FVMPE-RS multiphoton",
+        "vendor": "Olympus (Evident)",
+        "notes": "Resonant scanner, 4-PMT detection, SHG/THG capability, upright/inverted. Approximate cost: $400,000-$600,000. URL: https://www.olympus-lifescience.com"
+      },
+      {
+        "name": "Ultima Investigator",
+        "vendor": "Bruker (Prairie/Ultima)",
+        "notes": "In vivo multiphoton system, dual-PMT, F-SHG detector option. Approximate cost: $350,000-$500,000. URL: https://www.bruker.com/en/products-and-solutions/fluorescence-microscopy.html"
+      },
+      {
+        "name": "Chameleon Discovery",
+        "vendor": "Coherent (Chameleon laser + custom)",
+        "notes": "Tunable Ti:Sapphire laser for integration into custom multiphoton setups. Approximate cost: $150,000 (laser only); $300,000+ complete system. URL: https://www.coherent.com"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "Sampling required: 50 μm - 1 mm thickness ideal; micro-samples or cross-sections",
+      "Mount sample on glass coverslip or slide. For thick samples: embed in agar or mounting medium (n ≈ 1.33-1.52)",
+      "For parchment/leather: small fragment (2 × 2 mm) in water or PBS to maintain hydration",
+      "For cross-sections: standard embedding and polishing",
+      "Clean coverslip (No. 1.5, 170 μm thickness for high-NA objectives). Minimize air bubbles",
+      "Use immersion oil (n = 1.518) or water (n = 1.33) matching objective",
+      "Avoid autofluorescent mounting media (can obscure SHG signal)",
+      "Keep samples hydrated for collagen imaging (dehydration alters structure)",
+      "Minimize dust on optics (reduces SHG signal and increases scatter)",
+      "Use clean glass (fluorescence from dirty glass interferes)"
+    ],
+    "measurementProtocol": "**STEP 1: Laser Warm-up and Power Optimization (45-60 minutes)**\n- Power on femtosecond laser and allow 30-60 minute warm-up for mode-locking stabilization\n- Tune to desired wavelength (800 nm for collagen)\n- Adjust average power at sample to 10-30 mW using neutral density filter or attenuator\n- Verify pulse width <200 fs using autocorrelator\n- Critical parameters: Mode-lock stability, Pulse width <200 fs, Power at sample 10-30 mW\n\n**STEP 2: Sample Mounting and Objective Selection (10-15 minutes)**\n- Place sample on microscope stage\n- Add immersion medium (water or oil) to objective\n- Select high-NA objective (60-100×, NA 1.0-1.4)\n- Position sample in laser focus using transmitted light or low-laser-power SHG signal\n- Critical parameters: Proper immersion contact, Sample thickness appropriate for objective working distance\n\n**STEP 3: Detector and Filter Configuration (5-10 minutes)**\n- Configure PMT gain (500-800 V typical)\n- Install bandpass filter for SHG wavelength (e.g., 400 ± 10 nm for 800 nm excitation)\n- Block residual excitation light with short-pass or dichroic filter\n- Set detection to non-descanned mode for maximum collection efficiency\n- Critical parameters: Filter correctly centered on λ_exc/2, No excitation light leaking to detector\n\n**STEP 4: Initial Low-Power Survey Scan (5-10 minutes)**\n- Perform wide-field scan at low laser power (<5 mW) to locate SHG-active regions\n- Identify collagen fibers, cellulose structures, or pigment crystals\n- Avoid photobleaching (not applicable to SHG, but other signals may be present)\n- Critical parameters: Sufficient signal to identify features, No detector saturation\n\n**STEP 5: Acquisition Parameter Optimization (10-20 minutes)**\n- Optimize scan speed (0.5-5 Hz frame rate), pixel dwell time (1-10 μs), averaging (2-16 frames), and laser power for best SNR without sample damage\n- SHG is non-damaging, but high power can cause heating\n- Adjust PMT gain to use full detector dynamic range without saturation\n- Critical parameters: SNR >20:1, No pixel saturation, No thermal damage\n\n**STEP 6: High-Resolution 2D Imaging (2-10 minutes per field)**\n- Acquire 512 × 512 or 1024 × 1024 pixel images of regions of interest\n- Scan at optimized parameters\n- Save raw data as 16-bit TIFF\n- Acquire multiple tiles if large area coverage needed (automated stage scanning)\n- Critical parameters: Pixel size Nyquist-sampled (≤0.2 μm), Consistent laser power across scan\n\n**STEP 7: 3D Z-Stack Acquisition (Optional, 20-60 minutes per stack)**\n- For 3D reconstruction, acquire image series at multiple focal planes\n- Step size: 0.5-1 μm\n- Stack depth: 10-100 μm depending on sample\n- Use Z-piezo for precise positioning\n- Correct for decreasing signal intensity with depth (background subtraction or intensity scaling)\n- Critical parameters: Consistent overlap between planes, Sufficient depth range to capture structure\n\n**STEP 8: Polarization-Resolved SHG (Advanced, Optional, 30-60 minutes per region)**\n- Rotate excitation polarization (motorized λ/2 waveplate) and record SHG intensity vs. angle\n- Extract molecular orientation and second-order susceptibility tensor components\n- Particularly useful for collagen fiber alignment studies\n- Critical parameters: Polarization control accurate, Multiple angles (≥8) sampled",
+    "typicalParameters": [
+      {
+        "parameter": "Excitation wavelength",
+        "value": "800 nm",
+        "notes": "Range: 700-1000 nm. 800 nm optimal for collagen; 880-900 nm for cellulose; depends on χ⁽²⁾ resonances"
+      },
+      {
+        "parameter": "Average laser power (at sample)",
+        "value": "10-30 mW",
+        "notes": "Range: 5-50 mW. Higher power increases SHG (I² dependence) but risks thermal damage"
+      },
+      {
+        "parameter": "Pulse width",
+        "value": "100-200 fs",
+        "notes": "Range: 80-300 fs. Shorter pulses give higher peak power (better SHG) but require dispersion compensation"
+      },
+      {
+        "parameter": "Repetition rate",
+        "value": "80 MHz",
+        "notes": "Range: 1-100 MHz. Standard Ti:Sapphire; lower rates for photon-starved samples"
+      },
+      {
+        "parameter": "Objective NA",
+        "value": "1.0-1.4",
+        "notes": "Range: 0.8-1.5. Higher NA improves resolution and collection efficiency"
+      },
+      {
+        "parameter": "Pixel dwell time",
+        "value": "2-10 μs",
+        "notes": "Range: 0.5-20 μs. Longer dwell improves SNR but increases acquisition time"
+      },
+      {
+        "parameter": "PMT gain",
+        "value": "600-800 V",
+        "notes": "Range: 400-900 V. Adjust to use full dynamic range without saturation"
+      },
+      {
+        "parameter": "Frame averaging",
+        "value": "4-8 frames",
+        "notes": "Range: 1-32 frames. Reduces noise; increases acquisition time proportionally"
+      }
+    ],
+    "calibration": "**Standards used:** KDP crystal (potassium dihydrogen phosphate) - standard SHG reference material, Urea crystals - strong SHG signal for alignment and power calibration, Collagen standard (rat tail tendon section) - biological reference, Sub-resolution fluorescent beads for PSF measurement.\n\n**Frequency:** Daily laser alignment check; weekly SHG intensity calibration; quarterly full system characterization.\n\n**Procedure:** SHG intensity calibration: measure SHG signal from KDP crystal vs. laser power; verify quadratic dependence (I_SHG ∝ I_laser²). Spatial calibration: image calibration grid or known fiber spacing; measure pixel size.",
+    "qualityControl": [
+      "Laser pulse width <200 fs verified with autocorrelator",
+      "SHG signal quadratic dependence on excitation power confirmed",
+      "No excitation light leakage to detector (test with filter removed)",
+      "Spatial resolution verified with sub-resolution structures (collagen fibrils ~100 nm)",
+      "F-SHG/B-SHG ratio consistent with literature for collagen",
+      "No photobleaching or thermal damage visible in repeated scans",
+      "Common artifacts: Excitation bleed-through (residual NIR laser light detected due to insufficient filtering), Two-photon excited fluorescence (TPEF) - autofluorescence at similar wavelengths to SHG, Motion artifacts (sample or stage drift during long acquisitions), Optical aberrations (spherical aberration from refractive index mismatch reduces signal at depth), Pulse broadening (dispersion in optical path reduces peak intensity, weakening SHG)",
+      "Troubleshooting: No SHG signal detected (verify laser tuned to correct wavelength; check filter centered at λ/2; test with SHG standard (KDP); verify femtosecond pulses), Weak signal (increase power (check damage threshold); optimize mode-lock; compensate dispersion; realign beam path), High background (use spectral detection to separate SHG from fluorescence; improve excitation blocking; clean optics), Signal decreases with depth (use adaptive optics; limit depth to 50-100 μm; use forward detection; apply correction collar on objective), Saturation/streaking (reduce PMT voltage; use ND filter to attenuate laser)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "**File Formats:** 16-bit TIFF (single images), Multi-page TIFF (Z-stacks), Proprietary microscope formats (Zeiss .czi, Leica .lif, Olympus .oib).\n\n**Data Structure:** 2D grayscale images (single slice) or 3D volumetric data (Z-stacks); pixel intensity represents SHG photon counts.\n\n**Typical File Sizes:** 2-10 MB per 512×512 image (16-bit); 100-500 MB per Z-stack (50-100 slices).",
+    "preprocessing": [
+      "Background subtraction: Subtract dark current and ambient light noise. Measure background in sample-free region or with laser blocked. Software: ImageJ, MATLAB",
+      "Flat-field correction: Correct for uneven illumination or detection efficiency across field of view. Divide by uniform SHG sample (e.g., KDP crystal). Software: ImageJ, MATLAB",
+      "Median filtering: Reduce shot noise while preserving edges. 3×3 or 5×5 kernel typical. Use sparingly. Software: ImageJ, Fiji",
+      "Deconvolution (optional): Improve resolution and reduce out-of-focus blur using measured or theoretical PSF. Particularly useful for thick samples. Software: Huygens, DeconvolutionLab2 (ImageJ)",
+      "Intensity normalization for depth: For Z-stacks, correct for signal attenuation with depth due to scattering. Exponential correction or reference-based normalization. Software: Custom MATLAB scripts"
+    ],
+    "analysisWorkflow": "**STEP 1: Image Inspection and Quality Check**\n- Load images into viewer. Check for artifacts (saturation, streaking, drift). Verify SHG signal is coherent (directional emission, spectrally narrow at λ/2).\n\n**STEP 2: Contrast Enhancement and Visualization**\n- Adjust brightness/contrast to highlight features. Apply false color LUT (e.g., 'Fire' or 'Green') for presentation. Create maximum intensity projections (MIP) from Z-stacks.\n\n**STEP 3: Fiber/Structure Segmentation**\n- Threshold image to separate SHG-active structures (collagen, cellulose) from background. Use adaptive thresholding or machine learning segmentation (trainable Weka, ilastik). Generate binary masks.\n\n**STEP 4: Quantitative Morphometry**\n- Measure fiber parameters: diameter, length, orientation, density. Use ridge detection algorithms (e.g., ImageJ 'OrientationJ') for fiber tracking. Calculate alignment index or anisotropy coefficient.\n\n**STEP 5: 3D Reconstruction and Visualization**\n- For Z-stacks: create 3D renderings using volume rendering or surface reconstruction. Export as movies or interactive 3D models. Measure 3D fiber network topology.\n\n**STEP 6: Polarization Analysis (If Applicable)**\n- Fit SHG intensity vs. polarization angle to extract molecular orientation. Calculate second-order susceptibility tensor components χ⁽²⁾. Generate orientation color maps.\n\n**STEP 7: Statistical Analysis and Comparison**\n- Compare SHG signal intensity, fiber density, or orientation between sample regions or treatment groups. Use appropriate statistics (t-test, ANOVA). Generate summary plots and tables.",
+    "softwareTools": [
+      {
+        "name": "ImageJ/Fiji",
+        "url": "https://imagej.net",
+        "notes": "Open-source. Capabilities: TIFF import, Z-stack processing, MIP generation, OrientationJ plugin, Extensive plugin ecosystem"
+      },
+      {
+        "name": "MATLAB Image Processing Toolbox",
+        "url": "https://www.mathworks.com",
+        "notes": "Commercial (~$2,500 academic). Capabilities: Custom analysis scripts, Fiber tracking algorithms, Quantitative measurements, Batch processing"
+      },
+      {
+        "name": "Imaris (Oxford Instruments)",
+        "url": "https://imaris.oxinst.com",
+        "notes": "Commercial ($15,000-$40,000). Capabilities: 3D visualization, Filament tracing, Surface rendering, Spot detection, Statistical analysis"
+      },
+      {
+        "name": "Huygens Professional",
+        "url": "https://svi.nl",
+        "notes": "Commercial ($5,000-$15,000). Capabilities: Advanced deconvolution, PSF measurement, Chromatic aberration correction, Batch processing"
+      },
+      {
+        "name": "Amira (Thermo Fisher)",
+        "url": "https://www.thermofisher.com/amira-avizo",
+        "notes": "Commercial ($10,000-$30,000). Capabilities: 3D visualization, Segmentation, Quantification, Animation"
+      },
+      {
+        "name": "CellProfiler",
+        "url": "https://cellprofiler.org",
+        "notes": "Open-source. Capabilities: Automated image analysis, High-throughput processing, Machine learning segmentation"
+      }
+    ],
+    "interpretationGuidelines": "**SHG signal intensity:** Brighter regions indicate higher density or better organization of non-centrosymmetric structures. In collagen: dense fibrillar regions (dermis, tendon) very bright; disorganized or denatured collagen weak/absent signal. **Fiber orientation:** Use polarization-resolved SHG or image texture analysis to determine predominant fiber alignment. Random orientation = isotropic signal; aligned fibers = anisotropic. **F-SHG vs. B-SHG ratio:** Forward-to-backward SHG ratio provides information on fibril size and organization. Ratio ~10-20 for well-organized collagen; lower for disordered. **Crystalline pigments:** Strong localized SHG indicates non-centrosymmetric crystal structure (e.g., cinnabar, malachite); absence doesn't prove centrosymmetric (may have weak χ⁽²⁾).",
+    "commonPitfalls": [
+      "Confusing SHG with two-photon excited fluorescence (TPEF): Both occur in same spectral region. TPEF is broadband, weaker dependence on polarization, can photobleach. SHG is narrow-band (λ_exc/2), instantaneous, no photobleaching. Use spectral detection to verify narrow emission at exactly λ/2. Check polarization dependence. Verify no photobleaching over repeated scans.",
+      "Assuming all collagen produces SHG equally: Denatured, degraded, or disorganized collagen has weak/no SHG. Absence of SHG ≠ absence of collagen. Combine with other methods (histology, immunostaining) to confirm collagen presence. SHG indicates structured, native collagen.",
+      "Over-interpretation of signal intensity: Absolute SHG intensity depends on many factors (laser power, alignment, sample depth). Quantitative comparison requires careful normalization. Use relative comparisons within same sample or carefully calibrated systems. Report fiber density or organization metrics, not raw intensity.",
+      "Ignoring depth-dependent signal attenuation: SHG signal decreases with depth due to scattering. Deep structures appear dimmer even if identical to surface. Apply depth correction using exponential model. Limit quantitative analysis to similar depths. Use forward detection for thicker samples.",
+      "Inadequate laser power causing weak signal: Nonlinear process requires high peak intensity. Too-low power gives noise-dominated images. Optimize power for each sample type. SHG intensity ∝ (power)², so small power increases help significantly. Balance against thermal damage risk.",
+      "Pulse broadening from dispersion: Transmitting femtosecond pulses through optics causes temporal spreading, reducing peak intensity and weakening SHG. Use dispersion-compensated objectives or pre-chirp laser pulses. Minimize optical path length. Verify pulse width at sample."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Assessing collagen degradation in parchment, leather, and animal glue",
+      "Mapping canvas sizing (animal glue collagen) distribution and penetration depth",
+      "Characterizing cellulose fiber orientation in paper and textiles",
+      "Identifying and mapping non-centrosymmetric crystalline pigments",
+      "Evaluating consolidant penetration into collagenous substrates",
+      "Monitoring environmental damage (humidity, temperature cycling) effects on protein structure",
+      "Distinguishing original vs. restoration materials in composite objects",
+      "Studying protein-based adhesives in multi-layer artworks",
+      "3D visualization of fiber networks in historical textiles"
+    ],
+    "materialTypes": [
+      "Parchment/vellum",
+      "Leather/tanned hides",
+      "Canvas (sized with animal glue)",
+      "Paper (cellulose-based)",
+      "Textiles (natural fibers)",
+      "Paint cross-sections",
+      "Adhesives/consolidants (protein-based)",
+      "Wood",
+      "Bones/ivory"
+    ],
+    "caseStudies": [
+      {
+        "title": "Dead Sea Scrolls Parchment Degradation Assessment",
+        "description": "Micro-samples (~1 mm²) from damaged edge fragments mounted between coverslips. SHG imaging using 800 nm excitation, 60×/1.2 NA water objective. Z-stacks acquired 0-50 μm depth. Compared SHG signal intensity and fiber organization across different scrolls and storage conditions. Correlated SHG metrics with FTIR (amide bands) and amino acid analysis. Well-preserved scrolls showed strong, organized SHG from aligned collagen fibrils. Degraded samples exhibited 50-80% reduction in SHG intensity, loss of fibrillar structure (diffuse signal), and reduced penetration depth due to increased scattering. SHG damage index correlated strongly (R² = 0.89) with collagen denaturation measured by DSC and amino acid racemization. Micro-environmental variations within single scrolls revealed localized degradation hotspots. SHG distinguished gelatinization (complete loss of structure) from mild denaturation (reduced organization). Established SHG as minimally invasive method for assessing collagen-based heritage materials.",
+        "reference": "Masic, A., et al. 2016. 'Spectrally Resolved Second Harmonic Generation Microscopy as a Non-Destructive Probe of Collagen Organization in Ancient Parchment Manuscripts.' Science Advances 2 (11): e1501374. DOI: 10.1126/sciadv.1501374"
+      },
+      {
+        "title": "Renaissance Canvas Sizing Characterization",
+        "description": "Cross-sections from edge samples (0.5 × 1 mm) embedded in resin, polished. SHG imaging: 800 nm excitation, 40×/1.3 NA oil objective. Mapped SHG signal through canvas threads and ground layer. Polarization-resolved SHG to determine collagen fibril orientation. Compared original sizing vs. modern consolidants (gelatin, sturgeon glue). Combined with FTIR to confirm collagen presence. Original animal glue sizing penetrated 20-50 μm into canvas threads, appearing as thin SHG-bright coating on fiber surfaces. Collagen fibrils aligned parallel to thread direction, indicating mechanical application (brushing). Degraded sizing showed 60% reduced SHG intensity and loss of fibrillar structure. Modern gelatin consolidants exhibited different fibril organization (more random) detectable by polarization SHG. Ground layers contained minimal SHG signal except at canvas-ground interface. SHG/TPEF ratio distinguished protein sizing from autofluorescent organic binders. First comprehensive study of historical canvas sizing using SHG.",
+        "reference": "Morales, K. M., et al. 2019. 'Second Harmonic Generation Microscopy for Characterization of Historical Canvas Preparation.' In ICOM-CC 18th Triennial Conference, Copenhagen. ICOM-CC."
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "tpef-microscopy",
+      "thg-microscopy",
+      "raman-microscopy",
+      "ftir-microscopy",
+      "oct"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["shg-microscopy", "tpef-microscopy"],
+        "rationale": "SHG highlights ordered collagen; TPEF reveals elastin, cellular autofluorescence, degraded proteins. Together provide comprehensive structural and chemical context.",
+        "examples": "SHG + TPEF Dual-Channel Imaging: 1. Excite sample with single femtosecond laser (typically 800 nm). 2. Split emission using dichroic mirror: SHG (380-420 nm) to PMT1, TPEF (450-650 nm) to PMT2. 3. Acquire simultaneous SHG and TPEF images. 4. Overlay channels in false color (SHG = green, TPEF = red) to visualize collagen (structured) vs. other proteins/organics (disordered). Leather analysis: SHG shows intact collagen fibrils in grain layer; TPEF reveals lipid-rich regions and degraded material in junction zone."
+      },
+      {
+        "techniques": ["shg-microscopy", "polarization-control"],
+        "rationale": "SHG intensity strongly depends on excitation polarization relative to molecular axis. Extracting this reveals collagen fibril alignment, important for mechanical properties and degradation susceptibility.",
+        "examples": "Polarization-Resolved SHG for Molecular Orientation Mapping: 1. Install motorized half-wave plate in excitation path. 2. Acquire SHG images at multiple excitation polarization angles (0°, 15°, 30°...180°). 3. Fit intensity vs. angle to determine molecular orientation and χ⁽²⁾ tensor components. 4. Generate false-color orientation maps. Parchment damage assessment: aligned collagen (high anisotropy) indicates intact structure; randomized orientation (low anisotropy) indicates degradation."
+      },
+      {
+        "techniques": ["shg-microscopy", "raman-microscopy"],
+        "rationale": "SHG rapidly surveys large area for non-centrosymmetric crystals. Raman provides definitive molecular ID. Together: fast screening + targeted identification.",
+        "examples": "SHG + Raman for Pigment Crystal Identification: 1. SHG imaging (800 nm) identifies crystalline regions in paint cross-section. 2. Use SHG map to target Raman spectroscopy (632 nm) to SHG-bright particles. 3. Raman confirms molecular identity (e.g., HgS for cinnabar). 4. Correlate SHG intensity with crystal size and orientation. Medieval manuscript illumination: SHG detects cinnabar (HgS, trigonal, strong SHG) and malachite (Cu₂CO₃(OH)₂, monoclinic) particles; Raman confirms and distinguishes from SHG-inactive pigments (carbon black, organic dyes)."
+      }
+    ]
+  },
+  "strengths_limitations": {
+    "strengths": [
+      "Label-free: no staining or fluorophores required; see native molecular organization",
+      "Non-destructive: NIR excitation and coherent process minimize photodamage",
+      "Intrinsic 3D sectioning: optical sectioning without physical slicing (0.8-2 μm axial resolution)",
+      "High specificity: only non-centrosymmetric ordered structures produce SHG (collagen, cellulose, certain crystals)",
+      "Coherent signal: narrowband emission at exactly λ/2 simplifies spectral separation",
+      "Deep penetration: NIR excitation penetrates 50-200 μm into scattering tissues",
+      "Quantifiable: SHG intensity relates to molecular density and organization (with calibration)",
+      "Polarization-sensitive: reveals molecular orientation and alignment"
+    ],
+    "limitations": [
+      "Requires femtosecond pulsed laser: expensive, complex, requires expertise",
+      "Limited molecular specificity: SHG indicates non-centrosymmetry but doesn't chemically identify molecules",
+      "Not all collagens produce SHG equally: denatured or disorganized collagen has weak/absent signal",
+      "Depth limitation: scattering reduces signal below ~200 μm; absorption at SHG wavelength also limits depth",
+      "Small field of view: high-NA objectives have limited working distance and field (~200 μm)",
+      "Time-consuming: scanning microscopy slow for large areas (minutes to hours)",
+      "Sensitive to sample preparation: hydration state, mounting medium affect collagen signal",
+      "Cannot image centrosymmetric structures: keratin, denatured collagen, amorphous materials produce no SHG"
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Franken, P. A., A. E. Hill, C. W. Peters, and G. Weinreich. 1961. 'Generation of Optical Harmonics.' Physical Review Letters 7 (4): 118-119.",
+        "doi": "10.1103/PhysRevLett.7.118",
+        "notes": "First experimental demonstration of second harmonic generation in quartz crystal - birth of nonlinear optics"
+      },
+      {
+        "citation": "Freund, I., and M. Deutsch. 1986. 'Second-Harmonic Microscopy of Biological Tissue.' Optics Letters 11 (2): 94-96.",
+        "doi": "10.1364/OL.11.000094",
+        "notes": "First SHG imaging of collagen in biological tissue; established basis for biomedical SHG microscopy"
+      },
+      {
+        "citation": "Campagnola, P. J., and L. M. Loew. 2003. 'Second-Harmonic Imaging Microscopy for Visualizing Biomolecular Arrays in Cells, Tissues and Organisms.' Nature Biotechnology 21 (11): 1356-1360.",
+        "doi": "10.1038/nbt894",
+        "notes": "Comprehensive demonstration of SHG for tissue imaging; established methodology for biological applications"
+      },
+      {
+        "citation": "Masic, A., L. Bertassoni, R. Barthelat, et al. 2016. 'Spectrally Resolved Second Harmonic Generation Microscopy as a Non-Destructive Probe of Collagen Organization in Ancient Parchment Manuscripts.' Science Advances 2 (11): e1501374.",
+        "doi": "10.1126/sciadv.1501374",
+        "notes": "Landmark study applying SHG to Dead Sea Scrolls parchment; established methodology for heritage collagen assessment"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Chen, X., O. Nadiarynkh, S. Plotnikov, and P. J. Campagnola. 2012. 'Second Harmonic Generation Microscopy for Quantitative Analysis of Collagen Fibrillar Structure.' Nature Protocols 7 (4): 654-669.",
+        "doi": "10.1038/nprot.2012.009"
+      },
+      {
+        "citation": "Zipfel, W. R., R. M. Williams, and W. W. Webb. 2003. 'Nonlinear Magic: Multiphoton Microscopy in the Biosciences.' Nature Biotechnology 21 (11): 1369-1377.",
+        "doi": "10.1038/nbt899"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "Olympus Multiphoton Learning Center",
+        "url": "https://www.olympus-lifescience.com/en/microscope-resource/primer/techniques/multiphoton/"
+      },
+      {
+        "title": "Campagnola Lab Resources",
+        "url": "https://campagnolalab.wisc.edu/"
+      }
+    ]
+  },
+  "tags": [
+    "SHG",
+    "second harmonic generation",
+    "nonlinear microscopy",
+    "collagen imaging",
+    "label-free",
+    "multiphoton",
+    "femtosecond laser",
+    "parchment",
+    "cellulose",
+    "crystalline pigments",
+    "cultural heritage"
+  ],
+  "relatedTechniques": [
+    "tpef-microscopy",
+    "thg-microscopy",
+    "cars-microscopy",
+    "raman-microscopy",
+    "oct",
+    "polarized-light-microscopy"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

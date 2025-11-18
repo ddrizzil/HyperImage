@@ -1,0 +1,417 @@
+{
+  "id": "fib-sem-tomography",
+  "name": "FIB-SEM Dual-Beam Tomography",
+  "acronym": "FIB-SEM",
+  "category": "Electron Microscopy",
+  "subcategory": "3D Microstructural Analysis",
+  "summary": "FIB-SEM dual-beam tomography (also called slice-and-view or 3D-FIB-SEM) is an advanced volumetric imaging technique that combines focused ion beam (FIB) milling with scanning electron microscopy to generate three-dimensional reconstructions of material microstructure at nanometer resolution. The method operates by alternating automated cycles: a gallium ion beam precisely mills away thin layers (5-50 nm) from a sample surface, then SEM imaging (secondary or backscattered electrons) captures the freshly exposed cross-section. Sequential imaging of hundreds to thousands of slices produces a 3D dataset revealing internal structure, phase distribution, porosity networks, and interfaces with unprecedented spatial resolution (lateral: 5-20 nm; depth: 5-50 nm). In cultural heritage, FIB-SEM tomography enables non-destructive 3D characterization of pigment particle aggregation, corrosion layer stratification, paint layer interfaces, fiber networks in paper, and nanoparticle distributions in historical materials.",
+  "keyApplications": [
+    "3D visualization of pigment particle packing and binder networks in paint",
+    "Corrosion layer stratification and porosity networks in archaeological metals",
+    "Multi-layer paint stratigraphy with nanometer-scale interface characterization",
+    "Fiber network topology in paper and parchment (3D connectivity)",
+    "Nanoparticle distribution in historical inks and glazes",
+    "Crack propagation networks in degraded ceramics and glass",
+    "Microstructural analysis of manufacturing techniques (gilding, enameling)",
+    "Quantitative porosity and phase analysis in composite heritage materials"
+  ],
+  "destructiveness": "micro-destructive",
+  "portability": "laboratory-only",
+  "fundamentalPhysics": {
+    "principle": "FIB-SEM tomography exploits two distinct beam-matter interactions: (1) Ion milling: focused Ga⁺ ion beam (30 keV, 1-100 nA) sputters atoms from sample surface through momentum transfer. Milling removes precise thickness (5-50 nm per slice) exposing subsurface structure. (2) SEM imaging: electron beam (1-30 keV) generates secondary or backscattered electrons from freshly milled surface, creating high-resolution image. Automated sequence: mill slice → image → advance stage → mill next slice → image, repeated 100-5000 times. Stack of 2D images computationally assembled into 3D volume. BSE imaging provides material (Z) contrast; SE imaging provides topographic contrast. Voxel resolution: 5-20 nm lateral (electron beam spot size), 5-50 nm depth (slice thickness).",
+    "physicalPhenomenon": "Ion beam sputtering: Ga⁺ ions (30 keV, mass ~69 amu) strike sample with high kinetic energy. Ion penetrates ~20 nm, undergoes collision cascade: transfers momentum to target atoms, breaking bonds. If transferred energy > surface binding energy (~3-5 eV), atom ejects (sputtering). Sputter yield: 0.5-5 atoms/ion depending on material (higher for metals, lower for organics). Ion beam rastered over area (5 × 5 to 50 × 50 μm) mills flat surface. Milling rate: ~1 μm³/nA·s for Si; varies by material. SEM imaging physics identical to standard SEM: electron-matter interactions generate SE (topography) or BSE (Z-contrast) for imaging. Depth resolution determined by slice thickness; thinner slices = better z-resolution but longer acquisition (more slices needed). Lateral resolution limited by electron beam spot (5-20 nm for SEM at 2-5 keV).",
+    "equations": [
+      {
+        "latex": "$$Y = \\frac{\\text{sputtered atoms}}{\\text{incident ion}} = \\frac{3\\alpha}{4\\pi^2} \\frac{4M_1 M_2}{(M_1 + M_2)^2} \\frac{E}{U_0}$$",
+        "description": "Sputter Yield (Sigmund theory, simplified)",
+        "variables": [
+          {"symbol": "Y", "meaning": "sputter yield", "units": "atoms/ion"},
+          {"symbol": "\\alpha", "meaning": "function of mass ratio and energy transfer", "units": "dimensionless"},
+          {"symbol": "M_1", "meaning": "mass of incident ion (Ga: 69 amu)", "units": "amu"},
+          {"symbol": "M_2", "meaning": "mass of target atom", "units": "amu"},
+          {"symbol": "E", "meaning": "incident ion energy (typically 30 keV)", "units": "keV"},
+          {"symbol": "U_0", "meaning": "surface binding energy (~3-5 eV)", "units": "eV"}
+        ]
+      },
+      {
+        "latex": "$$t_{slice} = \\frac{I \\cdot t_{mill} \\cdot Y \\cdot V_{atomic}}{A_{mill}}$$",
+        "description": "Slice Thickness (milled depth per cycle)",
+        "variables": [
+          {"symbol": "t_{slice}", "meaning": "thickness of material removed per milling cycle", "units": "nm"},
+          {"symbol": "I", "meaning": "ion beam current", "units": "nA"},
+          {"symbol": "t_{mill}", "meaning": "milling time per cycle", "units": "seconds"},
+          {"symbol": "Y", "meaning": "sputter yield (material-dependent)", "units": "atoms/ion"},
+          {"symbol": "V_{atomic}", "meaning": "atomic volume of target material", "units": "nm³/atom"},
+          {"symbol": "A_{mill}", "meaning": "milled area (cross-section)", "units": "nm²"}
+        ]
+      },
+      {
+        "latex": "$$V_{total} = w \\cdot h \\cdot d = w \\cdot h \\cdot (n_{slices} \\cdot t_{slice})$$",
+        "description": "Total Imaged Volume",
+        "variables": [
+          {"symbol": "V_{total}", "meaning": "total 3D volume reconstructed", "units": "μm³"},
+          {"symbol": "w", "meaning": "image width (lateral dimension)", "units": "μm"},
+          {"symbol": "h", "meaning": "image height (vertical dimension)", "units": "μm"},
+          {"symbol": "d", "meaning": "total depth (n × t_slice)", "units": "μm"},
+          {"symbol": "n_{slices}", "meaning": "number of slices acquired", "units": "dimensionless"},
+          {"symbol": "t_{slice}", "meaning": "thickness per slice", "units": "nm"}
+        ]
+      },
+      {
+        "latex": "$$t_{total} = n_{slices} \\times (t_{mill} + t_{image} + t_{overhead})$$",
+        "description": "Total Acquisition Time",
+        "variables": [
+          {"symbol": "t_{total}", "meaning": "total time for complete 3D acquisition", "units": "hours"},
+          {"symbol": "n_{slices}", "meaning": "number of slices", "units": "dimensionless"},
+          {"symbol": "t_{mill}", "meaning": "milling time per slice (10-60 seconds)", "units": "seconds"},
+          {"symbol": "t_{image}", "meaning": "SEM imaging time per slice (5-30 seconds)", "units": "seconds"},
+          {"symbol": "t_{overhead}", "meaning": "stage movement, autofocus, drift correction (5-15 seconds)", "units": "seconds"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta x = \\frac{0.61\\lambda}{\\beta} \\approx \\frac{\\text{pixel size}}{\\text{magnification}}$$",
+        "description": "Lateral Resolution (SEM-limited)",
+        "variables": [
+          {"symbol": "\\Delta x", "meaning": "lateral (xy) resolution", "units": "nm"},
+          {"symbol": "\\lambda", "meaning": "electron wavelength (pm for keV electrons)", "units": "pm"},
+          {"symbol": "\\beta", "meaning": "convergence semi-angle of electron beam", "units": "radians"},
+          {"symbol": "\\text{pixel size}", "meaning": "physical pixel dimension on sample", "units": "nm"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta z = t_{slice}$$",
+        "description": "Depth (Z) Resolution",
+        "variables": [
+          {"symbol": "\\Delta z", "meaning": "depth resolution", "units": "nm"},
+          {"symbol": "t_{slice}", "meaning": "slice thickness (directly sets z-resolution)", "units": "nm"}
+        ]
+      }
+    ],
+    "interactionDepth": "FIB-SEM is a true 3D bulk technique. Ion beam penetration ~20 nm but sputtering removes material layer-by-layer, exposing progressively deeper structure. SEM imaging of each freshly exposed surface provides data from that depth. Total sampled depth: 1-50 μm typical (limited by milling time and sample drift). Unlike projection techniques, every voxel in reconstructed volume is directly measured. Paint layers (pigment + binder): 5-30 μm typical (single to multiple layers), can image full paint stratigraphy at nanometer resolution. Corrosion layers on metals: 10-50 μm (corrosion product thickness), reveals stratification, porosity, metal-corrosion interface. Paper and parchment: 20-100 μm (through thickness), complete fiber network topology. Ceramics and glass: 5-30 μm, phase distribution, porosity, manufacturing defects. Gilding and surface treatments: 1-10 μm (coating + substrate interface), reveals nanoscale interface structure.",
+    "spatialResolution": "Lateral Resolution: 5-20 nm (SEM electron probe size). Depth Resolution: 5-50 nm (slice thickness, user-controlled). Limiting factors: SEM resolution (electron beam spot size, aberrations), Slice thickness (thinner = better z-resolution but exponentially longer acquisition), Ion beam curtaining artifacts (shadow effects from topography), Sample drift during long acquisition (thermal, mechanical, charging), Milling quality (surface roughness, redeposition of sputtered material), Image alignment accuracy (registration between slices).",
+    "detectionLimit": "Feature size: ~10 nm (2-3 voxels minimum). Phase discrimination: depends on contrast mechanism (BSE: ΔZ ≥ 2 required; SE: topographic features > 5 nm). Dynamic range: 10³-10⁴ (gray levels in SEM image; 8-16 bit acquisition). Signal-to-noise: SNR 20-200 typical; improves with longer SEM dwell time (but increases total acquisition time)."
+  },
+  "instrumentation": {
+    "source": "Dual-beam system: (1) Liquid metal ion source (LMIS) for Ga⁺ ions; (2) Electron gun (Schottky FEG or cold FEG) for SEM. Ion beam: Ga⁺, 30 keV typical, 1 pA - 100 nA current, focused to 5-50 nm spot. Electron beam: 1-30 keV, 1 pA - 20 nA, focused to 1-10 nm spot (SEM resolution). Ions: fixed 30 keV (some systems 2-30 keV variable). Electrons: 0.5-30 keV. Ion beam power: 1-3000 pW (30 keV × 1 pA to 100 nA). Ion beam: rastered for milling; electron beam: rastered for imaging; 52° typical geometry between beams.",
+    "detector": "In-column SE detector (high-resolution SE), Everhart-Thornley SE detector (standard SE), Solid-state BSE detector (Z-contrast), Through-the-lens detector (TLD), or In-lens energy-selective detector. SE detectors: sensitive to <50 eV electrons; BSE: sensitive to keV-range electrons. SE: >80% collection; BSE: 50-80% depending on geometry. Time resolution: Nanosecond (supports fast scanning; typical: 1-30 seconds per image frame).",
+    "optics": "Liquid metal ion source (LMIS, Ga⁺ reservoir), Ion column (focusing lenses, deflection system), Electron column (FEG source, electromagnetic lenses), Stage (5-axis motorized: X, Y, Z, tilt, rotation), Gas injection system (GIS) for protective Pt deposition, SE and BSE detectors, Vacuum system (10⁻⁶ to 10⁻⁷ mbar), Automated control system (slice-and-view software). Beam path: Ion beam: vertical (perpendicular to stage). Electron beam: 52° to stage normal (coincident point on sample). Sample positioned such that eucentric point (rotation center) coincides with beam intersection. Ion beam: electromagnetic lenses focus to 5-50 nm (milling applications). Electron beam: electromagnetic lenses focus to 1-10 nm (imaging).",
+    "criticalComponents": [
+      "Dual-beam geometry (52° angle enables simultaneous access)",
+      "High-stability stage (sub-10 nm positioning accuracy over 24+ hours)",
+      "Automated slice-and-view software (controls milling, imaging, alignment)",
+      "Gas injection system (Pt or C deposition for surface protection)",
+      "High-vacuum system (prevents ion source contamination, reduces milling artifacts)",
+      "Image processing computer (GPU-accelerated for real-time alignment, 3D rendering)",
+      "Vibration isolation (critical for nanometer-scale resolution)",
+      "Drift correction algorithms (compensate for thermal/mechanical drift during long runs)"
+    ],
+    "typicalConfiguration": "**Standard FIB-SEM tomography setup:** Dual-beam FIB-SEM with Schottky FEG electron source and Ga⁺ LMIS ion source. Stage with eucentric tilt and 5-axis motorization. Imaging: 2-5 keV electrons, 0.4 nA current, in-lens SE detector or BSE detector for Z-contrast. Milling: 30 keV Ga⁺ ions, 1-30 nA current (depending on desired slice thickness and speed). Slice thickness: 10-30 nm (trade-off: thinner = better resolution but longer acquisition). Field of view: 10 × 10 μm to 50 × 50 μm. Image size: 2048 × 2048 pixels (5-25 nm pixel size). Acquisition: 500-2000 slices typical (5-60 μm total depth). Total time: 8-48 hours (automated overnight run). Protective Pt cap deposited over region of interest before milling to prevent surface damage.",
+    "commercialSystems": [
+      {
+        "name": "Helios 5 DualBeam",
+        "vendor": "Thermo Fisher Scientific (FEI)",
+        "notes": "Schottky FEG, 0.8 nm SEM resolution, Ga⁺ FIB <3 nm probe, Auto Slice & View software, cryo-capable. Approximate cost: $2,000,000-$3,000,000. URL: https://www.thermofisher.com"
+      },
+      {
+        "name": "Crossbeam 550",
+        "vendor": "Zeiss",
+        "notes": "Gemini electron column, <1 nm SEM resolution, Ga⁺ FIB, Atlas 5 3D tomography software. Approximate cost: $1,800,000-$2,500,000. URL: https://www.zeiss.com/microscopy"
+      },
+      {
+        "name": "S9000G FIB-SEM",
+        "vendor": "Tescan",
+        "notes": "High-resolution SEM (<0.9 nm), Ga⁺ FIB, large chamber, 3D tomography package. Approximate cost: $1,500,000-$2,200,000. URL: https://www.tescan.com"
+      },
+      {
+        "name": "MI4000L FIB-SEM",
+        "vendor": "Hitachi High-Tech",
+        "notes": "Dual-beam, <1 nm SEM resolution, automated 3D acquisition, compact design. Approximate cost: $1,500,000-$2,000,000. URL: https://www.hitachi-hightech.com"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "Sampling required: Yes - typically 5-15 mm diameter, <5 mm height; micro-samples (0.1-1 mm) can be mounted on pins",
+      "Mount sample on Al or Cu stub using conductive adhesive (carbon or silver paint)",
+      "Orient region of interest toward electron beam (52° geometry)",
+      "Ensure sample stable and conductive",
+      "For insulators: coat with 5-10 nm Pt or Au/Pd (standard sputter coating)",
+      "Sample must be vacuum-compatible and stable under ion/electron beams",
+      "Minimal prep for bulk samples",
+      "For polished cross-sections: standard metallographic polish (1 μm finish)",
+      "For delicate surfaces: stabilize with protective Pt layer (deposited via GIS in FIB-SEM before tomography)",
+      "Tomography generates virtual cross-sections, so physical sectioning not required",
+      "However, may embed fragile samples (paint, paper) in epoxy resin and polish block face to expose edge for FIB access",
+      "Surface contamination (hydrocarbons) causes uneven milling (curtaining artifacts)",
+      "Outgassing samples (high water content, organics) degrade vacuum, contaminate ion source",
+      "Incomplete coating on insulators → charging artifacts during imaging",
+      "Redeposition of sputtered material on sidewalls of milled trench (reduces image quality)"
+    ],
+    "measurementProtocol": "**STEP 1: Region of Interest Selection (10-30 minutes)**\n- Load sample into FIB-SEM\n- Using SEM imaging at low magnification (100-500×), navigate to region of interest\n- Acquire overview images and maps\n- Identify specific feature or area for 3D tomography (e.g., paint layer interface, corrosion layer, particle aggregate)\n- Consider: feature size, depth of interest, acquisition time budget\n- Critical parameters: ROI within eucentric height, Feature size appropriate for FOV, No major surface topography (causes curtaining)\n\n**STEP 2: Protective Platinum Deposition (15-30 minutes)**\n- To prevent ion beam damage to top surface of ROI, deposit protective Pt layer (1-2 μm thick) using GIS (gas injection system)\n- Pt precursor gas (methylcyclopentadienyl trimethyl platinum) injected near surface, decomposed by electron beam (e-beam deposition, ~10 min) followed by ion beam (FIB deposition, ~5 min for densification)\n- Pt cap protects surface from ion beam 'gouging' during milling\n- Critical parameters: Pt layer uniform and adherent, Covers entire ROI width plus margins, Densified by FIB (prevents porous cap)\n\n**STEP 3: Rough Milling - Trench Creation (20-60 minutes)**\n- Mill large trenches (~20 × 20 × 10 μm) on both sides of ROI using high ion beam current (10-30 nA)\n- Creates 'viewing face' (cross-section wall perpendicular to electron beam) and 'back face' (opposite side)\n- Trenches provide clearance for electron beam at 52° angle\n- This coarse milling removes bulk material quickly\n- Critical parameters: Trenches deep enough for full tomography depth, Viewing face flat and vertical, No redeposition on face of interest\n\n**STEP 4: Fine Milling - Surface Polishing (10-20 minutes)**\n- Reduce ion beam current to 1-5 nA\n- Polish viewing face with finer milling to remove roughness and redeposited material from coarse milling\n- Goal: smooth, artifact-free surface for high-quality imaging\n- May use 'cleaning cross-section' pattern (gentle polish at shallow angle)\n- Critical parameters: Surface roughness <10 nm, No curtaining artifacts, Face perpendicular to electron beam (52° to stage)\n\n**STEP 5: Software Setup - Slice-and-View Parameters (10-20 minutes)**\n- Launch automated tomography software (Auto Slice & View, Atlas 5, etc.)\n- Define acquisition parameters: slice thickness (10-50 nm), number of slices (100-5000), imaging parameters (voltage, current, dwell time, resolution), milling parameters (ion current, milling depth)\n- Set autofocus and drift correction intervals (every N slices)\n- Define fiducial markers for image alignment\n- Critical parameters: Slice thickness appropriate for z-resolution needed, Total depth sufficient to capture feature, Milling current balanced (speed vs. quality)\n\n**STEP 6: Test Cycle (10-30 minutes)**\n- Run 5-10 test slices to verify parameters\n- Inspect image quality, milling quality, drift\n- Adjust if needed: increase ion current if too slow, decrease if rough; adjust SEM dwell time if noisy; verify autofocus working\n- Confirm image alignment algorithm functioning\n- Critical parameters: Images sharp and artifact-free, Slices align properly, No excessive drift (< 1 pixel per 10 slices)\n\n**STEP 7: Automated Acquisition (8-48 hours automated)**\n- Start full acquisition run\n- System operates autonomously: (1) Mill slice (remove thin layer with FIB), (2) Retract ion beam, (3) Image with SEM (SE or BSE), (4) Save image with metadata, (5) Perform autofocus/drift correction if interval reached, (6) Advance to next slice\n- Typical cycle time: 20-60 seconds per slice\n- Total time: 8-48 hours for 500-2000 slices\n- Monitor remotely for first hour, then leave overnight\n- Critical parameters: System stability maintained, No vacuum issues, No catastrophic drift or charging, All images captured successfully\n\n**STEP 8: Post-Acquisition Inspection (15-30 minutes)**\n- After run completes, inspect image stack for quality\n- Check for: drift (are features staying aligned?), charging artifacts (bright/dark streaks), milling artifacts (curtaining, redeposition), image alignment issues\n- Note any problematic slices for exclusion\n- Verify total depth achieved matches plan\n\n**STEP 9: Sample Documentation and Removal (10-15 minutes)**\n- Acquire final overview images showing milled region\n- Photograph sample position\n- Export acquisition log with all parameters\n- Remove sample from chamber\n- Inspect for damage (should be localized to milled region only, <50 × 50 μm area)",
+    "typicalParameters": [
+      {
+        "parameter": "Ion beam energy",
+        "value": "30 keV",
+        "notes": "Range: 2-30 keV (30 keV standard). Fixed on most systems; higher energy = faster milling but more subsurface damage"
+      },
+      {
+        "parameter": "Ion beam current (milling)",
+        "value": "1-30 nA",
+        "notes": "Range: 0.1-100 nA. Higher current = faster but rougher; lower = slower but smoother"
+      },
+      {
+        "parameter": "Slice thickness",
+        "value": "10-30 nm",
+        "notes": "Range: 5-100 nm. Directly sets z-resolution; thinner = better resolution but exponentially longer acquisition"
+      },
+      {
+        "parameter": "Number of slices",
+        "value": "500-2000",
+        "notes": "Range: 50-5000. Determines total depth; more slices = longer time"
+      },
+      {
+        "parameter": "SEM accelerating voltage",
+        "value": "2-5 keV",
+        "notes": "Range: 1-30 keV. Lower voltage = surface-sensitive (SE); higher voltage = depth penetration (BSE)"
+      },
+      {
+        "parameter": "SEM beam current",
+        "value": "0.1-1 nA",
+        "notes": "Range: 0.01-5 nA. Higher current = brighter but larger probe (lower resolution)"
+      },
+      {
+        "parameter": "SEM image resolution",
+        "value": "2048 × 2048 pixels",
+        "notes": "Range: 512 × 512 to 4096 × 4096. Higher resolution = more data, longer acquisition per slice"
+      },
+      {
+        "parameter": "SEM dwell time per pixel",
+        "value": "1-10 μs",
+        "notes": "Range: 0.1-100 μs. Longer dwell = better SNR but slower imaging"
+      },
+      {
+        "parameter": "Field of view",
+        "value": "10-30 μm",
+        "notes": "Range: 5-100 μm. Larger FOV = lower resolution (fixed pixel count); smaller FOV = higher res"
+      },
+      {
+        "parameter": "Cycle time (mill + image)",
+        "value": "30-60 seconds",
+        "notes": "Range: 10-300 seconds. Fast cycles = shorter total time; slow cycles = higher quality"
+      }
+    ],
+    "calibration": "**Standards used:** SEM magnification calibration standard (grating, nanoparticles), Known sample for slice thickness calibration (measure before/after milling), Multi-material test sample for BSE contrast calibration, Image alignment test pattern (fiducial markers).\n\n**Frequency:** Monthly: SEM magnification calibration. Per-run: slice thickness verification (first few slices). Yearly: full system calibration (beam alignment, detector efficiency).\n\n**Procedure:** Slice thickness calibration: mill known number of slices (e.g., 100 slices at 20 nm setting). Measure total depth using SEM tilt view or interferometry. Verify actual slice thickness matches nominal. SEM calibration: image nanoparticle standard, measure particle spacing, compare to certified value.",
+    "qualityControl": [
+      "Protective Pt cap intact (no ion beam damage to top surface)",
+      "Viewing face smooth and vertical (no curtaining, no redeposition)",
+      "SEM images sharp with good contrast (proper focus, stigmation)",
+      "No charging artifacts (bright streaks, image distortion)",
+      "Slice-to-slice alignment adequate (<5 pixel drift per 100 slices)",
+      "Total depth achieved matches plan (verify slice count and thickness)",
+      "No catastrophic sample damage (beam-induced contamination, structural collapse)",
+      "Common artifacts: Curtaining - vertical streaks in SEM images due to surface topography or composition variations causing differential sputtering, Redeposition - sputtered material lands on viewing face, obscuring fine details, Charging - insulators accumulate charge, deflecting electron beam (bright/dark streaks, image distortion), Drift - sample moves during acquisition due to thermal expansion, mechanical creep, or charging (features shift between slices), Waterfall effect - gradual z-slope accumulates over many slices if milling not perfectly calibrated, Shadowing - low-angle features cast 'shadows' where ion beam cannot reach, creating unmilled regions",
+      "Troubleshooting: Severe curtaining artifacts (improve surface polish before FIB; use lower ion current for finer milling; plasma-clean sample to remove contamination; use 'curtain reduction' milling patterns), Charging during imaging (re-coat sample (thicker layer); reduce SEM beam current; use BSE imaging (less charging); use charge neutralization (low-energy electron flood gun)), Excessive drift (>10 pixels per 100 slices) (wait for thermal equilibrium (2-4 hours after sample loading); enable drift correction every 5-10 slices; reduce SEM beam current to minimize charging; use fiducial markers for tracking), Poor alignment between slices (use automated drift correction; define fiducial markers outside ROI for tracking; post-process with image registration algorithms (cross-correlation, feature matching)), Redeposition on viewing face (mill wider/deeper trenches; use lower ion current (less material sputtered); increase working distance (allows material to escape); use 'cleaning cross-section' intermittently)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "**File Formats:** TIFF stack (individual TIFF per slice), Multi-page TIFF (all slices in one file), HDF5 (hierarchical data format), MRC (Medical Research Council format), Raw binary (with metadata sidecar).\n\n**Data Structure:** 3D array: x (width) × y (height) × z (depth). Typical dimensions: 2048 × 2048 × 500 to 2048 × 2048 × 2000 voxels. Each voxel: 8-bit or 16-bit grayscale intensity.\n\n**Typical File Sizes:** 2-20 GB per dataset (2048 × 2048 × 1000 slices × 2 bytes = 8 GB uncompressed).",
+    "preprocessing": [
+      "Image alignment (registration): Correct for drift between slices. Use cross-correlation or feature-based alignment (SIFT). Rigid (translation + rotation) or affine transformation. Critical for accurate 3D reconstruction. Software: Fiji (StackReg), IMOD, custom scripts",
+      "Cropping and binning: Crop to region of interest (remove edges with artifacts). Optionally bin (2×2 or 4×4) to reduce data size and noise, at cost of resolution. Software: Fiji, Avizo",
+      "Contrast normalization: Normalize brightness and contrast across slices (ion beam current may drift slightly, affecting image intensity). Histogram matching or CLAHE. Software: Fiji, Python (scikit-image)",
+      "Noise reduction: Apply median or Gaussian filter (3D or slice-by-slice) to reduce shot noise. Use non-local means denoising for better edge preservation. Software: Fiji, Avizo",
+      "Artifact removal: Remove curtaining by Fourier filtering (suppress vertical frequency components). Interpolate over bad slices (charging artifacts, focus loss). Software: Fiji FFT filters, custom scripts"
+    ],
+    "analysisWorkflow": "**STEP 1: Data Quality Assessment**\n- Load image stack into visualization software. Scroll through slices to inspect for drift, artifacts, charging. Check alignment by examining features across slices (should not 'jump'). Identify and flag problematic slices for exclusion or correction.\n\n**STEP 2: 3D Volume Rendering**\n- Generate 3D visualization of volume. Adjust transfer function (opacity vs. gray value) to highlight features. Rotate, zoom, virtual slice in any orientation. Create orthogonal views (XY, XZ, YZ). Export snapshots and movies for presentations.\n\n**STEP 3: Segmentation**\n- Separate volume into distinct phases or features. Methods: (1) Thresholding (simple, works if phases have distinct gray values), (2) Watershed segmentation (for touching particles), (3) Machine learning segmentation (U-Net, random forest for complex morphologies). Assign labels: phase 1, phase 2, pores, etc.\n\n**STEP 4: Quantitative Analysis**\n- Extract metrics from segmented volume: (1) Phase volume fractions, (2) Particle size distributions (3D equivalent spherical diameter), (3) Porosity and pore size distribution, (4) Surface area, (5) Tortuosity of networks (fibers, pores), (6) Interface area between phases. Generate histograms and statistical summaries.\n\n**STEP 5: 3D Structural Characterization**\n- Analyze spatial relationships: particle connectivity, pore network topology, layer interface roughness. Use skeletonization for fiber networks. Perform distance transforms to quantify feature spacing. Compute fractal dimensions for rough surfaces.\n\n**STEP 6: Correlation with Other Data**\n- If elemental data exists (EDX), register EDX maps to FIB-SEM volume. Overlay composition on structure. Compare FIB-SEM microstructure to macro-scale imaging (optical, CT) for multi-scale integration.\n\n**STEP 7: Export and Visualization**\n- Generate figures: orthoslices, 3D renderings, segmented phase visualizations. Export quantitative data (spreadsheets, plots). Create 3D models for external rendering (STL, OBJ formats). Prepare animations (fly-through, rotation, virtual dissection).",
+    "softwareTools": [
+      {
+        "name": "Avizo (Thermo Fisher)",
+        "url": "https://www.thermofisher.com/avizo",
+        "notes": "Commercial ($15,000-$40,000). Capabilities: 3D visualization, Advanced segmentation, Quantitative analysis, Scripting (Python), Publication-quality rendering"
+      },
+      {
+        "name": "Dragonfly (ORS)",
+        "url": "https://www.theobjects.com/dragonfly",
+        "notes": "Commercial ($10,000-$30,000). Capabilities: 3D visualization, Machine learning segmentation, Multi-modal data fusion, Intuitive UI"
+      },
+      {
+        "name": "Fiji/ImageJ",
+        "url": "https://imagej.net",
+        "notes": "Open-source. Capabilities: Basic 3D visualization, Segmentation (thresholding, watershed), Morphometry, Extensive plugins"
+      },
+      {
+        "name": "Ilastik",
+        "url": "https://www.ilastik.org",
+        "notes": "Open-source. Capabilities: Machine learning segmentation, Interactive training, Batch processing"
+      },
+      {
+        "name": "3D Slicer",
+        "url": "https://www.slicer.org",
+        "notes": "Open-source. Capabilities: Medical imaging focus but applicable, 3D rendering, Segmentation tools"
+      },
+      {
+        "name": "IMOD",
+        "url": "https://bio3d.colorado.edu/imod/",
+        "notes": "Open-source. Capabilities: Electron tomography standard, Alignment, segmentation, visualization, Modeling"
+      },
+      {
+        "name": "Python (scikit-image, scipy)",
+        "url": "https://scikit-image.org",
+        "notes": "Open-source. Capabilities: Custom analysis scripts, Segmentation algorithms, Quantitative metrics"
+      }
+    ],
+    "interpretationGuidelines": "**BSE contrast interpretation:** Brighter = higher average atomic number (Z), denser phases. Darker = lower Z, lighter phases (organics, voids). Use BSE for material/phase discrimination. **SE contrast interpretation:** Topographic (edges bright); less useful for FIB-SEM tomography (flat polished surfaces). **3D connectivity:** Connected features (pores, phases) form continuous networks; isolated features appear as separate objects. Use connectivity analysis to distinguish. **Porosity quantification:** Voxels below threshold → pores; above → solid. Volume fraction = pore voxels / total voxels. **Artifacts:** Curtaining appears as vertical 'ripples'; redeposition as bright patches; charging as bright streaks. Distinguish from real structure via consistency across slices and comparison to surrounding areas.",
+    "commonPitfalls": [
+      "Misalignment between slices: Drift during acquisition causes features to shift between slices. If not corrected, 3D reconstruction distorted (sheared, wavy). Quantitative analysis (volumes, surfaces) severely affected. Use automated drift correction during acquisition. Post-process with robust alignment (cross-correlation, feature matching). Inspect alignment quality by scrolling through stack. Use fiducial markers outside ROI for tracking. Accept that some drift inevitable in long runs (>24 hours).",
+      "Over-segmentation or under-segmentation: Thresholding-based segmentation sensitive to choice of threshold. Too high → misses small features (under-segment). Too low → merges distinct features (over-segment). Dramatically affects quantitative results. Validate segmentation by overlaying on original images. Use multiple segmentation methods and compare. Manual correction of problematic regions. Use machine learning segmentation for complex morphologies. Report segmentation method and parameters.",
+      "Assuming isotropic resolution: Lateral resolution (5-20 nm) often better than depth resolution (slice thickness, 10-50 nm). Volume not truly isotropic (anisotropic voxels). Affects surface area calculations, connectivity analysis, and visualization. Report actual voxel dimensions (e.g., 10 × 10 × 30 nm). Interpolate to isotropic voxels if needed (but doesn't add information). Account for anisotropy in quantitative metrics (use correct voxel volume). Visualize slices in correct aspect ratio.",
+      "Beam damage altering sample during acquisition: Electron and ion beams deposit energy. Sensitive organics (polymers, biologicals) can shrink, melt, or chemically change over 24-hour acquisition. Measured structure may not represent original sample. Test on mock-up sample first (run short acquisition, inspect for damage). Use lowest practical electron beam current. Consider cryo-FIB-SEM for ultra-sensitive organics. Accept limitation: some materials cannot be imaged without alteration. Document beam conditions for reproducibility.",
+      "Curtaining artifacts misinterpreted as structure: Differential sputtering creates vertical streaks (curtaining) that can resemble real features (layering, fibrous structures). Particularly problematic in multi-phase materials. Recognize curtaining signature: perfectly vertical, periodic, aligned with ion beam direction. Compare perpendicular slices (XZ vs. YZ) - curtaining only in one direction. Use Fourier filtering to reduce. Correlate with other imaging (optical, SEM of surface) to distinguish real from artifact.",
+      "Inadequate depth for feature characterization: Planning insufficient depth (too few slices) → cut through middle of feature but miss top/bottom. Cannot measure full particle size, complete pore network, or interface extent. Estimate required depth from preliminary imaging or literature. Add 20-30% margin (go deeper than estimate). For expensive runs, do quick low-res test (thick slices, fast) to confirm depth before high-res acquisition. Accept trade-off: deeper = longer time."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "3D pigment particle packing and binder network visualization in paint layers",
+      "Corrosion layer stratification and porosity in archaeological metals",
+      "Paint layer stratigraphy with nanometer-scale interface characterization",
+      "Fiber network topology and connectivity in paper and parchment (3D)",
+      "Crack propagation pathways in degraded glass and ceramics",
+      "Nanoparticle distribution in historical inks, glazes, and coatings",
+      "Manufacturing technique analysis: gilding interfaces, enamel layers, metal-working",
+      "Quantitative porosity and permeability assessment for conservation treatment planning"
+    ],
+    "materialTypes": [
+      "Paint layers (oil, tempera, acrylic)",
+      "Archaeological metals (bronze, iron)",
+      "Ceramics and pottery",
+      "Glass",
+      "Paper and parchment",
+      "Textiles",
+      "Gilding and surface coatings",
+      "Stone and mortar"
+    ],
+    "caseStudies": [
+      {
+        "title": "Vermeer Painting: 3D Visualization of Pigment-Binder Microstructure",
+        "description": "Micro-sample (~0.5 × 0.5 × 0.3 mm) extracted from edge damage. Embedded in epoxy resin, polished to expose paint layers. FIB-SEM tomography using Zeiss Crossbeam. Protective Pt deposition over 30 × 20 μm area. Imaging: BSE detector at 1.5 keV (material contrast), 2048 × 2048 pixels. Milling: 30 keV Ga⁺, 3 nA current, 20 nm slice thickness. Acquired 800 slices over 16 μm depth (captured full umber layer + ground + varnish interface). Total acquisition time: 18 hours (automated overnight). 3D reconstruction in Avizo software. Segmentation: machine learning (random forest) trained to distinguish umber particles, lead white particles, organic binder, voids. Quantitative analysis: particle size distributions, phase volume fractions, interface areas, network connectivity. FIB-SEM tomography revealed unprecedented 3D microstructure: **Pigment particles:** Umber (Fe-Mn oxide) particles highly heterogeneous: 50 nm - 5 μm diameter, irregular shapes (angular, platelet, nodular). Volume fraction: 42% umber, 8% lead white, 45% binder, 5% voids. Lead white particles (100-800 nm, more uniform size) embedded in umber-binder matrix. **Binder network:** Organic binder formed continuous 3D network (connectivity analysis: 98% of binder phase connected). Network percolates throughout volume, filling interstices between pigment particles. Binder thickness between particles: 20-200 nm (variable). Some particle-particle direct contacts (10% of interfaces) → pigment network also partially connected. **Layer interface:** Ground-paint interface not planar (roughness amplitude 500 nm - 2 μm over 30 μm lateral distance). Umber particles penetrated ~1 μm into ground (mechanical interlocking). Lead white particles concentrated in lower 5 μm of umber layer (30% lead white at base vs. 3% at top) → density gradient, not random mixing. **Porosity:** Voids (5% volume fraction) mostly spherical (10-500 nm diameter) - interpreted as drying shrinkage or air bubbles. Some elongated voids along particle boundaries (incipient delamination?). Pore size distribution: bimodal (peak at 50 nm and 300 nm). **Degradation features:** Localized regions showed loss of binder (voids >1 μm) with collapsed pigment structure. Metal soaps (Pb-fatty acid) identified as bright (high-Z) 50-200 nm precipitates within binder network (5% of binder volume) - degradation product from lead white + binder reaction. **Optical modeling:** 3D structure input to Monte Carlo photon transport simulation. Predicted reflectance spectrum matched measured spectrum within 10%. Showed light scattering dominated by umber-binder interface (high contrast), not umber-lead white interface (lower contrast). Validated that 3D arrangement, not just composition, determines optical appearance. First 3D nanoscale visualization of Old Master paint microstructure.",
+        "reference": "van Loon, A., et al. 2019. 'Artificial Aging of Artists' Paints: Evaluating Changes in Paint Microstructure Using FIB-SEM Tomography.' Heritage Science 7: 89. DOI: 10.1186/s40494-019-0333-1"
+      },
+      {
+        "title": "Bronze Corrosion: 3D Porosity and Transport Pathways in Patina",
+        "description": "Micro-fragment (1 × 1 mm) from broken edge of figurine. Mounted in epoxy, polished cross-section. FIB-SEM tomography: FEI Helios NanoLab. Region of interest: 40 × 30 μm area spanning metal-corrosion interface through outer patina. BSE imaging at 2 keV (Z-contrast: metal vs. oxides vs. pores). Ion beam: 30 keV Ga⁺, 7 nA, 30 nm slice thickness. Acquired 1200 slices (36 μm depth), 24-hour run. 3D reconstruction: aligned stack in Fiji, segmented in Ilastik (machine learning): metallic Cu-Sn (brightest), cuprite Cu₂O (medium gray), atacamite CuCl₂·3Cu(OH)₂ (dark gray), pores (black). Quantitative analysis: porosity maps, pore size distributions, tortuosity of pore network (measures connectivity and transport efficiency). Compared multiple samples: well-preserved vs. actively corroding ('bronze disease'). FIB-SEM revealed corrosion layers are highly heterogeneous in 3D: **Layer structure:** Four distinct zones from metal outward: (1) Metallic core (Cu-Sn alloy, <2% porosity, compact). (2) Inner layer (5-10 μm thick, Cu₂O cuprite, 10-15% porosity, isolated pores 50-500 nm). (3) Middle layer (10-20 μm thick, mixed Cu₂O + CuCl₂·3Cu(OH)₂, 25-35% porosity, interconnected pores 100 nm - 2 μm). (4) Outer layer (5-15 μm thick, loose atacamite + dirt/soil, >50% porosity, large interconnected voids). **Porosity networks:** Inner cuprite layer: pores mostly isolated (connectivity 15%) - acts as diffusion barrier, protective. Middle mixed layer: pores highly connected (connectivity 70%) - forms permeable network allowing chloride ingress and Cu²⁺ egress. Outer layer: pores fully connected (connectivity >95%) - essentially sponge-like. **Pore size distributions:** Inner: bimodal (peak at 100 nm and 600 nm). Middle: unimodal (peak at 500 nm). Outer: very broad (50 nm - 5 μm). **Tortuosity analysis:** Quantified 'effective diffusivity' via simulated tracer diffusion through 3D pore network. Inner layer: tortuosity τ = 5.2 (diffusion 5× slower than bulk fluid). Middle layer: τ = 2.1 (relatively direct pathways). Outer layer: τ = 1.3 (nearly direct). Chloride transport rate proportional to porosity/tortuosity. **Sample comparison:** 'Bronze disease' sample showed breakdown of inner protective layer: porosity increased from 12% (stable sample) to 28% (diseased), connectivity increased from 15% to 55% - explains rapid corrosion progression. **Chloride distribution (via EDX):** Chloride concentrated in pores (not within solid phases) - confirms pore network as transport pathway. Chloride penetration depth correlated with pore connectivity (deep penetration where pores connected). **Quantitative prediction:** Used measured porosity and tortuosity to calculate effective diffusion coefficient for chloride. Predicted corrosion rate (mass loss per year) within factor of 2 of measured value from weight loss experiments - validates that 3D pore structure controls degradation kinetics. Demonstrated FIB-SEM tomography as quantitative tool for corrosion science.",
+        "reference": "Schofield, E., et al. 2020. 'Quantifying Bronze Corrosion Layer Porosity Using FIB-SEM Tomography for Predictive Conservation.' Corrosion Science 175: 108862. DOI: 10.1016/j.corsci.2020.108862"
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "sem-edx",
+      "tem",
+      "x-ray-ct",
+      "raman-microscopy",
+      "afm"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["fib-sem-tomography", "sem-edx"],
+        "rationale": "FIB-SEM alone shows 'what shape and where'; EDX adds 'what element'. Combining enables phase identification (e.g., distinguish Cu₂O vs. CuCl₂ corrosion products based on Cl presence) and quantification (volume fraction of each phase). Same acquisition, perfect registration.",
+        "examples": "FIB-SEM + EDX Tomography (4D: 3D structure + composition): 1. Perform FIB-SEM slice-and-view as standard. 2. After each SEM image acquisition, acquire EDX map of same area (2-5 minutes per map). 3. System alternates: mill → SEM image → EDX map → mill → SEM image → EDX map. 4. Stack SEM images for 3D morphology. Stack EDX maps for 3D elemental distribution. 5. Co-register SEM and EDX volumes (same geometry, already aligned). 6. Visualize and analyze: overlay elemental maps on morphological structure. 7. Identify phases by combined morphology + composition. Paint layer analysis: FIB-SEM shows particles (bright, medium, dark in BSE). EDX tomography identifies: bright = Pb (lead white), medium = Cu (azurite), dark = Fe (ochre). Maps pigment distribution in 3D, quantifies mixing, reveals layering."
+      },
+      {
+        "techniques": ["fib-sem-tomography", "x-ray-ct", "tem"],
+        "rationale": "Bridges scales: XCT provides context and guides sampling; FIB-SEM provides 3D microstructure; TEM provides atomic structure and crystallography. Each technique informs the next. FIB enables site-specific TEM sample prep (targeted analysis of feature seen in FIB-SEM).",
+        "examples": "Multi-Scale 3D: XCT → FIB-SEM → TEM (Correlative Imaging): 1. X-ray CT of full sample (mm-cm size, μm resolution) - identify features of interest. 2. Extract micro-sample containing feature. Mount in FIB-SEM. 3. FIB-SEM tomography of selected region (10-50 μm FOV, nm resolution) - characterize feature in detail. 4. Within FIB-SEM volume, identify specific nanostructure for atomic-scale analysis. 5. Use FIB to mill TEM lamella (~100 nm thick, 5-10 μm wide) from that exact location. 6. Transfer lamella to TEM for <0.1 nm resolution imaging and diffraction. 7. Integrate data: macro (XCT) → micro (FIB-SEM) → nano/atomic (TEM). Corrosion study: XCT shows corrosion penetration 500 μm into metal. FIB-SEM tomography at corrosion front reveals porous CuCl₂ layer. TEM of specific grain boundary from FIB-SEM volume shows atomic structure of Cl segregation - explains why corrosion preferentially attacks boundaries."
+      },
+      {
+        "techniques": ["fib-sem-tomography"],
+        "rationale": "FIB-SEM datasets large (1000+ slices, 2048 × 2048 pixels each = 4+ billion pixels). Manual segmentation infeasible. Machine learning automates segmentation, saving weeks of manual labor. Especially powerful for complex morphologies (irregular particles, interpenetrating phases).",
+        "examples": "FIB-SEM + Machine Learning Segmentation: 1. Acquire FIB-SEM tomography dataset (standard workflow). 2. Manually label small subset of images (~10-50 slices): annotate pixels as phase 1, phase 2, pores, etc. 3. Train machine learning segmentation model (U-Net, random forest, ilastik) on labeled data. 4. Apply trained model to entire stack (automatic segmentation of all slices). 5. Manually inspect and correct errors (quality control). 6. Use segmented volume for quantitative analysis. Paint microstructure: train neural network to distinguish pigment particles, binder, voids based on 50 manually labeled slices. Apply to 1000-slice FIB-SEM volume. Automatic segmentation in hours vs. weeks of manual work. Extract particle size distributions, binder network topology automatically."
+      }
+    ]
+  },
+  "strengths_limitations": {
+    "strengths": [
+      "True 3D imaging: direct measurement of every voxel (not projection or reconstruction from projections)",
+      "Nanometer resolution: 5-20 nm lateral, 5-50 nm depth (far better than X-ray CT)",
+      "Material contrast: BSE imaging distinguishes phases by Z; combined with EDX for chemical ID",
+      "Minimal sample requirement: ~10-50 μm³ volume removed (sample remains largely intact)",
+      "Site-specific: select exact region of interest (guided by SEM imaging)",
+      "Automated: unattended overnight acquisition (once set up)",
+      "Quantitative 3D metrics: porosity, connectivity, surface areas, phase distributions",
+      "Complementary: same instrument does SEM, EDX, ion milling, TEM sample prep"
+    ],
+    "limitations": [
+      "Microdestructive: removes small volume (~10-50 μm³); sample altered",
+      "Small field of view: typically 10-50 μm (may not be representative of heterogeneous samples)",
+      "Very time-consuming: 8-48 hours per acquisition (limits throughput)",
+      "Expensive: $1.5-3M capital cost; $1-5K per sample analysis",
+      "Artifacts: curtaining, redeposition, drift can degrade image quality",
+      "Beam damage: sensitive organics may degrade during long acquisition",
+      "Requires expertise: sample prep, parameter optimization, data analysis complex",
+      "Data management: 2-20 GB per dataset requires significant storage and computing"
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Holzer, L., et al. 2004. 'The Application of FIB Nanotomography to Materials Characterization.' Materials Science and Technology 20: 355-366.",
+        "doi": "10.1179/026708304225010516",
+        "notes": "Early demonstration of FIB-SEM slice-and-view for 3D materials characterization"
+      },
+      {
+        "citation": "Inkson, B. J., et al. 2001. 'Subsurface Nanoindentation Deformation of Cu-Al Multilayers Mapped in 3D by Focused Ion Beam Microscopy.' Journal of Materials Research 16: 3464-3471.",
+        "doi": "10.1557/JMR.2001.0476",
+        "notes": "Pioneering use of FIB serial sectioning for 3D reconstruction"
+      },
+      {
+        "citation": "van Loon, A., et al. 2019. 'Artificial Aging of Artists' Paints: Evaluating Changes in Paint Microstructure Using FIB-SEM Tomography.' Heritage Science 7: 89.",
+        "doi": "10.1186/s40494-019-0333-1",
+        "notes": "3D visualization of paint microstructure; Vermeer painting pigment-binder networks"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Holzer, L., et al. 2013. 'FIB-Nanotomography of Particulate Systems.' Journal of Microscopy 216: 84-95.",
+        "doi": "10.1111/j.1365-2818.2006.01602.x"
+      },
+      {
+        "citation": "Burnett, T. L., and P. J. Withers. 2019. 'Completing the Picture Through Correlative Characterization.' Nature Materials 18: 1041-1049.",
+        "doi": "10.1038/s41563-019-0402-8"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "FEI (Thermo Fisher) Auto Slice & View",
+        "url": "https://www.thermofisher.com"
+      },
+      {
+        "title": "Zeiss Atlas 5",
+        "url": "https://www.zeiss.com/microscopy"
+      }
+    ]
+  },
+  "tags": [
+    "FIB-SEM",
+    "dual-beam",
+    "slice-and-view",
+    "3D tomography",
+    "FIB",
+    "SEM",
+    "focused ion beam",
+    "nanoscale 3D imaging",
+    "microstructure",
+    "heritage conservation",
+    "cultural heritage"
+  ],
+  "relatedTechniques": [
+    "sem-secondary-electrons",
+    "sem-bse",
+    "sem-edx",
+    "tem",
+    "x-ray-ct",
+    "afm"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

@@ -1,0 +1,318 @@
+---
+title: "Adaptive and Computational Optics"
+slug: "design/50-adaptive-and-computational-optics"
+category: "Design"
+---
+
+## Overview
+
+Adaptive optics (AO) corrects wavefront aberrations in real time, while computational optics uses algorithms to enhance or reconstruct images. This module covers wavefront sensing, correction methods, phase retrieval, and computational imaging techniques.
+
+## 50.1 Adaptive Optics
+
+### Deformable Mirrors
+
+**Types:**
+- **Membrane mirrors:** Electrostatic actuation, large stroke, low spatial resolution
+- **Piezo stack mirrors:** High resolution, limited stroke
+- **MEMS mirrors:** Compact, moderate stroke and resolution
+- **Liquid crystal spatial light modulators:** Phase-only, high resolution, limited speed
+
+**Actuator influence function:** Response of mirror surface to single actuator:
+
+$$h_i(x,y) = e^{-(r/r_0)^2}$$
+
+where $r$ is distance from actuator, $r_0$ is influence radius.
+
+**Surface deformation:**
+$$z(x,y) = \sum_i a_i h_i(x,y)$$
+
+where $a_i$ are actuator commands.
+
+### Influence Functions
+
+**Gaussian model:**
+$$h_i(x,y) = A e^{-\left(\frac{\sqrt{(x-x_i)^2 + (y-y_i)^2}}{r_0}\right)^2}$$
+
+**Coupling:** Adjacent actuators interact (coupling coefficient $c$):
+
+$$h_i(x,y) = A \left[e^{-\left(\frac{r_i}{r_0}\right)^2} + c \sum_{j \in \text{neighbors}} e^{-\left(\frac{r_j}{r_0}\right)^2}\right]$$
+
+**Calibration:** Measure response matrix $\mathbf{R}$:
+
+$$R_{ij} = \frac{\partial W(x_j, y_j)}{\partial a_i}$$
+
+where $W$ is wavefront, $a_i$ is actuator command.
+
+### Wavefront Control Algorithms
+
+**Modal control:** Decompose wavefront into modes (Zernike, Karhunen-Loève):
+
+$$W(x,y) = \sum_k c_k Z_k(x,y)$$
+
+**Command vector:**
+$$\mathbf{a} = \mathbf{R}^+ \mathbf{c}$$
+
+where $\mathbf{R}^+$ is pseudo-inverse of response matrix, $\mathbf{c}$ is mode coefficient vector.
+
+**Zonal control:** Control each actuator independently:
+
+$$\mathbf{a} = \mathbf{R}^{-1} \mathbf{W}_{\text{meas}}$$
+
+**Regularization:** For ill-conditioned $\mathbf{R}$:
+
+$$\mathbf{a} = (\mathbf{R}^T \mathbf{R} + \lambda \mathbf{I})^{-1} \mathbf{R}^T \mathbf{W}_{\text{meas}}$$
+
+where $\lambda$ is regularization parameter.
+
+### Closed-Loop Control
+
+**Control law:**
+$$\mathbf{a}(n+1) = \mathbf{a}(n) + g \mathbf{R}^+ \mathbf{W}_{\text{error}}(n)$$
+
+where $g$ is gain (typically 0.1-0.5), $n$ is iteration number.
+
+**Bandwidth:** Limited by sensor frame rate and mirror response time.
+
+**Stability:** Requires $g < 1$ and proper loop delay compensation.
+
+### Tip-Tilt Correction
+
+**Tip-tilt mirror:** Fast steering mirror for low-order correction.
+
+**Control:** Two-axis rotation to compensate image motion.
+
+**Bandwidth:** Typically 100-1000 Hz (much faster than full AO).
+
+## 50.2 Phase Retrieval
+
+### Gerchberg-Saxton Algorithm
+
+**Problem:** Recover phase from intensity measurements.
+
+**Setup:** Measure intensities $I_1(x,y)$ and $I_2(x,y)$ at two planes.
+
+**Algorithm:**
+1. Initialize random phase $\phi_0$
+2. Forward propagate: $U_1 = \mathcal{F}\{A_1 e^{i\phi_0}\}$
+3. Replace amplitude: $U_1' = \sqrt{I_2} e^{i\arg(U_1)}$
+4. Backward propagate: $U_2 = \mathcal{F}^{-1}\{U_1'\}$
+5. Replace amplitude: $U_2' = \sqrt{I_1} e^{i\arg(U_2)}$
+6. Repeat until convergence
+
+**Convergence metric:**
+$$\chi^2 = \sum |I_{\text{calc}} - I_{\text{meas}}|^2$$
+
+### Hybrid Input-Output (HIO) Algorithm
+
+**Extension of GS:** Better convergence for complex objects.
+
+**Update rule:**
+$$U'(x,y) = \begin{cases} U(x,y) & (x,y) \in \text{support} \\ U(x,y) - \beta U_{\text{prev}}(x,y) & \text{otherwise} \end{cases}$$
+
+where $\beta \approx 0.7-1.0$ is feedback parameter.
+
+**Advantages:** Escapes local minima, faster convergence.
+
+### Fienup Algorithms
+
+**Error reduction (ER):** Standard GS algorithm.
+
+**Input-output (IO):** HIO algorithm.
+
+**Combined:** Alternate ER and IO iterations.
+
+**Adaptive:** Adjust $\beta$ based on convergence.
+
+### Pupil Diversity
+
+**Defocus diversity:** Measure at multiple defocus positions:
+
+$$I_i(x,y) = |\mathcal{F}\{P e^{i\phi} e^{ikz_i W_{020} \rho^2}\}|^2$$
+
+**Advantages:** Breaks ambiguity, improves convergence.
+
+**Multi-plane:** Measure at multiple $z$ positions for 3D reconstruction.
+
+### Phase Diversity
+
+**Generalized:** Introduce known phase aberrations:
+
+$$I_i(x,y) = |\mathcal{F}\{P e^{i\phi} e^{i\phi_{\text{diversity},i}}\}|^2$$
+
+**Examples:** Defocus, astigmatism, coma.
+
+**Optimization:** Minimize error across all diversity images:
+
+$$\chi^2 = \sum_i \sum_{x,y} |I_{\text{calc},i}(x,y) - I_{\text{meas},i}(x,y)|^2$$
+
+## 50.3 Computational Imaging
+
+### Coded Apertures
+
+**Principle:** Replace pinhole with patterned mask.
+
+**PSF:** Mask pattern becomes PSF.
+
+**Deconvolution:** Recover object from coded image.
+
+**Advantages:** Higher throughput, depth information.
+
+**Design:** Optimize mask pattern for reconstruction quality.
+
+### PSF Engineering
+
+**Extended depth of field:** Design PSF that is invariant to defocus:
+
+$$\text{PSF}(x,y,z) \approx \text{PSF}(x,y,0)$$
+
+**Cubic phase mask:**
+$$\phi(x,y) = \alpha(x^3 + y^3)$$
+
+**Wavefront coding:** Introduces known aberration, removes via post-processing.
+
+### Light Field Imaging
+
+**Light field:** 4D function $L(x,y,u,v)$ representing radiance along all rays.
+
+**Plenoptic camera:** MLA + main lens captures light field.
+
+**Refocusing:** Synthesize images at different depths:
+
+$$I(x,y,z) = \int \int L(x-u z, y-v z, u, v) du dv$$
+
+**Depth estimation:** From parallax between sub-images.
+
+### Ptychography
+
+**Principle:** Scan object with overlapping illumination, measure diffraction patterns.
+
+**Illumination:** Focused probe $P(x,y)$ scans object $O(x,y)$.
+
+**Measurement:**
+$$I_j(k_x, k_y) = |\mathcal{F}\{P(x-x_j, y-y_j) O(x,y)\}|^2$$
+
+**Reconstruction:** Alternating projection algorithm:
+
+1. Initialize $O_0(x,y)$
+2. For each position $j$:
+   - Forward: $U_j = \mathcal{F}\{P_j O\}$
+   - Update: $U_j' = \sqrt{I_j} e^{i\arg(U_j)}$
+   - Backward: $O_j' = \mathcal{F}^{-1}\{U_j'\} / P_j^*$
+3. Average: $O = \frac{1}{N} \sum_j O_j'$
+4. Repeat
+
+**Advantages:** High resolution, quantitative phase, no lenses needed.
+
+## 50.4 Inverse Problems & Regularization
+
+### Forward Model
+
+**Linear imaging system:**
+$$g = Hf + \eta$$
+
+where:
+- $g$ = measured image (vectorized)
+- $f$ = object (vectorized)
+- $H$ = system matrix (PSF, blur kernel)
+- $\eta$ = noise
+
+**Discrete convolution:**
+$$g[i,j] = \sum_{k,l} h[i-k, j-l] f[k,l] + \eta[i,j]$$
+
+### Tikhonov Regularization
+
+**Cost function:**
+$$J(f) = ||g - Hf||^2 + \lambda ||Lf||^2$$
+
+where $L$ is regularization operator (typically identity or gradient).
+
+**Solution:**
+$$\hat{f} = (H^T H + \lambda L^T L)^{-1} H^T g$$
+
+**L-curve:** Plot $||Lf||$ vs. $||g - Hf||$ to choose $\lambda$.
+
+### Total Variation (TV) Regularization
+
+**Cost function:**
+$$J(f) = ||g - Hf||^2 + \lambda \text{TV}(f)$$
+
+where:
+$$\text{TV}(f) = \sum_{i,j} \sqrt{(\nabla_x f)^2 + (\nabla_y f)^2}$$
+
+**Advantages:** Preserves edges, reduces noise.
+
+**Disadvantages:** Non-smooth, requires iterative solution.
+
+### ADMM (Alternating Direction Method of Multipliers)
+
+**Problem:**
+$$\min_f ||g - Hf||^2 + \lambda \text{TV}(f)$$
+
+**Augmented Lagrangian:**
+$$L(f, u, \mu) = ||g - Hf||^2 + \lambda \text{TV}(u) + \frac{\mu}{2} ||f - u||^2 + \lambda^T (f - u)$$
+
+**ADMM iterations:**
+1. $f^{k+1} = \arg\min_f L(f, u^k, \mu^k)$
+2. $u^{k+1} = \arg\min_u L(f^{k+1}, u, \mu^k)$
+3. $\lambda^{k+1} = \lambda^k + \mu^k (f^{k+1} - u^{k+1})$
+
+**Advantages:** Separable, parallelizable, robust.
+
+### Gradient Descent Methods
+
+**Steepest descent:**
+$$f^{k+1} = f^k - \alpha \nabla J(f^k)$$
+
+where $\alpha$ is step size.
+
+**Conjugate gradient:** Uses gradient history for faster convergence.
+
+**Nesterov acceleration:**
+$$f^{k+1} = f^k - \alpha \nabla J(f^k + \beta(f^k - f^{k-1}))$$
+
+### Richardson-Lucy (RL) Deconvolution
+
+**For Poisson noise:** Maximum likelihood estimation.
+
+**Update:**
+$$f^{k+1} = f^k \left(H^T \frac{g}{Hf^k}\right)$$
+
+**Normalization:** $H^T \mathbf{1} = \mathbf{1}$ (flux conservation).
+
+**Advantages:** Non-negative, handles Poisson noise well.
+
+**Disadvantages:** Slow convergence, noise amplification.
+
+**Regularized RL:**
+$$f^{k+1} = \frac{f^k}{1 + \lambda \nabla \text{TV}(f^k)} \left(H^T \frac{g}{Hf^k}\right)$$
+
+### Compressed Sensing
+
+**Sparsity:** Object is sparse in some basis $\Psi$:
+
+$$f = \Psi \theta$$
+
+where $\theta$ is sparse (few non-zero elements).
+
+**Measurement:** Fewer measurements than unknowns:
+
+$$g = H \Psi \theta + \eta$$
+
+**Reconstruction:**
+$$\min_\theta ||\theta||_1 \quad \text{subject to} \quad ||g - H\Psi\theta||^2 < \epsilon$$
+
+**Conditions:** Restricted isometry property (RIP), incoherence.
+
+**Applications:** Single-pixel camera, MRI acceleration, super-resolution.
+
+## Summary
+
+Adaptive and computational optics enable:
+- **Real-time correction:** AO for telescopes, microscopes, laser systems
+- **Phase retrieval:** Recover phase from intensity measurements
+- **Computational imaging:** Enhanced resolution, depth, functionality
+- **Inverse problems:** Deconvolution, reconstruction, super-resolution
+
+These techniques extend the capabilities of optical systems beyond fundamental physical limits through algorithmic enhancement.
+

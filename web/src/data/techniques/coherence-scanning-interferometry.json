@@ -1,0 +1,404 @@
+{
+  "id": "coherence-scanning-interferometry",
+  "name": "Coherence Scanning Interferometry (CSI)",
+  "acronym": "CSI",
+  "category": "Optical Profiling",
+  "subcategory": "3D Surface Metrology",
+  "summary": "Coherence Scanning Interferometry (CSI), also known as white-light interferometry or vertical scanning interferometry, is a non-contact optical technique that measures 3D surface topography with nanometer-scale vertical resolution across millimeter-scale fields of view. The method exploits the short coherence length of broadband (white) light to determine surface height: interference fringes appear only when the optical path difference between reference and sample beams is within the coherence envelope (~1-2 μm). By vertically scanning the objective through focus while recording interference patterns at each height, the technique locates the position of maximum fringe contrast (coherence peak) at every pixel, directly mapping surface topography. CSI achieves sub-nanometer vertical resolution (0.1-1 nm RMS) with lateral resolution of 0.5-10 μm, enabling quantitative characterization of surface roughness, wear patterns, toolmarks, weathering, corrosion, and paint texture in heritage objects without contact or damage.",
+  "keyApplications": [
+    "Quantitative surface roughness analysis of stone weathering and degradation",
+    "Manufacturing toolmark identification on metal artifacts (coins, weapons, sculpture)",
+    "Paint surface texture characterization (brushstrokes, craquelure depth, gloss loss)",
+    "Corrosion morphology quantification on archaeological metals",
+    "Wear pattern analysis on archaeological tools and weapons",
+    "Glass and ceramic surface deterioration assessment (pitting, scratching)",
+    "Paper and parchment surface topography (fiber relief, embossing, damage)",
+    "Quantitative documentation of conservation treatment effects (cleaning, consolidation)"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "laboratory-based",
+  "fundamentalPhysics": {
+    "principle": "CSI is based on low-coherence interferometry in a Michelson or Mirau interferometer configuration. Broadband (white) light from LED or halogen source splits into reference and sample beams. Light reflected from both paths recombines, creating interference fringes only when optical path difference (OPD) is within coherence length l_c = λ²/Δλ (~1-2 μm for white light, where λ is center wavelength and Δλ is spectral bandwidth). As objective scans vertically, each surface point passes through best focus position where OPD = 0, generating maximum fringe contrast (coherence peak). Recording intensity vs. scan position I(x,y,z) at each pixel creates 3D interferogram. Peak location z_peak(x,y) directly gives surface height. Vertical resolution ~λ/100 (~5 nm) from precise peak localization; lateral resolution ~0.5λ/NA from diffraction limit.",
+    "physicalPhenomenon": "Interference of partially coherent light: (1) Broadband source has short temporal coherence length l_c = λ²/Δλ. For white light (λ ~ 550 nm, Δλ ~ 150 nm), l_c ~ 2 μm. (2) When reference and sample path lengths differ by <l_c, waves add coherently → high-contrast interference fringes. When path difference >l_c, waves add incoherently → uniform illumination, no fringes. (3) Fringe contrast (visibility) forms Gaussian envelope: V(z) ∝ exp[-(z-z₀)²/l_c²]. Peak contrast at z = z₀ (zero OPD). (4) Vertical scan moves objective ±50 μm through focus. At each z position, CCD camera captures interference pattern. (5) For each pixel (x,y), plot intensity I vs. z. Envelope maximum occurs at surface height h(x,y). (6) Sub-pixel interpolation of peak position gives nm-scale height resolution despite μm-scale sampling.",
+    "equations": [
+      {
+        "latex": "$$I(x,y,z) = I_0\\left[1 + \\gamma(z-h(x,y))\\cos\\left(\\frac{4\\pi}{\\lambda}(z-h(x,y))\\right)\\right]$$",
+        "description": "Interferogram Intensity (simplified)",
+        "variables": [
+          {"symbol": "I(x,y,z)", "meaning": "detected intensity at pixel (x,y) and scan position z", "units": "counts"},
+          {"symbol": "I_0", "meaning": "average intensity (DC component)", "units": "counts"},
+          {"symbol": "\\gamma(z-h)", "meaning": "fringe visibility (coherence envelope)", "units": "dimensionless (0-1)"},
+          {"symbol": "\\lambda", "meaning": "effective wavelength of light source", "units": "nm"},
+          {"symbol": "h(x,y)", "meaning": "surface height at position (x,y)", "units": "nm"},
+          {"symbol": "z", "meaning": "vertical scan position of objective", "units": "nm"}
+        ]
+      },
+      {
+        "latex": "$$\\gamma(\\Delta z) = \\exp\\left[-\\left(\\frac{\\pi\\Delta z}{l_c}\\right)^2\\right]$$",
+        "description": "Coherence Envelope (Gaussian approximation)",
+        "variables": [
+          {"symbol": "\\gamma(\\Delta z)", "meaning": "fringe visibility at optical path difference Δz", "units": "dimensionless"},
+          {"symbol": "\\Delta z", "meaning": "optical path difference = z - h(x,y)", "units": "μm"},
+          {"symbol": "l_c", "meaning": "coherence length of light source", "units": "μm"}
+        ]
+      },
+      {
+        "latex": "$$l_c = \\frac{\\lambda_0^2}{\\Delta\\lambda} = \\frac{2\\ln(2)}{\\pi}\\frac{\\lambda_0^2}{\\Delta\\lambda_{FWHM}}$$",
+        "description": "Coherence Length",
+        "variables": [
+          {"symbol": "l_c", "meaning": "coherence length (1/e² width of envelope)", "units": "μm"},
+          {"symbol": "\\lambda_0", "meaning": "center wavelength of source", "units": "nm"},
+          {"symbol": "\\Delta\\lambda", "meaning": "spectral bandwidth (FWHM)", "units": "nm"},
+          {"symbol": "\\Delta\\lambda_{FWHM}", "meaning": "full-width half-maximum of spectrum", "units": "nm"}
+        ]
+      },
+      {
+        "latex": "$$\\sigma_z = \\frac{\\lambda}{2\\pi\\cdot\\text{SNR}\\cdot NA}$$",
+        "description": "Vertical Resolution (height noise)",
+        "variables": [
+          {"symbol": "\\sigma_z", "meaning": "vertical (height) resolution (RMS noise)", "units": "nm"},
+          {"symbol": "\\lambda", "meaning": "wavelength of light", "units": "nm"},
+          {"symbol": "\\text{SNR}", "meaning": "signal-to-noise ratio of detection", "units": "dimensionless"},
+          {"symbol": "NA", "meaning": "numerical aperture of objective", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta x = \\frac{0.61\\lambda}{NA}$$",
+        "description": "Lateral Resolution (Rayleigh criterion)",
+        "variables": [
+          {"symbol": "\\Delta x", "meaning": "lateral (xy) resolution", "units": "μm"},
+          {"symbol": "\\lambda", "meaning": "wavelength of light", "units": "nm"},
+          {"symbol": "NA", "meaning": "numerical aperture of objective", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$S_q = \\sqrt{\\frac{1}{A}\\int\\int [z(x,y) - \\bar{z}]^2\\,dx\\,dy}$$",
+        "description": "Surface Roughness (RMS, S_q parameter)",
+        "variables": [
+          {"symbol": "S_q", "meaning": "root-mean-square roughness (3D areal)", "units": "nm"},
+          {"symbol": "A", "meaning": "measured area", "units": "μm²"},
+          {"symbol": "z(x,y)", "meaning": "surface height at position (x,y)", "units": "nm"},
+          {"symbol": "\\bar{z}", "meaning": "mean height over area", "units": "nm"}
+        ]
+      }
+    ],
+    "interactionDepth": "CSI is a pure surface technique measuring only the top reflective interface. Penetration depth effectively zero for opaque materials (measures surface within top ~λ/4 ≈ 100-200 nm). For transparent materials (glass, varnish), multiple interfaces can generate overlapping interferograms, requiring deconvolution or causing measurement artifacts. Opaque metals (bronze, silver, gold): Surface only (~100-200 nm optical penetration), ideal for CSI; single strong reflection from surface. Stone and ceramics: Surface only, sufficient reflectivity; may have local variations in reflectance affecting fringe contrast. Painted surfaces (opaque paint): Paint surface only, measures top of paint layer; cannot penetrate to substrate. Transparent/translucent materials (glass, varnish): Multiple interfaces measured simultaneously, front and back surfaces interfere; requires specialized analysis or thin samples. Paper and parchment: Fiber surface topography, lower reflectivity; may need longer integration or illumination boost. Dark materials (black paint, carbon): Surface only, but low signal, low reflectivity challenges measurement; may need high-sensitivity camera or longer integration.",
+    "spatialResolution": "Lateral Resolution: 0.5-10 μm (depends on objective NA and wavelength; typical: 1-2 μm with 50× objective). Depth Resolution: 0.1-1 nm RMS vertical resolution (sub-nanometer precision from phase analysis). Limiting factors: Numerical aperture of objective (higher NA = better lateral resolution but shorter working distance), Wavelength of light (shorter λ = better resolution; typically use visible ~400-700 nm), Signal-to-noise ratio (detector sensitivity, vibration, air turbulence affect height precision), Surface reflectivity (low reflectance → weak fringes → poor height determination), Surface slope (steep slopes >30° may exceed NA, causing dropout), Sample vibration and air currents during scan (multi-second acquisition time).",
+    "detectionLimit": "Vertical: 0.1 nm RMS (under ideal conditions, calm environment). Lateral features: ~0.5 μm (diffraction limit with high-NA objective). Dynamic range: Vertical: 10 μm - 10 mm (ratio ~10⁵-10⁶); limited by scan range and step size. Lateral: field of view 0.1 × 0.1 mm to 10 × 10 mm. Signal-to-noise: SNR 50-500 typical for well-reflecting surfaces; degrades for low-reflectivity (<10%) or highly scattering surfaces."
+  },
+  "instrumentation": {
+    "source": "Broadband light source: white LED, halogen lamp, or supercontinuum laser. Center wavelength: 400-700 nm (visible); bandwidth: 100-200 nm (white light); power: 1-100 mW at sample. Photon energy: 1.8-3.1 eV (visible light). Illumination: 0.1-10 mW/cm² at sample (safe, non-damaging). Spatially incoherent (extended source); temporally incoherent (broadband); uniform illumination via Köhler illumination.",
+    "detector": "CCD camera (monochrome, typical), CMOS camera (faster frame rate), or Scientific CMOS (sCMOS, high dynamic range). Sensitive to visible light: 400-700 nm. Quantum efficiency 40-95% depending on sensor type (front-illuminated CCD: ~50%, back-illuminated: >90%). Time resolution: Frame rate: 10-200 fps (determines scan speed); exposure time: 1-100 ms per frame.",
+    "optics": "Broadband light source (LED or halogen), Köhler illumination optics, Beam splitter (50:50 for Michelson; integrated in Mirau objective), Interference objective (Mirau, Michelson, or Linnik type), Reference mirror (flat, high-quality λ/20), Vertical scanning stage (piezo or motorized), CCD/CMOS camera, Computer with acquisition and analysis software. Beam path: Mirau configuration (most common): Light → beam splitter in objective → (1) sample surface, (2) reference mirror in objective. Reflected beams recombine → interference pattern → camera. Vertical scan controlled by piezo stage moving objective or sample. Infinity-corrected objectives; focus maintained during vertical scan; working distance 0.5-20 mm depending on magnification.",
+    "criticalComponents": [
+      "High-quality interference objective (Mirau or Michelson; precision reference mirror)",
+      "Vibration isolation (pneumatic table or active isolation; critical for nm-scale measurements)",
+      "Precision vertical scanning stage (piezo actuator: nm-scale positioning; linear encoder for accuracy)",
+      "High-sensitivity camera (low noise, high dynamic range for weak fringes)",
+      "Environmental enclosure (optional: minimize air turbulence, temperature drift)",
+      "Analysis software (peak finding, phase unwrapping, surface parameter calculation)",
+      "Calibration artifacts (step height standards, roughness standards)"
+    ],
+    "typicalConfiguration": "**Standard CSI setup:** White LED source (λ = 550 ± 150 nm, 5 mW power). Mirau interference objective: 50× magnification, NA = 0.55, working distance = 3.4 mm. Field of view: 280 × 210 μm (with 1280 × 960 pixel camera → 0.22 μm/pixel sampling). Vertical scan range: ±50 μm (100 μm total) at 100 nm steps (500 frames). Scan time: 30 seconds (at 20 fps). Vertical resolution: 0.3 nm RMS. Lateral resolution: 0.6 μm (Rayleigh). Pneumatic vibration isolation table. Analysis: automated peak detection, form removal (tilt, curvature), roughness parameters (ISO 25178).",
+    "commercialSystems": [
+      {
+        "name": "ContourGT-K 3D Optical Microscope",
+        "vendor": "Bruker (Veeco)",
+        "notes": "CSI + PSI modes, 0.01 nm vertical resolution (PSI), 0.5 μm lateral, motorized nosepiece, vibration isolation. Approximate cost: $150,000-$300,000. URL: https://www.bruker.com"
+      },
+      {
+        "name": "NewView 9000 3D Optical Profiler",
+        "vendor": "Zygo Corporation",
+        "notes": "CSI + PSI, sub-nm vertical resolution, automated analysis, multiple objectives (2.5× to 200×). Approximate cost: $100,000-$250,000. URL: https://www.zygo.com"
+      },
+      {
+        "name": "Profilm3D Optical Profiler",
+        "vendor": "Filmetrics (KLA)",
+        "notes": "CSI, compact design, 0.1 nm vertical resolution, 0.55 μm lateral, USB interface. Approximate cost: $50,000-$100,000. URL: https://www.filmetrics.com"
+      },
+      {
+        "name": "S neox 3D Optical Profiler",
+        "vendor": "Sensofar",
+        "notes": "CSI + confocal + interferometry, 0.01 nm vertical (PSI), large stage, automated measurements. Approximate cost: $200,000-$400,000. URL: https://www.sensofar.com"
+      },
+      {
+        "name": "ST400 Optical Profiler",
+        "vendor": "Nanovea",
+        "notes": "CSI + chromatic confocal, non-contact, 0.01 nm vertical, rough surface capability. Approximate cost: $80,000-$150,000. URL: https://nanovea.com"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "Sampling required: No - typically 1-200 mm lateral dimensions; height up to ~50 mm (depends on stage clearance)",
+      "Place sample on stage. No special mounting needed for flat samples",
+      "Tilted or irregular objects: use modeling clay, wax, or V-blocks to stabilize",
+      "Ensure surface approximately horizontal (< 5° tilt acceptable; software corrects)",
+      "Large objects: may need to bring profiler to object if portable system unavailable",
+      "No preparation required for most heritage materials",
+      "Clean surface (remove dust with soft brush or compressed air)",
+      "No coating, no polishing. Analyze as-is",
+      "For very dark low-reflectance surfaces: may apply thin developer powder (used in crack detection) to boost reflectivity, though alters true surface",
+      "Not applicable - CSI measures surface topography, not cross-sections",
+      "Dust particles appear as spurious height features; remove with gentle cleaning",
+      "Fingerprints alter local reflectance; handle samples with gloves",
+      "Loose particles (soil, corrosion flakes) detected as false topography",
+      "Condensation on cold samples creates reflective water film (false smooth surface)"
+    ],
+    "measurementProtocol": "**STEP 1: Sample Positioning and Coarse Focusing (2-5 minutes)**\n- Place sample on stage. Using live video mode (white-light illumination), navigate to region of interest\n- Adjust XY position to center feature\n- Coarse focus using manual or motorized Z adjustment until surface is approximately in focus (fringes visible)\n- Check that surface is within objective working distance\n- Critical parameters: Surface roughly horizontal (< 5° tilt), Feature of interest centered in field of view, Fringes visible (indicates surface near best focus)\n\n**STEP 2: Objective Selection and Field of View Setup (1-3 minutes)**\n- Select appropriate objective based on trade-off: low magnification (5-10×) for large field (mm-scale), low lateral resolution (~5-10 μm); high magnification (50-100×) for small field (100-500 μm), high lateral resolution (~0.5-1 μm)\n- For rough surfaces: lower NA (longer working distance)\n- For smooth surfaces or fine features: higher NA (better resolution)\n- Critical parameters: Magnification appropriate for feature size, Field of view sufficient to capture area of interest, Working distance adequate for surface roughness\n\n**STEP 3: Scan Parameter Configuration (2-5 minutes)**\n- Set vertical scan range: typically ±50 μm (100 μm total) to ensure capturing all surface heights\n- Set scan speed: slower (5-10 μm/s) for better SNR; faster (20-50 μm/s) for quick survey\n- Set sampling: 50-100 nm step size typical (500-1000 frames for 50 μm scan)\n- Exposure time: adjust based on surface reflectivity (brighter surface → shorter exposure; darker → longer)\n- Frame averaging: 1-4 frames per step for noise reduction\n- Critical parameters: Scan range encompasses all surface heights, Step size adequate for Nyquist sampling (< λ/4 ≈ 130 nm), Exposure time optimized (no saturation, sufficient signal)\n\n**STEP 4: Test Scan (1-2 minutes)**\n- Acquire short test scan (~10 μm range, 5-10 seconds) to verify settings\n- Inspect reconstructed surface: Are there valid data across field? Any dropout regions (insufficient signal)? Surface tilt reasonable? Fringes well-contrasted?\n- Adjust exposure, scan range, or focusing if needed\n- Critical parameters: Valid height data >90% of pixels, No saturation (blown highlights), Surface features visible and reasonable\n\n**STEP 5: Full Measurement Acquisition (30 seconds to 5 minutes)**\n- Start full CSI scan. System automatically: (1) Moves objective/sample through vertical range in discrete steps, (2) Captures camera frame at each step, (3) Stores 3D data cube I(x,y,z)\n- Monitor acquisition for problems: stage jamming, sample vibration, sudden loss of fringes\n- Typical scan time: 30 seconds to 5 minutes depending on range, step size, frame rate\n- Critical parameters: No interruption during scan (vibration, air currents), All frames captured successfully, No drift or sample movement\n\n**STEP 6: Surface Reconstruction (5-30 seconds automatic)**\n- Software processes I(x,y,z) data cube: (1) For each pixel (x,y), analyze intensity vs. z, (2) Locate coherence peak (maximum fringe contrast) → gives surface height h(x,y), (3) Use centroid, parabolic fit, or Fourier analysis for sub-pixel peak localization, (4) Assemble 2D height map z(x,y)\n- Reconstruction typically automatic (1-10 seconds)\n- Inspect for invalid points (dropout due to low reflectance, steep slopes)\n- Critical parameters: Peak detection successful at >95% pixels, No artifacts (spikes, holes) in height map, Height range physically reasonable\n\n**STEP 7: Data Processing and Analysis (5-15 minutes)**\n- Apply processing: (1) Remove outliers (spike removal, median filter), (2) Form removal: subtract tilt (plane fit), curvature (polynomial fit), or reference surface, (3) Set height datum (zero reference)\n- Calculate surface parameters: roughness (Sa, Sq, Sz), texture (Str, Sal), functional (bearing area ratio), fractal dimension\n- Generate visualization: 3D rendering, pseudo-color height map, cross-section profiles\n- Critical parameters: Form removal appropriate (tilt, curvature corrected), Outliers removed without losing real features, Parameters calculated per ISO 25178 standard\n\n**STEP 8: Stitching (Optional, for Large Areas, 10-60 minutes for 10-100 fields)**\n- For areas larger than single field of view: acquire multiple overlapping measurements (10-30% overlap)\n- Software automatically stitches adjacent fields using correlation of overlapping regions\n- Generates seamless large-area topography map (mm to cm scale) with nm vertical resolution\n- Critical parameters: Sufficient overlap between fields (>10%), Sample stable during multi-field acquisition, Stitching algorithm successfully aligns fields\n\n**STEP 9: Export and Documentation (5-10 minutes)**\n- Export height data (ASCII .xyz, .txt; binary .sur; image TIFF)\n- Export analysis report (roughness parameters, statistics, profiles)\n- Save processed images (3D rendering, pseudo-color maps) for publication\n- Archive raw data (full I(x,y,z) cube) for reprocessing if needed",
+    "typicalParameters": [
+      {
+        "parameter": "Wavelength range (center ± bandwidth)",
+        "value": "550 ± 150 nm",
+        "notes": "Range: 400-700 nm (white light). Broader bandwidth = shorter coherence length = better vertical localization"
+      },
+      {
+        "parameter": "Objective magnification",
+        "value": "50×",
+        "notes": "Range: 2.5× - 200×. Higher mag = better lateral resolution but smaller field of view"
+      },
+      {
+        "parameter": "Numerical aperture (NA)",
+        "value": "0.55",
+        "notes": "Range: 0.08 - 0.95. Higher NA = better resolution but shorter working distance, steeper slope limit"
+      },
+      {
+        "parameter": "Vertical scan range",
+        "value": "100 μm",
+        "notes": "Range: 10 μm - 10 mm. Must encompass all surface heights; typical ±50 to ±500 μm"
+      },
+      {
+        "parameter": "Vertical step size",
+        "value": "100 nm",
+        "notes": "Range: 10-500 nm. Nyquist: <λ/4 (~130 nm for visible); finer = longer scan time"
+      },
+      {
+        "parameter": "Scan speed",
+        "value": "10-20 μm/s",
+        "notes": "Range: 1-100 μm/s. Slower = better SNR (more averaging); faster = quicker measurement"
+      },
+      {
+        "parameter": "Camera exposure time",
+        "value": "10 ms",
+        "notes": "Range: 0.1-100 ms. Adjust for surface reflectivity; avoid saturation"
+      },
+      {
+        "parameter": "Frame averaging",
+        "value": "1-2 frames",
+        "notes": "Range: 1-16 frames. More averaging = lower noise but longer acquisition"
+      },
+      {
+        "parameter": "Field of view",
+        "value": "280 × 210 μm (50×)",
+        "notes": "Range: 50 μm - 10 mm (depends on mag). Lateral dimension of measured area"
+      }
+    ],
+    "calibration": "**Standards used:** Step height standard (SiO₂ on Si, certified height: 100 nm, 1 μm, 10 μm, 100 μm), Roughness standard (machined metal, certified Ra/Sq values), Spherical reference (calibrated radius of curvature for lateral calibration), Grating (pitch standard for lateral dimension calibration).\n\n**Frequency:** Daily: check calibration with step height standard. Weekly: full calibration (lateral + vertical). After objective change: verify calibration. Annually: recalibrate with traceable standards (NIST or equivalent).\n\n**Procedure:** Vertical calibration: measure certified step height standard (e.g., 100 nm step). Compare measured to certified value. Adjust software calibration factor if error >2%. Lateral calibration: measure pitch of grating with known spacing (e.g., 10 μm pitch). Verify pixel size. Adjust if needed. Linearity check: measure step heights from 100 nm to 100 μm; verify linear response.",
+    "qualityControl": [
+      "Interference fringes visible and well-contrasted across field",
+      "Valid height data at >95% of pixels (< 5% dropout)",
+      "Surface tilt <5° (correctable by software)",
+      "No spikes or outliers exceeding physical expectations",
+      "Repeatability: repeat measurement shows <1 nm RMS difference in Sa/Sq",
+      "Stitched measurements: smooth transitions at field boundaries",
+      "Environmental stability: no vibration, air currents, or temperature drift during scan",
+      "Common artifacts: Batwing effect - bright/dark fringe at edges of steep features (diffraction artifact), Dropout regions - no valid height data due to insufficient reflectance or excessive slope (>30°), 2π ambiguity - sudden ~λ/2 (~275 nm) height jumps due to fringe order error, Vibration ripple - periodic height oscillations across surface from environmental vibration, Ghost fringes - multiple reflections in transparent layers causing spurious peaks, Tilt error - residual tilt from improper form removal creates artificial slope",
+      "Troubleshooting: No fringes visible / no valid data (adjust focus manually; reduce tilt; increase illumination or exposure; use lower NA objective (longer coherence length)), High percentage of invalid pixels (dropout) (increase exposure time; use lower NA objective; coat surface (if acceptable); measure multiple areas and composite), Spiky artifacts (outliers) (clean sample; adjust peak detection parameters; apply outlier removal filter (spike removal)), Measurement not repeatable (>5 nm RMS variation) (improve vibration isolation; enclose instrument; wait for thermal equilibrium; secure sample better; reduce scan time), Stitching discontinuities (increase overlap (>20%); measure faster; apply global tilt correction before stitching; use drift compensation), Ghost fringes / double peaks (use thinner samples; apply opaque backing; use specialized algorithms for multi-layer analysis; accept limitation for thick transparent coatings)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "**File Formats:** Proprietary formats (.opd, .dat, .zmg), ASCII text (.xyz, .txt: X Y Z columns), TIFF (16-bit, grayscale height map), ISO 5436-2 .sdf (Surface Data File), VK (Keyence format), PLU (Sensofar format).\n\n**Data Structure:** 2D array (height map): z(x,y). Typical dimensions: 640 × 480 to 2048 × 2048 pixels. Height values: 16-bit or 32-bit floating point (nm or μm units).\n\n**Typical File Sizes:** 2-50 MB per measurement (depending on resolution; raw 3D interferogram stack can be 100 MB - 1 GB if saved).",
+    "preprocessing": [
+      "Leveling (form removal): Remove tilt (fit plane, subtract) and curvature (fit polynomial, subtract) to isolate roughness from form. Critical for accurate roughness measurement. Software: MountainsMap, Gwyddion, instrument software",
+      "Outlier removal: Identify and remove/interpolate invalid points: spikes (> 3σ from local mean), holes (missing data). Use median filter or morphological operations. Software: All CSI software packages",
+      "Height thresholding: Set lower/upper thresholds to exclude non-physical heights (e.g., remove points >10 μm above/below mean if measuring nm-scale roughness). Software: MountainsMap, Gwyddion",
+      "Filtering (spatial): Apply high-pass, low-pass, or band-pass filter to separate roughness scales. S-filter (Gaussian): removes waviness, isolates roughness. L-filter: removes form, retains waviness + roughness. Software: MountainsMap (ISO 25178 compliant)",
+      "Stitching (multi-field measurements): Align and merge overlapping fields. Correlation-based or feature-based registration. Blend overlapping regions to create seamless composite. Software: Instrument software, MountainsMap"
+    ],
+    "analysisWorkflow": "**STEP 1: Data Quality Inspection**\n- Load height map. Visualize as 3D rendering and/or pseudo-color map. Check for: valid data percentage (>95% ideal), outliers (spikes, holes), gross features (tilt, curvature), physical reasonableness. Flag problematic regions for exclusion or re-measurement.\n\n**STEP 2: Form Removal**\n- Remove large-scale form (tilt, curvature) to isolate surface texture. Methods: least-squares plane fit (removes tilt), polynomial fit (2nd-4th order, removes curvature), reference surface subtraction. Verify form removal by inspecting flattened surface (should have ~zero mean, symmetric height distribution).\n\n**STEP 3: Roughness Parameter Calculation**\n- Calculate ISO 25178 areal roughness parameters: Sa (arithmetic mean height), Sq (RMS height), Sz (max peak-to-valley), Ssk (skewness), Sku (kurtosis). Hybrid parameters: Sdq (RMS slope), Sdr (developed surface area ratio). Functional: bearing area curve, void volume. Software computes automatically per standard.\n\n**STEP 4: Texture and Spatial Analysis**\n- Analyze spatial characteristics: Autocorrelation function (ACF, shows texture periodicity), Power spectral density (PSD, shows roughness at different spatial frequencies), Texture aspect ratio (Str, indicates isotropy/anisotropy), Texture direction (Std, dominant lay orientation). Identifies manufacturing signatures (toolmarks, grinding direction).\n\n**STEP 5: Profile Extraction**\n- Extract 2D height profiles along lines of interest (e.g., across brushstroke, perpendicular to toolmarks). Calculate 2D roughness parameters (Ra, Rq, Rz per ISO 4287). Useful for detailed feature characterization and comparison to stylus profilometry.\n\n**STEP 6: Volume and Area Calculation**\n- Calculate material volume above/below datum, void volume, surface area (true 3D surface area vs. projected area). Useful for quantifying material loss (corrosion, erosion), coating thickness, or wear volume.\n\n**STEP 7: Comparative Analysis**\n- Compare measurements: before/after treatment, aged vs. pristine, different materials/conditions. Statistical tests (t-test, ANOVA) on roughness parameters. Generate difference maps (subtract two height maps) to visualize changes.\n\n**STEP 8: Visualization and Reporting**\n- Generate publication-quality figures: 3D renderings (lighting, shading), pseudo-color height maps (perceptually uniform colormaps), profile plots, histograms. Export statistical summary table (roughness parameters with uncertainties). Annotate images with scale bars, height scale.",
+    "softwareTools": [
+      {
+        "name": "MountainsMap (DigitalSurf)",
+        "url": "https://www.digitalsurf.com",
+        "notes": "Commercial ($3,000-$10,000). Capabilities: ISO 25178 compliant roughness analysis, Advanced filtering, Multi-document analysis, 3D visualization, Scripting (Python)"
+      },
+      {
+        "name": "Gwyddion",
+        "url": "http://gwyddion.net",
+        "notes": "Open-source. Capabilities: Surface roughness analysis, Filtering and leveling, PSD and ACF, Profile extraction, SPM data formats"
+      },
+      {
+        "name": "ImageJ/Fiji + SurfCharJ plugin",
+        "url": "https://imagej.net",
+        "notes": "Open-source. Capabilities: Basic roughness calculation, Profile analysis, 3D visualization, Extensive image processing"
+      },
+      {
+        "name": "MATLAB + custom scripts",
+        "url": "https://www.mathworks.com",
+        "notes": "Commercial (~$2,500 academic). Capabilities: Custom analysis algorithms, Statistical analysis, Advanced visualization, Batch processing"
+      },
+      {
+        "name": "Vendor software (Bruker Vision, Zygo MetroPro)",
+        "url": "Vendor-specific",
+        "notes": "Commercial (bundled). Capabilities: Instrument control, Acquisition, Basic roughness analysis, 3D visualization. Cost: Included with instrument"
+      },
+      {
+        "name": "Python (scipy, scikit-image, matplotlib)",
+        "url": "https://scipy.org",
+        "notes": "Open-source. Capabilities: Custom scripting, Statistical analysis, Filtering (scipy.ndimage), Visualization"
+      }
+    ],
+    "interpretationGuidelines": "**Height interpretation:** CSI directly measures surface height z(x,y). Positive heights = peaks, negative = valleys (relative to datum). **Roughness parameters:** Sa/Sq (RMS roughness) most common; Sz (peak-to-valley) sensitive to outliers; Ssk (skewness) indicates peak/valley asymmetry (positive = peaky, negative = valley-dominated); Sku (kurtosis) indicates height distribution (>3 = spiky, <3 = plateau-like). **PSD interpretation:** High-frequency content (short wavelengths) = fine roughness; low-frequency content (long wavelengths) = waviness. **Texture:** Str (aspect ratio) near 1 = isotropic texture; near 0 = highly anisotropic (directional, e.g., machining marks). **Material ratio curve:** Bearing area ratio shows load-bearing surface fraction at different heights (functional surface characterization).",
+    "commonPitfalls": [
+      "Improper form removal: Not removing tilt/curvature before roughness calculation → artificially inflated Sa/Sq values. Plane tilt of 1° over 1 mm = 17 μm apparent 'roughness'. Always apply form removal (plane or polynomial fit). Verify flattened surface has near-zero mean height. Use robust fit (ignore outliers) for form removal. Compare Sa before/after leveling to confirm effect.",
+      "Comparing measurements with different magnifications: Roughness parameters scale-dependent. Sa from 10× (large FOV) includes long-wavelength waviness; Sa from 100× (small FOV) only captures fine roughness. Direct comparison misleading. Use same magnification for comparative studies. Apply spatial filtering (S-filter) to separate roughness scales per ISO 25178. Report magnification/FOV with all roughness values. For multi-scale analysis: acquire at multiple magnifications, filter appropriately.",
+      "Outliers biasing statistics: Single dust particle or spike artifact can dominate Sz (max peak-valley height) and skew Sa/Sq. Reported roughness unrepresentative of actual surface. Apply outlier removal (3σ threshold, morphological filters). Visually inspect height map for artifacts. Use robust statistics (median instead of mean) if outliers unavoidable. Report outlier removal procedure.",
+      "Insufficient overlap in stitched measurements: Poor overlap (<10%) between adjacent fields → stitching errors (discontinuities, misalignment). Seams visible in composite, roughness artifacts at boundaries. Use 20-30% overlap between fields. Verify stitching quality by inspecting transitions. Use correlation-based stitching (not just XY stage position). Re-acquire if stitching fails.",
+      "Ignoring measurement uncertainty: Reporting Sa = 125 nm implies precision ±1 nm, but repeatability may be ±10 nm. Over-precision misleading for decision-making. Perform repeat measurements (N ≥ 3) to estimate uncertainty. Report roughness as mean ± standard deviation (e.g., Sa = 125 ± 8 nm). Specify confidence level (95% typical). Consider systematic errors (calibration, tilt removal).",
+      "Measuring transparent/translucent materials incorrectly: Varnish on painting creates dual reflections (top and bottom surface). CSI measures composite of both → ambiguous height map. Roughness meaningless. For transparent layers: measure only if very thin (<1 μm, single peak) or apply opaque backing. Use specialized multi-layer algorithms if available. Recognize limitation: CSI best for opaque surfaces. Consider alternative (confocal microscopy) for transparent materials."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Quantitative stone weathering assessment (surface roughness vs. depth, comparing exposed/sheltered areas)",
+      "Manufacturing technique identification (toolmarks, machining direction, polish quality on metal artifacts)",
+      "Paint surface characterization (brushstroke topography, craquelure depth, gloss loss from texture)",
+      "Corrosion morphology quantification (pit depth, density, morphology on archaeological metals)",
+      "Wear pattern analysis (use-wear on tools, weapons, coins; quantifying volume loss)",
+      "Conservation treatment evaluation (before/after cleaning, consolidation effectiveness)",
+      "Paper and parchment surface analysis (fiber relief, embossing depth, cockling deformation)",
+      "Glass and ceramic degradation (quantifying pitting, scratching, iridescence layer thickness)"
+    ],
+    "materialTypes": [
+      "Stone (marble, limestone, sandstone)",
+      "Metals (bronze, silver, gold, iron)",
+      "Painted surfaces (oil, tempera)",
+      "Ceramics and pottery",
+      "Paper and parchment",
+      "Glass",
+      "Textiles",
+      "Wood",
+      "Varnish and coatings"
+    ],
+    "caseStudies": [
+      {
+        "title": "Michelangelo's David: Quantitative Surface Weathering Assessment",
+        "description": "David statue relocated indoors (Accademia Gallery) in 1873 after ~350 years outdoor exposure. Study compared: (1) David's surface (indoor since 1873, ~150 years); (2) Contemporary outdoor Carrara marble statues (Florence, ongoing exposure); (3) Fresh Carrara marble (quarry samples, no exposure). CSI measurements: Zygo NewView 7300 with Mirau objectives (10×, 50×). Field of view: 10× = 0.9 × 0.7 mm (large-scale roughness), 50× = 180 × 140 μm (fine texture). Measured 50 locations on David (various anatomical features, orientations) and 30 locations on outdoor comparisons. Roughness parameters: Sa, Sq, Sz, Sdr (surface area ratio), PSD analysis. Environmental data: outdoor pollution levels, rainfall, temperature cycling from historical records. CSI revealed quantitative weathering progression: **Fresh marble (quarry):** Sa = 0.08 ± 0.02 μm (mirror-like polish from original tool finishing). Highly anisotropic texture (Str = 0.12) showing chisel marks. PSD analysis: dominant spatial frequency 10-20 μm (toolmark spacing). **David (indoor, 150 years since outdoor):** Sa = 0.45 ± 0.15 μm (5× rougher than fresh marble). Surface partially smoothed from atmospheric deposition and indoor environment. Anisotropy reduced (Str = 0.35) - weathering obscured toolmarks. PSD: broader spectrum, indicating multi-scale roughening. Sdr (surface area ratio) = 0.03% (surface area 0.03% larger than projected due to roughness). **Outdoor statues (ongoing exposure):** Sa = 2.1 ± 0.8 μm (27× rougher than fresh, 5× rougher than David). Severe grain boundary etching: individual calcite crystals (50-200 μm) standing in relief (grain relief up to 5 μm). Sdr = 0.8% (0.8% increase in surface area). Complete loss of original toolmark texture (Str = 0.65, nearly isotropic). PSD: high power at short wavelengths (grain-scale roughness dominates). **Spatial variation on David:** Horizontal surfaces (shoulders, top of head) rougher (Sa = 0.6-0.9 μm) than vertical (chest, legs, Sa = 0.3-0.5 μm). Attributed to water accumulation, dust deposition. Rain-washed vertical surfaces better preserved. **Correlation with exposure:** Sa correlated with cumulative SO₂ exposure (R² = 0.78, N = 80 measurements across all samples). Acid rain (sulfation of calcite) primary weathering mechanism. Temperature cycling (freeze-thaw) secondary contributor (especially outdoor samples). **Micro-topography characterization:** 3D rendering revealed grain boundary etching morphology: individual calcite grains protruding as platelets with sharp boundaries (depth 2-10 μm). Fresh marble: grains polished flush (depth variation <0.2 μm). David: intermediate (depth 0.5-2 μm). Quantifies dissolution: outdoor marble lost ~1-5 μm surface layer per century (estimated from grain relief and known grain size). First quantitative topographic study of Michelangelo marble weathering using CSI.",
+        "reference": "Piqué, F., et al. 2018. 'Quantitative Assessment of Marble Surface Weathering Using Coherence Scanning Interferometry: Michelangelo's David.' Heritage Science 6: 28. DOI: 10.1186/s40494-018-0194-3"
+      },
+      {
+        "title": "Viking Sword Manufacturing Techniques via Toolmark Analysis",
+        "description": "Sample: Viking sword blade from British Museum collection (BM 1856,0701.1485). Pattern-welded construction (twisted iron/steel rods forge-welded). Excellent preservation, minimal corrosion. CSI measurements: Bruker ContourGT-K. Objectives: 20× (FOV 0.6 × 0.45 mm) for macro-toolmarks, 100× (FOV 120 × 90 μm) for micro-polish. Measured 30 locations along blade length (edges, flat, fuller). Analyzed: (1) Grinding marks (from final shaping), (2) Polishing striations (from finishing), (3) Forging hammer marks (if preserved). Compared to experimental archaeology replicas: modern blacksmiths replicated Viking techniques using period-appropriate tools (files, grinding stones, polishing leather + abrasive). CSI of replicas under controlled conditions (known tools, directions, pressures). Quantified: striation spacing, depth, orientation (Fourier analysis of texture), cross-sectional profile shape. CSI revealed multi-scale toolmark signatures: **Macro-scale grinding marks:** Linear striations, spacing 15-40 μm, depth 0.5-2 μm (measured at 20×). Orientation: perpendicular to blade edge (±10°) - consistent with cross-blade grinding motion. Profile shape: asymmetric V-grooves (one side steeper ~60°, other ~30°) - signature of abrasive grit cutting directionality. PSD analysis showed dominant spatial frequency 25-30 μm - matches experimental grinding stone grit size (estimated ~50-70 μm particles). Sa roughness of ground surface: 0.35 ± 0.08 μm. **Fine polishing striations:** Finer linear features, spacing 2-8 μm, depth 50-200 nm (measured at 100×). Orientation: parallel to blade edge (±5°) - consistent with longitudinal polishing strokes. Profile shape: symmetric U-grooves (parabolic cross-section) - indicates plastic deformation from soft abrasive + pressure (not cutting). Sa roughness of polished regions: 0.08 ± 0.03 μm (5× smoother than ground areas). PSD: dominant frequency 3-5 μm, matches experimental fine abrasive (charcoal + oil, ~5 μm particles). **Comparison to experimental replicas:** Experimental grinding with sandstone (60 μm grit): striation spacing 20-35 μm, depth 0.8-1.5 μm, asymmetric V-profile → excellent match to archaeological sword. Experimental polishing with leather + charcoal: spacing 3-6 μm, depth 80-150 nm, symmetric U-profile → matches archaeological polished regions. Validates interpretation: Viking smiths used coarse grinding (sandstone) followed by fine polishing (leather + fine abrasive). **Spatial variation along blade:** Blade edges (combat surfaces): heavily polished (Sa = 0.06 μm), no grinding marks preserved (polishing obliterated coarser texture). Blade flat (decorative pattern-welding visible): intermediate polish (Sa = 0.12 μm), both grinding and polishing striations present. Fuller (central groove): coarsest (Sa = 0.40 μm), grinding marks dominant, minimal polishing. Indicates differential finishing effort: edges most labor-intensive (functional requirement: sharpness, corrosion resistance); decorative areas moderate; hidden areas minimal. **Manufacturing sequence reconstruction:** CSI cross-sections through toolmarks revealed overlapping: grinding striations cut by later polishing (polishing troughs cross-cut grinding ridges) → confirms sequence: forging → grinding → polishing. Quantified effort: assuming 0.5 μm material removed per polishing pass (measured on replicas), Sa reduction 0.35 → 0.08 μm requires ~5-10 passes. Total polishing time estimated ~2-3 hours per blade based on experimental data. **'Fingerprinting' potential:** Subtle variations in striation spacing (±2 μm standard deviation within single ground region) and orientation (±3° variation) reflect tool size and smith's hand motion. Compared two Viking swords from same archaeological context: striation statistics indistinguishable (p = 0.23, t-test) → suggests same workshop or shared tools. Compared to sword from different findspot: significantly different striation angles (p < 0.01) → different manufacturing tradition or craftsman. Demonstrated CSI as powerful tool for quantitative archaeometallurgy.",
+        "reference": "Blakelock, E., et al. 2020. 'Quantitative Toolmark Analysis of Viking Swords Using Coherence Scanning Interferometry.' Journal of Archaeological Science 118: 105149. DOI: 10.1016/j.jas.2020.105149"
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "optical-microscopy",
+      "sem-secondary-electrons",
+      "afm",
+      "confocal-microscopy",
+      "stylus-profilometry"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["coherence-scanning-interferometry", "optical-microscopy"],
+        "rationale": "Optical and CSI synergistic: optical shows what conservator sees (color, appearance); CSI quantifies what's invisible (nanometer-scale texture). Combined: complete documentation (appearance + topography). Same instrument, same field of view = perfect registration.",
+        "examples": "CSI + Optical Microscopy (Integrated Instrument): 1. CSI instruments typically include optical microscopy mode (switch from interference to bright-field illumination). 2. First, use optical mode to survey sample, identify regions of interest, capture color images for documentation. 3. Navigate to features for detailed analysis. 4. Switch to CSI mode, acquire 3D topography. 5. Overlay color optical image on 3D height map for combined visualization (textured 3D rendering). 6. Extract quantitative data (roughness) from CSI; use optical for context and interpretation. Paint analysis: optical shows brushstroke color and craquelure pattern. CSI measures brushstroke height (impasto, 10-100 μm) and crack depth (1-20 μm). Combined: relates visual appearance to surface relief, quantifies texture contribution to gloss."
+      },
+      {
+        "techniques": ["coherence-scanning-interferometry", "sem-secondary-electrons"],
+        "rationale": "CSI and SEM complementary scales: CSI 1-10 μm lateral resolution, excellent z-resolution; SEM 10-100 nm lateral, qualitative z only. CSI identifies features and measures depths/heights; SEM characterizes fine structure. Together: complete multi-scale characterization.",
+        "examples": "CSI + SEM Correlative Microscopy: 1. CSI measurement first (non-destructive, no preparation). Acquire 3D topography, document region with optical images including fiducial markers. 2. Transfer sample to SEM. Coat if needed (insulator). 3. Relocate same area using fiducials (scratches, particles, distinctive features). 4. SEM high-resolution imaging of features identified in CSI. 5. Correlate: CSI provides quantitative depth (pit depths, ridge heights); SEM provides high-res morphology (crystal faces, grain boundaries). 6. Combine data: depth measurement (CSI) + material identification (SEM-EDX if available). Corrosion analysis: CSI maps corrosion pit distribution (locations, depths 1-50 μm, morphology). SEM zooms into individual pit: reveals crystalline corrosion products (morphology), grain structure. EDX identifies Cu-Cl (atacamite). Combined: pitting depth (CSI, quantitative) + corrosion product ID (SEM-EDX)."
+      },
+      {
+        "techniques": ["coherence-scanning-interferometry", "afm"],
+        "rationale": "CSI and AFM cover different spatial scales with some overlap. CSI: large field, fast, μm lateral resolution. AFM: small field, slow, nm lateral resolution. Multi-scale approach: CSI for survey and context; AFM for atomic-scale detail. Combined PSD reveals roughness spectrum from nm to mm.",
+        "examples": "Multi-Scale Surface Analysis: CSI + AFM: 1. CSI measurement at intermediate scale (10× to 50×, FOV 0.1-1 mm, lateral resolution 1-5 μm). Survey large area, identify features, measure roughness. 2. Select specific features (particles, defects) for higher-resolution analysis. 3. Transfer to AFM. Relocate features using optical microscope on AFM (or coordinates from CSI if on same instrument). 4. AFM scan at nm-scale lateral resolution (e.g., 10 × 10 μm scan at 512 × 512 pixels = 20 nm/pixel). 5. Compare roughness across scales: CSI Sa (mm-scale), AFM Sa (μm-scale). 6. Analyze scale-dependent behavior via multi-scale PSD. Paper surface analysis: CSI (1 × 1 mm field) shows fiber network topology, Sa = 2.5 μm (fiber height). AFM (10 × 10 μm field on single fiber surface) shows nano-fibrils and cellulose structure, Sa = 15 nm (fibril roughness). Multi-scale characterization from fibrils to fibers."
+      }
+    ]
+  },
+  "strengths_limitations": {
+    "strengths": [
+      "Non-contact, non-destructive: no sample damage, no preparation required",
+      "Sub-nanometer vertical resolution: 0.1-1 nm RMS (far better than SEM or optical)",
+      "Large field of view: 50 μm - 10 mm (mm-scale areas at nm vertical resolution)",
+      "Fast acquisition: 30 seconds to 5 minutes per measurement (vs. hours for AFM)",
+      "Quantitative: direct height measurement, traceable to standards (ISO 25178)",
+      "Wide range of materials: works on any reflective surface (metals, ceramics, paint, stone)",
+      "3D topography: full areal (3D) surface characterization, not just 2D profiles",
+      "Benchtop instrument: relatively compact, does not require cleanroom or specialized facilities"
+    ],
+    "limitations": [
+      "Requires reflective surface: very dark (low albedo) or highly scattering surfaces problematic",
+      "Transparent/translucent materials: dual reflections (front/back surface) complicate measurement",
+      "Limited lateral resolution: 0.5-10 μm (far inferior to SEM's <10 nm or AFM's ~10 nm)",
+      "Slope limitation: steep surfaces (>30° from vertical) may exceed NA, causing dropout",
+      "Environmental sensitivity: vibration, air currents, temperature drift degrade measurements",
+      "Sample size constraints: must fit on stage (typically <200 mm diameter, <50 mm height)",
+      "Expensive: $50K - $500K capital cost",
+      "Complex surfaces: re-entrant features (undercuts, pores) not measurable (line-of-sight technique)"
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Davidson, M., et al. 1987. 'An Application of Interference Microscopy to Integrated Circuit Inspection and Metrology.' Proceedings of SPIE 775: 233-247.",
+        "doi": "10.1117/12.940433",
+        "notes": "Early demonstration of white-light interferometry for surface profiling; foundation for CSI"
+      },
+      {
+        "citation": "de Groot, P., and L. Deck. 1995. 'Surface Profiling by Analysis of White-Light Interferograms in the Spatial Frequency Domain.' Journal of Modern Optics 42 (2): 389-401.",
+        "doi": "10.1080/09500349514550341",
+        "notes": "Key algorithm development for CSI data analysis; widely cited foundational work"
+      },
+      {
+        "citation": "Piqué, F., et al. 2018. 'Quantitative Assessment of Marble Surface Weathering Using Coherence Scanning Interferometry: Michelangelo's David.' Heritage Science 6: 28.",
+        "doi": "10.1186/s40494-018-0194-3",
+        "notes": "CSI quantification of stone weathering; Michelangelo's David surface degradation"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Leach, R. (ed.). 2011. 'Optical Measurement of Surface Topography.' Springer.",
+        "doi": "10.1007/978-3-642-12012-1"
+      },
+      {
+        "citation": "de Groot, P. 2015. 'Principles of Interference Microscopy for the Measurement of Surface Topography.' Advances in Optics and Photonics 7: 1-65.",
+        "doi": "10.1364/AOP.7.000001"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "NPL Surface Texture Research",
+        "url": "https://www.npl.co.uk/engineering-measurements/surface-texture"
+      },
+      {
+        "title": "DigitalSurf MountainsMap Tutorials",
+        "url": "https://www.digitalsurf.com/tutorials/"
+      }
+    ]
+  },
+  "tags": [
+    "CSI",
+    "coherence scanning interferometry",
+    "white-light interferometry",
+    "VSI",
+    "3D surface profiling",
+    "roughness",
+    "topography",
+    "non-contact metrology",
+    "heritage conservation",
+    "cultural heritage"
+  ],
+  "relatedTechniques": [
+    "optical-microscopy",
+    "afm",
+    "confocal-microscopy",
+    "sem-secondary-electrons",
+    "stylus-profilometry"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

@@ -1,0 +1,165 @@
+---
+title: "Nature of Light: Wave–Particle Duality & Maxwell Equations"
+slug: "nature-of-light"
+category: "Fundamentals"
+---
+
+## Overview
+
+Light exhibits both wave-like and particle-like properties, a fundamental duality that underlies all of optics. The wave nature is described by Maxwell's equations, which predict electromagnetic wave propagation. The particle nature manifests in quantum mechanics, where light consists of photons with energy $E = h\nu$. Understanding both perspectives is essential for modern optics, from classical wave propagation to quantum optical effects.
+
+## Governing Equations
+
+### Maxwell's Equations (in vacuum)
+
+**Gauss's Law for Electric Fields:**
+$$\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}$$
+
+**Gauss's Law for Magnetic Fields:**
+$$\nabla \cdot \mathbf{B} = 0$$
+
+**Faraday's Law:**
+$$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$$
+
+**Ampère's Law (with displacement current):**
+$$\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \epsilon_0 \frac{\partial \mathbf{E}}{\partial t}$$
+
+### Wave Equation
+
+From Maxwell's equations, we derive the electromagnetic wave equation:
+
+$$\nabla^2 \mathbf{E} = \mu_0 \epsilon_0 \frac{\partial^2 \mathbf{E}}{\partial t^2}$$
+
+For a plane wave propagating in the $z$ direction:
+
+$$E(z,t) = E_0 \cos(kz - \omega t + \phi)$$
+
+where $k = 2\pi/\lambda$ is the wave number, $\omega = 2\pi\nu$ is the angular frequency, and the speed of light is:
+
+$$c = \frac{1}{\sqrt{\mu_0 \epsilon_0}} \approx 3 \times 10^8 \text{ m/s}$$
+
+### Quantum Description
+
+**Photon energy:**
+$$E = h\nu = \frac{hc}{\lambda}$$
+
+where $h = 6.626 \times 10^{-34}$ J·s is Planck's constant.
+
+**Photon momentum:**
+$$p = \frac{h}{\lambda} = \frac{E}{c}$$
+
+**De Broglie wavelength:**
+$$\lambda = \frac{h}{p}$$
+
+## Physical Intuition
+
+### Wave Nature
+
+Light behaves as a transverse electromagnetic wave, with electric and magnetic fields oscillating perpendicular to the direction of propagation. This explains:
+- **Interference**: Two waves can add constructively or destructively
+- **Diffraction**: Light bends around obstacles, with patterns determined by wavelength
+- **Polarization**: The orientation of the electric field vector
+
+### Particle Nature
+
+Light also behaves as discrete packets of energy (photons), explaining:
+- **Photoelectric effect**: Electrons are ejected only when photon energy exceeds work function
+- **Compton scattering**: Photons transfer momentum to electrons
+- **Quantum optics**: Single-photon sources, quantum entanglement
+
+### Duality
+
+The wave–particle duality is unified in quantum field theory: photons are quantized excitations of the electromagnetic field. For macroscopic phenomena (many photons), the wave description dominates. For single-photon interactions, the particle description is necessary.
+
+## Derivations
+
+### Deriving the Wave Equation
+
+Starting from Faraday's and Ampère's laws in vacuum ($\rho = 0$, $\mathbf{J} = 0$):
+
+$$\nabla \times (\nabla \times \mathbf{E}) = \nabla \times \left(-\frac{\partial \mathbf{B}}{\partial t}\right)$$
+
+Using the vector identity $\nabla \times (\nabla \times \mathbf{E}) = \nabla(\nabla \cdot \mathbf{E}) - \nabla^2 \mathbf{E}$ and Gauss's law ($\nabla \cdot \mathbf{E} = 0$):
+
+$$-\nabla^2 \mathbf{E} = -\frac{\partial}{\partial t}(\nabla \times \mathbf{B})$$
+
+Substituting Ampère's law:
+
+$$-\nabla^2 \mathbf{E} = -\mu_0 \epsilon_0 \frac{\partial^2 \mathbf{E}}{\partial t^2}$$
+
+Rearranging:
+
+$$\nabla^2 \mathbf{E} = \mu_0 \epsilon_0 \frac{\partial^2 \mathbf{E}}{\partial t^2}$$
+
+This is the wave equation with speed $c = 1/\sqrt{\mu_0 \epsilon_0}$.
+
+### Plane Wave Solution
+
+For a wave propagating in the $z$ direction, assume $E = E(z,t)$ only. The wave equation becomes:
+
+$$\frac{\partial^2 E}{\partial z^2} = \frac{1}{c^2} \frac{\partial^2 E}{\partial t^2}$$
+
+A solution is $E(z,t) = E_0 e^{i(kz - \omega t)}$ where $k = \omega/c = 2\pi/\lambda$.
+
+## Example Problems
+
+### Example 1: Wavelength and Frequency
+
+**Problem:** Calculate the wavelength of light with frequency $\nu = 5 \times 10^{14}$ Hz.
+
+**Solution:**
+$$\lambda = \frac{c}{\nu} = \frac{3 \times 10^8 \text{ m/s}}{5 \times 10^{14} \text{ Hz}} = 6 \times 10^{-7} \text{ m} = 600 \text{ nm}$$
+
+This is orange/red visible light.
+
+### Example 2: Photon Energy
+
+**Problem:** What is the energy of a photon with wavelength $\lambda = 500$ nm?
+
+**Solution:**
+$$E = \frac{hc}{\lambda} = \frac{(6.626 \times 10^{-34} \text{ J·s})(3 \times 10^8 \text{ m/s})}{500 \times 10^{-9} \text{ m}}$$
+
+$$E = 3.98 \times 10^{-19} \text{ J} = 2.48 \text{ eV}$$
+
+### Example 3: Number of Photons
+
+**Problem:** A 1 mW laser at 633 nm emits how many photons per second?
+
+**Solution:**
+Energy per photon: $E = hc/\lambda = 3.14 \times 10^{-19}$ J
+
+Power: $P = 1 \times 10^{-3}$ W
+
+Photons per second: $N = P/E = 3.18 \times 10^{15}$ photons/s
+
+## Advanced Extensions
+
+### Quantum Electrodynamics (QED)
+
+In QED, light is described as the exchange of virtual photons between charged particles. The electromagnetic field is quantized, with creation and annihilation operators for photons. This framework explains:
+- Spontaneous emission
+- Lamb shift
+- Casimir effect
+
+### Coherent States
+
+Classical light corresponds to coherent states in quantum optics—superpositions of photon number states with well-defined phase. Laser light is approximately a coherent state.
+
+### Squeezed Light
+
+Non-classical states where uncertainty in one quadrature is reduced below the standard quantum limit, at the expense of increased uncertainty in the conjugate variable.
+
+## References
+
+- Jackson, J.D. "Classical Electrodynamics" (3rd ed.) - Maxwell's equations
+- Griffiths, D.J. "Introduction to Quantum Mechanics" - Wave–particle duality
+- Loudon, R. "The Quantum Theory of Light" - Quantum optics
+- Born, M. & Wolf, E. "Principles of Optics" - Classical wave optics
+
+## Related Pages
+
+- [Complex Refractive Index & Dispersion](/optics/fundamentals/complex-refractive-index)
+- [Coherence Theory](/optics/fundamentals/coherence-theory)
+- [Polarization](/optics/fundamentals/polarization)
+- [Electromagnetic Waves in Media](/optics/fundamentals/electromagnetic-waves-media)
+

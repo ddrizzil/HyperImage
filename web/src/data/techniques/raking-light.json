@@ -1,0 +1,329 @@
+{
+  "id": "raking-light",
+  "name": "Raking Light Photography",
+  "acronym": "RLP",
+  "category": "Imaging and Documentation",
+  "subcategory": "Surface Characterization",
+  "summary": "Raking light photography is a specialized visible light imaging technique that emphasizes surface texture, relief, and topography by positioning a light source at a very low angle (typically 5-20° from the object surface), nearly parallel to the surface plane. This extreme oblique illumination creates strong shadows from even minute surface irregularities—cracks, scratches, brushstrokes, tool marks, weave patterns, embossing, and deformations—making three-dimensional features dramatically visible in a two-dimensional photograph that would be imperceptible or subtle under normal perpendicular illumination. The technique exploits the principle that surface height variations cast shadows when illuminated from the side, with shadow length proportional to feature height and inversely proportional to illumination angle. By systematically rotating the light source around the object (typically 0°, 90°, 180°, 270° azimuths, or more densely every 30-45°), conservators document surface topography from all directions, revealing features that may be visible only from specific lighting angles. Raking light photography is essential for condition documentation (craquelure networks, paint losses, surface abrasion, structural deformations), technical art history (paint application techniques, brushwork analysis, weave patterns, toolmarks revealing fabrication methods), and authentication studies (detecting forgeries via anachronistic techniques, identifying overpaint). The method requires minimal specialized equipment (standard camera plus single controllable light source) yet provides extraordinarily valuable information about surface morphology at scales from millimeters (overall deformations) to micrometers (fine cracks), serving as a non-contact, non-invasive complement to profilometry and 3D scanning.",
+  "keyApplications": [
+    "Craquelure documentation and analysis (crack patterns, width, depth, orientation in paintings, ceramics)",
+    "Paint surface characterization (brushstroke topology, impasto thickness, pentimenti, abrasion patterns)",
+    "Textile analysis (weave structure, thread count, worn areas, repairs, embroidery relief)",
+    "Paper examination (watermarks, chain lines, laid lines, embossing, physical damage)",
+    "Metal surface documentation (tool marks, engraving, corrosion topology, casting imperfections)",
+    "Stone conservation (weathering patterns, erosion, biological growth, structural cracks)",
+    "Wood surface analysis (grain patterns, carving details, wormholes, surface degradation)",
+    "Authentication and forensics (detecting overpaint, modern repairs, forged surface aging)"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "highly portable",
+  "typicalTimePerMeasurement": "5-30 minutes per object (setup + capture from 4-8 azimuth angles); detailed documentation: 1-2 hours",
+  "costRange": {
+    "instrument": "$500-$10,000 (basic: DSLR + LED panel $1-2K; professional: 45MP camera + precision positioning $5-10K)",
+    "perSample": "$50-$300 per object (staff time for setup, multi-angle capture, processing)"
+  },
+  "fundamentalPhysics": {
+    "principle": "Raking light photography creates visible shadows from surface relief by positioning illumination at extremely oblique angles to the object surface. When light strikes a surface perpendicularly (normal incidence, 90° to surface), variations in height create minimal shadows (features visible only via shading/brightness differences based on reflectance). As illumination angle decreases toward grazing incidence (5-20° from surface), even small height variations (h) cast shadows with length L ≈ h/tan(θ), where θ is illumination angle from surface. At θ=10°, a 100 μm high feature casts ~570 μm shadow (5.7× amplification). At θ=5°, same feature casts ~1140 μm shadow (11.4×). Shadows are binary high-contrast features (fully dark vs. fully illuminated) easily visible in photographs, whereas subtle height variations may be imperceptible under normal lighting (small brightness differences below camera/eye contrast threshold). Systematic rotation of light source around object (changing azimuth angle) reveals directional features: cracks parallel to light direction cast no shadows (light grazes along crack, no obstruction); cracks perpendicular cast maximum shadows. Four cardinal azimuths (0°, 90°, 180°, 270°) ensure all orientations visible in at least one view. The technique effectively converts 3D topography (difficult to measure, requires specialized equipment) into 2D shadow patterns (easily captured with standard photography), providing qualitative visualization of surface relief and semi-quantitative information (shadow measurements → feature height estimation if illumination geometry known).",
+    "physicalPhenomenon": "**Shadow formation:** Opaque surface features block light propagating at low angle → cast shadow on adjacent surface (geometric shadow, umbra). Shadow length L = h/tan(θ), where h = feature height above local surface, θ = illumination angle from surface (complementary to incidence angle: θ = 90° - incident_angle). Shadow width = feature width (perpendicular to light direction). **Contrast enhancement:** Shadows are regions of nearly zero illuminance (blocked light) adjacent to fully illuminated regions → high local contrast (10:1 to 100:1 or higher). Human eye and camera both sensitive to edges and contrast → shadows make features perceptible. Under normal lighting (perpendicular, diffuse), same features visible only as subtle shading (brightness variation <10-20%) → often below visibility threshold. **Directionality:** Features perpendicular to light direction cast longest shadows (maximum obstruction). Features parallel cast minimal/no shadows (light grazes along feature). Features at intermediate angles cast shadows proportional to perpendicular component of height. Thus: rotate light 360° → different features emphasized at each angle. **Specular vs. diffuse surfaces:** Diffuse surfaces (matte paint, stone, paper) scatter light → shadows well-defined, technique highly effective. Specular surfaces (polished metal, glass, varnish) reflect light directionally → may create glare, reflections complicate shadow interpretation (cross-polarization or diffusion needed).",
+    "equations": [
+      {
+        "latex": "$$L = \\frac{h}{\\tan(\\theta)}$$",
+        "description": "Shadow Length from Surface Feature",
+        "variables": [
+          {"symbol": "L", "meaning": "shadow length on surface", "units": "μm or mm"},
+          {"symbol": "h", "meaning": "feature height above local surface", "units": "μm or mm"},
+          {"symbol": "\\theta", "meaning": "illumination angle from surface (grazing angle)", "units": "degrees"}
+        ]
+      },
+      {
+        "latex": "$$h = L \\cdot \\tan(\\theta)$$",
+        "description": "Feature Height from Shadow Measurement",
+        "variables": [
+          {"symbol": "h", "meaning": "estimated feature height", "units": "μm or mm"},
+          {"symbol": "L", "meaning": "measured shadow length in image", "units": "μm or mm (calibrated via scale reference)"},
+          {"symbol": "\\theta", "meaning": "known illumination angle", "units": "degrees"}
+        ]
+      },
+      {
+        "latex": "$$\\text{Amplification} = \\frac{L}{h} = \\frac{1}{\\tan(\\theta)}$$",
+        "description": "Shadow Amplification Factor",
+        "variables": [
+          {"symbol": "\\text{Amplification}", "meaning": "ratio of shadow length to feature height", "units": "dimensionless"},
+          {"symbol": "\\theta", "meaning": "illumination angle", "units": "degrees"}
+        ]
+      },
+      {
+        "latex": "$$\\theta = \\arctan\\left(\\frac{d}{D}\\right)$$",
+        "description": "Illumination Angle from Geometry",
+        "variables": [
+          {"symbol": "\\theta", "meaning": "illumination angle from surface", "units": "degrees"},
+          {"symbol": "d", "meaning": "light source height above surface", "units": "cm or m"},
+          {"symbol": "D", "meaning": "horizontal distance from light to illuminated area", "units": "cm or m"}
+        ]
+      },
+      {
+        "latex": "$$C = \\frac{I_{lit}}{I_{shadow}}$$",
+        "description": "Shadow Contrast Ratio",
+        "variables": [
+          {"symbol": "C", "meaning": "local contrast at shadow edge", "units": "dimensionless"},
+          {"symbol": "I_{lit}", "meaning": "intensity of illuminated area", "units": "arbitrary units or cd/m²"},
+          {"symbol": "I_{shadow}", "meaning": "intensity within shadow (scattered light only)", "units": "arbitrary units or cd/m²"}
+        ]
+      },
+      {
+        "latex": "$$h_{min} = \\tan(\\theta) \\cdot \\text{GSD} \\cdot N_{pixels}$$",
+        "description": "Minimum Detectable Feature Height",
+        "variables": [
+          {"symbol": "h_{min}", "meaning": "minimum feature height detectable as shadow", "units": "μm"},
+          {"symbol": "\\theta", "meaning": "illumination angle", "units": "degrees"},
+          {"symbol": "\\text{GSD}", "meaning": "ground sampling distance (image resolution)", "units": "μm/pixel"},
+          {"symbol": "N_{pixels}", "meaning": "minimum shadow size for visibility (typically 2-3 pixels)", "units": "pixels"}
+        ]
+      }
+    ],
+    "interactionDepth": "Raking light photography is a pure surface technique documenting topography of the outermost surface layer. Illumination and imaging both interact with the top surface only (light does not penetrate opaque materials; shadows cast by surface relief). Technique sensitive to height variations from ~1 μm (fine cracks, surface texture) to centimeters (structural deformations, deep reliefs). Depth information qualitative (shadows indicate presence and relative orientation of features) or semi-quantitative (shadow length → height if geometry calibrated).",
+    "spatialResolution": "Lateral: Limited by camera resolution (50 μm/pixel macro to 1 mm/pixel overall) and shadow detection threshold (features must cast shadows >2-3 pixels to be visible). Depth: Qualitative: detects features 1 μm - several cm height. Semi-quantitative: ±10-30% accuracy for height estimation from shadow length (limited by shadow edge definition, scattered light, calibration accuracy). Limiting factors: Camera resolution (GSD): finer pixels detect smaller shadows → smaller features visible (50 μm/pixel → ~100-150 μm minimum feature detection at θ=10°). Illumination angle: smaller angle (θ=5° vs. 20°) amplifies shadows (better for small features) but increases shadow penumbra blur (extended light source effect). Light source size: point-like source (small, distant) creates sharp shadow edges; extended source (large, close) creates penumbra (blurred shadow edges) reducing contrast. Scattered light: ambient light or interreflections fill shadows (reduce contrast), making fine features less visible; dark environment improves shadow contrast. Surface reflectance: low-contrast surfaces (dark, low-albedo) produce weak shadows (less brightness difference); high-contrast surfaces (light, high-albedo) produce strong shadows.",
+    "detectionLimit": "Feature height: ~1-2 μm minimum (at θ=5°, GSD=50 μm/pixel, ideal conditions: sharp shadows, high contrast); practical limit ~5-10 μm for reliable detection. Maximum: limited only by field of view (cm-scale deformations easily visible at appropriate camera distance). Dynamic range: Height variation: 10³-10⁴:1 in single image (e.g., 5 μm fine cracks to 5 cm impasto simultaneously visible via shadows at different scales). Contrast: shadows create local contrast 10:1 to 100:1 (much higher than intrinsic albedo variations, typically <3:1). Signal-to-noise: Shadow SNR (contrast at shadow edge) >10:1 required for reliable feature detection. Achievable SNR 20:1 to 100:1 in good conditions (dark environment, matte surface, sharp-edged shadows). Degraded by scattered light (ambient, interreflections), specular reflections, penumbra blur."
+  },
+  "instrumentation": {
+    "source": "Single controllable light source: (1) LED panel (flat, dimmable, 3200-5600K), (2) LED spotlight/flashlight (small, directional, battery-powered), (3) Fiber optic illuminator (flexible arm, small source), (4) Tungsten halogen spotlight (hot, high-power). Illumination angle: 5-20° from surface (measured from horizontal for flat objects). Light source distance: 0.5-3 m typical (adjust to achieve desired angle and coverage). Intensity: 500-5000 lux at object (adjustable via distance or power; sufficient for ISO 100-400, f/8-f/11, 1/15-1 s exposure). Color temperature: not critical (grayscale/B&W documentation common; if color needed: 5000-5500K daylight-balanced). Energy range: Visible spectrum 400-700 nm (standard visible light); broadband white light typical. Power range: LED: 10-100W; tungsten halogen: 500-1000W; fiber optic: 150-250W halogen source. Beam characteristics: Directional (spotlight, narrow beam 10-30° spread) preferred for defined shadow edges. Diffuse sources acceptable but produce softer shadows (penumbra larger). Avoid very extended sources (softboxes, umbrellas) which blur shadows excessively.",
+    "detector": "Digital camera (DSLR, mirrorless; same as standard visible photography). Monochrome cameras (higher resolution, better sensitivity) optional for maximum detail. Smartphone cameras acceptable for qualitative documentation (lower resolution, less control). Spectral range: Visible 400-700 nm (standard camera sensors; IR-cut filter present). Efficiency: Quantum efficiency 40-80% typical for CMOS sensors (same as visible photography). Time resolution: Shutter speed: 1/60 s - 2 s typical (camera on tripod; raking light often lower intensity than normal documentation, may require longer exposures).",
+    "optics": "Camera (20-100 MP DSLR/mirrorless; full-frame or APS-C). Lens (50-100mm normal/macro for objects; 24-35mm for large surfaces). Tripod (stable platform; essential for low-light, long exposures). Light source (LED panel, spotlight, or fiber optic). Light positioning system (adjustable stand, goniometer, or manual positioning). Black background/flags (absorb scattered light, improve shadow contrast). Protractor or angle gauge (measure illumination angle; or calculate from geometry). Scale reference (for shadow length measurement, height estimation). Remote shutter release or self-timer (avoid vibration).",
+    "criticalComponents": [
+      "Directional light source (small, controllable; LED spotlight or fiber optic preferred for portability and sharp shadows)",
+      "Adjustable positioning system (light stand with goniometer head, or measured geometry: protractor + ruler to set angle accurately)",
+      "Stable camera platform (tripod; exposures may be 0.5-2 s due to low light from oblique angle)",
+      "Dark environment or black flags (minimize ambient light, scattered light → maximize shadow contrast)",
+      "High-resolution camera (45-100 MP ideal for detecting fine shadows; 20-36 MP acceptable for most applications)",
+      "Matte object surface (or cross-polarization filters if glossy, to eliminate specular reflections)"
+    ],
+    "typicalConfiguration": "**Standard raking light setup for paintings:** Camera: Canon EOS R5 or Nikon Z7 II (45 MP full-frame), lens: 50mm f/2.8 macro or 100mm f/2.8 macro (depending on object size and working distance), tripod: heavy-duty with geared head (precise positioning). Light source: LED panel (Westcott or Aputure, 1000 lux @ 1m, 5600K) or LED spotlight (Lume Cube, 1500 lux, adjustable focus), mounted on adjustable boom arm or light stand with goniometer head. Positioning: light positioned at 10-15° from painting surface (measured via protractor or calculated: light 15 cm above surface, 1 m horizontal distance → θ ≈ 8.5°). Camera perpendicular to painting (1-2 m distance, fills frame with painting or detail). Environment: darkened room (ambient light minimized), black velvet flags around painting edges (absorb scattered light). Capture sequence: light at 0° azimuth (from bottom of painting), capture; rotate light to 90° (from right), capture; 180° (from top), capture; 270° (from left), capture. Optional: intermediate azimuths (45°, 135°, 225°, 315°) for 8-direction coverage. Camera settings: ISO 400, f/8 (adequate DoF, optimal sharpness), shutter speed 1/15 - 1 s (adjust to expose mid-tones correctly; histogram check). White balance: custom from gray card under raking light (or neutral preset 5500K; exact color not critical if converting to B&W). Format: RAW for maximum flexibility in post-processing (shadow enhancement, contrast adjustment). Total time: 15-30 minutes for 4-azimuth documentation.",
+    "commercialSystems": [
+      {
+        "name": "Lowel Pro LED Light",
+        "vendor": "Lowel (Tiffen)",
+        "notes": "5600K or 3200K, dimmable, 50W, barn doors for beam control, lightweight (1 kg). Approximate cost: $300-$500. URL: https://www.lowel.com"
+      },
+      {
+        "name": "Aputure MC RGBWW LED Light",
+        "vendor": "Aputure",
+        "notes": "Pocket-sized (2\"×2\"), 3200-6500K adjustable, 800 lux @ 0.5m, rechargeable, magnetic mount. Approximate cost: $100. URL: https://www.aputure.com"
+      },
+      {
+        "name": "Lume Cube 2.0",
+        "vendor": "Lume Cube",
+        "notes": "1500 lux, waterproof, Bluetooth control, 2 hr runtime, 1.5\" cube, mount adapters. Approximate cost: $80. URL: https://lumecube.com"
+      },
+      {
+        "name": "Fiber Optic Illuminator",
+        "vendor": "Dolan-Jenner (Qioptiq)",
+        "notes": "150W halogen, flexible fiber optic arms (single or dual), 5mm light guide output, adjustable intensity. Approximate cost: $800-$1,500. URL: https://www.qioptiq.com"
+      },
+      {
+        "name": "Boom Arm + Light Stand",
+        "vendor": "Manfrotto",
+        "notes": "Adjustable boom 1-2.5m, light stand 1-3m height, secure locking, <5 kg capacity. Approximate cost: $200-$400. URL: https://www.manfrotto.com"
+      },
+      {
+        "name": "LED Flashlight + Clamp",
+        "vendor": "Generic / DIY",
+        "notes": "1000-2000 lumen tactical LED flashlight, adjustable focus, clamp mount to stand/tripod. Approximate cost: $30-$100. URL: N/A (hardware store or Amazon)"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "N/A (non-contact imaging; objects photographed in situ)",
+      "Object positioned stably (same as standard photography). For flat objects (paintings): vertical on easel or wall. For 3D objects: stable support, orientation allowing 360° light access (not against wall). Object should be accessible from all sides for light positioning (if not, document accessible angles only). Black or neutral background (absorbs scattered light, increases shadow contrast).",
+      "Clean surface if possible (dust removal with soft brush; dust casts micro-shadows that can obscure features or create artifacts). Avoid touching surface (oils, fingerprints). No special preparation required. Glossy/varnished surfaces: consider cross-polarization (polarizers on light + camera) to eliminate specular reflections if they interfere with shadow visibility.",
+      "N/A (surface imaging technique)",
+      "Dust/particles: cast their own shadows (may be mistaken for surface features, or obscure actual features); gently remove before photography. Ambient light: fills shadows (reduces contrast); turn off room lights, cover windows, use black flags/panels to block scattered light. Specular reflections: bright glare from glossy surfaces (varnish, polished metal) can overwhelm shadow detail; mitigate with cross-polarization or adjust light angle to avoid direct reflection into camera. Interreflections: light bouncing from adjacent surfaces (walls, supports) partially illuminates shadows; use black background/flags to absorb light, increase shadow contrast."
+    ],
+    "measurementProtocol": "**Step 1: Camera and Object Setup**\nPosition object securely (easel, stand, or support; stable, won't shift during multi-angle capture). Position camera on tripod perpendicular to object surface (90° incidence; sensor parallel to object plane for flat objects). Frame object: fill frame with area of interest (whole object or detail; leave margin for light angle changes). Focus critically on object surface (autofocus or manual focus with live view magnification). Lock focus (switch to manual focus after achieving focus; won't drift). Lock camera position (tighten tripod, don't touch camera between raking light captures from different angles). Duration: 10-15 minutes (setup, framing, focusing). Critical parameters: Camera perpendicular to object (minimize keystoning, ensure entire surface in focus at reasonable f-stop), Critical focus on surface, Camera locked (no movement between multi-angle captures for image registration).\n\n**Step 2: Ambient Light Elimination**\nDarken room: turn off overhead lights, close window blinds/curtains. Goal: no ambient light except raking light source (verified by turning off raking light → object should be dark/barely visible in camera live view). Position black flags, panels, or velvet around object and camera (absorb scattered light from raking source). This step critical for maximum shadow contrast. Test: capture image with room lights on vs. off, compare shadow clarity. Duration: 5-10 minutes (light control setup). Critical parameters: Ambient light minimized (shadows should appear nearly black, not gray), Black flags/background in place (no bright surfaces near object to cause interreflections).\n\n**Step 3: Raking Light Positioning (First Azimuth)**\nPosition light source for first azimuth angle (typically 0°, arbitrarily defined as 'bottom' of object, or 'north' for horizontal object). Set illumination angle θ = 10-15° from surface (typical; adjust based on feature scale: smaller θ for very fine features, larger θ for coarse or to reduce penumbra blur). Methods to set angle: (1) **Goniometer:** mount light on goniometer head (protractor scale), set to desired angle relative to object surface. (2) **Geometric calculation:** measure light height h above surface, horizontal distance d from illuminated area; angle θ = arctan(h/d). Example: h=15 cm, d=100 cm → θ≈8.5°. (3) **Visual estimation:** light grazes surface, creates long shadows; fine-tune by observing shadow length on test feature. Position light to illuminate entire field of view (or at least area of interest; beam may need to be relatively broad). Distance: typically 0.5-2 m (closer = more intense, but smaller coverage; farther = weaker, broader coverage). Duration: 10-20 minutes (positioning, angle measurement/calculation, fine-tuning). Critical parameters: Illumination angle 10-15° typical (range 5-20° depending on application), Light positioned consistently (same angle will be used for all azimuth rotations), Coverage adequate (entire field of view illuminated, or document coverage limits).\n\n**Step 4: Camera Settings and Test Exposure**\nCamera settings: Manual mode. ISO: 100-400 (base ISO for low noise; increase if exposure too long). Aperture: f/8-f/11 (adequate depth of field for most flat/low-relief objects; optimal lens sharpness). Shutter speed: adjust to properly expose mid-tones (1/15 s - 2 s typical; raking light often dimmer than normal documentation due to oblique angle, light distance). White balance: not critical (raking light often converted to B&W for texture emphasis; if color needed: custom WB or daylight preset). Format: RAW (preserve maximum information for contrast adjustment in post). Capture test image: review histogram (aim for mid-tones in center; shadows will be dark/clipped by design; ensure illuminated areas not overexposed). Zoom to 100%: check sharpness, shadow definition. Adjust exposure if needed (typically adjust shutter speed; keep ISO low, aperture at optimal f/8-f/11). Duration: 5-10 minutes (settings, test, adjustment). Critical parameters: Histogram: illuminated areas well-exposed (mid-tones, no clipping); shadows intentionally dark, Sharp focus verified at 100% zoom, Shutter speed appropriate (not too fast, causes underexposure; not excessively long, increases noise/camera shake risk even on tripod).\n\n**Step 5: Capture First Azimuth Image**\nUsing remote shutter release or self-timer (2-10 sec; avoids vibration from button press), capture final image at first azimuth (0°). Review image: check exposure, sharpness, shadow contrast. Verify shadow pattern reveals expected features (cracks, texture). If satisfactory, proceed to next azimuth. If issues (poor shadows, specular glare, underexposure): troubleshoot (adjust light angle/distance, add polarization, adjust exposure), recapture. Label image: note azimuth angle in filename or metadata (e.g., 'ObjectID_Raking_000deg.CR3'). Duration: 2-5 minutes (capture, review, verify). Critical parameters: Image sharp (no camera shake), Shadows clear and well-defined, Exposure appropriate (illuminated areas visible, shadows dark), Metadata/filename indicates azimuth angle.\n\n**Step 6: Rotate Light to Next Azimuth and Repeat**\nRotate light source to next azimuth angle: 90° from first position (e.g., if 0° was bottom, 90° is right side). Maintain same illumination angle θ (same height above surface, same distance, but rotated around object). Do NOT move camera (remains fixed, looking perpendicular at object). Repeat capture (steps 4-5): test exposure if lighting intensity changed (should be consistent if same distance/angle), capture image, verify. Continue for remaining azimuths: typical sequence 0°, 90°, 180°, 270° (four cardinal directions, ensure all crack/feature orientations visible in at least one view). Optional: more azimuths for comprehensive coverage (8 directions every 45°, or 12 every 30°; diminishing returns beyond 8-12 for most applications). Label each image with azimuth angle. Duration: 20-60 minutes total for 4-8 azimuths (5-10 min per angle: reposition, capture, verify). Critical parameters: Light angle θ consistent across azimuths (same relative geometry), Camera unmoved (images from different azimuths will be registered/comparable), All azimuths captured (comprehensive directional coverage), Each image labeled (azimuth angle recorded).\n\n**Step 7: Optional: Normal Lighting Reference Image**\nAfter raking light series, optionally capture reference image under normal lighting (diffuse, perpendicular illumination; standard documentation lighting). This provides color reference and shows object appearance without shadow emphasis. Useful for comparing raking light features to overall appearance, orienting viewer, or for publications (normal + raking light side-by-side). Use same camera position (images will register perfectly). Duration: 5-10 minutes (change lighting, capture, verify). Critical parameters: Same camera position (for registration to raking light images), Normal lighting (cross-lighting 45° or diffuse; no shadows).\n\n**Step 8: Quality Control and File Management**\nReview all images: check sharpness (100% zoom on critical areas), verify shadow visibility (features of interest clearly visible in at least one azimuth), exposure consistency (all azimuths similarly exposed, not one much brighter/darker). Check registration: if planning to combine/compare azimuths, verify camera didn't shift (load images in layers in Photoshop, toggle visibility → should align perfectly; or check fiducial marks if present). Backup: copy RAW files to two locations (primary storage + backup drive). Organize: folder structure by object, sub-folder for raking light, filenames indicate azimuth (e.g., ObjectID/Raking/Obj001_Raking_000deg.CR3, Obj001_Raking_090deg.CR3, etc.). Metadata: record camera settings, light type, illumination angle, azimuth angles captured, date, photographer. Duration: 10-20 minutes (review, backup, organize, document). Critical parameters: All images sharp and properly exposed, Images registered (if camera unmoved), Files backed up (two locations), Metadata complete (illumination angle, azimuths documented).",
+    "typicalParameters": [
+      {"parameter": "Illumination angle (θ)", "value": "10-15°", "notes": "Smaller angle (5-10°) emphasizes fine features, creates longer shadows; larger angle (15-25°) reduces penumbra blur, better for coarse features"},
+      {"parameter": "Number of azimuths", "value": "4 (cardinal: 0°, 90°, 180°, 270°)", "notes": "4 azimuths standard (cover all perpendicular directions); 8 for comprehensive (every 45°); 1-2 if only specific feature orientation of interest"},
+      {"parameter": "Light source distance", "value": "0.5-2 m", "notes": "Closer = brighter, smaller coverage area; farther = dimmer, broader coverage. Distance and height determine illumination angle."},
+      {"parameter": "Camera aperture", "value": "f/8", "notes": "f/8-f/11 optimal sharpness; f/5.6 if need faster shutter speed (but shallower DoF); f/16 for deep DoF (but diffraction may reduce sharpness)"},
+      {"parameter": "Camera ISO", "value": "200-400", "notes": "Base ISO (100-200) for low noise; increase (400-1600) if raking light too dim and shutter speed excessively long (>2 s)"},
+      {"parameter": "Shutter speed", "value": "1/15 s - 1 s", "notes": "Depends on light intensity; raking light often requires slower shutter than normal (oblique angle = less light on surface); use tripod + remote/timer"},
+      {"parameter": "Light intensity at object", "value": "500-2000 lux", "notes": "Sufficient for ISO 200-400, f/8, 1/15-1 s exposure; adjust via light power or distance"},
+      {"parameter": "Background", "value": "Black (velvet, foam core)", "notes": "Black absorbs scattered light, maximizes shadow contrast; neutral gray acceptable if black unavailable"},
+      {"parameter": "Ambient light level", "value": "<10 lux", "notes": "Minimize ambient light (darkened room); <10 lux ideal (shadows appear black); up to 50 lux acceptable if shadows still clear"}
+    ],
+    "calibration": "**Standards:** Scale reference (ruler, scale bar) in frame for shadow length measurement (enables height estimation via h = L·tan(θ)). Known height reference features (if available: step wedge, calibrated surface with known topography) for empirical height calibration. Illumination angle measurement: protractor, angle gauge, or geometric calculation (verify illumination angle accurate within ±1-2°). Flat reference surface (optical flat, mirror, or known-flat substrate) to verify illumination uniformity, assess stray light/interreflections.\n\n**Frequency:** Illumination angle calibration: per object or session (set light position, measure/calculate angle, record). No routine calibration needed (technique qualitative/semi-quantitative). For quantitative height measurement studies: empirical calibration using reference features (measure known heights, verify h = L·tan(θ) relationship, determine effective angle accounting for light source size, scattered light).\n\n**Procedure:** **Illumination angle calibration:** Method 1 (geometric): Measure light height h above object surface (ruler, tape measure from surface to light center). Measure horizontal distance d from illuminated area to point directly below light. Calculate θ = arctan(h/d). Record in metadata. Method 2 (goniometer): Mount light on goniometer head (protractor scale), align reference axis with object surface, read angle directly. **Shadow-to-height calibration (optional, for quantitative studies):** Photograph object with known surface features (measured via profilometer or micrometer). Measure shadow lengths in image (calibrated via scale reference in frame). Compute h_measured / (L_measured · tan(θ)) for multiple features. If ratio ≈ 1.0 ± 10%, geometry accurately calibrated. If systematic deviation: adjust effective θ (may differ from geometric θ due to light source size, scattered light). **Uniformity check:** Photograph flat reference (white paper, optical flat). Inspect for brightness gradients (illumination non-uniformity) or bright spots (interreflections). Adjust light position or add flags to improve uniformity/reduce stray light if needed.",
+    "qualityControl": [
+      "Sharp focus (100% zoom inspection; shadows have crisp edges, surface texture visible)",
+      "Adequate shadow contrast (shadows appear dark, nearly black; illuminated areas bright; local contrast >10:1)",
+      "No camera movement (images from multiple azimuths align perfectly if overlaid; or verify tripod wasn't disturbed)",
+      "Illumination angle consistent (all azimuths have similar shadow length for same features → angle didn't change)",
+      "No specular reflections (if glossy surface: no bright glare spots obscuring shadows; use polarization if needed)",
+      "Complete azimuthal coverage (features of interest visible in at least one view; perpendicular crack orientations documented)",
+      "Proper exposure (illuminated areas well-exposed, histogram mid-tones; shadows can be clipped/dark by design)",
+      "Metadata complete (illumination angle θ, azimuth angles, date, object ID documented)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "Same as standard photography: RAW (NEF, CR3, ARW, etc.), output TIFF or JPEG. Typically grayscale or low-saturation (texture emphasis); color information secondary. Data structure: Single-channel (grayscale) or 3-channel RGB image (if color captured but often converted to grayscale in processing). Each pixel represents brightness at that location (combination of surface albedo and shadow presence). Metadata: illumination angle θ, azimuth angle, camera settings. Typical file size: Same as standard photography: RAW 50-150 MB (45-100 MP camera); TIFF 150-300 MB (16-bit); JPEG 10-30 MB (8-bit, compression).",
+    "preprocessing": [
+      "RAW conversion: Convert RAW to TIFF or process in RAW editor (Lightroom, Capture One). Adjust exposure if needed (brighten illuminated areas slightly, but preserve shadow darkness). White balance: not critical (often convert to grayscale anyway). Sharpening: moderate (emphasize edges, shadow boundaries; but avoid over-sharpening which creates halos). Software: Lightroom, Photoshop Camera Raw, Capture One.",
+      "Grayscale conversion: Convert RGB to grayscale to emphasize texture (remove color distractions). Method: desaturate, or convert to luminance channel (L* in LAB color space, or weighted RGB→gray: 0.3R + 0.59G + 0.11B). Preserve contrast. Alternatively: keep color if needed for context, but reduce saturation (~50%) to de-emphasize color, emphasize shadows. Software: Photoshop (Image > Mode > Grayscale; or Hue/Saturation adjust), Lightroom (B&W preset).",
+      "Contrast enhancement: Increase contrast to emphasize shadows and surface texture. Methods: (1) Curves adjustment (S-curve: darken shadows, brighten highlights), (2) Levels adjustment (set black/white points, increase mid-tone contrast), (3) Local contrast enhancement (unsharp mask with large radius ~50-100 pixels, low amount ~20-40%; or Clarity/Structure sliders in Lightroom). Goal: make shadows more obvious, surface detail more visible, but avoid posterization (too much contrast = loss of gradations). Software: Photoshop (Curves, Levels, Unsharp Mask), Lightroom (Contrast, Clarity, Dehaze sliders).",
+      "Noise reduction (optional): If high ISO was used (400-1600), apply noise reduction to smooth gradations, avoid distracting grain. Balance: too much NR blurs fine detail (including shadows). Use luminance NR (smooth brightness variations, preserve edges). Typically: moderate settings (Lightroom Luminance NR 30-50; Photoshop: reduce noise filter, strength ~5). Software: Lightroom (Detail panel, Noise Reduction), Photoshop (Filter > Noise > Reduce Noise).",
+      "Cropping and alignment: Crop to area of interest (remove background, frame object or detail). If comparing multiple azimuths: align images (Photoshop: load as layers, auto-align; or manual registration via control points). Aligned images can be toggled (turn layers on/off) to see features appear/disappear at different azimuths (diagnostic for feature orientation). Software: Photoshop (Auto-Align Layers), Fiji/ImageJ (StackReg plugin), Hugin (panorama software, works for registration).",
+      "Annotation (optional): Add annotations to highlight features revealed by raking light (arrows, labels, outlines). Or create comparison figures (side-by-side: normal light + raking light; or multi-panel: 4 azimuths). For publications/reports: scale bar (if not in image, add graphical scale), orientation compass (indicate azimuth angle: 'light from bottom', 'light from left', etc.). Software: Photoshop (text, arrows, shapes), Illustrator (annotation graphics), PowerPoint (simple annotations, labels)."
+    ],
+    "analysisWorkflow": "**Step 1: Visual Inspection of Raking Light Series**\nView all azimuth images sequentially (0°, 90°, 180°, 270°, and intermediates if captured). Observe how shadows change: features perpendicular to light direction cast longest shadows (most visible); features parallel cast minimal shadows (less visible or invisible). Identify directional features: cracks with preferred orientation (appear strong in some azimuths, weak in others), brushstrokes (reveal directionality), weave patterns (warp/weft directions visible in different azimuths). Note features visible in all azimuths (isotropic texture, non-directional features like circular cracks, random texture) vs. features visible only in specific azimuths (highly directional: long linear cracks, parallel toolmarks).\n\n**Step 2: Feature Identification and Mapping**\nSystematically document features revealed by raking light: (1) Cracks/craquelure: note orientation (horizontal, vertical, diagonal, random network), density (cracks per cm²), width (visually: hairline <10 μm, fine 10-50 μm, coarse >50 μm), depth (inferred from shadow darkness/width: deeper cracks cast darker, wider shadows). (2) Surface deformations: cupping, buckling, raised/sunken areas (visible via shading patterns, shadow accumulation at transitions). (3) Texture: brushstroke patterns (impasto ridges cast shadows, reveal direction and width), weave (thread shadows reveal structure), toolmarks (regular or irregular patterns from fabrication). (4) Condition issues: losses (edges cast shadows), abrasion (flattened texture visible by comparing to intact areas), repairs/overpaint (often have different texture than original). Create map: sketch or annotate photograph with feature locations, orientations, types.\n\n**Step 3: Quantitative Shadow Measurement (Optional)**\nFor semi-quantitative height estimation: (1) Calibrate image: measure scale reference in image (pixels per mm or μm), note scale factor. (2) Measure shadow length L: use image analysis software (ImageJ, Photoshop ruler tool) to measure shadow from feature base to shadow end (perpendicular to light direction; shadows cast in direction opposite to light azimuth). (3) Calculate feature height: h = L · tan(θ), where θ is known illumination angle, L is measured shadow length (converted to real units via scale). (4) Repeat for multiple features: compare calculated heights to expectations (if features have known heights, validate method; ±10-30% accuracy typical due to shadow edge uncertainty, scattered light). (5) Document: table of features, shadow lengths, calculated heights. Recognize limitations: semi-quantitative (not as accurate as profilometry; useful for estimates, comparisons, but not precision measurement).\n\n**Step 4: Comparison to Normal Lighting**\nDisplay raking light image(s) alongside normal lighting reference image (if captured). Comparison reveals: features visible only in raking light (subtle topography invisible under normal lighting: fine cracks, low-relief brushstrokes, slight deformations). Features visible in both (more obvious condition issues: large cracks, losses, color differences). Annotate: 'Raking light (10°, light from bottom) reveals fine craquelure network invisible under normal lighting.' Or create comparison figure: side-by-side, before/after style. This helps non-experts understand raking light advantages (visualizes information gained by technique).\n\n**Step 5: Multi-Azimuth Analysis (Directionality)**\nCompare images from multiple azimuths to assess feature directionality. Methods: (1) **Toggle comparison:** Load all azimuths as layers in Photoshop, toggle visibility (turn layers on/off) → watch features appear/disappear. Features appearing in only 1-2 azimuths are highly directional (e.g., horizontal crack visible when light from top/bottom, invisible when light from sides). Features visible in all azimuths are non-directional (random texture, equidimensional features). (2) **Quantitative orientation analysis (advanced):** For crack networks: measure crack orientations in each azimuth image (image processing: edge detection, Hough transform, or manual measurement via protractor tool). Plot rose diagram or histogram (crack orientation distribution). Reveals preferred crack orientations (anisotropic cracking: e.g., vertical cracks from roller tension in canvas; circumferential cracks from cylinder bending). (3) **3D inference:** Mentally reconstruct 3D surface from multiple azimuths (features appearing as ridges when lit from one side, valleys when lit from opposite → identify convex vs. concave features). Advanced: photometric stereo reconstruction (see RTI, related technique).\n\n**Step 6: Condition Assessment and Documentation**\nUse raking light findings for conservation condition reporting: (1) Craquelure severity: categorize based on raking light appearance (minimal: few fine cracks, shallow; moderate: network of cracks, some deep; severe: extensive network, wide/deep cracks, flaking imminent). (2) Structural issues: deformations, cupping, buckling documented by raking light shading patterns → prioritize for treatment (severe structural issues visible in raking light may require support, lining). (3) Surface integrity: abrasion (flattened texture visible in raking light), losses (clear edges), prior repairs (texture mismatch). (4) Treatment planning: target areas for consolidation (active flaking, deep cracks visible in raking), cleaning tests (compare texture pre/post in raking light, ensure cleaning not abrading surface). Generate condition report: include raking light images with annotations, describe findings, recommend treatments based on observed topography.\n\n**Step 7: Technical Art History Analysis**\nUse raking light for art-historical research: (1) Brushwork technique: analyze impasto patterns (heavy paint buildup → prominent shadows), brushstroke direction (reveals artist's hand movement), blending (wet-into-wet painting has smooth transitions; overpainting has distinct texture boundaries visible in raking light). (2) Fabrication methods: toolmarks on metal (chasing, engraving visible in raking), weave variations in textiles (changes in thread density, weave pattern → provenance, dating), carving technique on wood/stone (gouge marks, chisel patterns reveal tools, methods). (3) Pentimenti and changes: artist's modifications visible as texture changes (scraped-down paint, added passages with different impasto → raking light reveals during composition process). (4) Authentication: compare raking light texture to known works by artist (characteristic brushwork patterns, consistent craquelure aging), detect forgeries (modern materials have different texture, cracking patterns anachronistic).\n\n**Step 8: Report and Archive**\nCompile results: select best raking light images (1-4 azimuths showing key features), process for clarity (contrast enhancement, grayscale conversion), annotate (arrows, labels highlighting features of interest). Create figures: comparison panels (normal + raking light; or 4-azimuth grid), captioned with illumination angle and direction ('Raking light, θ=10°, light from left'). Generate report sections: (1) Methodology (camera, light, angles used), (2) Observations (features detected, measurements if applicable), (3) Interpretation (condition assessment, technical findings, art-historical conclusions), (4) Recommendations (conservation treatments, further analysis needed). Archive: store RAW files + processed TIFFs in institutional repository, link to object record (accession database, conservation treatment file), metadata (illumination angles, dates, findings summary).",
+    "softwareTools": [
+      {
+        "name": "Adobe Photoshop",
+        "url": "https://www.adobe.com/photoshop",
+        "notes": "Image registration (Auto-Align Layers for multi-azimuth comparison). Contrast adjustment (Curves, Levels, local contrast). Annotation (arrows, text, shapes). Layer toggling (compare azimuths). Cost: $55/month (single app) or $10/month (Photography Plan)."
+      },
+      {
+        "name": "Adobe Lightroom Classic",
+        "url": "https://www.adobe.com/lightroom",
+        "notes": "RAW processing (exposure, contrast, clarity). Batch processing (apply settings to all azimuths). Grayscale conversion (B&W presets). Export (TIFF, JPEG derivatives). Cost: $10/month (Photography Plan with Photoshop)."
+      },
+      {
+        "name": "Fiji/ImageJ",
+        "url": "https://imagej.net/Fiji",
+        "notes": "Image measurement (shadow length, feature size). StackReg plugin (image registration). Quantitative analysis (histogram, profile plots). Scripting (automate multi-image processing). Cost: Free."
+      },
+      {
+        "name": "Hugin",
+        "url": "http://hugin.sourceforge.net",
+        "notes": "Image alignment (panorama stitching software, works for registration). Control point selection (manual alignment refinement). Multi-image blending. Cost: Free."
+      },
+      {
+        "name": "GIMP",
+        "url": "https://www.gimp.org",
+        "notes": "Image editing (alternative to Photoshop: layers, curves, sharpening). Annotation tools. Format conversion. Cost: Free."
+      }
+    ],
+    "interpretationGuidelines": "**Shadow interpretation:** Shadows indicate surface relief (features above local surface level), but shadow presence alone doesn't uniquely determine topography (ridge vs. valley ambiguity: same shadow pattern can result from raised feature or recessed feature if viewing geometry changes). Resolve ambiguity via: (1) compare opposite azimuths (180° apart): shadow switches sides for ridge (lit side switches), stays same side for valley; (2) prior knowledge (cracks are valleys, brushstrokes are ridges); (3) shading cues (lit side of feature brighter if diffuse reflection). **Directionality:** Feature visibility varies with azimuth: most visible when light perpendicular to feature orientation (maximum shadow), invisible when parallel (no shadow). Use multi-azimuth series to determine feature orientations: crack visible only when lit from N/S → crack oriented E/W. **Quantitative height:** Shadow length L → height h = L·tan(θ) is semi-quantitative (±10-30% typical accuracy). Sources of error: shadow edge definition (penumbra blur), scattered light (shortens apparent shadow), measurement uncertainty (pixel size limits precision), illumination angle uncertainty (±1-2° typical → ±2-4% height error via tan function). Use for relative comparisons (this crack deeper than that one) or rough absolute estimates (impasto ~200 μm thick), not precision measurement. **Texture vs. albedo:** Raking light emphasizes texture (topography) but also affected by surface albedo (dark areas in image could be shadows OR dark material). Distinguish via multi-azimuth comparison: shadows move with light azimuth (disappear/reappear in different locations); dark materials stay fixed (appear dark in all azimuths).",
+    "commonPitfalls": [
+      "Mistaking dust/debris shadows for surface features: Loose particles on surface (dust, fibers, dried conservation material) cast shadows in raking light. Can be mistaken for cracks, texture, or damage. Novice may document 'extensive fine cracking' that's actually dust. Especially problematic on rarely-cleaned objects (storage, outdoor sculpture with pollen/dirt accumulation). Avoidance: Gently clean surface before raking light photography (soft brush, compressed air; conservator-approved methods). Check suspected features: dust shadows are high-frequency, random, circular/irregular; real features (cracks, brushstrokes) are regular, linear, consistent patterns. If uncertain: photograph, clean carefully, photograph again → dust shadows disappear, real features remain. Note in report: 'Surface cleaned prior to raking light photography' to document methodology, avoid false-positive feature identification.",
+      "Confusing specular reflections with surface features: Glossy/varnished surfaces produce bright specular reflections (glare spots) in raking light. Reflections can obscure shadows or be mistaken for raised features (bright = high?). Novice interprets bright glare as surface characteristic when it's purely optical artifact (would disappear from different viewing angle or if varnish removed). Common on paintings with glossy varnish, polished metal, glazed ceramics. Avoidance: Recognize specular reflections: bright spots in raking light that move with camera/light position (change location if camera angle changes slightly; real surface features stay fixed). Mitigate: cross-polarization (polarizers on light + camera eliminate specular reflection via orthogonal polarization, leaving only diffuse reflection and shadows). Or adjust light angle (trial-and-error to minimize glare while maintaining raking angle). Document: 'Cross-polarization used to eliminate varnish reflections' or 'Glare visible at 12 o'clock position, does not indicate surface feature' if unavoidable.",
+      "Over-interpreting shadow patterns as precise topography: Raking light reveals topography qualitatively (shadows indicate features present) but not quantitatively precise. Novice may measure shadow lengths, calculate exact heights (h = L·tan(θ)), report as micron-level precision ('crack is 47.3 μm deep'). Reality: ±20-30% accuracy typical (penumbra blur, scattered light, measurement error). Overconfident quantification misleading for conservation planning (consolidant penetration depth, structural significance decisions based on false precision). Avoidance: Report raking light heights as semi-quantitative estimates: 'Crack depth estimated ~40-60 μm from raking light shadow measurement' (give range, acknowledge uncertainty). For precision topography: use profilometry (stylus, optical, laser scanning) which measures height directly, not via shadows. Raking light best for: qualitative feature detection (is crack present?), relative comparisons (crack A deeper than crack B), rough categorization (shallow <20 μm, moderate 20-100 μm, deep >100 μm). Accept limitations, don't oversell quantitative capability.",
+      "Single azimuth imaging (missing directional features): Photographing raking light from only one azimuth angle (e.g., light from top only). Features parallel to light direction cast no shadows → invisible in that azimuth. Horizontal cracks invisible with light from top; vertical cracks invisible with light from side. Novice documents 'no cracking observed in area X' based on single azimuth, when in fact cracks present but oriented parallel to light (would be visible from perpendicular azimuth). Incomplete documentation misleads conservation assessment. Avoidance: ALWAYS photograph at least 4 cardinal azimuths (0°, 90°, 180°, 270°) to ensure all crack orientations visible in at least one view. Inspect all azimuths before concluding feature absent (if crack not visible in any azimuth, truly not present; if visible in 1-2 azimuths, crack oriented perpendicular to those lighting directions). Report comprehensively: 'Raking light from four azimuths reveals fine horizontal craquelure (visible when lit from top/bottom, invisible from sides), no vertical cracking detected' (indicates which orientations checked, which found/not found).",
+      "Inconsistent illumination angle across azimuths (confounds comparison): When rotating light to different azimuths, operator changes illumination angle θ accidentally (light at θ=10° for first azimuth, θ=20° for second due to imprecise repositioning). Shadow lengths change proportionally (L ∝ 1/tan(θ) → doubling θ from 10° to 20° roughly halves shadow length). Novice interprets shorter shadows in second azimuth as features being shallower (height difference), when actually just geometry artifact. Leads to false conclusions about topography variation across object. Avoidance: Maintain consistent illumination angle across all azimuths: use goniometer (lock angle, rotate only azimuth), or carefully measure geometry for each position (h and d such that arctan(h/d) constant), or use fixed light positioning rig (keeps θ constant while rotating around object). Verify consistency: photograph test object with known isotropic texture (uniform bumps) in all azimuths → shadow lengths should be same (if not, geometry inconsistent, recalibrate). Document: 'Illumination angle θ=12° ± 1° maintained across all four azimuths' to indicate careful control."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Painting condition documentation (craquelure patterns, paint losses, abrasion, impasto topology)",
+      "Technical art history (brushwork analysis, weave structure, toolmarks revealing artist technique)",
+      "Textile conservation (weave details, thread degradation, worn areas, repairs, embroidery relief)",
+      "Works on paper (watermark visibility enhanced by transmitted raking light, surface damage)",
+      "Sculpture surface analysis (toolmarks, carving technique, surface weathering, biological growth)",
+      "Archaeological ceramics (manufacturing marks, use-wear patterns, surface treatments)",
+      "Architectural conservation (stone erosion, mortar loss, structural cracks, graffiti removal assessment)",
+      "Authentication and forgery detection (analyzing craquelure patterns, detecting modern materials/techniques)"
+    ],
+    "materialTypes": [
+      "Paintings (oil, acrylic, tempera on canvas/panel): excellent - Primary application; reveals craquelure, brushstrokes, pentimenti, surface condition; varnished paintings may need cross-polarization",
+      "Textiles and tapestries: excellent - Weave structure, thread shadows, worn areas, repairs visible; raking emphasizes relief of embroidery, brocade",
+      "Works on paper (prints, drawings, manuscripts): good-excellent - Embossing, watermarks (transmitted raking light), laid lines, surface damage; gentle technique, safe for fragile papers",
+      "Stone sculpture and architecture: excellent - Weathering patterns, toolmarks, erosion, biological growth, structural cracks; outdoor monuments benefit from large-scale raking light",
+      "Wood (furniture, sculpture, panels): excellent - Grain emphasized, carving details, wormholes, splits, warping; toolmark analysis for authentication, dating",
+      "Metals (sculpture, armor, instruments): good - Engraving, chasing, toolmarks visible; polished metals difficult (specular reflections); matte/corroded metals excellent",
+      "Ceramics and pottery: good-excellent - Throwing marks, surface treatments, cracks, repairs; glazed ceramics may have specular issues (unglazed pottery excellent)",
+      "Leather and parchment: excellent - Grain patterns, embossing, wear, tears, cockling revealed by shadows; delicate materials, non-contact technique ideal",
+      "Glass and transparent materials: fair-poor - Transparent materials don't cast shadows effectively (light passes through); surface scratches/etching visible if opaque backing used"
+    ],
+    "caseStudies": [
+      {
+        "title": "Rembrandt's 'Night Watch': Raking Light Analysis Guides Cleaning and Restoration Project",
+        "description": "The Rijksmuseum conducted comprehensive study and conservation treatment of Rembrandt's masterpiece 'The Night Watch' (363×437 cm, 2019-2023), documented in unprecedented detail using systematic raking light photography. Custom-built automated imaging system: Phase One iXM-100 medium format (100 MP), motorized gantry, LED spotlight at 12° from surface. Systematic capture: 30 tiles × 4 azimuths = 120 images per campaign (before cleaning, mid-treatment, after treatment). Processing: PTGui Pro stitching → seamless 16.8 gigapixel mosaics per azimuth (30 GB each). Results: >100,000 cracks mapped automatically, crack depth estimated (50-200 μm typical), consolidation priorities identified (3,200 locations treated), cleaning safety confirmed (texture enhanced not reduced post-treatment). Technical achievements: 1.5 mm/pixel GSD across entire painting, quantitative crack analysis (density, orientation, depth), multi-year monitoring baseline. Significance: Established raking light as essential for large-scale painting conservation, validated non-destructive condition monitoring, demonstrated integration with MA-XRF/IR, public transparency model (online gigapixel viewers).",
+        "reference": "Noble, P., et al. 2020. 'An Integrated Approach for the Study and Conservation of Rembrandt's 'Night Watch'.' Studies in Conservation 65: S1-S13. DOI: 10.1080/00393630.2020.1784123"
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "visible-photography",
+      "rti",
+      "photogrammetry",
+      "3d-scanning",
+      "xrf",
+      "infrared-reflectography"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["visible-photography", "raking-light"],
+        "rationale": "Standard conservation documentation: normal lighting provides context (what object looks like to viewer, color information), raking light provides condition/technical information (cracks, texture). Efficient: same setup, just change lighting (15-30 min total for both). Always document both: normal alone misses surface detail, raking alone lacks color/context. Combined: complete visual record (appearance + structure).",
+        "examples": "Painting documentation: Normal lighting (cross-polarized, color-calibrated) shows varnish color (yellowed), overall tonality, composition. Raking light (4 azimuths) reveals extensive craquelure network (fine cracks invisible in normal lighting), impasto thickness (shadows from brushstrokes), prior restoration (smooth retouching vs. textured original). Conservator uses normal for color assessment (varnish removal will brighten colors), raking for condition assessment (cracks require consolidation). Report includes both: normal image captioned 'Current appearance', raking image captioned 'Surface condition (raking light, 10° from left) reveals extensive craquelure requiring stabilization'."
+      },
+      {
+        "techniques": ["raking-light", "rti"],
+        "rationale": "Raking light fast, simple (standard camera + single light, 30 min for 4 azimuths). RTI comprehensive but time-intensive (50+ images, specialized processing, 2-4 hours capture + processing). Combined approach: raking light for triage (which objects, which areas need detailed study?), RTI for high-priority items (flagship objects, critical condition issues, research questions). Cost-effective: most objects adequately documented with raking light, RTI reserved for cases where interactive relighting adds value.",
+        "examples": "Sculpture conservation: Initial survey (100+ objects) uses 4-azimuth raking light (rapid, screens for condition issues: cracks, erosion, prior repairs). Identifies 10 objects with significant condition concerns. Follow-up: RTI on those 10 (interactive relighting reveals crack depths, erosion patterns, toolmark details for treatment planning, authentication). Efficient: 100 objects documented in 2 weeks with raking light (30 min each); 10 critical objects get full RTI (2 hours each = 20 hours additional). Comprehensive documentation achieved in 3 weeks total, balanced effort vs. information."
+      },
+      {
+        "techniques": ["raking-light", "stereo-photogrammetry"],
+        "rationale": "Photogrammetry excellent for overall 3D geometry (shape, dimensions), but texture from diffuse lighting (required for photogrammetry) doesn't emphasize surface relief. Raking light perfect for texture emphasis but 2D (no depth information). Combined: photogrammetry provides 3D scaffold (accurate geometry, measurable dimensions), raking light provides high-contrast texture (surface detail, condition features). Synergistic: 3D geometry + detailed texture = comprehensive surface documentation.",
+        "examples": "Stone sculpture documentation: Photogrammetry (100 images, diffuse lighting) creates accurate 3D model (0.5 mm precision, full geometry captured). Model texture adequate for overall appearance but subtle toolmarks, weathering patterns not obvious (even lighting, no shadow emphasis). Raking light (4 azimuths, fixed camera on sculpture front) reveals toolmark patterns, erosion, biological growth via shadows. Project raking light texture onto 3D model → user examines sculpture in 3D viewer, rotates to any angle, sees raking-light-emphasized texture (toolmarks pop out in 3D context). Combined deliverable: 3D model for measurements (dimensions, volume), raking light texture for condition assessment (weathering severity, conservation priorities)."
+      }
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Burroughs, A. 1938. 'Art Criticism from a Laboratory.' Little, Brown and Company.",
+        "notes": "Pioneering work establishing technical photography (including raking light) for art examination; systematic approach to craquelure, surface documentation"
+      },
+      {
+        "citation": "Noble, P., et al. 2020. 'An Integrated Approach for the Study and Conservation of Rembrandt's Night Watch.' Studies in Conservation 65: S1-S13.",
+        "doi": "10.1080/00393630.2020.1784123",
+        "notes": "Operation Night Watch: large-scale raking light documentation (120 images, 4 azimuths) integrated with MA-XRF, IR; guided conservation treatment"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Warda, J., et al. 2011. 'The AIC Guide to Digital Photography and Conservation Documentation (2nd ed.).' American Institute for Conservation.",
+        "notes": "Comprehensive guide including raking light protocols: equipment, angles, multi-azimuth approach, processing; standard reference for conservation photography"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "AIC Imaging Wiki - Raking Light",
+        "url": "http://www.conservation-wiki.com/wiki/Raking_Light",
+        "notes": "Conservation community resource: raking light techniques, equipment recommendations, examples (curated by AIC Imaging Working Group)"
+      },
+      {
+        "title": "Cultural Heritage Imaging - RTI Resources",
+        "url": "http://culturalheritageimaging.org/Technologies/RTI/",
+        "notes": "RTI documentation (advanced raking light); comparison to multi-azimuth raking light, training materials, open-source tools"
+      },
+      {
+        "title": "Rijksmuseum - Operation Night Watch Documentation",
+        "url": "https://www.rijksmuseum.nl/en/nightwatch",
+        "notes": "Public archive of Night Watch imaging including raking light; gigapixel viewers; educational materials"
+      }
+    ]
+  },
+  "tags": [
+    "raking light",
+    "oblique illumination",
+    "surface topography",
+    "shadow photography",
+    "texture documentation",
+    "craquelure",
+    "brushwork analysis",
+    "condition documentation",
+    "non-contact imaging",
+    "conservation photography"
+  ],
+  "relatedTechniques": [
+    "visible-photography",
+    "rti",
+    "photogrammetry",
+    "transmitted-light",
+    "normal-lighting",
+    "macro-photography",
+    "3d-scanning"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

@@ -1,0 +1,364 @@
+{
+  "id": "digital-x-ray-radiography",
+  "name": "Digital X-ray Radiography (DR)",
+  "acronym": "DR",
+  "category": "X-ray Techniques",
+  "subcategory": "Transmission Imaging - Digital",
+  "summary": "Digital X-ray radiography uses electronic detectors (flat-panel detectors or computed radiography plates) instead of photographic film to capture X-ray transmission images. The technique provides immediate image feedback, superior dynamic range, digital archiving, and advanced image processing capabilities while maintaining the fundamental physics of traditional radiography. DR has largely replaced film-based systems in modern conservation labs due to improved workflow efficiency and image quality.",
+  "keyApplications": [
+    "Real-time visualization of internal structure during examination",
+    "High dynamic range imaging revealing both dense and thin features simultaneously",
+    "Rapid multiple-exposure techniques (different energies, angles) without film changes",
+    "Digital image enhancement (contrast adjustment, edge detection, pseudo-color)",
+    "Quantitative density measurements and image analysis",
+    "Immediate sharing and remote consultation via digital networks",
+    "Long-term digital archiving with lossless compression"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "transportable",
+  "fundamentalPhysics": {
+    "principle": "Digital radiography operates on the same physical principles as film radiography - differential X-ray attenuation through materials of varying density and atomic composition. The key difference lies in detection: instead of photographic emulsion, digital detectors use either scintillator-photodiode arrays (direct digital radiography, DDR) or photostimulable phosphor plates (computed radiography, CR). X-ray photons are converted to visible light in a scintillator layer, then to electrical charge in a photodiode array or stored in phosphor crystals. The electronic signal is digitized to create a grayscale image where pixel values represent X-ray transmission intensity.",
+    "physicalPhenomenon": "Detection mechanisms: (1) Direct conversion - X-rays generate electron-hole pairs in semiconductor (amorphous selenium) converted directly to electrical signal. (2) Indirect conversion - X-rays excite scintillator (CsI, Gd₂O₂S) producing visible photons detected by photodiode array or CCD. (3) Photostimulable phosphor - X-rays create trapped electron states; laser scanning releases stored energy as light.",
+    "equations": [
+      {
+        "latex": "$$I = I_0 e^{-\\mu x}$$",
+        "description": "Beer-Lambert Law for X-ray Attenuation (identical to film radiography)",
+        "variables": [
+          {"symbol": "I", "meaning": "transmitted X-ray intensity", "units": "W/m²"},
+          {"symbol": "I_0", "meaning": "incident X-ray intensity", "units": "W/m²"},
+          {"symbol": "\\mu", "meaning": "linear attenuation coefficient", "units": "cm⁻¹"},
+          {"symbol": "x", "meaning": "material thickness", "units": "cm"}
+        ]
+      },
+      {
+        "latex": "$$DQE = \\frac{SNR_{out}^2}{SNR_{in}^2}$$",
+        "description": "Detective Quantum Efficiency (image quality metric for digital detectors)",
+        "variables": [
+          {"symbol": "DQE", "meaning": "detective quantum efficiency", "units": "dimensionless"},
+          {"symbol": "SNR_{out}", "meaning": "signal-to-noise ratio at detector output", "units": "dimensionless"},
+          {"symbol": "SNR_{in}", "meaning": "signal-to-noise ratio at detector input", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$MTF(f) = \\frac{|\\mathcal{F}\\{LSF(x)\\}|}{|\\mathcal{F}\\{LSF(x)\\}|_{f=0}}$$",
+        "description": "Modulation Transfer Function (spatial resolution characterization)",
+        "variables": [
+          {"symbol": "MTF(f)", "meaning": "modulation transfer function at spatial frequency f", "units": "dimensionless"},
+          {"symbol": "f", "meaning": "spatial frequency", "units": "line pairs/mm"},
+          {"symbol": "\\mathcal{F}", "meaning": "Fourier transform operator", "units": "N/A"},
+          {"symbol": "LSF(x)", "meaning": "line spread function", "units": "arbitrary units"}
+        ]
+      },
+      {
+        "latex": "$$PV = \\frac{2^{bit\\_depth} - 1}{\\ln(I_0/I)}$$",
+        "description": "Pixel Value Conversion (relates detector signal to attenuation)",
+        "variables": [
+          {"symbol": "PV", "meaning": "pixel value in digital image", "units": "digital units"},
+          {"symbol": "bit\\_depth", "meaning": "analog-to-digital converter bit depth", "units": "bits"},
+          {"symbol": "I_0", "meaning": "incident X-ray intensity (no object)", "units": "arbitrary units"},
+          {"symbol": "I", "meaning": "transmitted X-ray intensity", "units": "arbitrary units"}
+        ]
+      },
+      {
+        "latex": "$$CNR = \\frac{|S_1 - S_2|}{\\sqrt{\\sigma_1^2 + \\sigma_2^2}}$$",
+        "description": "Contrast-to-Noise Ratio (detectability of features)",
+        "variables": [
+          {"symbol": "CNR", "meaning": "contrast-to-noise ratio", "units": "dimensionless"},
+          {"symbol": "S_1", "meaning": "mean signal in region 1", "units": "digital units"},
+          {"symbol": "S_2", "meaning": "mean signal in region 2", "units": "digital units"},
+          {"symbol": "\\sigma_1", "meaning": "standard deviation of noise in region 1", "units": "digital units"},
+          {"symbol": "\\sigma_2", "meaning": "standard deviation of noise in region 2", "units": "digital units"}
+        ]
+      }
+    ],
+    "interactionDepth": "Interaction depth is identical to film radiography - DR is a transmission technique sampling entire object thickness. Detection mechanism does not affect X-ray penetration, only signal capture efficiency. Canvas/textile: Full thickness (0.5-2 mm), complete transmission. Wood panels: Up to 5 cm at 80-100 kV, DR's high dynamic range better visualizes grain in thick panels. Paint layers (lead white): All layers imaged, superior to film for revealing subtle density variations. Bronze sculptures: 0.5-3 cm depending on kV, digital's wider latitude shows internal structure better than film. Stone (marble, limestone): 2-10 cm, high kV (>150 kV) required; DR captures details film misses.",
+    "spatialResolution": "Lateral Resolution: 0.05-0.2 mm (detector-dependent); typically 100-200 μm for flat-panel detectors, 50-100 μm for CR plates. Depth Resolution: No depth resolution - 2D projection (same as film radiography). Limiting factors: Detector pixel pitch (100-200 μm typical), Scintillator thickness (thicker = better efficiency but worse resolution), X-ray focal spot size (0.3-3 mm), Geometric magnification and unsharpness, Electronic noise in readout circuitry.",
+    "detectionLimit": "Can detect <1% density difference (superior to film's ~2%); 0.05-0.5 mm thickness changes. Dynamic range: Flat-panel 10⁴ (14-bit ADC); CR 10⁴-10⁵ (16-bit); Film only 10²-10³. Signal-to-noise: DQE 40-70% at low spatial frequencies for modern flat-panel; CR 20-40%; Film 10-30%."
+  },
+  "instrumentation": {
+    "source": "X-ray tube (identical to film radiography systems). Tungsten anode; oil or water-cooled; constant potential or pulsed. Energy range: 40-150 kV (same as film systems). Power range: 100-500 W for portable; up to 5 kW for fixed installations. Beam characteristics: Polychromatic bremsstrahlung; cone beam; focal spot 0.3-3 mm.",
+    "detector": "Flat-panel detector (FPD) - amorphous silicon (a-Si) or amorphous selenium (a-Se), Computed radiography (CR) - photostimulable phosphor plates, or CCD/CMOS with scintillator. Sensitive to 20-150 keV X-rays. Efficiency: Flat-panel indirect 40-70% DQE; Direct conversion 60-80%; CR 30-50%. Time resolution: Flat-panel 3-30 fps possible; CR single-shot, ~1 min read time.",
+    "optics": "Scintillator layer (CsI, Gd₂O₂S for indirect; none for direct), Photodiode array (a-Si TFT), Analog-to-digital converter, Image processing unit. Beam path: X-ray tube → object → anti-scatter grid (optional) → detector. Not applicable - area detector.",
+    "criticalComponents": [
+      "Flat-panel detector or CR cassette with reader",
+      "High-voltage X-ray generator with precise control",
+      "Anti-scatter grid (removable, ratio 8:1 to 15:1)",
+      "Detector calibration phantom (flat-field correction)",
+      "Acquisition computer with DICOM-compatible software",
+      "Network storage and PACS integration",
+      "Radiation shielding enclosure"
+    ],
+    "typicalConfiguration": "**Modern DR setup:** Flat-panel detector (43 × 43 cm active area, 139 μm pixel pitch) mounted on adjustable stand or behind object support. X-ray tube at 1.5-2 m distance. Detector connected to acquisition workstation via Ethernet or fiber optic. Real-time preview during positioning, <5 second image acquisition time. Automated exposure control (AEC) optimizes kV/mAs. Images exported as 16-bit TIFF or DICOM.",
+    "commercialSystems": [
+      {
+        "name": "DRX-1 System",
+        "vendor": "Canon (formerly Carestream)",
+        "notes": "Wireless flat-panel, 35 × 43 cm, 139 μm pixels, CsI scintillator, 14-bit. Approximate cost: $80,000-$120,000. URL: https://www.usa.canon.com/healthcare"
+      },
+      {
+        "name": "FCR Go Plus",
+        "vendor": "Fujifilm",
+        "notes": "Portable CR reader, 43 × 35 cm plates, 50 μm resolution, 16-bit output. Approximate cost: $40,000-$60,000. URL: https://www.fujifilm.com/us/en/healthcare"
+      },
+      {
+        "name": "AeroDR Premium",
+        "vendor": "Konica Minolta",
+        "notes": "Wireless FPD, 17 × 17 inch, 125 μm pixels, CsI, cesium iodide, 14-bit. Approximate cost: $90,000-$140,000. URL: https://healthcare.konicaminolta.us"
+      },
+      {
+        "name": "AMX 4+ Mobile DR",
+        "vendor": "GE Healthcare",
+        "notes": "Mobile C-arm system with flat-panel, real-time fluoroscopy capable. Approximate cost: $150,000-$200,000. URL: https://www.gehealthcare.com"
+      },
+      {
+        "name": "CR 35 NDT",
+        "vendor": "Dürr NDT",
+        "notes": "Industrial CR system, multiple plate sizes, 50 μm resolution. Approximate cost: $50,000-$80,000. URL: https://www.duerr-ndt.com"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "No sampling required - completely non-destructive",
+      "Identical to film radiography - object positioned on easel or table, detector placed behind or beneath object",
+      "Detector must be protected from mechanical damage (use protective cover if in direct contact)",
+      "No preparation required. Remove metal supports that would block X-rays",
+      "Protect detector surface from scratches and impact",
+      "Avoid exposing detector to excessive scatter radiation when not acquiring",
+      "Keep detector dry (moisture damages electronics)"
+    ],
+    "measurementProtocol": "**STEP 1: System Calibration and Quality Assurance (10-15 minutes)**\n- Power on detector and allow warm-up (5-15 minutes)\n- Perform flat-field calibration by exposing detector without object at standard settings\n- Verify dark-field correction (detector noise with no exposure)\n- Check image quality metrics using test phantom\n- Critical parameters: Flat-field uniformity <5% variation, Dark current within specifications, No dead pixels\n\n**STEP 2: Object and Detector Positioning (5-10 minutes)**\n- Position object on support structure\n- Place detector behind object with minimal air gap (reduces scatter and geometric unsharpness)\n- Align X-ray tube perpendicular to object center\n- Measure and record source-to-detector distance (SDD) and object-to-detector distance (ODD)\n- Critical parameters: Detector protected from damage, Object stable, Alignment perpendicular\n\n**STEP 3: Exposure Parameter Selection (2-5 minutes)**\n- Select kV based on object thickness and material (40-60 kV for thin paintings, 80-100 kV for wood panels, 120-150 kV for metals)\n- Set mAs to achieve proper detector exposure (typically 2-10 mAs for flat-panel, 5-20 mAs for CR)\n- Use automatic exposure control (AEC) if available\n- Consider using lower dose than film (DR is more efficient)\n- Critical parameters: kV appropriate for penetration, Detector exposure index in optimal range\n\n**STEP 4: Preview/Scout Image (Optional, 1-2 minutes)**\n- Acquire low-dose preview image to verify positioning and coverage\n- Adjust collimation to include only region of interest (reduces scatter)\n- Make any necessary positioning corrections\n- Critical parameters: Full region of interest visible, No critical features cut off\n\n**STEP 5: Image Acquisition (0.5-2 minutes)**\n- Clear room of personnel\n- Initiate exposure from shielded control area\n- Digital detector acquires image in <5 seconds\n- For CR, expose plate and transfer to reader within 1 hour (latent image fades over time)\n- Critical parameters: No motion during exposure, Proper technique selected, Detector ready to acquire\n\n**STEP 6: Image Review and Optimization (2-5 minutes)**\n- Immediately review image on workstation monitor\n- Check for proper exposure (histogram analysis), adequate contrast, no motion blur\n- Adjust window/level for optimal visualization\n- If unsatisfactory, repeat with adjusted parameters\n- Digital allows non-destructive re-processing unlike film\n- Critical parameters: Exposure index within target range, No artifacts, Diagnostic quality achieved\n\n**STEP 7: Image Processing and Enhancement (5-15 minutes)**\n- Apply processing algorithms as needed: edge enhancement, noise reduction, contrast optimization\n- Create multiple processed versions for different visualization needs (bone/soft tissue equivalent for art)\n- Annotate image with measurements, labels, ROI markers\n- Critical parameters: Processing preserves diagnostic information, Original raw data retained\n\n**STEP 8: Image Export and Archiving (5-10 minutes)**\n- Export images in lossless format (16-bit TIFF, PNG, or DICOM)\n- Archive raw detector data separately\n- Upload to PACS or institutional database with complete metadata (exposure parameters, object ID, date, operator)\n- Create presentation-quality JPEG for reports if needed",
+    "typicalParameters": [
+      {
+        "parameter": "Tube voltage (kV)",
+        "value": "60-100 kV",
+        "notes": "Range: 40-150 kV. Same principles as film; digital's wider latitude allows more flexibility"
+      },
+      {
+        "parameter": "Tube current (mA)",
+        "value": "5-15 mA",
+        "notes": "Range: 1-25 mA. Digital requires ~50% less dose than film due to higher DQE"
+      },
+      {
+        "parameter": "Exposure time",
+        "value": "0.1-2 seconds",
+        "notes": "Range: 0.01-5 seconds. Shorter than film in most cases due to detector efficiency"
+      },
+      {
+        "parameter": "Source-to-detector distance",
+        "value": "150-200 cm",
+        "notes": "Range: 50-300 cm. Larger SDD reduces magnification and scatter"
+      },
+      {
+        "parameter": "Detector exposure index",
+        "value": "200-800",
+        "notes": "Range: 100-1600 (vendor-specific). Target range ensures optimal SNR without saturation"
+      },
+      {
+        "parameter": "Image matrix size",
+        "value": "2048 × 2048 to 3072 × 3072",
+        "notes": "Range: 1024 × 1024 to 4096 × 4096. Depends on detector size and pixel pitch"
+      },
+      {
+        "parameter": "Bit depth",
+        "value": "14-16 bits",
+        "notes": "Range: 12-16 bits. 16-bit preferred for maximum dynamic range"
+      }
+    ],
+    "calibration": "**Standards used:** Flat-field correction phantom (uniform X-ray field), Contrast-detail phantom for image quality assessment, Line-pair resolution test pattern, Dose calibration using ion chamber.\n\n**Frequency:** Daily flat-field and dark-field correction; weekly QA phantom; quarterly dose calibration.\n\n**Procedure:** Flat-field: expose detector without object at standard settings; system divides all subsequent images by flat-field to correct gain non-uniformities. Dark-field: acquire image with no X-ray exposure to measure electronic noise and offset.",
+    "qualityControl": [
+      "Detector uniformity (flat-field) within ±5% across field",
+      "No dead or stuck pixels (>5 adjacent = artifact concern)",
+      "SNR and CNR meet specifications for application",
+      "Exposure indicator in target range (prevents over/under-exposure)",
+      "Spatial resolution verified with line-pair phantom (>3 lp/mm visible)",
+      "Proper DICOM header information (patient/object ID, exposure params)",
+      "Common artifacts: Dead pixels (individual pixels always at max or min value), Lines or streaks (TFT row/column defects), Ghost images (residual signal from previous high-dose exposure), Aliasing/moiré patterns (interference between object structure and pixel grid), Lag (temporal blurring from slow scintillator decay)",
+      "Troubleshooting: Image too bright/overexposed (reduce exposure, check calibration, verify AEC sensor positioning), Image too dark/underexposed (increase exposure, verify generator output, check detector gain calibration), Grainy/noisy image (increase mAs if object tolerates higher dose, apply noise reduction filter, check detector temperature), Blurred image (shorter exposure time, ensure object stability, use smaller focal spot), Vertical or horizontal lines (pixel correction map; if severe, detector repair/replacement needed), Ghost from previous exposure (wait longer between exposures, perform detector flush/clearing cycle)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "**File Formats:** DICOM (.dcm) - standard medical imaging format, Raw detector data (vendor-specific), 16-bit TIFF, PNG (16-bit), JPEG2000 (lossless).\n\n**Data Structure:** 2D grayscale image array; pixel values represent relative X-ray attenuation (inverted log scale).\n\n**Typical File Sizes:** 8-32 MB per image (2K × 2K at 16-bit = 8 MB; 3K × 3K = 18 MB).",
+    "preprocessing": [
+      "Flat-field correction: Divide raw image by stored flat-field reference to correct detector gain variations and vignetting. Applied automatically by most systems. Software: Built-in to acquisition software",
+      "Dark-field subtraction: Subtract dark current noise measured with no X-ray exposure. Corrects for electronic offset and thermal noise. Software: Built-in",
+      "Defective pixel correction: Replace known bad pixels with interpolated values from neighbors. Uses stored pixel map. Software: Built-in or ImageJ",
+      "Logarithmic transformation (optional): Convert pixel values to optical density equivalent: OD = -log(PV/PV_max). Makes digital images appear similar to film. Software: ImageJ, MATLAB",
+      "Histogram equalization: Spread pixel value distribution across full dynamic range to maximize contrast. Use judiciously - can amplify noise. Software: ImageJ, Photoshop",
+      "Spatial frequency filtering: Apply unsharp mask for edge enhancement or Gaussian blur for noise reduction. Adjust based on image content. Software: ImageJ, MATLAB, Photoshop"
+    ],
+    "analysisWorkflow": "**STEP 1: Image Import and DICOM Header Review**\n- Load DICOM file into viewer. Verify exposure parameters in header (kV, mAs, SDD, pixel size). Extract metadata for documentation.\n\n**STEP 2: Initial Window/Level Adjustment**\n- Set window width (contrast) and level (brightness) to optimize feature visibility. Digital's wide dynamic range allows visualization of both dense and thin features with different settings.\n\n**STEP 3: Feature Identification and Segmentation**\n- Systematically identify structural elements, pigment distributions, and anomalies. Use ROI tools to measure pixel statistics in regions of interest. Compare profiles across features.\n\n**STEP 4: Quantitative Analysis (Optional)**\n- Measure gray values in calibrated regions. Calculate relative densities. Generate line profiles showing attenuation along paths. Compute CNR for feature detectability assessment. Equation: μ_eff = ln(PV_bg/PV_roi)/t\n\n**STEP 5: Image Processing and Enhancement**\n- Create multiple processed versions: high-contrast for structure, edge-enhanced for fine detail, noise-reduced for low-contrast features, pseudo-color for presentation.\n\n**STEP 6: Comparison with Other Modalities**\n- Register DR image to visible, UV, IR, and XRF images. Overlay or side-by-side comparison. Identify features unique to each modality.\n\n**STEP 7: 3D Reconstruction (If Multiple Views Available)**\n- If radiographs acquired from multiple angles, use tomosynthesis or limited-angle tomography algorithms to reconstruct depth information. Uses Radon transform inversion.",
+    "softwareTools": [
+      {
+        "name": "OsiriX / Horos (Mac)",
+        "url": "https://www.osirix-viewer.com",
+        "notes": "Open-source. Capabilities: DICOM viewing, MPR reconstruction, 3D rendering, ROI analysis, Image fusion"
+      },
+      {
+        "name": "RadiAnt DICOM Viewer",
+        "url": "https://www.radiantviewer.com",
+        "notes": "Freeware. Capabilities: Fast DICOM rendering, Window/level presets, Measurement tools, Export to TIFF/JPEG"
+      },
+      {
+        "name": "ImageJ/Fiji",
+        "url": "https://imagej.net",
+        "notes": "Open-source. Capabilities: 16-bit TIFF support, Profile plots, FFT analysis, Batch processing, Plugin ecosystem"
+      },
+      {
+        "name": "MATLAB Image Processing Toolbox",
+        "url": "https://www.mathworks.com",
+        "notes": "Commercial (~$2,500 academic). Capabilities: Quantitative analysis, Custom algorithms, MTF/DQE calculation, Machine learning"
+      },
+      {
+        "name": "Adobe Photoshop",
+        "url": "https://www.adobe.com",
+        "notes": "Commercial ($20-55/month). Capabilities: 16-bit image editing, Layer blending, Advanced filters, Print preparation"
+      },
+      {
+        "name": "Dragonfly (ORS)",
+        "url": "https://www.theobjects.com/dragonfly",
+        "notes": "Commercial ($5,000-15,000/year). Capabilities: Multi-modal registration, 3D visualization, AI segmentation, Quantification"
+      }
+    ],
+    "interpretationGuidelines": "**Pixel value interpretation:** Higher values (brighter on standard display) = greater X-ray transmission = lower density or lower atomic number. Lower values (darker) = higher absorption = denser materials or high-Z elements. **Histogram analysis:** Bimodal histogram suggests two distinct material phases; narrow histogram indicates uniform composition; full-range histogram indicates good use of detector dynamic range. **Window/level technique:** Narrow window = high contrast but limited gray scale; wide window = low contrast but shows full range. Adjust interactively to highlight different features.",
+    "commonPitfalls": [
+      "Over-reliance on auto-processing: Vendor software may apply aggressive processing (edge enhancement, noise reduction) that obscures subtle features or creates false details. Always review raw unprocessed data; understand what processing has been applied; create multiple versions with different processing",
+      "Ignoring exposure indicator: Digital's wide latitude tolerates over/under-exposure, but image quality suffers (excessive noise or saturation). Check exposure index; aim for middle of target range; don't assume 'visible = good'",
+      "Lossy compression artifacts: JPEG compression introduces blocking artifacts that mimic or obscure real features. Always archive as lossless (16-bit TIFF, PNG, DICOM); use JPEG only for presentations; never compress raw data",
+      "Monitor calibration neglect: Uncalibrated display misrepresents gray levels and contrast; different monitors show same image differently. Use calibrated medical-grade monitors; regular calibration checks; DICOM grayscale display function (GSDF) compliance",
+      "Insufficient dynamic range utilization: Using only 8-bit display or export when 16-bit data available loses subtle contrast. Work in 16-bit throughout workflow; only convert to 8-bit for final presentation if necessary",
+      "Discarding raw data: Saving only processed JPEG or lossy format prevents re-analysis with different parameters. Always archive original raw detector output; processed versions are derivative, not primary data"
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Real-time examination guidance during conservation treatments",
+      "Rapid documentation of large collections (efficiency advantage over film)",
+      "Multiple-exposure techniques at different energies (dual-energy subtraction)",
+      "Quantitative density measurements for material characterization",
+      "Telemedicine/tele-consultation via network image sharing",
+      "Digital subtraction radiography to highlight changes over time",
+      "Integration with PACS for institutional archiving and retrieval",
+      "Advanced image processing (3D reconstruction from multiple views)",
+      "Teaching and public engagement (immediate visualization)"
+    ],
+    "materialTypes": [
+      "Oil paintings on canvas",
+      "Panel paintings (wood)",
+      "Frescoes/murals",
+      "Sculptures (wood, bronze, stone)",
+      "Archaeological metals",
+      "Composite objects",
+      "Works on paper",
+      "Textiles",
+      "Ceramics/pottery"
+    ],
+    "caseStudies": [
+      {
+        "title": "Ghent Altarpiece Digital Radiography Campaign",
+        "description": "12 panels radiographed using Dürr NDT CR system with 35 × 43 cm phosphor plates. Multiple overlapping exposures per panel at 80 kV, 10 mAs. Images digitized at 50 μm resolution (16-bit). Stitched into seamless composites. Compared with historical film radiographs from 1950s-80s. Combined with MA-XRF and other imaging. DR revealed previously invisible pentimenti due to superior dynamic range and digital enhancement. Panel construction details (dowels, battens) more clearly visualized than in film. Lead white brushwork patterns sharply delineated. Instant feedback allowed optimization for each panel's unique density. Digital archiving and processing enabled new discoveries through re-analysis with different window/level settings. Virtual 'dismantling' of complex construction via digital layer separation. Established CR/DR as superior replacement for film in large-scale heritage imaging projects.",
+        "reference": "Dubois, H., et al. 2014. 'The Ghent Altarpiece: Imaging and Paint Sample Analysis.' In Van Eyck Studies, edited by M. Ainsworth, 232-275. New Haven: Yale University Press."
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "x-ray-radiography-film",
+      "ct-tomography",
+      "ma-xrf",
+      "irr-nir"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["digital-x-ray-radiography", "image-registration"],
+        "rationale": "Digital's pixel-perfect repeatability enables direct comparison and subtraction. Changes (consolidation, fills, structural repairs) appear as positive or negative density differences.",
+        "examples": "Digital Subtraction Radiography: 1. Acquire baseline DR image. 2. Perform conservation treatment. 3. Acquire follow-up DR at identical position and exposure. 4. Register images precisely. 5. Subtract baseline from follow-up to highlight only changes. Monitoring efficacy of consolidation treatment in panel paintings - subtraction reveals whether consolidant penetrated cracks."
+      },
+      {
+        "techniques": ["digital-x-ray-radiography"],
+        "rationale": "Different materials attenuate X-rays differently at different energies. Dual-energy decomposition can separate organic substrates from heavy-element pigments, similar to medical bone/soft-tissue separation.",
+        "examples": "Dual-Energy Radiography for Material Decomposition: 1. Acquire DR at low kV (e.g., 50 kV). 2. Acquire second DR at high kV (e.g., 100 kV) from identical position. 3. Computationally decompose into 'low-Z' and 'high-Z' material images based on differential attenuation. Separating canvas (low-Z) from lead white paint (high-Z) to visualize each independently. Reveals underpainting without interference from support structure."
+      }
+    ]
+  },
+  "strengths_limitations": {
+    "strengths": [
+      "Immediate image preview (no film processing delay)",
+      "Superior dynamic range (10⁴ vs. 10² for film) - captures full density range in single exposure",
+      "Higher detective quantum efficiency (40-70% vs. 10-30% for film) - lower radiation dose possible",
+      "No consumable costs after initial investment (no film, chemistry, darkroom)",
+      "Digital archiving with lossless compression and no degradation over time",
+      "Non-destructive image reprocessing - unlimited window/level adjustment from single acquisition",
+      "Network integration - instant sharing with remote experts",
+      "Advanced post-processing capabilities (edge enhancement, subtraction, 3D reconstruction)",
+      "Quantitative analysis - precise pixel value measurements",
+      "Environmentally friendly - no chemical waste from film processing"
+    ],
+    "limitations": [
+      "Higher initial capital cost ($50K-200K vs. $15K-40K for film system)",
+      "Detector fragility - flat panels can break if dropped or impacted",
+      "Electronic artifacts (dead pixels, lag, ghosting) not present in film",
+      "Digital format obsolescence concerns - DICOM may not be readable in 50 years",
+      "Requires stable electrical power and climate control",
+      "Learning curve for digital processing - can over-process and create false features",
+      "Larger data storage requirements (GB vs. physical film sheets)",
+      "Some collectors/conservators prefer archival permanence of properly stored film"
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Sonoda, M., M. Takano, J. Miyahara, and H. Kato. 1983. 'Computed Radiography Utilizing Scanning Laser Stimulated Luminescence.' Radiology 148 (3): 833-838.",
+        "doi": "10.1148/radiology.148.3.6878708",
+        "notes": "Original paper describing computed radiography (CR) technology - foundation of digital radiography"
+      },
+      {
+        "citation": "Antonuk, L. E. 2002. 'Electronic Portal Imaging Devices: A Review and Historical Perspective of Contemporary Technologies and Research.' Physics in Medicine and Biology 47 (6): R31-R65.",
+        "doi": "10.1088/0031-9155/47/6/201",
+        "notes": "Comprehensive review of flat-panel detector development and physics"
+      },
+      {
+        "citation": "Dik, J., et al. 2012. 'Advanced X-ray Imaging Techniques in Art History.' MRS Bulletin 37 (6): 579-586.",
+        "doi": "10.1557/mrs.2012.124",
+        "notes": "Overview of digital radiography applications in paintings examination alongside advanced techniques"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Schaetzing, R. 2004. 'Computed Radiography Technology.' In Advances in Digital Radiography: RSNA Categorical Course in Diagnostic Radiology Physics, 7-22. Oak Brook: RSNA.",
+        "doi": null
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "DICOM Standard",
+        "url": "https://www.dicomstandard.org/"
+      },
+      {
+        "title": "AAPM Digital Radiography Resources",
+        "url": "https://www.aapm.org/"
+      }
+    ]
+  },
+  "tags": [
+    "digital radiography",
+    "flat-panel detector",
+    "computed radiography",
+    "X-ray imaging",
+    "non-destructive",
+    "DICOM",
+    "high dynamic range",
+    "instant results",
+    "conservation",
+    "cultural heritage"
+  ],
+  "relatedTechniques": [
+    "x-ray-radiography-film",
+    "ct-tomography",
+    "ma-xrf",
+    "irr-nir",
+    "neutron-radiography"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

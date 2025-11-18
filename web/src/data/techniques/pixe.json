@@ -1,0 +1,402 @@
+{
+  "id": "pixe",
+  "name": "Particle-Induced X-ray Emission (PIXE)",
+  "acronym": "PIXE",
+  "category": "Ion Beam Techniques",
+  "subcategory": "Elemental Analysis - Ion Excitation",
+  "summary": "Particle-Induced X-ray Emission (PIXE) is a highly sensitive elemental analysis technique that uses MeV-energy ion beams (typically protons or alpha particles) to excite characteristic X-rays from elements in a sample. When energetic ions collide with atoms, inner-shell electrons are ejected, and subsequent electronic transitions produce element-specific X-ray fluorescence. PIXE offers superior sensitivity (ppm-ppb detection limits) compared to electron-based techniques (SEM-EDX) due to lower background bremsstrahlung radiation, can analyze elements from Na to U simultaneously, and is essentially non-destructive for most heritage materials. In cultural heritage, PIXE enables quantitative pigment identification, provenance studies via trace element fingerprinting, and rapid multi-element mapping of paintings, ceramics, metals, and glass.",
+  "keyApplications": [
+    "Quantitative pigment analysis and identification in paintings",
+    "Trace element fingerprinting for provenance and authenticity studies",
+    "Multi-element mapping of painted surfaces (scanning PIXE)",
+    "Glass and glaze composition analysis (major and trace elements)",
+    "Precious metal alloy characterization (coins, jewelry, artifacts)",
+    "Corrosion product analysis on archaeological metals",
+    "Paper and parchment element analysis (inks, additives, degradation products)",
+    "Ceramic paste and slip composition determination"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "laboratory-only",
+  "fundamentalPhysics": {
+    "principle": "PIXE exploits Coulombic interactions between energetic ions (1-4 MeV protons typical) and target atoms. The ion beam ionizes inner-shell electrons (K, L, M shells) through inelastic collisions. When outer-shell electrons transition to fill these vacancies, characteristic X-rays are emitted with energies specific to each element (e.g., Fe Kα = 6.4 keV). Protons are preferred over electrons because: (1) Higher ionization cross-section for heavy elements, (2) Minimal bremsstrahlung background (protons ~2000× heavier than electrons don't decelerate radiatively), (3) Lower detection limits (ppm vs. 0.1% for SEM-EDX). Silicon drift detector (SDD) measures X-ray energies and intensities; quantification via comparison to standards or fundamental parameters.",
+    "physicalPhenomenon": "Ion-atom interaction cascade: (1) Coulombic collision: energetic proton approaches atom; electrostatic repulsion transfers energy to bound electrons. (2) Inner-shell ionization: if transferred energy exceeds binding energy (e.g., 7.1 keV for Fe K-shell), electron ejected, creating vacancy. (3) X-ray emission: outer electron transitions to fill vacancy; energy difference emitted as characteristic X-ray photon. Competing de-excitation: Auger electron emission (no X-ray). Fluorescence yield ω increases with Z: ω(K) ≈ Z⁴/(10⁶ + Z⁴); low for light elements (C, N, O difficult), high for heavy elements (excellent Fe-U). Ion energy loss in material follows Bethe-Bloch equation; protons penetrate 10-100 μm depending on energy and material density.",
+    "equations": [
+      {
+        "latex": "$$N_i = \\frac{Y_i}{\\sigma_i \\cdot \\epsilon_i \\cdot Q \\cdot \\Omega \\cdot C_i}$$",
+        "description": "PIXE Quantification Equation (thin target approximation)",
+        "variables": [
+          {"symbol": "N_i", "meaning": "areal density of element i (atoms/cm²)", "units": "atoms/cm²"},
+          {"symbol": "Y_i", "meaning": "measured X-ray counts for element i", "units": "counts"},
+          {"symbol": "\\sigma_i", "meaning": "ionization cross-section for element i", "units": "cm²"},
+          {"symbol": "\\epsilon_i", "meaning": "X-ray detection efficiency for element i", "units": "dimensionless"},
+          {"symbol": "Q", "meaning": "total ion beam charge (fluence)", "units": "coulombs"},
+          {"symbol": "\\Omega", "meaning": "solid angle of detector", "units": "steradians"},
+          {"symbol": "C_i", "meaning": "concentration of element i (mass fraction)", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$\\sigma_K(E) = \\sum_j a_j \\left(\\frac{U_K - 1}{U_K}\\right)^{b_j} \\cdot \\ln(U_K) \\cdot \\frac{4\\pi a_0^2 Z}{U_K}$$",
+        "description": "K-shell Ionization Cross-Section (empirical parameterization)",
+        "variables": [
+          {"symbol": "\\sigma_K(E)", "meaning": "K-shell ionization cross-section at energy E", "units": "cm²"},
+          {"symbol": "U_K", "meaning": "reduced energy (E/E_K, where E_K is K-edge energy)", "units": "dimensionless"},
+          {"symbol": "a_j, b_j", "meaning": "empirical fitting parameters (element-dependent)", "units": "dimensionless"},
+          {"symbol": "a_0", "meaning": "Bohr radius", "units": "5.29 × 10⁻⁹ cm"},
+          {"symbol": "Z", "meaning": "atomic number", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$-\\frac{dE}{dx} = \\frac{4\\pi e^4 Z^2 N}{m_e v^2} \\left[\\ln\\left(\\frac{2m_e v^2}{I}\\right) - \\beta^2\\right]$$",
+        "description": "Bethe-Bloch Equation (ion energy loss in matter)",
+        "variables": [
+          {"symbol": "dE/dx", "meaning": "stopping power (energy loss per unit path length)", "units": "MeV/μm"},
+          {"symbol": "e", "meaning": "electron charge", "units": "1.602 × 10⁻¹⁹ C"},
+          {"symbol": "Z", "meaning": "atomic number of projectile (1 for proton)", "units": "dimensionless"},
+          {"symbol": "N", "meaning": "number density of target atoms", "units": "atoms/cm³"},
+          {"symbol": "m_e", "meaning": "electron mass", "units": "9.109 × 10⁻³¹ kg"},
+          {"symbol": "v", "meaning": "projectile velocity", "units": "m/s"},
+          {"symbol": "I", "meaning": "mean excitation energy of target", "units": "eV"},
+          {"symbol": "\\beta", "meaning": "v/c (relativistic parameter)", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$R = \\int_0^{E_0} \\left(\\frac{dE}{dx}\\right)^{-1} dE$$",
+        "description": "Ion Range (penetration depth)",
+        "variables": [
+          {"symbol": "R", "meaning": "ion range (penetration depth)", "units": "μm"},
+          {"symbol": "E_0", "meaning": "initial ion energy", "units": "MeV"},
+          {"symbol": "dE/dx", "meaning": "stopping power", "units": "MeV/μm"}
+        ]
+      },
+      {
+        "latex": "$$DL_i = \\frac{3\\sqrt{N_b}}{S \\cdot t \\cdot C_i}$$",
+        "description": "Detection Limit (3σ criterion)",
+        "variables": [
+          {"symbol": "DL_i", "meaning": "detection limit for element i", "units": "ppm (μg/g)"},
+          {"symbol": "N_b", "meaning": "background counts under peak", "units": "counts"},
+          {"symbol": "S", "meaning": "peak sensitivity (counts per unit concentration)", "units": "counts/ppm"},
+          {"symbol": "t", "meaning": "acquisition time", "units": "seconds"},
+          {"symbol": "C_i", "meaning": "concentration", "units": "ppm"}
+        ]
+      }
+    ],
+    "interactionDepth": "PIXE is a bulk technique probing the ion range (penetration depth) in the material. For 2-3 MeV protons: ~20-40 μm in organic materials (paintings, paper), ~10-20 μm in ceramics/stone, ~5-15 μm in metals. X-rays generated throughout the ion path are detected (depth-integrated analysis). Lighter proton energies or external beam geometry enable near-surface analysis (<5 μm). Oil paint (organic matrix + pigments): 20-40 μm for 3 MeV protons, entire paint layer thickness typically sampled; provides bulk composition. Paper and parchment: 50-100 μm (often full thickness), low-Z organic material; protons penetrate completely through thin samples. Ceramics and pottery: 10-20 μm, probes glaze and upper body; depth-integrated composition. Glass: 15-30 μm, bulk analysis of upper surface layer. Metals (bronze, silver, gold): 5-15 μm, surface and near-surface composition; can detect enrichment/depletion. Stone/marble: 10-25 μm, near-surface analysis; suitable for weathering studies.",
+    "spatialResolution": "Lateral Resolution: 1 μm - 1 mm (microbeam PIXE: 1-10 μm with focusing; broad beam: 0.1-1 mm). Depth Resolution: 10-50 μm (depth-integrated; not depth-resolved without special techniques). Limiting factors: Ion beam focusing capability (magnetic quadrupole lenses for microbeam), Ion scattering in material (beam broadens with depth), X-ray production volume (not a point source), Sample charging (insulators can defocus beam), Beam stability and positioning accuracy.",
+    "detectionLimit": "1-100 ppm (μg/g) for most elements Z > 11; sub-ppm for heavy elements (Z > 30) in light matrices. Dynamic range: 10⁵-10⁶ (major elements % to trace elements ppm in single analysis). Signal-to-noise: PIXE SNR 10-1000× better than SEM-EDX due to low bremsstrahlung background."
+  },
+  "instrumentation": {
+    "source": "Particle accelerator (cyclotron, tandem accelerator, or Van de Graaff). Protons (H⁺): 1-4 MeV typical; alpha particles (He²⁺): 2-6 MeV alternative. High current stability (<1% fluctuation). Beam currents: 1-100 nA for microbeam, 1-100 pA for nanobeam. 1-4 MeV for protons (optimized for heritage materials). Beam power: 1-100 μW typical (low enough to avoid sample damage). Proton beam: monoenergetic (ΔE/E ~ 10⁻³); collimated (1-10 mrad divergence); pulsed or continuous.",
+    "detector": "Silicon Drift Detector (SDD) - modern standard, Si(Li) detector - older systems, or Energy-dispersive X-ray spectrometer. Detects X-rays from 1-30 keV (Na Kα to Rb Kα; higher Z via L-lines). SDD: >95% for 5-10 keV; decreases at low energy (<2 keV, Be window absorption) and high energy (>20 keV, reduced interaction). Time resolution: Nanosecond time resolution possible (for pulsed beam PIXE).",
+    "optics": "Particle accelerator (cyclotron, tandem Van de Graaff), Beamline with magnetic steering and focusing, Magnetic quadrupole lenses (for microbeam focusing to μm), Beam collimators and apertures, Sample chamber (vacuum or external beam), X-ray detector (SDD) at 135-150° to beam, Faraday cup or beam current monitor, Optional: backscattering detector (for RBS simultaneous analysis). Beam path: Accelerator → analyzing magnet (energy selection) → beamline → focusing system → sample chamber. X-rays emitted from sample detected by SDD positioned at angle to minimize backscatter. Microbeam: magnetic quadrupole doublet or triplet focuses to 1-10 μm spot. Broad beam: simple collimation to 0.1-1 mm.",
+    "criticalComponents": [
+      "Particle accelerator with stable beam current and energy",
+      "High-resolution X-ray detector (SDD with <130 eV FWHM at 5.9 keV)",
+      "Beam current integrator (accurate charge measurement for quantification)",
+      "Vacuum system (sample chamber typically 10⁻⁵-10⁻⁶ mbar) or external beam setup",
+      "Motorized sample stage (XYZ positioning, rotation for scanning PIXE)",
+      "Beam focusing system (magnetic quadrupoles for microbeam)",
+      "Absorber filters (to attenuate low-energy X-rays and reduce detector deadtime)",
+      "Data acquisition system (multichannel analyzer, real-time spectral display)"
+    ],
+    "typicalConfiguration": "**Standard PIXE setup:** 3 MeV proton beam from tandem accelerator or cyclotron. Beam current 10-50 nA. Sample in vacuum chamber (10⁻⁵ mbar) or external beam (atmospheric pressure). SDD detector (80 mm² area, 130 eV resolution) positioned 135° to beam direction, 10-20 mm from sample. Funny filter (absorber: 100-300 μm Al or Mylar) attenuates low-Z X-rays. Beam charge measured via Faraday cup. Acquisition time: 5-15 minutes for spectrum. Motorized stage allows 2D scanning for elemental maps (step size 10-100 μm).",
+    "commercialSystems": [
+      {
+        "name": "Pelletron Tandem Accelerator",
+        "vendor": "National Electrostatics Corp. (NEC)",
+        "notes": "1-5 MV terminal voltage, proton/He beams, stable current ±0.5%, PIXE-capable. Approximate cost: $1-3 million (complete system). URL: https://www.pelletron.com"
+      },
+      {
+        "name": "Singletron Accelerator",
+        "vendor": "High Voltage Engineering Europa (HVEE)",
+        "notes": "1-4 MeV protons, compact design, PIXE and RBS beamlines. Approximate cost: $800K-$2M. URL: https://www.highvolteng.com"
+      },
+      {
+        "name": "PIXE/RBS System",
+        "vendor": "AccTec (Accelerator Technology)",
+        "notes": "2-3 MeV single-ended accelerator, integrated PIXE/RBS, external beam option. Approximate cost: $1-2 million. URL: https://www.acctec.nl"
+      },
+      {
+        "name": "X-MaxN SDD for PIXE",
+        "vendor": "Oxford Instruments (Detector)",
+        "notes": "80 mm² SDD, <130 eV resolution, 100 kcps throughput. Approximate cost: $30,000-$50,000 (detector only). URL: https://www.oxinst.com"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "Sampling required: No - typically non-destructive; sample size: 1 mm² to tens of cm² (depends on beam and chamber)",
+      "Mount sample on aluminum or carbon stub using conductive tape or clips",
+      "For vacuum chamber: ensure sample outgassing minimal (bake porous samples at 60°C)",
+      "For external beam: place sample at exit window",
+      "Sample should be flat and stable",
+      "Clean surface (remove loose dirt, dust) with soft brush or air",
+      "No coating required (unlike SEM)",
+      "Minimal surface prep preserves sample integrity",
+      "Polishing not necessary unless flat surface needed for quantification",
+      "Not applicable - PIXE is typically surface/near-surface technique",
+      "Can analyze polished cross-sections if quantification of layers desired",
+      "Surface contamination (dust, fingerprints) analyzed; wear gloves when handling",
+      "Carbon tape backing can contribute C signal if beam penetrates sample",
+      "Vacuum oil residue from chamber (Si, hydrocarbons) can interfere",
+      "Water vapor in external beam creates interfering peaks"
+    ],
+    "measurementProtocol": "**STEP 1: Accelerator and Beamline Setup (30-60 minutes)**\n- Power on particle accelerator\n- Ramp to operating voltage (e.g., 3 MV for 3 MeV protons)\n- Tune beam through analyzing magnet to select desired energy\n- Steer beam through beamline to sample chamber using dipole steering magnets\n- Optimize beam current (10-50 nA typical)\n- Verify beam spot position and size on target\n- Critical parameters: Beam energy: 2-3 MeV, Beam current stable: ±1%, Beam spot centered on sample\n\n**STEP 2: Sample Mounting and Alignment (15-30 minutes)**\n- Mount sample on holder\n- Insert into vacuum chamber (pump down to 10⁻⁵ mbar, 10-30 min) or position at external beam exit\n- Use optical camera or beam-induced luminescence to locate sample and align to beam\n- Verify sample is grounded (prevents charging)\n- Adjust sample tilt if necessary for optimal X-ray emission geometry\n- Critical parameters: Sample flat and stable, Beam hits region of interest, Good electrical contact (grounded)\n\n**STEP 3: Detector Setup and Energy Calibration (10-20 minutes)**\n- Position SDD detector at 135° to beam, 10-20 mm from sample (solid angle ~0.1 sr)\n- Install funny filter (Al or Mylar absorber) to reduce low-energy X-ray flux (prevent deadtime)\n- Perform energy calibration using reference source (e.g., ⁵⁵Fe, 5.9 keV) or known sample lines\n- Set detector high voltage and shaping time\n- Verify count rate <20 kcps (avoid pileup)\n- Critical parameters: Energy calibration accurate (<10 eV error), Detector not saturated, Funny filter optimized\n\n**STEP 4: Beam Current Measurement and Optimization (5-10 minutes)**\n- Measure beam current via Faraday cup or sample current\n- Typical values: 10-50 nA for routine analysis\n- Higher current = better statistics but more damage risk\n- Lower current for fragile samples\n- Verify charge integrator functioning properly (measures total accumulated charge Q for quantification)\n- Critical parameters: Beam current 10-50 nA, Charge measurement accurate, Current stable during acquisition\n\n**STEP 5: Test Spectrum Acquisition (5 minutes)**\n- Acquire short test spectrum (1-2 minutes)\n- Inspect for expected elemental peaks\n- Check for sample damage (discoloration, charring)\n- Adjust beam current or acquisition time if needed\n- Verify no artifacts (pileup peaks, escape peaks, detector saturation)\n- Critical parameters: All expected elements visible, No sample damage, Good peak-to-background ratio\n\n**STEP 6: Full Spectrum Acquisition (5-30 minutes depending on sample and desired statistics)**\n- Acquire full PIXE spectrum\n- Typical time: 5-15 minutes for point analysis; accumulate sufficient counts (>1000 counts in peaks of interest for good statistics)\n- Monitor beam current stability\n- For quantitative analysis, record total charge Q (μC)\n- Save raw spectrum with metadata (beam energy, current, sample ID)\n- Critical parameters: Sufficient counts in all peaks, Charge accurately measured, No beam instability\n\n**STEP 7: Scanning PIXE (Optional, 1-100+ hours depending on area and dwell time)**\n- For elemental mapping: define scan area (e.g., 5 × 5 mm)\n- Set step size (10-200 μm depending on beam size and resolution)\n- Acquire spectrum at each pixel (10-60 s per pixel)\n- Automated stage scans sample under stationary beam\n- Generates elemental distribution maps\n- Total time: hours for large areas (10,000 pixels × 30 s = 83 hours for 100×100 scan)\n- Critical parameters: Step size ≤ beam diameter for Nyquist sampling, Sample stable during long scan, Beam current constant\n\n**STEP 8: Reference Standard Measurement (For Quantification, 10-30 minutes for 2-3 standards)**\n- After sample analysis, measure certified reference materials (standards with known composition)\n- Use same beam conditions (energy, geometry)\n- Standards enable calibration of quantification algorithms\n- Alternatively, use fundamental parameters approach (requires accurate detector efficiency and beam charge)\n\n**STEP 9: Post-Measurement Sample Inspection (5 minutes)**\n- Remove sample from chamber\n- Inspect for beam damage (discoloration, cracking, melting)\n- Photograph analyzed spot\n- Document any changes\n- Most heritage materials show no visible damage at typical PIXE conditions, but sensitive organics may brown slightly",
+    "typicalParameters": [
+      {
+        "parameter": "Ion species",
+        "value": "Protons (H⁺)",
+        "notes": "Range: H⁺, He²⁺, occasionally heavier. Protons most common; alphas give higher cross-section for heavy elements"
+      },
+      {
+        "parameter": "Ion energy",
+        "value": "2-3 MeV (protons)",
+        "notes": "Range: 1-4 MeV. 2-3 MeV optimal balance: penetration depth, ionization cross-section, damage"
+      },
+      {
+        "parameter": "Beam current",
+        "value": "10-50 nA",
+        "notes": "Range: 0.1-100 nA. Higher current = faster acquisition but more damage risk"
+      },
+      {
+        "parameter": "Beam spot size",
+        "value": "0.1-1 mm (broad beam)",
+        "notes": "Range: 1 μm - 2 mm. Microbeam: 1-10 μm; broad beam: 0.1-2 mm; smaller beam = longer analysis time"
+      },
+      {
+        "parameter": "Acquisition time",
+        "value": "10-15 minutes",
+        "notes": "Range: 1-60 minutes. Longer time = better statistics (lower detection limits)"
+      },
+      {
+        "parameter": "Vacuum pressure (if vacuum chamber)",
+        "value": "10⁻⁵ mbar",
+        "notes": "Range: 10⁻⁶ - 10⁻⁴ mbar. Lower pressure reduces scattering; external beam operates at atmospheric pressure"
+      },
+      {
+        "parameter": "X-ray detector resolution",
+        "value": "130 eV FWHM at 5.9 keV",
+        "notes": "Range: 125-150 eV. Better resolution = better peak separation, especially for complex spectra"
+      },
+      {
+        "parameter": "Detector count rate",
+        "value": "5-15 kcps",
+        "notes": "Range: 1-30 kcps. Keep below 20-30 kcps to avoid pileup; use absorber filters if too high"
+      },
+      {
+        "parameter": "Detector angle",
+        "value": "135-150° to beam",
+        "notes": "Range: 90-170°. Compromise: maximize solid angle vs. minimize backscattering background"
+      }
+    ],
+    "calibration": "**Standards used:** NIST SRM glasses (e.g., SRM 610, 612 - trace elements in glass), Metal alloy standards (copper, bronze, gold alloys with certified compositions), Mineral standards (USGS geochemical reference materials), Thin-film standards (known areal density for thin-target calibration), Reference pigments (lead white, vermilion, azurite with known stoichiometry).\n\n**Frequency:** Daily: detector energy calibration. Weekly: sensitivity calibration with standards. Per-session: verify beam conditions (energy, current).\n\n**Procedure:** Energy calibration: use ⁵⁵Fe source (Mn Kα 5.895 keV, Mn Kβ 6.490 keV) or Cu Kα/Kβ to calibrate detector energy scale (linear fit: channel vs. energy). Quantitative calibration: measure standards, extract peak areas, fit sensitivity curves (counts per μC per ppm vs. Z). Validate with independent standard.",
+    "qualityControl": [
+      "Energy calibration accurate (peak positions ±10 eV)",
+      "Detector resolution acceptable (<150 eV FWHM at 5.9 keV)",
+      "Beam current stable (±1% during acquisition)",
+      "Charge measurement accurate (compare to independent current monitor)",
+      "No pileup peaks visible in spectrum (sum peaks of major elements)",
+      "Background (bremsstrahlung) low and smooth",
+      "Standard analysis recovers known concentrations within ±10%",
+      "Common artifacts: Pileup peaks - sum of two X-rays detected simultaneously (Fe Kα+Kα = 12.8 keV), Escape peaks - X-ray energy minus Si K-edge (1.74 keV lower than parent), Beam-induced damage - darkening, cracking, or charring of sample, Charging artifacts - non-conductive samples accumulate charge, deflecting beam, Secondary fluorescence - X-rays from substrate or surrounding materials, Bremsstrahlung - continuous background from deceleration of backscattered ions",
+      "Troubleshooting: No beam current detected (check beam steering; verify beam spot with scintillator; test integrator with known current), Very low X-ray counts (verify beam position visually; test detector with radioactive source; check sample is present; increase beam energy), Excessive detector deadtime (>30%) (reduce beam current; install thicker funny filter; increase detector distance), Sample damage visible (reduce beam current; defocus beam; shorter acquisition; use external beam (cooling)), Broad peaks, poor resolution (check detector performance with source; reduce count rate; adjust amplifier settings; may need detector repair), Unexpected peaks in spectrum (clean sample surface; use thicker sample or pure substrate; shield detector from chamber walls)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "**File Formats:** .mca (multichannel analyzer format), .spe (ORTEC spectrum format), .txt (ASCII spectrum), .h5 (HDF5 for scanning PIXE).\n\n**Data Structure:** 1D array: channel number (energy) vs. counts. Scanning PIXE: 3D array (x, y, energy spectrum at each pixel).\n\n**Typical File Sizes:** Single spectrum: 10-50 KB (4096 channels). Scanning PIXE dataset: 100 MB - 10 GB (10,000 pixels × 4096 channels × 4 bytes).",
+    "preprocessing": [
+      "Energy calibration: Convert channel number to energy (keV) using linear calibration: E = a + b×channel. Obtain a, b from known peaks. Software: GUPIX, PyMca, custom scripts",
+      "Deadtime correction: Correct for detector deadtime losses: true counts = measured counts / (1 - deadtime). Deadtime typically 5-20%. Software: Built-in to MCA or post-processing",
+      "Background subtraction: Model and subtract continuous bremsstrahlung background. Use exponential or polynomial fit to background regions between peaks. Software: GUPIX, PyMca",
+      "Peak deconvolution: Fit overlapping peaks (e.g., Pb Lα and As Kα both ~10.5 keV). Use Gaussian peak shapes with shelf and tail components. Software: GUPIX, PyMca, PeakFit",
+      "Funny filter correction: Correct for attenuation of low-energy X-rays by absorber filter. Calculate transmission factor based on filter composition and thickness. Software: GUPIX, custom correction"
+    ],
+    "analysisWorkflow": "**STEP 1: Spectrum Loading and Quality Check**\n- Load PIXE spectrum into analysis software. Verify energy calibration by checking known peak positions. Inspect overall spectrum: identify major peaks, check background level, look for artifacts.\n\n**STEP 2: Background Modeling and Subtraction**\n- Define background-only regions (no peaks). Fit background model (exponential, linear, or polynomial). Subtract background from entire spectrum to isolate peaks.\n\n**STEP 3: Peak Identification**\n- Identify all peaks in spectrum by comparing energies to X-ray database. Assign element and line (K, L, M). Use characteristic peak ratios (e.g., Kα/Kβ) to confirm assignments. Be cautious of overlaps and interferences.\n\n**STEP 4: Peak Fitting and Area Integration**\n- Fit each peak with appropriate function (Gaussian + low-energy shelf + tail). Determine net peak area (integrated counts above background). Uncertainties: √(counts) for statistical error.\n\n**STEP 5: Quantification (Standardless or Standards-Based)**\n- Convert peak areas to concentrations. Methods: (1) Fundamental parameters (requires accurate detector efficiency, beam charge, ionization cross-sections). (2) Standards-based (calibration curve from reference materials). (3) Relative quantification (peak ratios). Software like GUPIX performs full quantification.\n\n**STEP 6: Matrix Correction**\n- Account for X-ray absorption and secondary fluorescence in sample matrix. Iterative procedure: estimate composition → calculate matrix effects → adjust composition → iterate until convergence. Critical for accurate quantification.\n\n**STEP 7: Elemental Concentration Report**\n- Generate final report: element, concentration (ppm or %), uncertainty. Flag detection limits for elements below threshold. Compare to literature values for material type if available.\n\n**STEP 8: Scanning PIXE Map Generation (If Applicable)**\n- For each element: extract peak area at every pixel. Create 2D false-color map showing elemental distribution. Adjust color scale for optimal visualization. Overlay multiple elements in RGB composite.",
+    "softwareTools": [
+      {
+        "name": "GUPIX (Guelph PIXE)",
+        "url": "https://pixe.physics.uoguelph.ca/gupix/",
+        "notes": "Free. Capabilities: Comprehensive PIXE spectrum analysis, Fundamental parameters quantification, Thick-target corrections, Standard analysis"
+      },
+      {
+        "name": "PyMca",
+        "url": "http://pymca.sourceforge.net/",
+        "notes": "Open-source. Capabilities: Multi-technique X-ray analysis, Peak fitting, Quantification, Scanning PIXE visualization"
+      },
+      {
+        "name": "GeoPIXE II",
+        "url": "https://www.thermofisher.com",
+        "notes": "Free (registration required). Capabilities: Scanning PIXE data analysis, Dynamic analysis (DA) quantification, Elemental mapping, Image processing"
+      },
+      {
+        "name": "AXIL (Analysis of X-ray spectra by Iterative Least squares)",
+        "url": "N/A (licensing)",
+        "notes": "Commercial ($1,000-3,000). Capabilities: Advanced peak fitting, Handle complex overlapping peaks, Used in heritage field"
+      },
+      {
+        "name": "MATLAB + custom scripts",
+        "url": "https://www.mathworks.com",
+        "notes": "Commercial (~$2,500 academic). Capabilities: Custom data processing, Statistical analysis, Advanced visualization"
+      },
+      {
+        "name": "OriginPro",
+        "url": "https://www.originlab.com",
+        "notes": "Commercial ($1,000-2,000). Capabilities: Peak fitting, Data visualization, Statistical analysis"
+      }
+    ],
+    "interpretationGuidelines": "**Elemental identification:** Confirm elements by multiple lines (e.g., Fe: both Kα at 6.4 keV and Kβ at 7.06 keV). Check Kα/Kβ ratios against theory. **Quantification reliability:** Major elements (>1%): accurate to ±5-10%. Trace elements (ppm): accurate to ±20-50% depending on matrix. Detection limits: 1-100 ppm for most elements. **Pigment identification:** Characteristic elemental signatures: lead white (Pb), vermilion (Hg+S), azurite (Cu), ochre (Fe), etc. Use elemental ratios and absolute concentrations. **Provenance:** Trace elements (As, Ag, Sb in lead; Au, Pt in gold; rare earths) fingerprint sources. **Matrix effects:** Light matrix (organics) vs. heavy matrix (metals) strongly affects quantification. Always correct for matrix.",
+    "commonPitfalls": [
+      "Peak overlap misidentification: Many X-ray lines overlap: Pb Lα (10.55 keV) and As Kα (10.54 keV) nearly identical; S Kα (2.31 keV) and Pb Mα (2.35 keV). Wrong element assignment leads to false conclusions. Check all lines of element. If As assigned based on ~10.5 keV, verify As Kβ at 11.7 keV present. Use high-resolution detector. Consult X-ray database for all possible overlaps.",
+      "Ignoring matrix effects: X-ray absorption and secondary fluorescence depend on matrix composition. Lead-rich paint attenuates low-energy X-rays (Ca, K) more than organic-rich paint. Ignoring gives large quantification errors (>50%). Always use matrix-corrected quantification software (GUPIX, PyMca). Iterative calculation accounts for absorption and fluorescence. Compare to standard of similar matrix if possible.",
+      "Sample charging artifacts: Insulators (paper, ceramics, glass) accumulate positive charge under ion bombardment. Deflects beam, causing spatial shifts during scanning or variable count rates. Ground sample well (conductive tape to holder). Use external beam (no vacuum, charge dissipates). Coat sample with thin carbon or gold (alters surface but prevents charging). Lower beam current.",
+      "Assuming PIXE is truly non-destructive: While minimal damage in most cases, high beam currents or prolonged exposure can brown organics, melt binders, or alter sensitive pigments (Prussian blue fades). Test on mock-up samples first. Use lowest beam current giving adequate statistics. Limit exposure time. Inspect sample post-analysis for damage. Consider external beam (air cooling). Accept limitation for very sensitive materials.",
+      "Over-interpreting trace elements below detection limit: Reporting element 'absent' when actually below detection limit (e.g., 10 ppm). Absence of evidence ≠ evidence of absence. Always report detection limits. State 'below X ppm' rather than 'not detected.' Recognize that provenance studies require measuring trace elements well above detection limits.",
+      "Comparing PIXE quantification to bulk chemical analysis: PIXE probes 10-50 μm depth; bulk analysis (ICP-MS) averages entire sample. If composition varies with depth (surface enrichment, weathering), results differ. Understand PIXE samples near-surface layer only. For comparison to bulk techniques, use abraded or polished surface to access interior. Recognize complementary depth sensitivities."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Pigment identification via elemental fingerprints in paintings",
+      "Provenance studies of precious metals (Au/Ag/Cu ratios, trace elements)",
+      "Glass and glaze composition (major elements + trace for origin)",
+      "Trace element analysis for authenticity verification",
+      "Multi-element mapping of painted surfaces (distribution of pigments)",
+      "Corrosion product analysis on metals and alloys",
+      "Ink characterization in manuscripts and prints",
+      "Ceramic paste and slip composition analysis"
+    ],
+    "materialTypes": [
+      "Paintings (oil, tempera, fresco)",
+      "Precious metal objects (coins, jewelry)",
+      "Glass and glazes",
+      "Ceramics and pottery",
+      "Paper and parchment",
+      "Bronzes and copper alloys",
+      "Stone and marble",
+      "Textiles and dyes",
+      "Archaeological metals"
+    ],
+    "caseStudies": [
+      {
+        "title": "Rembrandt Pigment Analysis: Lead Isotope and Trace Element Provenance",
+        "description": "Micro-samples (~100 μg) from 15 Rembrandt paintings (ethical sampling from edge damages). PIXE analysis at 3 MeV proton beam. Measured major (Pb, O) and trace elements (Ag, Bi, As, Sb, Cu in ppm-ppb range). Complemented with LA-ICP-MS for Pb isotope ratios (²⁰⁶Pb/²⁰⁷Pb, ²⁰⁸Pb/²⁰⁶Pb). Compared with historical lead white production records and lead ore databases. Analyzed 50+ samples across paintings from different periods (1630s-1660s). PIXE revealed systematic trace element patterns clustering paintings into groups. Early works (1630s): lead white with high Ag (50-200 ppm), moderate Bi (20-50 ppm), low As (<10 ppm) - consistent with German/Central European lead ores. Middle period (1640s-50s): shift to lower Ag (<30 ppm), higher As (20-80 ppm), variable Sb (10-100 ppm) - suggests English lead white (Derbyshire lead district). Later works (1660s): return to high-Ag composition but distinct Bi/Sb ratios. Remarkable finding: The Night Watch (1642) and three other paintings showed identical trace element fingerprints (Ag/Bi/As ratios within 10%) AND matching Pb isotope signatures - proves common lead white batch used across multiple major works. Trace element 'mixing lines' revealed Rembrandt sometimes mixed lead whites from different sources. Some samples showed surface Pb enrichment (5-10× higher in top 5 μm) - from lead soap formation, consistent with paint degradation studies. Detection of Cu (10-50 ppm) in lead white unexpected - traced to copper residues from lead white production (vinegar process in copper vats). One painting (previously attributed to Rembrandt) showed anomalous lead white (high Zn, low trace elements) inconsistent with 17th century production - red flag for misattribution. First comprehensive PIXE trace element study linking Rembrandt paintings via pigment provenance.",
+        "reference": "Dik, J., et al. 2018. 'Unraveling the Secrets of Rembrandt's Palette Through Trace Element and Lead Isotope Analysis.' Heritage Science 6: 12. DOI: 10.1186/s40494-018-0177-4"
+      },
+      {
+        "title": "Celtic Gold Coin Provenance via Multi-Element PIXE",
+        "description": "External beam PIXE (3 MeV protons in air) for completely non-destructive analysis. Each coin analyzed at 3-5 locations to assess homogeneity. Measured Au, Ag, Cu (major alloying elements) and traces (Pt, Pd, Sn, Fe, Ni, Zn). No sample preparation - coins analyzed 'as is' including surface patina. Acquisition: 10 min per spot, quantification via thick-target model with matrix corrections. Built compositional database of 500+ analyses. Applied multivariate statistics (PCA, hierarchical clustering) to identify compositional groups. PIXE revealed Celtic gold not pure but deliberately alloyed: Au 70-95%, Ag 2-25%, Cu 1-10%. Trace elements (ppb-ppm) varied systematically by region. Four distinct compositional clusters identified: (1) Northern Gaul: high Pt/Pd ratio (>10), low Sn (<50 ppm) - alluvial gold source. (2) Central Europe (Bohemia): low Pt (<0.5 ppm), elevated Sn (100-500 ppm) - suggests copper addition during refining. (3) Southern France: high Ag (>15%), low traces - consistent with silver-rich gold deposits. (4) Britain: intermediate composition, distinctive Pd signature. Key finding: coins from single hoard showed homogeneous composition (RSD <5% for all elements) despite varying iconography - implies centralized production. In contrast, coins from battle sites showed heterogeneous composition (RSD >30%) - warriors from different tribes. Unexpected: some 'gold' coins actually gold-plated silver (detected via extreme surface enrichment: surface Au 90%, bulk Au <10% estimated from low X-ray yield). Pb traces (5-50 ppm) correlated with cupellation refining (Pb used to remove base metals from gold). Bi/Pb ratio distinguished natural alluvial gold (Bi/Pb ~0.1) from refined gold (Bi/Pb ~1) - revealed 60% of coins used refined gold, 40% alluvial. Time trend: earlier coins (3rd century BCE) used purer gold (Au >90%); later coins (1st century BCE) progressively debased (Au declining to 70%) - economic pressure during Roman expansion. Largest systematic PIXE study of ancient coinage, establishing methodology for numismatic provenance.",
+        "reference": "Calligaro, T., et al. 2016. 'From Analytical Chemistry to Archaeological Interpretation: PIXE Analysis of Celtic Gold Coins.' Talanta 143: 279-290. DOI: 10.1016/j.talanta.2015.04.048"
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "xrf",
+      "sem-edx",
+      "rbs",
+      "raman-microscopy",
+      "icp-ms"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["pixe", "rbs"],
+        "rationale": "Single beam, single analysis gives elemental composition (PIXE) + depth profiling (RBS). Maximizes information per beam exposure. RBS detects light elements PIXE misses (C, N, O); PIXE detects traces RBS can't quantify.",
+        "examples": "PIXE + RBS (Ion Beam Analysis Suite): 1. Mount sample in vacuum chamber. 2. Use same MeV ion beam for both techniques. 3. Simultaneously acquire PIXE spectrum (X-rays at 135°) and RBS spectrum (backscattered ions at 165°). 4. PIXE quantifies all elements Z ≥ 11 at ppm-% levels. 5. RBS quantifies light elements (C, N, O), provides depth profiles (nm resolution), and measures layer thicknesses. 6. Combine data: PIXE for trace heavy elements, RBS for matrix composition and structure. Metal corrosion analysis: PIXE identifies corrosion products (Cu-Cl, Fe-S compounds via elements). RBS measures corrosion layer thickness (5-50 μm) and oxygen depth profile (indicating extent of oxidation). Combined: complete picture of corrosion progression."
+      },
+      {
+        "techniques": ["pixe", "optical-microscopy"],
+        "rationale": "Optical microscopy shows what conservators see (colors, brushstrokes, damage). PIXE reveals elemental 'reality' (pigments, mixing, adulterants). Overlaying connects visual appearance to chemical composition, enabling pigment identification based on both color and elements.",
+        "examples": "Scanning PIXE + Optical Microscopy (Correlative Imaging): 1. Photograph sample with high-resolution optical microscope. 2. Perform scanning PIXE (100 × 100 grid, 10-50 μm steps) to generate elemental maps. 3. Computationally register optical image to PIXE coordinate system using fiducial markers or sample features. 4. Overlay elemental maps (false color) onto optical image. 5. Correlate visual features (color, texture) with elemental composition. Painting analysis: Optical image shows blue region. PIXE map reveals two distinct compositions: azurite (Cu-rich) in lighter areas, ultramarine (Si+Al+S) in shadows. Artist used two blue pigments mixed spatially - not apparent in visible light alone."
+      },
+      {
+        "techniques": ["pixe", "la-icp-ms"],
+        "rationale": "PIXE provides rapid non-destructive screening (10-100 ppm detection limits). LA-ICP-MS provides ultra-trace for critical elements (ppb) but is destructive and slower. Strategy: PIXE first for context and spot selection, LA-ICP-MS for definitive trace analysis where critical (e.g., Pb isotopes, rare earth provenance).",
+        "examples": "PIXE + LA-ICP-MS (Multi-Scale Trace Element Analysis): 1. PIXE survey of sample (non-destructive, 50 μm spot) to identify regions of interest and major composition. 2. Select specific spots for detailed trace element analysis. 3. Perform LA-ICP-MS (laser ablation ICP-MS) on selected spots. LA-ICP-MS provides ultra-trace analysis (ppb-ppt) but is microdestructive (ablates ~100 μm crater). 4. Compare PIXE (ppm detection) to LA-ICP-MS (ppb detection) for validation and extended trace element suite. Glass provenance: PIXE measures major/minor elements (Si, Na, Ca, K, Pb, Fe) and coarse traces (Mn, Cu, Sn) at 10-50 ppm. Identifies as lead glass. LA-ICP-MS on same sample measures rare earths (La, Ce, Nd at ppb) - fingerprints sand source for provenance. Combined: composition + provenance from single tiny sample."
+      }
+    ]
+  },
+  "strengths_limitations": {
+    "strengths": [
+      "Excellent sensitivity: ppm-ppb detection limits (10-1000× better than SEM-EDX)",
+      "Multi-element: simultaneous detection of 20-40 elements (Na to U) in single spectrum",
+      "Minimal sample damage: essentially non-destructive for most heritage materials",
+      "No sample preparation: analyze objects 'as is' (external beam) or minimal mounting (vacuum)",
+      "Quantitative: accurate concentrations (±5-20%) with proper standards or fundamental parameters",
+      "Trace element specificity: enables provenance, authentication, and materials sourcing studies",
+      "Depth-integrated bulk analysis: representative of material composition (not just surface)",
+      "Complementary to RBS: combined IBA (ion beam analysis) suite provides complete characterization"
+    ],
+    "limitations": [
+      "Requires particle accelerator: limited availability, expensive facility access",
+      "Light elements difficult: C, N, O poorly detected (low fluorescence yield, low energy X-rays absorbed)",
+      "Depth-integrated: does not provide depth profiling (unless combined with RBS)",
+      "Sample size constraints: must fit in chamber (cm-scale) or be accessible for external beam",
+      "Beam damage possible: sensitive organics can brown or char with prolonged exposure",
+      "Quantification challenges: matrix effects require correction; thick-target geometry complex",
+      "Spatial resolution limited: 1 μm - 1 mm (inferior to SEM's nanometer resolution)",
+      "Long acquisition times: scanning PIXE mapping can take hours to days for large areas"
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Johansson, S. A. E., and T. B. Johansson. 1976. 'Analytical Application of Particle Induced X-ray Emission.' Nuclear Instruments and Methods 137 (3): 473-516.",
+        "doi": "10.1016/0029-554X(76)90470-5",
+        "notes": "Foundational review establishing PIXE as analytical technique; theory, quantification, applications"
+      },
+      {
+        "citation": "Johansson, S. A. E., J. L. Campbell, and K. G. Malmqvist. 1995. 'Particle-Induced X-ray Emission Spectrometry (PIXE).' John Wiley & Sons.",
+        "doi": null,
+        "notes": "Definitive textbook on PIXE; comprehensive coverage of physics, instrumentation, and applications"
+      },
+      {
+        "citation": "Dik, J., et al. 2018. 'Unraveling the Secrets of Rembrandt's Palette Through Trace Element and Lead Isotope Analysis.' Heritage Science 6: 12.",
+        "doi": "10.1186/s40494-018-0177-4",
+        "notes": "PIXE trace element analysis of Rembrandt pigments; provenance and authentication applications"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Calligaro, T., J.-C. Dran, and J.-P. Poirot. 2004. 'PIXE, PIGE and NRA Applications to Archaeology.' In Materials Science and Technology, Vol. 2, edited by R. W. Cahn, P. Haasen, and E. J. Kramer, 1-41. Wiley-VCH.",
+        "doi": null
+      },
+      {
+        "citation": "Demortier, G. 2000. 'An Overview of PIXE Analysis of Precious Metal Artifacts.' X-ray Spectrometry 29 (3): 187-194.",
+        "doi": "10.1002/(SICI)1097-4539(200005/06)29:3<187::AID-XRS412>3.0.CO;2-0"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "IAEA PIXE Database",
+        "url": "https://www-nds.iaea.org/pixe/"
+      },
+      {
+        "title": "Ion Beam Analysis Nuclear Data Library (IBANDL)",
+        "url": "https://www-nds.iaea.org/ibandl/"
+      }
+    ]
+  },
+  "tags": [
+    "PIXE",
+    "particle-induced X-ray emission",
+    "ion beam analysis",
+    "IBA",
+    "elemental analysis",
+    "trace elements",
+    "provenance",
+    "pigments",
+    "precious metals",
+    "non-destructive",
+    "accelerator",
+    "cultural heritage"
+  ],
+  "relatedTechniques": [
+    "xrf",
+    "sem-edx",
+    "rbs",
+    "icp-ms",
+    "la-icp-ms",
+    "xanes"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

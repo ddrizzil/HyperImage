@@ -1,0 +1,378 @@
+---
+title: "Aberration Theory and Wavefronts"
+slug: "design/20-aberration-theory-and-wavefronts"
+category: "Design"
+---
+
+## Overview
+
+Aberrations are deviations from ideal imaging. This module develops the mathematical framework for describing and correcting optical aberrations, from third-order (Seidel) aberrations to higher-order effects. We connect ray aberrations to wavefront errors and introduce tools for wavefront analysis.
+
+## 20.1 Third-Order (Seidel) Aberrations
+
+The Seidel aberrations are the five primary monochromatic aberrations that arise from third-order terms in the expansion of the optical path difference. They are:
+
+1. **Spherical Aberration**
+2. **Coma**
+3. **Astigmatism**
+4. **Field Curvature**
+5. **Distortion**
+
+### Spherical Aberration
+
+**Ray diagram:** Rays parallel to optical axis focus at different points depending on height. Marginal rays focus closer than paraxial rays.
+
+**Wavefront error:**
+$$W_{\text{SA}} = W_{040} \rho^4$$
+
+where $\rho$ is the normalized pupil radius and $W_{040}$ is the coefficient.
+
+**Transverse ray aberration:**
+$$\delta y' = 4 W_{040} \frac{\rho^3}{R}$$
+
+where $R$ is the exit pupil radius.
+
+**Longitudinal aberration:**
+$$\delta z' = \frac{8 W_{040}}{(\text{NA})^2}$$
+
+**Sign convention:** $W_{040} > 0$ for undercorrected (marginal focus before paraxial), $W_{040} < 0$ for overcorrected.
+
+**Correction:** Use aspheric surfaces, stop position, or multiple elements with opposite contributions.
+
+### Coma
+
+**Ray diagram:** Off-axis point source produces asymmetric blur (comet-shaped). Tangential and sagittal rays focus at different locations.
+
+**Wavefront error:**
+$$W_{\text{Coma}} = W_{131} H \rho^3 \cos\phi$$
+
+where $H$ is the normalized field height and $\phi$ is the azimuthal angle.
+
+**Tangential coma:**
+$$\delta y'_t = 3 W_{131} H \frac{\rho^2}{R}$$
+
+**Sagittal coma:**
+$$\delta y'_s = W_{131} H \frac{\rho^2}{R}$$
+
+**Coma flare length:**
+$$L_{\text{coma}} = 6 W_{131} H \frac{\rho^2_{\text{max}}}{R}$$
+
+**Abbe sine condition:** For zero coma, must satisfy:
+$$n y \sin u = n' y' \sin u'$$
+
+**Correction:** Stop position (aplanatic condition), symmetric design, aspherics.
+
+### Astigmatism
+
+**Ray diagram:** Off-axis point produces two line foci: tangential (meridional) and sagittal. Between them, the image is elliptical.
+
+**Wavefront error:**
+$$W_{\text{Ast}} = W_{222} H^2 \rho^2 \cos^2\phi$$
+
+**Tangential focus distance:**
+$$s'_t = s' + \frac{2 W_{222} H^2}{R^2}$$
+
+**Sagittal focus distance:**
+$$s'_s = s' - \frac{2 W_{222} H^2}{R^2}$$
+
+**Astigmatic difference:**
+$$\Delta s' = s'_t - s'_s = \frac{4 W_{222} H^2}{R^2}$$
+
+**Circle of least confusion:** At midpoint between foci.
+
+**Correction:** Symmetric design, stop at center of curvature, field flattening lenses.
+
+### Field Curvature (Petzval Curvature)
+
+**Ray diagram:** Best focus lies on a curved surface (Petzval surface) rather than a plane.
+
+**Wavefront error:**
+$$W_{\text{FC}} = W_{220} H^2 \rho^2$$
+
+**Petzval radius:**
+$$\frac{1}{R_p} = \sum_i \frac{n_i' - n_i}{n_i n_i' R_i}$$
+
+**Field curvature:**
+$$\delta z' = \frac{W_{220} H^2}{(\text{NA})^2}$$
+
+**Correction:** Field flattener lenses, negative elements, symmetric design.
+
+### Distortion
+
+**Ray diagram:** Image points displaced radially from ideal positions. Barrel distortion (negative): points too close to center. Pincushion distortion (positive): points too far.
+
+**Wavefront error:**
+$$W_{\text{Dist}} = W_{311} H^3 \rho \cos\phi$$
+
+**Transverse displacement:**
+$$\delta y' = W_{311} H^3$$
+
+**Distortion percentage:**
+$$\text{Dist} = \frac{\delta y'}{y'} \times 100\%$$
+
+**Correction:** Symmetric design, stop position, telecentricity.
+
+### Polynomial Representation
+
+**Complete wavefront error:**
+$$W(\rho, H, \phi) = \sum_{j,m,n} W_{jmn} H^j \rho^m \cos^n\phi$$
+
+where:
+- $j$ = field dependence order
+- $m$ = pupil dependence order
+- $n$ = azimuthal order
+
+**Seidel terms:**
+- $W_{040}$: Spherical aberration
+- $W_{131}$: Coma
+- $W_{222}$: Astigmatism
+- $W_{220}$: Field curvature
+- $W_{311}$: Distortion
+
+### Aberration Balancing
+
+**Balancing spherical aberration:** Use defocus to minimize RMS wavefront error:
+
+$$W_{\text{total}} = W_{040} \rho^4 + W_{020} \rho^2$$
+
+**Optimal defocus:**
+$$W_{020} = -W_{040}$$
+
+**Minimum RMS:**
+$$W_{\text{RMS,min}} = \frac{W_{040}}{\sqrt{5}}$$
+
+**Balancing coma:** Cannot be balanced with defocus (odd symmetry), but can be balanced with tilt.
+
+## 20.2 Chromatic Aberrations
+
+### Axial Chromatic Aberration
+
+**Longitudinal chromatic aberration:**
+$$\Delta f = f(\lambda_F) - f(\lambda_C) = \frac{f}{V_d}$$
+
+where $V_d$ is the Abbe number.
+
+**Wavefront error:**
+$$W_{\text{ACA}} = W_{020,\lambda} \rho^2$$
+
+where $W_{020,\lambda}$ varies with wavelength.
+
+### Lateral Chromatic Aberration
+
+**Transverse chromatic aberration:**
+$$\Delta y' = y' \left(\frac{1}{V_d}\right) \tan u'$$
+
+**Magnification difference:**
+$$\Delta M = M \left(\frac{1}{V_d}\right)$$
+
+### Achromat Design
+
+**Thin doublet:** Two elements with powers $\phi_1$ and $\phi_2$:
+
+**Power:**
+$$\phi = \phi_1 + \phi_2$$
+
+**Achromatization condition:**
+$$\frac{\phi_1}{V_1} + \frac{\phi_2}{V_2} = 0$$
+
+**Solution:**
+$$\phi_1 = \phi \frac{V_1}{V_1 - V_2}$$
+$$\phi_2 = -\phi \frac{V_2}{V_1 - V_2}$$
+
+**Example:** BK7 ($V_1 = 64.2$) + F2 ($V_2 = 36.4$):
+- $\phi_1 = 2.31 \phi$
+- $\phi_2 = -1.31 \phi$
+
+### Apochromat Design
+
+**Three-element system:** Corrects at three wavelengths.
+
+**Condition:**
+$$\sum_{i=1}^3 \frac{\phi_i}{V_i} = 0$$
+$$\sum_{i=1}^3 \frac{\phi_i P_{g,F,i}}{V_i} = 0$$
+
+where $P_{g,F}$ is the partial dispersion.
+
+**Result:** Zero chromatic aberration at three wavelengths (typically F, d, C lines).
+
+### Partial Dispersion
+
+**Partial dispersion ratio:**
+$$P_{g,F} = \frac{n_g - n_F}{n_F - n_C}$$
+
+**Abnormal partial dispersion:** Glasses that deviate from the normal line in the $P_{g,F}$ vs. $V_d$ plot. Required for apochromats.
+
+**Examples:** ED (extra-low dispersion) glasses, fluorite crystals.
+
+## 20.3 Zernike Polynomials
+
+### Orthonormal Basis
+
+Zernike polynomials form an orthonormal basis on the unit circle:
+
+$$\int_0^1 \int_0^{2\pi} Z_n^m(\rho,\phi) Z_{n'}^{m'*}(\rho,\phi) \rho \, d\rho \, d\phi = \delta_{nn'} \delta_{mm'}$$
+
+### Noll Index
+
+**Single index:** $j$ maps to $(n,m)$:
+
+$$j = \frac{n(n+2) + m}{2} + 1$$
+
+**Common terms:**
+- $Z_1$: Piston
+- $Z_2, Z_3$: Tilt ($x$, $y$)
+- $Z_4$: Defocus
+- $Z_5, Z_6$: Astigmatism (0°, 45°)
+- $Z_7, Z_8$: Coma ($x$, $y$)
+- $Z_9$: Spherical aberration
+
+### Polynomial Forms
+
+**Radial order $n$, azimuthal order $m$:**
+
+$$Z_n^m(\rho,\phi) = R_n^{|m|}(\rho) \begin{cases} \cos(m\phi) & m \geq 0 \\ \sin(|m|\phi) & m < 0 \end{cases}$$
+
+**Radial polynomials:**
+$$R_n^m(\rho) = \sum_{k=0}^{(n-|m|)/2} \frac{(-1)^k (n-k)!}{k! \left(\frac{n+|m|}{2} - k\right)! \left(\frac{n-|m|}{2} - k\right)!} \rho^{n-2k}$$
+
+**Examples:**
+- $R_0^0 = 1$ (piston)
+- $R_1^1 = \rho$ (tilt)
+- $R_2^0 = 2\rho^2 - 1$ (defocus)
+- $R_2^2 = \rho^2$ (astigmatism)
+- $R_3^1 = 3\rho^3 - 2\rho$ (coma)
+- $R_4^0 = 6\rho^4 - 6\rho^2 + 1$ (spherical)
+
+### Wavefront Decomposition
+
+**Expansion:**
+$$W(\rho,\phi) = \sum_{j=1}^\infty a_j Z_j(\rho,\phi)$$
+
+**Coefficients:**
+$$a_j = \int_0^1 \int_0^{2\pi} W(\rho,\phi) Z_j(\rho,\phi) \rho \, d\rho \, d\phi$$
+
+**RMS wavefront error:**
+$$W_{\text{RMS}} = \sqrt{\sum_{j=2}^\infty a_j^2}$$
+
+(Excluding piston, $j=1$)
+
+### Modal Fitting
+
+**Least-squares fit:** Given measured wavefront $W_{\text{meas}}(\rho_i,\phi_i)$:
+
+Minimize:
+$$\chi^2 = \sum_i \left[W_{\text{meas}}(\rho_i,\phi_i) - \sum_j a_j Z_j(\rho_i,\phi_i)\right]^2$$
+
+**Solution:**
+$$\mathbf{a} = (\mathbf{Z}^T \mathbf{Z})^{-1} \mathbf{Z}^T \mathbf{W}_{\text{meas}}$$
+
+where $\mathbf{Z}$ is the matrix of Zernike values at measurement points.
+
+## 20.4 Strehl Ratio
+
+### Definition
+
+**Strehl ratio:** Ratio of peak intensity in aberrated PSF to that of perfect (diffraction-limited) PSF:
+
+$$S = \frac{I_{\text{max,aberr}}}{I_{\text{max,perfect}}}$$
+
+### Maréchal Approximation
+
+For small aberrations ($W_{\text{RMS}} \ll \lambda$):
+
+$$S \approx e^{-(2\pi \sigma / \lambda)^2}$$
+
+where $\sigma = W_{\text{RMS}}$ is the RMS wavefront error.
+
+**Alternative form:**
+$$S \approx 1 - \left(\frac{2\pi \sigma}{\lambda}\right)^2$$
+
+### Extended Formula
+
+For larger aberrations, include higher-order terms:
+
+$$S \approx e^{-(2\pi \sigma / \lambda)^2} \left[1 - \frac{1}{2}\left(\frac{2\pi \sigma}{\lambda}\right)^4 + \cdots\right]$$
+
+### Rayleigh Criterion
+
+**Rayleigh limit:** $S = 0.8$ corresponds to:
+$$\sigma = \frac{\lambda}{14}$$
+
+**Common standard:** $S > 0.8$ considered "diffraction-limited."
+
+### Relationship to MTF
+
+**MTF at zero frequency:**
+$$\text{MTF}(0) = S$$
+
+**Encircled energy:** Related to Strehl ratio through PSF integration.
+
+## 20.5 Wavefront Sensing
+
+### Shack-Hartmann Wavefront Sensor
+
+**Principle:** Array of lenslets samples local wavefront slope.
+
+**Lenslet array:** Pitch $p$, focal length $f_{\text{lenslet}}$.
+
+**Local slope:**
+$$\alpha_x = \frac{\Delta x}{f_{\text{lenslet}}}$$
+
+where $\Delta x$ is the spot displacement.
+
+**Wavefront gradient:**
+$$\nabla W = \frac{\lambda}{2\pi} \frac{\Delta \mathbf{r}}{f_{\text{lenslet}}}$$
+
+**Reconstruction:** Integrate gradients to recover wavefront:
+
+$$W(x,y) = \int \nabla W \cdot d\mathbf{r}$$
+
+**Methods:** Southwell, Hudgin, Fried geometries for integration.
+
+### Curvature Sensor
+
+**Principle:** Measure wavefront curvature from intensity differences.
+
+**Intensity transport equation:**
+$$\frac{\partial I}{\partial z} = -\frac{1}{k} \nabla \cdot (I \nabla W)$$
+
+**Curvature measurement:** Intensity at two defocused planes:
+
+$$\frac{I_+ - I_-}{I_+ + I_-} = \frac{\Delta z}{k} \nabla^2 W$$
+
+where $\Delta z$ is the defocus distance.
+
+**Reconstruction:** Solve Poisson equation:
+$$\nabla^2 W = \frac{k}{\Delta z} \frac{I_+ - I_-}{I_+ + I_-}$$
+
+### Pyramid Wavefront Sensor
+
+**Principle:** Four-sided pyramid splits beam, measures intensity in four quadrants.
+
+**Slope measurement:**
+$$\alpha_x \propto I_1 + I_2 - I_3 - I_4$$
+$$\alpha_y \propto I_1 + I_4 - I_2 - I_3$$
+
+**Advantages:** High sensitivity, works with extended sources.
+
+### Interferometric Wavefront Sensing
+
+**Twyman-Green interferometer:** Measures phase difference between reference and test beams.
+
+**Phase measurement:**
+$$\phi(x,y) = \frac{4\pi}{\lambda} W(x,y)$$
+
+**Fringe analysis:** Extract phase from interference pattern.
+
+**Phase-shifting:** Multiple measurements with phase steps to extract phase unambiguously.
+
+## Summary
+
+Aberration theory provides:
+- **Classification:** Five Seidel aberrations plus chromatic
+- **Quantification:** Wavefront error coefficients, Zernike expansion
+- **Correction:** Design strategies for each aberration type
+- **Analysis:** Strehl ratio, wavefront sensing, MTF prediction
+
+Understanding aberrations enables systematic design of high-performance optical systems.
+

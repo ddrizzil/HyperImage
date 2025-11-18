@@ -1,0 +1,375 @@
+{
+  "id": "xanes",
+  "name": "X-ray Absorption Near-Edge Structure",
+  "acronym": "XANES",
+  "category": "X-ray Spectroscopy",
+  "subcategory": "Synchrotron-Based Analysis",
+  "summary": "X-ray Absorption Near-Edge Structure (XANES) is an element-specific synchrotron-based spectroscopic technique that probes the electronic structure and local chemical environment of specific elements by analyzing X-ray absorption fine structure within approximately 50-100 eV above the core-level binding energy (absorption edge). When X-ray photons with energy matching a core electron binding energy (e.g., K-edge for 1s electrons, L-edges for 2s/2p electrons) are absorbed, core electrons are excited to unoccupied electronic states just above the Fermi level, producing characteristic absorption features highly sensitive to oxidation state, coordination geometry, and local symmetry. The technique examines three spectral regions: pre-edge (transitions to bound states, sensitive to coordination and oxidation state), absorption edge (ionization threshold, shifts with oxidation state), and near-edge (multiple scattering resonances, provides local structure information). XANES requires synchrotron radiation sources (tunable, high-intensity X-rays) and can be performed in transmission, fluorescence yield, or electron yield detection modes depending on sample characteristics. In cultural heritage applications, XANES enables non-destructive (or minimally destructive with micro-sampling) determination of oxidation states and coordination environments for transition metals (Fe, Cu, Mn, Cr, Ti) and other elements in pigments, corrosion products, and degradation phases, providing critical information for authentication, conservation planning, and understanding material transformations. The technique is particularly powerful for distinguishing between different oxidation states (e.g., Fe²⁺ vs. Fe³⁺ in iron oxide pigments, Cu⁺ vs. Cu²⁺ in copper corrosion products) and coordination geometries (octahedral, tetrahedral, square planar) that cannot be resolved by elemental techniques like XRF. XANES is typically combined with XRF mapping (MA-XRF) to correlate spatial distribution with chemical speciation, and with EXAFS (Extended X-ray Absorption Fine Structure) for complete local structure determination.",
+  "keyApplications": [
+    "Oxidation state determination (Fe²⁺ vs. Fe³⁺ in iron oxide pigments, Cu⁺ vs. Cu²⁺ in corrosion products, Mn oxidation states in manganese oxides)",
+    "Pigment speciation (distinguish hematite Fe₂O₃ vs. magnetite Fe₃O₄, identify copper corrosion phases: cuprite Cu₂O vs. tenorite CuO, malachite vs. azurite)",
+    "Degradation pathway analysis (monitor oxidation state changes during aging: lead white → lead oxide, vermilion → metacinnabar, iron oxide phase transitions)",
+    "Authentication (detect anachronistic materials: modern synthetic pigments vs. historical, identify restoration materials with different oxidation states)",
+    "Corrosion product identification (copper: cuprite, tenorite, atacamite, paratacamite; iron: goethite, hematite, magnetite, lepidocrocite; distinguish phases with same composition but different structures)",
+    "Coordination geometry determination (octahedral vs. tetrahedral coordination in transition metal compounds, local symmetry around absorbing atom)"
+  ],
+  "destructiveness": "non-destructive to minimally destructive (transmission mode: requires thin samples <10 μm, may require micro-sampling; fluorescence mode: bulk samples, surface-sensitive ~1-10 μm depth; electron yield: ultra-surface-sensitive <100 nm)",
+  "portability": "facility-based (requires synchrotron radiation source; not portable; samples transported to synchrotron facility)",
+  "typicalTimePerMeasurement": "Minutes to hours per spectrum (single point: 5-30 min including energy scan; mapping: hours to days for 100×100 point grid)",
+  "costRange": {
+    "instrument": "Synchrotron beamtime: $0-$50,000+ per session (facility-dependent: some free for academic research, others charge per hour; typical 8-hour session $2,000-$10,000 commercial)",
+    "perSample": "$200-$2,000 per analysis (beamtime costs, travel, sample preparation; micro-sampling if required: additional $50-$500)"
+  },
+  "relatedTechniques": [
+    "xrf-scanning",
+    "exafs",
+    "x-ray-radiography-film",
+    "raman-spectroscopy",
+    "mossbauer-spectroscopy"
+  ],
+  "fundamentalPhysics": {
+    "principle": "XANES exploits the X-ray absorption process where photons with energy matching core electron binding energies are absorbed, exciting core electrons to unoccupied electronic states. When X-ray energy E matches the binding energy E_b of a core electron (e.g., K-edge: 1s electron, L₃-edge: 2p₃/₂ electron), absorption probability increases dramatically (absorption edge). Near the edge (within ~50-100 eV above E_b), the photoelectron ejected from the core level has low kinetic energy (E_kin = E - E_b), resulting in a de Broglie wavelength λ_e = h/√(2m_e E_kin) comparable to interatomic distances (0.1-1 nm). This leads to multiple scattering of the photoelectron by neighboring atoms, producing interference effects that manifest as fine structure in the absorption spectrum. The absorption coefficient μ(E) exhibits three characteristic regions: (1) Pre-edge (E < E_b, typically 10-20 eV below edge): weak features from transitions to bound states (e.g., 1s → 3d transitions in transition metals, sensitive to coordination geometry and oxidation state). (2) Absorption edge (E ≈ E_b): sharp rise in absorption (edge position shifts ~1-5 eV per oxidation state change; higher oxidation state → higher edge energy due to increased effective nuclear charge). (3) Near-edge (E_b < E < E_b + 50-100 eV): multiple scattering resonances (white lines, shape resonances) providing information about local coordination geometry, bond distances, and symmetry. The spectral features are highly sensitive to the local chemical environment: oxidation state (edge position), coordination number and geometry (pre-edge intensity, near-edge shape), and local symmetry (pre-edge splitting, near-edge fine structure).",
+    "physicalPhenomenon": "**Core-level photoabsorption:** X-ray photon (energy E = hν) absorbed by atom, core electron (binding energy E_b) promoted to unoccupied state above Fermi level. Transition probability given by Fermi's golden rule: μ(E) ∝ |⟨f|H'|i⟩|² · ρ(E), where |i⟩ is initial core state, |f⟩ is final unoccupied state, H' is interaction Hamiltonian (electric dipole approximation: H' = e·r·E), ρ(E) is density of unoccupied states. **Pre-edge transitions:** For transition metals, weak pre-edge features arise from quadrupole-allowed (1s → 3d) or dipole-allowed (1s → 4p) transitions. Intensity and energy position sensitive to: (1) Oxidation state (higher oxidation → pre-edge shifts to higher energy, intensity may change). (2) Coordination geometry (tetrahedral coordination → stronger pre-edge due to 3d-4p mixing; octahedral → weaker, more centrosymmetric). (3) Local symmetry (distorted octahedra → pre-edge splitting, multiple peaks). **Edge shift with oxidation state:** Edge energy E_edge increases with oxidation state (e.g., Fe²⁺ K-edge ~7112 eV, Fe³⁺ ~7125 eV; shift ~2-5 eV per oxidation state). Physical origin: higher oxidation state → more positive effective charge on atom → stronger binding of core electrons → higher binding energy → edge at higher photon energy. **Multiple scattering in near-edge:** Photoelectron wavefunction ψ(r) = e^(ik·r) + Σ_j f_j(θ) e^(ik|r-r_j|)/|r-r_j| (scattered waves from neighbors j). Interference between direct and scattered waves produces resonances when path length differences = nλ_e (constructive interference) or (n+½)λ_e (destructive). Result: oscillatory fine structure in μ(E) encoding local structure (bond distances, coordination geometry, symmetry). **White line:** Strong absorption peak just above edge (especially for L-edges of transition metals, rare earths) due to transitions to unoccupied d or f states. Intensity proportional to density of unoccupied states, sensitive to oxidation state and electronic structure.",
+    "equations": [
+      {
+        "latex": "$$\\mu(E) = \\mu_0(E) \\left[ 1 + \\chi(E) \\right]$$",
+        "description": "X-ray Absorption Coefficient (with fine structure modulation)",
+        "variables": [
+          {"symbol": "\\mu(E)", "meaning": "absorption coefficient at energy E", "units": "cm⁻¹"},
+          {"symbol": "\\mu_0(E)", "meaning": "smooth atomic background absorption (without fine structure)", "units": "cm⁻¹"},
+          {"symbol": "\\chi(E)", "meaning": "fine structure function (XANES + EXAFS oscillations)", "units": "dimensionless"},
+          {"symbol": "E", "meaning": "X-ray photon energy", "units": "eV or keV"}
+        ]
+      },
+      {
+        "latex": "$$E_{edge} = E_b + \\Delta E_{chemical}$$",
+        "description": "Absorption Edge Energy (binding energy + chemical shift)",
+        "variables": [
+          {"symbol": "E_{edge}", "meaning": "absorption edge energy (50% of edge jump)", "units": "eV or keV"},
+          {"symbol": "E_b", "meaning": "core electron binding energy (atomic value)", "units": "eV or keV"},
+          {"symbol": "\\Delta E_{chemical}", "meaning": "chemical shift (depends on oxidation state, coordination, local environment; typically 1-10 eV)", "units": "eV"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta E_{edge} \\approx 2-5 \\text{ eV per oxidation state}$$",
+        "description": "Edge Shift with Oxidation State (empirical rule for transition metals)",
+        "variables": [
+          {"symbol": "\\Delta E_{edge}", "meaning": "edge energy shift", "units": "eV (typically 2-5 eV per +1 oxidation state change)"},
+          {"symbol": "\\text{oxidation state}", "meaning": "change in formal oxidation state (e.g., Fe²⁺ → Fe³⁺ = +1)", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$\\lambda_e = \\frac{h}{\\sqrt{2 m_e E_{kin}}} = \\frac{h}{\\sqrt{2 m_e (E - E_b)}}$$",
+        "description": "Photoelectron Wavelength (de Broglie wavelength of ejected electron)",
+        "variables": [
+          {"symbol": "\\lambda_e", "meaning": "photoelectron de Broglie wavelength", "units": "nm or Å"},
+          {"symbol": "h", "meaning": "Planck constant (6.626×10⁻³⁴ J·s)", "units": "J·s"},
+          {"symbol": "m_e", "meaning": "electron mass (9.109×10⁻³¹ kg)", "units": "kg"},
+          {"symbol": "E_{kin}", "meaning": "photoelectron kinetic energy (E - E_b)", "units": "eV"},
+          {"symbol": "E", "meaning": "X-ray photon energy", "units": "eV"},
+          {"symbol": "E_b", "meaning": "core electron binding energy", "units": "eV"}
+        ]
+      },
+      {
+        "latex": "$$I = I_0 e^{-\\mu(E) t}$$",
+        "description": "Beer-Lambert Law (transmission through sample)",
+        "variables": [
+          {"symbol": "I", "meaning": "transmitted X-ray intensity", "units": "photons/s or counts/s"},
+          {"symbol": "I_0", "meaning": "incident X-ray intensity", "units": "photons/s or counts/s"},
+          {"symbol": "\\mu(E)", "meaning": "absorption coefficient (energy-dependent)", "units": "cm⁻¹"},
+          {"symbol": "t", "meaning": "sample thickness", "units": "cm"}
+        ]
+      },
+      {
+        "latex": "$$\\mu_{fluorescence} = \\frac{\\Omega}{4\\pi} \\cdot \\omega_f \\cdot \\mu(E) \\cdot t$$",
+        "description": "Fluorescence Yield (for bulk/thick samples)",
+        "variables": [
+          {"symbol": "\\mu_{fluorescence}", "meaning": "fluorescence signal intensity", "units": "arbitrary or counts/s"},
+          {"symbol": "\\Omega", "meaning": "solid angle of fluorescence detector", "units": "steradians"},
+          {"symbol": "\\omega_f", "meaning": "fluorescence yield (probability of X-ray emission after core hole creation; ~0.1-0.9 for K-edges, ~0.01-0.1 for L-edges)", "units": "dimensionless"},
+          {"symbol": "\\mu(E)", "meaning": "absorption coefficient", "units": "cm⁻¹"},
+          {"symbol": "t", "meaning": "effective sample thickness (penetration depth)", "units": "cm"}
+        ]
+      },
+      {
+        "latex": "$$E_{pre-edge} = E_b - \\Delta E_{crystal field}$$",
+        "description": "Pre-Edge Energy (bound state transitions below continuum)",
+        "variables": [
+          {"symbol": "E_{pre-edge}", "meaning": "pre-edge peak energy", "units": "eV"},
+          {"symbol": "E_b", "meaning": "core binding energy (edge position)", "units": "eV"},
+          {"symbol": "\\Delta E_{crystal field}", "meaning": "crystal field splitting (energy difference between bound state and continuum; typically 5-20 eV)", "units": "eV"}
+        ]
+      }
+    ],
+    "interactionDepth": {
+      "description": "XANES penetration depth depends on detection mode and X-ray energy. **Transmission mode:** X-rays pass through entire sample thickness (typically <10 μm for optimal signal-to-noise; thicker samples attenuate beam, reduce signal). Effective depth: entire sample if thin enough. **Fluorescence mode:** Surface-sensitive, depth ~1-10 μm (depends on X-ray energy and material absorption; higher energy → deeper penetration). Fluorescence yield decreases exponentially with depth: I_fluor(z) = I_0 e^(-μ_total z), where μ_total = μ_in(E) + μ_out(E_fluor) (incoming + outgoing absorption). For Fe K-edge (7.1 keV): penetration ~5-20 μm in paint/varnish, ~50-200 μm in low-Z materials. **Electron yield mode:** Ultra-surface-sensitive, depth <100 nm (electrons have short mean free path in solids, ~5-50 nm for 100-1000 eV kinetic energy). Only surface layers contribute to signal. **Total electron yield (TEY):** Measures current from sample (electrons escaping surface), depth ~10-50 nm. **Auger electron yield:** Measures specific Auger electrons, depth ~5-20 nm (element-specific, more selective). For heritage applications: fluorescence mode preferred (bulk analysis, less surface contamination effects; transmission requires micro-sampling, thin sections).",
+      "materialSpecific": [
+        {"material": "Paint layers (pigmented, 10-100 μm thick)", "penetrationDepth": "Transmission: requires micro-sampling, thin section <10 μm. Fluorescence: 5-20 μm (Fe K-edge 7.1 keV in paint; signal from entire paint layer if <20 μm, weighted toward surface if thicker).", "visualizedFeatures": "Oxidation state of transition metal pigments (Fe, Cu, Mn, Cr, Ti), coordination geometry, local structure"},
+        {"material": "Corrosion products (metal surfaces, 1-100 μm thick)", "penetrationDepth": "Fluorescence: 1-10 μm (surface corrosion layer analyzed; underlying metal may contribute if thin corrosion). Electron yield: <100 nm (only outermost corrosion phase).", "visualizedFeatures": "Corrosion phase identification (cuprite Cu₂O, tenorite CuO, atacamite Cu₂Cl(OH)₃; goethite FeOOH, hematite Fe₂O₃, magnetite Fe₃O₄), oxidation state distribution"},
+        {"material": "Ceramic glazes (50-500 μm thick)", "penetrationDepth": "Fluorescence: 10-50 μm (glaze layer analyzed; underlying ceramic body may contribute if thin glaze). Transmission: requires cross-section, thin section <10 μm.", "visualizedFeatures": "Transition metal oxidation states in colored glazes (Fe, Cu, Mn, Co), coordination environment, firing conditions"},
+        {"material": "Glass (vitreous materials, mm-thick)", "penetrationDepth": "Fluorescence: 20-100 μm (bulk analysis possible; signal from entire thickness if <100 μm, weighted toward surface if thicker). Transmission: entire thickness if <10 μm (rare, usually requires micro-sampling).", "visualizedFeatures": "Coloring element oxidation states (Fe, Mn, Co in historical glass), coordination geometry, local structure"}
+      ]
+    },
+    "spatialResolution": {
+      "lateral": "Beam size limited: typically 1-100 μm spot size (synchrotron beam focused via Kirkpatrick-Baez mirrors, zone plates, or capillary optics). Micro-XANES: 1-10 μm spot (microprobe beamlines, scanning XANES mapping). Nano-XANES: 10-100 nm spot (nano-focused beams, specialized beamlines; rare, research-level). Standard XANES: 50-500 μm spot (larger beam, faster acquisition, adequate for bulk analysis). Mapping: step size typically 10-50 μm (balance between spatial resolution and acquisition time; 100×100 point grid = 10,000 spectra, hours to days acquisition).",
+      "depth": "Not depth-resolved in single measurement (integrates over penetration depth: 1-10 μm fluorescence, <100 nm electron yield). Depth profiling possible via: (1) Angle-dependent measurements (grazing incidence: more surface-sensitive; normal incidence: bulk). (2) Layer-by-layer analysis (if sample can be sectioned: microtome, FIB; measure each layer separately). (3) Energy-dependent penetration (higher X-ray energy → deeper penetration; but limited by absorption edge energy, cannot vary arbitrarily).",
+      "limitingFactors": [
+        "Beam size (synchrotron beam focusing limits spot size; 1-10 μm typical microprobe, 50-500 μm standard; smaller spot = lower flux = longer acquisition)",
+        "Sample homogeneity (if sample heterogeneous at <beam size scale, XANES averages over multiple phases; need smaller beam or accept averaging)",
+        "Acquisition time (each spectrum 5-30 min; mapping 100×100 points = 500-3000 hours if sequential; faster with multi-element detectors, but still hours to days)",
+        "Beam damage (high-intensity synchrotron beam may cause radiation damage: reduction, oxidation, heating; limits exposure time, may require beam attenuation)"
+      ]
+    },
+    "sensitivity": {
+      "description": "Element-specific: detects specific element (e.g., Fe, Cu, Mn) by tuning to its absorption edge. Concentration sensitivity: major component (1-100 wt%) easily detected; minor component (0.1-1 wt%) detectable if strong absorber, adequate signal-to-noise; trace (<0.1 wt%) challenging, requires long acquisition, high flux. Oxidation state sensitivity: can distinguish oxidation states differing by ±1 (e.g., Fe²⁺ vs. Fe³⁺, Cu⁺ vs. Cu²⁺) with edge shift ~2-5 eV, resolvable with energy resolution <1 eV (typical synchrotron monochromator ΔE/E ~10⁻⁴, so ΔE ~0.7 eV at Fe K-edge 7.1 keV). Coordination sensitivity: can distinguish coordination geometries (octahedral vs. tetrahedral) via pre-edge intensity and near-edge shape; requires reference spectra for comparison. Detection limit: depends on element, matrix, detection mode. Fluorescence mode: typically 10-100 ppm (0.01-0.1 wt%) for transition metals in low-Z matrix (paint, varnish, paper); worse in high-Z matrix (heavy element background). Transmission mode: better for homogeneous samples, similar sensitivity. Quantification: oxidation state can be quantified via linear combination fitting (LCF) of reference spectra: spectrum = Σ a_i · reference_i, where a_i = fraction of species i. Accuracy: ±5-20% for major components, ±20-50% for minor components (depends on spectral quality, reference library completeness)."
+    }
+  },
+  "instrumentation": {
+    "source": {
+      "type": "Synchrotron radiation: electrons accelerated to relativistic speeds (0.5-8 GeV) in storage ring, emit X-rays via synchrotron radiation (bending magnets, insertion devices: wigglers, undulators). Tunable energy: monochromator selects specific X-ray energy (typically Si(111) or Si(311) double-crystal monochromator, energy resolution ΔE/E ~10⁻⁴, so ΔE ~0.7 eV at Fe K-edge 7.1 keV).",
+      "specifications": "**X-ray energy range:** 2-30 keV typical (K-edges: Fe 7.1 keV, Cu 8.9 keV, Zn 9.7 keV, Pb 88.0 keV; L-edges: lower energy, 500-2000 eV). **Energy resolution:** ΔE/E ~10⁻⁴ (Si(111) monochromator), ΔE ~0.5-1 eV at 5-10 keV. Higher resolution: Si(311) or Si(511) → ΔE/E ~10⁻⁵, ΔE ~0.1-0.2 eV (slower scanning, lower flux). **Flux:** 10¹⁰-10¹³ photons/(s·mm²) at sample (undulator beamlines highest flux; bending magnet lower but adequate). **Beam size:** 50-500 μm standard (unfocused), 1-10 μm microprobe (Kirkpatrick-Baez mirrors, zone plates), 10-100 nm nano-probe (specialized, research-level). **Polarization:** Linearly polarized (horizontal plane; can affect spectra for oriented samples, usually negligible for heritage materials).",
+      "powerRange": "Synchrotron power: 10-100 MW total (electron beam power; X-ray extraction ~0.1-1% efficiency). At sample: 10¹⁰-10¹³ photons/(s·mm²) (flux, not power; power ~mW to W depending on energy, flux). Beam damage: high flux can cause radiation damage (reduction, oxidation, heating); may require attenuation (filters, slits) to reduce flux 10-1000×."
+    },
+    "detector": {
+      "type": "**Transmission mode:** Ionization chambers (gas-filled, measure transmitted X-ray intensity I; I₀ (incident) and I (transmitted) chambers). **Fluorescence mode:** Solid-state detectors: (1) Silicon drift detector (SDD): energy-dispersive, multi-element array (4-100 elements), high count rate 10⁵-10⁶ counts/s per element. (2) Germanium detector: higher resolution, lower count rate. (3) Avalanche photodiode (APD): fast, single element. **Electron yield mode:** Channeltron, microchannel plate (MCP), or sample current measurement (ammeter).",
+      "spectralRange": "Energy range: 2-30 keV (K-edges), 500-2000 eV (L-edges). Detector range: SDD typically 1-40 keV (detects fluorescence X-rays, not incident tunable beam). Energy resolution: ΔE ~100-200 eV (SDD, adequate for fluorescence detection; incident beam monochromator provides energy selection, detector just counts fluorescence photons).",
+      "efficiency": "Transmission: ionization chamber efficiency ~90-99% (nearly 100% for hard X-rays 5-30 keV). Fluorescence: SDD quantum efficiency 90-95% at 5-10 keV (Si K-α 1.74 keV, Fe K-α 6.4 keV, Cu K-α 8.0 keV), drops at lower energies (<1 keV). Collection solid angle: Ω/4π ~0.01-0.1 (10-100 mSr typical; larger solid angle → higher signal but geometric constraints). Overall efficiency: fluorescence yield ω_f × detector efficiency × solid angle ~0.01-0.1 (1-10% of absorbed photons detected as fluorescence).",
+      "resolution": "Energy resolution (monochromator): ΔE ~0.5-1 eV at 5-10 keV (Si(111)), sufficient to resolve oxidation state shifts (2-5 eV). Spatial resolution (beam size): 1-100 μm typical, 10-100 nm nano-probe (specialized). Temporal resolution: seconds to minutes per spectrum (energy scan 5-30 min depending on energy range, step size, integration time per point)."
+    },
+    "opticalSystem": {
+      "components": [
+        "**Synchrotron storage ring:** Electrons (or positrons) circulate at relativistic speeds (0.5-8 GeV), emit X-rays via synchrotron radiation (bending magnets) or insertion devices (wigglers, undulators: periodic magnetic fields, higher flux, tunable).",
+        "**Beamline optics:** (1) Monochromator: double-crystal (Si(111), Si(311), or higher order) selects X-ray energy, tunable via crystal angle (Bragg's law: nλ = 2d sin θ). (2) Mirrors: focusing (Kirkpatrick-Baez KB mirrors: elliptical, focus beam to 1-10 μm spot) or collimating. (3) Slits: define beam size, reduce divergence. (4) Filters: attenuate beam if needed (Al, Cu foils; reduce flux to prevent damage).",
+        "**Sample stage:** Precision positioning (x, y, z translation, rotation; motorized, sub-μm precision). For mapping: scanning stage moves sample through beam (raster scan, step size 10-50 μm). Environmental control: optional (cryostat for low-T, furnace for high-T, gas cell for in-situ reactions; not typical heritage applications).",
+        "**Detection system:** Transmission: ionization chambers (I₀ before sample, I after sample; ratio I/I₀ = transmission, μt = -ln(I/I₀)). Fluorescence: SDD array positioned at 90° to incident beam (minimize elastic scatter), energy-dispersive (counts fluorescence X-rays at characteristic energy, e.g., Fe K-α 6.4 keV). Electron yield: sample electrically connected, current measured (total electron yield TEY) or channeltron/MCP (Auger electron yield AEY).",
+        "**Data acquisition:** Energy scan: monochromator steps through energy range (e.g., Fe K-edge: 7100-7200 eV, step 0.5-2 eV, integration 1-10 s per point). Detector records signal (transmission, fluorescence, or electron yield) at each energy. Total scan time: 5-30 min per spectrum (100-200 points, 1-10 s per point). Mapping: repeat scan at each spatial position (100×100 grid = 10,000 spectra, hours to days total)."
+      ],
+      "beamPath": "Synchrotron source → monochromator (selects energy) → focusing optics (KB mirrors, zone plates) → sample (absorbs X-rays) → detector (transmission: ionization chamber after sample; fluorescence: SDD at 90°; electron yield: sample current or electron detector).",
+      "focusing": "Beam focusing via: (1) Kirkpatrick-Baez (KB) mirrors: elliptical mirrors (horizontal + vertical), focus to 1-10 μm spot. (2) Zone plates: diffractive optics, focus to 10-100 nm (nano-probe, specialized). (3) Capillary optics: polycapillary lenses, focus to 10-50 μm. (4) Unfocused: 50-500 μm beam (standard, faster, adequate for bulk analysis)."
+    },
+    "criticalComponents": [
+      "Synchrotron radiation source (high-intensity, tunable X-rays; essential, not available in lab)",
+      "Monochromator (energy selection, resolution <1 eV; determines ability to resolve oxidation states)",
+      "Sample positioning stage (precise x, y, z control for mapping; sub-μm precision for micro-XANES)",
+      "Detection system (transmission: ionization chambers; fluorescence: SDD array; electron yield: current measurement or electron detector)"
+    ],
+    "typicalConfiguration": "**Standard XANES beamline (e.g., NSLS-II, APS, ESRF, Diamond):** Source: bending magnet or undulator (flux 10¹¹-10¹³ photons/(s·mm²)). Monochromator: Si(111) double-crystal (energy resolution ΔE ~0.7 eV at 7 keV, tunable 2-30 keV). Beam size: 50-500 μm (unfocused) or 1-10 μm (KB mirrors focused). Sample stage: motorized x, y, z, rotation (precision ±1 μm). Detection: transmission (ionization chambers I₀, I) or fluorescence (4-100 element SDD array, positioned 90° to beam, solid angle ~50-200 mSr). Energy scan: 7100-7200 eV for Fe K-edge (100 eV range, step 0.5-2 eV, 50-200 points, integration 1-10 s per point, total 5-30 min per spectrum). **Micro-XANES mapping:** Same setup but focused beam (1-10 μm spot via KB mirrors). Raster scan: sample moved through beam (step size 10-50 μm, 100×100 grid = 10,000 points). At each point: quick XANES scan (reduced energy range, fewer points, faster: 1-5 min per spectrum) or single energy (fluorescence yield at edge energy, faster but less information: 1-10 s per point). Total mapping time: hours to days (10,000 points × 1-5 min = 167-833 hours sequential; parallel detection, optimized scanning reduces to 10-100 hours). **Nano-XANES (specialized):** Zone plate focusing (10-100 nm spot), specialized beamlines (few worldwide: ESRF ID16A, APS 26-ID, Diamond I14). Ultra-high resolution, very long acquisition times (minutes to hours per spectrum due to low flux at nano-spot).",
+    "facilityRequirements": {
+      "space": "Synchrotron beamline: experimental hutch (3×3 m to 5×5 m, radiation-shielded, interlocked). Sample preparation area: adjacent lab (10-50 m², fume hood, microtome, sample mounting equipment).",
+      "utilities": ["Electrical: 110/240 VAC, 10-50 A (detectors, stages, computers).", "Cooling: liquid nitrogen for SDD detectors (cryogenic cooling, -196°C; dewar refills daily).", "Vacuum or He atmosphere: optional (some beamlines operate in vacuum or He to reduce air absorption, scattering; not always required for hard X-rays >5 keV)."],
+      "environmental": ["Radiation safety: interlocked hutch (beam stops when door open), personal dosimetry, safety training required (synchrotron facilities have strict radiation safety protocols).", "Temperature: controlled 18-25°C (equipment, detectors; sample can be cooled/heated if needed, not typical heritage).", "Vibration: low (synchrotron facilities designed for stability; ground vibration <1 μm, building isolation)."]
+    },
+    "commercialSystems": [
+      {
+        "vendor": "Synchrotron Facilities (NSLS-II, APS, ESRF, Diamond, Spring-8, etc.)",
+        "modelName": "XANES Beamlines (various)",
+        "specifications": "Beamlines dedicated to XAS (XANES + EXAFS): energy range 2-30 keV, energy resolution ΔE/E ~10⁻⁴, beam size 50-500 μm (unfocused) or 1-10 μm (focused), flux 10¹¹-10¹³ photons/(s·mm²). Detection: transmission (ionization chambers), fluorescence (SDD arrays), electron yield. Sample stages: motorized, sub-μm precision.",
+        "approximateCost": "Beamtime: $0-$10,000 per 8-hour session (facility-dependent: academic free or subsidized, commercial $2,000-$10,000; travel, accommodation additional)",
+        "url": "Various (NSLS-II: https://www.bnl.gov/nsls2/, APS: https://www.aps.anl.gov/, ESRF: https://www.esrf.eu/, Diamond: https://www.diamond.ac.uk/)"
+      },
+      {
+        "vendor": "Laboratory XANES (emerging, limited)",
+        "modelName": "Benchtop XANES systems (research prototypes)",
+        "specifications": "Compact X-ray sources (inverse Compton scattering, laser-plasma sources) + monochromator + detector. Lower flux than synchrotron (10⁶-10⁹ photons/(s·mm²) vs. 10¹¹-10¹³), longer acquisition times (hours vs. minutes per spectrum), but accessible without synchrotron. Research-level, not yet commercial for heritage.",
+        "approximateCost": "$500,000-$2,000,000 (research systems, not yet commercial)",
+        "url": "Research prototypes (contact manufacturers: Lyncean Technologies, others)"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": {
+      "samplingRequired": true,
+      "sampleSize": "Transmission mode: thin samples required (<10 μm thickness for optimal signal-to-noise; typically 5-50 μm cross-sections). Micro-sampling: 10-500 μm diameter fragments (paint chips, corrosion flakes, pigment grains). Fluorescence mode: bulk samples acceptable (1-10 mm thick, no size limit; surface-sensitive ~1-10 μm depth). Electron yield: surface samples, no special preparation (but ultra-surface-sensitive <100 nm).",
+      "mountingProcedure": "Transmission: mount thin section on X-ray transparent substrate (Kapton tape, Mylar film, or specialized X-ray windows; avoid heavy elements that scatter/absorb). Fluorescence: mount on standard sample holders (aluminum, plastic; no special requirements, sample can be thick). Secure mounting (tape, clips, or custom holders) to prevent movement during energy scan (vibration causes artifacts). For mapping: ensure sample flat (minimize z-variation, maintain focus; shims if needed).",
+      "surfacePreparation": "Transmission: thin sectioning required (microtome, FIB, or hand-sectioning; polish if needed for uniform thickness). Fluorescence: minimal preparation (clean surface if heavily contaminated; dust, fingerprints may affect signal). Electron yield: ultra-clean surface preferred (contamination affects signal; UHV environment typical, but not always required). No coating (metallic coatings block X-rays, interfere with analysis).",
+      "contaminationConcerns": "Surface contamination (dust, fingerprints, oils: may contain elements of interest, confuse interpretation; clean with solvents if conservation permits, or accept and interpret carefully). Mounting materials (Kapton, Mylar: contain C, O, N; may contribute to background, usually negligible; avoid heavy element substrates). Beam damage (prolonged exposure: may cause reduction, oxidation, heating; monitor during acquisition, limit exposure time, attenuate beam if needed)."
+    },
+    "measurementProtocol": {
+      "steps": [
+        {
+          "stepNumber": 1,
+          "title": "Beamline Setup and Energy Calibration",
+          "description": "**Beamline alignment:** Verify beam position, size, flux (measure with beam profiler, flux monitor). **Energy calibration:** Calibrate monochromator using reference foil (e.g., Fe foil: K-edge 7112 eV; Cu foil: K-edge 8979 eV). Measure reference spectrum, identify edge position (50% of edge jump), adjust monochromator energy offset to match known value. Calibration critical: oxidation state determination requires accurate energy (±0.1-0.5 eV). **Beam focusing (if micro-XANES):** Align KB mirrors or zone plates, optimize focus (minimize spot size, maximize flux at sample). Measure beam profile (knife-edge scan, determine FWHM spot size). **Detector setup:** Position fluorescence detector (SDD array) at 90° to incident beam (minimize elastic scatter), optimize solid angle (close as possible, geometric constraints). For transmission: position ionization chambers (I₀ before sample, I after sample), set gas pressure, bias voltage. **Sample positioning:** Mount sample on stage, align to beam (visible light camera, or X-ray fluorescence imaging to locate region of interest). Set z-height (focus for micro-beam, or adequate clearance for bulk sample).",
+          "duration": "30-60 minutes (initial setup; subsequent samples 10-20 min if beamline already aligned)",
+          "criticalParameters": ["Energy calibration accurate (±0.1-0.5 eV; critical for oxidation state determination)", "Beam position stable (vibration, thermal drift; monitor, adjust if needed)", "Detector alignment (90° to beam for fluorescence; minimize elastic scatter background)"]
+        },
+        {
+          "stepNumber": 2,
+          "title": "Energy Scan Acquisition",
+          "description": "**Define energy range:** Pre-edge: 20-50 eV below edge (e.g., Fe K-edge: 7060-7100 eV). Edge + near-edge: edge to +100 eV above (e.g., 7100-7200 eV). Total range: ~150-200 eV typical. **Step size:** Pre-edge: 0.5-1 eV steps (fine structure, pre-edge peaks). Edge: 0.2-0.5 eV steps (sharp edge, need fine sampling). Near-edge: 0.5-2 eV steps (smoother features, can be coarser). Total: 100-200 points typical. **Integration time:** 1-10 s per point (balance signal-to-noise vs. total scan time; weak signal → longer integration, but total scan 5-30 min typical). **Acquisition:** Start energy scan (monochromator steps through energy range automatically, detector records signal at each energy). Monitor live spectrum (absorption vs. energy; should see pre-edge, edge jump, near-edge features). **Multiple scans (optional):** Acquire 2-5 scans, average (improves signal-to-noise, reduces artifacts; total time 10-150 min for 2-5 scans). **Beam damage check:** Compare first vs. last scan (if edge shifts to lower energy, or features change: beam damage, reduce flux or limit exposure).",
+          "duration": "5-30 minutes per spectrum (single scan; 10-150 min for 2-5 scans averaged)",
+          "criticalParameters": ["Energy range adequate (pre-edge + edge + near-edge; typically 150-200 eV total)", "Step size fine enough (0.2-0.5 eV at edge; coarser acceptable in near-edge)", "Integration time sufficient (signal-to-noise >10:1; increase if noisy, but extends total time)", "Beam damage minimal (monitor edge position, features; if changes, reduce flux)"]
+        },
+        {
+          "stepNumber": 3,
+          "title": "Spatial Mapping (Optional, Micro-XANES)",
+          "description": "**Define mapping region:** Select area of interest (e.g., 1×1 mm², 5×5 mm²). **Step size:** 10-50 μm typical (balance spatial resolution vs. acquisition time; smaller step = higher resolution but longer time). Grid: 100×100 points = 10,000 spectra (hours to days total). **Acquisition mode:** (1) Full XANES at each point (1-5 min per spectrum, most information but very slow). (2) Quick XANES (reduced energy range, fewer points, 10-60 s per spectrum, faster but less detail). (3) Single energy (fluorescence yield at edge energy only, 1-10 s per point, fastest but minimal information, just oxidation state map). **Raster scan:** Motorized stage moves sample through beam (raster pattern: row by row, or optimized path). At each position: acquire spectrum (or single energy), move to next. **Parallel detection (if available):** Multi-element SDD array allows simultaneous detection of multiple elements (e.g., Fe, Cu, Mn K-edges if energy range covers multiple edges; but typically one edge per scan, need separate scans for each element). **Total time:** 100×100 grid × 1-5 min = 167-833 hours sequential; with optimization, parallel detection: 10-100 hours achievable.",
+          "duration": "Hours to days (100×100 grid: 10-100 hours with optimization, 167-833 hours sequential full XANES)",
+          "criticalParameters": ["Step size appropriate (10-50 μm; smaller = better resolution but longer time)", "Acquisition mode chosen (full XANES vs. quick vs. single energy; balance information vs. time)", "Beam stability (vibration, drift; monitor beam position, adjust if needed during long mapping)"]
+        }
+      ]
+    },
+    "operatingParameters": [
+      {"parameter": "X-ray energy range", "typicalValue": "Edge ± 100-150 eV (e.g., Fe K-edge: 7060-7200 eV)", "range": "Element-dependent (K-edges: 2-30 keV; L-edges: 500-2000 eV)", "notes": "Pre-edge: 20-50 eV below edge. Edge + near-edge: edge to +100 eV above. Total ~150-200 eV typical."},
+      {"parameter": "Energy step size", "typicalValue": "0.5-1 eV (pre-edge, near-edge), 0.2-0.5 eV (edge region)", "range": "0.1-2 eV", "notes": "Finer steps at edge (sharp features need fine sampling). Coarser in near-edge acceptable (smoother features)."},
+      {"parameter": "Integration time per point", "typicalValue": "1-10 s", "range": "0.5-60 s", "notes": "Balance signal-to-noise vs. total scan time. Weak signal → longer integration. Strong signal → shorter, faster scan."},
+      {"parameter": "Beam size", "typicalValue": "50-500 μm (standard), 1-10 μm (micro-XANES)", "range": "10 nm - 1 mm", "notes": "Larger beam = faster, bulk analysis. Smaller beam = higher spatial resolution, mapping capability, but lower flux, longer acquisition."},
+      {"parameter": "Flux at sample", "typicalValue": "10¹¹-10¹³ photons/(s·mm²)", "range": "10⁹-10¹⁴ photons/(s·mm²)", "notes": "Higher flux = faster acquisition, better signal-to-noise. May cause beam damage if too high (reduce via filters, slits)."},
+      {"parameter": "Energy resolution", "typicalValue": "ΔE/E ~10⁻⁴ (Si(111) monochromator), ΔE ~0.7 eV at 7 keV", "range": "ΔE/E ~10⁻⁵ to 10⁻³", "notes": "Higher resolution (Si(311), Si(511)) → better oxidation state discrimination but lower flux, slower scanning."}
+    ],
+    "calibration": {
+      "standards": [
+        "Reference foils: pure element foils (Fe, Cu, Zn, etc.) for energy calibration. Edge positions known: Fe K-edge 7112.0 eV, Cu K-edge 8979.0 eV, Zn K-edge 9659.0 eV. Measure reference spectrum, calibrate monochromator energy offset.",
+        "Reference compounds: pure compounds with known oxidation states (e.g., Fe²⁺: FeO, FeCl₂; Fe³⁺: Fe₂O₃, FeCl₃; Cu⁺: Cu₂O; Cu²⁺: CuO, CuCl₂). Measure reference spectra, build library for linear combination fitting (LCF).",
+        "NIST standards: certified reference materials (if available) for quantitative validation."
+      ],
+      "frequency": "Per beamtime session: energy calibration (reference foil, verify edge position ±0.1-0.5 eV). Per sample set: reference compounds (measure known standards, verify spectral features match literature). Per mapping: beam position stability (monitor, adjust if drift >10% beam size).",
+      "procedure": "**Energy calibration:** Mount reference foil (Fe, Cu, etc.) in beam. Acquire spectrum (quick scan, 5-10 min). Identify edge position (50% of edge jump, or first derivative maximum). Compare to known value (e.g., Fe K-edge 7112.0 eV). Adjust monochromator energy offset (software or hardware calibration) to match. Verify: re-measure, edge should match within ±0.1-0.5 eV. **Reference compounds:** Measure pure compounds (FeO, Fe₂O₃, Cu₂O, CuO, etc.) with same setup as samples. Verify spectral features (pre-edge position/intensity, edge position, near-edge shape) match literature. Build reference library for LCF. **Beam stability:** Monitor beam position during session (beam profiler, or fluorescence imaging). If drift >10% beam size, realign (adjust mirrors, slits)."
+    },
+    "qualityControl": {
+      "checkpoints": [
+        "Energy calibration accurate (reference foil edge matches known value ±0.1-0.5 eV; critical for oxidation state determination)",
+        "Signal-to-noise adequate (SNR >10:1 in near-edge region; if lower, increase integration time or flux)",
+        "Edge jump clear (sharp rise at edge, no artifacts; if rounded, energy resolution insufficient or sample heterogeneous)",
+        "Pre-edge features visible (if expected; weak but should be detectable for transition metals with proper integration)",
+        "Beam damage minimal (compare first vs. last scan; if edge shifts or features change, beam damage occurred, reduce flux)",
+        "Spatial alignment (for mapping: sample position accurate, no drift; verify with visible light camera or X-ray imaging)"
+      ],
+      "commonArtifacts": [
+        {"artifact": "Edge shift (calibration error)", "cause": "Monochromator energy offset incorrect; reference foil edge doesn't match known value.", "mitigation": "Re-calibrate using reference foil (Fe, Cu, etc.), adjust energy offset, verify ±0.1-0.5 eV accuracy."},
+        {"artifact": "Low signal-to-noise (noisy spectrum)", "cause": "Integration time too short, flux too low, or sample too dilute/thin.", "mitigation": "Increase integration time (1 s → 10 s), increase flux (if possible), or use thicker/more concentrated sample. Average multiple scans."},
+        {"artifact": "Beam damage (edge shifts to lower energy, features change)", "cause": "High flux, prolonged exposure causes reduction, oxidation, or heating.", "mitigation": "Reduce flux (filters, slits, attenuate 10-100×), limit exposure time, or use lower flux beamline. Monitor during acquisition, stop if damage detected."},
+        {"artifact": "Elastic scatter background (fluorescence mode)", "cause": "Elastic scatter from sample, mounting materials, or air contributes to background.", "mitigation": "Position detector at 90° to beam (minimizes elastic scatter), use energy discrimination (SDD rejects non-fluorescence photons), or subtract background (measure off-edge, subtract)."},
+        {"artifact": "Self-absorption (fluorescence mode, thick samples)", "cause": "Fluorescence X-rays re-absorbed by sample (especially for concentrated samples, thick samples).", "mitigation": "Use thinner sample, dilute sample, or correct for self-absorption (measure sample thickness, calculate correction factor). Transmission mode avoids self-absorption."}
+      ],
+      "troubleshooting": [
+        {"problem": "No edge visible (flat spectrum, no absorption)", "solution": "Check element present (XRF, EDS to verify element of interest in sample). Verify energy range covers absorption edge (e.g., Fe K-edge 7.1 keV, not 5 keV). Check sample thickness (too thin → no absorption; too thick → complete absorption, no signal). Verify detection mode (transmission: check ionization chambers; fluorescence: check SDD, verify fluorescence energy detected)."},
+        {"problem": "Edge position wrong (doesn't match expected oxidation state)", "solution": "Re-calibrate energy (reference foil, adjust monochromator offset). Check sample (may be different oxidation state than expected, or mixed states). Verify reference (compare to known standards, literature values)."},
+        {"problem": "Spectrum noisy, poor quality", "solution": "Increase integration time (1 s → 10 s per point). Increase flux (if possible, or use higher flux beamline). Average multiple scans (2-5 scans, improves SNR √N). Check sample (may be too dilute, need more material). Verify detector (SDD may need cooling, or malfunctioning; check count rates, dead time)."}
+      ]
+    }
+  },
+  "dataAnalysis": {
+    "rawDataFormat": {
+      "fileFormats": ["ASCII text (.dat, .txt: energy, absorption columns)", "SPEC format (beamline-specific, .spec files)", "HDF5 (hierarchical data format, .h5 files)", "ROOT (CERN ROOT format, .root files)"],
+      "dataStructure": "Single spectrum: 2 columns (energy E in eV, absorption μ(E) or normalized μ(E)). 100-200 data points typical. Mapping: 3D data (x, y, energy) or 4D (x, y, z, energy for depth-resolved). File size: single spectrum ~10-100 KB (ASCII), mapping 100×100 points ~10-100 MB.",
+      "typicalFileSize": "Per spectrum: 10-100 KB (ASCII), 100 KB - 1 MB (binary). Per mapping: 10-100 MB (100×100 points, 100-200 energy points per spectrum)."
+    },
+    "preprocessing": [
+      {"step": "Energy calibration", "description": "Apply energy offset (calibrate to reference foil, adjust all spectra by same offset). Verify edge positions match known values (Fe K-edge 7112.0 eV, etc.).", "software": "Athena (IFEFFIT), Larch, custom scripts"},
+      {"step": "Background subtraction", "description": "Subtract pre-edge background (polynomial fit to pre-edge region, extrapolate, subtract from entire spectrum). Normalize to edge jump (set pre-edge to 0, post-edge to 1, or normalize to atomic absorption μ₀(E)).", "software": "Athena, Larch, ATHENA (Demeter package)"},
+      {"step": "Normalization", "description": "Normalize absorption to edge jump: μ_norm(E) = [μ(E) - μ_pre] / [μ_post - μ_pre], where μ_pre = pre-edge average, μ_post = post-edge average. Alternative: normalize to atomic background μ₀(E) (spline fit to smooth atomic absorption, divide).", "software": "Athena, Larch"},
+      {"step": "Alignment (mapping)", "description": "If sample moved during mapping (drift, vibration): align spatial positions (cross-correlation, or manual alignment using visible light camera images).", "software": "ImageJ, Python (scipy, numpy), custom scripts"}
+    ],
+    "analysisWorkflow": {
+      "steps": [
+        {"stepNumber": 1, "title": "Visual Inspection and Quality Assessment", "description": "Load spectrum, plot μ(E) vs. E. Inspect: pre-edge features (weak peaks, should be visible for transition metals), edge position (sharp rise, energy position), edge jump (magnitude, should be clear), near-edge features (oscillations, white lines, shape resonances). Check signal-to-noise (SNR >10:1 in near-edge). Identify artifacts (beam damage, elastic scatter background, self-absorption). Compare to reference spectra (known compounds, literature) for qualitative identification.", "software": "Athena, Larch, Origin, Python (matplotlib)"},
+        {"stepNumber": 2, "title": "Edge Position Determination", "description": "Identify edge energy E_edge (50% of edge jump, or first derivative maximum dμ/dE). Measure edge shift relative to reference (e.g., Fe²⁺ vs. Fe³⁺: ~13 eV shift). Quantify oxidation state: ΔE_edge ≈ 2-5 eV per oxidation state (empirical, element-dependent). Higher edge energy → higher oxidation state (e.g., Fe³⁺ edge ~7125 eV vs. Fe²⁺ ~7112 eV).", "software": "Athena, Larch, custom scripts"},
+        {"stepNumber": 3, "title": "Pre-Edge Analysis", "description": "For transition metals: analyze pre-edge features (energy position, intensity, splitting). Pre-edge intensity sensitive to coordination geometry (tetrahedral → stronger, octahedral → weaker). Pre-edge energy shifts with oxidation state. Pre-edge splitting indicates distorted coordination (lower symmetry). Quantify: integrate pre-edge peak area, measure energy position, fit multiple peaks if split.", "software": "Athena, Larch, Origin (peak fitting), Python (scipy.optimize)"},
+        {"stepNumber": 4, "title": "Linear Combination Fitting (LCF)", "description": "Quantify species fractions: fit sample spectrum as linear combination of reference spectra: μ_sample(E) = Σ a_i · μ_reference_i(E), where a_i = fraction of species i, Σ a_i = 1. Reference library: pure compounds with known oxidation states, coordination (e.g., FeO, Fe₂O₃, Fe₃O₄ for iron; Cu₂O, CuO for copper). Fit parameters: a_i (fractions), energy shift (small adjustment, ±1-2 eV). Quality: R-factor (good fit <0.01), reduced chi-squared (χ²_red <2). Result: quantitative speciation (e.g., 60% Fe²⁺, 40% Fe³⁺).", "software": "Athena, Larch, PyMca"},
+        {"stepNumber": 5, "title": "Spatial Mapping Analysis (if applicable)", "description": "For micro-XANES mapping: at each spatial position (x, y), analyze spectrum (edge position, LCF, pre-edge). Create maps: oxidation state map (E_edge vs. x, y), species fraction maps (a_i vs. x, y for each species), pre-edge intensity map. Overlay with other techniques (XRF elemental maps, visible light images). Identify spatial correlations (e.g., Fe³⁺ correlates with red pigment regions, Fe²⁺ with green).", "software": "Athena, Larch, ImageJ, Python (numpy, matplotlib), PyMca"}
+      ]
+    },
+    "quantificationMethods": [
+      {"method": "Edge position shift", "description": "Measure edge energy E_edge, compare to reference compounds. Oxidation state shift: ΔE_edge ≈ 2-5 eV per oxidation state. Accuracy: ±0.5-1 eV (limited by energy resolution, calibration).", "uncertainty": "±0.5-1 eV (energy resolution, calibration accuracy)"},
+      {"method": "Linear combination fitting (LCF)", "description": "Fit sample spectrum as weighted sum of reference spectra. Quantifies species fractions a_i. Accuracy: ±5-20% for major components (>10%), ±20-50% for minor components (<10%).", "uncertainty": "±5-20% (major), ±20-50% (minor); depends on spectral quality, reference library completeness"},
+      {"method": "Pre-edge intensity", "description": "Integrate pre-edge peak area, compare to reference compounds. Sensitive to coordination geometry, oxidation state. Semi-quantitative (qualitative comparison, not absolute quantification).", "uncertainty": "Qualitative to ±20-30% (depends on reference library, spectral quality)"}
+    ],
+    "interpretationGuidelines": [
+      "Edge position: higher energy → higher oxidation state (e.g., Fe³⁺ > Fe²⁺, Cu²⁺ > Cu⁺). Shift ~2-5 eV per oxidation state change.",
+      "Pre-edge intensity: stronger for tetrahedral coordination (3d-4p mixing), weaker for octahedral (centrosymmetric). Distorted octahedra → intermediate, may show splitting.",
+      "Near-edge shape: sensitive to coordination geometry, local symmetry, bond distances. Compare to reference compounds for identification.",
+      "White line (L-edges): intensity proportional to density of unoccupied d or f states. Higher oxidation → more unoccupied states → stronger white line.",
+      "Linear combination fitting: requires comprehensive reference library (all possible species). Incomplete library → inaccurate quantification. Verify fit quality (R-factor, χ²)."
+    ]
+  },
+  "applications": {
+    "caseStudies": [
+      {
+        "title": "Iron Oxide Pigment Speciation in Historical Paintings",
+        "description": "XANES analysis of iron-containing pigments (ochres, earths) in 17th-century Dutch paintings to distinguish hematite (Fe₂O₃, Fe³⁺) vs. goethite (FeOOH, Fe³⁺ but different coordination) vs. magnetite (Fe₃O₄, mixed Fe²⁺/Fe³⁺). Fe K-edge XANES: edge position distinguishes Fe²⁺ (~7112 eV) vs. Fe³⁺ (~7125 eV), pre-edge intensity distinguishes octahedral (goethite, hematite) vs. tetrahedral coordination. LCF quantified: 70% hematite, 30% goethite in red ochre; 60% magnetite, 40% goethite in umber. Results: identified pigment sources, distinguished original vs. restoration (modern synthetic iron oxides have different XANES signatures).",
+        "techniques": ["XANES", "XRF mapping", "Raman spectroscopy"],
+        "outcomes": ["Quantitative speciation of iron oxide phases", "Distinguished original vs. restoration materials", "Identified pigment sources and manufacturing techniques"]
+      },
+      {
+        "title": "Copper Corrosion Product Identification in Bronze Artifacts",
+        "description": "Micro-XANES mapping of copper corrosion layers on archaeological bronze objects to identify corrosion phases: cuprite (Cu₂O, Cu⁺), tenorite (CuO, Cu²⁺), atacamite (Cu₂Cl(OH)₃, Cu²⁺), paratacamite. Cu K-edge XANES: edge position distinguishes Cu⁺ (~8979 eV) vs. Cu²⁺ (~8985 eV), near-edge shape distinguishes coordination (cuprite: linear coordination; tenorite: square planar; atacamite: octahedral). Spatial mapping revealed: surface layer (10-50 μm): 80% cuprite, 20% tenorite; subsurface (50-100 μm): 60% atacamite, 40% cuprite. Results: identified corrosion mechanism (oxidation sequence: Cu → Cu₂O → CuO), informed conservation strategy (stabilize cuprite, prevent further oxidation to tenorite).",
+        "techniques": ["Micro-XANES mapping", "XRF", "SEM-EDS"],
+        "outcomes": ["Spatial distribution of corrosion phases", "Identified corrosion mechanism and sequence", "Informed conservation treatment strategy"]
+      },
+      {
+        "title": "Manganese Oxidation State in Historical Glass",
+        "description": "XANES analysis of manganese in medieval stained glass to determine firing conditions and glassmaking techniques. Mn K-edge XANES: edge position distinguishes Mn²⁺ (~6539 eV) vs. Mn³⁺ (~6542 eV) vs. Mn⁴⁺ (~6545 eV). Pre-edge features sensitive to coordination (octahedral vs. tetrahedral). Results: most samples showed Mn²⁺ (reduced, low oxygen firing), some showed Mn³⁺/Mn⁴⁺ (oxidized, high oxygen firing). Correlation with color: Mn²⁺ → purple color, Mn³⁺/Mn⁴⁺ → brown/black. Identified different glassmaking workshops (different firing conditions, oxidation states).",
+        "techniques": ["XANES", "XRF", "UV-Vis spectroscopy"],
+        "outcomes": ["Determined firing conditions and glassmaking techniques", "Identified different workshops based on oxidation state", "Correlated oxidation state with glass color"]
+      }
+    ],
+    "heritageSpecificApplications": [
+      "Pigment authentication: distinguish historical vs. modern synthetic pigments (different oxidation states, coordination geometries)",
+      "Degradation monitoring: track oxidation state changes during aging (e.g., lead white → lead oxide, vermilion → metacinnabar)",
+      "Corrosion analysis: identify corrosion phases, understand degradation mechanisms, inform conservation",
+      "Manufacturing technique studies: firing conditions (oxidation state reflects oxygen partial pressure, temperature)",
+      "Provenance studies: correlate oxidation states with geographical sources, manufacturing techniques"
+    ]
+  },
+  "multimodalCombinations": [
+    {
+      "combination": "XANES + XRF mapping",
+      "description": "XRF provides elemental distribution (where is Fe, Cu, Mn?), XANES provides speciation (what oxidation state, coordination?). Combined: spatial maps of oxidation state (micro-XANES mapping) overlaid on elemental maps. Example: Fe XRF map shows iron distribution, Fe XANES map shows Fe²⁺ vs. Fe³⁺ distribution, correlate with pigment regions.",
+      "benefits": ["Elemental + speciation information", "Spatial correlation of composition and oxidation state", "Complete chemical characterization"]
+    },
+    {
+      "combination": "XANES + EXAFS",
+      "description": "XANES (0-100 eV above edge) provides oxidation state, coordination geometry. EXAFS (100-1000 eV above edge) provides bond distances, coordination numbers, local structure. Combined: complete local structure determination. Example: Fe XANES identifies Fe³⁺ octahedral, EXAFS determines Fe-O bond distance 2.0 Å, coordination number 6.",
+      "benefits": ["Complete local structure determination", "Quantitative bond distances and coordination numbers", "Comprehensive chemical environment characterization"]
+    },
+    {
+      "combination": "XANES + Raman spectroscopy",
+      "description": "Raman provides molecular identification (specific compounds: hematite, goethite, cuprite), XANES provides oxidation state and coordination. Combined: molecular + electronic structure. Example: Raman identifies 'hematite' (Fe₂O₃), XANES confirms Fe³⁺ octahedral coordination, distinguishes from other Fe³⁺ phases.",
+      "benefits": ["Molecular identification + electronic structure", "Complementary techniques (Raman: molecular, XANES: electronic)", "Comprehensive material characterization"]
+    },
+    {
+      "combination": "XANES + Mössbauer spectroscopy",
+      "description": "Both probe iron oxidation state and coordination. Mössbauer: lab-based, bulk analysis, high resolution. XANES: synchrotron, micro-scale, mapping capability. Combined: cross-validation, spatial resolution (XANES) + high resolution (Mössbauer).",
+      "benefits": ["Cross-validation of oxidation state", "Spatial resolution (XANES) + high resolution (Mössbauer)", "Complementary bulk and micro-scale analysis"]
+    }
+  ],
+  "advantagesLimitations": {
+    "advantages": [
+      "Element-specific: probes specific element (Fe, Cu, Mn, etc.) by tuning to absorption edge",
+      "Oxidation state sensitivity: distinguishes oxidation states differing by ±1 (e.g., Fe²⁺ vs. Fe³⁺, Cu⁺ vs. Cu²⁺)",
+      "Coordination geometry sensitivity: distinguishes octahedral vs. tetrahedral coordination via pre-edge and near-edge features",
+      "Non-destructive (fluorescence mode): bulk samples, no special preparation (except micro-sampling for transmission)",
+      "Spatial mapping capability: micro-XANES enables oxidation state mapping (1-10 μm resolution)",
+      "Quantitative: linear combination fitting provides quantitative speciation (fractions of different oxidation states, phases)",
+      "Reference library approach: compare to known compounds, identify unknown phases"
+    ],
+    "limitations": [
+      "Requires synchrotron: not available in standard lab, requires beamtime access (cost, travel, scheduling)",
+      "Time-consuming: single spectrum 5-30 min, mapping hours to days",
+      "Sample preparation: transmission mode requires thin samples (<10 μm), may require micro-sampling",
+      "Beam damage risk: high flux may cause reduction, oxidation, heating (limits exposure time, may require attenuation)",
+      "Reference library dependent: quantification requires comprehensive reference library (all possible species); incomplete library → inaccurate",
+      "Interpretation complexity: requires expertise, theoretical modeling often needed for complex systems",
+      "Spatial resolution limited: beam size 1-100 μm typical (nano-XANES 10-100 nm but very slow, specialized)",
+      "Not depth-resolved: integrates over penetration depth (1-10 μm fluorescence, <100 nm electron yield)"
+    ]
+  },
+  "futureDirections": [
+    "Laboratory XANES: compact X-ray sources (inverse Compton, laser-plasma) enabling lab-based XANES without synchrotron (lower flux, longer acquisition, but accessible)",
+    "Faster acquisition: improved detectors (higher count rates), optimized scanning (reduced energy range, fewer points for mapping), enabling larger area mapping in reasonable time",
+    "Higher spatial resolution: nano-XANES (10-100 nm) becoming more accessible, enabling sub-micron oxidation state mapping",
+    "In-situ studies: environmental cells (humidity, temperature control) enabling real-time monitoring of oxidation state changes during aging, degradation",
+    "Machine learning: automated spectral analysis, phase identification, reducing interpretation time, improving accuracy",
+    "Multi-element mapping: simultaneous XANES for multiple elements (Fe, Cu, Mn) in single scan, reducing total acquisition time"
+  ],
+  "references": [
+    "Calvin, S. (2013). XAFS for Everyone. CRC Press.",
+    "Koningsberger, D. C., & Prins, R. (Eds.). (1988). X-ray Absorption: Principles, Applications, Techniques of EXAFS, SEXAFS and XANES. Wiley.",
+    "Newville, M. (2014). Fundamentals of XAFS. Reviews in Mineralogy and Geochemistry, 78(1), 33-74.",
+    "Wilke, M., et al. (2001). Oxidation state and coordination of Fe in minerals: An Fe K-edge XANES spectroscopic study. American Mineralogist, 86(5-6), 714-730.",
+    "Cotte, M., et al. (2017). The role of XANES in cultural heritage science. Comptes Rendus Physique, 18(9-10), 575-588."
+  ],
+  "tags": ["synchrotron", "x-ray-spectroscopy", "oxidation-state", "speciation", "coordination-geometry", "transition-metals", "non-destructive", "micro-analysis", "mapping"],
+  "lastUpdated": "2025-01-16"
+}

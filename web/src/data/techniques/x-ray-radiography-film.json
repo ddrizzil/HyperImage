@@ -1,0 +1,348 @@
+{
+  "id": "x-ray-radiography-film",
+  "name": "X-ray Radiography (Film)",
+  "acronym": "XRR",
+  "category": "X-ray Techniques",
+  "subcategory": "Transmission Imaging",
+  "summary": "X-ray radiography records the differential absorption of X-rays as they pass through an object onto photographic film or imaging plates, creating a 2D projection image that reveals internal structure, density variations, and the presence of high-atomic-number materials. In cultural heritage, radiography exposes hidden features like underpaintings, structural elements (nails, dowels, canvas joins), artist alterations, and damage invisible to the eye. It has been used since the 1920s and remains a foundational examination technique despite the rise of digital methods.",
+  "keyApplications": [
+    "Revealing internal structure of paintings (wooden supports, canvas weave, stretcher marks)",
+    "Detecting metal fasteners, nails, and armatures in sculptures",
+    "Identifying heavy-element pigments (lead white, vermilion) through density contrast",
+    "Discovering underpaintings and pentimenti via differential X-ray absorption",
+    "Assessing structural condition and conservation needs (wood decay, canvas tears)",
+    "Authentication studies comparing construction techniques to known works",
+    "Documenting composite objects and revealing hidden compartments"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "transportable",
+  "fundamentalPhysics": {
+    "principle": "X-ray radiography is based on differential attenuation of X-rays as they traverse materials of varying density and atomic composition. When a polychromatic X-ray beam passes through an object, photons are absorbed or scattered depending on the material's mass attenuation coefficient, which increases with atomic number (Z) and decreases with photon energy. The transmitted X-rays expose photographic film or phosphor plates, with darker areas indicating greater X-ray transmission (less dense or lower-Z materials) and lighter areas indicating greater absorption (denser or higher-Z materials). The resulting radiograph is essentially a 2D shadow map of the object's internal density distribution.",
+    "physicalPhenomenon": "X-ray attenuation occurs through photoelectric absorption and Compton scattering. At diagnostic energies (20-150 kV), photoelectric absorption dominates for high-Z materials, making lead, mercury, iron, and calcium appear bright on negative film. Organic materials (wood, canvas, cellulose) have low attenuation and appear dark (high transmission).",
+    "equations": [
+      {
+        "latex": "$$I = I_0 e^{-\\mu x}$$",
+        "description": "Beer-Lambert Law for X-ray Attenuation",
+        "variables": [
+          {"symbol": "I", "meaning": "transmitted intensity", "units": "W/m²"},
+          {"symbol": "I_0", "meaning": "incident intensity", "units": "W/m²"},
+          {"symbol": "\\mu", "meaning": "linear attenuation coefficient", "units": "cm⁻¹"},
+          {"symbol": "x", "meaning": "material thickness", "units": "cm"}
+        ]
+      },
+      {
+        "latex": "$$\\mu = \\mu_{pe} + \\mu_{cs} + \\mu_{pp}$$",
+        "description": "Total Attenuation Coefficient Components",
+        "variables": [
+          {"symbol": "\\mu", "meaning": "total linear attenuation coefficient", "units": "cm⁻¹"},
+          {"symbol": "\\mu_{pe}", "meaning": "photoelectric absorption coefficient", "units": "cm⁻¹"},
+          {"symbol": "\\mu_{cs}", "meaning": "Compton scattering coefficient", "units": "cm⁻¹"},
+          {"symbol": "\\mu_{pp}", "meaning": "pair production coefficient (negligible at <150 kV)", "units": "cm⁻¹"}
+        ]
+      },
+      {
+        "latex": "$$\\mu/\\rho \\propto \\frac{Z^3}{E^3}$$",
+        "description": "Photoelectric Absorption Dependence (dominant below ~100 keV)",
+        "variables": [
+          {"symbol": "\\mu/\\rho", "meaning": "mass attenuation coefficient", "units": "cm²/g"},
+          {"symbol": "Z", "meaning": "atomic number", "units": "dimensionless"},
+          {"symbol": "E", "meaning": "photon energy", "units": "keV"}
+        ]
+      },
+      {
+        "latex": "$$C = \\frac{I_{max} - I_{min}}{I_{max} + I_{min}}$$",
+        "description": "Radiographic Contrast",
+        "variables": [
+          {"symbol": "C", "meaning": "contrast", "units": "dimensionless"},
+          {"symbol": "I_{max}", "meaning": "maximum transmitted intensity", "units": "arbitrary units"},
+          {"symbol": "I_{min}", "meaning": "minimum transmitted intensity", "units": "arbitrary units"}
+        ]
+      }
+    ],
+    "interactionDepth": "X-ray radiography is a transmission technique that samples the entire thickness of the object. Penetration depth depends on X-ray energy and material composition. Diagnostic X-rays (40-100 kV) penetrate several centimeters of organic materials but are strongly attenuated by metals and dense pigments. Canvas (cellulose): Full thickness (typically 0.5-2 mm), high transmission. Wood panels (oak, poplar): Up to 5 cm at 80-100 kV, good penetration. Lead white paint layer: High attenuation even at ~50 μm thickness, appears bright white. Oil paint (mixed pigments): Full paint thickness imaged, contrast depends on pigment atomic number. Copper alloy (bronze): ~0.5-2 cm depending on kV, high attenuation. Stone (marble): 2-10 cm depending on kV and density, moderate attenuation.",
+    "spatialResolution": "Lateral Resolution: 0.1-1 mm (film-based); limited by X-ray focal spot size, film grain, object-to-film distance. Depth Resolution: No depth resolution - 2D projection integrates entire object thickness. Limiting factors: X-ray tube focal spot size (typical: 0.3-3 mm), Geometric unsharpness (penumbra effect from finite source size), Film grain size (25-200 μm depending on film type), Object-to-film distance (closer = sharper), Motion blur if object moves during exposure.",
+    "detectionLimit": "Can detect ~2% density difference or thickness change of 0.1-1 mm depending on material. Dynamic range: Film ~10²-10³; Digital plates ~10⁴. Signal-to-noise: Depends on exposure time, film speed, and processing quality; typical SNR: 20-100:1."
+  },
+  "instrumentation": {
+    "source": "X-ray tube (industrial or medical diagnostic). Tungsten or molybdenum anode; water or oil-cooled housing. Energy range: 20-150 kV (typical: 40-100 kV for paintings, 80-150 kV for dense objects). Power range: 50-500 W continuous; up to 3 kW for large installations. Beam characteristics: Polychromatic (bremsstrahlung continuum + characteristic lines); cone-beam geometry; focal spot 0.3-3 mm.",
+    "detector": "Radiographic film (historically), Phosphor imaging plates, or Indirect digital detectors. Sensitive to 10-150 keV X-rays. Efficiency: Film 1-5% quantum efficiency; Phosphor plates 20-40%; Digital up to 70%. Time resolution: Not applicable (static imaging).",
+    "optics": "Collimator (limits beam divergence), Beam filters (Al, Cu for beam hardening), Lead shielding. Direct line-of-sight from tube to object to detector. Not applicable - parallel or slightly divergent beam.",
+    "criticalComponents": [
+      "X-ray tube with stable high-voltage power supply",
+      "Collimator and beam-shaping apertures",
+      "Cassette holder or film processor",
+      "Object support structure (easel or horizontal table)",
+      "Lead-lined room or portable shielding enclosure",
+      "Exposure timer and control system",
+      "Film processor (darkroom) or phosphor plate reader"
+    ],
+    "typicalConfiguration": "**Standard setup:** X-ray tube mounted 1-2 m from object; film cassette placed in contact with or immediately behind object; tube oriented perpendicular to object surface. For panel paintings, tube positioned horizontally with painting vertical on easel. Source-to-film distance (SFD) typically 100-200 cm. Larger SFD reduces magnification and geometric unsharpness but requires longer exposure.",
+    "commercialSystems": [
+      {
+        "name": "Statscan",
+        "vendor": "Lodox Systems",
+        "notes": "Full-body radiography system, 150 kV, linear scanning, digital output. Approximate cost: $250,000-$500,000. URL: https://www.lodox.com"
+      },
+      {
+        "name": "Portable X-ray Systems",
+        "vendor": "GE Inspection Technologies",
+        "notes": "Battery-powered portable units, 80-160 kV, 2-5 mA. Approximate cost: $15,000-$40,000. URL: https://www.bakerhughesds.com"
+      },
+      {
+        "name": "Industrex films and CR systems",
+        "vendor": "Carestream (formerly Kodak)",
+        "notes": "Industrial radiographic film and computed radiography plates. Approximate cost: $50-$200 per film; CR reader $30,000-$80,000. URL: https://www.carestream.com"
+      },
+      {
+        "name": "Portable X-ray generators",
+        "vendor": "YXLON International",
+        "notes": "160-320 kV systems for industrial NDT. Approximate cost: $25,000-$100,000. URL: https://www.yxlon.com"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "No sampling required - completely non-destructive",
+      "Object positioned on easel (paintings) or table (sculptures, artifacts). Must remain stationary during exposure",
+      "Fragile objects require support cradles",
+      "No surface preparation required. Remove frames if they obstruct edges",
+      "Glass or acrylic glazing should remain if assessing complete construction",
+      "Avoid placing metal supports directly behind object (will obscure features)",
+      "Remove personnel from room during exposure (radiation safety)",
+      "Ensure object will not shift during exposure (motion blur)"
+    ],
+    "measurementProtocol": "**STEP 1: Safety Setup and Room Preparation (5-10 minutes)**\n- Verify radiation shielding in place. Post warning signs. Ensure all personnel except operator have left room. Check interlock systems functional. Don radiation safety monitoring badge if required.\n\n**STEP 2: Object Positioning (10-20 minutes)**\n- Mount painting on vertical easel or place object on examination table. Position X-ray tube perpendicular to object surface at desired source-to-object distance (typically 1.5-2 m). Ensure object is stable and will not move.\n\n**STEP 3: Film or Detector Placement (5 minutes)**\n- Place film cassette or imaging plate in contact with rear surface of object (or as close as possible). For thick objects, use film holder at fixed distance. Ensure detector covers region of interest. Mark orientation for later reference.\n\n**STEP 4: Exposure Parameter Selection (5 minutes)**\n- Select tube voltage (kV) and current (mA) based on object thickness and material. Typical: 40-60 kV for thin paintings, 80-100 kV for thick wood panels, 120-150 kV for metal sculptures. Calculate exposure time using technique charts or test exposures.\n\n**STEP 5: Test Exposure (Optional but Recommended, 10-15 minutes)**\n- Make short test exposure (50% of estimated time) on small film piece or digital preview. Process and evaluate density. Adjust kV or mAs if under- or over-exposed.\n\n**STEP 6: Full Exposure (0.5-5 minutes)**\n- Clear room of all personnel. Activate X-ray generator for calculated exposure time (typically 30 seconds to 5 minutes). Monitor from shielded control area. Ensure no movement of object or detector during exposure.\n\n**STEP 7: Film Processing or Plate Reading (10-30 minutes)**\n- For film: Develop in darkroom using standard radiographic chemistry (developer, stop, fixer, wash, dry). For phosphor plates: Scan in CR reader to digitize image. Verify image quality before dismantling setup.\n\n**STEP 8: Image Evaluation and Documentation (10-20 minutes)**\n- Examine radiograph on lightbox or computer monitor. Assess for adequate density, contrast, and resolution. Document exposure parameters. Repeat if unsatisfactory. Archive physical film or digital file.",
+    "typicalParameters": [
+      {
+        "parameter": "Tube voltage (kV)",
+        "value": "60-100 kV",
+        "notes": "Range: 20-150 kV. Higher kV for thicker/denser objects; lower for better contrast in thin objects"
+      },
+      {
+        "parameter": "Tube current (mA)",
+        "value": "3-10 mA",
+        "notes": "Range: 1-20 mA. Higher mA reduces exposure time but increases tube heating"
+      },
+      {
+        "parameter": "Exposure time",
+        "value": "30 sec - 3 min",
+        "notes": "Range: 5 sec - 10 min. Adjusted to achieve proper film density (OD 1.5-2.5)"
+      },
+      {
+        "parameter": "Source-to-film distance",
+        "value": "150-200 cm",
+        "notes": "Range: 50-300 cm. Larger distance reduces magnification and geometric blur"
+      },
+      {
+        "parameter": "Film type",
+        "value": "Kodak Industrex AA400",
+        "notes": "Various speeds: 100-800. Faster film = shorter exposure but coarser grain"
+      },
+      {
+        "parameter": "Focal spot size",
+        "value": "1-2 mm",
+        "notes": "Range: 0.3-3 mm. Smaller spot = better resolution"
+      },
+      {
+        "parameter": "Beam filtration",
+        "value": "1-3 mm Al",
+        "notes": "Range: 0-5 mm Al or Cu. Hardens beam, reduces skin dose on object"
+      }
+    ],
+    "calibration": "**Standards used:** Step wedge (aluminum or acrylic) for density calibration, Resolution test patterns (line pairs per mm), Radiation dosimeters for safety verification.\n\n**Frequency:** Exposure parameters validated with each new object type; safety checks monthly.\n\n**Procedure:** Expose step wedge at standard conditions; verify density gradient within specifications. Measure radiation levels at operator position and verify <1 mR/hr.",
+    "qualityControl": [
+      "Film density within range (OD 1.5-2.5 on densitometer)",
+      "Adequate contrast to distinguish features of interest",
+      "No motion blur or double exposure artifacts",
+      "Proper identification markers visible on film",
+      "Film free of processing artifacts (fog, streaks, spots)",
+      "Common artifacts: Fog (caused by light leaks, scatter radiation, or expired film), Streaks (uneven film processing), Geometric unsharpness (large focal spot or excessive object-film distance), Underexposure (film too light, insufficient detail), Overexposure (film too dark, loss of contrast)",
+      "Troubleshooting: Entire film too dark (overexposure - reduce exposure parameters by 50%), Entire film too light (underexposure - increase exposure time or mA), Low contrast (excessive scatter or inappropriate kV - use lower kV, add filtration, collimate beam), Blurry image (motion during exposure or large focal spot - ensure object stability, reduce exposure time, use smaller focal spot), Edge of image cut off (inadequate film size or misalignment - use larger film or reposition detector)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "**File Formats:** Physical radiographic film, Digitized TIFF or JPEG (8-bit or 16-bit), DICOM format (medical systems).\n\n**Data Structure:** 2D grayscale image; intensity values represent X-ray attenuation (bright = high absorption).\n\n**Typical File Sizes:** Film: N/A; Digital: 10-50 MB per image (depending on resolution and bit depth).",
+    "preprocessing": [
+      "Film digitization: Scan radiographic film on flatbed scanner or film digitizer at 300-600 dpi. Use transmitted light mode. Save as 16-bit TIFF for maximum dynamic range. Software: Epson Perfection V800, Cruse Scanner",
+      "Image orientation: Rotate and flip image to match object orientation. Ensure correct side (front/back) is labeled",
+      "Brightness/contrast adjustment: Adjust window/level to optimize visibility of features. Avoid clipping highlights or shadows. Software: ImageJ, Photoshop, RadiAnt DICOM Viewer",
+      "Noise reduction (optional): Apply median filter or bilateral filter to reduce film grain while preserving edges. Use sparingly to avoid loss of detail. Software: ImageJ, MATLAB",
+      "Sharpening (optional): Unsharp mask filter to enhance fine details like canvas weave. Radius 1-3 pixels, amount 50-150%"
+    ],
+    "analysisWorkflow": "**STEP 1: Initial Visual Inspection**\n- Display radiograph on calibrated monitor or lightbox. Scan entire image for obvious features: nails, joins, density variations, underpaintings.\n\n**STEP 2: Feature Identification**\n- Systematically identify structural elements (stretcher bars, panel joins, dowels), paint layer features (heavy pigments, brushstrokes), and anomalies (repairs, damage).\n\n**STEP 3: Comparison with Visible Image**\n- Register radiograph to visible-light photograph. Overlay or side-by-side comparison reveals features not visible on surface (pentimenti, underpaintings, hidden signatures).\n\n**STEP 4: Density Profiling (Quantitative)**\n- Draw line profiles across features of interest. Plot pixel intensity vs. position. Quantify relative density differences. Compare profiles across different regions. Equation: D = -log₁₀(I/I₀)\n\n**STEP 5: Annotation and Documentation**\n- Mark and label features on digital copy of radiograph. Create annotated figures for reports. Measure dimensions of structural elements.\n\n**STEP 6: Integration with Other Techniques**\n- Compare radiographic findings with IRR (carbon underdrawings), MA-XRF (element-specific maps), and cross-sections (layer structure confirmation).",
+    "softwareTools": [
+      {
+        "name": "ImageJ/Fiji",
+        "url": "https://imagej.net",
+        "notes": "Open-source. Capabilities: TIFF/DICOM import, Brightness/contrast adjustment, Line profiling, Measurement tools, Plugin ecosystem"
+      },
+      {
+        "name": "Adobe Photoshop",
+        "url": "https://www.adobe.com/photoshop",
+        "notes": "Commercial ($20-55/month subscription). Capabilities: High-quality image adjustment, Layer-based comparison, Annotation tools"
+      },
+      {
+        "name": "RadiAnt DICOM Viewer",
+        "url": "https://www.radiantviewer.com",
+        "notes": "Freeware. Capabilities: Medical DICOM format support, Window/level adjustment, Measurement tools, MPR reconstruction"
+      },
+      {
+        "name": "Horos (Mac only)",
+        "url": "https://horosproject.org",
+        "notes": "Open-source. Capabilities: DICOM viewing, 3D reconstruction, Annotation"
+      },
+      {
+        "name": "MATLAB Image Processing Toolbox",
+        "url": "https://www.mathworks.com",
+        "notes": "Commercial (~$2,500 academic). Capabilities: Quantitative analysis, Custom algorithms, Batch processing, Statistical analysis"
+      }
+    ],
+    "interpretationGuidelines": "**Bright (white) areas:** High X-ray attenuation = dense materials or high atomic number (lead white paint, vermilion, metal fasteners, thick wood). **Dark (black) areas:** Low attenuation = low-density organics (canvas, thin paint layers, air gaps, wood decay). **Moderate gray:** Intermediate density (mixed pigments, earth colors, some wood species). **Sharp edges:** Distinct material boundaries (panel joins, nails). **Diffuse edges:** Gradual density changes (pigment blending, wood grain). **Texture patterns:** Canvas weave (fine grid), wood grain (curved lines), brushstrokes (directional patterns).",
+    "commonPitfalls": [
+      "Assuming bright = pigment on surface: Brightness indicates presence of heavy elements but does not distinguish depth; could be ground layer, underpainting, or surface paint. Combine with stratigraphic techniques (OCT, cross-sections) to determine layer sequence",
+      "Missing subtle pentimenti: Small compositional changes may have low contrast if density difference is minimal. Adjust window/level settings; compare with visible and IR images; use raking light radiographs at multiple angles",
+      "Over-interpreting geometric unsharpness: Blurry edges may be mistaken for artist technique rather than imaging artifact. Assess radiograph sharpness with known sharp edges (nails, panel edge); improve technique if needed",
+      "Confusing support structure with paint layers: Stretcher bars, crossbars, and panel battens can obscure or mimic paint features. Understand support construction beforehand; make multiple exposures from different angles if needed",
+      "Ignoring processing artifacts: Film fog, streaks, or spots misinterpreted as object features. Quality control during film processing; use digital imaging to avoid chemistry artifacts",
+      "Inadequate exposure latitude: Cannot see both thin (canvas) and thick (wood panel) regions in same exposure. Make multiple exposures at different kV settings; use digital detector with high dynamic range; apply HDR processing"
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Revealing wooden support structure (panel construction, dowels, battens)",
+      "Detecting metal fasteners and hardware (nails, tacks, wires, armatures)",
+      "Mapping heavy-element pigments (lead white, vermilion, chromates)",
+      "Discovering underpaintings and artist changes (pentimenti)",
+      "Assessing structural condition (wood splits, canvas tears, delamination)",
+      "Identifying later additions and restorations (different materials or techniques)",
+      "Documenting canvas weave and thread count",
+      "Revealing hidden inscriptions, signatures, or stamps",
+      "Comparing construction methods for authentication",
+      "Guiding sampling locations for invasive analysis"
+    ],
+    "materialTypes": [
+      "Oil paintings on canvas",
+      "Panel paintings (wood)",
+      "Tempera paintings",
+      "Frescoes/murals",
+      "Works on paper",
+      "Wooden sculptures",
+      "Bronze/metal sculptures",
+      "Stone sculpture",
+      "Ceramics",
+      "Furniture",
+      "Archaeological objects"
+    ],
+    "caseStudies": [
+      {
+        "title": "Rembrandt's 'The Jewish Bride' - Hidden Pentimenti",
+        "description": "X-radiography performed using 100 kV, 5 mA, 3-minute exposure on 35 × 43 cm film sheets. Multiple overlapping exposures assembled into composite. Radiography revealed extensive pentimenti including repositioned hands, altered sleeve positions, and changes to the groom's cape. The woman's right hand was originally lower and more extended. Large areas of lead white underpainting showed Rembrandt's working method of modeling forms in monochrome before applying color. Evidence of significant reworking during painting process, contradicting notion of alla prima execution. Demonstrated Rembrandt's continuous refinement during painting.",
+        "reference": "Wallert, A., and K. Groen. 1989. 'The Painting Technique of Rembrandt's Jewish Bride.' In Rembrandt: The Master and His Workshop, edited by C. Brown, J. Kelch, and P. van Thiel, 102-115. London: National Gallery."
+      },
+      {
+        "title": "Egyptian Mummy Cartonnage - Non-invasive Examination",
+        "description": "Portable X-ray unit (80 kV, 8 mA) positioned horizontally. Multiple exposures at different angles captured on phosphor imaging plates (Fuji CR system). Radiography revealed complex multi-layered construction: linen substrate, gesso preparation, painted decoration. Metal amulets and funerary objects embedded within wrappings clearly visualized. Wood support structure (dowels and crosspieces) mapped non-destructively. No modern repairs or interventions detected, confirming authenticity. Density variations indicated different linen qualities used in construction.",
+        "reference": "Antoine, D., and J. Ambers. 2015. 'The Scientific Examination of the Mummy and Cartonnage of Denytenamun from Thebes.' British Museum Technical Research Bulletin 9: 1-12."
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "irr-nir",
+      "ma-xrf",
+      "uv-fluorescence",
+      "oct",
+      "ct-tomography"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["x-ray-radiography-film", "irr-nir", "visible-photography"],
+        "rationale": "XRR shows structural features and lead-based paints; IRR reveals carbon underdrawings invisible to XRR; visible shows surface appearance. Together provide comprehensive technical documentation.",
+        "examples": "Old Master paintings technical study. Standard protocol at major museums since 1970s. Workflow: 1. Acquire high-resolution visible photographs. 2. Perform IR reflectography (detects carbon underdrawings). 3. X-radiography (reveals structure and heavy pigments). 4. Compare all three modalities side-by-side and registered."
+      },
+      {
+        "techniques": ["x-ray-radiography-film", "ma-xrf"],
+        "rationale": "XRR shows where heavy pigments are located but cannot distinguish between them (e.g., lead white vs. red lead). MA-XRF provides elemental specificity.",
+        "examples": "Determining whether bright areas in radiograph are lead white, vermilion (Hg), or chrome yellow (Pb+Cr). Workflow: 1. X-radiography identifies regions with high-density pigments. 2. MA-XRF scanning provides element-specific maps (Pb, Hg, Fe, Cu, Ca). 3. Correlate XRR density with XRF elemental composition to identify specific pigments."
+      }
+    ]
+  },
+  "strengths_limitations": {
+    "strengths": [
+      "Completely non-destructive - no contact with object",
+      "Reveals internal structure invisible to eye or other optical methods",
+      "Mature, well-understood technique with decades of interpretive experience",
+      "Relatively fast (minutes per exposure vs. hours for MA-XRF)",
+      "Lower cost than many advanced imaging methods",
+      "Transportable systems available for in-situ museum use",
+      "Film provides archival record (properly stored film lasts 100+ years)"
+    ],
+    "limitations": [
+      "No depth resolution - 2D projection collapses 3D information",
+      "Cannot distinguish elements (e.g., lead white vs. mercury vs. iron all appear bright)",
+      "Requires radiation safety controls and licensing",
+      "Film processing requires darkroom facilities (unless using digital detectors)",
+      "Geometric unsharpness limits fine detail resolution",
+      "Difficult to radiograph very large objects (>2 m) or immovable murals",
+      "Low contrast for organic materials or small density differences"
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Bridgman, C. F., and H. L. Gibson. 1963. 'X-Radiography of Panel Paintings.' Studies in Conservation 8 (3): 85-90.",
+        "doi": "10.2307/1505325",
+        "notes": "Established standardized radiographic techniques for art examination, including optimal kV settings and exposure parameters for different object types."
+      },
+      {
+        "citation": "Burroughs, A. 1938. Art Criticism from a Laboratory. Boston: Little, Brown and Company.",
+        "notes": "First comprehensive book on technical examination of paintings including X-radiography; established Fogg Museum as leader in field."
+      },
+      {
+        "citation": "Daffara, C., E. Pampaloni, L. Pezzati, M. Barucci, and R. Fontana. 2011. 'Scanning Multispectral IR Reflectography SMIRR: An Advanced Tool for Art Diagnostics.' Accounts of Chemical Research 43 (6): 847-856.",
+        "doi": "10.1021/ar100010t",
+        "notes": "Demonstrates integration of X-radiography with multi-spectral infrared imaging for comprehensive painting documentation."
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Saunders, D., and J. Kirby. 2004. 'Light, Photography and Paintings.' In The Examination of Paintings by Infrared and Ultraviolet Radiation, edited by R. White. London: National Gallery Technical Bulletin.",
+        "doi": null
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "Conservation OnLine (CoOL) - X-ray Resources",
+        "url": "http://cool.conservation-us.org/"
+      },
+      {
+        "title": "National Gallery London Technical Bulletin",
+        "url": "https://www.nationalgallery.org.uk/research/research-resources/technical-bulletin"
+      }
+    ]
+  },
+  "tags": [
+    "X-ray",
+    "radiography",
+    "non-destructive",
+    "paintings",
+    "structure",
+    "transmission imaging",
+    "film",
+    "heavy elements",
+    "underpaintings",
+    "pentimenti",
+    "cultural heritage",
+    "conservation science"
+  ],
+  "relatedTechniques": [
+    "x-ray-radiography-digital",
+    "ct-tomography",
+    "irr-nir",
+    "ma-xrf",
+    "neutron-radiography",
+    "terahertz-imaging"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

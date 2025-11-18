@@ -1,0 +1,181 @@
+---
+title: "Complex Refractive Index & Dispersion"
+slug: "complex-refractive-index"
+category: "Fundamentals"
+---
+
+## Overview
+
+The complex refractive index $\tilde{n} = n + i\kappa$ describes how light propagates through a material, where $n$ is the real part (phase velocity) and $\kappa$ is the imaginary part (extinction coefficient, related to absorption). Dispersion refers to the wavelength dependence of the refractive index, causing different colors to travel at different speeds—the basis for prisms, chromatic aberration, and optical design.
+
+## Governing Equations
+
+### Complex Refractive Index
+
+$$\tilde{n}(\omega) = n(\omega) + i\kappa(\omega)$$
+
+The complex wave vector in a medium:
+
+$$k = \frac{\omega}{c}\tilde{n} = \frac{\omega}{c}(n + i\kappa)$$
+
+### Wave Propagation
+
+For a plane wave $E(z,t) = E_0 e^{i(kz - \omega t)}$:
+
+$$E(z,t) = E_0 e^{i(\omega n z/c - \omega t)} e^{-\omega \kappa z/c}$$
+
+The intensity decays as:
+
+$$I(z) = I_0 e^{-\alpha z}$$
+
+where the absorption coefficient is:
+
+$$\alpha = \frac{2\omega \kappa}{c} = \frac{4\pi \kappa}{\lambda}$$
+
+### Sellmeier Equation (Dispersion)
+
+For transparent materials, the refractive index follows:
+
+$$n^2(\lambda) = 1 + \sum_i \frac{B_i \lambda^2}{\lambda^2 - C_i}$$
+
+where $B_i$ and $C_i$ are material-specific constants (resonance wavelengths).
+
+### Cauchy's Equation (Simplified)
+
+For visible light in many materials:
+
+$$n(\lambda) = A + \frac{B}{\lambda^2} + \frac{C}{\lambda^4}$$
+
+where $A$, $B$, $C$ are empirical constants.
+
+## Physical Intuition
+
+### Real Part (n)
+
+The real refractive index $n$ determines:
+- **Phase velocity**: $v_p = c/n$ (slower than vacuum)
+- **Refraction**: Snell's law depends on $n$
+- **Optical path length**: $OPL = n \times \text{physical distance}$
+
+Materials with higher $n$ slow light more and bend rays more strongly.
+
+### Imaginary Part (κ)
+
+The extinction coefficient $\kappa$ determines:
+- **Absorption**: How quickly light is absorbed
+- **Penetration depth**: $\delta = 1/\alpha = \lambda/(4\pi\kappa)$
+- **Transmission**: $T = e^{-\alpha d}$ for thickness $d$
+
+When $\kappa = 0$, the material is transparent. When $\kappa > 0$, light is absorbed.
+
+### Dispersion
+
+Dispersion occurs because the material's response to light depends on frequency:
+- **Normal dispersion**: $dn/d\lambda < 0$ (most common, $n$ decreases with wavelength)
+- **Anomalous dispersion**: $dn/d\lambda > 0$ (near resonances, $n$ increases with wavelength)
+
+Normal dispersion causes blue light to bend more than red (prism effect).
+
+## Derivations
+
+### From Dielectric Function
+
+The complex dielectric function is:
+
+$$\tilde{\epsilon}(\omega) = \epsilon_1(\omega) + i\epsilon_2(\omega)$$
+
+The complex refractive index relates as:
+
+$$\tilde{n}^2 = \tilde{\epsilon}$$
+
+Expanding:
+
+$$(n + i\kappa)^2 = n^2 - \kappa^2 + 2in\kappa = \epsilon_1 + i\epsilon_2$$
+
+Equating real and imaginary parts:
+
+$$n^2 - \kappa^2 = \epsilon_1$$
+$$2n\kappa = \epsilon_2$$
+
+Solving:
+
+$$n = \sqrt{\frac{\epsilon_1 + \sqrt{\epsilon_1^2 + \epsilon_2^2}}{2}}$$
+$$\kappa = \frac{\epsilon_2}{2n}$$
+
+### Kramers–Kronig Relations
+
+The real and imaginary parts are related via:
+
+$$n(\omega) - 1 = \frac{2}{\pi} \mathcal{P} \int_0^\infty \frac{\omega' \kappa(\omega')}{\omega'^2 - \omega^2} d\omega'$$
+
+$$\kappa(\omega) = -\frac{2\omega}{\pi} \mathcal{P} \int_0^\infty \frac{n(\omega') - 1}{\omega'^2 - \omega^2} d\omega'$$
+
+where $\mathcal{P}$ denotes the Cauchy principal value. This ensures causality.
+
+## Example Problems
+
+### Example 1: Absorption Depth
+
+**Problem:** Light at 500 nm in a material with $\kappa = 0.01$. What is the penetration depth?
+
+**Solution:**
+$$\delta = \frac{\lambda}{4\pi\kappa} = \frac{500 \times 10^{-9}}{4\pi \times 0.01} = 3.98 \times 10^{-6} \text{ m} = 3.98 \text{ μm}$$
+
+Light penetrates about 4 μm before intensity drops to $1/e$.
+
+### Example 2: Dispersion in Glass
+
+**Problem:** Crown glass has $n(400 \text{ nm}) = 1.53$ and $n(700 \text{ nm}) = 1.51$. Calculate dispersion.
+
+**Solution:**
+Dispersion: $\Delta n = 1.53 - 1.51 = 0.02$
+
+This means blue light (400 nm) travels slower than red (700 nm), causing chromatic aberration.
+
+### Example 3: Complex Refractive Index
+
+**Problem:** A material has $\epsilon_1 = 2.25$ and $\epsilon_2 = 0.1$. Find $n$ and $\kappa$.
+
+**Solution:**
+$$n = \sqrt{\frac{2.25 + \sqrt{2.25^2 + 0.1^2}}{2}} = \sqrt{\frac{2.25 + 2.252}{2}} = 1.501$$
+
+$$\kappa = \frac{0.1}{2 \times 1.501} = 0.0333$$
+
+## Advanced Extensions
+
+### Group Velocity Dispersion (GVD)
+
+For pulses, the group velocity $v_g = c/n_g$ where:
+
+$$n_g = n + \omega \frac{dn}{d\omega}$$
+
+GVD causes pulse broadening:
+
+$$\frac{d^2 k}{d\omega^2} = \frac{d}{d\omega}\left(\frac{1}{v_g}\right)$$
+
+### Anomalous Dispersion
+
+Near electronic or vibrational resonances, $n$ can increase with frequency, causing:
+- Superluminal group velocities (not violating causality)
+- Negative group velocity
+- Pulse reshaping
+
+### Metamaterials
+
+Engineered materials with negative refractive index ($n < 0$) enable:
+- Superlensing (resolution beyond diffraction limit)
+- Invisibility cloaking
+- Novel waveguiding
+
+## References
+
+- Born, M. & Wolf, E. "Principles of Optics" - Chapter on dispersion
+- Jackson, J.D. "Classical Electrodynamics" - Dielectric response
+- Saleh, B.E.A. & Teich, M.C. "Fundamentals of Photonics" - Dispersion in fibers
+
+## Related Pages
+
+- [Snell's Law & Fresnel Equations](/optics/fundamentals/snell-fresnel)
+- [Electromagnetic Waves in Media](/optics/fundamentals/electromagnetic-waves-media)
+- [Optical Constants & Kramers–Kronig Relations](/optics/materials/optical-constants)
+

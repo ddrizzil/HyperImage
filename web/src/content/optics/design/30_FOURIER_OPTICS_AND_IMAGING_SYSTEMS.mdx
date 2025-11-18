@@ -1,0 +1,311 @@
+---
+title: "Fourier Optics and Imaging Systems"
+slug: "design/30-fourier-optics-and-imaging-systems"
+category: "Design"
+---
+
+## Overview
+
+Fourier optics provides a powerful framework for analyzing imaging systems in the spatial frequency domain. This module develops scalar diffraction theory, derives the optical transfer function (OTF), and explores coherent and incoherent imaging systems. We connect wave optics to system performance metrics.
+
+## 30.1 Scalar Diffraction Theory
+
+### Huygens-Fresnel Principle
+
+Every point on a wavefront acts as a secondary source. The field at a point is the superposition of spherical waves from all points on the wavefront.
+
+### Fresnel-Kirchhoff Integral
+
+**Fresnel approximation** (paraxial, $z \gg \lambda$):
+
+$$U(x,y,z) = \frac{e^{ikz}}{i\lambda z} \iint U_0(x',y',0) e^{\frac{ik}{2z}[(x-x')^2 + (y-y')^2]} dx' dy'$$
+
+**Fresnel number:**
+$$N_F = \frac{a^2}{\lambda z}$$
+
+- $N_F \gg 1$: Near field (Fresnel diffraction)
+- $N_F \sim 1$: Transition region
+- $N_F \ll 1$: Far field (Fraunhofer diffraction)
+
+### Fraunhofer Diffraction
+
+**Fraunhofer approximation** ($z \gg a^2/\lambda$):
+
+$$U(x,y,z) = \frac{e^{ikz} e^{ik(x^2+y^2)/(2z)}}{i\lambda z} \tilde{U}_0\left(\frac{x}{\lambda z}, \frac{y}{\lambda z}\right)$$
+
+where $\tilde{U}_0$ is the Fourier transform of $U_0$:
+
+$$\tilde{U}_0(f_x, f_y) = \iint U_0(x',y') e^{-i2\pi(f_x x' + f_y y')} dx' dy'$$
+
+**Spatial frequencies:**
+$$f_x = \frac{x}{\lambda z}, \quad f_y = \frac{y}{\lambda z}$$
+
+### Convolution and Linear Systems
+
+**Imaging as convolution:** The image is the convolution of the object with the point spread function (PSF):
+
+$$I_{\text{image}}(x,y) = I_{\text{object}}(x,y) * \text{PSF}(x,y)$$
+
+**Fourier domain:**
+$$\tilde{I}_{\text{image}}(f_x, f_y) = \tilde{I}_{\text{object}}(f_x, f_y) \cdot \text{OTF}(f_x, f_y)$$
+
+where OTF is the optical transfer function.
+
+### Impulse Response (PSF)
+
+**Coherent PSF:** For a circular aperture of radius $a$:
+
+$$\text{PSF}_{\text{coh}}(r) = \left[\frac{2J_1(2\pi a r / \lambda z)}{2\pi a r / \lambda z}\right]^2$$
+
+where $J_1$ is the first-order Bessel function.
+
+**Airy disk radius:**
+$$r_{\text{Airy}} = 1.22 \frac{\lambda z}{2a} = 1.22 \frac{\lambda}{\text{NA}}$$
+
+**Incoherent PSF:** Square of coherent PSF:
+
+$$\text{PSF}_{\text{incoh}}(r) = \left[\frac{2J_1(2\pi a r / \lambda z)}{2\pi a r / \lambda z}\right]^2$$
+
+## 30.2 OTF/MTF Theory
+
+### Optical Transfer Function (OTF)
+
+**Definition:**
+$$\text{OTF}(f_x, f_y) = \mathcal{F}\{\text{PSF}(x,y)\}$$
+
+where $\mathcal{F}$ denotes Fourier transform.
+
+**Normalization:**
+$$\text{OTF}(0,0) = 1$$
+
+### Modulation Transfer Function (MTF)
+
+**MTF:** Magnitude of OTF:
+
+$$\text{MTF}(f_x, f_y) = |\text{OTF}(f_x, f_y)|$$
+
+**Phase Transfer Function (PTF):**
+$$\text{PTF}(f_x, f_y) = \arg[\text{OTF}(f_x, f_y)]$$
+
+### Coherent vs Incoherent Transfer
+
+**Coherent imaging:**
+
+**Amplitude transfer function:**
+$$H_{\text{coh}}(f_x, f_y) = P(\lambda z f_x, \lambda z f_y)$$
+
+where $P$ is the pupil function (1 inside aperture, 0 outside).
+
+**Image amplitude:**
+$$\tilde{U}_{\text{image}} = \tilde{U}_{\text{object}} \cdot H_{\text{coh}}$$
+
+**Image intensity:**
+$$I_{\text{image}} = |U_{\text{image}}|^2$$
+
+**Incoherent imaging:**
+
+**OTF:**
+$$\text{OTF}(f_x, f_y) = \frac{\iint P(x,y) P^*(x - \lambda z f_x, y - \lambda z f_y) dx dy}{\iint |P(x,y)|^2 dx dy}$$
+
+This is the autocorrelation of the pupil function.
+
+**For circular aperture:**
+$$\text{MTF}(f) = \begin{cases} \frac{2}{\pi}\left[\arccos\left(\frac{f}{f_c}\right) - \frac{f}{f_c}\sqrt{1-\left(\frac{f}{f_c}\right)^2}\right] & f \leq f_c \\ 0 & f > f_c \end{cases}$$
+
+where $f_c = \frac{2a}{\lambda z} = \frac{2\text{NA}}{\lambda}$ is the cutoff frequency.
+
+### Modulation Depth
+
+**Modulation (contrast):**
+$$M = \frac{I_{\text{max}} - I_{\text{min}}}{I_{\text{max}} + I_{\text{min}}}$$
+
+**Modulation transfer:**
+$$M_{\text{image}} = \text{MTF}(f) \cdot M_{\text{object}}$$
+
+**Cutoff frequency:** Spatial frequency where MTF drops to zero.
+
+### Aberration Effects on OTF
+
+**Wavefront error $W(x,y)$ modifies pupil function:**
+
+$$P_{\text{aberr}}(x,y) = P_{\text{ideal}}(x,y) e^{i\frac{2\pi}{\lambda}W(x,y)}$$
+
+**OTF with aberrations:**
+$$\text{OTF}(f_x, f_y) = \frac{\iint P_{\text{aberr}}(x,y) P_{\text{aberr}}^*(x - \lambda z f_x, y - \lambda z f_y) dx dy}{\iint |P_{\text{aberr}}(x,y)|^2 dx dy}$$
+
+**Strehl ratio:** Related to OTF at zero frequency:
+$$S = \text{OTF}(0,0) = \frac{|\iint P_{\text{aberr}} dx dy|^2}{|\iint P_{\text{ideal}} dx dy|^2}$$
+
+## 30.3 4f Systems and Fourier Planes
+
+### 4f System Layout
+
+**Configuration:** Two lenses of focal length $f$, separated by $2f$. Object at front focal plane of first lens, image at back focal plane of second lens.
+
+**Fourier plane:** Located at the midpoint between lenses (back focal plane of first lens, front focal plane of second lens).
+
+### Spatial Filtering
+
+**Fourier transform property:** The field at the Fourier plane is the Fourier transform of the object:
+
+$$U_{\text{Fourier}}(f_x, f_y) = \tilde{U}_{\text{object}}(f_x, f_y)$$
+
+**Filtering:** Place a mask $M(f_x, f_y)$ in the Fourier plane:
+
+$$U_{\text{filtered}} = \tilde{U}_{\text{object}} \cdot M$$
+
+**Output:** Inverse Fourier transform gives filtered image.
+
+### Phase Contrast
+
+**Zernike phase contrast:** Convert phase variations to intensity variations.
+
+**Phase object:**
+$$U_{\text{object}} = e^{i\phi(x,y)} \approx 1 + i\phi(x,y)$$
+
+**Fourier transform:**
+$$\tilde{U} = \delta(f_x, f_y) + i\tilde{\phi}(f_x, f_y)$$
+
+**Phase plate:** Introduces $\pi/2$ phase shift for DC component:
+
+$$M = \begin{cases} i & f_x = f_y = 0 \\ 1 & \text{otherwise} \end{cases}$$
+
+**Output:**
+$$U_{\text{image}} \propto 1 + \phi(x,y)$$
+
+Intensity variations now visible.
+
+### Dark Field Imaging
+
+**Dark field filter:** Blocks DC and low frequencies:
+
+$$M(f_x, f_y) = \begin{cases} 0 & |f| < f_{\text{cut}} \\ 1 & |f| \geq f_{\text{cut}} \end{cases}$$
+
+**Result:** Only high-frequency features (edges, small objects) appear bright.
+
+### High-Pass and Low-Pass Filtering
+
+**Low-pass:** Blocks high frequencies (smoothing).
+
+**High-pass:** Blocks low frequencies (edge enhancement).
+
+**Band-pass:** Selects specific frequency range.
+
+## 30.4 Coherent vs Incoherent Imaging
+
+### Transfer Functions Comparison
+
+**Coherent:**
+- Linear in amplitude
+- Transfer function: $H_{\text{coh}} = P(\lambda z f_x, \lambda z f_y)$
+- Sharp cutoff at $f_c$
+- Phase information preserved
+
+**Incoherent:**
+- Linear in intensity
+- Transfer function: OTF (autocorrelation of pupil)
+- Gradual roll-off
+- Phase information lost
+
+### Speckle Theory
+
+**Speckle formation:** Coherent illumination of rough surface produces random interference pattern.
+
+**Speckle size:**
+$$\delta x \approx \frac{\lambda z}{D}$$
+
+where $D$ is the illumination area.
+
+**Contrast:**
+$$C = \frac{\sigma_I}{\langle I \rangle} = 1$$
+
+for fully developed speckle.
+
+**Reduction:** Use partially coherent or incoherent illumination, multiple wavelengths, or time averaging.
+
+### Partial Coherence
+
+**Mutual coherence function:**
+$$\Gamma_{12}(\tau) = \langle U_1(t) U_2^*(t+\tau) \rangle$$
+
+**Degree of coherence:**
+$$\gamma_{12}(\tau) = \frac{\Gamma_{12}(\tau)}{\sqrt{\Gamma_{11}(0) \Gamma_{22}(0)}}$$
+
+**Coherence time:**
+$$\tau_c = \frac{1}{\Delta\nu}$$
+
+**Coherence length:**
+$$l_c = c \tau_c = \frac{\lambda^2}{\Delta\lambda}$$
+
+**Van Cittert-Zernike theorem:** Spatial coherence from extended source.
+
+## 30.5 OCT and Interferometric Imaging
+
+### Low-Coherence Interferometry
+
+**Principle:** Use broadband source, interference only when path lengths match within coherence length.
+
+**Interference signal:**
+$$I(z) = I_{\text{ref}} + I_{\text{sample}} + 2\sqrt{I_{\text{ref}} I_{\text{sample}}} |\gamma(\Delta z)| \cos\left(\frac{2\pi \Delta z}{\lambda_0}\right)$$
+
+where $\gamma(\Delta z)$ is the coherence function.
+
+### Axial Resolution
+
+**Coherence length:**
+$$l_c = \frac{2\ln 2}{\pi} \frac{\lambda_0^2}{\Delta\lambda}$$
+
+**Axial resolution (in air):**
+$$\Delta z = \frac{l_c}{2} = \frac{\ln 2}{\pi} \frac{\lambda_0^2}{\Delta\lambda}$$
+
+**In medium with index $n$:**
+$$\Delta z = \frac{\ln 2}{\pi} \frac{\lambda_0^2}{n \Delta\lambda}$$
+
+**Example:** $\lambda_0 = 800$ nm, $\Delta\lambda = 100$ nm → $\Delta z \approx 1.5$ μm in air.
+
+### Fourier-Domain OCT
+
+**Spectral interferometry:** Measure interference spectrum, Fourier transform to get depth profile.
+
+**Signal:**
+$$S(k) = |E_{\text{ref}} + E_{\text{sample}}|^2 = |E_{\text{ref}}|^2 + |E_{\text{sample}}|^2 + 2\text{Re}(E_{\text{ref}}^* E_{\text{sample}})$$
+
+**Fourier transform:**
+$$\mathcal{F}\{S(k)\} = \text{AC} + \text{DC} + \text{cross terms}$$
+
+Cross terms give depth-resolved reflectivity.
+
+**Advantages:** Faster acquisition, better sensitivity, no moving parts.
+
+### Phase-Sensitive OCT
+
+**Phase measurement:** Extract phase from interference fringes.
+
+**Phase difference:**
+$$\Delta\phi = \frac{4\pi}{\lambda} \Delta z$$
+
+**Sensitivity:** Sub-wavelength displacement detection.
+
+**Applications:** Flow measurement, elastography, vibration analysis.
+
+### Holographic Imaging
+
+**Hologram recording:** Interference between object and reference beams.
+
+**Reconstruction:** Illumination with reference beam reconstructs object wavefront.
+
+**Digital holography:** Record interference pattern with camera, numerical reconstruction.
+
+**Phase retrieval:** Extract amplitude and phase from intensity measurements.
+
+## Summary
+
+Fourier optics provides:
+- **Spatial frequency analysis:** OTF/MTF for system characterization
+- **Linear systems theory:** Convolution, transfer functions
+- **Coherent vs incoherent:** Different imaging regimes
+- **Spatial filtering:** 4f systems, phase contrast, dark field
+- **Interferometric imaging:** OCT, holography, phase measurement
+
+This framework enables quantitative analysis and design of imaging systems from microscopes to telescopes.
+

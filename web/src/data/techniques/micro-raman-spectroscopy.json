@@ -1,0 +1,243 @@
+{
+  "id": "micro-raman-spectroscopy",
+  "name": "Micro-Raman Spectroscopy",
+  "acronym": "μ-Raman",
+  "category": "Molecular Spectroscopy",
+  "subcategory": "Vibrational Analysis - Microscale",
+  "summary": "Micro-Raman spectroscopy combines Raman spectroscopy with optical microscopy to achieve molecular identification at sub-micrometer spatial resolution (0.5-2 μm spot size). A focused laser beam (typically 532 nm or 785 nm) excites molecular vibrations in a diffraction-limited volume (~1-10 μm³), and inelastically scattered light is analyzed to produce a characteristic Raman spectrum (100-3500 cm⁻¹). The technique enables non-destructive chemical identification of microscopic features—individual pigment grains, thin paint layers, corrosion products, polymer phases—that are invisible or ambiguous in conventional Raman or other bulk techniques. Confocal configuration (pinhole aperture) provides depth discrimination (2-10 μm axial resolution), enabling three-dimensional chemical mapping through transparent layers without cross-sectioning. Heritage applications focus on pigment identification in paint cross-sections, micro-samples from valuable objects, and in-situ analysis where spatial heterogeneity demands microscopic examination.",
+  "keyApplications": [
+    "Individual pigment grain identification in mixtures (distinguish co-located pigments <5 μm apart)",
+    "Paint cross-section layer analysis (resolve 5-20 μm layers, identify pigment + binder per layer)",
+    "Micro-sample characterization (10-100 μg fragments, non-destructive ID before destructive tests)",
+    "Corrosion product mapping (spatial distribution, phase identification at μm-scale)",
+    "Gemstone inclusion analysis (identify mineral inclusions <10 μm for provenance, authentication)",
+    "Polymer phase identification (additives, degradation products, phase separation at microscale)"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "benchtop only",
+  "typicalTimePerMeasurement": "10-60 seconds per point (single spectrum); 1-10 hours for hyperspectral maps",
+  "costRange": {
+    "instrument": "$100,000-$400,000 (research-grade confocal Raman microscope)",
+    "perSample": "$100-$400 per detailed analysis session"
+  },
+  "fundamentalPhysics": {
+    "principle": "Identical to macro-Raman (inelastic light scattering from molecular vibrations), but spatial confinement via high-NA microscope objective focuses laser to diffraction-limited spot. Lateral resolution d ≈ 0.61λ/NA; axial resolution Δz ≈ 2λ/(NA)² for confocal. Smaller probe volume (~1 μm³ vs. 100-1000 μm³ macro) enables single-grain analysis but requires adequate signal (longer integration or higher power to compensate for fewer molecules in probe volume).",
+    "physicalPhenomenon": "Same Raman scattering mechanism as conventional Raman spectroscopy. Key difference: microscope objective serves dual role (focuses incident laser to μm-spot, collects scattered light from same spot). High NA (0.5-0.9) essential for spatial resolution but demands short working distance (0.3-10 mm), limiting sample access.",
+    "equations": [
+      {
+        "latex": "$$d_{lateral} = \\frac{0.61 \\lambda}{NA}$$",
+        "description": "Lateral (XY) Spatial Resolution",
+        "variables": [
+          {"symbol": "d_{lateral}", "meaning": "minimum resolvable feature separation", "units": "μm"},
+          {"symbol": "\\lambda", "meaning": "laser wavelength (532, 633, 785 nm typical)", "units": "nm"},
+          {"symbol": "NA", "meaning": "numerical aperture (0.5-0.9 typical for μ-Raman)", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta z = \\frac{2 \\lambda n}{NA^2}$$",
+        "description": "Axial (Depth) Resolution (Confocal)",
+        "variables": [
+          {"symbol": "\\Delta z", "meaning": "depth resolution (confocal mode)", "units": "μm"},
+          {"symbol": "\\lambda", "meaning": "wavelength", "units": "nm"},
+          {"symbol": "n", "meaning": "refractive index of medium (~1.5 typical)", "units": "dimensionless"},
+          {"symbol": "NA", "meaning": "numerical aperture", "units": "dimensionless"}
+        ]
+      }
+    ],
+    "interactionDepth": "Confocal: 2-10 μm depending on NA and pinhole size. Non-confocal: 20-100 μm (depth of field). Penetration depends on sample transparency: opaque materials (surface only), transparent (probe through 100+ μm depth if focused internally).",
+    "spatialResolution": "Lateral: 0.5-2 μm (532 nm, NA 0.9 → ~360 nm theoretical, 500-700 nm practical; 785 nm → 800-1000 nm). Depth: 2-10 μm confocal (50-100 μm pinhole typical). Non-confocal 20-100 μm. Limiting factors: Diffraction (λ/NA limit), Sample scattering (rough surfaces blur spot), Aberrations (focus through layers with refractive index mismatch), Working distance (high NA → short WD, access limitations).",
+    "detectionLimit": "10⁻¹⁵-10⁻¹⁸ mol detectable (femtomole-attomole in probe volume). ~0.1-1 wt% for mixtures. Single-molecule SERS possible but not routine."
+  },
+  "instrumentation": {
+    "source": "Same lasers as macro-Raman: 532 nm DPSS (high efficiency, fluorescence risk), 785 nm diode (fluorescence mitigation). Power at sample: 0.1-10 mW typical (lower than macro due to smaller spot → higher power density → damage risk). Power range: 0.1-5 mW for organics/sensitive pigments; 1-50 mW for robust inorganics/minerals.",
+    "detector": "Back-thinned CCD (-70°C), EMCCD, or InGaAs array (NIR). Spectral range: 100-4000 cm⁻¹ Raman shift. Efficiency: QE 90%+ peak (CCD 600-800 nm).",
+    "optics": "High-NA microscope objectives (50×/0.75 NA, 100×/0.9 NA typical; long-WD 50×/0.5 NA for recessed samples). Confocal pinhole (adjustable 25-300 μm, placed at image plane → rejects out-of-focus light). Dichroic beamsplitter (reflects laser, transmits Raman signal). Notch/edge filter (OD 6-8, blocks Rayleigh at laser line). Motorized XYZ stage (0.1-1 μm precision for mapping, depth profiling).",
+    "criticalComponents": [
+      "High-NA objective (heart of system: determines resolution, working distance, collection efficiency)",
+      "Confocal pinhole (enables depth discrimination; without it, μ-Raman = diffraction-limited but not depth-resolved)",
+      "Precision stage (sub-μm positioning for accurate mapping, reproducible point locations)",
+      "Stable microscope platform (vibration → focal drift → signal loss; optical table or damping essential)"
+    ],
+    "typicalConfiguration": "Renishaw inVia or Horiba LabRAM equipped with: 532 nm + 785 nm lasers; Leica/Olympus microscope with 5×, 20×, 50× LWD, 100× objectives; motorized XYZ stage; confocal pinhole 50-300 μm; 1800 l/mm grating (1-2 cm⁻¹ resolution); Peltier-cooled CCD. Confocal mode standard for heritage (depth profiling through cross-sections, reject substrate).",
+    "commercialSystems": [
+      {
+        "name": "inVia Reflex Confocal Raman Microscope",
+        "vendor": "Renishaw",
+        "notes": "Confocal, multi-laser (up to 5), motorized XYZ, hyperspectral mapping. <1 cm⁻¹ resolution. Approximate cost: $150,000-$350,000. URL: https://www.renishaw.com/raman"
+      },
+      {
+        "name": "LabRAM HR Evolution",
+        "vendor": "Horiba",
+        "notes": "Confocal, multi-laser, Olympus microscope, Swift automated mapping. <0.5 cm⁻¹ resolution. Approximate cost: $180,000-$400,000. URL: https://www.horiba.com/en_en/products/raman-spectroscopy/"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "10-100 μg micro-samples, or analyze in situ on object",
+      "Cross-sections: embed in polyester resin, polish to 0.25 μm, mount on glass slide. Loose grains: scatter on slide or press into clay. Intact objects: position under microscope (if accessible).",
+      "Polished cross-sections ideal (flat, smooth → optimal focus). Rough surfaces acceptable but lower resolution. No coating needed (unlike SEM)."
+    ],
+    "measurementProtocol": "**Step 1: Calibration and Objective Selection**\nCalibrate wavelength (silicon 520.7 cm⁻¹). Select objective: 50× LWD (NA 0.5, WD 8 mm) for general use; 100× (NA 0.9, WD 0.3 mm) for maximum resolution on flat samples. Verify laser alignment (center spot in field of view). Duration: 15 minutes. Critical parameters: Silicon peak at 520.7 ± 0.5 cm⁻¹, Laser spot centered, Objective selected for application.\n\n**Step 2: Sample Positioning and Focus**\nLocate feature of interest via optical microscopy (video camera, white light). Position laser spot on target (XY joystick, sub-μm precision). Focus critically: Z-scan ±10 μm, select Z giving maximum Raman intensity. For confocal: pinhole rejection out-of-focus → signal very sensitive to focus. Duration: 5-15 minutes per feature. Critical parameters: Laser spot on target feature, Focus optimized (maximum signal), Stage stable.\n\n**Step 3: Acquisition**\nTest spectrum (1-5 s, low power 0.5-2 mW). Optimize: if fluorescence, try 785 nm or photobleach; if weak, increase power (monitor damage) or integration time (10-60 s). Acquire final spectrum (3-5 accumulations). For maps: define area, step size (0.5-5 μm), automate (1-10 hours for 50×50 μm² at 1 μm steps). Duration: 1-60 minutes per point/map. Critical parameters: SNR >10:1, No sample damage, Appropriate parameters.\n\n**Step 4: Depth Profiling (Optional)**\nFix XY, acquire spectra at multiple Z (step 1-5 μm through depth). Confocal pinhole rejects signal from out-of-focus planes → Z-resolved chemical profile (e.g., layer stack in cross-section). Duration: 30 minutes - 2 hours. Critical parameters: Confocal pinhole set, Step size <depth resolution, Refractive index correction applied.",
+    "typicalParameters": [
+      {"parameter": "Laser power at sample", "value": "0.5-5 mW", "notes": "Lower than macro (smaller spot = higher intensity). Sensitive materials <2 mW."},
+      {"parameter": "Integration time", "value": "10-30 s", "notes": "Longer than macro (fewer molecules in small volume)."},
+      {"parameter": "Objective", "value": "50×/0.5 NA LWD", "notes": "100× for max resolution; 50× LWD for balance resolution/access."},
+      {"parameter": "Confocal pinhole", "value": "100 μm", "notes": "Smaller = better depth res., lower signal."},
+      {"parameter": "Map step size", "value": "1-2 μm", "notes": "Match to lateral resolution (~1 μm)."}
+    ],
+    "calibration": "**Standards:** Silicon wafer (520.7 cm⁻¹, daily), Polystyrene (multi-peak, weekly check). **Frequency:** Daily wavelength calibration essential (thermal drift affects μm-scale positioning). **Procedure:** Focus on Si wafer, acquire spectrum, verify 520.7 ± 0.5 cm⁻¹. Check laser spot size via knife-edge scan or fluorescent slide (ensure ~1 μm FWHM).",
+    "qualityControl": [
+      "Silicon peak at 520.7 ± 0.5 cm⁻¹ (wavelength calibration)",
+      "Laser spot size verified (~1 μm FWHM for high-NA objective)",
+      "Focus optimized (maximum signal, sharp peaks)",
+      "SNR >10:1 for major peaks",
+      "No sample damage (reproducible spectra, no color change)",
+      "Confocal rejection working (signal drops to zero when out-of-focus)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "Same as macro-Raman (.spc, .wxd, .txt). Hyperspectral maps: 10-500 MB (X×Y×wavenumber). Data structure: Single spectrum: 1024-2048 points. Map: e.g., 50×50 pixels × 1024 wavenumbers = 2.5 million points.",
+    "preprocessing": [
+      "Cosmic ray removal: Identify and remove high-energy particle hits (single-pixel spikes). Essential for clean spectra.",
+      "Baseline correction: Remove fluorescence background, substrate contributions. Methods: Polynomial fit, ALS, Rubberband. Necessary if fluorescence present.",
+      "Normalization: Scale intensity for comparison. Methods: Maximum intensity = 1.0, Area normalization, Internal standard.",
+      "Same preprocessing as macro-Raman (see raman-spectroscopy for details)"
+    ],
+    "analysisWorkflow": "**Step 1: Identify peaks, assign to vibrations**\nLoad spectrum, identify all significant peaks (peak-finding algorithm or manual). Record peak positions (wavenumbers). Assign peaks to vibrational modes using reference data (RRUFF, pigment libraries, literature). Match peak positions (±5 cm⁻¹ tolerance). Identify compound if multiple peaks match single reference.\n\n**Step 2: For maps: extract chemical images**\nLoad hyperspectral map dataset (3D: X × Y × wavenumber). Select peak of interest (characteristic peak for compound). Generate chemical map: integrate intensity in peak region (±5-10 cm⁻¹ window) at each XY pixel → create 2D image (intensity map, shows spatial distribution). Display as false-color (hot colors = high concentration, cool = low). Repeat for multiple compounds: create separate maps, overlay as RGB composite.\n\n**Step 3: Overlay on optical micrograph**\nCorrelate chemistry with morphology: load optical micrograph (white-light image of same area). Register Raman chemical map to micrograph (fiducial markers, feature-based alignment). Overlay false-color chemical map on grayscale micrograph (transparency blend) → see where pigments/compounds located relative to visible features (grains, layers, cracks).\n\n**Step 4: Quantify mixtures**\nFor mixtures: identify peak groups belonging to each component. Estimate compositions: integrate areas of peaks for each component, calculate relative % (semi-quantitative: peak area ∝ concentration × Raman cross-section). For complex mixtures: use multivariate analysis (PCA, MCR) to extract pure-component spectra. Report: list all identified components, estimated proportions, acknowledge semi-quantitative nature.",
+    "softwareTools": [
+      {
+        "name": "WiRE (Renishaw)",
+        "url": "https://www.renishaw.com",
+        "notes": "Acquisition, mapping, baseline correction, library search. Included with Renishaw instruments."
+      },
+      {
+        "name": "LabSpec (Horiba)",
+        "url": "https://www.horiba.com",
+        "notes": "Acquisition, mapping, advanced baseline correction, multivariate analysis. Included with Horiba instruments."
+      },
+      {
+        "name": "CytoSpec",
+        "url": "http://www.cytospec.com",
+        "notes": "Hyperspectral image analysis, PCA, clustering. Open-source alternative for hyperspectral data."
+      },
+      {
+        "name": "ImageJ/Fiji",
+        "url": "https://imagej.net/Fiji",
+        "notes": "Hyperspectral image analysis plugins, PCA, clustering. Free, community-supported."
+      },
+      {
+        "name": "MATLAB/Python",
+        "url": "https://www.mathworks.com, https://www.python.org",
+        "notes": "Custom processing, multivariate analysis, data fusion. Scripting for advanced workflows."
+      }
+    ],
+    "interpretationGuidelines": "**Spatial resolution:** Lateral resolution 0.5-2 μm enables single-grain analysis. Features <1 μm apart may not be fully resolved (overlapping probe volumes). Confocal depth resolution 2-10 μm enables layer discrimination in cross-sections. **Peak identification:** Same as macro-Raman: match multiple peaks (±5 cm⁻¹), consult reference databases, verify chemically reasonable. **Mapping interpretation:** Chemical maps show spatial distribution but intensity depends on both concentration and Raman cross-section (strong scatterers appear brighter even at same concentration). Overlay on optical micrograph to correlate with morphology. **Mixture analysis:** Small probe volume may sample single grain (pure spectrum) or multiple grains (mixture). Multiple points needed for statistical confidence if heterogeneous. **Depth profiling:** Confocal Z-scan reveals layer structure. Note: apparent depth affected by refractive index (actual_depth = apparent_depth / n).",
+    "commonPitfalls": [
+      "Focus drift: Small laser spot (~1 μm) means focal depth ~2-5 μm. Slight defocus → signal loss. Thermal expansion, vibration cause drift. Mitigation: autofocus, lock stage, allow thermal equilibration. Monitor: if signal decreases during acquisition, refocus.",
+      "Substrate interference: Confocal helps but not perfect. If analyzing thin layer on substrate, substrate Raman may appear. Use smallest pinhole, focus strictly on surface layer. Compare to blank (substrate alone) to identify contaminant peaks.",
+      "Damage at high power: Laser focused to ~1 μm spot → high power density even at low total power (1 mW over 1 μm² = 10⁶ W/m²). Sensitive materials (organics, fugitive pigments) can degrade. Start low power (0.5-1 mW), monitor for color change, spectrum changes. Document damage if occurred.",
+      "Over-interpreting maps: Chemical maps show distribution but intensity not directly quantitative (depends on cross-section, focus, sample thickness). Use for qualitative spatial patterns, not absolute concentrations. Verify with point spectra at key locations."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Paint cross-section analysis (layer-by-layer pigment ID, 5-50 μm layers)",
+      "Pigment mixture deconvolution (identify co-located grains <5 μm in same paint layer)",
+      "Micro-sample screening (ID before destructive tests like GC-MS, Py-GC-MS)",
+      "Corrosion product zonation (μm-scale phase mapping: hematite outer, magnetite inner)",
+      "Gemstone inclusions (identify minerals, fluids in <10 μm inclusions for provenance)",
+      "Polymer degradation (map oxidation products, additives at grain boundaries)"
+    ],
+    "materialTypes": [
+      "Pigment grains in cross-sections: excellent - Ideal application: 1-50 μm grains, resolve mixtures, polymorphs",
+      "Corrosion layers (patina, rust): excellent - Map phase distribution: μm-scale zonation (e.g., CuO outer, Cu₂O inner on bronze)",
+      "Organic layers (thin, fluorescent): fair-good - Confocal helps reject substrate fluorescence; 785 nm laser preferred",
+      "Gemstone inclusions: excellent - Non-destructive ID of <10 μm mineral inclusions (rutile needles, carbon, fluids)",
+      "Polymers (additives, degradation): good - Spatial resolution reveals phase-separated regions, additive migration"
+    ],
+    "caseStudies": [
+      {
+        "title": "Vermilion Degradation in Van Gogh Paintings: Micro-Raman Mapping of HgS → Hg-Cl Transformation",
+        "description": "The Rijksmuseum and University of Antwerp investigated gray discoloration of red vermilion in Van Gogh paintings. Cross-sections from gray areas analyzed via micro-Raman mapping: 532 nm laser, 100× objective (NA 0.9, ~600 nm spot), 30×30 μm area at 0.5 μm steps (3600 spectra), 10 s integration per point. Confocal pinhole 50 μm (reject embedding resin signal). Results: Gray regions showed mixture α-HgS (vermilion, 254/284/344 cm⁻¹) + calomel (Hg₂Cl₂, 70/170 cm⁻¹) + corderoite (Hg₃S₂Cl₂, broad 100-300 cm⁻¹). Non-degraded red: pure α-HgS. Spatial distribution: Cl-containing phases (calomel, corderoite) at grain surfaces, cracks (Cl ingress from environment → photochemical reaction with HgS). Confirmed chlorine-induced photodegradation mechanism: HgS + Cl⁻ + light → Hg-Cl compounds (gray/black). Micro-Raman resolved 1-5 μm degradation zones around grains (bulk XRF shows Hg+S+Cl but not spatial; μ-Raman pinpointed transformation at grain scale). Guides conservation: avoid Cl-containing treatments near vermilion, control RH (Cl transport), minimize light. Significance: Microscale resolution critical: degradation occurs at grain boundaries (~1-2 μm zones). Bulk techniques (XRD, XRF) miss spatial heterogeneity. Confocal rejected resin Raman (polyester embedding has strong 1600 cm⁻¹ aromatic peak; confocal focused strictly on paint grains → clean spectra).",
+        "reference": "Keune, K., et al. 2018. 'Microchemical Imaging of Vermilion Degradation.' Heritage Science 6: 3. DOI: 10.1186/s40494-018-0168-4"
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "sem-eds",
+      "ftir-microscopy",
+      "xrf",
+      "raman-spectroscopy"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["micro-raman-spectroscopy", "sem-eds"],
+        "rationale": "SEM shows where to analyze (morphology-guided Raman). Raman resolves chemical ambiguities (e.g., EDS shows Ti+O, Raman distinguishes anatase vs rutile). Combined: morphology (SEM) + elements (EDS) + molecules (Raman) = complete microscale characterization.",
+        "examples": "Paint cross-section: SEM shows two particle types (large angular, small spherical). EDS: both Pb+O. μ-Raman: large = lead white (carbonate 1050 cm⁻¹), small = massicot (PbO, 142/285 cm⁻¹). SEM+EDS alone ambiguous; Raman definitive. Sequential analysis on same cross-section (SEM first, then μ-Raman on identified ROIs)."
+      },
+      {
+        "techniques": ["micro-raman-spectroscopy", "ftir-microscopy"],
+        "rationale": "FTIR-micro identifies organics (binders, 10-20 μm spot). μ-Raman identifies inorganics (pigments, 1 μm spot). Complementary for paint layers: FTIR for binder per layer, μ-Raman for pigment per layer.",
+        "examples": "Paint cross-section: μ-Raman maps pigment distribution (layer 1: lead white + ultramarine; layer 2: vermilion). FTIR-micro on same cross-section (ATR on polished surface, press onto each layer): identifies binders (layer 1: protein tempera; layer 2: oil). Combined: complete stratigraphy (pigment + binder per layer)."
+      },
+      {
+        "techniques": ["micro-raman-spectroscopy", "xrf"],
+        "rationale": "MA-XRF elemental maps (mm-scale) guide μ-Raman point selection (where to sample). μ-Raman provides molecular ID for XRF hot spots. Efficient workflow: XRF survey identifies regions of interest, μ-Raman provides definitive molecular ID at selected points.",
+        "examples": "Painting analysis: MA-XRF maps Pb distribution (lead white or lead-tin yellow?). μ-Raman targets high-Pb regions (based on XRF map), identifies lead-tin yellow type I (130-452 cm⁻¹) vs lead white (1050 cm⁻¹). XRF spatial (where Pb is), μ-Raman definitive (what compound)."
+      }
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Delhaye, M., and P. Dhamelincourt. 1975. 'Raman Microprobe and Microscope.' Journal of Raman Spectroscopy 3: 33-43.",
+        "doi": "10.1002/jrs.1250030105",
+        "notes": "First Raman microscope design; established μm-scale Raman spectroscopy"
+      },
+      {
+        "citation": "Keune, K., et al. 2018. 'Microchemical Imaging of Vermilion Degradation.' Heritage Science 6: 3.",
+        "doi": "10.1186/s40494-018-0168-4",
+        "notes": "Van Gogh vermilion degradation (see case study); demonstrates μm-scale spatial resolution critical for degradation mechanism"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Casadio, F., et al. 2016. 'Raman Microscopy of Cultural Heritage Materials.' Topics in Current Chemistry 374: 1-36.",
+        "doi": "10.1007/128_2015_653",
+        "notes": "Comprehensive review: μ-Raman methodology, heritage applications, case studies"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "RRUFF Database",
+        "url": "https://rruff.info",
+        "notes": "15,000+ mineral Raman spectra, searchable; essential reference for heritage minerals, pigments"
+      },
+      {
+        "title": "IRUG (Infrared and Raman Users Group)",
+        "url": "http://www.irug.org",
+        "notes": "Spectral database (FTIR + Raman), heritage materials focus; biennial meetings, training workshops"
+      }
+    ]
+  },
+  "tags": [
+    "micro-Raman",
+    "confocal Raman",
+    "Raman microscopy",
+    "microscale analysis",
+    "pigment grains",
+    "cross-section",
+    "spatial resolution",
+    "depth profiling"
+  ],
+  "relatedTechniques": [
+    "raman-spectroscopy",
+    "ftir-microscopy",
+    "sem-eds",
+    "confocal-microscopy"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

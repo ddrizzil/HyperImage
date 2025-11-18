@@ -1,0 +1,302 @@
+---
+title: "Diffractive, Meta, and Micro-Optics"
+slug: "design/40-diffractive-meta-and-micro-optics"
+category: "Design"
+---
+
+## Overview
+
+Modern optical design increasingly relies on diffractive optical elements (DOEs), metasurfaces, and micro-optics to achieve compact, lightweight systems with novel functionalities. This module develops the theory and design methods for these advanced optical elements.
+
+## 40.1 Diffractive Optical Elements (DOE)
+
+### Grating Theory
+
+**Transmission grating:** Periodic phase or amplitude modulation.
+
+**Diffraction angles:** Grating equation:
+
+$$n_i \sin\theta_i - n_t \sin\theta_t = \frac{m\lambda}{\Lambda}$$
+
+where:
+- $\Lambda$ = grating period
+- $m$ = diffraction order
+- $\theta_i$, $\theta_t$ = incident and diffracted angles
+
+**Blazed grating:** Sawtooth profile to maximize efficiency in specific order.
+
+**Blaze angle:**
+$$\theta_b = \arcsin\left(\frac{m\lambda}{2\Lambda}\right)$$
+
+### Kinoform Lenses
+
+**Kinoform:** Continuous phase profile (no amplitude modulation).
+
+**Phase function:**
+$$\phi(r) = \frac{2\pi}{\lambda} \left[\sqrt{r^2 + f^2} - f\right]$$
+
+for a lens with focal length $f$.
+
+**Paraxial approximation:**
+$$\phi(r) \approx \frac{\pi r^2}{\lambda f}$$
+
+### Phase Wrapping
+
+**2π wrapping:** Phase modulo $2\pi$:
+
+$$\phi_{\text{wrapped}}(r) = \phi(r) \bmod 2\pi$$
+
+**Height profile:**
+$$h(r) = \frac{\lambda}{2\pi(n-1)} \phi_{\text{wrapped}}(r)$$
+
+**Advantages:** Thinner element, easier fabrication.
+
+**Disadvantages:** Multiple orders, wavelength sensitivity.
+
+### Scalar Diffraction Design
+
+**Target field:** Desired output $U_{\text{target}}(x,y)$.
+
+**Design problem:** Find phase profile $\phi(x,y)$ such that:
+
+$$U_{\text{output}} = \mathcal{F}^{-1}\{P e^{i\phi}\} \approx U_{\text{target}}$$
+
+**Iterative methods:**
+- Gerchberg-Saxton algorithm
+- Yang-Gu algorithm
+- Simulated annealing
+
+**Gerchberg-Saxton algorithm:**
+
+1. Start with random phase $\phi_0$
+2. Forward propagate: $U_1 = \mathcal{F}\{P e^{i\phi_0}\}$
+3. Replace amplitude: $U_1' = |U_{\text{target}}| e^{i\arg(U_1)}$
+4. Backward propagate: $U_2 = \mathcal{F}^{-1}\{U_1'\}$
+5. Replace amplitude: $U_2' = |P| e^{i\arg(U_2)}$
+6. Repeat until convergence
+
+**Convergence metric:**
+$$\eta = \frac{|\iint U_{\text{output}} U_{\text{target}}^* dx dy|^2}{\iint |U_{\text{output}}|^2 dx dy \iint |U_{\text{target}}|^2 dx dy}$$
+
+### Efficiency and Limitations
+
+**Theoretical efficiency:** For $M$ orders:
+
+$$\eta_m = \text{sinc}^2\left(\frac{\phi_{\text{max}}}{2\pi} - m\right)$$
+
+**Maximum efficiency:** Achieved when $\phi_{\text{max}} = 2\pi$ for first order.
+
+**Wavelength sensitivity:** Phase scales as $\lambda^{-1}$:
+
+$$\phi(\lambda) = \phi(\lambda_0) \frac{\lambda_0}{\lambda}$$
+
+**Chromatic aberration:** Strong wavelength dependence limits broadband use.
+
+## 40.2 Metasurfaces
+
+### Generalized Snell's Law
+
+**Phase gradient:** Metasurface introduces phase gradient $d\Phi/dx$:
+
+$$n_i \sin\theta_i - n_t \sin\theta_t = \frac{\lambda}{2\pi} \frac{d\Phi}{dx}$$
+
+**Anomalous refraction:** Can exceed critical angle, negative refraction possible.
+
+**Example:** $d\Phi/dx = 2\pi/\Lambda$ → $\sin\theta_t = \sin\theta_i + \lambda/\Lambda$
+
+### Mie Resonators
+
+**Mie scattering:** Subwavelength dielectric particles support Mie resonances.
+
+**Electric dipole resonance:**
+$$\omega_{\text{ED}} = \frac{c}{R} \sqrt{\frac{2}{\epsilon_r - 1}}$$
+
+**Magnetic dipole resonance:**
+$$\omega_{\text{MD}} = \frac{c}{R} \sqrt{\frac{2}{\epsilon_r - 1}}$$
+
+**Huygens metasurface:** Simultaneous electric and magnetic resonances for full $2\pi$ phase control.
+
+**Phase control:** Vary particle size, shape, or material to tune resonance frequency and phase.
+
+### Plasmonic Metasurfaces
+
+**Surface plasmons:** Collective electron oscillations at metal-dielectric interface.
+
+**Dispersion relation:**
+$$k_{sp} = \frac{\omega}{c} \sqrt{\frac{\epsilon_m \epsilon_d}{\epsilon_m + \epsilon_d}}$$
+
+**Phase control:** Vary geometry (nanorods, split rings) to control phase and amplitude.
+
+**Limitations:** Ohmic losses, narrow bandwidth.
+
+### Huygens Metasurfaces
+
+**Huygens principle:** Both electric and magnetic surface currents needed for full control.
+
+**Surface impedance:**
+$$Z_s = \frac{E_t}{H_t}$$
+
+**Design:** Tune $Z_s$ to achieve desired phase and amplitude.
+
+**Advantages:** Low loss, high efficiency, full $2\pi$ phase control.
+
+### Metalens Design
+
+**Focal length:** Phase profile for lensing:
+
+$$\phi(r) = -\frac{2\pi}{\lambda} \left[\sqrt{r^2 + f^2} - f\right]$$
+
+**Paraxial:**
+$$\phi(r) \approx -\frac{\pi r^2}{\lambda f}$$
+
+**Design workflow:**
+1. Calculate required phase profile
+2. Discretize into unit cells
+3. Design each unit cell (particle geometry) to achieve target phase
+4. Optimize for efficiency and bandwidth
+
+**Challenges:** Wavelength dispersion, fabrication tolerances, large area coverage.
+
+## 40.3 Micro-Optics
+
+### Microlens Arrays (MLA)
+
+**Fabrication methods:**
+- Photoresist reflow
+- Direct writing (laser, e-beam)
+- Replication (molding, embossing)
+
+**Lenslet parameters:**
+- Pitch: $p$ (typically 10-1000 μm)
+- Focal length: $f$ (typically $p$ to $10p$)
+- Numerical aperture: $\text{NA} = \frac{p}{2f}$
+
+**Fill factor:** Fraction of area covered by lenses (typically 80-95%).
+
+### Beam Homogenizers
+
+**Principle:** MLA + field lens to create uniform illumination.
+
+**Configuration:**
+1. Source → MLA: Creates array of focused spots
+2. MLA → Field lens: Overlaps spots at target plane
+3. Target: Uniform illumination
+
+**Uniformity:**
+$$\text{Uniformity} = 1 - \frac{I_{\text{max}} - I_{\text{min}}}{I_{\text{max}} + I_{\text{min}}}$$
+
+**Trade-offs:** Uniformity vs. efficiency, speckle effects with coherent sources.
+
+### MLA-Based Wavefront Sensors
+
+**Shack-Hartmann sensor:** MLA samples local wavefront slope.
+
+**Spot displacement:**
+$$\Delta x = f_{\text{lenslet}} \frac{\partial W}{\partial x}$$
+
+**Wavefront reconstruction:** Integrate slopes to recover $W(x,y)$.
+
+**Spatial resolution:** Limited by lenslet pitch.
+
+**Dynamic range:** Limited by detector size and lenslet focal length.
+
+### Fly's Eye Condensers
+
+**Configuration:** Two MLAs separated by sum of focal lengths.
+
+**Function:** Uniform illumination with controlled angular distribution.
+
+**Applications:** Projection displays, lithography, solar concentrators.
+
+### Refractive Micro-Optics
+
+**Gradient-index (GRIN) lenses:** Index varies radially:
+
+$$n(r) = n_0 \left(1 - \frac{1}{2} A r^2\right)$$
+
+**Ray path:** Sinusoidal in GRIN medium.
+
+**Advantages:** Flat surfaces, compact, integrated with fibers.
+
+## 40.4 Holographic Optical Elements
+
+### Computer-Generated Holography (CGH)
+
+**Principle:** Calculate interference pattern between object and reference waves.
+
+**Hologram function:**
+$$H(x,y) = |U_{\text{object}} + U_{\text{ref}}|^2$$
+
+**Reconstruction:** Illuminate with reference wave:
+
+$$U_{\text{recon}} = U_{\text{ref}} H = |U_{\text{ref}}|^2 U_{\text{object}} + U_{\text{ref}}^2 U_{\text{object}}^* + \text{cross terms}$$
+
+**Virtual image:** First term (desired).
+
+**Real image:** Second term (conjugate, inverted).
+
+### Fourier Holograms
+
+**Fourier transform hologram:** Record interference in Fourier plane.
+
+**Advantages:** Shift-invariant, efficient storage.
+
+**Applications:** Pattern recognition, optical correlators.
+
+### Gerchberg-Saxton Algorithm for CGH
+
+**Problem:** Design phase-only hologram to reconstruct target image.
+
+**Algorithm:**
+1. Initialize random phase
+2. Forward transform: $U_1 = \mathcal{F}\{e^{i\phi}\}$
+3. Replace amplitude: $U_1' = |U_{\text{target}}| e^{i\arg(U_1)}$
+4. Inverse transform: $U_2 = \mathcal{F}^{-1}\{U_1'\}$
+5. Replace amplitude: $U_2' = e^{i\arg(U_2)}$
+6. Repeat until convergence
+
+**Extensions:**
+- Multiple planes (3D reconstruction)
+- Constraints (quantization, fabrication limits)
+- Optimization (genetic algorithms, machine learning)
+
+### Kinoform Holograms
+
+**Kinoform:** Phase-only hologram (no amplitude modulation).
+
+**Advantages:** Higher efficiency, simpler fabrication.
+
+**Design:** Use GS algorithm with phase-only constraint.
+
+### Holographic Beam Shaping
+
+**Target:** Desired intensity distribution $I_{\text{target}}(x,y)$.
+
+**Design:** Find phase $\phi(x,y)$ such that:
+
+$$|\mathcal{F}\{e^{i\phi}\}|^2 = I_{\text{target}}$$
+
+**Applications:** Laser material processing, optical trapping, displays.
+
+### Multiplane Holograms
+
+**3D reconstruction:** Design hologram to reconstruct image at multiple depths.
+
+**Target:** $I_{\text{target}}(x,y,z_i)$ at planes $z_i$.
+
+**Optimization:** Minimize error across all planes:
+
+$$\chi^2 = \sum_i \iint |I(x,y,z_i) - I_{\text{target}}(x,y,z_i)|^2 dx dy$$
+
+**Methods:** Weighted GS, stochastic gradient descent, deep learning.
+
+## Summary
+
+Advanced optical elements enable:
+- **DOEs:** Phase-only elements, kinoforms, gratings
+- **Metasurfaces:** Subwavelength control, generalized refraction
+- **Micro-optics:** MLAs, beam homogenizers, wavefront sensors
+- **Holographic elements:** CGH, beam shaping, 3D displays
+
+These technologies enable compact, lightweight, and multifunctional optical systems for applications from consumer electronics to scientific instruments.
+

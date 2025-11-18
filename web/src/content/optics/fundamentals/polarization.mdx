@@ -1,0 +1,184 @@
+---
+title: "Polarization: Linear, Circular, Stokes Vectors, Jones Calculus"
+slug: "polarization"
+category: "Fundamentals"
+---
+
+## Overview
+
+Polarization describes the orientation and time evolution of the electric field vector in an electromagnetic wave. Light can be linearly polarized (E oscillates in one plane), circularly polarized (E rotates), or elliptically polarized (general case). Stokes parameters and Jones calculus provide mathematical frameworks for describing and manipulating polarization states, essential for polarimetry, ellipsometry, and optical communications.
+
+## Governing Equations
+
+### Linear Polarization
+
+For light propagating in $z$ direction, linear polarization along $x$:
+
+$$\mathbf{E}(z,t) = E_0 \hat{\mathbf{x}} \cos(kz - \omega t + \phi)$$
+
+Linear at angle $\theta$:
+
+$$\mathbf{E} = E_0[\cos\theta \hat{\mathbf{x}} + \sin\theta \hat{\mathbf{y}}] \cos(kz - \omega t)$$
+
+### Circular Polarization
+
+**Right circular (RCP):**
+$$\mathbf{E} = \frac{E_0}{\sqrt{2}}[\hat{\mathbf{x}} \cos(kz - \omega t) + \hat{\mathbf{y}} \sin(kz - \omega t)]$$
+
+**Left circular (LCP):**
+$$\mathbf{E} = \frac{E_0}{\sqrt{2}}[\hat{\mathbf{x}} \cos(kz - \omega t) - \hat{\mathbf{y}} \sin(kz - \omega t)]$$
+
+### Jones Vector
+
+$$\mathbf{J} = \begin{bmatrix} E_x \\ E_y \end{bmatrix} = \begin{bmatrix} A_x e^{i\phi_x} \\ A_y e^{i\phi_y} \end{bmatrix}$$
+
+**Normalized forms:**
+- Linear horizontal: $\begin{bmatrix} 1 \\ 0 \end{bmatrix}$
+- Linear vertical: $\begin{bmatrix} 0 \\ 1 \end{bmatrix}$
+- Linear at 45°: $\frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix}$
+- Right circular: $\frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -i \end{bmatrix}$
+- Left circular: $\frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ i \end{bmatrix}$
+
+### Stokes Parameters
+
+$$\mathbf{S} = \begin{bmatrix} S_0 \\ S_1 \\ S_2 \\ S_3 \end{bmatrix} = \begin{bmatrix} I \\ I_0 - I_{90} \\ I_{45} - I_{135} \\ I_R - I_L \end{bmatrix}$$
+
+where:
+- $S_0 = I$ (total intensity)
+- $S_1 = I_H - I_V$ (horizontal vs vertical)
+- $S_2 = I_{45} - I_{135}$ (diagonal)
+- $S_3 = I_R - I_L$ (circular)
+
+**Normalized:**
+$$S_0^2 = S_1^2 + S_2^2 + S_3^2$$ (for fully polarized light)
+
+**Degree of polarization:**
+$$P = \frac{\sqrt{S_1^2 + S_2^2 + S_3^2}}{S_0}$$
+
+### Jones Matrices
+
+**Linear polarizer (horizontal):**
+$$\mathbf{M}_H = \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}$$
+
+**Quarter-wave plate (fast axis horizontal):**
+$$\mathbf{M}_{\lambda/4} = \begin{bmatrix} 1 & 0 \\ 0 & i \end{bmatrix}$$
+
+**Half-wave plate:**
+$$\mathbf{M}_{\lambda/2} = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$$
+
+**Rotation matrix:**
+$$\mathbf{R}(\theta) = \begin{bmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{bmatrix}$$
+
+## Physical Intuition
+
+### Linear Polarization
+
+The electric field oscillates in a fixed plane. Natural light (unpolarized) contains all orientations randomly. Linear polarizers (e.g., Polaroid) transmit only one orientation, absorbing the perpendicular component (Malus's law: $I = I_0 \cos^2\theta$).
+
+### Circular Polarization
+
+The electric field rotates in a circle, maintaining constant magnitude. RCP rotates clockwise when viewed toward the source; LCP rotates counterclockwise. Circular polarization is created by a quarter-wave plate with its axes at 45° to linear input.
+
+### Elliptical Polarization
+
+General case: the tip of the E vector traces an ellipse. Linear and circular are special cases. Ellipticity is the ratio of minor to major axis.
+
+### Stokes vs Jones
+
+- **Jones calculus**: For fully polarized light, uses complex amplitudes
+- **Stokes parameters**: Can describe partially polarized or unpolarized light, uses intensities only (measurable)
+
+## Derivations
+
+### From Complex Amplitudes to Stokes
+
+For Jones vector $\mathbf{J} = \begin{bmatrix} E_x \\ E_y \end{bmatrix}$:
+
+$$S_0 = |E_x|^2 + |E_y|^2$$
+$$S_1 = |E_x|^2 - |E_y|^2$$
+$$S_2 = 2\text{Re}(E_x E_y^*)$$
+$$S_3 = 2\text{Im}(E_x E_y^*)$$
+
+### Malus's Law
+
+For a linear polarizer at angle $\theta$ to incident linear polarization:
+
+$$I = I_0 \cos^2\theta$$
+
+This follows from projecting the E field onto the transmission axis.
+
+## Example Problems
+
+### Example 1: Jones Vector
+
+**Problem:** Find Jones vector for light linearly polarized at 30°.
+
+**Solution:**
+$$\mathbf{J} = \begin{bmatrix} \cos 30° \\ \sin 30° \end{bmatrix} = \begin{bmatrix} \sqrt{3}/2 \\ 1/2 \end{bmatrix}$$
+
+Normalized: $\mathbf{J} = \begin{bmatrix} \sqrt{3}/2 \\ 1/2 \end{bmatrix}$ (already normalized).
+
+### Example 2: Quarter-Wave Plate
+
+**Problem:** Convert horizontal linear to right circular using a quarter-wave plate.
+
+**Solution:**
+Input: $\mathbf{J}_{in} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$
+
+Quarter-wave plate (fast axis vertical): $\mathbf{M} = \begin{bmatrix} 1 & 0 \\ 0 & i \end{bmatrix}$
+
+Output: $\mathbf{J}_{out} = \mathbf{M}\mathbf{J}_{in} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ (wrong orientation!)
+
+Rotate plate 45°: $\mathbf{M}' = \mathbf{R}(45°)\mathbf{M}\mathbf{R}(-45°)$
+
+Or use plate with axes at 45°: $\mathbf{M}_{45} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & i \\ i & 1 \end{bmatrix}$
+
+### Example 3: Stokes Parameters
+
+**Problem:** Calculate Stokes vector for right circular polarization.
+
+**Solution:**
+Jones: $\mathbf{J} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -i \end{bmatrix}$
+
+$$S_0 = |1/\sqrt{2}|^2 + |-i/\sqrt{2}|^2 = 1$$
+$$S_1 = |1/\sqrt{2}|^2 - |-i/\sqrt{2}|^2 = 0$$
+$$S_2 = 2\text{Re}((1/\sqrt{2})(i/\sqrt{2})) = 0$$
+$$S_3 = 2\text{Im}((1/\sqrt{2})(i/\sqrt{2})) = 2(1/2) = 1$$
+
+$\mathbf{S} = [1, 0, 0, 1]^T$ (normalized).
+
+## Advanced Extensions
+
+### Mueller Calculus
+
+For partially polarized light, use Mueller matrices (4×4) operating on Stokes vectors:
+
+$$\mathbf{S}_{out} = \mathbf{M}\mathbf{S}_{in}$$
+
+Enables analysis of depolarizing elements.
+
+### Polarization Mode Dispersion (PMD)
+
+In fibers, different polarizations travel at different speeds, causing pulse broadening. Characterized by differential group delay (DGD).
+
+### Ellipsometry
+
+Measures polarization change upon reflection to determine:
+- Film thickness
+- Refractive index
+- Surface roughness
+
+Uses ratio $\rho = r_p/r_s = \tan\Psi e^{i\Delta}$.
+
+## References
+
+- Born, M. & Wolf, E. "Principles of Optics" - Chapter 1.4 (polarization)
+- Hecht, E. "Optics" - Polarization chapter
+- Goldstein, D.H. "Polarized Light" - Comprehensive treatment
+
+## Related Pages
+
+- [Birefringence & Anisotropy](/optics/materials/birefringence-anisotropy)
+- [Dichroism & Circular Dichroism](/optics/materials/dichroism-circular-dichroism)
+- [Thin Films & Interference Coatings](/optics/materials/thin-films-interference)
+

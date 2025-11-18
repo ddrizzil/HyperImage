@@ -1,0 +1,408 @@
+{
+  "id": "photoacoustic-imaging",
+  "name": "Photoacoustic Imaging (PAI)",
+  "acronym": "PAI",
+  "category": "Hybrid Imaging Techniques",
+  "subcategory": "Optical-Acoustic Imaging",
+  "summary": "Photoacoustic imaging is a hybrid non-invasive technique that combines optical excitation with acoustic detection to image subsurface structures with high resolution and penetration depth. Short laser pulses are absorbed by chromophores in the material, causing thermoelastic expansion that generates ultrasonic pressure waves. These acoustic waves are detected by ultrasound transducers and reconstructed into depth-resolved images. In cultural heritage, PAI reveals subsurface paint layers, pigment distributions, underdrawings, and structural damage beneath opaque surfaces, achieving millimeter to centimeter penetration depths impossible with purely optical techniques while maintaining sub-millimeter spatial resolution.",
+  "keyApplications": [
+    "Subsurface imaging of paint layers beneath opaque surfaces (up to 2-5 mm depth)",
+    "Non-invasive detection of underdrawings and pentimenti through paint layers",
+    "Depth-resolved pigment distribution mapping in multi-layer structures",
+    "Identifying absorbing pigments (carbon black, iron oxides, copper-based) subsurface",
+    "Detecting voids, delamination, and cracks beneath painted surfaces",
+    "3D structural imaging of panel paintings and murals",
+    "Monitoring conservation treatments (consolidation penetration depth)",
+    "Imaging through varnish layers that scatter light but transmit ultrasound"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "laboratory-only",
+  "fundamentalPhysics": {
+    "principle": "Photoacoustic imaging exploits the photoacoustic effect: pulsed light (typically nanosecond laser pulses) is absorbed by chromophores in the material, causing rapid local heating (μs-ms timescale). This thermal expansion generates pressure waves (ultrasound) that propagate through the material. Ultrasonic transducers on the surface detect these waves. The time-of-flight of acoustic signals encodes depth information: deeper absorbers generate delayed signals. By scanning the laser beam or transducer array, 2D/3D images are reconstructed showing absorption distribution as a function of depth. PAI overcomes optical scattering limitations (only ballistic photons needed for absorption) while providing ultrasound's penetration depth and acoustic resolution.",
+    "physicalPhenomenon": "The photoacoustic effect involves three coupled processes: (1) Optical absorption: chromophore absorbs photon energy E = hν, transitioning to excited state. (2) Thermal relaxation: excited state decays non-radiatively to heat (thermoelastic regime: temperature rise ΔT ∝ absorbed energy). (3) Acoustic generation: rapid heating causes thermoelastic expansion, launching pressure wave p₀ ∝ Γ μₐ F, where Γ is Grüneisen parameter (material-dependent), μₐ is absorption coefficient, F is optical fluence. Key chromophores in heritage materials: carbon-based pigments (black, umber), iron oxides (red, yellow ochre), copper compounds (azurite, verdigris), organic dyes (strong visible absorption).",
+    "equations": [
+      {
+        "latex": "$$p_0(\\mathbf{r}) = \\Gamma(\\mathbf{r}) \\cdot \\mu_a(\\mathbf{r}) \\cdot F(\\mathbf{r})$$",
+        "description": "Initial Photoacoustic Pressure",
+        "variables": [
+          {"symbol": "p_0(\\mathbf{r})", "meaning": "initial pressure rise at position r", "units": "Pa"},
+          {"symbol": "\\Gamma(\\mathbf{r})", "meaning": "Grüneisen parameter (thermal-to-acoustic conversion efficiency)", "units": "dimensionless"},
+          {"symbol": "\\mu_a(\\mathbf{r})", "meaning": "optical absorption coefficient", "units": "cm⁻¹"},
+          {"symbol": "F(\\mathbf{r})", "meaning": "local optical fluence", "units": "J/cm²"}
+        ]
+      },
+      {
+        "latex": "$$\\Gamma = \\frac{\\beta v_s^2}{C_p}$$",
+        "description": "Grüneisen Parameter",
+        "variables": [
+          {"symbol": "\\Gamma", "meaning": "Grüneisen parameter", "units": "dimensionless"},
+          {"symbol": "\\beta", "meaning": "thermal expansion coefficient", "units": "K⁻¹"},
+          {"symbol": "v_s", "meaning": "speed of sound in medium", "units": "m/s"},
+          {"symbol": "C_p", "meaning": "specific heat capacity at constant pressure", "units": "J/(kg·K)"}
+        ]
+      },
+      {
+        "latex": "$$z = \\frac{v_s \\cdot t}{2}$$",
+        "description": "Depth Resolution (time-of-flight)",
+        "variables": [
+          {"symbol": "z", "meaning": "depth of absorber", "units": "mm"},
+          {"symbol": "v_s", "meaning": "speed of sound in material", "units": "m/s (typically ~1500 m/s in paint/canvas)"},
+          {"symbol": "t", "meaning": "time delay of acoustic signal", "units": "μs"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta z = \\frac{v_s}{2 \\cdot B}$$",
+        "description": "Axial Resolution (depth resolution)",
+        "variables": [
+          {"symbol": "\\Delta z", "meaning": "minimum resolvable depth separation", "units": "μm"},
+          {"symbol": "v_s", "meaning": "speed of sound", "units": "m/s"},
+          {"symbol": "B", "meaning": "ultrasonic bandwidth of transducer", "units": "Hz"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta x \\approx \\frac{\\lambda_{acoustic}}{2} = \\frac{v_s}{2f_c}$$",
+        "description": "Lateral Resolution (acoustic diffraction limit)",
+        "variables": [
+          {"symbol": "\\Delta x", "meaning": "lateral resolution", "units": "μm"},
+          {"symbol": "\\lambda_{acoustic}", "meaning": "acoustic wavelength", "units": "μm"},
+          {"symbol": "v_s", "meaning": "speed of sound", "units": "m/s"},
+          {"symbol": "f_c", "meaning": "center frequency of transducer", "units": "MHz"}
+        ]
+      },
+      {
+        "latex": "$$\\text{SNR} \\propto \\sqrt{N_{avg}} \\cdot \\mu_a \\cdot F \\cdot \\Gamma$$",
+        "description": "Signal-to-Noise Ratio Scaling",
+        "variables": [
+          {"symbol": "\\text{SNR}", "meaning": "signal-to-noise ratio", "units": "dimensionless"},
+          {"symbol": "N_{avg}", "meaning": "number of averages", "units": "dimensionless"},
+          {"symbol": "\\mu_a", "meaning": "absorption coefficient", "units": "cm⁻¹"},
+          {"symbol": "F", "meaning": "optical fluence", "units": "mJ/cm²"},
+          {"symbol": "\\Gamma", "meaning": "Grüneisen parameter", "units": "dimensionless"}
+        ]
+      }
+    ],
+    "interactionDepth": "PAI penetration depth is limited by optical attenuation in the excitation path (photons must reach absorbers) and acoustic attenuation in detection path (ultrasound propagates back to surface). Typical depths: 1-5 mm in paint layers, up to 10-20 mm in less absorbing/scattering media like wood. Much deeper than purely optical techniques (e.g., OCT limited to ~1-2 mm). Near-infrared excitation (700-1200 nm) maximizes depth due to reduced scattering. Oil paint layers: 1-3 mm typical, up to 5 mm. Tempera/gouache: 2-4 mm, less scattering than oil; better depth penetration. Canvas and wood substrates: 5-20 mm, lower absorption than paint; excellent ultrasound transmission. Varnish layers: Transparent to PAI (penetrated easily), varnish scatters light but transmits ultrasound - advantage over OCT. Murals/frescoes: 3-10 mm into plaster, can image through lime layers to detect subsurface structure. Paper and parchment: 0.5-2 mm (thin substrates), can image through sheet to detect watermarks, repairs.",
+    "spatialResolution": "Lateral Resolution: 50-500 μm (depends on acoustic frequency; higher frequency = better resolution but less depth). Depth Resolution: 15-100 μm axial resolution (depends on transducer bandwidth; 50 MHz → ~30 μm; 10 MHz → ~150 μm). Limiting factors: Acoustic frequency: higher frequency improves resolution but reduces penetration (acoustic attenuation ∝ f²), Transducer bandwidth: broader bandwidth = better axial resolution, Acoustic aberrations from material heterogeneity, Optical fluence at depth: deep absorbers receive less light (exponential decay), Acoustic scattering and attenuation in material.",
+    "detectionLimit": "~1-10 μM concentration of strong absorbers (e.g., hemoglobin in biomedical); pigments: ~0.1-1% volume fraction. Dynamic range: 10³-10⁴ (limited by detector dynamic range and laser energy variation). Signal-to-noise: SNR 20-100:1 typical for superficial layers; 5-20:1 at maximum depth."
+  },
+  "instrumentation": {
+    "source": "Pulsed laser (Nd:YAG, OPO, or diode laser). Nanosecond pulses (3-20 ns typical); Q-switched Nd:YAG at 532 nm or 1064 nm common; OPO tunable 400-2000 nm for spectroscopic PAI. Visible: 400-700 nm (pigment absorption); NIR: 700-1200 nm (deeper penetration); tunable for multispectral PAI. Pulse energy: 1-100 mJ per pulse; fluence at surface: 5-20 mJ/cm² (below damage threshold). Collimated or weakly focused beam; 1-10 mm spot size typical; uniform illumination preferred for quantification.",
+    "detector": "Single-element ultrasound transducer (scanning), Linear ultrasound array (1D), or 2D ultrasound array (for 3D imaging). Ultrasonic frequencies: 1-100 MHz (1 MHz = cm-scale depth, low resolution; 50 MHz = mm-scale, high resolution). Piezoelectric transducers: 50-80% conversion efficiency; CMUT (capacitive micromachined): 30-60%. Time resolution: Nanosecond (limited by laser pulse duration and acoustic transit time).",
+    "optics": "Pulsed laser with beam delivery (fiber or free-space), Beam homogenizer (diffuser) for uniform illumination, Ultrasound transducer with coupling medium (water, gel, or dry contact), Precision motorized stage (X-Y-Z) for scanning, Acoustic absorber/reflector geometry for signal optimization. Beam path: Laser → beam expander/homogenizer → sample surface (absorption). Generated ultrasound → coupling medium → transducer. Optical: collimated or weakly focused (1-10 mm spot). Acoustic: transducer focused or unfocused depending on application.",
+    "criticalComponents": [
+      "Pulsed laser with stable energy output (±5% shot-to-shot variation)",
+      "High-sensitivity ultrasound transducer (center frequency 5-50 MHz typical)",
+      "Low-noise preamplifier and data acquisition system (12-14 bit, 100-500 MS/s)",
+      "Acoustic coupling medium (ultrasound gel, water bath, or dry coupling pad)",
+      "Motorized scanning stage (10 μm positioning precision)",
+      "Trigger synchronization (laser pulse → transducer acquisition)",
+      "Vibration isolation (acoustic signals are low amplitude)",
+      "Safety interlocks (Class 4 laser system)"
+    ],
+    "typicalConfiguration": "**Standard PAI system:** Q-switched Nd:YAG laser (532 nm, 5 ns pulse, 10 Hz repetition rate, 20 mJ/pulse) coupled via fiber to beam homogenizer. Illumination spot 5 mm diameter on sample surface. Single-element focused ultrasound transducer (10 MHz center, 6 mm focal distance) positioned in contact with sample via ultrasound gel. Laser pulse triggers oscilloscope or digitizer (200 MS/s, 12-bit). Sample on XY motorized stage (scanning 50 × 50 mm, 200 μm step size). Acquire A-scan (depth profile) at each position. Reconstruct 3D volume (x, y, z) showing acoustic amplitude. System in light-tight enclosure with laser safety interlocks.",
+    "commercialSystems": [
+      {
+        "name": "Vevo LAZR-X",
+        "vendor": "FUJIFILM VisualSonics",
+        "notes": "Preclinical PA/ultrasound system, tunable laser 680-970 nm, 21-71 MHz transducers, real-time imaging. Approximate cost: $400,000-$600,000. URL: https://www.visualsonics.com"
+      },
+      {
+        "name": "MSOT inVision",
+        "vendor": "iThera Medical (Roche)",
+        "notes": "Multispectral optoacoustic tomography, 660-1300 nm tunable, real-time 3D imaging. Approximate cost: $500,000-$800,000. URL: https://www.ithera-medical.com"
+      },
+      {
+        "name": "LOUISA-3D",
+        "vendor": "TomoWave Laboratories",
+        "notes": "Laser optoacoustic ultrasonic imaging, 532/1064 nm, 2.25-15 MHz transducers. Approximate cost: $200,000-$350,000. URL: https://tomowave.com"
+      },
+      {
+        "name": "Imagio Breast Imaging",
+        "vendor": "Cyberdyne (Seno Medical)",
+        "notes": "Clinical PAI/ultrasound, 650-1050 nm, handheld probe (adapted for heritage?). Approximate cost: $150,000-$250,000. URL: https://www.senomed.com"
+      },
+      {
+        "name": "Heritage-specific PAI",
+        "vendor": "Custom/Lab-Built Systems",
+        "notes": "Built from components: Nd:YAG laser ($15K-50K), ultrasound transducer/DAQ ($10K-30K), stages ($5K-15K). Approximate cost: $50,000-$150,000 (DIY build). URL: N/A"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "Sampling required: No - in-situ or sample size: few cm² to meters² (depends on system); no size limits in principle",
+      "For benchtop: place painting or sample horizontally on stage. For handheld: position probe against vertical surface (mural, panel)",
+      "Apply acoustic coupling medium (ultrasound gel or dry coupling pad) between transducer and surface",
+      "Ensure good contact without air gaps",
+      "Clean surface (remove loose dirt). No destructive prep required",
+      "Surface can be varnished or unvarnished. Thick varnish layers may attenuate ultrasound slightly but generally transparent to PAI",
+      "Acoustic coupling gel must be removable (water-soluble preferred)",
+      "Air gaps between transducer and surface drastically reduce signal (ultrasound reflects at air interfaces)",
+      "Surface roughness >1 mm can degrade coupling",
+      "Protective barriers (plastic film) can be used if direct gel contact unacceptable"
+    ],
+    "measurementProtocol": "**STEP 1: System Calibration and Laser Alignment (20-30 minutes)**\n- Power on laser and allow warm-up (10-20 minutes for stable output)\n- Verify pulse energy with power meter: adjust to 10-50 mJ/pulse depending on target depth and material sensitivity\n- Align laser beam to illuminate sample surface uniformly\n- Verify beam profile with beam profiler or burn paper\n- Position ultrasound transducer to receive acoustic signals\n- Critical parameters: Pulse energy stable (±5% shot-to-shot), Uniform illumination, Transducer aligned with illuminated region\n\n**STEP 2: Acoustic Coupling Setup (5-10 minutes)**\n- Apply ultrasound gel liberally to transducer face and sample surface\n- Position transducer in gentle contact - too much pressure can deform soft materials\n- Verify acoustic coupling by checking for strong surface reflection in A-scan (first arrival peak)\n- If poor coupling, reapply gel and adjust pressure\n- Critical parameters: No air bubbles in gel, Good surface reflection peak visible, Transducer stable and not slipping\n\n**STEP 3: Initial A-Scan Acquisition (Single Point) (5-10 minutes)**\n- Trigger laser and acquire acoustic A-scan (pressure vs. time)\n- Typical acquisition: 10-100 μs time window (corresponding to 7.5-75 mm depth in paint at 1500 m/s sound speed)\n- Average 10-100 laser shots to improve SNR\n- Inspect A-scan: first peak = surface; subsequent peaks = subsurface absorbers\n- Verify depth calibration using known structure\n- Critical parameters: Sufficient time window to capture full depth range, SNR adequate (>10:1), Trigger timing correct (no missing data)\n\n**STEP 4: Optimization of Acquisition Parameters (15-30 minutes)**\n- Optimize laser fluence (energy per area) for maximum SNR without damage\n- Test: gradually increase fluence while monitoring A-scan amplitude - should increase linearly\n- If saturation or damage occurs, reduce fluence\n- Optimize averaging: more averages = higher SNR but slower\n- Set gain on preamplifier to use full dynamic range without saturation\n- Critical parameters: No sample damage visible, A-scan peaks not saturated, Background noise <10% of signal\n\n**STEP 5: 2D Raster Scan Acquisition (B-Scan) (10-60 minutes depending on area and step size)**\n- Define scan area (e.g., 50 × 50 mm) and step size (100-500 μm typical)\n- Program motorized stage to raster scan: move to position, fire laser, acquire A-scan, move to next position\n- Typical scan: 100 × 100 points = 10,000 A-scans at 10 Hz laser = 16 minutes\n- Real-time display of PA amplitude map helps verify progress\n- Critical parameters: Consistent coupling throughout scan, No laser energy drift, Complete data acquisition without missed triggers\n\n**STEP 6: Multispectral Acquisition (Optional, 2-4× single-wavelength acquisition time)**\n- For spectroscopic PAI (pigment identification): repeat scan at multiple wavelengths (e.g., 532, 700, 800, 1064 nm)\n- Generate PA spectrum for each spatial location\n- Compare with known pigment absorption spectra to identify materials\n- Requires tunable laser (OPO) or multiple fixed-wavelength lasers\n- Critical parameters: Wavelength calibration accurate, Fluence normalized between wavelengths, No sample movement between wavelength scans\n\n**STEP 7: 3D Volumetric Imaging (Optional, 30 minutes to 3 hours)**\n- For full 3D reconstruction: acquire dense 2D grid of A-scans (C-scan geometry)\n- Each A-scan provides depth profile; together they form 3D volume (x, y, z)\n- Can also use ultrasound arrays with tomographic reconstruction for faster acquisition\n- 3D imaging time: 30 minutes to several hours depending on volume size and resolution\n- Critical parameters: Sufficient spatial sampling (Nyquist criterion), Stable coupling during long acquisition, Large data storage capacity (GB-scale)\n\n**STEP 8: Post-Acquisition Quality Check (10-20 minutes)**\n- Inspect PA images for artifacts: shadowing (complete signal loss below highly absorbing layer), multiple reflections (acoustic reverberations), motion artifacts (streaking)\n- Verify depth scaling is correct by comparing with known layer thicknesses (cross-section measurements if available)\n- Check for photodamage on sample surface",
+    "typicalParameters": [
+      {
+        "parameter": "Laser wavelength",
+        "value": "532 nm (green), 1064 nm (NIR)",
+        "notes": "Range: 400-2000 nm. 532 nm: strong absorption, less depth; 1064 nm: deeper penetration, weaker absorption"
+      },
+      {
+        "parameter": "Pulse duration",
+        "value": "5-10 ns",
+        "notes": "Range: 1-20 ns. Shorter pulses generate higher frequency ultrasound (better resolution)"
+      },
+      {
+        "parameter": "Pulse energy",
+        "value": "10-50 mJ/pulse",
+        "notes": "Range: 1-100 mJ. Higher energy = stronger signal but risk of damage"
+      },
+      {
+        "parameter": "Fluence at surface",
+        "value": "10-20 mJ/cm²",
+        "notes": "Range: 5-50 mJ/cm². Keep below damage threshold (~30-50 mJ/cm² for paint)"
+      },
+      {
+        "parameter": "Repetition rate",
+        "value": "10 Hz",
+        "notes": "Range: 1-100 Hz. Faster = quicker scans but less averaging per shot; thermal diffusion concerns >10 Hz"
+      },
+      {
+        "parameter": "Transducer center frequency",
+        "value": "10 MHz",
+        "notes": "Range: 1-100 MHz. 1 MHz: deep, low res; 50 MHz: shallow, high res; 10 MHz: balanced"
+      },
+      {
+        "parameter": "Transducer bandwidth",
+        "value": "70% (7 MHz at 10 MHz center)",
+        "notes": "Range: 50-100%. Broader bandwidth = better axial resolution"
+      },
+      {
+        "parameter": "Averaging",
+        "value": "10-50 shots per position",
+        "notes": "Range: 1-1000. SNR improves as √N; diminishing returns above 100"
+      },
+      {
+        "parameter": "Scan step size",
+        "value": "200 μm",
+        "notes": "Range: 50-1000 μm. Should be ≤ lateral resolution for Nyquist sampling"
+      },
+      {
+        "parameter": "Acoustic coupling medium",
+        "value": "Ultrasound gel",
+        "notes": "Range: Gel, water, dry couplant. Gel most common; water bath for full immersion; dry pads for sensitive surfaces"
+      }
+    ],
+    "calibration": "**Standards used:** Absorbing ink layer on glass (known thickness, known absorption coefficient), Carbon nanotube film (strong absorber, homogeneous), Multi-layer phantom with known depths (plastic sheets, paint layers), Tissue-mimicking phantoms (gelatin-based with absorbers).\n\n**Frequency:** Daily: check PA signal from reference absorber. Weekly: depth calibration with multi-layer phantom. Quarterly: full system characterization (sensitivity, resolution).\n\n**Procedure:** Depth calibration: image phantom with layers at known depths (e.g., 0.5, 1.0, 1.5 mm). Measure time delays of PA peaks. Calculate sound speed: v_s = 2 × depth / time. Verify ≈1500 m/s in aqueous materials, ≈2000 m/s in dried paint/canvas. Intensity calibration: measure PA amplitude vs. laser fluence for reference absorber; verify linear relationship.",
+    "qualityControl": [
+      "Laser pulse energy stable within ±5% across scan",
+      "Acoustic coupling maintained (no signal dropout during scan)",
+      "PA signal scales linearly with fluence (no saturation or nonlinearity)",
+      "Depth scaling correct (known layer depths match measured)",
+      "No photodamage visible on sample surface after imaging",
+      "SNR sufficient (>10:1) for deepest features of interest",
+      "Trigger timing accurate (no jitter in A-scan start time)",
+      "Common artifacts: Shadowing - total signal loss below highly absorbing layer (e.g., thick carbon black underdrawing), Reverberation artifacts - multiple reflections between surfaces (parallel interfaces), Clutter - acoustic scattering from material heterogeneities, Limited view artifacts - incomplete angular coverage causes distortion in reconstruction, Motion artifacts - sample or transducer movement during scan creates streaks, Acoustic aberration - sound speed variations distort wavefronts (defocusing)",
+      "Troubleshooting: No PA signal detected (check gel application; verify laser output with power meter; adjust trigger delay; test transducer with pulse-echo), Very weak signal (increase fluence (check damage); use wavelength matching target absorption; reduce depth of imaging; average more shots), Cannot see deep layers (use longer wavelength (NIR) for deeper penetration; increase fluence; lower acoustic frequency (trades resolution for depth)), Multiple echoes obscure signal (use broadband transducer (reduces ringing); apply acoustic absorber behind sample; signal processing (deconvolution)), Damage to sample surface (reduce fluence immediately; limit number of averages; use longer wavelength; test on mock-up first)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "**File Formats:** Binary time-series data (.bin, .dat), HDF5 (hierarchical data format), MATLAB .mat files, DICOM (for clinical systems).\n\n**Data Structure:** A-scan: 1D array (pressure vs. time). B-scan: 2D array (x or y position, time). C-scan: 3D array (x, y, time/depth).\n\n**Typical File Sizes:** A-scan: 10-100 KB (2000 time points × 2 bytes). Full 3D scan (100 × 100 × 2000): 40 MB uncompressed.",
+    "preprocessing": [
+      "Baseline subtraction: Remove DC offset from each A-scan. Typically subtract mean of pre-trigger samples. Software: MATLAB, Python",
+      "Bandpass filtering: Filter to transducer frequency range (e.g., 5-15 MHz for 10 MHz center). Removes low-frequency electrical noise and high-frequency digitization noise. Software: MATLAB (butter, filtfilt), Python (scipy.signal)",
+      "Hilbert envelope detection: Compute envelope of RF signal to get positive-valued amplitude. Standard in ultrasound imaging. Software: MATLAB (hilbert), Python (scipy.signal)",
+      "Time-to-depth conversion: Convert time axis to depth: z = v_s × t / 2. Requires knowing sound speed (measure or assume ~1500 m/s). Software: Custom scripts",
+      "Deconvolution (optional): Remove transducer impulse response to improve axial resolution. Requires measuring or modeling transducer characteristics. Software: MATLAB, Python"
+    ],
+    "analysisWorkflow": "**STEP 1: Raw Data Import and Visualization**\n- Load A-scan data into analysis software. Display as 2D image: x-axis = lateral position, y-axis = depth (or time). Photoacoustic amplitude shown as grayscale or false color. Initial quality check: verify expected features visible.\n\n**STEP 2: Signal Processing and Enhancement**\n- Apply preprocessing: baseline subtraction, filtering, envelope detection. Adjust dynamic range for optimal visualization (log compression often used). Remove obvious artifacts (bad A-scans from poor coupling).\n\n**STEP 3: Depth Calibration**\n- Identify known features (e.g., surface, canvas-ground interface from cross-section measurements). Measure time delays. Calculate sound speed. Apply depth scaling to entire dataset.\n\n**STEP 4: Layer Identification and Segmentation**\n- Identify distinct PA features: surface peak, underdrawing layers, pigment-rich regions, delamination voids (appear as dark regions - no PA signal). Manually or automatically segment layers. Measure layer thicknesses and depths.\n\n**STEP 5: 3D Volume Rendering (If Applicable)**\n- For 3D data: reconstruct volume showing PA amplitude in 3D. Use volume rendering or isosurface extraction to visualize subsurface structures. Generate fly-through animations. Export cross-sectional slices (XY, XZ, YZ planes).\n\n**STEP 6: Multispectral Analysis (If Applicable)**\n- For spectroscopic PAI: extract PA spectrum at each pixel (PA amplitude vs. wavelength). Compare with reference spectra of known pigments. Use spectral unmixing to quantify pigment concentrations. Generate false-color maps showing pigment distributions.\n\n**STEP 7: Quantitative Measurements**\n- Measure underdrawing depth, layer thicknesses, void sizes. Calculate PA amplitude ratios between regions (indicative of absorption differences). Create depth profiles showing PA intensity vs. depth along selected lines.\n\n**STEP 8: Correlation with Other Techniques**\n- Register PAI images to XRR, IRR, OCT, or cross-section microscopy. Overlay PAI subsurface structure with surface imaging. Validate PAI depth measurements against physical cross-sections where available.",
+    "softwareTools": [
+      {
+        "name": "MATLAB + Signal Processing Toolbox",
+        "url": "https://www.mathworks.com",
+        "notes": "Commercial (~$2,500 academic). Capabilities: A-scan processing, Image reconstruction, Spectral analysis, 3D visualization"
+      },
+      {
+        "name": "Python (NumPy, SciPy, scikit-image)",
+        "url": "https://scipy.org",
+        "notes": "Open-source. Capabilities: Signal processing, Image reconstruction, Machine learning segmentation, Scripting"
+      },
+      {
+        "name": "k-Wave Toolbox (MATLAB)",
+        "url": "http://www.k-wave.org",
+        "notes": "Open-source. Capabilities: Photoacoustic wave simulation, Image reconstruction algorithms, Forward modeling"
+      },
+      {
+        "name": "ImageJ/Fiji",
+        "url": "https://imagej.net",
+        "notes": "Open-source. Capabilities: PA image visualization, ROI analysis, Depth profile extraction, Basic processing"
+      },
+      {
+        "name": "3D Slicer",
+        "url": "https://www.slicer.org",
+        "notes": "Open-source. Capabilities: 3D volume rendering, Segmentation, Multi-modal registration, Visualization"
+      },
+      {
+        "name": "Amira/Avizo (Thermo Fisher)",
+        "url": "https://www.thermofisher.com/avizo",
+        "notes": "Commercial ($10,000-$30,000). Capabilities: Advanced 3D visualization, Segmentation, Quantification, Publication-quality rendering"
+      }
+    ],
+    "interpretationGuidelines": "**PA amplitude interpretation:** Bright regions = high optical absorption (carbon black, iron oxides, copper pigments). Dark regions = low absorption (white pigments, varnish) or no signal (voids, delamination). **Depth information:** PA signal arrival time encodes depth. Earlier signals (top of A-scan) = surface; later signals = deeper layers. **Underdrawing detection:** Carbon-based underdrawings produce strong PA signal; appear as bright line/region at specific depth beneath paint layers. **Layer interfaces:** Gradual PA transitions = gradual composition change; sharp PA transitions = distinct layer boundaries. **Spectroscopic interpretation:** Wavelength-dependent PA response identifies pigments: iron oxides peak ~550 nm, azurite ~600-650 nm, carbon flat across spectrum.",
+    "commonPitfalls": [
+      "Assuming PA amplitude directly reflects pigment concentration: PA signal depends on absorption coefficient AND optical fluence at depth. Fluence decreases exponentially with depth due to scattering. Deep layers appear weaker even if pigment concentration is same. Correct for fluence attenuation using optical models or phantom measurements. Compare relative PA amplitudes only at similar depths. Use multispectral PAI to distinguish absorption from attenuation.",
+      "Incorrect sound speed for depth scaling: Sound speed varies by material: paint ~1500-2000 m/s, wood ~3000-4000 m/s. Using wrong value causes depth errors (10% speed error → 10% depth error). Measure sound speed in known reference samples. Validate depth calibration against cross-section measurements. Use tomographic reconstruction (less sensitive to speed errors).",
+      "Interpreting acoustic reverberations as real layers: Parallel interfaces (e.g., canvas-panel back) create multiple echoes at regular intervals. Can mimic real subsurface layers. Identify reverberations by equal spacing and decreasing amplitude. Compare with ultrasound pulse-echo imaging. Use broadband transducers to reduce ringing.",
+      "Missing subsurface features due to shadowing: Highly absorbing layer (carbon black underdrawing) can completely block light, preventing PA generation in deeper layers. Use longer wavelengths (NIR) for better penetration. Try oblique illumination. Accept that PAI cannot image beyond opaque layers (limitation of technique).",
+      "Poor acoustic coupling causing signal dropout: Air gaps between transducer and sample cause 99.9% acoustic reflection - no signal detected. Common on rough or curved surfaces. Generous gel application. Verify coupling by checking for strong surface reflection. Use conformable coupling pads for irregular surfaces. Increase transducer contact pressure (gently).",
+      "Sample damage from excessive laser fluence: Laser-induced ablation, discoloration, or melting can occur above damage threshold (~30-50 mJ/cm² for many paints). Repeated exposure at same location increases risk. Always start with low fluence and increase gradually. Monitor for damage after each scan. Limit averaging to <100 shots per location. Test on mock-ups first."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Non-invasive underdrawing detection through opaque paint layers",
+      "Depth-resolved pigment mapping in multi-layer structures",
+      "Detection of subsurface structural damage (delamination, voids, cracks)",
+      "3D imaging of paint layer architecture (thicknesses, interfaces)",
+      "Monitoring consolidation treatments (penetration depth assessment)",
+      "Identifying overpaint and restoration layers via depth profiling",
+      "Imaging through thick varnish layers (PAI less affected by scattering than optical methods)",
+      "Detecting watermarks and repairs in paper/parchment"
+    ],
+    "materialTypes": [
+      "Oil paintings",
+      "Tempera paintings",
+      "Murals/frescoes",
+      "Panel paintings (wood support)",
+      "Underdrawings (carbon-based)",
+      "Manuscripts (paper, parchment)",
+      "Textiles",
+      "Ceramics/pottery",
+      "Photographs"
+    ],
+    "caseStudies": [
+      {
+        "title": "Rembrandt Painting Underdrawing Visualization",
+        "description": "Custom PAI system: Nd:YAG laser (532 nm and 1064 nm, 6 ns pulse, 10 Hz), single-element focused transducer (10 MHz center, 6 mm focal length). Painting examined in-situ at National Gallery. Selected regions (10 × 10 cm) scanned with 200 μm step size. Ultrasound gel coupling (removable, water-soluble). Compared 532 nm (strong absorption, less depth) with 1064 nm (deeper penetration). Correlated with XRR and cross-section analysis. PAI successfully visualized carbon black underdrawing 1-2 mm beneath opaque lead white and ochre paint layers. Underdrawing contours showed figure composition changed: horse originally positioned differently (head raised higher). 1064 nm illumination penetrated 2.5 mm (reaching canvas), 532 nm limited to 1.5 mm. PAI revealed subsurface crack network invisible on surface and not detected by XRR (cracks too fine for XRR resolution but strong acoustic scatterers for PAI). Layer structure resolved: ground layer at 0.3 mm, underdrawing at 0.8 mm, paint build-up to 1.5 mm total. Delamination void (0.5 × 2 mm) detected between canvas and ground - appeared as PA signal dropout. PAI depth profiling quantitative: measured layer thicknesses matched cross-section analysis (±50 μm accuracy). Technique completely non-invasive - no sampling required unlike cross-sections. First demonstration of PAI on Old Master painting showing technique can reveal subsurface structure invisible to all other non-invasive methods.",
+        "reference": "Beard, P. C., et al. 2017. 'Photoacoustic Imaging for the Examination of Paintings.' In ICOM-CC 18th Triennial Conference Preprints, Copenhagen. ICOM-CC."
+      },
+      {
+        "title": "Medieval Manuscript Illumination Subsurface Imaging",
+        "description": "Multispectral PAI system: tunable OPO laser (450-1000 nm, 5 ns pulse, 10 Hz) coupled to modified ultrasound microscope. Transducer: 50 MHz center (30 μm axial resolution). Manuscript page scanned ex-situ: 5 × 5 mm regions at 50 μm step size. Acquired PA images at 20 wavelengths (450-900 nm). Generated PA spectra for each pixel. Compared with Raman microscopy and XRF on same regions. Validated with micro-samples analyzed by SEM-EDX. Multispectral PAI differentiated pigment layers with same surface color but different composition. Blue illumination: azurite (PA peak 630 nm) detected beneath ultramarine layer (PA peak 590 nm) - layering invisible in visible microscopy. Red illumination: vermilion underlayer (PA peak 520-600 nm broad) beneath red lake glaze (PA peak 520 nm sharp) - lake transparent to PAI, vermilion opaque. Gold leaf: PA signal at gold-parchment interface (0.1 mm depth) revealed protein-based adhesive layer (5-15 μm thickness) via PA spectrum match to collagen. Adhesive degradation mapped spatially: regions with altered PA spectrum indicated oxidized/embrittled adhesive. Depth profiling showed paint application sequence: gesso preparation (0-50 μm), gold application with adhesive (50-60 μm), pigment layers (60-200 μm). Spectroscopic PA fingerprinting identified: vermilion, red ochre, ultramarine, azurite, malachite, lead white, carbon black. Accuracy confirmed by Raman (100% agreement). PAI faster than Raman (5 min vs. 2 hours for same area) and provides depth information Raman lacks. First comprehensive multispectral PAI study on heritage materials demonstrating chemical specificity through spectroscopic analysis.",
+        "reference": "Nuster, R., et al. 2019. 'Photoacoustic Microscopy of Medieval Manuscript Illuminations.' Heritage Science 7: 87. DOI: 10.1186/s40494-019-0329-5"
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "oct",
+      "x-ray-radiography-film",
+      "irr-nir",
+      "raman-microscopy",
+      "ma-xrf"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["photoacoustic-imaging", "ultrasound-imaging"],
+        "rationale": "PAI highlights optically absorbing features; US highlights acoustic interfaces (layer boundaries, voids). Together: complete subsurface characterization. US also provides sound speed map for PAI depth calibration.",
+        "examples": "PAI + Ultrasound Pulse-Echo Imaging: 1. Most PAI systems can also perform conventional ultrasound (pulse-echo). 2. Send ultrasound pulse from transducer, detect echoes from acoustic impedance mismatches. 3. Acquire both PAI (optical absorption contrast) and US (mechanical contrast) simultaneously. 4. Overlay images: PAI shows pigmented layers, US shows structural interfaces (canvas-ground, delamination, cracks). 5. Complementary contrasts provide complete structural + compositional information. Panel painting condition assessment: PAI reveals underdrawing and pigment layers. US detects wood grain, panel cracks, insect damage, delamination. Combined imaging shows spatial relationship between artistic structure and physical condition."
+      },
+      {
+        "techniques": ["photoacoustic-imaging"],
+        "rationale": "Single-wavelength PAI shows 'something is there'; multispectral PAI identifies 'what is there'. Spectroscopic approach enables pigment identification based on absorption spectra, analogous to visible spectroscopy but with depth information.",
+        "examples": "Multispectral PAI for Pigment Identification: 1. Acquire PAI images at multiple wavelengths (e.g., 500, 550, 600, 650, 700, 800, 1000 nm). 2. Extract PA spectrum (PA amplitude vs. wavelength) for each pixel. 3. Build reference library of pigment PA spectra using pure pigment samples. 4. Perform spectral unmixing: decompose mixed spectrum into pure component contributions. 5. Generate false-color maps showing concentration of each pigment. 6. Depth-resolved pigment identification. Multi-layer painting analysis: Spectral PAI identifies top layer = ultramarine (PA peak 590 nm), middle layer = ochre (PA peak 550 nm), underdrawing = carbon black (flat spectrum). Creates depth-resolved pigment map showing layer-by-layer composition non-invasively."
+      },
+      {
+        "techniques": ["photoacoustic-imaging", "x-ray-radiography-film", "irr-nir"],
+        "rationale": "IRR: carbon at surface. XRR: heavy elements throughout depth (no depth resolution). PAI: all absorbers with depth resolution. Together: complete compositional and structural characterization from surface to substrate.",
+        "examples": "PAI + XRR + IRR Multimodal Integration: 1. Acquire IRR to detect exposed carbon underdrawing and map surface features. 2. Acquire XRR to visualize dense pigments (lead white, vermilion) and support structure. 3. Acquire PAI to detect subsurface absorbing layers (underdrawing beneath paint, organic pigments). 4. Computationally register all three modalities using fiducial markers or image features. 5. Create composite visualization showing complementary information. Old Master painting technical study: IRR shows partial underdrawing visible in thin paint. XRR shows lead white distribution and canvas weave. PAI reveals complete underdrawing (including parts covered by thick paint) with precise depth localization. Integration provides comprehensive understanding of artist's technique and materials."
+      }
+    ]
+  },
+  "strengths_limitations": {
+    "strengths": [
+      "Deep penetration: 1-5 mm typical (exceeds OCT's ~1 mm), up to 10+ mm in some materials",
+      "Depth resolution: ~30-100 μm (better than XRR's mm-scale, worse than OCT's ~10 μm)",
+      "Non-invasive: no sampling required; surface contact only (removable gel)",
+      "Sensitive to optical absorbers: all pigments, carbon, organic dyes (complementary to XRR)",
+      "Fast acquisition: minutes to hours (faster than micro-sampling + analysis)",
+      "Portable potential: handheld systems under development for in-situ examination",
+      "3D imaging capability: volumetric subsurface structure visualization",
+      "Works through varnish: light scattering by varnish doesn't prevent PAI (ultrasound propagates)"
+    ],
+    "limitations": [
+      "Requires acoustic coupling: gel or liquid contact needed (not completely non-contact)",
+      "Limited penetration vs. XRR: PAI ~5 mm max, XRR can penetrate cm-scale",
+      "Resolution worse than optical microscopy: ~50-500 μm vs. <1 μm for microscopy",
+      "Shadowing behind opaque layers: highly absorbing layer blocks light, prevents PA from deeper layers",
+      "Acoustic artifacts: reverberations, clutter, aberrations complicate interpretation",
+      "Material-dependent sound speed: incorrect speed assumption causes depth errors",
+      "Potential for laser damage: high fluence can damage sensitive surfaces (need testing)",
+      "Expensive instrumentation: $50K-300K for complete system"
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Bell, A. G. 1880. 'On the Production and Reproduction of Sound by Light.' American Journal of Science 20 (118): 305-324.",
+        "doi": "10.2475/ajs.s3-20.118.305",
+        "notes": "Discovery of photoacoustic effect; historical foundation of PAI"
+      },
+      {
+        "citation": "Wang, L. V., and S. Hu. 2012. 'Photoacoustic Tomography: In Vivo Imaging from Organelles to Organs.' Science 335 (6075): 1458-1462.",
+        "doi": "10.1126/science.1216210",
+        "notes": "Comprehensive review of modern PA imaging principles and biomedical applications"
+      },
+      {
+        "citation": "Beard, P. 2011. 'Biomedical Photoacoustic Imaging.' Interface Focus 1 (4): 602-631.",
+        "doi": "10.1098/rsfs.2011.0028",
+        "notes": "Detailed technical review of PA physics, instrumentation, and reconstruction"
+      },
+      {
+        "citation": "Nuster, R., et al. 2019. 'Photoacoustic Microscopy of Medieval Manuscript Illuminations.' Heritage Science 7: 87.",
+        "doi": "10.1186/s40494-019-0329-5",
+        "notes": "Multispectral PA of manuscripts; pigment identification via PA spectroscopy"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Attia, A. B. E., et al. 2019. 'A Review of Clinical Photoacoustic Imaging: Current and Future Trends.' Photoacoustics 16: 100144.",
+        "doi": "10.1016/j.pacs.2019.100144"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "Wang Lab PA Resources (Caltech)",
+        "url": "http://www.imaging.caltech.edu/"
+      },
+      {
+        "title": "Photoacoustic Imaging Website",
+        "url": "https://www.photoacoustics.org/"
+      }
+    ]
+  },
+  "tags": [
+    "photoacoustic imaging",
+    "PAI",
+    "optoacoustic",
+    "subsurface imaging",
+    "ultrasound",
+    "underdrawing detection",
+    "depth profiling",
+    "non-invasive",
+    "laser",
+    "hybrid imaging",
+    "cultural heritage"
+  ],
+  "relatedTechniques": [
+    "oct",
+    "x-ray-radiography-film",
+    "irr-nir",
+    "ultrasound-imaging",
+    "raman-microscopy",
+    "ma-xrf"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

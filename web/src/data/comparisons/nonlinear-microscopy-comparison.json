@@ -1,0 +1,390 @@
+{
+  "comparisonId": "nonlinear-microscopy",
+  "title": "Nonlinear Optical Microscopy Techniques Comparison",
+  "subtitle": "SHG vs THG vs TPEF for Cultural Heritage Applications",
+  "lastUpdated": "2025-01-15",
+  "techniques": [
+    {
+      "id": "shg",
+      "name": "Second Harmonic Generation (SHG)",
+      "color": "#3b82f6",
+      "icon": "🔵",
+      "summary": "Detects non-centrosymmetric ordered structures",
+      "keyAdvantage": "Excellent for collagen and crystalline materials",
+      "typicalUseCase": "Parchment degradation, canvas sizing, crystalline pigments",
+      "signalStrength": "Strong",
+      "typicalPower": "5-30 mW"
+    },
+    {
+      "id": "thg",
+      "name": "Third Harmonic Generation (THG)",
+      "color": "#d946ef",
+      "icon": "🟣",
+      "summary": "Detects interfaces and refractive index changes",
+      "keyAdvantage": "Reveals layer boundaries in transparent materials",
+      "typicalUseCase": "Varnish layers, paint interfaces, oil droplets",
+      "signalStrength": "Moderate-Weak",
+      "typicalPower": "20-100 mW"
+    },
+    {
+      "id": "tpef",
+      "name": "Two-Photon Excited Fluorescence (TPEF)",
+      "color": "#10b981",
+      "icon": "🟢",
+      "summary": "Detects fluorophores and autofluorescent molecules",
+      "keyAdvantage": "Chemical information from native fluorescence",
+      "typicalUseCase": "Organic materials, dyes, degraded proteins",
+      "signalStrength": "Strong",
+      "typicalPower": "5-20 mW"
+    }
+  ],
+  "categories": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "features": [
+        {
+          "name": "Physical Mechanism",
+          "description": "Fundamental nonlinear process",
+          "values": {
+            "shg": "Two photons (ω) → one photon (2ω)",
+            "thg": "Three photons (ω) → one photon (3ω)",
+            "tpef": "Two photons (ω) absorbed → fluorescence emission"
+          }
+        },
+        {
+          "name": "Wavelength Conversion",
+          "values": {
+            "shg": "λ_out = λ_in / 2 (e.g., 800nm → 400nm)",
+            "thg": "λ_out = λ_in / 3 (e.g., 1200nm → 400nm)",
+            "tpef": "λ_out > λ_in / 2 (broad spectrum, e.g., 800nm → 450-650nm)"
+          }
+        },
+        {
+          "name": "Energy Conservation",
+          "values": {
+            "shg": "Parametric (no energy absorbed)",
+            "thg": "Parametric (no energy absorbed)",
+            "tpef": "Non-parametric (energy absorbed, re-emitted)"
+          }
+        },
+        {
+          "name": "Emission Type",
+          "values": {
+            "shg": "Coherent (phase-matched)",
+            "thg": "Coherent (phase-matched)",
+            "tpef": "Incoherent (isotropic)"
+          }
+        },
+        {
+          "name": "Emission Spectrum",
+          "values": {
+            "shg": "Narrow (<5 nm FWHM)",
+            "thg": "Narrow (<5 nm FWHM)",
+            "tpef": "Broad (50-200 nm FWHM)"
+          }
+        },
+        {
+          "name": "Signal vs Power",
+          "values": {
+            "shg": "I ∝ P² (quadratic)",
+            "thg": "I ∝ P³ (cubic)",
+            "tpef": "I ∝ P² (quadratic)"
+          }
+        },
+        {
+          "name": "Requires Staining",
+          "values": {
+            "shg": false,
+            "thg": false,
+            "tpef": "Optional (works with autofluorescence or added fluorophores)"
+          }
+        },
+        {
+          "name": "Photobleaching",
+          "values": {
+            "shg": "No (parametric process)",
+            "thg": "No (parametric process)",
+            "tpef": "Yes (fluorophores degrade over time)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "technical",
+      "title": "Technical Specifications",
+      "features": [
+        {
+          "name": "Material Requirement",
+          "description": "What structures produce signal",
+          "values": {
+            "shg": "Non-centrosymmetric ordered structures (collagen, crystals)",
+            "thg": "Any interface or heterogeneity (refractive index changes)",
+            "tpef": "Fluorophores or autofluorescent molecules"
+          }
+        },
+        {
+          "name": "Typical Excitation",
+          "values": {
+            "shg": "700-1000 nm (Ti:Sapphire, typically 800 nm)",
+            "thg": "1000-1600 nm (OPO, typically 1200-1300 nm)",
+            "tpef": "700-1000 nm (Ti:Sapphire, 800-900 nm)"
+          }
+        },
+        {
+          "name": "Typical Emission",
+          "values": {
+            "shg": "350-500 nm (visible blue-green)",
+            "thg": "350-500 nm (UV-visible blue)",
+            "tpef": "450-700 nm (visible, broad spectrum)"
+          }
+        },
+        {
+          "name": "Required Pulse Width",
+          "values": {
+            "shg": "100-200 fs",
+            "thg": "50-150 fs (shorter preferred)",
+            "tpef": "100-300 fs"
+          }
+        },
+        {
+          "name": "Typical Power at Sample",
+          "values": {
+            "shg": "5-30 mW average",
+            "thg": "20-100 mW average (higher due to I³)",
+            "tpef": "5-20 mW average"
+          }
+        },
+        {
+          "name": "Signal Strength (relative)",
+          "values": {
+            "shg": "Strong (collagen gives ~1000 photons/ms)",
+            "thg": "Moderate-Weak (~100 photons/ms at interfaces)",
+            "tpef": "Strong (depends on fluorophore, ~500-5000 photons/ms)"
+          }
+        },
+        {
+          "name": "Background",
+          "values": {
+            "shg": "Very low (only from target structures)",
+            "thg": "Low (but sensitive to artifacts - dust, bubbles)",
+            "tpef": "Moderate (autofluorescence ubiquitous)"
+          }
+        },
+        {
+          "name": "Penetration Depth",
+          "values": {
+            "shg": "50-150 μm typical in tissues",
+            "thg": "50-200 μm (limited by THG wavelength absorption)",
+            "tpef": "100-300 μm (best of three due to NIR excitation and detection)"
+          }
+        },
+        {
+          "name": "Spatial Resolution (lateral)",
+          "values": {
+            "shg": "~0.3-0.5 μm",
+            "thg": "~0.3-0.5 μm",
+            "tpef": "~0.5-0.8 μm (slightly worse due to longer emission λ)"
+          }
+        },
+        {
+          "name": "Axial Resolution",
+          "values": {
+            "shg": "0.8-2 μm",
+            "thg": "0.8-2 μm",
+            "tpef": "1-3 μm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "applications",
+      "title": "Applications in Cultural Heritage",
+      "features": [
+        {
+          "name": "Collagen (parchment, sizing, leather)",
+          "values": {
+            "shg": "Excellent - primary application",
+            "thg": "Poor - collagen homogeneous (no THG)",
+            "tpef": "Good - collagen has weak autofluorescence"
+          }
+        },
+        {
+          "name": "Varnish layers",
+          "values": {
+            "shg": "Poor - varnish typically centrosymmetric",
+            "thg": "Excellent - detects all interfaces",
+            "tpef": "Good - aged varnish autofluoresces"
+          }
+        },
+        {
+          "name": "Paint layer interfaces",
+          "values": {
+            "shg": "Poor unless crystalline pigments present",
+            "thg": "Excellent - shows all boundaries",
+            "tpef": "Good - different autofluorescence per layer"
+          }
+        },
+        {
+          "name": "Oil droplets in binder",
+          "values": {
+            "shg": "No signal",
+            "thg": "Excellent - lipid interfaces bright",
+            "tpef": "Moderate - some lipid autofluorescence"
+          }
+        },
+        {
+          "name": "Crystalline pigments",
+          "values": {
+            "shg": "Excellent if non-centrosymmetric (cinnabar, malachite)",
+            "thg": "Good - particle boundaries visible",
+            "tpef": "Variable - some pigments fluorescent"
+          }
+        },
+        {
+          "name": "Cellulose (paper, canvas)",
+          "values": {
+            "shg": "Good - crystalline cellulose produces SHG",
+            "thg": "Moderate - fiber interfaces visible",
+            "tpef": "Good - cellulose autofluorescence"
+          }
+        },
+        {
+          "name": "Organic dyes",
+          "values": {
+            "shg": "No signal",
+            "thg": "No signal",
+            "tpef": "Excellent - many dyes fluorescent"
+          }
+        },
+        {
+          "name": "Protein-based adhesives",
+          "values": {
+            "shg": "Excellent if collagen-based (animal glue)",
+            "thg": "Good - adhesive-substrate interface",
+            "tpef": "Good - protein autofluorescence"
+          }
+        },
+        {
+          "name": "Degradation assessment",
+          "values": {
+            "shg": "Excellent - loss of collagen structure quantifiable",
+            "thg": "Moderate - interface changes detectable",
+            "tpef": "Good - changes in autofluorescence indicate degradation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "practical",
+      "title": "Practical Considerations",
+      "features": [
+        {
+          "name": "Ease of Implementation",
+          "values": {
+            "shg": "Moderate - requires proper filter selection",
+            "thg": "Difficult - requires OPO, careful dispersion compensation",
+            "tpef": "Easy - similar to standard confocal"
+          }
+        },
+        {
+          "name": "Cost (added to base microscope)",
+          "values": {
+            "shg": "+$50K (filters, detectors)",
+            "thg": "+$200K (OPO laser typically required)",
+            "tpef": "+$30K (standard configuration)"
+          }
+        },
+        {
+          "name": "Acquisition Time",
+          "values": {
+            "shg": "Fast (strong signal, <5 min typical)",
+            "thg": "Slow (weak signal, 10-30 min with averaging)",
+            "tpef": "Fast (strong signal, <5 min)"
+          }
+        },
+        {
+          "name": "Operator Expertise Required",
+          "values": {
+            "shg": "High (nonlinear optics, laser safety)",
+            "thg": "Very High (complex optimization, dispersion)",
+            "tpef": "Moderate-High (similar to confocal)"
+          }
+        },
+        {
+          "name": "Sample Preparation",
+          "values": {
+            "shg": "Minimal - hydrated samples best",
+            "thg": "Minimal - clean coverslips critical",
+            "tpef": "Variable - can add fluorescent stains"
+          }
+        },
+        {
+          "name": "Common Artifacts",
+          "values": {
+            "shg": "Excitation bleed-through",
+            "thg": "Coverslip defects, air bubbles",
+            "tpef": "Photobleaching, autofluorescence background"
+          }
+        },
+        {
+          "name": "Quantification",
+          "values": {
+            "shg": "Excellent - fiber orientation, density measurable",
+            "thg": "Moderate - interface detection, but complex intensity interpretation",
+            "tpef": "Good - intensity proportional to fluorophore concentration"
+          }
+        },
+        {
+          "name": "Best Combined With",
+          "values": {
+            "shg": "THG (structural complement)",
+            "thg": "SHG (complete structure)",
+            "tpef": "SHG and/or THG (chemical + structural)"
+          }
+        }
+      ]
+    }
+  ],
+  "decisionHelper": {
+    "whenToUseSHG": [
+      "Assessing collagen structure and organization",
+      "Identifying non-centrosymmetric crystalline pigments",
+      "Mapping canvas sizing (animal glue collagen)",
+      "Quantifying fiber orientation and degradation",
+      "Requires ordered molecular structures"
+    ],
+    "whenToUseTHG": [
+      "Visualizing layer boundaries in varnish/paint",
+      "Detecting oil droplets and lipid structures",
+      "Mapping interfaces in transparent materials",
+      "Complementing SHG for complete structure",
+      "Works with centrosymmetric materials"
+    ],
+    "whenToUseTPEF": [
+      "Identifying organic materials and dyes",
+      "Assessing autofluorescence patterns",
+      "Chemical mapping via fluorescent labels",
+      "Distinguishing degraded from intact materials",
+      "Deepest penetration depth needed"
+    ],
+    "bestCombinations": [
+      {
+        "techniques": ["shg", "tpef"],
+        "rationale": "Structure (SHG) + chemistry (TPEF) for comprehensive characterization",
+        "example": "Collagen (SHG) with degraded protein regions (TPEF)"
+      },
+      {
+        "techniques": ["shg", "thg"],
+        "rationale": "Ordered structures (SHG) + interfaces (THG) for complete structural picture",
+        "example": "Paint cross-sections: collagen sizing (SHG) + layer boundaries (THG)"
+      },
+      {
+        "techniques": ["shg", "thg", "tpef"],
+        "rationale": "Maximum information: structure, interfaces, and chemistry",
+        "example": "Complete heritage material characterization"
+      }
+    ]
+  }
+}
+

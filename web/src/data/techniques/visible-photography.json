@@ -1,0 +1,383 @@
+{
+  "id": "visible-photography",
+  "name": "High-Resolution Visible Photography",
+  "acronym": "HRVP",
+  "category": "Imaging and Documentation",
+  "subcategory": "Visible Light Documentation",
+  "summary": "High-resolution visible photography is the systematic capture of detailed digital images using visible light (400-700 nm) to create comprehensive visual documentation of cultural heritage objects, monuments, and sites. Unlike casual photography, heritage documentation employs rigorous technical standards including controlled illumination (color temperature 5000-6500K, diffuse or raking light), color-calibrated workflows (ICC profiles, color targets), high-resolution sensors (20-100+ megapixels), precise exposure control, and standardized viewing geometries to ensure accurate, reproducible records of an object's current appearance. High-resolution photography serves as the foundation for condition assessment, conservation treatment documentation, publication, digital archives, and public access, capturing surface detail (cracks, losses, texture), color (pigments, patina, degradation), and overall condition with spatial resolution from 50 μm/pixel (close-up macro) to 5 mm/pixel (architecture). Advanced techniques include focus stacking (extended depth of field), HDR imaging (expanded dynamic range), gigapixel panoramas (extremely high resolution across large objects), and photogrammetry integration (3D reconstruction from photographs). In cultural heritage, visible photography is universally applied as the primary non-contact documentation method, providing accessible visual records that complement analytical techniques while serving conservation, research, education, and public engagement needs.",
+  "keyApplications": [
+    "Condition documentation (pre/post-treatment records, damage assessment, monitoring change over time)",
+    "Publication and catalog images (exhibition catalogs, scholarly publications, collection databases)",
+    "Digital archives and virtual collections (online access, research databases, institutional memory)",
+    "Conservation treatment documentation (step-by-step records, technique demonstration, before/after comparisons)",
+    "Technical photography (raking light for surface texture, transmitted light for translucent materials, detail macro)",
+    "Color reference and pigment documentation (with color targets, calibrated workflow)",
+    "Public engagement (high-quality images for websites, social media, educational materials)",
+    "Photogrammetry source imagery (multi-view photographs for 3D reconstruction)"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "highly portable",
+  "typicalTimePerMeasurement": "Seconds to minutes per image (setup + capture); batch photography: hours to days for comprehensive documentation",
+  "costRange": {
+    "instrument": "$500-$50,000+ (smartphone to professional medium-format system + lighting + accessories)",
+    "perSample": "$20-$500 per object/session (staff time, setup, processing, storage; scales with complexity and deliverables)"
+  },
+  "fundamentalPhysics": {
+    "principle": "Photography captures the spatial distribution of light reflected from or transmitted through an object using a lens to form an image on a photosensitive detector (digital sensor or film). In digital photography, the lens focuses light onto a sensor array (typically CMOS or CCD) where photons are converted to electrons via the photoelectric effect. Each pixel (photosite) accumulates charge proportional to incident light intensity over the exposure duration. Analog-to-digital conversion yields pixel values (typically 12-16 bit raw data, 8-bit per channel for JPEG). The image represents the object's spectral reflectance convolved with: (1) illumination spectrum (light source), (2) lens transmittance, (3) sensor spectral response (filtered by Bayer pattern color filters for RGB cameras), (4) camera processing (white balance, tone curve, color space conversion). High-resolution heritage photography optimizes each factor: calibrated illumination (known color temperature), high-quality optics (low distortion, high MTF), large sensor (high pixel count, low noise), raw capture (preserve maximum information), color management (ICC profiles for accurate reproduction).",
+    "physicalPhenomenon": "**Light-matter interaction:** Object surface reflects incident light based on: (1) **Spectral reflectance:** wavelength-dependent absorption/reflection determines color (e.g., red pigment absorbs blue-green, reflects red). (2) **Surface geometry:** specular reflection (mirror-like, from smooth surfaces at specific angles) vs. diffuse reflection (Lambertian, scattered in all directions from rough surfaces). (3) **Subsurface scattering:** light penetrates surface, scatters in material, emerges (important for translucent materials like marble, wax, varnish). **Image formation:** Lens (typically multi-element compound design) focuses light from object onto sensor via refraction. Focal length f determines magnification: m = image_size/object_size ≈ f/(distance - f). Aperture (f-number = f/diameter) controls depth of field (DoF, range in focus) and diffraction (resolution limit). **Sensor response:** Bayer-pattern sensor has red, green, blue filters over individual pixels (RGGB mosaic, 2× green for luminance sensitivity). Demosaicing algorithm interpolates full RGB color at each pixel. Quantum efficiency (~40-80% for modern sensors) determines sensitivity. **Dynamic range:** Sensor can capture intensity ratio from full-well capacity (saturation) to read noise floor, typically 10-14 stops (10³-10⁴:1 ratio) for modern cameras.",
+    "equations": [
+      {
+        "latex": "$$m = \\frac{v}{u} = \\frac{f}{u-f}$$",
+        "description": "Lens Magnification (thin lens approximation)",
+        "variables": [
+          {"symbol": "m", "meaning": "magnification (image size / object size)", "units": "dimensionless"},
+          {"symbol": "v", "meaning": "image distance (lens to sensor)", "units": "mm"},
+          {"symbol": "u", "meaning": "object distance (lens to subject)", "units": "mm or m"},
+          {"symbol": "f", "meaning": "lens focal length", "units": "mm"}
+        ]
+      },
+      {
+        "latex": "$$\\text{DoF} \\approx \\frac{2 u^2 N c}{f^2}$$",
+        "description": "Depth of Field (simplified, near-far symmetric approximation)",
+        "variables": [
+          {"symbol": "\\text{DoF}", "meaning": "depth of field (range in acceptable focus)", "units": "mm or m"},
+          {"symbol": "u", "meaning": "subject distance from lens", "units": "mm or m"},
+          {"symbol": "N", "meaning": "f-number (aperture: f/N)", "units": "dimensionless"},
+          {"symbol": "c", "meaning": "circle of confusion (acceptable blur diameter on sensor)", "units": "μm"},
+          {"symbol": "f", "meaning": "focal length", "units": "mm"}
+        ]
+      },
+      {
+        "latex": "$$\\text{GSD} = \\frac{u \\cdot p}{f}$$",
+        "description": "Ground Sampling Distance (spatial resolution on object)",
+        "variables": [
+          {"symbol": "\\text{GSD}", "meaning": "ground sampling distance (object dimension per pixel)", "units": "μm/pixel or mm/pixel"},
+          {"symbol": "u", "meaning": "object distance", "units": "mm or m"},
+          {"symbol": "p", "meaning": "pixel pitch (physical pixel size on sensor)", "units": "μm"},
+          {"symbol": "f", "meaning": "focal length", "units": "mm"}
+        ]
+      },
+      {
+        "latex": "$$\\text{Diffraction limit} = 1.22 \\lambda N$$",
+        "description": "Airy Disk Diameter (diffraction-limited resolution)",
+        "variables": [
+          {"symbol": "\\text{Diffraction limit}", "meaning": "minimum resolvable spot size (Airy disk diameter on sensor)", "units": "μm"},
+          {"symbol": "\\lambda", "meaning": "wavelength of light (550 nm for green, typical)", "units": "nm"},
+          {"symbol": "N", "meaning": "f-number (aperture)", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$E = \\frac{L \\cdot A \\cdot t}{4N^2(m+1)^2}$$",
+        "description": "Exposure (light reaching sensor, simplified)",
+        "variables": [
+          {"symbol": "E", "meaning": "exposure (light energy per unit area on sensor)", "units": "lux·s"},
+          {"symbol": "L", "meaning": "scene luminance", "units": "cd/m²"},
+          {"symbol": "A", "meaning": "lens aperture area (π(f/2N)²)", "units": "mm²"},
+          {"symbol": "t", "meaning": "shutter speed (exposure time)", "units": "seconds"},
+          {"symbol": "N", "meaning": "f-number", "units": "dimensionless"},
+          {"symbol": "m", "meaning": "magnification", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$\\text{SNR} = \\frac{S}{\\sqrt{S + D + R^2}}$$",
+        "description": "Signal-to-Noise Ratio (simplified, shot noise dominant)",
+        "variables": [
+          {"symbol": "\\text{SNR}", "meaning": "signal-to-noise ratio", "units": "dimensionless"},
+          {"symbol": "S", "meaning": "signal (photoelectrons from light)", "units": "electrons"},
+          {"symbol": "D", "meaning": "dark current (thermal noise)", "units": "electrons"},
+          {"symbol": "R", "meaning": "read noise (sensor electronics)", "units": "electrons RMS"}
+        ]
+      }
+    ],
+    "interactionDepth": "Visible light photography is a surface imaging technique capturing reflected light from the top ~0.1-10 μm of opaque materials (skin depth where light reflects). For translucent materials (thin paper, textiles, alabaster, jade), light can penetrate deeper (0.1-10 mm depending on material) via subsurface scattering, emerging with modified spectrum (affects color, reveals internal structure in transmitted light photography). Technique provides no inherent depth information (2D projection), though surface texture visible via shading cues (raking light, shadows).",
+    "spatialResolution": "Lateral: 50 μm/pixel (macro, 1:1 magnification, 50 MP sensor) to 5 mm/pixel (architecture, 10 m distance); typical: 0.1-0.5 mm/pixel for objects, 1-5 mm/pixel for large monuments. Depth: No inherent depth resolution (2D imaging); depth of field determines range in acceptable focus: 1-10 mm (macro, wide aperture) to meters (architecture, stopped down aperture). Limiting factors: Sensor resolution (pixel count: 20-100 MP typical; higher = finer detail), Lens quality (MTF, aberrations; high-quality lenses resolve more detail per pixel), Diffraction (small apertures f/16-f/32 reduce resolution; optimal aperture f/8-f/11 for sharpness), Focus accuracy (critical focus required; focus stacking for extended depth of field), Camera stability (tripod essential for high-resolution; vibration/motion blur degrades sharpness), Subject distance (closer = higher resolution; limited by lens minimum focus distance and lighting).",
+    "detectionLimit": "Contrast threshold: ~2-5% reflectance difference detectable by human eye in optimal conditions; camera sensor can detect ~1% difference (higher bit depth = better). Minimum feature size: ~2-3 pixels (Nyquist sampling); 1 pixel features alias or disappear. Dynamic range: 8-bit images: 256:1 (2.4 stops); 14-bit raw: 16,384:1 (14 stops) typical for modern cameras. High dynamic range (HDR) multi-exposure: can reach 20+ stops (>10⁶:1) via bracketing and merging. Signal-to-noise: SNR >100:1 for well-exposed images (mid-tones, base ISO). SNR degrades in shadows (low signal) and at high ISO (increased noise). Modern cameras: ISO 100-400 optimal, usable up to ISO 3200-6400 with noise reduction."
+  },
+  "instrumentation": {
+    "source": "Illumination: (1) Natural daylight (indirect, diffuse), (2) Continuous artificial (LED panels, tungsten halogen), (3) Flash/strobe (electronic flash units). Color temperature: 5000-6500K (daylight equivalent) for color-accurate documentation; 2700-3200K (tungsten) if color-corrected. Illuminance: 500-5000 lux typical (adjustable via distance, power). CRI >90 (Color Rendering Index) for accurate color reproduction. Energy range: Visible spectrum: 400-700 nm (violet to red); broadband white light sources span full range. Power range: LED panels: 10-100W; continuous tungsten: 500-2000W; flash: 100-1000 Joules per flash. Beam characteristics: Diffuse illumination (softbox, umbrella) for even lighting, minimal shadows. Raking/directional light for surface texture emphasis. Polarized light (with polarizing filters) to eliminate specular reflections.",
+    "detector": "Digital camera sensor: CMOS (most common, low power, fast) or CCD (legacy, high quality). Bayer pattern color filter array (RGGB mosaic) for single-shot color. Full-frame (36×24 mm), APS-C (24×16 mm), medium format (44×33 mm to 54×40 mm) sensor sizes. Spectral range: Silicon-based sensors: peak sensitivity 500-600 nm (green), usable 400-1000 nm (with IR-cut filter limits to ~400-700 nm visible range). Efficiency: Quantum efficiency: 40-80% at peak wavelength (modern BSI-CMOS sensors >70%; older sensors ~40-50%). Time resolution: Shutter speed: 1/8000 s to 30 s (mechanical); 1/32000 s (electronic shutter); bulb mode for longer exposures (minutes-hours for astrophotography; not typical for heritage).",
+    "optics": "Camera body (sensor, processor, controls). Interchangeable lens (focal length 14-600mm typical; macro lenses for close-up). Tripod (stable platform; essential for high-resolution, long exposures). Lighting (LED panels, flash units, reflectors, diffusers). Color target (X-Rite ColorChecker, Datacolor SpyderCHECKR). Gray card (18% neutral reflectance for exposure/white balance). Polarizing filters (linear/circular; eliminate reflections). Scale reference (ruler, scale bar in frame for dimension reference). Tethering cable/wireless (connect camera to computer for live view, remote control). Computer (for tethered shooting, image review, processing, storage).",
+    "criticalComponents": [
+      "High-resolution sensor (20-100+ MP; full-frame 45-60 MP or medium-format 100 MP for ultimate detail)",
+      "High-quality lens (prime lenses sharper than zooms; 50mm f/2.8 macro, 100mm f/2.8 macro, 24mm f/3.5 TS-E for architecture)",
+      "Stable tripod (heavy-duty; carbon fiber or aluminum; geared head or ball head for precise positioning)",
+      "Controlled lighting (LED panels with adjustable color temp 3200-5600K, high CRI >95; flash system with softboxes)",
+      "Color management tools (ColorChecker target in first image; color-managed monitor for review; ICC profiles)",
+      "Tethering software (Capture One, Lightroom, camera manufacturer software for live view, remote trigger)",
+      "Storage (high-capacity memory cards: 128-512 GB CFexpress, SD UHS-II; RAID backup for archives)",
+      "Processing workstation (calibrated monitor, Adobe Lightroom/Photoshop, color-managed workflow)"
+    ],
+    "typicalConfiguration": "**Standard heritage photography setup:** Full-frame mirrorless or DSLR (45-60 MP, e.g., Canon EOS R5, Nikon Z7 II, Sony A7R IV). Lens: 100mm f/2.8 macro for objects (1:1 magnification, 0.3 m minimum focus), 24mm f/3.5 TS-E tilt-shift for architecture (perspective control), 50mm f/1.4 for general use. Tripod: Manfrotto or Gitzo carbon fiber, geared head. Lighting: 2-4× LED panels (Westcott or Aputure, 3200-5600K adjustable, CRI 95+, 1000 lux @ 1m), softboxes 60×60 cm for diffusion. Polarizing filters (B+W or Hoya circular polarizer) on lens + polarizers on lights for cross-polarization (eliminate reflections). Color target: X-Rite ColorChecker Passport (24-patch mini target). Tethering: USB-C cable to laptop (MacBook Pro or Windows workstation) running Capture One Pro. Camera settings: Raw format (14-bit), ISO 100-400 (base ISO for max dynamic range, low noise), aperture f/8-f/11 (optimal sharpness, adequate DoF), shutter speed as needed (1/60 s - 1 s typical with tripod). White balance: custom (photograph gray card under same lighting, set WB from that image in raw processing).",
+    "commercialSystems": [
+      {
+        "name": "Canon EOS R5 Mirrorless Camera",
+        "vendor": "Canon",
+        "notes": "45 MP full-frame, 8K video, in-body stabilization, RF lens mount, 20 fps electronic shutter. Approximate cost: $3,900 (body); $1,000-$3,000 (lenses: RF 24-105mm f/4, RF 100mm f/2.8 macro). URL: https://www.canon.com"
+      },
+      {
+        "name": "Nikon Z7 II Mirrorless Camera",
+        "vendor": "Nikon",
+        "notes": "45.7 MP full-frame, dual processors, in-body stabilization, Z mount, focus stacking mode. Approximate cost: $3,000 (body); $800-$2,500 (lenses: Z 24-70mm f/4, Z MC 105mm f/2.8 macro). URL: https://www.nikon.com"
+      },
+      {
+        "name": "Sony Alpha A7R V",
+        "vendor": "Sony",
+        "notes": "61 MP full-frame, AI-based autofocus, 8-stop IBIS, E-mount, pixel-shift multi-shot (240 MP). Approximate cost: $3,900 (body); $900-$2,800 (lenses: FE 24-105mm f/4, FE 90mm f/2.8 macro). URL: https://www.sony.com"
+      },
+      {
+        "name": "Phase One iXM-100 Medium Format",
+        "vendor": "Phase One",
+        "notes": "100 MP medium format (53.4×40 mm sensor), 16-bit color, Schneider Kreuznach lenses, tethered or standalone. Approximate cost: $30,000-$50,000 (body + lens + software; professional/museum-grade). URL: https://www.phaseone.com"
+      },
+      {
+        "name": "Hasselblad H6D-100c Medium Format",
+        "vendor": "Hasselblad",
+        "notes": "100 MP medium format CMOS, 16-bit color, True Focus, Hasselblad Natural Color Solution, modular. Approximate cost: $25,000-$33,000 (body + lens; museum/archive quality). URL: https://www.hasselblad.com"
+      },
+      {
+        "name": "Westcott Flex Cine LED Panels",
+        "vendor": "Westcott",
+        "notes": "Bi-color 3200-5600K, CRI 95+, dimmable, foldable panels (1'×1', 1'×2'), AC or battery. Approximate cost: $400-$1,200 per panel. URL: https://www.fjwestcott.com"
+      },
+      {
+        "name": "X-Rite ColorChecker Passport Photo 2",
+        "vendor": "X-Rite",
+        "notes": "Color target with 24 patches + creative enhancement, gray balance, HSL/saturation reference. Approximate cost: $100. URL: https://www.xrite.com"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "Not applicable (non-contact imaging; objects photographed in situ or in studio)",
+      "Object positioned on stable support (archival foam, custom mounts, or display stand). For flat works (paintings, textiles): vertical easel or wall mount. For 3D objects: turntable or static support with neutral background (white, gray, or black seamless paper/fabric). No adhesives or pressure on object (gentle support only).",
+      "Clean object per conservation standards if needed (dust removal with soft brush, no wet cleaning before photography unless conservator-approved). Remove temporary supports, labels, extraneous materials from frame. No surface treatments (avoid touching, oils from hands).",
+      "Not applicable (surface imaging technique)",
+      "Dust on object surface (visible in high-resolution images; gently remove with soft brush or compressed air before photography). Fingerprints, skin oils (avoid touching object; wear cotton or nitrile gloves when handling). Reflections from environment (glass-fronted frames, shiny surfaces; use cross-polarization or controlled angles). Background clutter (simplify background; seamless paper or fabric; neutral color to avoid color cast). Lighting artifacts (hotspots from specular reflections; adjust light position or use polarizers)."
+    ],
+    "measurementProtocol": "**Step 1: Setup and Preparation**\nSelect appropriate location (studio with controlled lighting, or on-site for immovable objects/architecture). Position object on stable support, neutral background. Set up camera on tripod at appropriate distance (determine field of view, perspective). Level camera (use built-in level or hot-shoe level); ensure sensor plane parallel to object plane (perpendicular to optical axis) to avoid keystone distortion, especially critical for flat artworks (paintings, documents). For architecture: use tilt-shift lens or corrective software. Duration: 15-60 minutes (depends on object complexity, setup complexity). Critical parameters: Camera stable (tripod locked), Sensor parallel to object (minimize distortion), Background neutral and clean, Object secure and safely supported.\n\n**Step 2: Lighting Setup**\nPosition lights for even illumination: 45° angle from left and right (cross-lighting) eliminates shadows for flat documentation. For texture documentation: single light at low angle (raking light, 10-20° from surface) emphasizes relief. Adjust light distance and power to achieve even illumination (check via live view histogram or spot meter; aim for uniformity ±0.5 stop across field). Use softboxes/diffusers to avoid harsh shadows. For reflective objects: large soft sources (umbrellas, diffusion panels) or cross-polarization (polarizers on lights + camera lens) to eliminate glare. Duration: 15-45 minutes (simple setups faster; complex reflective objects require iteration). Critical parameters: Even illumination (no hotspots, shadows), Color temperature consistent (all lights same temp), Intensity adequate but not excessive (avoid overexposure), Cross-polarization if needed (for glass, varnish, metal).\n\n**Step 3: Camera Settings Configuration**\nSet camera to Manual mode (M) for full control. ISO: base ISO (100, 200, or 64 depending on camera) for maximum dynamic range and minimum noise. Aperture: f/8 to f/11 typically (optimal sharpness for most lenses, adequate depth of field for most objects). For deep 3D objects: f/16-f/22 or focus stacking. Shutter speed: determined by light level; use tripod so slow speeds (1/15 s - 2 s) acceptable. White balance: custom WB from gray card (photograph neutral gray card under same lighting, set WB from that image in camera or raw software). File format: RAW (14-bit NEF/CR3/ARW; preserves maximum information for post-processing). Image quality: highest resolution, lossless compression if available. Duration: 10-20 minutes (settings, test shots, refinement). Critical parameters: ISO at base (100-200), Aperture f/8-f/11 (optimal sharpness), RAW format (not JPEG), White balance custom (from gray card under same light).\n\n**Step 4: Focus and Composition**\nCompose image: frame object with small margin (5-10% border); include scale reference (ruler, color/gray card) in first frame or separate frame. Focus critically: use live view magnification (5× or 10×) on critical detail (center of interest, inscription, damage area). Manual focus preferred (autofocus may miss target). For shallow depth of field: focus 1/3 into depth of object (maximizes DoF front-to-back via hyperfocal principle). For very shallow DoF or 3D objects: focus stacking (see advanced techniques). Lock focus (switch lens to manual after focusing; don't touch focus ring). Check composition and edges (verify object fully in frame, parallel to edges, scale visible if included). Duration: 5-15 minutes per setup/view. Critical parameters: Critical focus (use live view magnification), Composition tight but complete (object fills frame with margin), Scale visible if required, Manual focus locked (won't drift between shots).\n\n**Step 5: Test Exposure and Histogram Check**\nCapture test image. Review histogram (RGB or luminance): ideal histogram has peak in mid-tones (center), no clipping on left (shadows) or right (highlights). Slight right-bias acceptable ('expose to the right' or ETTR: maximizes signal, minimizes noise, but avoid highlight clipping on important areas). Check for overexposure: blinking highlights (zebra pattern in playback). If clipping: reduce exposure (decrease shutter speed or increase aperture slightly, or reduce light intensity). If too dark: increase exposure. Bracket if unsure: ±1 stop (3 images at different exposures can be merged to HDR later). Check sharpness: zoom to 100% in playback, inspect critical areas. If soft: re-check focus, check for camera shake (use 2-sec self-timer or remote release to avoid vibration from shutter press). Duration: 5-10 minutes (test, review, adjust, retest). Critical parameters: Histogram optimal (no clipping, mid-tones centered), Sharp focus at 100% zoom, No camera shake (use remote release or timer), Bracketing if high contrast scene (±1 stop).\n\n**Step 6: Systematic Image Acquisition**\nCapture final images systematically: (1) Overall view (full object, scale + color target visible). (2) Details (close-ups of significant features: inscriptions, condition issues, decorative elements; maintain same lighting, change camera position/focal length to fill frame with detail). (3) Multiple angles (3D objects: front, back, sides, top; rotate object or move camera; maintain consistent lighting). (4) Raking light views (if needed for texture: low-angle single light source emphasizes surface relief; capture at 0°, 90°, 180°, 270° azimuths to see all textures). (5) Transmitted light (for translucent materials: backlight with diffused light box or LED panel, photograph from front). Document: use tethered shooting (images transfer immediately to computer for review), or shoot to card and download frequently. Label files systematically (object ID, view, date, sequence number). Duration: Variable: 30 minutes for simple object (5-10 images); 2-4 hours for complex object (50-100 images including details). Critical parameters: Systematic coverage (all views, details documented), Consistent lighting and settings (for comparability across image set), Immediate review (check each image at 100% zoom for sharpness, exposure), Files labeled/organized (object ID, view descriptor in filename or metadata).\n\n**Step 7: Color Reference Capture**\nInclude color/gray target in at least one image per lighting setup (first image of series): X-Rite ColorChecker or similar positioned next to object in same plane, same lighting. Ensure target well-exposed (histogram midtones for gray patches), in focus, flat (not wrinkled or curved). This reference image enables accurate color correction in post-processing (create ICC profile or manual color balance from known target values). Optionally: capture separate reference image (target only, fills frame) for highest accuracy if target small in object images. Duration: 2-5 minutes. Critical parameters: Color target in same lighting as object, Target in focus and well-exposed, Target flat and clean (no shadows, dirt, wear on patches).\n\n**Step 8: Quality Control and Backup**\nReview all images: check histogram (exposure correct), zoom to 100% (sharpness, focus), verify coverage (all required views captured). If any issues: re-shoot immediately while setup intact. Backup: copy raw files to at least two locations (primary storage + backup drive; or computer + network storage). Verify file integrity (check file size, open a few files to confirm not corrupted). Document session: record metadata (object ID, date, photographer, camera/lens used, lighting setup notes, any special considerations) in spreadsheet or database, or in EXIF metadata fields. Duration: 15-30 minutes (review and backup for typical session). Critical parameters: All images reviewed at 100% zoom, Exposure and focus verified, Files backed up (two locations minimum), Session documented (metadata recorded).",
+    "typicalParameters": [
+      {"parameter": "Sensor resolution", "value": "45 MP (full-frame)", "notes": "Higher resolution = finer detail; diminishing returns beyond ~60 MP for most heritage applications due to lens limits"},
+      {"parameter": "ISO sensitivity", "value": "100-400", "notes": "Base ISO (100-200) for maximum dynamic range, lowest noise; increase only if light insufficient and tripod unavailable"},
+      {"parameter": "Aperture (f-number)", "value": "f/8-f/11", "notes": "f/8-f/11 optimal sharpness (balances aberrations and diffraction); f/16-f/22 for deep DoF (landscapes, deep objects); f/5.6 for shallow DoF (portraits, selective focus)"},
+      {"parameter": "Shutter speed", "value": "1/60 s - 1 s", "notes": "Tripod-mounted: slow speeds OK (0.5-2 s typical with studio lighting); handheld: 1/(focal length) s minimum to avoid shake (e.g., 1/100 s for 100mm lens)"},
+      {"parameter": "Focal length", "value": "50-100mm", "notes": "Macro: 50-100mm for close-up objects; normal: 35-50mm for mid-range; wide: 14-35mm for architecture/interiors; tele: 200-600mm for distant details"},
+      {"parameter": "Focus distance", "value": "0.5-5 m", "notes": "Closer = higher magnification, higher resolution but shallower DoF; varies by lens minimum focus distance"},
+      {"parameter": "White balance", "value": "5000-6500K", "notes": "Daylight: ~5500K; tungsten: ~3200K; LED panels: adjustable 3200-5600K; set custom from gray card for accuracy"},
+      {"parameter": "Illumination level", "value": "1000-3000 lux", "notes": "Sufficient for f/8-f/11 at ISO 100-400 with 1/60-1 s shutter; adjust via light power or distance"},
+      {"parameter": "Dynamic range (bit depth)", "value": "14-bit raw", "notes": "14-16 bit raw preserves maximum information (14 stops ≈ 16,384:1); 8-bit JPEG only 8 stops (256:1), lossy compression"}
+    ],
+    "calibration": "**Standards:** Color target: X-Rite ColorChecker (24 or 48 patches), Datacolor SpyderCHECKR (known spectral reflectance). Gray card: 18% reflectance neutral gray (Kodak, X-Rite) for exposure metering and white balance. Scale reference: metric ruler, photographic scale bar (graduated in cm/mm) for dimensional reference. Resolution target: USAF 1951 test pattern or ISO 12233 chart (for lens MTF testing, focus accuracy verification). Monitor calibration: X-Rite i1Display Pro, Datacolor SpyderX (hardware colorimeter + software for display profiling).\n\n**Frequency:** Per session: Color target in first image of each lighting setup (ensures color accuracy for that setup). Monitor calibration: monthly (or weekly for critical color work; displays drift over time). Camera/lens calibration: verify focus accuracy (phase-detection AF) annually or if suspect front/back-focus; most modern cameras have AF micro-adjustment. Gray card: each session for exposure check, custom white balance.\n\n**Procedure:** **Color calibration:** (1) Photograph color target (ColorChecker) in first frame under same lighting as object. (2) In raw processing software (Lightroom, Capture One), use color target tool to create camera/lighting profile or adjust color manually (match target patches to known reference values). (3) Apply profile to all images from that session. **Exposure calibration:** Photograph gray card (fills frame), adjust exposure so gray card meters at 18% reflectance (middle gray in histogram, RGB ~118/255 in 8-bit). Use this exposure for object. **White balance calibration:** Photograph gray card, use eyedropper in raw software to set neutral gray → gives correct WB for that lighting. **Monitor calibration:** Run colorimeter software (i1Profiler, SpyderX), place colorimeter on screen, software displays color patches, colorimeter measures, creates ICC profile for monitor. Set OS/software to use profile.",
+    "qualityControl": [
+      "Exposure correct (histogram shows no clipping in highlights/shadows; mid-tones centered)",
+      "White balance accurate (neutrals appear neutral; color target patches match references)",
+      "Focus sharp (100% zoom inspection shows crisp detail at intended focus point)",
+      "Depth of field adequate (all important areas within acceptable focus range)",
+      "No camera shake/motion blur (100% zoom shows sharp edges, no streaking; use tripod + timer/remote)",
+      "Lighting even (no harsh shadows, hotspots, or falloff; ±0.5 stop across field)",
+      "No lens distortion artifacts (straight lines straight, especially edges; use tilt-shift or correct in post)",
+      "Color fringing minimal (chromatic aberration controlled; check high-contrast edges at 100% zoom)",
+      "File format correct (RAW, 14-16 bit; not JPEG 8-bit)",
+      "Files backed up (two locations minimum; verify integrity)",
+      "Metadata complete (object ID, date, photographer, camera settings documented)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "RAW: NEF (Nikon), CR3/CR2 (Canon), ARW (Sony), DNG (Adobe universal RAW), IIQ (Phase One). Output: TIFF (16-bit, uncompressed or LZW compression; archival), JPEG (8-bit, lossy compression; web/display), PSD (Adobe Photoshop format; preserves layers, adjustments). Data structure: RAW: single-channel sensor data (Bayer mosaic) + metadata (EXIF: camera settings, lens, exposure). TIFF/JPEG: demosaiced RGB color (3 channels), optionally with embedded ICC profile. Metadata: EXIF, IPTC (caption, copyright), XMP (editing history, keywords). Typical file size: RAW: 50-150 MB per image (45-100 MP cameras, 14-16 bit). TIFF: 150-300 MB (uncompressed 16-bit RGB, 45-100 MP). JPEG: 10-30 MB (8-bit, quality 90-100%, 45-100 MP).",
+    "preprocessing": [
+      "RAW conversion (demosaicing): Convert Bayer RAW data to full RGB image. Software (Lightroom, Capture One, DxO PhotoLab) applies demosaicing algorithm (interpolates missing R, G, B values at each pixel from surrounding pixels). Apply lens profile correction (distortion, chromatic aberration, vignetting). Set white balance, exposure, tone curve, sharpening. Software: Adobe Lightroom Classic, Capture One Pro, DxO PhotoLab, RawTherapee (open-source).",
+      "Color correction: Match image colors to reality using color target: create ICC profile from ColorChecker (camera-specific profile for that lighting), or manual adjustment (use color picker on gray/white patch → set neutral, adjust other patches to target values). Apply to all images from same session. Verify neutrals appear neutral (gray card appears gray, not tinted). Software: Lightroom (color calibration panel), X-Rite ColorChecker Camera Calibration software, BasICColor.",
+      "Exposure and tone adjustment: Fine-tune exposure (overall brightness), adjust highlights (recover clipped highlights if RAW headroom available), shadows (lift to reveal detail without excess noise), whites/blacks (set white/black points). Apply tone curve (S-curve for contrast, or custom for desired look). Aim: histogram well-distributed, no clipping (unless intentional in background), detail visible in all important areas. Software: Lightroom (Develop module), Photoshop (Camera Raw), Capture One.",
+      "Sharpening: Apply capture sharpening (compensate for AA filter, lens softness). Use unsharp mask or modern algorithms (deconvolution sharpening in Capture One, AI sharpening in Topaz). Settings: Amount 40-80%, Radius 0.8-1.5 pixels (for typical viewing distance), Threshold ~0 for overall sharpening or ~10 to avoid amplifying noise. Apply globally or selectively (sharpen detail areas, leave smooth areas). Software: Lightroom (sharpening panel), Photoshop (Smart Sharpen, Unsharp Mask), Capture One, Topaz Sharpen AI.",
+      "Noise reduction (if needed): For images with visible noise (high ISO, underexposure): apply luminance noise reduction (smooths brightness variations) and color noise reduction (removes color speckles). Balance noise reduction vs. detail preservation (aggressive NR blurs fine detail). Typically: luminance NR ~30-50, color NR ~25-40 in Lightroom scale. Alternatively: AI-based NR (Topaz DeNoise AI, DxO Prime) for better detail preservation. Software: Lightroom (detail panel), Topaz DeNoise AI, DxO PhotoLab (PRIME noise reduction).",
+      "Cropping and straightening: Crop to final composition (remove extraneous background, center object, apply rule-of-thirds if artistic). Straighten (rotate to level horizon or align object edges with frame edges). For archival/documentation: minimal crop (preserve all information); tight crop to object edges acceptable if annotated (original frame preserved in RAW or separate master TIFF). Software: Lightroom (crop tool), Photoshop.",
+      "Retouching (optional, for publication): Remove temporary elements (dust on sensor causing spots, modern labels/supports if distracting). Healing/cloning tools (Photoshop healing brush, clone stamp). For heritage: retouch only temporary artifacts, NEVER alter object itself (authentic condition must be preserved). Document any retouching (note in metadata: 'sensor dust removed; object unaltered'). Software: Photoshop (healing brush, clone stamp, content-aware fill).",
+      "Export and archiving: Export master TIFF (16-bit, Adobe RGB or ProPhoto RGB color space, uncompressed or LZW, embedded ICC profile). For web/print: export derivatives (JPEG 8-bit sRGB for web at appropriate resolution ~2000 px long dimension; TIFF or JPEG Adobe RGB at 300 ppi for print). Archive: store RAW + master TIFF + metadata (EXIF, IPTC, XMP sidecar) on redundant storage (RAID, cloud backup). Software: Lightroom (export presets), Photoshop (Save As), batch export scripts."
+    ],
+    "analysisWorkflow": "**Step 1: Image Import and Organization**\nImport RAW files into cataloging software (Lightroom, Capture One, Photo Mechanic). Organize into collections/folders by object, session date, or project. Apply initial metadata (IPTC): photographer name, copyright, caption template (object ID, institution). Cull: review all images, flag best (5-star or color label), reject out-of-focus/poorly-exposed images. Archive rejects separately (may be useful later for documentation of process or comparison).\n\n**Step 2: Color Calibration from Target**\nLocate image with color/gray target. In RAW processing software: use color target tool (Lightroom: Color Checker plugin or manual; Capture One: built-in Color Tool). Software reads target patches, compares to known values, creates camera/lighting profile or adjustment settings. Apply profile to all images from same lighting setup (batch apply via sync settings). Verify: neutral patches (gray, white, black on ColorChecker) appear neutral (no color cast), color patches approximately match visual expectation.\n\n**Step 3: Batch Adjustments (Exposure, WB, Lens Corrections)**\nSelect all images from session (or lighting setup subset). Apply lens profile correction (auto-detected from EXIF metadata: camera + lens model → corrects distortion, vignetting, chromatic aberration). Set white balance from gray card image (or from color target neutral patch). Adjust exposure if needed (small global adjustment to compensate for systematic over/under; ±0.3-0.5 stops typical). Apply to batch (sync settings across all images). Individual fine-tuning later as needed.\n\n**Step 4: Individual Image Optimization**\nFor each final-selected image (overall views, key details): fine-tune exposure and tone (histogram optimization, shadow/highlight recovery), sharpening (amount appropriate for image scale and intended use), noise reduction if needed (high ISO or underexposed areas), cropping/straightening (final composition). Verify at 100% zoom: sharpness good, noise acceptable, no artifacts (halos from oversharpening, banding from excessive adjustments). Tag/label for different uses (e.g., 'web', 'print', 'archive master').\n\n**Step 5: Export Master Files (Archival TIFFs)**\nExport final color-corrected, adjusted images as master TIFFs: 16-bit depth, Adobe RGB or ProPhoto RGB color space (wide gamut preserves color information), uncompressed or LZW compression (lossless), embed ICC profile. Filename: include object ID, view descriptor, date, version (e.g., '2025-001_FrontView_20250115_v01.tif'). These are archival masters (preserve maximum information for future use, re-processing, derivative generation).\n\n**Step 6: Derivative Generation (Web, Print, Display)**\nFrom master TIFFs, generate derivatives for specific uses: **Web/online:** JPEG, sRGB color space, 8-bit, ~2000-3000 px on long dimension (typical web display resolution), quality 80-90% (balance file size vs. quality), embed sRGB profile, metadata (copyright, caption). **Print:** TIFF or JPEG, Adobe RGB, 8 or 16-bit, resolution 300 ppi at final print size, unsharp mask for print sharpening, embed Adobe RGB profile. **Presentation (PowerPoint, etc.):** JPEG, sRGB, 1920×1080 px (HD) or 3840×2160 px (4K), quality 90%. **Thumbnail:** JPEG, sRGB, 200-400 px, quality 70-80%. Automate via export presets (Lightroom export settings, Photoshop actions).\n\n**Step 7: Metadata Enrichment**\nAdd comprehensive metadata to master files and/or catalog database: IPTC (caption: object title, artist, date; keywords: subject, medium, condition terms; copyright notice, photographer name, institution), EXIF (camera settings preserved from RAW), custom fields (object ID, accession number, conservation treatment reference, related images). Use controlled vocabularies (Getty AAT, TGN for consistency). Embed metadata in files (XMP sidecar or in TIFF header) and in catalog database (searchable).\n\n**Step 8: Quality Assurance and Documentation**\nReview final exports: verify file integrity (open files, check for corruption), color accuracy (view on calibrated monitor, compare to object if available or to memory/notes), resolution appropriate (zoom to 100%, verify detail level), metadata complete (all required fields populated). Generate documentation: contact sheet (thumbnail overview of session), file list with metadata, session notes (lighting setup, any issues, special techniques used). Archive raw files + masters + derivatives + documentation in repository (institutional server, RAID storage, cloud backup).",
+    "softwareTools": [
+      {
+        "name": "Adobe Lightroom Classic",
+        "url": "https://www.adobe.com/lightroom",
+        "notes": "RAW processing, color correction, batch editing. Lens correction, noise reduction, sharpening. Cataloging, metadata management, export presets. Color target calibration (via plugins). Cost: $10/month (Photography Plan with Photoshop)."
+      },
+      {
+        "name": "Capture One Pro",
+        "url": "https://www.captureone.com",
+        "notes": "Professional RAW conversion (excellent color accuracy). Tethered shooting (live view, remote control). Advanced color grading, local adjustments. Focus mask, focus stacking tools. Cost: $300 (perpetual) or $20/month."
+      },
+      {
+        "name": "Adobe Photoshop",
+        "url": "https://www.adobe.com/photoshop",
+        "notes": "Advanced retouching, compositing, layers. Focus stacking, HDR merging, panorama stitching. Fine color correction, masking. Scripting and automation (actions, batch processing). Cost: $10/month (Photography Plan) or $55/month (single app)."
+      },
+      {
+        "name": "DxO PhotoLab",
+        "url": "https://www.dxo.com",
+        "notes": "Best-in-class lens corrections (DxO database). PRIME noise reduction (excellent quality). Smart Lighting, ClearView (haze removal). RAW processing, local adjustments. Cost: $140-$220 (perpetual)."
+      },
+      {
+        "name": "RawTherapee",
+        "url": "https://www.rawtherapee.com",
+        "notes": "RAW processing, detailed tone/color controls. Wavelets, noise reduction, sharpening. Lens correction, batch processing. Free alternative to Lightroom. Cost: Free."
+      },
+      {
+        "name": "Darktable",
+        "url": "https://www.darktable.org",
+        "notes": "RAW development, non-destructive editing. Color management, ICC profiles. Masking, local adjustments. Photography workflow, database. Cost: Free."
+      },
+      {
+        "name": "Photo Mechanic",
+        "url": "https://www.camerabits.com",
+        "notes": "Fast culling and tagging (ideal for large shoots). Metadata (IPTC) editing and templates. Renaming, organizing (file browser). Not for RAW processing (use with Lightroom/C1). Cost: $140-$190 (perpetual)."
+      }
+    ],
+    "interpretationGuidelines": "**Color interpretation:** Color accuracy depends on: (1) lighting spectrum (CRI >90 preferred), (2) white balance accuracy (custom WB from gray card essential), (3) monitor calibration (view on profiled display), (4) color space (Adobe RGB or ProPhoto RGB for masters; sRGB for web). Colors may still differ slightly from visual observation (camera spectral response ≠ human eye; metamerism effects). Document lighting used (spectral data if critical). **Detail interpretation:** Resolution limits what's visible: GSD (ground sampling distance) determines smallest feature. At 0.1 mm/pixel, features <0.2-0.3 mm (2-3 pixels) may not be resolvable (alias or disappear). Use metadata (focal length, distance) to calculate actual GSD, report with images. **Lighting interpretation:** Appearance varies with lighting: diffuse (shows color, minimal shadows) vs. raking (emphasizes texture, shadows); normal (overall view) vs. transmitted (reveals internal structure). Always document lighting technique used; avoid over-interpreting features that may be lighting artifacts.",
+    "commonPitfalls": [
+      "JPEG-only capture (no RAW): JPEG is 8-bit (256 tones per channel vs. 16,384 in 14-bit RAW), lossy compression (discards information), baked-in processing (white balance, tone curve cannot be fully adjusted later). Heritage requires maximum flexibility for long-term use, color accuracy, archival preservation. JPEG insufficient for serious documentation. Avoidance: ALWAYS shoot RAW for heritage documentation. RAW preserves maximum information (14-16 bit), allows full post-processing control (white balance adjustable without quality loss, highlight/shadow recovery from extended dynamic range), future-proof (can reprocess with improved algorithms). Generate JPEG derivatives from RAW for specific uses. Never discard RAW files - they are the archival originals.",
+      "Uncalibrated color (no color target, no custom white balance): Auto white balance unreliable (varies with scene content; same object under same light can have different WB frame-to-frame). No color target → no objective reference → colors may be significantly inaccurate (10-20% color difference common). Unusable for scientific comparison, pigment documentation, condition assessment (color changes over time cannot be accurately tracked). Avoidance: Include color/gray target (ColorChecker) in first image of each lighting setup. Use target to set accurate white balance and create color profile in RAW processing. Apply profile to all images from that session. For critical color work: spectrophotometer-measured targets, build custom camera+lens+lighting ICC profile. Document color calibration method in metadata. Accept that perfect color match impossible (camera ≠ eye), but calibrated workflow gets close (ΔE <3-5 achievable).",
+      "Poor focus / excessive depth of field compromise: Stopping down too much (f/22-f/32) to get everything in focus → diffraction degrades sharpness, negating high resolution. Or using wide aperture (f/2.8-f/4) for speed → shallow DoF, important areas out of focus. Either way: images not critically sharp across important areas. Avoidance: Use optimal aperture for lens (f/8-f/11 for most lenses: balance aberrations and diffraction). For deep objects where DoF insufficient even at f/11: use focus stacking (multiple images at different focus distances, merged in post; Helicon Focus, Photoshop, Zerene Stacker software). Do not stop down beyond f/16 unless absolutely necessary (diffraction limit at f/16 ≈ 10 μm, may exceed pixel pitch of high-res sensors, degrading effective resolution). Manual focus + live view magnification ensures critical focus on intended point.",
+      "Camera shake / motion blur (no tripod, inadequate technique): Handholding camera at slow shutter speeds (1/30 s, 1/15 s) → camera movement during exposure → blurred image. High resolution cameras (45-100 MP) extremely sensitive to shake (1/focal_length rule insufficient; need 1/(2×focal_length) or faster). Even on tripod: shutter button press can cause vibration. Result: soft images that fail 100% zoom inspection (detail blurred, edges not crisp). Avoidance: ALWAYS use tripod for heritage documentation (no exceptions; even bright light where handheld seems possible, tripod ensures sharpest results). Use remote release (cable or wireless) or 2-second self-timer to avoid vibration from shutter button press. Mirror lockup (DSLR) or electronic first curtain shutter (mirrorless) reduces internal vibrations. On tripod: disable image stabilization (in lens or in-body; can cause artifacts when on stable platform). Verify sharpness: zoom to 100% on critical detail, check edges, text, fine texture crisp - if any softness, suspect shake and reshoot.",
+      "Uncontrolled or mixed lighting: Photographing under mixed lighting (daylight from windows + tungsten room lights) → inconsistent color temperature across frame, difficult/impossible to correct accurately. Or photographing near sunset/sunrise → warm color casts. Or fluorescent lights → green tint. Results: inaccurate colors, color shifts across image, poor white balance correction. Avoidance: Control lighting: in studio, use all same type (LED panels, all same color temp 5000-5500K). On-site: turn off room lights if possible, use only photographic lights. Or if ambient light unavoidable: shoot during consistent time (midday overcast for diffuse natural light), avoid mixed sources. For architecture/immovable objects: shoot in consistent conditions (same time of day for exterior; consistent artificial light for interior). Always shoot RAW (white balance adjustable), use custom WB from gray card, but recognize limits (mixed lighting hard to correct perfectly; control at source is best).",
+      "Over-processing / excessive manipulation: Aggressive sharpening → halos, artifacts. Excessive noise reduction → loss of fine detail, 'plastic' appearance. Extreme saturation → unnatural colors. Heavy-handed retouching → altered object appearance. For heritage: authenticity paramount; processing should enhance clarity, not alter reality. Over-processed images unacceptable for documentation, conservation records, scholarly use. Avoidance: Apply processing conservatively: sharpening just enough to compensate for slight lens softness (amount 40-60%, radius 0.8-1.2 px); noise reduction only if noise visible and problematic (luminance NR <50, detail preservation high); saturation neutral or slight reduction (heritage objects often have subtle, muted colors - do not artificially enhance). Retouching: remove only temporary artifacts (sensor dust spots, modern supports/labels if noted), never alter object itself. Before/after comparison: processing should look 'clean' not 'enhanced'. When in doubt, less is more - preserve natural appearance."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Condition documentation and monitoring (before/after treatment, tracking degradation over time)",
+      "Publication imagery (museum catalogs, scholarly books, exhibition materials)",
+      "Digital asset management (online collections databases, institutional archives)",
+      "Conservation documentation (treatment records, technique demonstration)",
+      "Research and analysis (detail examination, comparative studies, pigment/material studies with calibrated color)",
+      "Education and outreach (website imagery, social media, educational materials)",
+      "Virtual exhibitions (high-quality images for online exhibits, virtual tours)",
+      "Photogrammetry source images (multi-view photos for 3D reconstruction)"
+    ],
+    "materialTypes": [
+      "Paintings (oil, tempera, acrylic, watercolor): excellent - Standard documentation method; raking light reveals impasto, craquelure; color calibration for pigment studies",
+      "Sculptures (stone, wood, metal, ceramics): excellent - Multi-angle views document 3D form; raking light for surface texture; macro for details",
+      "Works on paper (prints, drawings, manuscripts): excellent - Transmitted light reveals watermarks, chain lines; macro for media identification, condition details",
+      "Textiles and costumes: excellent - Close-up for weave structure, fiber condition; transmitted light for openwork; color documentation for dyes",
+      "Photographs (historical, prints): excellent (with care) - Copy stand setup; even lighting essential (avoid reflections); infrared for some processes (see IR photography entry)",
+      "Furniture and decorative arts: excellent - Overall and detail views; raking light for carved surfaces; cross-polarization for varnished/gilded surfaces",
+      "Archaeological artifacts (ceramics, metals, stone): excellent - Scale reference essential; multiple angles; macro for surface details, inscriptions",
+      "Architecture and monuments: excellent - Wide-angle lenses, tilt-shift for verticals; gigapixel for large-scale detail; drone for inaccessible areas",
+      "Natural history specimens: excellent - Focus stacking for depth; transmitted light for translucent specimens; UV/IR for specialized documentation"
+    ],
+    "caseStudies": [
+      {
+        "title": "Vermeer's 'Girl with a Pearl Earring': Gigapixel Documentation for 'The Girl in the Spotlight' Project",
+        "description": "The Mauritshuis conducted comprehensive study and conservation treatment of Vermeer's iconic painting (2018), documented in unprecedented detail using gigapixel photography (2.2 gigapixels, 50,000 × 44,000 pixels). Custom-built automated imaging system: Hasselblad H6D-100c medium format (100 MP), motorized gantry (XY positioning, 0.01 mm precision), four Broncolor LED panels (5600K, CRI 96), cross-polarization. Systematic capture: 112 tiles (normal lighting) + 448 raking light views (4 azimuths) = 560 images total. Processing: PTGui Pro stitching → seamless 6.4 GB TIFF composite. Results: >10 million online views in 3 months, pixel-level documentation of brushwork (40 μm/pixel resolution), craquelure network analysis (>50,000 cracks cataloged), conservation baseline for treatment monitoring. Technical achievements: 40 μm/pixel across entire painting, ΔE <2 color accuracy, 14-stop dynamic range via HDR. Significance: Established gigapixel as museum standard, demonstrated ROI (conservation + research + public engagement in single campaign), inspired global adoption (Rijksmuseum, Prado, Getty programs).",
+        "reference": "Vandivere, A., et al. 2019. 'Revealing the Original Paint Surface of Vermeer's 'Girl with a Pearl Earring' Using Macro-X-Ray Fluorescence Scanning.' Heritage Science 7: 67. DOI: 10.1186/s40494-019-0308-4"
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "infrared-reflectography",
+      "uv-fluorescence",
+      "xrf",
+      "raman-microscopy",
+      "stereo-photogrammetry",
+      "multispectral-imaging"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["visible-photography", "infrared-reflectography", "uv-fluorescence"],
+        "rationale": "Multi-band imaging maximizes information from single photo session setup. Visible, IR, UV probe different aspects (surface color vs. subsurface vs. fluorescence) → complementary, non-redundant information. Efficient: same camera position, minimal setup changes (swap lighting/filters). Enables direct comparison: register images, overlay (e.g., IR underdrawing shown as magenta overlay on visible image → see relationship between underdrawing and final paint).",
+        "examples": "Painting documentation: Visible shows current appearance (color, varnish, condition). IR reveals underdrawing (artist's initial sketch in carbon-based materials beneath paint), pentimenti (changes during painting process, e.g., moved arm now hidden under final paint but visible in IR). UV fluorescence shows varnish (old varnish fluoresces differently than fresh varnish), retouching (modern restorations don't fluorescence like original materials), binders (protein glues fluoresce blue-white, aged oil yellowish). Combined: complete condition report (original vs. restoration, subsurface vs. surface features)."
+      },
+      {
+        "techniques": ["visible-photography", "stereo-photogrammetry"],
+        "rationale": "Photography alone = 2D (no depth information, perspective distortions). Photogrammetry alone = 3D geometry but may sacrifice 2D image quality (lighting compromises for 3D, lower resolution for faster processing). Combined: leverage photography for highest-quality 2D documentation (color, detail, publication), use photogrammetry image set for 3D (geometry, measurements, virtual access). Efficient: same equipment (camera), one photo session (comprehensive capture).",
+        "examples": "Sculpture documentation: High-res visible photos (100 MP, studio lighting, color-calibrated) for publication, condition documentation, 2D archival images. Same sculpture: photogrammetry capture (45 MP, diffuse lighting, 80 views) generates 3D model (accurate dimensions ±0.5 mm, complete surface geometry). Combine: 3D model for virtual exhibition (users rotate, zoom), measurements (height, width, volume for shipping), comparison (3D scan before/after treatment, measure deformation). High-res 2D photos projected as texture on 3D mesh → photo-realistic 3D model with gigapixel-resolution surface detail."
+      },
+      {
+        "techniques": ["visible-photography"],
+        "rationale": "Single-scale photography misses either context (if macro-only) or fine detail (if overall-only). Multi-scale approach: efficient documentation at appropriate resolution for each feature. Raking light technique exploits directionality: low-angle light creates shadows from surface irregularities → makes 3D topography visible in 2D photograph (without photogrammetry or other 3D methods). Macro provides detail for condition assessment, media analysis (e.g., fiber ID from weave macro, brushstroke width from impasto macro).",
+        "examples": "Painting condition documentation: Overall visible (1:10 scale, 45 MP, whole painting fills frame ~0.1 mm/pixel): shows color, composition, overall varnish/dirt accumulation. Raking light (4 angles, same scale): reveals surface texture (craquelure network depth/width, impasto thickness variations, canvas deformation/bulges, cupping paint). Macro (1:1 to 5:1 magnification, 100 MP, ~10 μm/pixel): documents specific damages (flaking paint edge ~100 μm wide visible, shows paint layer structure; crack ~50 μm wide mapped). Combined: comprehensive condition report (overall state + detailed damage documentation) guides conservation treatment (consolidation plan based on crack width/depth from raking + macro; cleaning test area monitored via macro before/after)."
+      }
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Talbot, W. H. F. 1844-1846. 'The Pencil of Nature.' Longman, Brown, Green and Longmans.",
+        "notes": "First photographically illustrated book; demonstrated documentary use of photography including art/architecture"
+      },
+      {
+        "citation": "Burroughs, A. 1938. 'Art Criticism from a Laboratory.' Little, Brown and Company.",
+        "notes": "Pioneering work on technical photography (X-ray, UV, IR) for art examination; established scientific approach"
+      },
+      {
+        "citation": "Vandivere, A., et al. 2019. 'Revealing Vermeer's 'Girl with a Pearl Earring': Heritage Science at the Mauritshuis.' Heritage Science 7: 67.",
+        "doi": "10.1186/s40494-019-0308-4",
+        "notes": "Gigapixel visible photography (2.2 GP) + multi-modal imaging for public engagement and research"
+      },
+      {
+        "citation": "Remondino, F., et al. 2014. 'State of the Art in High Density Image Matching.' The Photogrammetric Record 29(146): 144-166.",
+        "doi": "10.1111/phor.12063",
+        "notes": "Review of photogrammetry from photographs; SfM/MVS techniques for heritage 3D documentation"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Warda, J., et al. 2011. 'The AIC Guide to Digital Photography and Conservation Documentation (2nd ed.).' American Institute for Conservation.",
+        "notes": "Comprehensive guide to digital photography for conservation documentation; standards, techniques, workflow"
+      },
+      {
+        "citation": "Federal Agencies Digital Guidelines Initiative (FADGI). 2016. 'Technical Guidelines for Digitizing Cultural Heritage Materials.' http://www.digitizationguidelines.gov/",
+        "notes": "U.S. federal standard for heritage digitization; resolution, color accuracy, metadata requirements"
+      },
+      {
+        "citation": "Frey, F., and M. Farnand. 2000. 'Digital Imaging for Photographic Collections.' Image Permanence Institute.",
+        "notes": "Standards for digitizing photographic collections; resolution, dynamic range, color management"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "AIC Imaging Wiki",
+        "url": "http://www.conservation-wiki.com/wiki/Imaging",
+        "notes": "Conservation community resource: techniques, equipment, workflows (curated by AIC Imaging Working Group)"
+      },
+      {
+        "title": "Getty Iris Blog - Behind the Scenes Photography",
+        "url": "http://blogs.getty.edu/iris/",
+        "notes": "Getty Museum photography department: case studies, techniques, challenges (search 'photography', 'imaging')"
+      },
+      {
+        "title": "FADGI Guidelines",
+        "url": "http://www.digitizationguidelines.gov",
+        "notes": "U.S. federal digitization standards: technical specifications, best practices, validation tools"
+      },
+      {
+        "title": "Cultural Heritage Imaging",
+        "url": "http://culturalheritageimaging.org",
+        "notes": "RTI, photogrammetry guides; training materials; open-source tools for heritage imaging"
+      }
+    ]
+  },
+  "tags": [
+    "visible photography",
+    "high-resolution imaging",
+    "digital photography",
+    "documentation",
+    "color calibration",
+    "conservation photography",
+    "gigapixel",
+    "RAW workflow",
+    "visual documentation",
+    "heritage imaging",
+    "museum photography"
+  ],
+  "relatedTechniques": [
+    "infrared-reflectography",
+    "uv-fluorescence",
+    "multispectral-imaging",
+    "stereo-photogrammetry",
+    "raking-light",
+    "transmitted-light",
+    "macro-photography"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

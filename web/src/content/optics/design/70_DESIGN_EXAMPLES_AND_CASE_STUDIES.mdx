@@ -1,0 +1,513 @@
+---
+title: "Optical Design Examples and Case Studies"
+slug: "design/70-design-examples-and-case-studies"
+category: "Design"
+---
+
+## Overview
+
+This module provides comprehensive worked examples of optical system design, from initial requirements through final optimization. Each case study includes full derivations, ray trace calculations, aberration analysis, and performance evaluation.
+
+## 70.1 4-Element Apochromatic Imaging Lens
+
+### Requirements
+
+- **Focal length:** $f = 50$ mm
+- **f-number:** $f/2.8$
+- **Field of view:** ±20° (full field)
+- **Wavelength range:** 450-650 nm (visible)
+- **Resolution:** Diffraction-limited at center field
+- **Back focal length:** > 20 mm (for filter clearance)
+
+### Paraxial Design
+
+**Entrance pupil diameter:**
+$$D = \frac{f}{f/\#} = \frac{50}{2.8} = 17.86 \text{ mm}$$
+
+**Numerical aperture:**
+$$\text{NA} = \frac{1}{2(f/\#)} = 0.179$$
+
+**Image height:**
+$$y' = f \tan(\theta) = 50 \tan(20°) = 18.19 \text{ mm}$$
+
+**Design strategy:** Double Gauss variant (symmetric, low aberrations).
+
+**Initial layout:**
+- Element 1: Positive meniscus (crown)
+- Element 2: Negative doublet (flint + crown)
+- Element 3: Negative doublet (flint + crown)
+- Element 4: Positive meniscus (crown)
+
+### Glass Selection
+
+**Achromatization:** Use two glass pairs with different Abbe numbers.
+
+**Pair 1 (front doublet):**
+- BK7: $n_d = 1.5168$, $V_d = 64.2$
+- F2: $n_d = 1.6200$, $V_d = 36.4$
+
+**Pair 2 (rear doublet):**
+- N-BK7: $n_d = 1.5168$, $V_d = 64.2$
+- SF2: $n_d = 1.6477$, $V_d = 33.8$
+
+**Apochromat condition:** Choose glasses with similar partial dispersion for three-wavelength correction.
+
+### Power Distribution
+
+**Total power:**
+$$\phi_{\text{total}} = \frac{1}{f} = 0.02 \text{ mm}^{-1}$$
+
+**Front group power:** $\phi_1 = 0.04$ mm⁻¹ (positive)
+
+**Rear group power:** $\phi_2 = -0.02$ mm⁻¹ (negative, for Petzval correction)
+
+**Individual element powers:**
+- Element 1: $\phi_1 = 0.06$ mm⁻¹
+- Element 2: $\phi_2 = -0.02$ mm⁻¹ (doublet)
+- Element 3: $\phi_3 = -0.03$ mm⁻¹ (doublet)
+- Element 4: $\phi_4 = 0.01$ mm⁻¹
+
+### Thick Lens Calculation
+
+**For element 1 (BK7, $n=1.5168$):**
+
+Assume $R_1 = 30$ mm, $R_2 = -50$ mm, $t = 5$ mm.
+
+**Power:**
+$$\phi = (n-1)\left(\frac{1}{R_1} - \frac{1}{R_2} + \frac{(n-1)t}{n R_1 R_2}\right)$$
+$$= 0.5168 \left(\frac{1}{30} - \frac{1}{-50} + \frac{0.5168 \times 5}{1.5168 \times 30 \times (-50)}\right)$$
+$$= 0.5168 (0.0333 + 0.0200 - 0.0002) = 0.0275 \text{ mm}^{-1}$$
+
+**Focal length:** $f = 36.4$ mm (adjust $R_1$, $R_2$ to achieve target).
+
+### ABCD Matrix Analysis
+
+**System matrix:** Product of individual element matrices.
+
+**Element 1 (thick lens):**
+$$\mathbf{M}_1 = \begin{pmatrix} 1 - \frac{\phi_2 t}{n} & \frac{t}{n} \\ -\phi_1 - \phi_2 + \frac{\phi_1 \phi_2 t}{n} & 1 - \frac{\phi_1 t}{n} \end{pmatrix}$$
+
+**Spacing $d_1$:**
+$$\mathbf{M}_{\text{space},1} = \begin{pmatrix} 1 & d_1 \\ 0 & 1 \end{pmatrix}$$
+
+**System matrix:**
+$$\mathbf{M}_{\text{sys}} = \mathbf{M}_4 \mathbf{M}_{\text{space},3} \mathbf{M}_3 \mathbf{M}_{\text{space},2} \mathbf{M}_2 \mathbf{M}_{\text{space},1} \mathbf{M}_1$$
+
+**Effective focal length:**
+$$f_{\text{eff}} = -\frac{1}{C}$$
+
+where $C$ is the (2,1) element of $\mathbf{M}_{\text{sys}}$.
+
+### Optimization
+
+**Merit function:**
+$$\text{MF} = \sum_i w_i \left(\frac{V_i - T_i}{T_i}\right)^2$$
+
+where:
+- $V_i$ = calculated value
+- $T_i$ = target value
+- $w_i$ = weight
+
+**Variables:** Curvatures, thicknesses, air gaps, glass types.
+
+**Constraints:**
+- Edge thickness > 1 mm
+- Center thickness > 2 mm
+- Air gaps > 0.1 mm
+- Back focal length > 20 mm
+
+**Optimization algorithm:** Damped least squares, global search.
+
+### Tolerancing
+
+**Manufacturing tolerances:**
+- Radius: ±0.1% or ±0.01 mm (whichever larger)
+- Thickness: ±0.05 mm
+- Index: ±0.0005
+- Abbe number: ±0.5%
+- Decenter: ±0.01 mm
+- Tilt: ±0.01° (0.17 mrad)
+
+**Monte Carlo analysis:** 1000 random realizations.
+
+**Performance degradation:**
+- 90% of systems: MTF > 0.3 at 50 lp/mm
+- 50% of systems: MTF > 0.5 at 50 lp/mm
+
+**Critical tolerances:** Identify most sensitive parameters.
+
+### MTF Analysis
+
+**Diffraction-limited MTF:**
+$$\text{MTF}_{\text{diff}}(f) = \frac{2}{\pi}\left[\arccos\left(\frac{f}{f_c}\right) - \frac{f}{f_c}\sqrt{1-\left(\frac{f}{f_c}\right)^2}\right]$$
+
+where $f_c = \frac{2\text{NA}}{\lambda} = 714$ lp/mm at $\lambda = 500$ nm.
+
+**Aberrated MTF:** Calculate from wavefront error.
+
+**Target:** MTF > 0.5 at 50 lp/mm (Nyquist for 10 μm pixels).
+
+### Final Design Summary
+
+**Element specifications:**
+1. BK7: $R_1 = 28.5$ mm, $R_2 = -45$ mm, $t = 4.5$ mm
+2. F2-BK7 doublet: $R_2 = -45$ mm, $R_3 = 35$ mm, $R_4 = -35$ mm, $t_2 = 2$ mm, $t_3 = 3$ mm
+3. SF2-N-BK7 doublet: $R_5 = 40$ mm, $R_6 = -40$ mm, $R_7 = 35$ mm, $t_4 = 2.5$ mm, $t_5 = 3.5$ mm
+4. N-BK7: $R_8 = -35$ mm, $R_9 = -200$ mm, $t_6 = 3$ mm
+
+**Spacings:** $d_1 = 0.5$ mm, $d_2 = 15$ mm, $d_3 = 0.5$ mm
+
+**Performance:**
+- Effective focal length: 50.1 mm
+- f-number: 2.8
+- Back focal length: 22.3 mm
+- MTF @ 50 lp/mm: 0.65 (center), 0.45 (edge)
+- Chromatic aberration: < 5 μm (F-C)
+
+## 70.2 Infinity-Corrected Microscope Objective
+
+### Requirements
+
+- **Magnification:** 40×
+- **Numerical aperture:** NA = 0.65
+- **Working distance:** > 0.5 mm
+- **Field of view:** 0.5 mm diameter
+- **Wavelength:** 550 nm (green)
+- **Cover glass:** 0.17 mm, $n = 1.515$
+- **Tube length:** 160 mm (standard)
+
+### Tube Lens Design
+
+**Focal length:**
+$$f_{\text{tube}} = \frac{\text{Tube length}}{M} = \frac{160}{40} = 4 \text{ mm}$$
+
+**Objective focal length:**
+$$f_{\text{obj}} = \frac{f_{\text{tube}}}{M} = \frac{4}{40} = 0.1 \text{ mm}$$
+
+**Design:** Simple doublet (achromat) for tube lens.
+
+### High NA Constraints
+
+**Maximum angle:**
+$$\theta_{\text{max}} = \arcsin(\text{NA}/n}) = \arcsin(0.65/1.0) = 40.5°$$
+
+**Ray angles:** Large angles require exact ray tracing (not paraxial).
+
+**Abbe sine condition:** Must be satisfied for aplanatic imaging.
+
+### Aplanatic Design
+
+**Aplanatic surface:** Surface that satisfies sine condition exactly.
+
+**For sphere:** If object at aplanatic point:
+
+$$s = \frac{R}{n' + 1}, \quad s' = \frac{n' R}{n' + 1}$$
+
+**Aplanatic meniscus:** First element uses aplanatic surface.
+
+**Design:**
+- Front surface: Aplanatic (satisfies sine condition)
+- Remaining elements: Correct residual aberrations
+
+### Oil Immersion
+
+**For NA > 1.0:** Use immersion oil ($n \approx 1.515$).
+
+**Maximum NA:**
+$$\text{NA}_{\text{max}} = n_{\text{imm}} \sin\theta_{\text{max}} = 1.515 \times 1 = 1.515$$
+
+**Design:** Account for oil in ray tracing.
+
+### Design Layout
+
+**Element 1:** Aplanatic meniscus (high-index glass, $n > 1.7$)
+
+**Elements 2-4:** Correct spherical aberration, coma, field curvature.
+
+**Element 5:** Field flattener (near image).
+
+**Typical structure:**
+- 3-4 positive elements (high index)
+- 1-2 negative elements (for Petzval correction)
+- Total: 5-7 elements
+
+### Optimization Strategy
+
+**Variables:** All curvatures, thicknesses, glass types.
+
+**Constraints:**
+- Working distance > 0.5 mm
+- Back focal length > 1 mm (for tube lens clearance)
+- Edge thickness > 0.3 mm
+- No vignetting
+
+**Merit function:**
+- Wavefront error (RMS)
+- Strehl ratio
+- MTF at multiple fields
+
+### Performance Analysis
+
+**Wavefront error:** < $\lambda/4$ RMS (Strehl > 0.8)
+
+**MTF:** > 0.5 at cutoff frequency
+
+**Field curvature:** < 10 μm over field
+
+**Distortion:** < 1%
+
+## 70.3 Beam Expanders & Gaussian Beam Shaping
+
+### Keplerian Beam Expander
+
+**Configuration:** Two positive lenses, separated by $f_1 + f_2$.
+
+**Expansion ratio:**
+$$M = \frac{f_2}{f_1}$$
+
+**Output beam diameter:**
+$$D_{\text{out}} = M D_{\text{in}}$$
+
+**Output divergence:**
+$$\theta_{\text{out}} = \frac{\theta_{\text{in}}}{M}$$
+
+**Design example:** $M = 5×$, $f_1 = 50$ mm, $f_2 = 250$ mm.
+
+**Spacing:** $d = f_1 + f_2 = 300$ mm.
+
+**Focus location:** Internal focus (can damage optics with high power).
+
+### Galilean Beam Expander
+
+**Configuration:** Positive + negative lens.
+
+**Expansion ratio:** Same as Keplerian.
+
+**Advantages:**
+- No internal focus (safer for high power)
+- Shorter length
+- Lower cost
+
+**Disadvantages:**
+- More aberrations
+- Limited expansion ratio
+
+**Design:** $f_1 = 50$ mm (positive), $f_2 = -10$ mm (negative), $M = 5×$.
+
+**Spacing:** $d = f_1 + f_2 = 40$ mm.
+
+### Gaussian Beam Transformation
+
+**Input beam:** Waist $w_{01}$, location $z_1$.
+
+**Lens:** Focal length $f$, position $z_L$ from waist.
+
+**Output waist:**
+$$w_{02} = \frac{w_{01} f}{\sqrt{(z_1 - z_L - f)^2 + z_{R1}^2}}$$
+
+where $z_{R1} = \pi w_{01}^2 / \lambda$ is Rayleigh range.
+
+**Output waist location:**
+$$z_2' = f + \frac{(z_1 - z_L - f) f^2}{(z_1 - z_L - f)^2 + z_{R1}^2}$$
+
+### Collimation
+
+**Condition:** $z_2' \to \infty$ (infinite Rayleigh range).
+
+**Lens position:**
+$$z_L = z_1 - f$$
+
+Place lens one focal length from input waist.
+
+**Output:** Collimated beam with diameter:
+$$D_{\text{coll}} = \frac{2\lambda f}{\pi w_{01}} = \frac{4\lambda f}{\pi D_{\text{in}}}$$
+
+### Beam Shaping
+
+**Target:** Uniform top-hat profile.
+
+**Methods:**
+1. **Aspheric lens:** Phase profile for beam shaping
+2. **Diffractive element:** Kinoform for specific profile
+3. **Microlens array:** Homogenizer
+4. **Refractive beam shaper:** Two-element system
+
+**Refractive shaper design:**
+- Element 1: Transforms Gaussian to intermediate profile
+- Element 2: Collimates and shapes to final profile
+
+**Optimization:** Minimize intensity non-uniformity.
+
+## 70.4 Telescope Systems
+
+### Keplerian Telescope
+
+**Configuration:** Two positive lenses, $f_{\text{obj}} > f_{\text{eye}}$.
+
+**Magnification:**
+$$M = -\frac{f_{\text{obj}}}{f_{\text{eye}}}$$
+
+**Length:**
+$$L = f_{\text{obj}} + f_{\text{eye}}$$
+
+**Exit pupil:**
+$$D_{\text{exit}} = \frac{D_{\text{entrance}}}{M}$$
+
+**Example:** $f_{\text{obj}} = 1000$ mm, $f_{\text{eye}} = 25$ mm, $M = -40×$.
+
+**Advantages:**
+- Real intermediate image (can add reticle)
+- Higher magnification possible
+- Better image quality
+
+**Disadvantages:**
+- Inverted image
+- Longer length
+- Internal focus (stray light)
+
+### Galilean Telescope
+
+**Configuration:** Positive objective + negative eyepiece.
+
+**Magnification:**
+$$M = -\frac{f_{\text{obj}}}{f_{\text{eye}}}$$
+
+**Length:**
+$$L = f_{\text{obj}} + f_{\text{eye}} < f_{\text{obj}}$$
+
+**Example:** $f_{\text{obj}} = 200$ mm, $f_{\text{eye}} = -50$ mm, $M = -4×$, $L = 150$ mm.
+
+**Advantages:**
+- Shorter length
+- Erect image
+- No internal focus
+
+**Disadvantages:**
+- Limited magnification
+- Smaller field of view
+- Lower image quality
+
+### Reflecting Telescopes
+
+**Newtonian:** Parabolic primary + flat diagonal.
+
+**Cassegrain:** Parabolic/hyperbolic primary + hyperbolic secondary.
+
+**Gregorian:** Parabolic primary + elliptical secondary.
+
+**Advantages:**
+- No chromatic aberration
+- Compact (folded)
+- Large apertures possible
+
+**Aberrations:**
+- Spherical (primary)
+- Coma (off-axis)
+- Astigmatism (off-axis)
+
+### Telescope Design Example
+
+**Requirements:**
+- Aperture: 200 mm
+- f-number: $f/10$
+- Field: ±0.5°
+- Wavelength: 550 nm
+
+**Cassegrain design:**
+- Primary: Parabolic, $R_1 = -4000$ mm, $D_1 = 200$ mm
+- Secondary: Hyperbolic, $R_2 = -500$ mm, $D_2 = 60$ mm
+- Spacing: $d = 1500$ mm
+
+**Effective focal length:**
+$$f_{\text{eff}} = \frac{R_1 R_2}{2(R_1 - R_2 - 2d)} = 2000 \text{ mm}$$
+
+**f-number:** $f/10$ (as required).
+
+**Aberration correction:**
+- Spherical: Primary shape
+- Coma: Secondary shape and position
+- Astigmatism: Field flattener
+
+## 70.5 Diffractive-Metasurface Hybrid System
+
+### Concept
+
+**Combination:** Refractive lens + diffractive element + metasurface.
+
+**Functions:**
+- Refractive: Primary focusing, low dispersion
+- Diffractive: Chromatic correction, phase control
+- Metasurface: Fine phase control, polarization
+
+### Design Requirements
+
+- **Focal length:** 20 mm
+- **f-number:** $f/2$
+- **Wavelength:** 400-700 nm (broadband)
+- **Polarization:** Unpolarized input
+- **Size:** < 5 mm thickness
+
+### Hybrid Design
+
+**Element 1:** Refractive singlet (BK7, $f = 25$ mm)
+
+**Element 2:** Diffractive kinoform (corrects chromatic aberration)
+
+**Element 3:** Metasurface (fine phase correction, polarization-insensitive)
+
+### Phase Distribution
+
+**Refractive phase:**
+$$\phi_{\text{refr}}(r) = \frac{2\pi}{\lambda} (n-1) \frac{r^2}{2R}$$
+
+**Diffractive phase:**
+$$\phi_{\text{diff}}(r) = -\frac{2\pi}{\lambda} \frac{r^2}{2f_{\text{diff}}}$$
+
+**Metasurface phase:**
+$$\phi_{\text{meta}}(r) = \phi_{\text{target}}(r) - \phi_{\text{refr}}(r) - \phi_{\text{diff}}(r)$$
+
+### Optimization
+
+**Variables:**
+- Refractive: Curvature, thickness
+- Diffractive: Focal length, phase profile
+- Metasurface: Unit cell design at each position
+
+**Merit function:**
+- Wavefront error (multiple wavelengths)
+- MTF (polychromatic)
+- Efficiency
+
+**Constraints:**
+- Fabrication limits (minimum feature size)
+- Polarization sensitivity
+- Cost
+
+### Performance
+
+**Chromatic correction:** < 5 μm F-C (vs. 50 μm for singlet)
+
+**Efficiency:** > 80% (vs. < 50% for pure diffractive)
+
+**MTF:** > 0.5 at 100 lp/mm (all wavelengths)
+
+**Advantages:**
+- Compact
+- Broadband
+- High performance
+
+**Challenges:**
+- Fabrication complexity
+- Alignment
+- Cost
+
+## Summary
+
+These case studies demonstrate:
+- **Systematic design:** Requirements → paraxial → optimization
+- **Analysis methods:** ABCD matrices, ray tracing, MTF
+- **Optimization:** Merit functions, constraints, tolerancing
+- **Performance evaluation:** Wavefront error, MTF, efficiency
+
+Each design requires balancing multiple constraints: performance, size, cost, manufacturability. The tools and methods developed in previous modules enable systematic approach to these complex design problems.
+

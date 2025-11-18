@@ -1,0 +1,412 @@
+{
+  "id": "stereo-photogrammetry",
+  "name": "Stereo Photogrammetry",
+  "acronym": "SfM",
+  "category": "3D Imaging and Documentation",
+  "subcategory": "Multi-View Reconstruction",
+  "summary": "Stereo photogrammetry, often implemented using Structure-from-Motion (SfM) algorithms combined with Multi-View Stereo (MVS) reconstruction, is a technique for generating accurate three-dimensional models of objects and scenes from overlapping two-dimensional photographs. The method exploits parallax - the apparent displacement of features when viewed from different positions - to triangulate 3D coordinates. Modern photogrammetric workflows automatically identify corresponding features across multiple images, estimate camera positions and orientations, and reconstruct dense 3D point clouds and textured meshes with millimeter to sub-millimeter accuracy. In cultural heritage, photogrammetry enables comprehensive digital documentation of artifacts, monuments, archaeological sites, and collections, producing metrologically accurate 3D models for analysis, monitoring, conservation planning, virtual exhibitions, and public engagement.",
+  "keyApplications": [
+    "Complete 3D documentation of sculptures, monuments, and architectural heritage",
+    "Archaeological site recording and excavation documentation",
+    "Damage assessment and monitoring of degradation over time",
+    "Virtual museum collections and digital exhibits (3D web viewers)",
+    "Orthophotograph generation for detailed 2D documentation with metric accuracy",
+    "Volume and surface area calculation for condition assessment",
+    "Digital repatriation of dispersed collections via 3D models",
+    "Conservation planning via precise measurements from 3D models"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "highly-portable",
+  "fundamentalPhysics": {
+    "principle": "Stereo photogrammetry reconstructs 3D geometry from 2D images by exploiting geometric constraints of perspective projection. Each photograph is a perspective projection: 3D point P(X,Y,Z) in world coordinates projects to 2D point p(x,y) in image plane according to pinhole camera model. Same physical point appears at different image coordinates in photos taken from different positions (parallax). By identifying corresponding features (same physical point) across multiple images and knowing camera parameters (focal length, position, orientation), 3D coordinates can be triangulated via ray intersection. Modern SfM automatically solves for both 3D structure and camera parameters simultaneously: (1) Feature detection (SIFT, SURF): identify distinctive image features. (2) Feature matching: find correspondences across images. (3) Bundle adjustment: optimize camera poses and 3D points to minimize reprojection error. (4) Dense reconstruction (MVS): compute depth for every pixel to create dense point cloud.",
+    "physicalPhenomenon": "Geometric basis is projective geometry and epipolar constraint. Pinhole camera model: 3D point P projects to image point p via perspective projection: p = K[R|t]P, where K is intrinsic matrix (focal length, principal point), [R|t] is extrinsic matrix (rotation R, translation t defining camera pose). Parallax: same 3D point P appears at different image locations p₁, p₂ when viewed from cameras C₁, C₂. Epipolar geometry: for point p₁ in image 1, corresponding point p₂ in image 2 must lie on epipolar line (1D search instead of 2D). Fundamental matrix F encodes this constraint: p₂ᵀFp₁ = 0. Triangulation: given corresponding points p₁, p₂ and camera matrices P₁, P₂, 3D point X found by solving overdetermined linear system (ray intersection). Accuracy depends on: (1) Baseline (camera separation): larger baseline → better depth resolution. (2) Image resolution: higher resolution → more precise feature localization. (3) Number of views: more images → redundancy, better geometry, reduced ambiguity.",
+    "equations": [
+      {
+        "latex": "$$p = K[R|t]P = K\\begin{bmatrix}r_{11} & r_{12} & r_{13} & t_x \\\\ r_{21} & r_{22} & r_{23} & t_y \\\\ r_{31} & r_{32} & r_{33} & t_z\\end{bmatrix}\\begin{bmatrix}X\\\\Y\\\\Z\\\\1\\end{bmatrix}$$",
+        "description": "Perspective Projection (Pinhole Camera Model)",
+        "variables": [
+          {"symbol": "p", "meaning": "2D image point (homogeneous coordinates)", "units": "pixels"},
+          {"symbol": "K", "meaning": "camera intrinsic matrix (focal length, principal point)", "units": "pixels"},
+          {"symbol": "R", "meaning": "rotation matrix (camera orientation, 3×3)", "units": "dimensionless"},
+          {"symbol": "t", "meaning": "translation vector (camera position)", "units": "world units (mm, m)"},
+          {"symbol": "P", "meaning": "3D world point (homogeneous coordinates)", "units": "world units"}
+        ]
+      },
+      {
+        "latex": "$$K = \\begin{bmatrix}f_x & 0 & c_x \\\\ 0 & f_y & c_y \\\\ 0 & 0 & 1\\end{bmatrix}$$",
+        "description": "Camera Intrinsic Matrix",
+        "variables": [
+          {"symbol": "f_x, f_y", "meaning": "focal length in pixel units (x, y directions)", "units": "pixels"},
+          {"symbol": "c_x, c_y", "meaning": "principal point (optical center offset from image corner)", "units": "pixels"}
+        ]
+      },
+      {
+        "latex": "$$p_2^T F p_1 = 0$$",
+        "description": "Epipolar Constraint (Fundamental Matrix)",
+        "variables": [
+          {"symbol": "p_1, p_2", "meaning": "corresponding image points in two views", "units": "pixels (homogeneous)"},
+          {"symbol": "F", "meaning": "fundamental matrix (3×3, encodes epipolar geometry)", "units": "dimensionless"}
+        ]
+      },
+      {
+        "latex": "$$\\sigma_Z = \\frac{Z^2}{f \\cdot B} \\sigma_p$$",
+        "description": "Depth Resolution (simplified, for stereo pair)",
+        "variables": [
+          {"symbol": "\\sigma_Z", "meaning": "depth (Z) uncertainty", "units": "mm"},
+          {"symbol": "Z", "meaning": "distance from camera to object", "units": "mm"},
+          {"symbol": "f", "meaning": "focal length", "units": "mm"},
+          {"symbol": "B", "meaning": "baseline (distance between camera centers)", "units": "mm"},
+          {"symbol": "\\sigma_p", "meaning": "pixel localization error (~0.1-1 pixel)", "units": "pixels"}
+        ]
+      },
+      {
+        "latex": "$$E = \\sum_{i=1}^{N} \\sum_{j=1}^{M_i} \\left\\| p_{ij} - \\pi(K, R_i, t_i, P_j) \\right\\|^2$$",
+        "description": "Bundle Adjustment Objective (reprojection error minimization)",
+        "variables": [
+          {"symbol": "E", "meaning": "total reprojection error", "units": "pixels²"},
+          {"symbol": "N", "meaning": "number of images/cameras", "units": "dimensionless"},
+          {"symbol": "M_i", "meaning": "number of 3D points visible in image i", "units": "dimensionless"},
+          {"symbol": "p_{ij}", "meaning": "observed image coordinates of point j in image i", "units": "pixels"},
+          {"symbol": "\\pi", "meaning": "projection function (camera model)", "units": "N/A"},
+          {"symbol": "K, R_i, t_i", "meaning": "camera intrinsic and extrinsic parameters", "units": "various"},
+          {"symbol": "P_j", "meaning": "3D coordinates of point j", "units": "world units"}
+        ]
+      },
+      {
+        "latex": "$$\\text{GSD} = \\frac{H \\cdot s}{f}$$",
+        "description": "Ground Sampling Distance (spatial resolution)",
+        "variables": [
+          {"symbol": "\\text{GSD}", "meaning": "ground sampling distance (spatial resolution on object)", "units": "mm/pixel"},
+          {"symbol": "H", "meaning": "distance from camera to object", "units": "mm"},
+          {"symbol": "s", "meaning": "sensor pixel pitch (physical size)", "units": "mm/pixel"},
+          {"symbol": "f", "meaning": "focal length", "units": "mm"}
+        ]
+      }
+    ],
+    "interactionDepth": "Photogrammetry is a pure surface technique, measuring only visible surfaces. Penetration depth is zero - the method reconstructs the external 3D geometry based on what the camera can see. Occluded or internal structures are not captured unless additional views provide line-of-sight access. Opaque materials (stone, metal, wood): Surface only, ideal for photogrammetry; well-defined visible surface. Transparent materials (glass, crystal): Surface ambiguous, challenging - refraction distorts geometry; reflections create artifacts. Highly reflective surfaces (polished metal, glazed ceramics): Surface only, specular highlights cause correspondence failures; may need coating or cross-polarization. Dark or textureless surfaces: Surface only, low contrast → fewer features → reduced accuracy; may need projected texture. Complex geometry (filigree, hair, fine detail): Visible surfaces only, self-occlusion limits completeness; requires many views from multiple angles.",
+    "spatialResolution": "Lateral Resolution: 0.01-10 mm (depends on GSD: higher resolution camera, closer distance, longer focal length = finer detail). Depth Resolution: 0.1-50 mm (typically 1:100,000 to 1:1000 of object distance; depends on baseline and pixel precision). Limiting factors: Camera resolution (more megapixels = finer detail; 20-60 MP cameras common), Distance to object (closer = better resolution; limited by depth of field), Focal length (longer lens = higher magnification but narrower field of view), Baseline between images (larger baseline = better depth resolution but requires more overlap), Image quality (blur, noise, compression artifacts reduce feature localization accuracy), Textureless regions (uniform surfaces lack distinctive features for matching).",
+    "detectionLimit": "Minimum feature size: ~2-3 pixels in image. Surface detail: ~0.1-1 mm for close-range (0.5-2 m) with DSLR. Dynamic range: Depth range: limited by depth of field (everything in focus required). Typical: 1:10 to 1:100 (object depth : camera distance). Signal-to-noise: Accuracy: 1:50,000 typical for well-controlled close-range; 1:1,000 for casual smartphone capture."
+  },
+  "instrumentation": {
+    "source": "Ambient illumination or supplemental lighting (flash, LED panels, strobes). Natural daylight, museum lighting, or controlled artificial light; no active projection required (passive photogrammetry). Visible light spectrum (400-700 nm). Ambient to ~1000 lux illumination (sufficient for typical camera exposures). Diffuse, uniform illumination preferred; avoid harsh shadows and specular highlights.",
+    "detector": "Digital camera: DSLR, mirrorless, smartphone. Sensor: CMOS or CCD. Color: RGB (Bayer pattern) typical. Visible light (400-700 nm); some cameras extended to near-IR (up to 1000 nm). Quantum efficiency 40-80% (modern CMOS sensors). Time resolution: Frame rate: single exposures (still photography) typically; video-rate photogrammetry possible (30-120 fps).",
+    "optics": "Digital camera (DSLR, mirrorless, or smartphone), Lens (fixed focal length or zoom; prime lenses preferred for calibration stability), Tripod or stabilization (for consistent image quality), Scale bars or targets (for absolute scale and accuracy validation), Color/gray card (for color calibration), Computer for processing (GPU-accelerated recommended), Photogrammetry software. Beam path: Light from scene → camera lens → sensor. No active illumination in passive photogrammetry (vs. structured light or laser scanning). Auto-focus or manual focus; critical to maintain sharp focus across all images for feature matching.",
+    "criticalComponents": [
+      "High-resolution camera (20-60 MP recommended for high-detail work)",
+      "Quality lens (low distortion, sharp across field; prime lenses preferred over zoom)",
+      "Stable camera position (tripod or careful handheld technique to avoid motion blur)",
+      "Scale reference (ruler, coded targets, or known dimensions for metric reconstruction)",
+      "Sufficient image overlap (60-80% between adjacent images for reliable matching)",
+      "Processing computer (multi-core CPU, 16-64 GB RAM, GPU with 4-8 GB VRAM for dense reconstruction)",
+      "Photogrammetry software (Agisoft Metashape, RealityCapture, Meshroom, etc.)"
+    ],
+    "typicalConfiguration": "**Standard close-range photogrammetry setup:** Full-frame DSLR (24-45 MP, e.g., Nikon D850, Canon EOS R5). Prime lens 50 mm f/1.8 or 35 mm f/2.8 (low distortion, sharp). Tripod-mounted (for stability) or careful handheld. Camera settings: aperture f/8-f/11 (deep depth of field), ISO 100-400 (low noise), shutter speed to avoid motion blur (1/60 s or faster). Capture 30-200 images with 70% overlap for small object (0.5 m) to large monument (10 m). Include scale bar (calibrated length, e.g., 0.5 m or 1 m) in several images. Process on workstation: Intel i7/i9 or AMD Ryzen 9, 32 GB RAM, NVIDIA RTX 3060 or better GPU. Software: Agisoft Metashape Professional. Processing time: 1-6 hours for typical object (50 images, 20 MP, high quality).",
+    "commercialSystems": [
+      {
+        "name": "D850 DSLR",
+        "vendor": "Nikon (Camera)",
+        "notes": "45.7 MP full-frame, 35.9 × 23.9 mm sensor, ISO 64-25,600, AF-S Nikkor lenses. Approximate cost: $3,000 (body); $500-$2,000 (lenses). URL: https://www.nikon.com"
+      },
+      {
+        "name": "EOS R5",
+        "vendor": "Canon (Camera)",
+        "notes": "45 MP full-frame mirrorless, 8K video, in-body stabilization, RF lenses. Approximate cost: $3,900 (body); $500-$3,000 (lenses). URL: https://www.canon.com"
+      },
+      {
+        "name": "Metashape Professional",
+        "vendor": "Agisoft (Software)",
+        "notes": "SfM + MVS photogrammetry, dense point clouds, mesh generation, orthophotos, Python API. Approximate cost: $3,500 (perpetual license, educational: $550). URL: https://www.agisoft.com"
+      },
+      {
+        "name": "RealityCapture",
+        "vendor": "RealityCapture (Software)",
+        "notes": "Ultra-fast SfM/MVS, GPU-accelerated, pay-per-export or subscription. Approximate cost: $15-$3,750 (subscription or per-export: $10-15 per model). URL: https://www.capturingreality.com"
+      },
+      {
+        "name": "Meshroom",
+        "vendor": "AliceVision (Open-source)",
+        "notes": "Free open-source SfM/MVS, GPU-accelerated dense reconstruction, node-based workflow. Approximate cost: Free (open-source). URL: https://alicevision.org"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "Sampling required: No - no size constraints (millimeter-scale artifacts to kilometer-scale monuments)",
+      "Position object stably. If possible, place on turntable for controlled rotation",
+      "Ensure object won't move during capture session",
+      "For outdoor monuments, no positioning needed",
+      "No preparation required for most materials",
+      "For challenging surfaces: (1) Highly reflective/shiny: apply dulling spray (removable) or cross-polarized lighting, (2) Transparent: coat with talcum powder or developer spray (carefully, test on inconspicuous area first), (3) Very dark: supplement lighting, (4) Featureless: project random texture pattern (for industrial objects; generally avoided in heritage)",
+      "Not applicable - photogrammetry measures external geometry only",
+      "Surface coatings (dulling spray, powder) alter appearance; remove carefully post-capture",
+      "Movement during capture (wind, vibration) creates misalignment and blur",
+      "Changing lighting (sun moving, clouds, shadows) alters appearance between images",
+      "Dust or particles on object appear as surface features; clean gently if possible"
+    ],
+    "measurementProtocol": "**STEP 1: Planning and Setup (10-60 minutes)**\n- Assess object or site: size, geometry, accessibility, lighting\n- Plan camera positions: ensure complete coverage (every part visible from ≥2 views), maintain ~70% overlap between adjacent images\n- Set up lighting if indoors (diffuse, even illumination; avoid harsh shadows)\n- Place scale bars or coded targets in scene (for metric accuracy and quality control)\n- Position color chart if color fidelity critical\n- Critical parameters: Adequate lighting (avoid shadows, highlights), Scale reference visible in multiple images, Stable object (won't move during capture)\n\n**STEP 2: Camera Configuration (5-10 minutes)**\n- Set camera to manual mode for consistency\n- Aperture: f/8-f/11 (balance depth of field and sharpness; avoid diffraction at f/16+)\n- ISO: as low as possible (100-400) to minimize noise\n- Shutter speed: fast enough to avoid motion blur (1/60 s minimum handheld; 1/125 s+ safer; use tripod for longer exposures)\n- Focus: manual focus on object, lock focus (avoid auto-focus hunting between shots)\n- Image format: RAW preferred (maximum dynamic range, no compression artifacts) or highest-quality JPEG if RAW unavailable\n- Disable image stabilization if on tripod\n- Critical parameters: Consistent exposure across all images, Sharp focus throughout, No motion blur, RAW format if possible\n\n**STEP 3: Test Shots and Validation (5-10 minutes)**\n- Capture 3-5 test images from different positions\n- Review on camera LCD: check focus (zoom to 100%, inspect sharpness), check exposure (histogram - avoid clipping highlights/shadows), check coverage (features overlap between views)\n- Adjust camera settings if needed\n- Verify scale bar visible and sharp in test images\n- Critical parameters: All images sharp and well-exposed, Overlap confirmed, Scale visible\n\n**STEP 4: Systematic Image Acquisition (10 minutes to several hours)**\n- Capture images systematically: (1) For objects: circular pattern around object (every 10-20°), multiple heights (top, middle, bottom), close-ups of complex details, (2) For sites/monuments: grid pattern, parallel rows with 70% overlap, oblique views for vertical surfaces\n- Maintain consistent distance (for uniform GSD)\n- Shoot 50-200+ images depending on size and complexity\n- Include overall context shots (wide views showing object in surroundings)\n- Ensure every surface visible from at least 2 views (3+ preferred)\n- Critical parameters: 70-80% overlap between adjacent images, Every surface captured from ≥2 angles, Consistent camera settings throughout, No blurred images\n\n**STEP 5: Redundancy and Quality Checks (10-30 minutes)**\n- Review captured images on camera or laptop: check for blur, poor exposure, coverage gaps\n- Re-shoot any problematic images immediately (while setup still in place)\n- Add extra images in areas of geometric complexity (holes, undercuts, fine details)\n- Capture additional images with scale bar from multiple angles if metric accuracy critical\n- Critical parameters: No gaps in coverage, All images meet quality standards\n\n**STEP 6: Data Transfer and Backup (10-30 minutes)**\n- Transfer images to computer (USB, card reader)\n- Organize in project folder with clear naming (date, object ID)\n- Create backup copies on separate drive or cloud storage (RAW images valuable; processing can be redone, but original captures cannot)\n- Document capture conditions: camera/lens used, settings, date, lighting, any challenges\n\n**STEP 7: Image Preprocessing (Optional, 10-60 minutes if performed)**\n- If needed: (1) Convert RAW to TIFF or high-quality JPEG (preserve maximum information), (2) Adjust exposure, contrast, white balance for consistency (apply same adjustments to all images), (3) Mask out background (if cluttered, can confuse feature matching)\n- Generally, minimal preprocessing preferred - let software handle image variations\n\n**STEP 8: Software Processing - Alignment (10 minutes to 2 hours automated)**\n- Import images into photogrammetry software (Metashape, RealityCapture, Meshroom)\n- Feature detection and matching: software automatically detects features (SIFT, SURF), matches across images\n- Camera alignment (SfM): software estimates camera positions and sparse 3D point cloud\n- Bundle adjustment: refines camera parameters and 3D points to minimize reprojection error\n- Review sparse cloud: check coverage (all images aligned?), remove outliers, verify scale bar detected\n- Critical parameters: All images successfully aligned, Reprojection error <1 pixel, Sparse point cloud represents object geometry\n\n**STEP 9: Dense Reconstruction (30 minutes to 12 hours automated)**\n- Dense stereo matching (MVS): software computes depth for every pixel using multi-view constraints\n- Generates dense point cloud (millions to billions of points)\n- Settings: quality level (low/medium/high/ultra - higher = more detail but slower)\n- Review dense cloud: check completeness (gaps?), noise level, level of detail\n- Filter noise points if needed (statistical outlier removal)\n- Critical parameters: Dense cloud captures fine surface detail, Minimal noise and artifacts, Completeness adequate for application\n\n**STEP 10: Mesh Generation and Texturing (10 minutes to 2 hours automated)**\n- Mesh generation: convert point cloud to polygonal mesh (triangulated surface)\n- Settings: face count (higher = more detail but larger file), surface type (arbitrary for complex objects, height field for terrain)\n- Mesh editing: fill holes, smooth noisy regions, decimate (reduce polygon count for web viewing)\n- Texture mapping: project original photos onto mesh to create photo-realistic appearance\n- Review textured mesh: check for texture seams, color consistency, alignment\n- Critical parameters: Mesh accurately represents surface geometry, Texture well-aligned and color-consistent, File size manageable for intended use\n\n**STEP 11: Scaling and Georeferencing (10-30 minutes)**\n- If scale bar used: measure distance between markers in software, set to known real-world length\n- Software rescales entire model\n- Verify scale: measure known dimensions on model, compare to ground truth\n- If accuracy critical: use multiple scale bars or Ground Control Points (GCPs) with known coordinates\n- Check coordinate system (local vs. geographic)\n- Export scaled model\n- Critical parameters: Model scaled to correct real-world dimensions, Accuracy verified via independent measurements\n\n**STEP 12: Export and Deliverables (10-60 minutes)**\n- Export point cloud (formats: .xyz, .las, .ply, .e57)\n- Export mesh (formats: .obj, .ply, .stl, .fbx, .dae)\n- Export textures (JPEG, PNG, TIFF)\n- Generate orthophotos (2D metric images from nadir or oblique views)\n- Export metadata: camera positions, accuracy report, processing log\n- Optimize for web viewing if needed (Sketchfab, 3DHOP): decimate mesh, compress textures",
+    "typicalParameters": [
+      {
+        "parameter": "Camera resolution",
+        "value": "20-45 MP",
+        "notes": "Range: 12-100 MP. Higher resolution = finer detail; diminishing returns beyond ~45 MP for most heritage applications"
+      },
+      {
+        "parameter": "Focal length",
+        "value": "35-50 mm (full-frame equivalent)",
+        "notes": "Range: 24-200 mm. Wider (24-35 mm) for large objects/sites; normal/tele (50-200 mm) for detail"
+      },
+      {
+        "parameter": "Aperture",
+        "value": "f/8",
+        "notes": "Range: f/5.6 - f/11. Balance depth of field and diffraction; f/8 sweet spot for sharpness on most lenses"
+      },
+      {
+        "parameter": "ISO",
+        "value": "100-400",
+        "notes": "Range: 50-3200. Lower = less noise; increase only if necessary for adequate shutter speed"
+      },
+      {
+        "parameter": "Image overlap",
+        "value": "70%",
+        "notes": "Range: 60-90%. Higher overlap = better geometry, more redundancy; 60% minimum for reliable matching"
+      },
+      {
+        "parameter": "Number of images",
+        "value": "50-200",
+        "notes": "Range: 20-1000+. Depends on object size and complexity; more images = better coverage but longer processing"
+      },
+      {
+        "parameter": "Camera-to-object distance",
+        "value": "1-5 m (close-range)",
+        "notes": "Range: 0.1 m - 100+ m. Closer = higher resolution (smaller GSD) but requires more images for coverage"
+      },
+      {
+        "parameter": "Baseline (camera spacing)",
+        "value": "10-30% of object distance",
+        "notes": "Range: 5-50%. Larger baseline = better depth resolution but requires more overlap; optimal ~20%"
+      },
+      {
+        "parameter": "Processing quality",
+        "value": "High",
+        "notes": "Range: Low/Medium/High/Ultra. Higher quality = more detail, denser cloud, longer processing time"
+      }
+    ],
+    "calibration": "**Standards used:** Checkerboard or coded target calibration pattern (for camera intrinsics), Certified scale bars (known length with traceable uncertainty, e.g., 0.5 m ± 0.1 mm), Total station or laser scanner reference data (for accuracy validation), Certified test objects (e.g., NPL's photogrammetry artifact with known dimensions).\n\n**Frequency:** Camera calibration: once per camera-lens combination (or if lens settings changed, e.g., focus ring moved). Scale bar: include in every project for metric accuracy. Validation: periodic (monthly to yearly) for quality assurance.\n\n**Procedure:** Camera calibration: capture 20-40 images of checkerboard from various angles and distances. Software computes intrinsic parameters (focal length, principal point, radial/tangential distortion). Save calibration file for future projects. Scale bar: place in scene during capture, measure in software, set known length. Validation: compare photogrammetry-derived measurements to independent reference (ruler, calipers, laser scanner) on certified artifact.",
+    "qualityControl": [
+      "All images sharp (no motion blur, good focus)",
+      "Consistent exposure and white balance across image set",
+      "Sufficient overlap (70%+ between adjacent images)",
+      "All surfaces visible from at least 2 viewing angles",
+      "Camera alignment successful (all images registered)",
+      "Reprojection error <1 pixel (RMS; indicates good geometric consistency)",
+      "Dense point cloud complete (no large gaps or missing regions)",
+      "Model scaled correctly (measurements match ground truth within tolerance)",
+      "Texture well-aligned (no seams or color banding)",
+      "Common artifacts: Doming effect - curved surface appears on flat object due to insufficient camera network geometry (parallel camera positions), Bowling effect - similar to doming, systematic depth error from poor geometry, Noise and outliers - spurious points away from surface (from matching errors, reflections, moving objects), Holes and gaps - missing geometry due to occlusion, specular highlights, or low texture, Texture seams - visible boundaries where different photos meet on mesh (from lighting/exposure differences), Scale error - model dimensions incorrect (scale bar not measured or used incorrectly), Misalignments - chunks of model not properly registered (insufficient overlap or dynamic scene)",
+      "Troubleshooting: Some images not aligned (excluded from reconstruction) (check image quality (sharp, well-exposed); ensure overlap >60%; add more images to connect disconnected chunks; disable problematic images and re-align), High reprojection error (>1-2 pixels RMS) (use sharper images; calibrate camera properly; use global shutter camera if available; optimize camera parameters in bundle adjustment; remove outlier points), Large gaps or holes in reconstruction (capture additional views to see occluded areas; cross-polarize to reduce reflections; add temporary texture (careful: removable); accept limitation (some surfaces inherently difficult)), Doming or bowling (systematic depth error) (increase baseline diversity: capture from varying distances, heights, angles; add oblique and orthogonal views; avoid perfectly circular capture pattern; use more convergent geometry), Noisy point cloud (many spurious outliers) (improve image quality (sharper, lower ISO); capture under consistent lighting; remove moving objects from scene; apply noise filtering (statistical outlier removal, radius filtering) in post-processing), Incorrect scale (model too large or small) (re-measure scale bar carefully; verify markers clearly identified; use multiple scale bars for redundancy; cross-check dimensions against known measurements)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "**File Formats:** Input: RAW (camera-specific: .NEF, .CR2, .ARW), TIFF, JPEG. Output: Point cloud (.xyz, .las, .ply, .e57), Mesh (.obj, .ply, .stl, .fbx), Images (JPEG, TIFF).\n\n**Data Structure:** Point cloud: N × 3 array (X, Y, Z coordinates) + optional RGB color. Mesh: vertices (N × 3), faces/triangles (M × 3 vertex indices), texture UV coordinates, texture image.\n\n**Typical File Sizes:** Images: 5-50 MB each (RAW); 50-200 images = 2.5-10 GB total. Dense point cloud: 100 MB - 10 GB (10⁶ - 10⁹ points). Textured mesh: 50 MB - 2 GB (depends on decimation and texture resolution).",
+    "preprocessing": [
+      "Image culling: Remove blurred, poorly exposed, or redundant images. Keep only high-quality images for processing. Reduces processing time and improves alignment reliability. Software: Manual review, FastStone Image Viewer, Adobe Bridge",
+      "White balance and color correction: Adjust white balance for color accuracy (use color chart if captured). Apply consistent adjustments to all images. Important for texture quality. Software: Adobe Lightroom, RawTherapee, darktable",
+      "Masking: Create alpha channel masks to exclude background, unwanted objects, or clutter. Helps feature matching focus on object of interest. Reduces noise and spurious geometry. Software: Photoshop, GIMP, Metashape (built-in masking tools)",
+      "Image resizing (optional): Downscale very high-resolution images (e.g., 60 MP → 20 MP) if full resolution unnecessary. Speeds processing. Generally not recommended for heritage (preserve maximum detail). Software: ImageMagick, batch processing scripts"
+    ],
+    "analysisWorkflow": "**STEP 1: Initial Alignment and Sparse Reconstruction**\n- Load images into photogrammetry software. Run feature detection and matching. Estimate camera positions (SfM). Perform bundle adjustment. Inspect sparse point cloud: verify all images aligned, check geometry looks reasonable, identify outliers. Generate alignment report: reprojection error (should be <1 pixel), number of tie points, camera positions.\n\n**STEP 2: Optimization and Gradual Selection**\n- Optimize camera parameters (refine intrinsics and extrinsics). Use gradual selection to remove low-quality tie points: (1) Reconstruction uncertainty (remove points with high uncertainty), (2) Reprojection error (remove points with error >2-3 pixels), (3) Projection accuracy (remove poorly localized points). Re-optimize after each removal. Iteratively improve alignment quality.\n\n**STEP 3: Scaling and Coordinate System Definition**\n- Create scale bars by identifying markers in images and setting known distance. Alternatively, place Ground Control Points (GCPs) with known coordinates for georeferencing. Update transformation: software scales model to real-world units and orients coordinate system. Verify accuracy: measure check distances, compare to ground truth.\n\n**STEP 4: Dense Point Cloud Generation**\n- Run dense reconstruction (MVS). Select quality level (high or ultra for heritage). Monitor processing (can take hours for large projects). Inspect dense cloud: zoom in to check detail level, identify noise or gaps. Export dense cloud if needed for analysis (CloudCompare, GIS software).\n\n**STEP 5: Mesh Generation**\n- Convert dense cloud to mesh. Choose surface type (arbitrary for complex 3D objects; height field for terrain). Set target face count (1-10 million typical for heritage; balance detail and file size). Inspect mesh: check for holes, flipped normals, artifacts. Edit if needed: fill small holes, smooth noisy areas.\n\n**STEP 6: Texture Generation**\n- Generate texture by projecting photos onto mesh. Settings: texture size (4096×4096 to 8192×8192 pixels typical), blending mode (mosaic for sharp boundaries, average for smooth blending), color correction (enable for consistent appearance). Inspect textured mesh: check for seams, color consistency, alignment. Re-generate with different settings if unsatisfactory.\n\n**STEP 7: Quantitative Analysis (Measurements, Comparisons)**\n- Perform measurements on 3D model: distances, areas, volumes, cross-sections. Compare multiple epochs (time-series photogrammetry) to detect changes: compute signed distance between meshes (change detection), generate difference maps (color-coded deformation). Extract orthophotos (metric 2D images) for documentation. Calculate surface parameters: roughness, curvature, slope.\n\n**STEP 8: Export and Optimization**\n- Export final deliverables: dense point cloud, textured mesh, orthophotos, processing report. Optimize mesh for specific uses: (1) Web viewing (Sketchfab): decimate to 50K-200K faces, compress textures to 2K-4K, (2) 3D printing: check manifold, repair holes, ensure correct scale and units, (3) GIS integration: export in appropriate coordinate system with metadata.",
+    "softwareTools": [
+      {
+        "name": "Agisoft Metashape Professional",
+        "url": "https://www.agisoft.com",
+        "notes": "Commercial ($3,500, educational: $550). Capabilities: Complete SfM/MVS pipeline, Orthophoto and DEM generation, Python scripting for automation, GCP support, High-quality dense reconstruction"
+      },
+      {
+        "name": "RealityCapture",
+        "url": "https://www.capturingreality.com",
+        "notes": "Commercial ($15/month or $15 per export). Capabilities: Ultra-fast processing (GPU-accelerated), Excellent scaling (1000+ images), High-quality textures, PPI (pay-per-input) or subscription model"
+      },
+      {
+        "name": "Meshroom (AliceVision)",
+        "url": "https://alicevision.org",
+        "notes": "Open-source (Free). Capabilities: Complete SfM/MVS pipeline, Node-based workflow, GPU-accelerated dense reconstruction, Active development community"
+      },
+      {
+        "name": "CloudCompare",
+        "url": "https://www.cloudcompare.org",
+        "notes": "Open-source (Free). Capabilities: Point cloud viewing and analysis, Mesh comparison (Cloud-to-Mesh distance), Statistical outlier removal, Cross-section extraction"
+      },
+      {
+        "name": "MeshLab",
+        "url": "https://www.meshlab.net",
+        "notes": "Open-source (Free). Capabilities: Mesh viewing and editing, Decimation, smoothing, hole filling, Texture manipulation, Format conversion"
+      },
+      {
+        "name": "Blender",
+        "url": "https://www.blender.org",
+        "notes": "Open-source (Free). Capabilities: 3D modeling and rendering, Texture editing and baking, Animation for presentations, Photogrammetry add-ons available"
+      },
+      {
+        "name": "Autodesk ReCap (formerly 123D Catch)",
+        "url": "https://www.autodesk.com/products/recap",
+        "notes": "Commercial (cloud, subscription). Capabilities: Cloud-based SfM processing, Integrated with Autodesk ecosystem, Mobile app available"
+      }
+    ],
+    "interpretationGuidelines": "**Point cloud interpretation:** Each point represents 3D surface location where features could be matched across images. Density reflects image resolution and texture (more features = denser cloud). Gaps indicate occlusion, specular reflection, or textureless regions. **Mesh interpretation:** Continuous triangulated surface approximating object geometry. Polygon density should match actual surface complexity (avoid over-smoothing fine detail or retaining excessive noise). **Texture interpretation:** Photo-realistic appearance from original images. Blurred textures indicate mis-registration or low-quality source images. Seams show image boundaries (minimize via blending). **Accuracy:** Typical close-range accuracy 1:1000 to 1:50,000 (measured dimension : uncertainty). Better with controlled setup, calibrated camera, many images, good geometry.",
+    "commonPitfalls": [
+      "Poor camera network geometry (insufficient convergence): All images captured from nearly same distance/angle (e.g., circular path at constant height) → weak depth constraints → doming/bowling artifacts, poor depth accuracy. Model may look good visually but measurements inaccurate. Vary camera positions: capture from different heights, distances, angles. Add convergent views (oblique images looking at object from sides). Use 'geodesic dome' pattern: approach object from multiple directions. Verify camera network spans 3D space (not planar). Check camera positions in software before dense reconstruction.",
+      "Scale error due to incorrect or missing reference: Forgetting to measure scale bar, or measuring wrong markers → model dimensions arbitrary or wrong by factor of 2-10×. Measurements meaningless for metric applications. Always include scale bar or objects of known size. Photograph scale bar clearly from multiple angles. Measure scale in software immediately after alignment to catch errors early. Verify scale: measure known dimension on object (ruler on photo), compare to model measurement. Use multiple scale bars for redundancy and validation.",
+      "Reflections and specular highlights causing artifacts: Shiny surfaces (polished metal, glazed ceramics, glass) produce specular reflections that change with viewpoint. Feature matching fails → holes, noise, or incorrect geometry. Water, mirrors create 'phantom' geometry from reflections. Use cross-polarized lighting (polarizers on lights and lens) to eliminate specular reflections. Apply removable dulling spray (carefully, test first; not suitable for all heritage objects). Capture under diffuse lighting (cloudy day, light tent). Accept limitation: some surfaces inherently difficult for photogrammetry. Consider alternative (structured light, laser scanning) for highly reflective objects.",
+      "Textureless surfaces creating incomplete reconstruction: Uniform surfaces (white plaster, monochrome paint, smooth stone) lack distinctive features for matching → sparse point cloud, gaps in dense reconstruction. Software cannot determine depth where no features exist. Increase surface texture for matching: project temporary random pattern (light projector, but preserve original appearance). Use Structure-from-Shading (SfS) algorithms if available (exploit subtle shading variations). Accept limitation: combine with other techniques (laser scanning) for featureless areas. For industrial objects: apply temporary removable markers (not appropriate for heritage).",
+      "Insufficient image overlap: Images with <60% overlap may not align reliably. Features must appear in ≥2 images for triangulation. Gaps in coverage → disconnected chunks, holes in reconstruction. Plan image capture to ensure 70-80% overlap. Use higher overlap (80-90%) for complex geometry, low-texture surfaces. Verify overlap during capture: mentally note features appearing in adjacent images. Review images in field if possible, re-shoot if gaps detected. Software can show image overlap network (connectivity graph) to identify isolated images.",
+      "Dynamic scenes (shadows, people, wind) degrading alignment: Changing shadows between images confuse feature matching (same surface looks different). Moving objects (people, flags, vegetation) appear in different positions → spurious geometry or alignment failures. Wind-blown vegetation creates blur and inconsistency. Capture under consistent lighting: overcast day (diffuse, stable), or indoor controlled lighting. Avoid harsh sun (strong shadows that move rapidly). For outdoor monuments: capture early morning or late afternoon when shadows stable (or midday when shadows minimal). Avoid windy days for vegetation-covered sites. Mask out moving objects in post-processing. For crowded sites: capture off-hours or ask visitors to avoid area temporarily."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Complete 3D documentation of sculptures, statues, and monuments",
+      "Archaeological excavation recording (before/during/after excavation)",
+      "Architectural heritage documentation (buildings, ruins, historic structures)",
+      "Museum collection digitization (3D models for research, virtual exhibits)",
+      "Conservation condition monitoring (time-series comparison for damage assessment)",
+      "Virtual repatriation (3D models of objects in foreign museums)",
+      "3D printing replicas for education and tactile exhibits",
+      "Orthophoto generation for detailed 2D documentation with metric accuracy"
+    ],
+    "materialTypes": [
+      "Stone (marble, limestone, granite)",
+      "Metals (bronze, iron, weathered)",
+      "Ceramics and pottery",
+      "Wood (sculpture, architectural elements)",
+      "Painted surfaces",
+      "Glass, crystal, transparent objects",
+      "Highly reflective surfaces (polished metal, mirrors)",
+      "Very dark materials (black metal, carbon)",
+      "Featureless uniform surfaces (white plaster, smooth paint)"
+    ],
+    "caseStudies": [
+      {
+        "title": "Notre-Dame Cathedral: Pre-Fire 3D Documentation Enables Reconstruction",
+        "description": "**Pre-fire documentation (2010-2015):** Art historian Andrew Tallon led multi-year laser scanning campaign using Leica ScanStation. Captured interior and exterior with millimeter precision (1 billion+ point cloud). Complementary photogrammetry: 1000+ high-resolution photographs (Canon EOS 5D Mark II, 21 MP; various lenses 24-200 mm) of architectural details, sculptures, stained glass, vaults. Ground-based and elevated positions (scaffolding, boom lifts). Processed in Agisoft PhotoScan (now Metashape) and custom academic software. Generated textured 3D models of architectural elements at 1-5 mm resolution. **Post-fire reconstruction use (2019-present):** After April 2019 fire destroyed roof and spire, Tallon's data (managed by colleagues after his 2018 death) provided baseline for reconstruction. Photogrammetric models of spire, roof structure, and vaulting compared to post-fire laser scans to quantify damage. Pre-fire models used to generate fabrication drawings for timber roof reconstruction. Architectural details (stone tracery, sculptures) referenced for restoration decisions. **Pre-fire documentation completeness:** Laser scanning captured overall geometry (walls, columns, vaults, flying buttresses) at 1-5 mm accuracy over entire 130 m length cathedral. Photogrammetry provided complementary high-resolution textured models of: (1) Spire (destroyed in fire): 33 m tall oak structure with lead cladding; 360° photogrammetric model from ground and aerial (drone) views; 2-3 mm resolution detail sufficient to identify individual timber elements and joints. (2) Stone vaulting: ribbed Gothic vaults at 33 m height; photogrammetry from scaffolding during conservation (2017-2018) captured every stone with sub-cm resolution; critical for assessing fire damage (heat-induced cracking, partial collapse). (3) Sculptural details: 28 chimera and gargoyle statues (removed 2019 for restoration, thus saved from fire); photogrammetric models (1-2 mm resolution) now used for public virtual tours while originals in conservation. (4) Stained glass windows (mostly survived fire): pre-fire photogrammetry documented every panel; enables comparison to assess fire-induced damage (heat stress, smoke staining). **Reconstruction applications:** Spire reconstruction (2020-2025): Photogrammetric model provided exact geometry for timber frame design. Architect Viollet-le-Duc's 19th-century spire (destroyed) will be rebuilt identically using photogrammetry-derived dimensions (cross-sections, angles, profiles of 1000+ timber pieces). Manufacturing tolerances: ±5 mm (achievable with photogrammetry data accuracy 2-3 mm). Vault stabilization (2019-2020 emergency): Photogrammetry-derived 3D models combined with structural analysis (finite element modeling) to assess stability of fire-damaged vaults. Identified critical areas requiring immediate support. Models showed which stones displaced (comparison pre/post fire point clouds). Conservation decision-making: Pre-fire texture (color, weathering) from photogrammetry guides cleaning/restoration of smoke-damaged stone. Ensures color consistency with original appearance. **Accuracy validation:** Post-fire re-survey (laser scanning) compared to pre-fire data in undamaged areas: RMS difference 3-8 mm (confirms pre-fire documentation accuracy sufficient for reconstruction). Photogrammetric model of spire compared to 19th-century architectural drawings (Viollet-le-Duc): agreement within 10-20 mm (validates photogrammetry captured as-built geometry vs. original design intent). **Public and scientific impact:** Photogrammetric models shared with public via web viewers (Sketchfab, CyArk) - millions of views, raising awareness of cultural heritage documentation importance. Models used in research: structural analysis (vaulting geometry and stability), historical architecture (construction techniques, 19th-century restoration interventions), acoustics (virtual acoustic simulations using geometry). Notre-Dame case demonstrates photogrammetry's critical value for heritage documentation and disaster recovery.",
+        "reference": "Tallon, A., et al. 2012. 'Building the Gothic Cathedral: Geometry, Technology, and Structural Analysis of Notre-Dame.' In Gothic Art and Architecture: Scholastic Culture and the Visual Arts, edited by J. Hamburger. Princeton University Press. [Note: Tallon's full Notre-Dame dataset published posthumously via Vassar College repository]. Data at https://www.vassar.edu/digitalprojects/tallon/"
+      },
+      {
+        "title": "Palmyra Archaeological Site: Digital Documentation Before and After ISIS Destruction",
+        "description": "**Pre-destruction documentation (2008-2010):** ICONEM team conducted systematic photogrammetry survey of Palmyra. Camera: Canon EOS 5D Mark II (21 MP), lenses 24-70 mm and 70-200 mm. Captured 50,000+ images covering major monuments and architectural details. Ground-based photography: comprehensive coverage of Temple of Bel (main sanctuary, 27 × 7 m cella), Temple of Baalshamin (17 × 9 m), Arch of Triumph (20 m tall), funerary towers (3-4 stories tall). Aerial photography: kite and balloon-mounted cameras (pre-drone era) for overhead views of site (600 × 1000 m extent). Scale references: measured baselines, GPS-surveyed Ground Control Points. Processing: custom pipeline (academic software, later commercial tools); generated textured 3D models at 1-5 mm resolution (close-up architectural details) to 5-10 cm (overall site). **Post-destruction documentation (2016-2017):** After ISIS deliberately destroyed monuments (2015), ICONEM returned post-liberation. Captured 30,000+ images of ruins using drones (DJI Phantom, Inspire) and ground cameras. Same processing workflow. Generated post-destruction 3D models at comparable resolution. **Damage quantification:** Registered pre- and post-destruction 3D models using surviving reference points (distant intact structures). Computed signed distance between meshes (Cloud-to-Mesh distance in CloudCompare). Generated color-coded damage maps showing: complete destruction (missing geometry), partial damage (collapse, deformation), intact areas. Quantified volume loss, collapse extent, rubble distribution. **Pre-destruction models (baseline documentation):** Temple of Bel: complete 3D model (exterior and interior) at 2-5 mm resolution. Captured: intricate stone carvings (floral motifs, dedicatory inscriptions), column capitals (Corinthian style), ceiling coffers (geometric patterns). Texture resolution: ~500 pixels/m (sufficient to read 5 cm-tall inscriptions in model). Total model: 50 million polygons, 8K texture maps. Temple of Baalshamin: similar detail level; 30 million polygons. Arch of Triumph: 40 million polygons; documented every voussoir (wedge-shaped stone), keystone decorations, column entablature. Pre-destruction models archived at UNESCO, ICONEM, and Syrian DGAM (distributed backups). **Post-destruction damage assessment (2015 destruction by ISIS):** Temple of Bel: **95% destroyed.** Main cella completely demolished (explosive charges). Photogrammetric comparison showed: only portions of outer wall and one column remained standing (5% of original volume). Debris field: 30 × 40 m area covered with fragmented stones (80% of original material located in rubble via drone photogrammetry). Individual stone blocks (0.5-2 m³) identifiable in post-destruction model; potentially recoverable for anastylosis (reconstruction using original materials). Temple of Baalshamin: **100% destroyed.** Completely leveled; only foundation platform remained. Post-destruction photogrammetry showed flat surface where temple stood. Volume analysis: ~800 m³ material reduced to <2 m rubble layer. Arch of Triumph: **Partially destroyed (~60%).** Central arch span collapsed; flanking columns toppled. Photogrammetric damage maps (color-coded distance: green = intact, yellow/orange = deformation, red = missing) showed: central 10 m section gone; east column displaced 2.4 m (quantified from 3D model comparison); west side relatively intact (30% of original structure standing). **Reconstruction potential assessment:** Photogrammetric data enables three scenarios: (1) Virtual reconstruction: pre-destruction 3D models provide complete digital record for virtual museums, VR experiences. UNESCO/ICONEM created web-based 3D viewers (Sketchfab) - millions of visitors worldwide. (2) Anastylosis (physical reconstruction from original stones): post-destruction photogrammetry mapped rubble locations. ~70-80% of Temple of Bel stones located in debris field. 3D models allow 'digital anastylosis' - virtually reassemble stones, identify each block's original position (match geometry, decorative patterns). Provides roadmap for physical reconstruction if undertaken. (3) Replica reconstruction: pre-destruction models provide exact dimensions, profiles, decorative details for fabrication. CNC milling or 3D printing (at scale) could produce replacement blocks. Discussion ongoing whether reconstruction appropriate (authenticity concerns). **Quantitative damage metrics (example: Temple of Bel):** Total volume pre-destruction: 12,800 m³ (from photogrammetric model). Volume remaining post-destruction: 640 m³ (5%). Volume of rubble: 11,200 m³ (87.5% of original; rest pulverized to fine fragments). Surface area destroyed: 4,600 m² (wall surfaces, decorations). Maximum displacement of debris: 35 m from original position (explosive force dispersed material widely). **Methodological validation:** Pre-destruction photogrammetry accuracy validated against total station survey data (2009): RMS error 8 mm over 20 m distances (1:2500 accuracy). Post-destruction model compared to post-liberation laser scanning (limited): agreement within 15 mm RMS (confirms photogrammetry reliable for damage quantification). Palmyra case demonstrates photogrammetry's critical role in documenting threatened heritage and enabling post-conflict damage assessment.",
+        "reference": "Ubelmann, Y., and M. Hassan. 2017. 'Digitizing Palmyra: Photogrammetric Documentation Before and After Destruction.' Journal of Cultural Heritage 28: 162-170. DOI: 10.1016/j.culher.2017.05.011"
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "laser-scanning",
+      "raman-microscopy",
+      "xrf",
+      "thermography",
+      "rti"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["stereo-photogrammetry", "laser-scanning"],
+        "rationale": "Laser scanning provides metrologically accurate geometry (traceable to standards) but limited color (intensity only, or RGB from scanner camera, lower resolution). Photogrammetry provides excellent texture and natural color from high-res photos but lower geometric accuracy. Combining leverages strengths of each: best possible accuracy + best possible appearance.",
+        "examples": "Photogrammetry + Laser Scanning (Hybrid 3D Documentation): 1. Perform laser scanning first: captures precise geometry (point cloud) with known absolute accuracy (1-5 mm typical for TLS). Establishes coordinate system and scale. 2. Capture photogrammetry images with scale references or GCPs tied to laser scan coordinate system. 3. Process photogrammetry: generate dense point cloud and textured mesh. 4. Register photogrammetry to laser scan using common reference points (targets, natural features, or ICP - Iterative Closest Point algorithm). 5. Merge datasets: use laser scan geometry as base (most accurate); drape photogrammetry texture onto laser mesh. Or: fuse point clouds and generate hybrid mesh. 6. Result: laser-scan geometric accuracy with photogrammetric photo-realistic texture and color. Architectural heritage: laser scan building façade (geometry accurate to 3 mm); photogrammetry from same positions (texture at 1 mm/pixel resolution). Merge: 3 mm geometric accuracy, photo-realistic texture showing stone weathering, paint, graffiti, vegetation. Used for condition documentation, conservation planning."
+      },
+      {
+        "techniques": ["stereo-photogrammetry"],
+        "rationale": "Single-epoch photogrammetry captures state at one moment. Time-series reveals change: degradation progression, conservation treatment effectiveness, structural deformation, environmental impacts. Objective, quantitative monitoring far superior to qualitative visual comparison. Enables predictive modeling (extrapolate degradation trends).",
+        "examples": "Multi-Temporal Photogrammetry (4D: 3D + Time): 1. Establish baseline: photogrammetry documentation at Time 0 (before intervention, or monitoring start). Process to generate 3D model (point cloud or mesh). 2. Repeat photogrammetry at Time 1, Time 2, etc. (after treatment, seasonal change, yearly monitoring). Maintain consistent methodology: same camera if possible, similar lighting, similar viewpoints for reliable comparison. 3. Co-register all temporal 3D models to common coordinate system using permanent features (stable reference points not subject to change). 4. Compute differences: Cloud-to-Cloud (C2C) or Cloud-to-Mesh (C2M) signed distance. Positive = growth/swelling, negative = erosion/loss, zero = stable. 5. Generate change maps: color-coded visualization of deformation, degradation, conservation effects. 6. Quantify: volume loss/gain, displacement of features, crack growth, surface retreat rates. Stone monument weathering: annual photogrammetry (5 years). Compare 3D models: detect surface retreat 0.5-2 mm/year (erosion), crack propagation 3-10 mm (structural), biological growth (lichen, moss) 5-15 mm. Quantify: volumetric loss 0.2 m³ over 5 years, inform stabilization urgency. Test conservation treatments: compare treated vs. untreated areas (control), measure if treatment slows degradation."
+      },
+      {
+        "techniques": ["stereo-photogrammetry", "multispectral-imaging"],
+        "rationale": "Standard photogrammetry provides RGB color only (visible spectrum). Multispectral adds UV (fluorescence, subsurface features), NIR (pigment differentiation, vegetation, moisture). Combining: 3D geometry with spectral material identification. Enables material mapping in 3D - 'see' what's where on complex 3D object.",
+        "examples": "Photogrammetry + Multispectral Imaging (Spectral 3D): 1. Capture photogrammetry images in visible spectrum (standard RGB photography). Process to 3D model. 2. Capture multispectral images from subset of photogrammetry camera positions (UV, visible, NIR bands). Requires multispectral camera or filter swaps on DSLR. 3. Register multispectral images to 3D model using photogrammetric bundle adjustment (treat multispectral images as additional cameras with same poses as RGB images). 4. Project multispectral data onto 3D mesh as texture layers (separate texture for each wavelength band). 5. Analyze spectral data in 3D context: identify materials, pigments, degradation products based on spectral signature, visualize their 3D distribution on object. Painted sculpture: photogrammetry generates 3D geometry. UV imaging reveals underdrawing, overpainting. NIR distinguishes azurite (dark in NIR) from ultramarine (bright in NIR). Project spectral data onto 3D model: create 'pigment distribution map' showing which blue pigment used on each 3D surface area. Reveals artist technique, restoration interventions."
+      }
+    ]
+  },
+  "strengths_limitations": {
+    "strengths": [
+      "Non-contact, non-destructive: no risk to fragile heritage objects",
+      "Photo-realistic texture: captures true color and appearance (vs. laser scanning)",
+      "Cost-effective: camera + software much cheaper than laser scanner ($500-$10K vs. $50K-$200K)",
+      "Portable: lightweight camera equipment (vs. heavy laser scanner); smartphone photogrammetry possible",
+      "Flexible scale: same methodology from centimeters (artifacts) to kilometers (landscapes)",
+      "Rich archival data: original photographs preserve information beyond 3D geometry (inscriptions, color, condition)",
+      "Accessible: minimal specialized training; many free/low-cost software options",
+      "Comprehensive: generates point clouds, meshes, orthophotos, DEMs from single dataset"
+    ],
+    "limitations": [
+      "Requires good lighting: poor/inconsistent lighting degrades results; indoor/night challenging",
+      "Texture-dependent: featureless, uniform surfaces difficult to reconstruct",
+      "Specular surfaces problematic: reflections, transparency cause failures or artifacts",
+      "Scale ambiguity: requires reference measurement for absolute dimensions (vs. laser's built-in scale)",
+      "Processing time: dense reconstruction can take hours to days for large datasets",
+      "Lower geometric accuracy than laser scanning: 1:1000-1:10,000 typical (vs. 1:50,000-1:100,000 for TLS)",
+      "Occlusion: cannot reconstruct hidden surfaces (line-of-sight only)",
+      "Environmental sensitivity: wind, changing light, shadows between captures cause problems"
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Lowe, D. G. 2004. 'Distinctive Image Features from Scale-Invariant Keypoints.' International Journal of Computer Vision 60 (2): 91-110.",
+        "doi": "10.1023/B:VISI.0000029664.99615.94",
+        "notes": "SIFT algorithm - foundation of modern automated photogrammetry feature matching"
+      },
+      {
+        "citation": "Hartley, R., and A. Zisserman. 2004. 'Multiple View Geometry in Computer Vision.' 2nd ed. Cambridge University Press.",
+        "doi": "10.1017/CBO9780511811685",
+        "notes": "Definitive textbook on geometric foundations of photogrammetry and computer vision"
+      },
+      {
+        "citation": "Ubelmann, Y., and M. Hassan. 2017. 'Digitizing Palmyra: Photogrammetric Documentation Before and After Destruction.' Journal of Cultural Heritage 28: 162-170.",
+        "doi": "10.1016/j.culher.2017.05.011",
+        "notes": "Palmyra archaeological site: pre/post-destruction documentation and damage assessment"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Remondino, F., and S. El-Hakim. 2006. 'Image-based 3D Modeling: A Review.' The Photogrammetric Record 21 (115): 269-291.",
+        "doi": "10.1111/j.1477-9730.2006.00383.x"
+      },
+      {
+        "citation": "Westoby, M. J., et al. 2012. 'Structure-from-Motion Photogrammetry: A Low-Cost, Effective Tool for Geoscience Applications.' Geomorphology 179: 300-314.",
+        "doi": "10.1016/j.geomorph.2012.08.021"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "Agisoft Metashape Tutorials",
+        "url": "https://www.agisoft.com/support/tutorials/"
+      },
+      {
+        "title": "CyArk Open Heritage",
+        "url": "https://www.cyark.org/"
+      },
+      {
+        "title": "Historic England Photogrammetry Guide",
+        "url": "https://historicengland.org.uk/images-books/publications/photogrammetric-applications-for-cultural-heritage/"
+      }
+    ]
+  },
+  "tags": [
+    "photogrammetry",
+    "SfM",
+    "structure-from-motion",
+    "MVS",
+    "3D reconstruction",
+    "3D documentation",
+    "cultural heritage",
+    "digital heritage",
+    "archaeology",
+    "conservation"
+  ],
+  "relatedTechniques": [
+    "laser-scanning",
+    "rti",
+    "multispectral-imaging",
+    "structured-light",
+    "thermography"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+

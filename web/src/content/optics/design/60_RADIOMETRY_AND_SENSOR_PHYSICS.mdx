@@ -1,0 +1,361 @@
+---
+title: "Radiometry and Sensor Physics"
+slug: "design/60-radiometry-and-sensor-physics"
+category: "Design"
+---
+
+## Overview
+
+Radiometry quantifies the flow of optical energy, while sensor physics determines how detectors convert photons to electrical signals. This module develops the fundamental radiometric quantities, derives étendue conservation, and analyzes detector performance including noise sources and signal-to-noise ratio.
+
+## 60.1 Radiometry
+
+### Fundamental Quantities
+
+**Radiant flux (power):** $\Phi$ [W]
+
+Total power emitted, transmitted, or received.
+
+**Radiant intensity:** $I = \frac{d\Phi}{d\Omega}$ [W/sr]
+
+Power per unit solid angle.
+
+**Radiance:** $L = \frac{d^2\Phi}{dA \, d\Omega \cos\theta}$ [W/(m²·sr)]
+
+Power per unit projected area per unit solid angle. Most fundamental quantity.
+
+**Irradiance:** $E = \frac{d\Phi}{dA}$ [W/m²]
+
+Power per unit area incident on a surface.
+
+**Exitance:** $M = \frac{d\Phi}{dA}$ [W/m²]
+
+Power per unit area emitted from a surface.
+
+### Solid Angle
+
+**Definition:**
+$$d\Omega = \frac{dA_{\text{projected}}}{r^2} = \sin\theta \, d\theta \, d\phi$$
+
+**Total solid angle:** $4\pi$ steradians.
+
+**For circular cone:**
+$$\Omega = 2\pi(1 - \cos\theta_{\text{max}})$$
+
+### Radiance Conservation
+
+**Conservation law:** In a lossless optical system:
+
+$$L_{\text{out}} = L_{\text{in}}$$
+
+**Implications:**
+- Cannot increase brightness with passive optics
+- Étendue is conserved
+- Radiance sets fundamental limit on light collection
+
+### Étendue (Optical Throughput)
+
+**Definition:**
+$$G = n^2 \int \int \cos\theta \, dA \, d\Omega = n^2 A \Omega$$
+
+where $n$ is refractive index.
+
+**For circular aperture and cone:**
+$$G = n^2 \pi a^2 \cdot 2\pi(1 - \cos\theta) = n^2 \pi^2 a^2 \sin^2\theta$$
+
+**Paraxial approximation:**
+$$G \approx n^2 \pi^2 a^2 \theta^2 = n^2 \pi^2 a^2 (\text{NA})^2$$
+
+### Throughput Conservation
+
+**Conservation:** In lossless system:
+
+$$G_{\text{in}} = G_{\text{out}}$$
+
+**Relationship to radiance:**
+$$\Phi = L \cdot \frac{G}{n^2}$$
+
+**Implications:**
+- Cannot collect more light than étendue allows
+- System design limited by smallest étendue element
+- Fiber optics: Core NA sets maximum collection
+
+### Lagrange Invariant
+
+**2D invariant:**
+$$H = n y \sin u = n' y' \sin u'$$
+
+**3D invariant:**
+$$H^2 = n^2 A \Omega = \frac{G}{\pi^2}$$
+
+**Conservation:** $H$ is conserved through optical system.
+
+**Applications:**
+- Field of view calculation
+- Resolution limits
+- Light collection optimization
+
+### Radiometric Calculations
+
+**Lambertian source:** Radiance independent of angle:
+
+$$L = \frac{M}{\pi}$$
+
+**Irradiance from extended source:**
+$$E = \int L \cos\theta \, d\Omega = \pi L \sin^2\theta_{\text{max}}$$
+
+**Point source:** Intensity $I$ at distance $r$:
+
+$$E = \frac{I \cos\theta}{r^2}$$
+
+**Image irradiance:**
+$$E_{\text{image}} = \frac{\pi L}{4(f/\#)^2} \tau$$
+
+where $\tau$ is transmission.
+
+## 60.2 Detector Physics
+
+### Photodiodes
+
+**Principle:** Photon absorption creates electron-hole pair.
+
+**Quantum efficiency:**
+$$\eta = \frac{\text{electrons generated}}{\text{photons incident}}$$
+
+**Responsivity:**
+$$R = \frac{\eta e \lambda}{hc} \quad \text{[A/W]}$$
+
+**Current:**
+$$I = R \Phi$$
+
+**Spectral response:** Depends on material bandgap:
+- Silicon: 400-1100 nm
+- InGaAs: 900-1700 nm
+- HgCdTe: 1-14 μm
+
+### CCD Architecture
+
+**Charge-coupled device:** Array of MOS capacitors.
+
+**Charge transfer:** Sequential clocking moves charge to readout.
+
+**Full well capacity:** Maximum electrons per pixel (typically $10^4-10^6$).
+
+**Readout:** Charge-to-voltage conversion, amplification, digitization.
+
+**Frame rate:** Limited by readout time (typically 1-100 Hz).
+
+### CMOS Architecture
+
+**Active pixel sensor:** Each pixel has amplifier.
+
+**Advantages:**
+- Faster readout (parallel)
+- Lower power
+- On-chip processing
+
+**Disadvantages:**
+- Lower fill factor
+- Higher noise (per-pixel amplifier)
+
+**Rolling shutter:** Sequential row readout (motion artifacts).
+
+**Global shutter:** Simultaneous exposure (reduces motion blur).
+
+### Photon Counting
+
+**Avalanche photodiode (APD):** Internal gain via avalanche multiplication.
+
+**Gain:**
+$$M = \frac{1}{1 - (V/V_B)^n}$$
+
+where $V_B$ is breakdown voltage, $n$ is material-dependent.
+
+**Single-photon avalanche diode (SPAD):** Operated above breakdown.
+
+**Geiger mode:** Each photon triggers avalanche, binary output.
+
+**Time resolution:** <100 ps for time-of-flight applications.
+
+## 60.3 Noise Sources
+
+### Shot Noise
+
+**Photon noise:** Fundamental quantum limit.
+
+**Variance:**
+$$\sigma_N^2 = N$$
+
+where $N$ is mean number of photons.
+
+**Standard deviation:**
+$$\sigma_N = \sqrt{N}$$
+
+**Signal-to-noise ratio:**
+$$\text{SNR} = \frac{N}{\sqrt{N}} = \sqrt{N}$$
+
+**For current:**
+$$\sigma_I = \sqrt{2e I \Delta f}$$
+
+where $\Delta f$ is bandwidth.
+
+### Dark Current
+
+**Thermal generation:** Electrons generated without light.
+
+**Dark current:**
+$$I_d = I_0 e^{-E_g/(2kT)}$$
+
+where $E_g$ is bandgap, $T$ is temperature.
+
+**Dark current shot noise:**
+$$\sigma_{I_d} = \sqrt{2e I_d \Delta f}$$
+
+**Reduction:** Cooling, shorter integration time.
+
+### Read Noise
+
+**Amplifier noise:** Electronic noise in readout circuit.
+
+**Typical values:**
+- CCD: 2-10 electrons RMS
+- CMOS: 1-5 electrons RMS
+- Scientific CCD: <1 electron RMS
+
+**Noise sources:**
+- Thermal noise (Johnson)
+- 1/f noise (flicker)
+- Reset noise (kTC)
+
+**kTC noise:**
+$$\sigma_{kTC} = \sqrt{\frac{kT}{C}}$$
+
+where $C$ is capacitance.
+
+### Fixed-Pattern Noise (FPN)
+
+**Non-uniformity:** Pixel-to-pixel variations.
+
+**Sources:**
+- Dark current non-uniformity
+- Responsivity variations
+- Offset variations
+
+**Correction:** Flat-field calibration:
+
+$$I_{\text{corrected}} = \frac{I_{\text{raw}} - D}{F - D}$$
+
+where $D$ is dark frame, $F$ is flat field.
+
+### Total Noise
+
+**Combined:**
+$$\sigma_{\text{total}}^2 = \sigma_{\text{shot}}^2 + \sigma_{\text{dark}}^2 + \sigma_{\text{read}}^2 + \sigma_{\text{FPN}}^2$$
+
+**For $N$ photons:**
+$$\sigma_{\text{total}}^2 = N + N_d + \sigma_{\text{read}}^2 + \sigma_{\text{FPN}}^2$$
+
+where $N_d$ is dark current electrons.
+
+## 60.4 SNR & NEP
+
+### Signal-to-Noise Ratio
+
+**Definition:**
+$$\text{SNR} = \frac{S}{\sigma_{\text{total}}}$$
+
+**For photon-limited case:**
+$$\text{SNR} = \frac{N}{\sqrt{N}} = \sqrt{N}$$
+
+**For read-noise limited:**
+$$\text{SNR} = \frac{N}{\sigma_{\text{read}}}$$
+
+**Full expression:**
+$$\text{SNR} = \frac{N}{\sqrt{N + N_d + \sigma_{\text{read}}^2 + \sigma_{\text{FPN}}^2}}$$
+
+### Noise Equivalent Power (NEP)
+
+**Definition:** Input power that gives SNR = 1.
+
+**For photon-limited detector:**
+$$\text{NEP} = \frac{hc}{\lambda \eta} \sqrt{\frac{2 \Delta f}{N}}$$
+
+**For ideal detector ($\eta=1$, shot-noise limited):**
+$$\text{NEP} = \frac{hc}{\lambda} \sqrt{2 \Delta f}$$
+
+**Units:** W/√Hz
+
+### Detectivity
+
+**D* (D-star):**
+$$D^* = \frac{\sqrt{A \Delta f}}{\text{NEP}}$$
+
+where $A$ is detector area.
+
+**Units:** cm·√Hz/W (Jones)
+
+**Normalized:** Independent of area and bandwidth.
+
+### Dynamic Range
+
+**Definition:**
+$$\text{DR} = \frac{I_{\text{max}}}{I_{\text{min}}} = \frac{N_{\text{well}}}{\sigma_{\text{read}}}$$
+
+where $N_{\text{well}}$ is full well capacity.
+
+**Typical values:**
+- Consumer camera: 10-12 bits (1000-4000:1)
+- Scientific CCD: 14-16 bits (16000-65000:1)
+- HDR sensors: 20+ bits
+
+### Exposure Optimization
+
+**Optimal exposure:** Maximize SNR subject to saturation.
+
+**For photon-limited:**
+- Expose until just below saturation
+- SNR ∝ √(exposure time)
+
+**For read-noise limited:**
+- Longer exposure better (until dark current dominates)
+- Multiple frames: Average reduces read noise by √N
+
+**Optimal number of frames:**
+$$N_{\text{frames}} = \sqrt{\frac{N_{\text{well}}}{\sigma_{\text{read}}^2}}$$
+
+### Quantum Efficiency Optimization
+
+**QE factors:**
+- Absorption: Material, thickness, AR coating
+- Collection: Diffusion length, electric field
+- Reflection: Surface texturing, AR coating
+
+**Typical QE:**
+- Silicon: 40-90% (visible)
+- Back-illuminated: 90-95%
+- InGaAs: 70-90% (NIR)
+
+### Linearity
+
+**Response:**
+$$N_{\text{out}} = G N_{\text{in}} + O$$
+
+where $G$ is gain, $O$ is offset.
+
+**Non-linearity:** Deviation from linear response.
+
+**Measurement:** Ramp illumination, measure response.
+
+**Correction:** Polynomial or lookup table.
+
+## Summary
+
+Radiometry and sensor physics provide:
+- **Radiometric quantities:** Radiance, irradiance, étendue
+- **Conservation laws:** Radiance, étendue, Lagrange invariant
+- **Detector physics:** Photodiodes, CCD, CMOS, APD
+- **Noise analysis:** Shot, dark, read, FPN
+- **Performance metrics:** SNR, NEP, detectivity, dynamic range
+
+Understanding these fundamentals enables optimal system design for maximum sensitivity and image quality.
+

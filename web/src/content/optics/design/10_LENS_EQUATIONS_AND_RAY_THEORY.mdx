@@ -1,0 +1,367 @@
+---
+title: "Lens Equations and Ray Theory"
+slug: "design/10-lens-equations-and-ray-theory"
+category: "Design"
+---
+
+## Overview
+
+Ray theory provides the foundation for optical design. This module develops the mathematical framework for tracing rays through optical systems, from simple refraction at surfaces to complex multi-element lenses. We derive the fundamental equations governing lens behavior and introduce matrix methods for systematic analysis.
+
+## 10.1 The Geometry of Refraction
+
+### Snell's Law in Differential Form
+
+**Standard form:**
+$$n_1 \sin\theta_1 = n_2 \sin\theta_2$$
+
+**Vector form:** For a ray with direction vector $\hat{\mathbf{s}}$ incident on a surface with normal $\hat{\mathbf{n}}$:
+
+$$n_1 (\hat{\mathbf{s}}_1 \times \hat{\mathbf{n}}) = n_2 (\hat{\mathbf{s}}_2 \times \hat{\mathbf{n}})$$
+
+**Differential form:** For a continuous medium with $n(\mathbf{r})$:
+
+$$\frac{d}{ds}\left(n \frac{d\mathbf{r}}{ds}\right) = \nabla n$$
+
+This is the ray equation, derived from Fermat's principle.
+
+### Spherical Surface Ray Tracing
+
+For a spherical surface with radius of curvature $R$ (positive if center is to the right of vertex):
+
+**Paraxial approximation** (small angles, $\sin\theta \approx \theta$):
+
+$$\frac{n'}{s'} - \frac{n}{s} = \frac{n' - n}{R}$$
+
+where:
+- $s$ = object distance (positive if object to left of vertex)
+- $s'$ = image distance (positive if image to right of vertex)
+- $n$, $n'$ = refractive indices before and after surface
+- $R$ = radius of curvature (positive if center to right)
+
+**Sign convention:**
+- Light travels left to right
+- Distances measured from vertex
+- Heights positive upward
+- Angles positive counterclockwise from optical axis
+
+### Exact Ray Tracing (Non-Paraxial)
+
+For finite rays, we use vector ray tracing:
+
+**Surface equation** (sphere centered at origin):
+$$x^2 + y^2 + (z - R)^2 = R^2$$
+
+**Incident ray:** $\mathbf{r}_1 = \mathbf{r}_0 + t_1 \hat{\mathbf{s}}_1$
+
+**Intersection point:** Solve for $t_1$ where ray intersects surface.
+
+**Surface normal:**
+$$\hat{\mathbf{n}} = \frac{\mathbf{r}_I - R\hat{\mathbf{z}}}{|R|}$$
+
+**Refracted ray direction** (from vector Snell's law):
+$$\hat{\mathbf{s}}_2 = \frac{n_1}{n_2} \hat{\mathbf{s}}_1 + \left(\frac{n_1}{n_2} \cos\theta_1 - \cos\theta_2\right) \hat{\mathbf{n}}$$
+
+where $\cos\theta_1 = -\hat{\mathbf{s}}_1 \cdot \hat{\mathbf{n}}$ and $\cos\theta_2 = \sqrt{1 - (n_1/n_2)^2 \sin^2\theta_1}$.
+
+## 10.2 Thin & Thick Lens Equations
+
+### Thin Lens Equation
+
+A thin lens has negligible thickness. The lens equation is:
+
+$$\frac{1}{s'} - \frac{1}{s} = \frac{1}{f}$$
+
+where $f$ is the focal length.
+
+**Magnification:**
+$$M = \frac{y'}{y} = -\frac{s'}{s}$$
+
+**Lensmaker's Equation (Thin Lens):**
+
+For a lens with surfaces of radii $R_1$ and $R_2$:
+
+$$\frac{1}{f} = (n-1)\left(\frac{1}{R_1} - \frac{1}{R_2}\right)$$
+
+**Sign convention for radii:**
+- $R > 0$: convex toward object (center to right)
+- $R < 0$: concave toward object (center to left)
+- $R = \infty$: flat surface
+
+### Thick Lens: Principal Planes
+
+For a thick lens, we define **principal planes** $H_1$ and $H_2$:
+
+**Focal lengths:**
+$$f = \frac{n_0}{n} \frac{R_1 R_2}{(n-1)[n(R_2-R_1) + (n-1)t]}$$
+
+where $t$ is the lens thickness, $n$ is the lens index, $n_0$ is the surrounding medium index.
+
+**Principal plane locations:**
+
+Distance from first surface to $H_1$:
+$$h_1 = -f \frac{(n-1)t}{n R_2}$$
+
+Distance from second surface to $H_2$:
+$$h_2 = -f \frac{(n-1)t}{n R_1}$$
+
+**Thick lens equation:**
+$$\frac{1}{s'} - \frac{1}{s} = \frac{1}{f}$$
+
+where $s$ and $s'$ are measured from $H_1$ and $H_2$ respectively.
+
+### Lensmaker's Equation (Exact)
+
+For a thick lens with exact ray tracing:
+
+$$\frac{1}{f} = (n-1)\left[\frac{1}{R_1} - \frac{1}{R_2} + \frac{(n-1)t}{n R_1 R_2}\right]$$
+
+The paraxial approximation assumes $t \ll R_1, R_2$.
+
+### f-number and Numerical Aperture
+
+**f-number:**
+$$f/\# = \frac{f}{D}$$
+
+where $D$ is the entrance pupil diameter.
+
+**Numerical Aperture:**
+$$\text{NA} = n \sin\theta_{\text{max}}$$
+
+where $\theta_{\text{max}}$ is the maximum ray angle.
+
+**Relationship:**
+$$\text{NA} = \frac{1}{2(f/\#)} \quad \text{(in air, small angles)}$$
+
+For large angles:
+$$\text{NA} = \frac{1}{2\sqrt{(f/\#)^2 + 1}}$$
+
+### Entrance and Exit Pupils
+
+**Entrance pupil:** Image of the aperture stop as seen from object space.
+
+**Exit pupil:** Image of the aperture stop as seen from image space.
+
+**Pupil magnification:**
+$$m_p = \frac{D_{\text{exit}}}{D_{\text{entrance}}}$$
+
+**Location:** Found by tracing chief ray (through center of aperture stop).
+
+### Telecentricity
+
+**Object-space telecentric:** Entrance pupil at infinity. Chief rays parallel to optical axis in object space. Prevents magnification change with defocus.
+
+**Image-space telecentric:** Exit pupil at infinity. Chief rays parallel in image space. Prevents focus shift with detector position.
+
+**Double telecentric:** Both pupils at infinity. Constant magnification regardless of object/image position.
+
+## 10.3 Paraxial Matrix (ABCD) Methods
+
+### Ray Vector Representation
+
+A paraxial ray is represented by its height $y$ and angle $u$ (in radians):
+
+$$\mathbf{r} = \begin{pmatrix} y \\ u \end{pmatrix}$$
+
+### Free Space Propagation
+
+Propagation through distance $d$:
+
+$$\mathbf{M}_{\text{space}} = \begin{pmatrix} 1 & d \\ 0 & 1 \end{pmatrix}$$
+
+$$\begin{pmatrix} y' \\ u' \end{pmatrix} = \begin{pmatrix} 1 & d \\ 0 & 1 \end{pmatrix} \begin{pmatrix} y \\ u \end{pmatrix}$$
+
+### Refraction at Curved Interface
+
+For a surface with radius $R$ and refractive indices $n$, $n'$:
+
+$$\mathbf{M}_{\text{refract}} = \begin{pmatrix} 1 & 0 \\ -\frac{n'-n}{n'R} & \frac{n}{n'} \end{pmatrix}$$
+
+**Power of surface:**
+$$\phi = \frac{n'-n}{R}$$
+
+### Thin Lens
+
+For a thin lens with focal length $f$:
+
+$$\mathbf{M}_{\text{lens}} = \begin{pmatrix} 1 & 0 \\ -\frac{1}{f} & 1 \end{pmatrix}$$
+
+**Power:**
+$$P = \frac{1}{f}$$
+
+### Thick Lens
+
+A thick lens is a sequence: refraction → space → refraction:
+
+$$\mathbf{M}_{\text{thick}} = \mathbf{M}_{\text{refract},2} \mathbf{M}_{\text{space}}(t) \mathbf{M}_{\text{refract},1}$$
+
+After matrix multiplication:
+
+$$\mathbf{M}_{\text{thick}} = \begin{pmatrix} 1 - \frac{\phi_2 t}{n} & \frac{t}{n} \\ -\phi_1 - \phi_2 + \frac{\phi_1 \phi_2 t}{n} & 1 - \frac{\phi_1 t}{n} \end{pmatrix}$$
+
+where $\phi_1 = (n-n_1)/R_1$ and $\phi_2 = (n_2-n)/R_2$.
+
+### System Matrix
+
+For a system with $N$ elements:
+
+$$\mathbf{M}_{\text{sys}} = \mathbf{M}_N \mathbf{M}_{N-1} \cdots \mathbf{M}_2 \mathbf{M}_1$$
+
+### Effective Focal Length
+
+From the system matrix:
+
+$$\mathbf{M}_{\text{sys}} = \begin{pmatrix} A & B \\ C & D \end{pmatrix}$$
+
+**Effective focal length:**
+$$f_{\text{eff}} = -\frac{1}{C}$$
+
+**Back focal length (BFL):** Distance from last surface to rear focal point:
+$$\text{BFL} = -\frac{A}{C}$$
+
+**Front focal length (FFL):** Distance from first surface to front focal point:
+$$\text{FFL} = \frac{D}{C}$$
+
+**Principal plane locations:**
+
+Distance from first surface to $H_1$:
+$$h_1 = \frac{1-D}{C}$$
+
+Distance from last surface to $H_2$:
+$$h_2 = \frac{A-1}{C}$$
+
+### Object-Image Relationship
+
+For object at distance $s$ from $H_1$ and image at $s'$ from $H_2$:
+
+$$\mathbf{M}_{\text{total}} = \mathbf{M}_{\text{space}}(s') \mathbf{M}_{\text{sys}} \mathbf{M}_{\text{space}}(s)$$
+
+For imaging, the $(1,1)$ element must be zero (ray height independent of input angle):
+
+$$s' = \frac{As + B}{Cs + D}$$
+
+This yields the lens equation when $s'$ is expressed in terms of $s$.
+
+## 10.4 Gaussian Beam Propagation
+
+### Complex Beam Parameter
+
+**Complex beam parameter:**
+$$q(z) = z + i z_R$$
+
+where $z_R$ is the Rayleigh range.
+
+**Rayleigh range:**
+$$z_R = \frac{\pi w_0^2}{\lambda}$$
+
+where $w_0$ is the beam waist radius.
+
+### Beam Width
+
+**Beam radius:**
+$$w(z) = w_0 \sqrt{1 + \left(\frac{z}{z_R}\right)^2}$$
+
+**Beam divergence (far field):**
+$$\theta = \frac{\lambda}{\pi w_0}$$
+
+### Radius of Curvature
+
+**Wavefront radius:**
+$$R(z) = z\left(1 + \left(\frac{z_R}{z}\right)^2\right)$$
+
+At the waist: $R(0) = \infty$ (plane wavefront).
+
+### Gouy Phase
+
+**Phase shift:**
+$$\psi(z) = \arctan\left(\frac{z}{z_R}\right)$$
+
+**Total phase:**
+$$\phi(z) = kz - \psi(z)$$
+
+### ABCD Transformation of Gaussian Beams
+
+**Input beam parameter:**
+$$\frac{1}{q_1} = \frac{1}{R_1} - i \frac{\lambda}{\pi w_1^2}$$
+
+**Output beam parameter:**
+$$q_2 = \frac{A q_1 + B}{C q_1 + D}$$
+
+**Extract new parameters:**
+$$\frac{1}{q_2} = \frac{1}{R_2} - i \frac{\lambda}{\pi w_2^2}$$
+
+### Beam Waist Transformation
+
+For a lens with focal length $f$:
+
+**New waist location:**
+$$z_2' = f + \frac{(z_1 - f) f^2}{(z_1 - f)^2 + z_{R1}^2}$$
+
+**New waist size:**
+$$w_{02} = \frac{w_{01} f}{\sqrt{(z_1 - f)^2 + z_{R1}^2}}$$
+
+**Matching condition:** To collimate a beam (infinite $z_{R2}$), place the lens one focal length from the waist: $z_1 = f$.
+
+## 10.5 Optical Materials
+
+### Sellmeier Coefficients
+
+Most glasses are characterized by Sellmeier coefficients (see Module 00). Typical values:
+- **BK7:** $B_1 = 1.0396$, $C_1 = 0.0060$ μm², etc.
+- **SF11 (flint):** Higher dispersion, more resonances
+
+### Abbe Number
+
+**Abbe number (V-number):**
+$$V_d = \frac{n_d - 1}{n_F - n_C}$$
+
+where:
+- $n_d$ = index at 587.6 nm (helium d-line)
+- $n_F$ = index at 486.1 nm (hydrogen F-line)
+- $n_C$ = index at 656.3 nm (hydrogen C-line)
+
+**Classification:**
+- **Crown glasses:** $V_d > 50$ (low dispersion)
+- **Flint glasses:** $V_d < 50$ (high dispersion)
+
+### Partial Dispersion
+
+**Partial dispersion:**
+$$P_{g,F} = \frac{n_g - n_F}{n_F - n_C}$$
+
+where $n_g$ is the index at 435.8 nm (mercury g-line).
+
+**Abbe diagram:** Plot of $n_d$ vs. $V_d$ for glass catalog. Allows selection of glass pairs for achromatization.
+
+### Thermal Effects
+
+**Thermal expansion coefficient:** $\alpha$ (typically $5-10 \times 10^{-6}$ K⁻¹ for glasses)
+
+**Thermo-optic coefficient:** $\frac{dn}{dT}$ (typically $1-10 \times 10^{-6}$ K⁻¹)
+
+**Thermal lensing:** In a rod of length $L$ with uniform heating:
+
+$$\Delta f = \frac{1}{(n-1)\alpha + \frac{dn}{dT}} \frac{L}{2}$$
+
+**Athermal design:** Choose materials so that:
+$$(n-1)\alpha + \frac{dn}{dT} = 0$$
+
+### Material Selection
+
+**Crown-Flint pairs:** For achromats, choose glasses with:
+- Different $V_d$ (one crown, one flint)
+- Similar partial dispersion (for apochromats)
+- Compatible thermal properties (for athermalization)
+
+**Example:** BK7 ($V_d = 64.2$) + F2 ($V_d = 36.4$) for achromatic doublet.
+
+## Summary
+
+Ray theory provides:
+- **Paraxial design:** First-order layout using matrix methods
+- **Exact ray tracing:** Non-paraxial analysis for aberration calculation
+- **Gaussian beams:** Laser beam propagation through optical systems
+- **Material properties:** Dispersion, thermal effects, glass selection
+
+These tools enable systematic design of lens systems, from simple singlets to complex multi-element objectives.
+

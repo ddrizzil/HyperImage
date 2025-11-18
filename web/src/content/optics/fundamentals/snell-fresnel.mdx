@@ -1,0 +1,212 @@
+---
+title: "Snell's Law, Fresnel Equations, & Total Internal Reflection"
+slug: "snell-fresnel"
+category: "Fundamentals"
+---
+
+## Overview
+
+When light encounters an interface between two media, it reflects and refracts. Snell's law describes the refraction angle, while Fresnel equations give the reflection and transmission coefficients. When light travels from a high-index to low-index medium, total internal reflection (TIR) can occur, confining light—the basis for optical fibers and waveguides.
+
+## Governing Equations
+
+### Snell's Law
+
+$$n_1 \sin\theta_1 = n_2 \sin\theta_2$$
+
+where $n_1$, $n_2$ are refractive indices and $\theta_1$, $\theta_2$ are angles from normal.
+
+### Fresnel Equations
+
+**Reflection coefficient (s-polarization, E perpendicular to plane of incidence):**
+
+$$r_s = \frac{n_1 \cos\theta_1 - n_2 \cos\theta_2}{n_1 \cos\theta_1 + n_2 \cos\theta_2}$$
+
+**Reflection coefficient (p-polarization, E parallel to plane of incidence):**
+
+$$r_p = \frac{n_2 \cos\theta_1 - n_1 \cos\theta_2}{n_2 \cos\theta_1 + n_1 \cos\theta_2}$$
+
+**Transmission coefficients:**
+
+$$t_s = \frac{2n_1 \cos\theta_1}{n_1 \cos\theta_1 + n_2 \cos\theta_2}$$
+
+$$t_p = \frac{2n_1 \cos\theta_1}{n_2 \cos\theta_1 + n_1 \cos\theta_2}$$
+
+### Reflectance and Transmittance
+
+**Power reflectance:**
+$$R_s = |r_s|^2, \quad R_p = |r_p|^2$$
+
+**Power transmittance:**
+$$T_s = \frac{n_2 \cos\theta_2}{n_1 \cos\theta_1} |t_s|^2, \quad T_p = \frac{n_2 \cos\theta_2}{n_1 \cos\theta_1} |t_p|^2$$
+
+Energy conservation: $R + T = 1$ (for lossless media).
+
+### Brewster's Angle
+
+At Brewster's angle, p-polarized light has zero reflection:
+
+$$\tan\theta_B = \frac{n_2}{n_1}$$
+
+Only s-polarization reflects, creating polarized light.
+
+### Critical Angle (Total Internal Reflection)
+
+When $n_1 > n_2$ and $\theta_1$ exceeds:
+
+$$\theta_c = \arcsin\left(\frac{n_2}{n_1}\right)$$
+
+All light reflects (TIR), with no transmitted wave.
+
+## Physical Intuition
+
+### Snell's Law
+
+Light "bends" at interfaces because the phase velocity changes. The component of wave vector parallel to the interface must be continuous (boundary condition), leading to:
+
+$$k_{1,\parallel} = k_{2,\parallel}$$
+
+Since $k = n\omega/c$ and $k_\parallel = k\sin\theta$:
+
+$$n_1 \sin\theta_1 = n_2 \sin\theta_2$$
+
+Light bends toward the normal when entering a higher-index medium.
+
+### Fresnel Equations
+
+The reflection and transmission amplitudes depend on:
+- **Polarization**: s and p polarizations behave differently
+- **Angle**: At normal incidence, $r_s = r_p$; at grazing, reflection → 1
+- **Index contrast**: Larger $n_2/n_1$ → more reflection
+
+### Total Internal Reflection
+
+When $\theta_1 > \theta_c$, Snell's law would require $\sin\theta_2 > 1$, which is impossible. Instead:
+- All light reflects (100% reflectance)
+- An evanescent wave exists in medium 2, decaying exponentially
+- No power is transmitted (perfect confinement)
+
+## Derivations
+
+### Deriving Snell's Law
+
+From boundary conditions, the tangential component of electric field is continuous:
+
+$$E_{1,t} = E_{2,t}$$
+
+For a plane wave $E = E_0 e^{i(\mathbf{k} \cdot \mathbf{r} - \omega t)}$, the phase must match at the interface:
+
+$$k_{1,x} x + k_{1,z} z = k_{2,x} x + k_{2,z} z$$
+
+For all $x$ along the interface, $k_{1,x} = k_{2,x}$:
+
+$$k_1 \sin\theta_1 = k_2 \sin\theta_2$$
+
+Since $k = n\omega/c$:
+
+$$n_1 \sin\theta_1 = n_2 \sin\theta_2$$
+
+### Deriving Fresnel Equations
+
+Apply boundary conditions at $z = 0$:
+1. Tangential E continuous: $E_{1,t} + E_{r,t} = E_{t,t}$
+2. Tangential H continuous: $H_{1,t} + H_{r,t} = H_{t,t}$
+
+For s-polarization ($E$ perpendicular to plane):
+- $E$ parallel to interface
+- $H$ has components normal and parallel
+
+Solving yields $r_s$ and $t_s$. Similar process for p-polarization.
+
+### Critical Angle Derivation
+
+From Snell's law: $\sin\theta_2 = (n_1/n_2)\sin\theta_1$
+
+When $\theta_1 = \theta_c$, $\theta_2 = 90°$:
+
+$$\sin\theta_c = \frac{n_2}{n_1}$$
+
+For $\theta_1 > \theta_c$, $\sin\theta_2 > 1$, so $\theta_2$ becomes complex (evanescent wave).
+
+## Example Problems
+
+### Example 1: Refraction Angle
+
+**Problem:** Light in air ($n_1 = 1.0$) hits glass ($n_2 = 1.5$) at $30°$. Find refraction angle.
+
+**Solution:**
+$$\sin\theta_2 = \frac{n_1}{n_2}\sin\theta_1 = \frac{1.0}{1.5} \sin(30°) = \frac{1}{3}$$
+
+$$\theta_2 = \arcsin(1/3) = 19.5°$$
+
+Light bends toward normal.
+
+### Example 2: Reflectance at Normal Incidence
+
+**Problem:** Calculate reflectance for air–glass interface at normal incidence.
+
+**Solution:**
+At normal incidence, $\theta_1 = \theta_2 = 0$:
+
+$$r = \frac{n_1 - n_2}{n_1 + n_2} = \frac{1.0 - 1.5}{1.0 + 1.5} = -0.2$$
+
+$$R = |r|^2 = 0.04 = 4\%$$
+
+About 4% of light reflects (Fresnel reflection).
+
+### Example 3: Critical Angle
+
+**Problem:** Find critical angle for glass ($n = 1.5$) to air ($n = 1.0$).
+
+**Solution:**
+$$\theta_c = \arcsin\left(\frac{1.0}{1.5}\right) = \arcsin(0.667) = 41.8°$$
+
+For angles > 41.8°, TIR occurs.
+
+### Example 4: Brewster's Angle
+
+**Problem:** Calculate Brewster's angle for air–glass interface.
+
+**Solution:**
+$$\theta_B = \arctan\left(\frac{1.5}{1.0}\right) = \arctan(1.5) = 56.3°$$
+
+At this angle, p-polarized light has zero reflection.
+
+## Advanced Extensions
+
+### Evanescent Waves
+
+In TIR, the transmitted field in medium 2 is:
+
+$$E_2 = E_0 e^{i(k_{2,x} x - \omega t)} e^{-\alpha z}$$
+
+where $\alpha = k_1 \sqrt{\sin^2\theta_1 - (n_2/n_1)^2}$ is the decay constant. This evanescent wave:
+- Decays exponentially with distance
+- Carries no net power (purely reactive)
+- Enables near-field coupling (frustrated TIR)
+
+### Frustrated Total Internal Reflection
+
+If a second high-index medium is placed within the evanescent field decay length, light can tunnel through, enabling:
+- Optical couplers
+- Variable attenuators
+- Quantum tunneling experiments
+
+### Goos–Hänchen Shift
+
+In TIR, the reflected beam is laterally shifted (Goos–Hänchen effect) due to the finite penetration of the evanescent wave. The shift is:
+
+$$\Delta x = \frac{\lambda}{\pi} \frac{\tan\theta_1}{\sqrt{\sin^2\theta_1 - (n_2/n_1)^2}}$$
+
+## References
+
+- Born, M. & Wolf, E. "Principles of Optics" - Chapter 1.5 (Fresnel equations)
+- Hecht, E. "Optics" - Snell's law and reflection
+- Saleh, B.E.A. & Teich, M.C. "Fundamentals of Photonics" - TIR and waveguides
+
+## Related Pages
+
+- [Complex Refractive Index](/optics/fundamentals/complex-refractive-index)
+- [Waveguides & Photonic Crystals](/optics/materials/waveguides-photonic-crystals)
+- [Thin Films & Interference Coatings](/optics/materials/thin-films-interference)
+

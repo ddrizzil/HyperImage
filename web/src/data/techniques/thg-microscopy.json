@@ -1,0 +1,393 @@
+{
+  "id": "thg-microscopy",
+  "name": "Third Harmonic Generation (THG) Microscopy",
+  "acronym": "THG",
+  "category": "Nonlinear Optical Microscopy",
+  "subcategory": "Harmonic Generation Imaging",
+  "summary": "Third harmonic generation microscopy is a label-free nonlinear optical technique that generates contrast from optical interfaces and heterogeneities by converting three incident photons of frequency ω into a single photon at frequency 3ω. Unlike SHG which requires non-centrosymmetric structures, THG occurs at refractive index discontinuities and is sensitive to layer boundaries, lipid interfaces, and material inhomogeneities. In cultural heritage, THG reveals varnish-paint interfaces, layer structures in cross-sections, oil droplets in binding media, and interfaces between different pigment layers, all without staining or sample damage.",
+  "keyApplications": [
+    "Mapping varnish-paint layer interfaces in cross-sections",
+    "Detecting oil droplets and lipid-rich regions in paint binding media",
+    "Visualizing layer boundaries in multi-layer paint structures",
+    "Imaging refractive index variations in degraded varnishes",
+    "Characterizing pigment-binder interfaces and particle boundaries",
+    "Revealing restoration layer interfaces (overpaint, consolidants)",
+    "3D imaging of material inhomogeneities in transparent layers",
+    "Complementing SHG to provide complete structural information"
+  ],
+  "destructiveness": "non-destructive",
+  "portability": "laboratory-only",
+  "fundamentalPhysics": {
+    "principle": "THG is a third-order nonlinear optical process where three photons of the same frequency (ω) interact simultaneously with a material to generate a single photon at exactly three times the frequency (3ω, one-third the wavelength). Unlike SHG, THG does not require broken inversion symmetry - it occurs in all materials but is strongest at interfaces where the third-order susceptibility χ⁽³⁾ or refractive index changes abruptly. THG is a parametric process (no energy absorbed), coherent (phase-dependent), and provides intrinsic 3D sectioning. The signal is generated primarily at optical interfaces, making THG an excellent 'interface detector' complementary to SHG's 'structure detector' role.",
+    "physicalPhenomenon": "THG arises from the third-order nonlinear susceptibility χ⁽³⁾, which is non-zero in all materials (including centrosymmetric ones). In homogeneous media, forward and backward THG interfere destructively (Gouy phase shift), resulting in no net signal. However, at interfaces where χ⁽³⁾ or refractive index n changes, this destructive interference is broken, producing strong THG. Key sources: (1) Refractive index boundaries (varnish-air, varnish-paint, paint layers). (2) Lipid droplets (spherical interfaces, high χ⁽³⁾ contrast). (3) Organelles and membranes in biological materials. (4) Pigment particle boundaries. THG signal scales as (intensity)³, requiring even higher peak powers than SHG.",
+    "equations": [
+      {
+        "latex": "$$P^{(3)}(3\\omega) = \\epsilon_0 \\chi^{(3)} E^3(\\omega)$$",
+        "description": "Third-Order Nonlinear Polarization",
+        "variables": [
+          {"symbol": "P^{(3)}(3\\omega)", "meaning": "induced polarization at third harmonic frequency", "units": "C/m²"},
+          {"symbol": "\\epsilon_0", "meaning": "permittivity of free space", "units": "8.854 × 10⁻¹² F/m"},
+          {"symbol": "\\chi^{(3)}", "meaning": "third-order nonlinear susceptibility", "units": "m²/V²"},
+          {"symbol": "E(\\omega)", "meaning": "electric field amplitude at fundamental frequency", "units": "V/m"}
+        ]
+      },
+      {
+        "latex": "$$I_{THG} \\propto (I_\\omega)^3 \\cdot (\\chi^{(3)})^2 \\cdot \\left(\\frac{\\partial n}{\\partial z}\\right)^2$$",
+        "description": "THG Intensity at Interface (simplified)",
+        "variables": [
+          {"symbol": "I_{THG}", "meaning": "third harmonic intensity", "units": "W/cm²"},
+          {"symbol": "I_\\omega", "meaning": "fundamental beam intensity", "units": "W/cm²"},
+          {"symbol": "\\chi^{(3)}", "meaning": "third-order susceptibility", "units": "m²/V²"},
+          {"symbol": "\\frac{\\partial n}{\\partial z}", "meaning": "refractive index gradient along propagation axis", "units": "μm⁻¹"}
+        ]
+      },
+      {
+        "latex": "$$\\lambda_{THG} = \\frac{\\lambda_{exc}}{3}$$",
+        "description": "Wavelength Conversion",
+        "variables": [
+          {"symbol": "\\lambda_{THG}", "meaning": "third harmonic wavelength", "units": "nm"},
+          {"symbol": "\\lambda_{exc}", "meaning": "excitation wavelength", "units": "nm"}
+        ]
+      },
+      {
+        "latex": "$$z_{Gouy} = \\frac{\\pi w_0^2}{\\lambda}$$",
+        "description": "Gouy Phase Shift Length (confocal parameter)",
+        "variables": [
+          {"symbol": "z_{Gouy}", "meaning": "Gouy phase shift length (Rayleigh range)", "units": "μm"},
+          {"symbol": "w_0", "meaning": "beam waist radius at focus", "units": "μm"},
+          {"symbol": "\\lambda", "meaning": "wavelength", "units": "nm"}
+        ]
+      },
+      {
+        "latex": "$$\\Delta k = k_{3\\omega} - 3k_\\omega \\approx \\frac{3\\omega}{c}(n_{3\\omega} - n_\\omega)$$",
+        "description": "Phase Mismatch",
+        "variables": [
+          {"symbol": "\\Delta k", "meaning": "wave vector mismatch", "units": "rad/μm"},
+          {"symbol": "k_{3\\omega}", "meaning": "wave vector at third harmonic", "units": "rad/μm"},
+          {"symbol": "k_\\omega", "meaning": "wave vector at fundamental", "units": "rad/μm"},
+          {"symbol": "\\omega", "meaning": "angular frequency", "units": "rad/s"},
+          {"symbol": "c", "meaning": "speed of light", "units": "3 × 10⁸ m/s"},
+          {"symbol": "n_{3\\omega}", "meaning": "refractive index at THG wavelength", "units": "dimensionless"},
+          {"symbol": "n_\\omega", "meaning": "refractive index at fundamental wavelength", "units": "dimensionless"}
+        ]
+      }
+    ],
+    "interactionDepth": "THG penetration depth is similar to SHG, limited by scattering of NIR excitation light and absorption at the UV/visible THG wavelength. Typical depth: 50-200 μm in biological tissues; potentially deeper in transparent materials. Forward-detected THG probes thicker samples. Epi-detected THG limited to ~50-100 μm by THG photon absorption during return path. Varnish layers (transparent): 100-300 μm penetration possible, THG detects upper and lower interfaces; internal bubbles and inhomogeneities. Paint cross-sections: 50-200 μm typical, each layer interface produces THG; stack multiple layers visible. Oil paint binding media: 30-100 μm, THG from oil droplets and pigment-binder interfaces. Resin-embedded samples: 100-300 μm, excellent THG from original material-resin boundary. Pigment particles: Surface to ~100 μm, THG at particle edges where refractive index changes.",
+    "spatialResolution": "Lateral Resolution: 0.3-0.5 μm (diffraction-limited; similar to SHG, depends on NA and excitation wavelength). Depth Resolution: 0.8-2 μm axial resolution (intrinsic 3D sectioning from nonlinear I³ dependence). Limiting factors: Numerical aperture of objective (higher NA = better resolution), Excitation wavelength (typically 1200-1300 nm for THG to avoid UV damage at THG wavelength), Scattering in sample (reduces resolution at depth), Pulse width (femtosecond pulses required; THG needs shorter pulses than SHG), Signal-to-noise ratio (THG generally weaker than SHG).",
+    "detectionLimit": "Single lipid droplet detectable (~0.5-1 μm diameter); refractive index change Δn ≥ 0.01 at interfaces. Dynamic range: 10³-10⁴ (limited by detector and laser power range). Signal-to-noise: SNR 10-50:1 typical for interfaces in heritage materials; lower than SHG due to weaker signal."
+  },
+  "instrumentation": {
+    "source": "Mode-locked femtosecond pulsed laser (Ti:Sapphire, OPO, or fiber laser). 80-100 MHz repetition rate; 50-150 fs pulse duration; tunable 1000-1600 nm (longer λ than SHG). Excitation: 1200-1300 nm typical (THG at 400-433 nm, visible blue); NIR avoids UV generation issues. Average power at sample: 20-100 mW (higher than SHG due to I³ dependence; peak power: 20-200 kW). Gaussian TEM₀₀ mode; linearly polarized typically; <1 nm bandwidth.",
+    "detector": "Photomultiplier tube (PMT) with UV-blue sensitivity, Hybrid detector (GaAsP), or Silicon PMT for high QE. Sensitive to 350-550 nm (third harmonic is in UV-visible range). Efficiency: PMT 15-40% QE at THG wavelengths (400-450 nm); Hybrid 30-50% QE; Si-PMT 40-60% QE. Time resolution: Nanosecond for photon counting; gated detection to reduce background.",
+    "optics": "Scan mirrors (galvanometer or resonant scanners), High-NA objective (1.0-1.4 NA, oil or water immersion), Dichroic mirrors (separate NIR excitation from UV-vis THG), Bandpass filters (THG wavelength isolation, block residual excitation), Beam expander for back-aperture filling, Dispersion compensation (for shorter pulses at sample). Beam path: Laser → dispersion precompensation → beam expander → scan mirrors → scan/tube lens → dichroic → objective → sample. THG collected epi (through objective) or forward (transmission detector). Diffraction-limited tight focus via high-NA objective; focal volume ~0.3 femtoliters.",
+    "criticalComponents": [
+      "Femtosecond laser with <150 fs pulses at sample (shorter than SHG)",
+      "High-NA objective lens (60-100×, NA 1.0-1.4); achromatic over NIR-visible range",
+      "Short-pass dichroic beamsplitter (reflects 1200+ nm NIR, transmits <500 nm THG)",
+      "Narrow bandpass filter centered at λ_exc/3 (e.g., 400-420 nm for 1200 nm excitation)",
+      "Dispersion compensation optics (prism pair or chirped mirrors)",
+      "Non-descanned detection path (PMT close to objective for max collection)",
+      "UV-compatible optics (lens coatings, filters) for <400 nm THG wavelengths",
+      "Environmental chamber (humidity control for hygroscopic samples)"
+    ],
+    "typicalConfiguration": "**Standard THG microscope:** Same platform as SHG - laser-scanning confocal microscope adapted for multiphoton. OPO laser (1200 nm, 100 fs, 80 MHz) or Ti:Sapphire at longer wavelength. Sample on motorized stage with Z-piezo. Epi-detection: PMT after objective, non-descanned. Forward detection: transmission PMT with high-NA condenser. Bandpass filter 390-430 nm for 1200 nm excitation (400 nm THG). Dispersion compensation critical - verify pulses <150 fs at sample focus.",
+    "commercialSystems": [
+      {
+        "name": "TCS SP8 DIVE multiphoton",
+        "vendor": "Leica Microsystems",
+        "notes": "Multiphoton platform with THG capability, OPO tunable 1000-1600 nm, spectral detection, FLIM. Approximate cost: $600,000-$800,000. URL: https://www.leica-microsystems.com"
+      },
+      {
+        "name": "LSM 980 with OPO",
+        "vendor": "Zeiss",
+        "notes": "Confocal/multiphoton, tunable OPO, Airyscan detector, THG/SHG/TPEF simultaneous. Approximate cost: $550,000-$750,000. URL: https://www.zeiss.com/microscopy"
+      },
+      {
+        "name": "FVMPE-RS with IR laser",
+        "vendor": "Olympus (Evident)",
+        "notes": "Multiphoton resonant scanner, 25× water objective (NA 1.05), THG optimized. Approximate cost: $450,000-$650,000. URL: https://www.olympus-lifescience.com"
+      },
+      {
+        "name": "picoEmerald + scanhead",
+        "vendor": "APE (Angewandte Physik & Elektronik)",
+        "notes": "Integrated OPO (1000-1600 nm) with scan head for THG/CARS; compact system. Approximate cost: $300,000-$500,000. URL: https://www.ape-berlin.de"
+      },
+      {
+        "name": "InSight DeepSee OPO",
+        "vendor": "Spectra-Physics (MKS)",
+        "notes": "Tunable 680-1300 nm, dispersion precompensation, automated alignment. Approximate cost: $200,000 (laser only); $400,000+ complete system. URL: https://www.spectra-physics.com"
+      }
+    ]
+  },
+  "methodology": {
+    "samplePreparation": [
+      "Sampling required: 50 μm - 1 mm thickness; micro-samples or thin cross-sections ideal",
+      "Mount sample on glass coverslip (No. 1.5, 170 μm) or slide. For paint cross-sections: standard resin embedding and polishing (10-30 μm thickness)",
+      "Use immersion medium matching objective (oil n=1.518 or water n=1.33). Minimize air bubbles which produce strong THG artifacts",
+      "Clean coverslip thoroughly (THG very sensitive to glass surface quality)",
+      "Polish cross-sections to optical quality. Ensure flat mounting for consistent focal plane",
+      "Standard embedding (epoxy, polyester resin) excellent - resin-paint interfaces produce strong THG. Polish to 1 μm grit minimum. Thickness 10-50 μm ideal for transmission THG",
+      "Avoid dust and debris on coverslip (produces spurious THG at glass-air interfaces)",
+      "Air bubbles in mounting medium create bright THG artifacts",
+      "Scratches on polished surface generate THG (mask real features)",
+      "UV-absorbing mounting media reduce THG signal (choose carefully)"
+    ],
+    "measurementProtocol": "**STEP 1: Laser Optimization and Dispersion Compensation (60-90 minutes)**\n- Power on OPO or Ti:Sapphire laser; stabilize 45-60 minutes. Tune to 1200-1300 nm (typical for THG)\n- Measure pulse width at sample focus using autocorrelator - critical to verify <150 fs\n- Adjust dispersion compensation (prism/grating compressor) to minimize pulse width\n- Set average power 30-80 mW at sample\n- Critical parameters: Pulse width <150 fs at sample, Stable mode-lock, Power 30-80 mW average\n\n**STEP 2: Sample Mounting and Objective Selection (10-15 minutes)**\n- Place cross-section or micro-sample on microscope stage\n- Add immersion medium (oil or water) to objective\n- Select high-NA objective (60-100×, NA 1.0-1.4) with good UV transmission\n- Focus on sample using transmitted light or low-power THG signal\n- Verify immersion contact is bubble-free\n- Critical parameters: No air bubbles in optical path, Sample within objective working distance\n\n**STEP 3: Detector Configuration for THG (10 minutes)**\n- Install bandpass filter for λ_exc/3 (e.g., 400 ± 15 nm for 1200 nm excitation)\n- Use broader filter than SHG due to possible spectral broadening from self-phase modulation\n- Set PMT gain 600-850 V\n- Block residual NIR with short-pass dichroic and filters\n- Configure non-descanned detection for maximum collection efficiency\n- Critical parameters: Filter centered at λ/3, No excitation bleed-through, PMT not saturated\n\n**STEP 4: Initial Survey and Interface Location (5-10 minutes)**\n- Perform wide-field scan at low power (<20 mW) to locate THG-active interfaces\n- In cross-sections: varnish-paint, paint-ground, and inter-layer boundaries should appear as bright lines\n- Identify regions of interest for high-resolution imaging\n- THG highlights all refractive index changes\n- Critical parameters: Sufficient signal to see interfaces, No detector saturation on bright interfaces\n\n**STEP 5: Parameter Optimization for THG (15-30 minutes)**\n- THG requires higher power than SHG (I³ vs. I² dependence)\n- Optimize laser power, scan speed (0.5-3 Hz frame rate), pixel dwell time (2-10 μs), and frame averaging (4-16 frames) for best SNR\n- THG signal weaker than SHG, so longer averaging often needed\n- Balance signal vs. potential photodamage (test repeated scans)\n- Critical parameters: SNR >10:1 at interfaces, No pixel saturation, No sample photodamage\n\n**STEP 6: High-Resolution 2D Interface Imaging (3-10 minutes per field)**\n- Acquire 512×512 or 1024×1024 images of layer structures\n- THG appears as bright lines at interfaces, dark in homogeneous regions\n- Scan multiple regions to map entire cross-section\n- Save as 16-bit TIFF. Typical pixel size 0.1-0.3 μm (Nyquist sampling)\n- Critical parameters: Interface features clearly resolved, Consistent laser power across scan\n\n**STEP 7: 3D Z-Stack Acquisition (Optional, 20-60 minutes per stack)**\n- For volumetric imaging, acquire Z-series through sample thickness\n- Step size 0.5-1 μm\n- Depth range: 20-100 μm depending on sample transparency and scattering\n- THG from multiple interfaces at different depths creates 3D layer map\n- Use Z-piezo for precise control\n- Critical parameters: Sufficient overlap between planes, Signal maintained throughout depth range\n\n**STEP 8: Combined SHG/THG Imaging (Highly Recommended, same as single-modality scan)**\n- If system has both SHG and THG detection, acquire simultaneously\n- Use 800-900 nm excitation to generate both SHG (400-450 nm) and THG (267-300 nm)\n- Separate channels with dichroics and filters\n- THG shows interfaces; SHG shows collagen/crystalline structures\n- Complementary information in single scan\n- Critical parameters: Spectral separation of SHG and THG, No channel crosstalk",
+    "typicalParameters": [
+      {
+        "parameter": "Excitation wavelength",
+        "value": "1200-1300 nm",
+        "notes": "Range: 1000-1600 nm. Longer λ than SHG; 1200 nm gives 400 nm THG (visible blue); 1300 nm → 433 nm"
+      },
+      {
+        "parameter": "Average laser power (at sample)",
+        "value": "30-80 mW",
+        "notes": "Range: 20-150 mW. Higher than SHG due to I³ dependence; balance signal vs. damage"
+      },
+      {
+        "parameter": "Pulse width (at sample)",
+        "value": "80-150 fs",
+        "notes": "Range: 50-200 fs. Shorter pulses than SHG preferred; dispersion compensation critical"
+      },
+      {
+        "parameter": "Repetition rate",
+        "value": "80 MHz",
+        "notes": "Range: 10-100 MHz. Standard Ti:Sapphire or OPO"
+      },
+      {
+        "parameter": "Objective NA",
+        "value": "1.0-1.4",
+        "notes": "Range: 0.8-1.5. High NA essential for THG; improves both excitation and collection"
+      },
+      {
+        "parameter": "Pixel dwell time",
+        "value": "3-10 μs",
+        "notes": "Range: 1-20 μs. Longer than SHG due to weaker signal; balance SNR vs. acquisition time"
+      },
+      {
+        "parameter": "PMT gain",
+        "value": "650-850 V",
+        "notes": "Range: 500-950 V. Higher than SHG; THG typically weaker signal"
+      },
+      {
+        "parameter": "Frame averaging",
+        "value": "8-16 frames",
+        "notes": "Range: 2-32 frames. More averaging than SHG often needed"
+      }
+    ],
+    "calibration": "**Standards used:** Coverslip-water interface (standard THG reference - always produces signal), Polystyrene beads in water (spherical interface, consistent THG), Layered resin-embedded test sample (known interface structure), Quartz-water interface (stable reference).\n\n**Frequency:** Daily: verify THG at coverslip interface. Weekly: intensity calibration with bead sample. Quarterly: full system characterization.\n\n**Procedure:** THG intensity calibration: measure THG signal at coverslip-water interface vs. laser power; verify cubic dependence (I_THG ∝ I_laser³). Spatial calibration: image calibration grid or known layer thicknesses in cross-sections.",
+    "qualityControl": [
+      "Pulse width <150 fs verified at sample focus (autocorrelation)",
+      "THG signal cubic dependence on excitation power confirmed",
+      "No excitation light leakage to detector (test with THG filter removed)",
+      "Coverslip-immersion interface produces expected THG (system check)",
+      "Spatial resolution verified with sharp interfaces (<0.5 μm width)",
+      "No photodamage visible in repeated scans of same region",
+      "Common artifacts: Coverslip surface defects producing spurious THG (scratches, dust), Air bubbles creating intense THG spots (mask real features), Self-phase modulation broadening THG spectrum (from excessive power), Motion artifacts from sample/stage drift during long scans, Chromatic aberration (focus shift between NIR excitation and UV-vis THG), Two-photon or three-photon excited fluorescence overlapping THG wavelength",
+      "Troubleshooting: No THG signal detected (verify laser tuned correctly; check filter at λ/3; focus on known interface (coverslip); verify femtosecond pulses; check mode-lock), Very weak THG signal (increase power (check damage threshold); optimize dispersion compensation; verify TEM00 mode; test with reference interface), Saturated spots (bright artifacts) (clean optics; remove bubbles; reduce power; check PMT gain not too high), Signal decreases rapidly with depth (use forward detection; limit depth to <100 μm; use dispersion-corrected objective; match refractive index), Broad THG spectrum (not at λ/3) (reduce laser power; use larger beam; verify no self-focusing in optics)"
+    ]
+  },
+  "dataAnalysis": {
+    "rawDataFormat": "**File Formats:** 16-bit TIFF (single images), Multi-page TIFF (Z-stacks), Proprietary formats (.czi, .lif, .oib).\n\n**Data Structure:** 2D grayscale images or 3D volumes; pixel intensity represents THG photon counts at interfaces.\n\n**Typical File Sizes:** 2-10 MB per 512×512 image; 100-500 MB per Z-stack.",
+    "preprocessing": [
+      "Background subtraction: Subtract dark current and electronic noise. Measure background with laser blocked or in sample-free region. Software: ImageJ, MATLAB",
+      "Coverslip artifact removal: THG from coverslip surface appears in every image. Identify z-position of glass-sample interface; exclude from analysis or note as reference. Software: Custom scripts",
+      "Median filtering: Reduce shot noise. Use 3×3 median filter. THG images often noisier than SHG (weaker signal). Software: ImageJ",
+      "Interface enhancement (optional): Apply edge detection or unsharp mask to emphasize interfaces. Sobel or Laplacian filters highlight THG lines. Software: ImageJ, MATLAB",
+      "Intensity normalization for depth: Correct signal attenuation with depth in Z-stacks. Exponential correction or reference-based normalization. Software: MATLAB, Python"
+    ],
+    "analysisWorkflow": "**STEP 1: Image Quality Assessment**\n- Load THG images. Check for artifacts (saturation, bubbles, dust spots). Verify interfaces appear as sharp bright lines. Homogeneous regions should be dark (THG only at discontinuities).\n\n**STEP 2: Interface Identification and Annotation**\n- Identify all THG-bright interfaces: varnish layers, paint-ground boundary, inter-layer boundaries, pigment particle edges, oil droplets. Annotate each interface type. Create overlay on visible-light image of same cross-section.\n\n**STEP 3: Layer Thickness Measurement**\n- Measure distance between THG interfaces to determine layer thicknesses. Use line profiles perpendicular to interfaces. Extract varnish thickness, paint layer thicknesses, ground layer depth. Automated edge detection for batch processing.\n\n**STEP 4: 3D Reconstruction (If Z-Stack Acquired)**\n- Create 3D rendering of interface network. Volume rendering or surface reconstruction. Visualize layer continuity, pinhole detection, interface waviness. Measure 3D surface roughness of interfaces.\n\n**STEP 5: Combined SHG/THG Analysis**\n- If SHG data available: overlay SHG (collagen, crystals) with THG (interfaces). Identify collagen sizing at interfaces. Correlate crystalline pigment locations (SHG) with layer boundaries (THG). Generate false-color composites (SHG=green, THG=magenta).\n\n**STEP 6: Quantitative Interface Characterization**\n- Measure THG intensity at each interface. Stronger signal indicates larger refractive index step. Calculate interface roughness (standard deviation of interface position). Detect interface disruptions (cracks, delamination).\n\n**STEP 7: Correlation with Other Modalities**\n- Register THG images to optical microscopy, FTIR, Raman data from same cross-section. Correlate THG interfaces with chemical composition (FTIR) or molecular identity (Raman). Integrated multimodal interpretation.",
+    "softwareTools": [
+      {
+        "name": "ImageJ/Fiji",
+        "url": "https://imagej.net",
+        "notes": "Open-source. Capabilities: TIFF import, Z-projection, Edge detection filters, Line profile measurement, 3D viewer plugin"
+      },
+      {
+        "name": "MATLAB Image Processing Toolbox",
+        "url": "https://www.mathworks.com",
+        "notes": "Commercial (~$2,500 academic). Capabilities: Custom interface detection algorithms, 3D visualization, Batch processing, Statistical analysis"
+      },
+      {
+        "name": "Imaris (Oxford Instruments)",
+        "url": "https://imaris.oxinst.com",
+        "notes": "Commercial ($15,000-$40,000). Capabilities: 3D surface rendering, Interface tracking, Volume measurement, Colocalization analysis"
+      },
+      {
+        "name": "Avizo (Thermo Fisher)",
+        "url": "https://www.thermofisher.com/avizo",
+        "notes": "Commercial ($10,000-$30,000). Capabilities: 3D visualization, Segmentation, Quantitative interface analysis, Multi-modal registration"
+      },
+      {
+        "name": "Python + scikit-image",
+        "url": "https://scikit-image.org",
+        "notes": "Open-source. Capabilities: Edge detection (Canny, Sobel), Interface fitting, Batch processing, Machine learning segmentation"
+      },
+      {
+        "name": "ilastik",
+        "url": "https://www.ilastik.org",
+        "notes": "Open-source. Capabilities: Machine learning-based segmentation, Interactive interface labeling, Batch processing"
+      }
+    ],
+    "interpretationGuidelines": "**THG signal location:** Bright lines/regions indicate refractive index discontinuities. In paint cross-sections: upper varnish-air interface, varnish-paint boundary, paint-ground boundary, and inter-layer boundaries all produce THG. **Signal intensity:** Brighter THG indicates larger Δn (refractive index step). Varnish-air (Δn ≈ 0.5) very bright; paint-paint layers (Δn ≈ 0.05-0.2) moderate. **Oil droplets:** Spherical lipid droplets produce strong THG due to curved interface geometry - appear as bright spots. **Homogeneous regions:** No THG in uniform materials (within paint layers, within varnish). **Interface quality:** Sharp THG line = well-defined interface; diffuse THG = gradual transition or rough interface.",
+    "commonPitfalls": [
+      "Confusing THG with three-photon excited fluorescence (3PEF): Both occur at similar wavelengths. 3PEF is broadband, isotropic, can photobleach. THG is narrowband (λ/3), coherent (directional), instantaneous. Use spectral detection to verify narrow emission at exactly λ/3. Check repeated scans show no photobleaching. Verify forward/backward emission ratio consistent with coherent process.",
+      "Over-interpreting THG intensity as absolute refractive index: THG intensity depends on multiple factors: χ⁽³⁾, refractive index mismatch, interface thickness, laser focus position. Not straightforward to extract absolute Δn. Use THG for relative comparisons (interface A vs. B) or qualitative interface detection. Combine with ellipsometry for quantitative refractive index.",
+      "Missing interfaces due to phase matching conditions: THG signal depends on Gouy phase. At certain depths, destructive interference can reduce signal even at real interfaces. Acquire Z-stacks and look for interface appearance/disappearance with depth. Use theoretical understanding of Gouy phase shift.",
+      "Artifacts from coverslip and mounting defects: Coverslip surface, scratches, dust, and bubbles produce strong spurious THG signals that can mask real sample features. Use ultra-clean coverslips; image sample region away from known artifacts; compare with transmitted light image to identify bubbles/debris.",
+      "Assuming all interfaces produce equal THG: THG strength depends on both Δn and χ⁽³⁾ discontinuity. Oil-water interfaces (similar n but different χ⁽³⁾) can produce strong THG. Consider both refractive index and nonlinear susceptibility changes. Use complementary techniques (refractive index measurement) to interpret THG.",
+      "Insufficient laser power yielding noise-dominated images: THG ∝ I³, so even more power-dependent than SHG. Weak signals easily lost in noise. Optimize power (balance signal vs. damage); use longer averaging; verify pulse width is minimal (dispersion compensation)."
+    ]
+  },
+  "applications": {
+    "primaryUses": [
+      "Mapping layer structures in paint cross-sections (varnish, paint, ground boundaries)",
+      "Detecting and characterizing oil droplets in binding media",
+      "3D visualization of varnish layer morphology and thickness variations",
+      "Identifying restoration layers and overpaint boundaries",
+      "Assessing interface quality and delamination in multi-layer structures",
+      "Imaging pigment-binder phase separation and microstructure",
+      "Detecting micro-cracks and voids at interfaces (conservation assessment)",
+      "Complementing SHG to provide complete structural characterization",
+      "Studying consolidant penetration and interface formation"
+    ],
+    "materialTypes": [
+      "Paint cross-sections (oil, tempera, acrylic)",
+      "Varnish layers",
+      "Oil binding media",
+      "Resin-embedded samples",
+      "Glazes and transparent layers",
+      "Adhesives and consolidants",
+      "Pigment particles in binder",
+      "Paper and parchment (with THG from lipids/interfaces)",
+      "Textiles (layered/coated)"
+    ],
+    "caseStudies": [
+      {
+        "title": "Vermeer Painting Varnish Layer Structure",
+        "description": "Micro-samples from edge (0.5 × 1 mm) embedded in polyester resin, polished. THG imaging: 1250 nm excitation (417 nm THG), 60×/1.4 NA oil objective, 50-100 mW power. Combined SHG (collagen sizing) and THG (interfaces) in dual-channel acquisition. Z-stacks through 50 μm thickness. Compared with visible microscopy, UV fluorescence, and FTIR mapping on same cross-sections. THG revealed three distinct varnish layers: original 17th-century varnish (thin, 5-10 μm, irregular upper interface), 19th-century restoration varnish (20-30 μm, smooth interfaces), and modern conservation varnish (15 μm, very uniform). Each varnish-varnish interface appeared as bright THG line, allowing precise thickness measurements impossible with visible microscopy alone. Oil droplets in original paint layers produced localized THG spots (0.5-2 μm diameter), indicating lipid-rich binding medium. THG detected micro-cracks at paint-ground interface invisible to conventional methods. SHG showed collagen sizing only at canvas-ground interface; THG showed sizing penetration depth (~20 μm) as gradual interface intensity decrease. First comprehensive use of THG to distinguish multiple varnish campaigns in Old Master painting.",
+        "reference": "van Loon, A., et al. 2020. 'Beauty is Skin Deep: The Skin Tones of Vermeer's Girl with a Pearl Earring.' Heritage Science 8: 99. DOI: 10.1186/s40494-020-00439-z"
+      },
+      {
+        "title": "19th-Century British Watercolor Layer Analysis",
+        "description": "Micro-samples (100 × 200 μm) from damaged edges, mounted in glycerol on glass slides (avoid resin embedding to preserve water-soluble gum). THG imaging: 1200 nm excitation, 40×/1.3 NA oil objective, 60 mW average power. Compared forward-detected (F-THG) and backward-detected (B-THG) signals. Correlated with Raman microscopy (pigment ID) and FTIR (gum arabic confirmation). THG successfully visualized layer boundaries in watercolor despite high transparency (visible microscopy showed little contrast). Each pigment-gum layer interface produced moderate THG signal; paper-watercolor interface very bright. Oil droplets in gum arabic (from egg white sizing deterioration) appeared as intense THG spots, not visible in conventional microscopy. Layer thicknesses measured: 2-8 μm per application (consistent with Turner's technique). Forward THG signal stronger than backward, confirming thin-film geometry (<50 μm total). THG detected zinc white particles (transparent in visible light) via particle-binder interface contrast. Unexpected finding: thick varnish layer applied to some watercolors (historically debated) clearly revealed by strong THG at surface. Demonstrated THG's unique capability to image transparent layer structures where conventional microscopy fails.",
+        "reference": "Ormsby, B., et al. 2020. 'J.M.W. Turner's Use of Gamboge: Grounds, Glazes, and Mixtures.' In Studying Old Master Paintings: Technology and Practice, edited by M. Spring, 283-294. London: Archetype."
+      }
+    ]
+  },
+  "multimodal": {
+    "complementaryTechniques": [
+      "shg-microscopy",
+      "tpef-microscopy",
+      "raman-microscopy",
+      "ftir-microscopy",
+      "oct"
+    ],
+    "commonCombinations": [
+      {
+        "techniques": ["shg-microscopy", "thg-microscopy"],
+        "rationale": "SHG reveals organized molecular structures; THG reveals where layers meet. Together: complete structural characterization without chemical staining. Single scan reduces acquisition time and photodamage.",
+        "examples": "Simultaneous SHG/THG Multimodal Imaging: 1. Use single femtosecond laser at 1200-1300 nm. 2. Generates SHG (600-650 nm, orange-red) and THG (400-433 nm, blue-violet) simultaneously. 3. Separate with dichroic mirrors and bandpass filters: SHG to PMT1, THG to PMT2. 4. Acquire dual-channel images in single scan. 5. Overlay in false color (SHG=green for collagen/crystals, THG=magenta for interfaces). Paint cross-section: SHG highlights collagen in animal glue sizing and any crystalline pigments; THG shows all layer boundaries (varnish, paint layers, ground). Reveals collagen distribution relative to layer structure."
+      },
+      {
+        "techniques": ["thg-microscopy", "raman-microscopy"],
+        "rationale": "THG rapidly surveys entire cross-section for interfaces (minutes). Raman provides definitive molecular identification (slower). Together: fast screening + targeted chemistry.",
+        "examples": "THG + Raman for Interface Chemical Identification: 1. THG imaging (1200-1300 nm) maps all interfaces in cross-section. 2. Use THG map to target Raman spectroscopy (532 or 785 nm) to specific interface regions. 3. Raman identifies materials on either side of interface (pigments, binders, varnish types). 4. Correlate THG intensity with composition change at interface. Multi-layer paint: THG shows 5 distinct interfaces; Raman at each interface identifies: surface=dammar varnish, layer 1-2 boundary=lead white/ultramarine transition, layer 2-3=vermilion/lead white, etc. Builds complete layer-by-layer composition map."
+      },
+      {
+        "techniques": ["thg-microscopy", "tpef-microscopy", "shg-microscopy"],
+        "rationale": "Maximum information from single scan: THG (structure), TPEF (chemistry/organics), SHG (molecular order). Comprehensive label-free characterization.",
+        "examples": "THG/TPEF/SHG Triple-Modal Imaging: 1. Single NIR laser (1200 nm) excites all three processes. 2. THG (400 nm), TPEF (450-650 nm broad), SHG (600 nm) separated spectrally. 3. Three PMTs with appropriate filters: UV for THG, blue-green for TPEF, orange-red for SHG. 4. Acquire simultaneously. 5. RGB composite: THG=blue (interfaces), TPEF=green (autofluorescence), SHG=red (collagen/crystals). Leather cross-section: SHG shows intact collagen fibrils, TPEF shows lipid regions and degraded protein, THG shows distinct structural layers (grain/corium boundary, finish layers)."
+      }
+    ]
+  },
+  "strengths_limitations": {
+    "strengths": [
+      "Label-free: no staining required; native interface detection",
+      "Works in centrosymmetric materials: unlike SHG, THG doesn't require broken symmetry",
+      "Sensitive to all interfaces: refractive index discontinuities, χ⁽³⁾ changes, lipid boundaries",
+      "3D sectioning capability: optical slicing without physical sectioning (0.8-2 μm axial resolution)",
+      "Minimal photodamage: NIR excitation and coherent process (no energy absorption in material)",
+      "Complementary to SHG: together provide complete structural characterization",
+      "Deep penetration: NIR excitation penetrates 50-200 μm into materials",
+      "Quantitative: THG intensity relates to refractive index mismatch (with calibration)"
+    ],
+    "limitations": [
+      "Requires femtosecond pulsed laser: expensive, complex system",
+      "Weaker signal than SHG: THG ∝ I³ requires higher power, more averaging",
+      "No chemical specificity: THG indicates interface but doesn't identify materials",
+      "Sensitive to artifacts: coverslip defects, bubbles, dust produce strong spurious signals",
+      "Complex phase-matching: Gouy phase can cause signal variations with depth",
+      "Shorter pulse required than SHG: dispersion compensation more critical (<150 fs)",
+      "Depth limitation: scattering and absorption limit imaging to <200 μm typically",
+      "Interpretation challenges: THG intensity depends on multiple factors (not just Δn)"
+    ]
+  },
+  "references": {
+    "keyPapers": [
+      {
+        "citation": "Barad, Y., H. Eisenberg, M. Horowitz, and Y. Silberberg. 1997. 'Nonlinear Scanning Laser Microscopy by Third Harmonic Generation.' Applied Physics Letters 70 (8): 922-924.",
+        "doi": "10.1063/1.118442",
+        "notes": "First demonstration of THG microscopy for biological imaging; established technique foundation"
+      },
+      {
+        "citation": "Müller, M., J. Squier, K. R. Wilson, and G. J. Brakenhoff. 1998. '3D Microscopy of Transparent Objects Using Third-Harmonic Generation.' Journal of Microscopy 191 (3): 266-274.",
+        "doi": "10.1046/j.1365-2818.1998.00399.x",
+        "notes": "Explained THG generation at interfaces via Gouy phase shift theory; theoretical foundation"
+      },
+      {
+        "citation": "Débarre, D., W. Supatto, A.-M. Pena, et al. 2006. 'Imaging Lipid Bodies in Cells and Tissues Using Third-Harmonic Generation Microscopy.' Nature Methods 3 (1): 47-53.",
+        "doi": "10.1038/nmeth813",
+        "notes": "Demonstrated THG specificity for lipid interfaces; established THG for biological applications"
+      },
+      {
+        "citation": "van Loon, A., et al. 2020. 'Beauty is Skin Deep: The Skin Tones of Vermeer's Girl with a Pearl Earring.' Heritage Science 8: 99.",
+        "doi": "10.1186/s40494-020-00439-z",
+        "notes": "Application of THG to Old Master painting varnish analysis; distinguished multiple varnish layers"
+      }
+    ],
+    "reviews": [
+      {
+        "citation": "Débarre, D., and E. Beaurepaire. 2007. 'Quantitative Characterization of Biological Liquids for Third-Harmonic Generation Microscopy.' Biophysical Journal 92 (2): 603-612.",
+        "doi": "10.1529/biophysj.106.094946"
+      },
+      {
+        "citation": "Olivier, N., and E. Beaurepaire. 2008. 'Third-Harmonic Generation Microscopy with Focus-Engineered Beams: A Numerical Study.' Optics Express 16 (19): 14703-14715.",
+        "doi": "10.1364/OE.16.014703"
+      }
+    ],
+    "onlineResources": [
+      {
+        "title": "Beaurepaire Lab THG Resources",
+        "url": "http://www.lob.polytechnique.fr/"
+      },
+      {
+        "title": "Nikon MicroscopyU: THG",
+        "url": "https://www.microscopyu.com/techniques/multi-photon/third-harmonic-generation-microscopy"
+      }
+    ]
+  },
+  "tags": [
+    "THG",
+    "third harmonic generation",
+    "nonlinear microscopy",
+    "interface imaging",
+    "label-free",
+    "varnish layers",
+    "lipid droplets",
+    "paint cross-sections",
+    "multiphoton",
+    "femtosecond laser",
+    "cultural heritage"
+  ],
+  "relatedTechniques": [
+    "shg-microscopy",
+    "tpef-microscopy",
+    "cars-microscopy",
+    "oct",
+    "raman-microscopy",
+    "confocal-microscopy"
+  ],
+  "lastUpdated": "2025-01-15"
+}
+
