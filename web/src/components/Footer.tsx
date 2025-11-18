@@ -57,7 +57,7 @@ export function Footer() {
             Built by <Link href="/about" className="text-primary-400 hover:text-primary-300 underline">Daniel Webb</Link> | 
             Content generated with AI assistance, reviewed and refined | 
             Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} | 
-            <a href="mailto:daniel@example.com" className="text-primary-400 hover:text-primary-300 underline ml-1">
+            <a href="mailto:daniel@intrawebb.com" className="text-primary-400 hover:text-primary-300 underline ml-1">
               Feedback welcome
             </a>
           </p>

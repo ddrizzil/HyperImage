@@ -37,7 +37,7 @@ export default function HomePage() {
               </p>
               <p className="text-primary-100">
                 <strong className="text-white">You're welcome to use this resource</strong>, but please verify information against primary sources for critical applications. 
-                If you find errors or have suggestions, I welcome feedback: <a href="mailto:daniel@example.com" className="text-white hover:text-primary-200 underline">daniel@example.com</a>.
+                If you find errors or have suggestions, I welcome feedback: <a href="mailto:daniel@intrawebb.com" className="text-white hover:text-primary-200 underline">daniel@intrawebb.com</a>.
               </p>
               <p className="last-updated text-primary-200">
                 Active work in progress – Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} – Some sections comprehensive, others placeholders

@@ -84,7 +84,7 @@ export default function AboutPage() {
 
             <p className="text-gray-700 mb-4">
               If you notice errors, have suggestions for techniques to add, or want to discuss 
-              cross-domain applications, I welcome your feedback: <a href="mailto:daniel@example.com" className="text-primary-600 hover:text-primary-800 underline">daniel@example.com</a>. 
+              cross-domain applications, I welcome your feedback: <a href="mailto:daniel@intrawebb.com" className="text-primary-600 hover:text-primary-800 underline">daniel@intrawebb.com</a>. 
               This is a learning project—corrections and insights help me improve both the resource 
               and my own understanding.
             </p>

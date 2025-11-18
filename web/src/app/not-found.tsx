@@ -15,7 +15,7 @@ export default function NotFound() {
           <p className="font-semibold text-gray-900 mb-3">This might mean:</p>
           <ul className="list-disc ml-6 space-y-2 text-gray-700">
             <li>The technique you're looking for hasn't been documented yet (check back later)</li>
-            <li>The link is broken (please report this: <a href="mailto:daniel@example.com" className="text-primary-600 hover:text-primary-800 underline">daniel@example.com</a>)</li>
+            <li>The link is broken (please report this: <a href="mailto:daniel@intrawebb.com" className="text-primary-600 hover:text-primary-800 underline">daniel@intrawebb.com</a>)</li>
             <li>You followed an outdated link (site structure evolves as it grows)</li>
           </ul>
         </div>
