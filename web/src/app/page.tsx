@@ -28,18 +28,18 @@ export default function HomePage() {
             </p>
             
             {/* Disclaimer Banner */}
-            <div className="info-banner max-w-3xl mx-auto mt-8 mb-8 text-left bg-white/10 backdrop-blur-sm border-white/20 text-primary-50">
-              <p className="text-white"><strong>Personal Learning Resource – Public Access</strong></p>
-              <p className="text-primary-100">
+            <div className="info-banner max-w-3xl mx-auto mt-8 mb-8 text-left bg-white/10 backdrop-blur-sm border-white/20">
+              <p className="text-primary-900 font-semibold"><strong>Personal Learning Resource – Public Access</strong></p>
+              <p className="text-primary-900">
                 This is my personal technical reference, built to systematically learn measurement science across domains. 
-                I'm sharing it publicly in case others find it useful, but this is <strong className="text-white">not an authoritative reference</strong>—it 
+                I'm sharing it publicly in case others find it useful, but this is <strong className="text-primary-900">not an authoritative reference</strong>—it 
                 represents my current understanding as I learn heritage science, RF techniques, and multi-modal imaging.
               </p>
-              <p className="text-primary-100">
-                <strong className="text-white">You're welcome to use this resource</strong>, but please verify information against primary sources for critical applications. 
-                If you find errors or have suggestions, I welcome feedback: <a href="mailto:daniel@intrawebb.com" className="text-white hover:text-primary-200 underline">daniel@intrawebb.com</a>.
+              <p className="text-primary-900">
+                <strong className="text-primary-900">You're welcome to use this resource</strong>, but please verify information against primary sources for critical applications. 
+                If you find errors or have suggestions, I welcome feedback: <a href="mailto:daniel@intrawebb.com" className="text-primary-700 hover:text-primary-900 underline font-medium">daniel@intrawebb.com</a>.
               </p>
-              <p className="last-updated text-primary-200">
+              <p className="last-updated text-primary-800">
                 Active work in progress – Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} – Some sections comprehensive, others placeholders
               </p>
             </div>

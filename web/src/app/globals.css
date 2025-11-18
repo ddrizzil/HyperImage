@@ -87,8 +87,13 @@
   border-radius: 4px;
 }
 
+.info-banner {
+  color: #1e3a8a; /* Dark blue text */
+}
+
 .info-banner strong {
-  color: #1e40af;
+  color: #1e3a8a; /* Dark blue for strong text */
+  font-weight: 600;
 }
 
 .info-banner p {
