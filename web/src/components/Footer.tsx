@@ -59,10 +59,7 @@ export function Footer() {
             </a>
           </p>
           <p className="text-xs text-gray-500">
-            <Link href="/" className="hover:text-gray-400">Home</Link> | 
-            <a href="https://github.com/ddrizzil/HyperImage" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 ml-1">
-              GitHub
-            </a>
+            <Link href="/" className="hover:text-gray-400">Home</Link>
           </p>
         </div>
       </div>
