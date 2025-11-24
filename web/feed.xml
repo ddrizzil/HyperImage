@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Daily Paper Digest</title>
+        <link>https://github.com/ddrizzil/HyperImage</link>
+        <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent opportunities.</description>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 24 Nov 2025 03:20:54 GMT</lastBuildDate>
+        <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
+        <generator>Paper Digest Service</generator>
+    <item>
+        <title>Snow Depth Estimation Based on STCTNet for Sentinel-1 and Multisource Data</title>
+        <link>http://ieeexplore.ieee.org/document/11227141</link>
+        <description>The trained model was then used to predict the average SD for February from 2017 to 2022 at a spatial resolution of 20 m. The application of active microwave data and deep learning techniques in this study provides an approach that improves both the spatial resolution and estimation accuracy of SD. | Score: 5.54</description>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Qing Cheng;Xinchen Xu;Linwei Yue;Weifeng Hao;</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11227141</guid>
+    </item>
+    <item>
+        <title>Training Signal Optimization for Behavioral Modeling and Digital Predistortion of RF Power Amplifiers</title>
+        <link>http://ieeexplore.ieee.org/document/11184392</link>
+        <description>The signal is similar to orthogonal frequency-division multiplexing-based signal standards, facilitating its use in training during the regular operation of the wireless transmitter. Experimental validation of this method is also provided in hardware, with a PA using a 100-MHz bandwidth millimeter wave 5G signal. | Score: 5.27</description>
+        <pubDate>Mon, 29 Sep 2025 00:00:00 GMT</pubDate>
+        <author>Jonathan Guimaraes Ribeiro;Yiyue Jiang;Rahul Mushini;Miriam Leeser;John Dooley;</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11184392</guid>
+    </item>
+    <item>
+        <title>Digital Harmonic Cancellation for RF Power Amplifier Using Indirect Learning Architecture</title>
+        <link>http://ieeexplore.ieee.org/document/11023558</link>
+        <description>In contrast to DLA-DHC, the proposed scheme is realized through a cascade of harmonic and DHC models. Experimental results demonstrate that the proposed scheme can suppress the second harmonic for being below −60 dB below carrier (dBc) and the third harmonic for being below −70 dBc after only three iterations. | Score: 5.01</description>
+        <pubDate>Wed, 04 Jun 2025 00:00:00 GMT</pubDate>
+        <author>Xinyu Wang;Zhanbiao Yang;Jun Peng;Chenrui Liang;Jiahao Zhang;Wei Li;Fei You;Songbai He;</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11023558</guid>
+    </item>
+    <item>
+        <title>Power Balance Regularization of the Microwave Inverse Scattering Problem</title>
+        <link>http://ieeexplore.ieee.org/document/11154921</link>
+        <description>A new physics-informed regularization technique using electromagnetic power balance is introduced. The PBR technique can be easily added to conventional microwave imaging algorithms and suggests other physics-informed regularization schemes could be used in future work. | Score: 4.96</description>
+        <pubDate>Tue, 09 Sep 2025 00:00:00 GMT</pubDate>
+        <author>Brendon C. Besler;Elise C. Fear;</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11154921</guid>
+    </item>
+    <item>
+        <title>Frameworks on Few-Shot Learning With Applications in Wireless Communication</title>
+        <link>http://ieeexplore.ieee.org/document/11181223</link>
+        <description>Few-shot learning (FSL) enables adaptation to new tasks with only limited training data, which can be used to quickly adjust the wireless transceiver according to changing channel environments. The numerical experiments confirm their desirable performance in both applications compared to other popular approaches, such as transfer learning (TL) and model-agnostic meta-learning. | Score: 4.96</description>
+        <pubDate>Fri, 26 Sep 2025 00:00:00 GMT</pubDate>
+        <author>Ouya Wang;Shenglong Zhou;Geoffrey Ye Li;</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11181223</guid>
+    </item>
+    <item>
+        <title>Adaptive Temperature-Driven Ternary Contrastive Autoencoder Framework for Hyperspectral Target Detection</title>
+        <link>http://ieeexplore.ieee.org/document/11236413</link>
+        <description>Hyperspectral target detection (HTD) is a critical task in remote sensing, where numerous deep learning (DL)-based methods have emerged for their powerful ability to extract hierarchical and discriminative features. Experimental results on four real-world benchmark datasets demonstrate that our approach outperforms state-of-the-art methods in terms of detection performance and efficiency. | Score: 4.85</description>
+        <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Jiaojiao Li;Hangyun Liu;Haitao Xu;Chengyuan Wang;Yunsong Li;Qian Du;</author>
+        <category>Cultural Heritage &amp; Conservation Science</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236413</guid>
+    </item>
+    <item>
+        <title>A Spike-Driven Transformer Network for Edge Computing-Based Partial Discharge Monitoring Using Ultrahigh Frequency Pulse Signals</title>
+        <link>http://ieeexplore.ieee.org/document/11084948</link>
+        <description>To address these issues, this article develops a novel UHF monitoring system by combining a low-noise UHF sensing frontend and a spike-driven Transformer network toward edge computing, enabling a robust, energy-efficient and cost-effective PD recognition. Experimental results demonstrate the highest recognition accuracy, and reductions in computational complexity and energy consumption by 56.25% and 52.0%, respectively. | Score: 4.64</description>
+        <pubDate>Fri, 18 Jul 2025 00:00:00 GMT</pubDate>
+        <author>Changdong Wang;Jingli Yang;Yu’ang Li;Zhou Wang;Huamin Jie;Zhi Zheng;Zhenyu Zhao;Zhou Shu;Yongxin Guo</author>
+        <category>Cultural Heritage &amp; Conservation Science</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11084948</guid>
+    </item>
+    <item>
+        <title>Despeckling of Synthetic Aperture Radar Images Using Linear–Angular Attention Transformer</title>
+        <link>http://ieeexplore.ieee.org/document/11225891</link>
+        <description>In this study, we propose a linear–angular attention transformer network for SAR despeckling. Unlike models that rely on optical images for training and lack domain-specific features for real SAR despeckling, the proposed network is trained directly on SAR images in a self-supervised manner. | Score: 4.63</description>
+        <pubDate>Tue, 04 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Souraja Kundu;M. K. Bhuyan;Karl F. MacDorman;Neeraj Kumar Sharma;Manish Bhatt;</author>
+        <category>Cultural Heritage &amp; Conservation Science</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11225891</guid>
+    </item>
+    <item>
+        <title>DTANet: High-Performance Network With Decoupled Three-Dimensional Attention for Radar-Communications Waveform Classification</title>
+        <link>http://ieeexplore.ieee.org/document/11168412</link>
+        <description>Experiments on a 12-class synthetic waveform dataset show DTANet achieves state-of-the-art performance, with 91.11% accuracy, 0.596 ms inference time, and just 75K parameters. These results highlight DTANet’s superiority in terms of accuracy, speed, and compactness, thus recommending it as a robust and efficient solution for real-time deployment on resource-limited platforms. | Score: 3.74</description>
+        <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
+        <author>Thanh-Dat Tran;Thien Huynh-The;</author>
+        <category>Cultural Heritage &amp; Conservation Science</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11168412</guid>
+    </item>
+    <item>
+        <title>Nested Tensor-Based Channel Estimation for Stacked Intelligent Metasurface-Assisted Wireless Networks</title>
+        <link>http://ieeexplore.ieee.org/document/11168823</link>
+        <description>Numerical results prove the superiority of the proposed scheme in comparison with state-of-the-art schemes. Specifically, the proposed tensor-based protocol can achieve a normalized mean squared error of less than 0.01, which is orders of magnitude better than state-of-the-art schemes for SIM-assisted systems, while incurring similar levels of computational complexity or training overhead. | Score: 3.63</description>
+        <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
+        <author>Nipuni Ginige;Arthur Sousa de Sena;Nurul Huda Mahmood;Marco Di Renzo;Nandana Rajatheva;Matti Latva-A</author>
+        <category>Cultural Heritage &amp; Conservation Science</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11168823</guid>
+    </item>
+    <item>
+        <title>Multiscale Integration of Spatially Dense InSAR Data and Temporally Intensive GNSS Data Enhances Landslide Displacement Prediction</title>
+        <link>http://ieeexplore.ieee.org/document/11227123</link>
+        <description>Due to complex landslide dynamics and the lack of high-quality monitoring data, the timely and accurate prediction of landslide displacement remains challenging. These findings underscore the necessity and feasibility of multisource monitoring data in landslide displacement prediction, providing a robust and scalable framework for landslide disaster prevention. | Score: 3.46</description>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Qianru Ding;Gang Ma;Chengqian Guo;Hua Chen;Fudong Chi;Wei Zhou;Xiaolin Chang;</author>
+        <category>Adjacent Opportunities</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11227123</guid>
+    </item>
+    <item>
+        <title>U-SET: Uncertainty-Aware SAR-to-EO Translation</title>
+        <link>http://ieeexplore.ieee.org/document/11222869</link>
+        <description>By leveraging the uncertainty estimation capabilities of deep-learning models, U-SET effectively prioritizes structurally complex and ambiguous regions during training. Comprehensive evaluations on our newly compiled KOMPSAT dataset demonstrate that U-SET achieves state-of-the-art performance, outperforming existing methods across six image quality metrics in both quantitative and qualitative assessments. | Score: 3.17</description>
+        <pubDate>Thu, 30 Oct 2025 00:00:00 GMT</pubDate>
+        <author>Minyoung Jeon;Hyun-Ho Kim;Juheon Park;Doochun Seo;Jaehyup Lee;</author>
+        <category>Adjacent Opportunities</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11222869</guid>
+    </item>
+    <item>
+        <title>A WaveCluster-Based Robust and Fast Multibaseline InSAR Phase Unwrapping Algorithm</title>
+        <link>http://ieeexplore.ieee.org/document/11236427</link>
+        <description>However, the MBPU methods still cannot effectively balance PU accuracy and efficiency when processing large-size interferograms. Theoretical analysis and experimental results show that this method has more advantages than the existing MBPU methods in efficiency, accuracy, and adaptability to baseline ratios when processing large-size interferograms. | Score: 3.13</description>
+        <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Zhihui Yuan;Zhengguo Wang;Hanwen Yu;Xuemin Xing;Lifan Zhou;Lifu Chen;Junyi Xu;</author>
+        <category>Adjacent Opportunities</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236427</guid>
+    </item>
+    <item>
+        <title>Identification of nighttime urban flood inundation extent using deep learning</title>
+        <link>https://doi.org/10.5194/nhess-25-4361-2025</link>
+        <description>&lt;b&gt;Identification of nighttime urban flood inundation extent using deep learning&lt;/b&gt;&lt;br /&gt;
+                    Jiaquan Wan, Xing Wang, Yannian Cheng, Cuiyan Zhang, Fengchang Xue, Tao Yang, Fei Tong, and Quan J. This research offers a practical solution for real-time flood monitoring, helping improve urban disaster response and management. | Score: 2.81</description>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
+        <author>nan</author>
+        <category>Adjacent Opportunities</category>
+        <guid isPermaLink="true">https://doi.org/10.5194/nhess-25-4361-2025</guid>
+    </item>
+    <item>
+        <title>AI-Enhanced Wide-Area Data Imaging via Massive Non-Orthogonal Direct Device-to-HAPS Transmission</title>
+        <link>http://ieeexplore.ieee.org/document/11173268</link>
+        <description>Furthermore, to enable AI-enhanced $\text{MAP}-X$, we propose a ground-HAPS cooperation framework, where terrestrial stations collect, process, and relay training data to the HAPS. With its enhanced capability in reconstructing field data, AI-enhanced $\text{MAP}-X$ is applicable to various real-world use cases, including disaster response and network management. | Score: 2.42</description>
+        <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
+        <author>Hyung-Joo Moon;Chan-Byoung Chae;Kai-Kit Wong;Robert W. Heath;</author>
+        <category>Adjacent Opportunities</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11173268</guid>
+    </item>
+    </channel>
+</rss>
