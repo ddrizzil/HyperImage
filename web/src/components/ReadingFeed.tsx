@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { BookOpen, ExternalLink } from 'lucide-react'
 
 interface RSSItem {
@@ -171,15 +172,12 @@ export function ReadingFeed() {
         ))}
       </div>
       <div className="mt-3 pt-3 border-t border-gray-200">
-        <a
-          href="https://github.com/ddrizzil/HyperImage"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/reading"
           className="text-xs text-primary-600 hover:text-primary-800 flex items-center gap-1"
         >
-          View all papers
-          <ExternalLink className="w-3 h-3" />
-        </a>
+          View all papers →
+        </Link>
       </div>
     </div>
   )
