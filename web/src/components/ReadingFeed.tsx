@@ -22,7 +22,7 @@ export function ReadingFeed() {
     const fetchRSS = async () => {
       try {
         const response = await fetch(
-          'https://raw.githubusercontent.com/ddrizzil/paper-digest/main/feed.xml',
+          'https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml',
           { cache: 'no-store' }
         )
         
@@ -172,7 +172,7 @@ export function ReadingFeed() {
       </div>
       <div className="mt-3 pt-3 border-t border-gray-200">
         <a
-          href="https://github.com/ddrizzil/paper-digest"
+          href="https://github.com/ddrizzil/HyperImage"
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs text-primary-600 hover:text-primary-800 flex items-center gap-1"

@@ -1,0 +1,7 @@
+feedparser
+numpy
+requests
+scikit-learn
+sentence-transformers
+pandas
+scholarly

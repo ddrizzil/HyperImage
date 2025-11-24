@@ -1,0 +1,44 @@
+name: Daily Paper Digest
+
+on:
+  schedule:
+    # Runs every day at 13:00 UTC (8 AM US Eastern)
+    - cron: '0 13 * * *'
+  workflow_dispatch:  # allows manual runs too
+
+jobs:
+  run-digest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to push RSS feed updates
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run the digest service
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          RECIPIENTS: ${{ secrets.RECIPIENTS }}
+        run: |
+          python paper_digest_service.py
+
+      - name: Commit and push RSS feed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add web/feed.xml logs/paper_digest_log.csv config/clicks.txt || true
+          git diff --staged --quiet || git commit -m "Update RSS feed and logs [skip ci]"
+          git push
+
