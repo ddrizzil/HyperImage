@@ -83,7 +83,7 @@ export default function ReadingPage() {
     fetchRSS()
   }, [])
 
-  const categories = Array.from(new Set(items.map(item => item.category).filter(Boolean)))
+  const categories = Array.from(new Set(items.map(item => item.category).filter((cat): cat is string => Boolean(cat))))
   const filteredItems = filter === 'all' 
     ? items 
     : items.filter(item => item.category === filter)
