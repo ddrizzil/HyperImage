@@ -25,50 +25,130 @@
         "latex": "$$P^{(3)}(3\\omega) = \\epsilon_0 \\chi^{(3)} E^3(\\omega)$$",
         "description": "Third-Order Nonlinear Polarization",
         "variables": [
-          {"symbol": "P^{(3)}(3\\omega)", "meaning": "induced polarization at third harmonic frequency", "units": "C/m²"},
-          {"symbol": "\\epsilon_0", "meaning": "permittivity of free space", "units": "8.854 × 10⁻¹² F/m"},
-          {"symbol": "\\chi^{(3)}", "meaning": "third-order nonlinear susceptibility", "units": "m²/V²"},
-          {"symbol": "E(\\omega)", "meaning": "electric field amplitude at fundamental frequency", "units": "V/m"}
+          {
+            "symbol": "P^{(3)}(3\\omega)",
+            "meaning": "induced polarization at third harmonic frequency",
+            "units": "C/m²"
+          },
+          {
+            "symbol": "\\epsilon_0",
+            "meaning": "permittivity of free space",
+            "units": "8.854 × 10⁻¹² F/m"
+          },
+          {
+            "symbol": "\\chi^{(3)}",
+            "meaning": "third-order nonlinear susceptibility",
+            "units": "m²/V²"
+          },
+          {
+            "symbol": "E(\\omega)",
+            "meaning": "electric field amplitude at fundamental frequency",
+            "units": "V/m"
+          }
         ]
       },
       {
         "latex": "$$I_{THG} \\propto (I_\\omega)^3 \\cdot (\\chi^{(3)})^2 \\cdot \\left(\\frac{\\partial n}{\\partial z}\\right)^2$$",
         "description": "THG Intensity at Interface (simplified)",
         "variables": [
-          {"symbol": "I_{THG}", "meaning": "third harmonic intensity", "units": "W/cm²"},
-          {"symbol": "I_\\omega", "meaning": "fundamental beam intensity", "units": "W/cm²"},
-          {"symbol": "\\chi^{(3)}", "meaning": "third-order susceptibility", "units": "m²/V²"},
-          {"symbol": "\\frac{\\partial n}{\\partial z}", "meaning": "refractive index gradient along propagation axis", "units": "μm⁻¹"}
+          {
+            "symbol": "I_{THG}",
+            "meaning": "third harmonic intensity",
+            "units": "W/cm²"
+          },
+          {
+            "symbol": "I_\\omega",
+            "meaning": "fundamental beam intensity",
+            "units": "W/cm²"
+          },
+          {
+            "symbol": "\\chi^{(3)}",
+            "meaning": "third-order susceptibility",
+            "units": "m²/V²"
+          },
+          {
+            "symbol": "\\frac{\\partial n}{\\partial z}",
+            "meaning": "refractive index gradient along propagation axis",
+            "units": "μm⁻¹"
+          }
         ]
       },
       {
         "latex": "$$\\lambda_{THG} = \\frac{\\lambda_{exc}}{3}$$",
         "description": "Wavelength Conversion",
         "variables": [
-          {"symbol": "\\lambda_{THG}", "meaning": "third harmonic wavelength", "units": "nm"},
-          {"symbol": "\\lambda_{exc}", "meaning": "excitation wavelength", "units": "nm"}
+          {
+            "symbol": "\\lambda_{THG}",
+            "meaning": "third harmonic wavelength",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\lambda_{exc}",
+            "meaning": "excitation wavelength",
+            "units": "nm"
+          }
         ]
       },
       {
         "latex": "$$z_{Gouy} = \\frac{\\pi w_0^2}{\\lambda}$$",
         "description": "Gouy Phase Shift Length (confocal parameter)",
         "variables": [
-          {"symbol": "z_{Gouy}", "meaning": "Gouy phase shift length (Rayleigh range)", "units": "μm"},
-          {"symbol": "w_0", "meaning": "beam waist radius at focus", "units": "μm"},
-          {"symbol": "\\lambda", "meaning": "wavelength", "units": "nm"}
+          {
+            "symbol": "z_{Gouy}",
+            "meaning": "Gouy phase shift length (Rayleigh range)",
+            "units": "μm"
+          },
+          {
+            "symbol": "w_0",
+            "meaning": "beam waist radius at focus",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "wavelength",
+            "units": "nm"
+          }
         ]
       },
       {
         "latex": "$$\\Delta k = k_{3\\omega} - 3k_\\omega \\approx \\frac{3\\omega}{c}(n_{3\\omega} - n_\\omega)$$",
         "description": "Phase Mismatch",
         "variables": [
-          {"symbol": "\\Delta k", "meaning": "wave vector mismatch", "units": "rad/μm"},
-          {"symbol": "k_{3\\omega}", "meaning": "wave vector at third harmonic", "units": "rad/μm"},
-          {"symbol": "k_\\omega", "meaning": "wave vector at fundamental", "units": "rad/μm"},
-          {"symbol": "\\omega", "meaning": "angular frequency", "units": "rad/s"},
-          {"symbol": "c", "meaning": "speed of light", "units": "3 × 10⁸ m/s"},
-          {"symbol": "n_{3\\omega}", "meaning": "refractive index at THG wavelength", "units": "dimensionless"},
-          {"symbol": "n_\\omega", "meaning": "refractive index at fundamental wavelength", "units": "dimensionless"}
+          {
+            "symbol": "\\Delta k",
+            "meaning": "wave vector mismatch",
+            "units": "rad/μm"
+          },
+          {
+            "symbol": "k_{3\\omega}",
+            "meaning": "wave vector at third harmonic",
+            "units": "rad/μm"
+          },
+          {
+            "symbol": "k_\\omega",
+            "meaning": "wave vector at fundamental",
+            "units": "rad/μm"
+          },
+          {
+            "symbol": "\\omega",
+            "meaning": "angular frequency",
+            "units": "rad/s"
+          },
+          {
+            "symbol": "c",
+            "meaning": "speed of light",
+            "units": "3 × 10⁸ m/s"
+          },
+          {
+            "symbol": "n_{3\\omega}",
+            "meaning": "refractive index at THG wavelength",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "n_\\omega",
+            "meaning": "refractive index at fundamental wavelength",
+            "units": "dimensionless"
+          }
         ]
       }
     ],
@@ -285,17 +365,27 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["shg-microscopy", "thg-microscopy"],
+        "techniques": [
+          "shg-microscopy",
+          "thg-microscopy"
+        ],
         "rationale": "SHG reveals organized molecular structures; THG reveals where layers meet. Together: complete structural characterization without chemical staining. Single scan reduces acquisition time and photodamage.",
         "examples": "Simultaneous SHG/THG Multimodal Imaging: 1. Use single femtosecond laser at 1200-1300 nm. 2. Generates SHG (600-650 nm, orange-red) and THG (400-433 nm, blue-violet) simultaneously. 3. Separate with dichroic mirrors and bandpass filters: SHG to PMT1, THG to PMT2. 4. Acquire dual-channel images in single scan. 5. Overlay in false color (SHG=green for collagen/crystals, THG=magenta for interfaces). Paint cross-section: SHG highlights collagen in animal glue sizing and any crystalline pigments; THG shows all layer boundaries (varnish, paint layers, ground). Reveals collagen distribution relative to layer structure."
       },
       {
-        "techniques": ["thg-microscopy", "raman-microscopy"],
+        "techniques": [
+          "thg-microscopy",
+          "raman-microscopy"
+        ],
         "rationale": "THG rapidly surveys entire cross-section for interfaces (minutes). Raman provides definitive molecular identification (slower). Together: fast screening + targeted chemistry.",
         "examples": "THG + Raman for Interface Chemical Identification: 1. THG imaging (1200-1300 nm) maps all interfaces in cross-section. 2. Use THG map to target Raman spectroscopy (532 or 785 nm) to specific interface regions. 3. Raman identifies materials on either side of interface (pigments, binders, varnish types). 4. Correlate THG intensity with composition change at interface. Multi-layer paint: THG shows 5 distinct interfaces; Raman at each interface identifies: surface=dammar varnish, layer 1-2 boundary=lead white/ultramarine transition, layer 2-3=vermilion/lead white, etc. Builds complete layer-by-layer composition map."
       },
       {
-        "techniques": ["thg-microscopy", "tpef-microscopy", "shg-microscopy"],
+        "techniques": [
+          "thg-microscopy",
+          "tpef-microscopy",
+          "shg-microscopy"
+        ],
         "rationale": "Maximum information from single scan: THG (structure), TPEF (chemistry/organics), SHG (molecular order). Comprehensive label-free characterization.",
         "examples": "THG/TPEF/SHG Triple-Modal Imaging: 1. Single NIR laser (1200 nm) excites all three processes. 2. THG (400 nm), TPEF (450-650 nm broad), SHG (600 nm) separated spectrally. 3. Three PMTs with appropriate filters: UV for THG, blue-green for TPEF, orange-red for SHG. 4. Acquire simultaneously. 5. RGB composite: THG=blue (interfaces), TPEF=green (autofluorescence), SHG=red (collagen/crystals). Leather cross-section: SHG shows intact collagen fibrils, TPEF shows lipid regions and degraded protein, THG shows distinct structural layers (grain/corium boundary, finish layers)."
       }
@@ -324,38 +414,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Barad, Y., H. Eisenberg, M. Horowitz, and Y. Silberberg. 1997. 'Nonlinear Scanning Laser Microscopy by Third Harmonic Generation.' Applied Physics Letters 70 (8): 922-924.",
-        "doi": "10.1063/1.118442",
-        "notes": "First demonstration of THG microscopy for biological imaging; established technique foundation"
-      },
-      {
-        "citation": "Müller, M., J. Squier, K. R. Wilson, and G. J. Brakenhoff. 1998. '3D Microscopy of Transparent Objects Using Third-Harmonic Generation.' Journal of Microscopy 191 (3): 266-274.",
-        "doi": "10.1046/j.1365-2818.1998.00399.x",
-        "notes": "Explained THG generation at interfaces via Gouy phase shift theory; theoretical foundation"
-      },
-      {
-        "citation": "Débarre, D., W. Supatto, A.-M. Pena, et al. 2006. 'Imaging Lipid Bodies in Cells and Tissues Using Third-Harmonic Generation Microscopy.' Nature Methods 3 (1): 47-53.",
-        "doi": "10.1038/nmeth813",
-        "notes": "Demonstrated THG specificity for lipid interfaces; established THG for biological applications"
-      },
-      {
-        "citation": "van Loon, A., et al. 2020. 'Beauty is Skin Deep: The Skin Tones of Vermeer's Girl with a Pearl Earring.' Heritage Science 8: 99.",
-        "doi": "10.1186/s40494-020-00439-z",
-        "notes": "Application of THG to Old Master painting varnish analysis; distinguished multiple varnish layers"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Débarre, D., and E. Beaurepaire. 2007. 'Quantitative Characterization of Biological Liquids for Third-Harmonic Generation Microscopy.' Biophysical Journal 92 (2): 603-612.",
-        "doi": "10.1529/biophysj.106.094946"
-      },
-      {
-        "citation": "Olivier, N., and E. Beaurepaire. 2008. 'Third-Harmonic Generation Microscopy with Focus-Engineered Beams: A Numerical Study.' Optics Express 16 (19): 14703-14715.",
-        "doi": "10.1364/OE.16.014703"
-      }
-    ],
     "onlineResources": [
       {
         "title": "Beaurepaire Lab THG Resources",
@@ -390,4 +448,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

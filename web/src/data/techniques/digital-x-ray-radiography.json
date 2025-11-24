@@ -24,50 +24,130 @@
         "latex": "$$I = I_0 e^{-\\mu x}$$",
         "description": "Beer-Lambert Law for X-ray Attenuation (identical to film radiography)",
         "variables": [
-          {"symbol": "I", "meaning": "transmitted X-ray intensity", "units": "W/m²"},
-          {"symbol": "I_0", "meaning": "incident X-ray intensity", "units": "W/m²"},
-          {"symbol": "\\mu", "meaning": "linear attenuation coefficient", "units": "cm⁻¹"},
-          {"symbol": "x", "meaning": "material thickness", "units": "cm"}
+          {
+            "symbol": "I",
+            "meaning": "transmitted X-ray intensity",
+            "units": "W/m²"
+          },
+          {
+            "symbol": "I_0",
+            "meaning": "incident X-ray intensity",
+            "units": "W/m²"
+          },
+          {
+            "symbol": "\\mu",
+            "meaning": "linear attenuation coefficient",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "x",
+            "meaning": "material thickness",
+            "units": "cm"
+          }
         ]
       },
       {
         "latex": "$$DQE = \\frac{SNR_{out}^2}{SNR_{in}^2}$$",
         "description": "Detective Quantum Efficiency (image quality metric for digital detectors)",
         "variables": [
-          {"symbol": "DQE", "meaning": "detective quantum efficiency", "units": "dimensionless"},
-          {"symbol": "SNR_{out}", "meaning": "signal-to-noise ratio at detector output", "units": "dimensionless"},
-          {"symbol": "SNR_{in}", "meaning": "signal-to-noise ratio at detector input", "units": "dimensionless"}
+          {
+            "symbol": "DQE",
+            "meaning": "detective quantum efficiency",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "SNR_{out}",
+            "meaning": "signal-to-noise ratio at detector output",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "SNR_{in}",
+            "meaning": "signal-to-noise ratio at detector input",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$MTF(f) = \\frac{|\\mathcal{F}\\{LSF(x)\\}|}{|\\mathcal{F}\\{LSF(x)\\}|_{f=0}}$$",
         "description": "Modulation Transfer Function (spatial resolution characterization)",
         "variables": [
-          {"symbol": "MTF(f)", "meaning": "modulation transfer function at spatial frequency f", "units": "dimensionless"},
-          {"symbol": "f", "meaning": "spatial frequency", "units": "line pairs/mm"},
-          {"symbol": "\\mathcal{F}", "meaning": "Fourier transform operator", "units": "N/A"},
-          {"symbol": "LSF(x)", "meaning": "line spread function", "units": "arbitrary units"}
+          {
+            "symbol": "MTF(f)",
+            "meaning": "modulation transfer function at spatial frequency f",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "f",
+            "meaning": "spatial frequency",
+            "units": "line pairs/mm"
+          },
+          {
+            "symbol": "\\mathcal{F}",
+            "meaning": "Fourier transform operator",
+            "units": "N/A"
+          },
+          {
+            "symbol": "LSF(x)",
+            "meaning": "line spread function",
+            "units": "arbitrary units"
+          }
         ]
       },
       {
         "latex": "$$PV = \\frac{2^{bit\\_depth} - 1}{\\ln(I_0/I)}$$",
         "description": "Pixel Value Conversion (relates detector signal to attenuation)",
         "variables": [
-          {"symbol": "PV", "meaning": "pixel value in digital image", "units": "digital units"},
-          {"symbol": "bit\\_depth", "meaning": "analog-to-digital converter bit depth", "units": "bits"},
-          {"symbol": "I_0", "meaning": "incident X-ray intensity (no object)", "units": "arbitrary units"},
-          {"symbol": "I", "meaning": "transmitted X-ray intensity", "units": "arbitrary units"}
+          {
+            "symbol": "PV",
+            "meaning": "pixel value in digital image",
+            "units": "digital units"
+          },
+          {
+            "symbol": "bit\\_depth",
+            "meaning": "analog-to-digital converter bit depth",
+            "units": "bits"
+          },
+          {
+            "symbol": "I_0",
+            "meaning": "incident X-ray intensity (no object)",
+            "units": "arbitrary units"
+          },
+          {
+            "symbol": "I",
+            "meaning": "transmitted X-ray intensity",
+            "units": "arbitrary units"
+          }
         ]
       },
       {
         "latex": "$$CNR = \\frac{|S_1 - S_2|}{\\sqrt{\\sigma_1^2 + \\sigma_2^2}}$$",
         "description": "Contrast-to-Noise Ratio (detectability of features)",
         "variables": [
-          {"symbol": "CNR", "meaning": "contrast-to-noise ratio", "units": "dimensionless"},
-          {"symbol": "S_1", "meaning": "mean signal in region 1", "units": "digital units"},
-          {"symbol": "S_2", "meaning": "mean signal in region 2", "units": "digital units"},
-          {"symbol": "\\sigma_1", "meaning": "standard deviation of noise in region 1", "units": "digital units"},
-          {"symbol": "\\sigma_2", "meaning": "standard deviation of noise in region 2", "units": "digital units"}
+          {
+            "symbol": "CNR",
+            "meaning": "contrast-to-noise ratio",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "S_1",
+            "meaning": "mean signal in region 1",
+            "units": "digital units"
+          },
+          {
+            "symbol": "S_2",
+            "meaning": "mean signal in region 2",
+            "units": "digital units"
+          },
+          {
+            "symbol": "\\sigma_1",
+            "meaning": "standard deviation of noise in region 1",
+            "units": "digital units"
+          },
+          {
+            "symbol": "\\sigma_2",
+            "meaning": "standard deviation of noise in region 2",
+            "units": "digital units"
+          }
         ]
       }
     ],
@@ -270,12 +350,17 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["digital-x-ray-radiography", "image-registration"],
+        "techniques": [
+          "digital-x-ray-radiography",
+          "image-registration"
+        ],
         "rationale": "Digital's pixel-perfect repeatability enables direct comparison and subtraction. Changes (consolidation, fills, structural repairs) appear as positive or negative density differences.",
         "examples": "Digital Subtraction Radiography: 1. Acquire baseline DR image. 2. Perform conservation treatment. 3. Acquire follow-up DR at identical position and exposure. 4. Register images precisely. 5. Subtract baseline from follow-up to highlight only changes. Monitoring efficacy of consolidation treatment in panel paintings - subtraction reveals whether consolidant penetrated cracks."
       },
       {
-        "techniques": ["digital-x-ray-radiography"],
+        "techniques": [
+          "digital-x-ray-radiography"
+        ],
         "rationale": "Different materials attenuate X-rays differently at different energies. Dual-energy decomposition can separate organic substrates from heavy-element pigments, similar to medical bone/soft-tissue separation.",
         "examples": "Dual-Energy Radiography for Material Decomposition: 1. Acquire DR at low kV (e.g., 50 kV). 2. Acquire second DR at high kV (e.g., 100 kV) from identical position. 3. Computationally decompose into 'low-Z' and 'high-Z' material images based on differential attenuation. Separating canvas (low-Z) from lead white paint (high-Z) to visualize each independently. Reveals underpainting without interference from support structure."
       }
@@ -306,29 +391,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Sonoda, M., M. Takano, J. Miyahara, and H. Kato. 1983. 'Computed Radiography Utilizing Scanning Laser Stimulated Luminescence.' Radiology 148 (3): 833-838.",
-        "doi": "10.1148/radiology.148.3.6878708",
-        "notes": "Original paper describing computed radiography (CR) technology - foundation of digital radiography"
-      },
-      {
-        "citation": "Antonuk, L. E. 2002. 'Electronic Portal Imaging Devices: A Review and Historical Perspective of Contemporary Technologies and Research.' Physics in Medicine and Biology 47 (6): R31-R65.",
-        "doi": "10.1088/0031-9155/47/6/201",
-        "notes": "Comprehensive review of flat-panel detector development and physics"
-      },
-      {
-        "citation": "Dik, J., et al. 2012. 'Advanced X-ray Imaging Techniques in Art History.' MRS Bulletin 37 (6): 579-586.",
-        "doi": "10.1557/mrs.2012.124",
-        "notes": "Overview of digital radiography applications in paintings examination alongside advanced techniques"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Schaetzing, R. 2004. 'Computed Radiography Technology.' In Advances in Digital Radiography: RSNA Categorical Course in Diagnostic Radiology Physics, 7-22. Oak Brook: RSNA.",
-        "doi": null
-      }
-    ],
     "onlineResources": [
       {
         "title": "DICOM Standard",
@@ -361,4 +423,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

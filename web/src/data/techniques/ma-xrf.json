@@ -24,56 +24,160 @@
         "latex": "$$E = h\\nu = \\frac{hc}{\\lambda}$$",
         "description": "Photon Energy-Wavelength Relationship (Planck-Einstein relation)",
         "variables": [
-          {"symbol": "E", "meaning": "photon energy", "units": "eV"},
-          {"symbol": "h", "meaning": "Planck's constant", "units": "6.626 × 10⁻³⁴ J·s"},
-          {"symbol": "\\nu", "meaning": "frequency", "units": "Hz"},
-          {"symbol": "c", "meaning": "speed of light", "units": "2.998 × 10⁸ m/s"},
-          {"symbol": "\\lambda", "meaning": "wavelength", "units": "m"}
+          {
+            "symbol": "E",
+            "meaning": "photon energy",
+            "units": "eV"
+          },
+          {
+            "symbol": "h",
+            "meaning": "Planck's constant",
+            "units": "6.626 × 10⁻³⁴ J·s"
+          },
+          {
+            "symbol": "\\nu",
+            "meaning": "frequency",
+            "units": "Hz"
+          },
+          {
+            "symbol": "c",
+            "meaning": "speed of light",
+            "units": "2.998 × 10⁸ m/s"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "wavelength",
+            "units": "m"
+          }
         ]
       },
       {
         "latex": "$$E_{K\\alpha} = 13.6 \\text{ eV} \\cdot (Z - \\sigma)^2 \\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)$$",
         "description": "Characteristic X-ray Energy (Moseley's Law)",
         "variables": [
-          {"symbol": "E_{K\\alpha}", "meaning": "energy of K-alpha X-ray", "units": "eV"},
-          {"symbol": "Z", "meaning": "atomic number", "units": "dimensionless"},
-          {"symbol": "\\sigma", "meaning": "screening constant", "units": "dimensionless"},
-          {"symbol": "n_1", "meaning": "principal quantum number of inner shell (1 for K-shell)", "units": "dimensionless"},
-          {"symbol": "n_2", "meaning": "principal quantum number of outer shell (2 for K-alpha transition)", "units": "dimensionless"}
+          {
+            "symbol": "E_{K\\alpha}",
+            "meaning": "energy of K-alpha X-ray",
+            "units": "eV"
+          },
+          {
+            "symbol": "Z",
+            "meaning": "atomic number",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\sigma",
+            "meaning": "screening constant",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "n_1",
+            "meaning": "principal quantum number of inner shell (1 for K-shell)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "n_2",
+            "meaning": "principal quantum number of outer shell (2 for K-alpha transition)",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$I_f = I_0 \\cdot \\omega \\cdot \\tau \\cdot \\Omega \\cdot \\epsilon \\cdot C$$",
         "description": "Fluorescence Intensity",
         "variables": [
-          {"symbol": "I_f", "meaning": "fluorescence intensity", "units": "counts/second"},
-          {"symbol": "I_0", "meaning": "incident X-ray intensity", "units": "photons/s"},
-          {"symbol": "\\omega", "meaning": "fluorescence yield", "units": "dimensionless"},
-          {"symbol": "\\tau", "meaning": "photoelectric absorption coefficient", "units": "cm²/g"},
-          {"symbol": "\\Omega", "meaning": "solid angle of detector", "units": "sr"},
-          {"symbol": "\\epsilon", "meaning": "detector efficiency", "units": "dimensionless"},
-          {"symbol": "C", "meaning": "concentration of element", "units": "wt%"}
+          {
+            "symbol": "I_f",
+            "meaning": "fluorescence intensity",
+            "units": "counts/second"
+          },
+          {
+            "symbol": "I_0",
+            "meaning": "incident X-ray intensity",
+            "units": "photons/s"
+          },
+          {
+            "symbol": "\\omega",
+            "meaning": "fluorescence yield",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\tau",
+            "meaning": "photoelectric absorption coefficient",
+            "units": "cm²/g"
+          },
+          {
+            "symbol": "\\Omega",
+            "meaning": "solid angle of detector",
+            "units": "sr"
+          },
+          {
+            "symbol": "\\epsilon",
+            "meaning": "detector efficiency",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "C",
+            "meaning": "concentration of element",
+            "units": "wt%"
+          }
         ]
       },
       {
         "latex": "$$I(x) = I_0 \\exp\\left(-\\mu \\rho x\\right)$$",
         "description": "Attenuation (Beer-Lambert Law)",
         "variables": [
-          {"symbol": "I(x)", "meaning": "intensity at depth x", "units": "W/m²"},
-          {"symbol": "I_0", "meaning": "incident intensity", "units": "W/m²"},
-          {"symbol": "\\mu", "meaning": "mass attenuation coefficient", "units": "cm²/g"},
-          {"symbol": "\\rho", "meaning": "density", "units": "g/cm³"},
-          {"symbol": "x", "meaning": "material thickness", "units": "cm"}
+          {
+            "symbol": "I(x)",
+            "meaning": "intensity at depth x",
+            "units": "W/m²"
+          },
+          {
+            "symbol": "I_0",
+            "meaning": "incident intensity",
+            "units": "W/m²"
+          },
+          {
+            "symbol": "\\mu",
+            "meaning": "mass attenuation coefficient",
+            "units": "cm²/g"
+          },
+          {
+            "symbol": "\\rho",
+            "meaning": "density",
+            "units": "g/cm³"
+          },
+          {
+            "symbol": "x",
+            "meaning": "material thickness",
+            "units": "cm"
+          }
         ]
       },
       {
         "latex": "$$d_{info} \\approx \\frac{1}{\\mu_{in} \\rho + \\mu_{out} \\rho}$$",
         "description": "Information Depth",
         "variables": [
-          {"symbol": "d_{info}", "meaning": "information depth", "units": "cm"},
-          {"symbol": "\\mu_{in}", "meaning": "attenuation coefficient for incoming X-rays", "units": "cm²/g"},
-          {"symbol": "\\mu_{out}", "meaning": "attenuation coefficient for outgoing fluorescent X-rays", "units": "cm²/g"},
-          {"symbol": "\\rho", "meaning": "density", "units": "g/cm³"}
+          {
+            "symbol": "d_{info}",
+            "meaning": "information depth",
+            "units": "cm"
+          },
+          {
+            "symbol": "\\mu_{in}",
+            "meaning": "attenuation coefficient for incoming X-rays",
+            "units": "cm²/g"
+          },
+          {
+            "symbol": "\\mu_{out}",
+            "meaning": "attenuation coefficient for outgoing fluorescent X-rays",
+            "units": "cm²/g"
+          },
+          {
+            "symbol": "\\rho",
+            "meaning": "density",
+            "units": "g/cm³"
+          }
         ]
       }
     ],
@@ -317,69 +421,43 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["x-ray-radiography", "ma-xrf", "irr-nir"],
+        "techniques": [
+          "x-ray-radiography",
+          "ma-xrf",
+          "irr-nir"
+        ],
         "rationale": "These three techniques provide complementary information: XRR (transmission-based, all heavy elements summed, shows support structure), IRR (carbon-sensitive, reveals drawing media), MA-XRF (element-specific, distinguishes pigments, best lateral resolution). Together they provide comprehensive structural and compositional information about painted artworks.",
         "examples": "Old Master paintings technical analysis - reveals underdrawings (IRR), compositional changes (all three), pigment distributions (MA-XRF), support construction (XRR)."
       },
       {
-        "techniques": ["ma-xrf", "raman-spectroscopy", "ftir-atr"],
+        "techniques": [
+          "ma-xrf",
+          "raman-spectroscopy",
+          "ftir-atr"
+        ],
         "rationale": "MA-XRF provides elemental distribution maps (complete overview). Raman confirms molecular/crystal structure (pigment confirmation). FTIR identifies organic materials (binders, varnishes, organic pigments). This combination provides complete inorganic + organic material characterization.",
         "examples": "Polychromed wooden sculptures: map entire surface with XRF, then target analysis with Raman (pigments on polychrome layers) and FTIR (adhesives, sizing, binding media)."
       },
       {
-        "techniques": ["ma-xrf", "hsi-vnir"],
+        "techniques": [
+          "ma-xrf",
+          "hsi-vnir"
+        ],
         "rationale": "XRF provides inorganic elemental composition. HSI provides organic chromophores and surface reflectance. Combined approach achieves higher pigment classification accuracy than either technique alone through pattern recognition integrating both domains.",
         "examples": "Manuscript illumination analysis: detect gold (XRF-Au), indigo (HSI), vermilion (XRF-Hg + HSI), lead white (XRF-Pb + HSI white reflectance)."
       },
       {
-        "techniques": ["ma-xrf", "oct", "raman-spectroscopy"],
+        "techniques": [
+          "ma-xrf",
+          "oct",
+          "raman-spectroscopy"
+        ],
         "rationale": "MA-XRF provides 2D lateral distribution with poor depth info. OCT provides depth profile without composition. Raman provides molecular ID at specific depth. Together: 3D reconstruction of pigment layering.",
         "examples": "Multi-layered glazes in Old Master paintings: map glaze extent (XRF), measure glaze thickness (OCT), identify lake pigments vs. body color (Raman)."
       }
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Janssens, K., G. Falkenberg, et al. 2004. 'X-ray Based Methods of Analysis.' In Non-Destructive Micro Analysis of Cultural Heritage Materials, edited by K. Janssens and R. Van Grieken, 129-226. Amsterdam: Elsevier.",
-        "doi": "10.1016/S0168-1273(04)34002-0",
-        "notes": "Comprehensive overview of XRF principles applied to heritage science; established theoretical foundation for MA-XRF technique"
-      },
-      {
-        "citation": "Dik, J., K. Janssens, G. Van Der Snickt, et al. 2008. 'Visualization of a Lost Painting by Vincent van Gogh Using Synchrotron Radiation Based X-ray Fluorescence Elemental Mapping.' Analytical Chemistry 80: 6436-6442.",
-        "doi": "10.1021/ac800965g",
-        "notes": "Landmark paper demonstrating MA-XRF's ability to reveal completely hidden paintings; generated widespread interest in the technique"
-      },
-      {
-        "citation": "Romano, F. P., C. Caliri, P. Nicotra, et al. 2017. 'Real-time Elemental Imaging of Large Dimension Paintings with a Novel Mobile Macro X-ray Fluorescence (MA-XRF) Scanning Technique.' Journal of Analytical Atomic Spectrometry 32: 773-781.",
-        "doi": "10.1039/C6JA00439C",
-        "notes": "Description of portable MA-XRF system design; demonstrated feasibility of in-situ scanning of large artworks"
-      },
-      {
-        "citation": "Alfeld, M., and K. Janssens. 2015. 'Strategies for Processing Mega-pixel X-ray Fluorescence Hyperspectral Data: a Case Study on a Version of Caravaggio's Painting Supper at Emmaus.' Journal of Analytical Atomic Spectrometry 30: 777-789.",
-        "doi": "10.1039/C4JA00387J",
-        "notes": "Established data processing workflows for large MA-XRF datasets; addressed computational challenges"
-      },
-      {
-        "citation": "Solé, V. A., E. Papillon, M. Cotte, et al. 2007. 'A Multiplatform Code for the Analysis of Energy-Dispersive X-ray Fluorescence Spectra.' Spectrochimica Acta Part B 62: 63-68.",
-        "doi": "10.1016/j.sab.2006.12.002",
-        "notes": "Introduced PyMca software, now the standard open-source tool for XRF data analysis in heritage science"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Alfeld, M., and L. de Viguerie. 2017. 'Recent Developments in Spectroscopic Imaging Techniques for Historical Paintings - A Review.' Spectrochimica Acta Part B: Atomic Spectroscopy 136: 81-105.",
-        "doi": "10.1016/j.sab.2017.08.003"
-      },
-      {
-        "citation": "Janssens, K., J. Dik, M. Cotte, and J. Susini. 2010. 'Photon-Based Techniques for Nondestructive Subsurface Analysis of Painted Cultural Heritage Artifacts.' Accounts of Chemical Research 43 (6): 814-825.",
-        "doi": "10.1021/ar900248e"
-      },
-      {
-        "citation": "Bonizzoni, L., A. Galli, G. Poldi, and M. Milazzo. 2014. 'In Situ Non-invasive EDXRF Analysis to Reconstruct Stratigraphy and Thickness of Renaissance Pictorial Multilayers.' X-Ray Spectrometry 43: 267-278.",
-        "doi": "10.1002/xrs.2557"
-      }
-    ],
     "onlineResources": [
       {
         "title": "PyMca Software & Documentation",

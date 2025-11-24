@@ -25,11 +25,6 @@ export function Footer() {
                   Multimodal Combinations
                 </Link>
               </li>
-              <li>
-                <Link href="/ml" className="hover:text-white transition-colors">
-                  Machine Learning
-                </Link>
-              </li>
             </ul>
           </div>
           <div>

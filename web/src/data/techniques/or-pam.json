@@ -35,39 +35,99 @@
         "latex": "$$d_{lateral} = \\frac{1.22 \\lambda}{NA_{optical}}$$",
         "description": "Lateral Resolution (Optical Diffraction Limit)",
         "variables": [
-          {"symbol": "d_{lateral}", "meaning": "lateral (XY) resolution, FWHM of point-spread function", "units": "μm"},
-          {"symbol": "\\lambda", "meaning": "laser wavelength (532 nm typical visible, 700-900 nm NIR)", "units": "nm"},
-          {"symbol": "NA_{optical}", "meaning": "numerical aperture of focusing objective (0.3-0.9 typical; 0.5 → d~1.3 μm @ 532 nm)", "units": "dimensionless"}
+          {
+            "symbol": "d_{lateral}",
+            "meaning": "lateral (XY) resolution, FWHM of point-spread function",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "laser wavelength (532 nm typical visible, 700-900 nm NIR)",
+            "units": "nm"
+          },
+          {
+            "symbol": "NA_{optical}",
+            "meaning": "numerical aperture of focusing objective (0.3-0.9 typical; 0.5 → d~1.3 μm @ 532 nm)",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$d_{axial} \\approx 0.88 \\cdot \\frac{c_s}{BW}$$",
         "description": "Axial Resolution (Acoustic Bandwidth-Limited)",
         "variables": [
-          {"symbol": "d_{axial}", "meaning": "axial (depth, Z) resolution", "units": "μm"},
-          {"symbol": "c_s", "meaning": "sound speed in medium (1500 m/s water/soft tissue, 2000-4000 m/s paints/wood)", "units": "m/s"},
-          {"symbol": "BW", "meaning": "acoustic bandwidth (20-80 MHz typical, fractional BW ~60% → BW ≈ 0.6·f_center)", "units": "Hz"}
+          {
+            "symbol": "d_{axial}",
+            "meaning": "axial (depth, Z) resolution",
+            "units": "μm"
+          },
+          {
+            "symbol": "c_s",
+            "meaning": "sound speed in medium (1500 m/s water/soft tissue, 2000-4000 m/s paints/wood)",
+            "units": "m/s"
+          },
+          {
+            "symbol": "BW",
+            "meaning": "acoustic bandwidth (20-80 MHz typical, fractional BW ~60% → BW ≈ 0.6·f_center)",
+            "units": "Hz"
+          }
         ]
       },
       {
         "latex": "$$z_{penetration} \\approx \\frac{1}{\\mu_{eff}} = \\frac{1}{\\sqrt{3 \\mu_a (\\mu_a + \\mu_s')}}$$",
         "description": "Optical Penetration Depth (Scattering-Limited)",
         "variables": [
-          {"symbol": "z_{penetration}", "meaning": "effective imaging depth (~1 transport mean free path)", "units": "μm or mm"},
-          {"symbol": "\\mu_{eff}", "meaning": "effective attenuation coefficient", "units": "mm⁻¹"},
-          {"symbol": "\\mu_a", "meaning": "absorption coefficient", "units": "mm⁻¹"},
-          {"symbol": "\\mu_s'", "meaning": "reduced scattering coefficient (μ_s' = μ_s(1-g), g=anisotropy)", "units": "mm⁻¹"}
+          {
+            "symbol": "z_{penetration}",
+            "meaning": "effective imaging depth (~1 transport mean free path)",
+            "units": "μm or mm"
+          },
+          {
+            "symbol": "\\mu_{eff}",
+            "meaning": "effective attenuation coefficient",
+            "units": "mm⁻¹"
+          },
+          {
+            "symbol": "\\mu_a",
+            "meaning": "absorption coefficient",
+            "units": "mm⁻¹"
+          },
+          {
+            "symbol": "\\mu_s'",
+            "meaning": "reduced scattering coefficient (μ_s' = μ_s(1-g), g=anisotropy)",
+            "units": "mm⁻¹"
+          }
         ]
       },
       {
         "latex": "$$SNR \\propto \\frac{\\mu_a \\cdot \\Phi \\cdot V_{focal}}{\\sqrt{Noise}}$$",
         "description": "Signal-to-Noise Ratio (Scaling)",
         "variables": [
-          {"symbol": "SNR", "meaning": "signal-to-noise ratio", "units": "dimensionless"},
-          {"symbol": "\\mu_a", "meaning": "absorption coefficient", "units": "mm⁻¹"},
-          {"symbol": "\\Phi", "meaning": "local optical fluence (J/cm²)", "units": "J/cm²"},
-          {"symbol": "V_{focal}", "meaning": "focal volume (smaller for tight focus → fewer molecules → weaker signal but better resolution; trade-off)", "units": "μm³"},
-          {"symbol": "Noise", "meaning": "detector + electronic noise (constant), scales as √(BW·T_integration)", "units": "various"}
+          {
+            "symbol": "SNR",
+            "meaning": "signal-to-noise ratio",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\mu_a",
+            "meaning": "absorption coefficient",
+            "units": "mm⁻¹"
+          },
+          {
+            "symbol": "\\Phi",
+            "meaning": "local optical fluence (J/cm²)",
+            "units": "J/cm²"
+          },
+          {
+            "symbol": "V_{focal}",
+            "meaning": "focal volume (smaller for tight focus → fewer molecules → weaker signal but better resolution; trade-off)",
+            "units": "μm³"
+          },
+          {
+            "symbol": "Noise",
+            "meaning": "detector + electronic noise (constant), scales as √(BW·T_integration)",
+            "units": "various"
+          }
         ]
       }
     ],
@@ -110,15 +170,51 @@
     ],
     "measurementProtocol": "**Step 1: System Alignment and Calibration** (30-60 minutes daily; 5-10 min for check/realignment subsequent sessions)\n\nLaser: Warm up (10-20 min, thermal stability). Verify output: energy meter at sample position (100-500 nJ/pulse typical). Wavelength check (spectrometer or accept factory calibration ±1 nm).\n\nConfocal alignment: Critical step. Mount point absorber (10 μm carbon particle on glass slide, or gold nanoparticle dried on coverslip). Position under objective, focus laser (visible spot via camera if 532 nm). Fire laser, adjust transducer XYZ position (6-axis manipulator: 3 translation + 3 rotation typical) until PA signal maximized (oscilloscope monitors signal amplitude). Maximize: adjust X (lateral to laser axis), Y (perpendicular), Z (depth, along acoustic axis). Typical signal: 10-100 mV for 100 nJ pulse on 10 μm carbon at optimal alignment. Misalignment → <1 mV. Record optimal transducer position (encoder readings), recheck daily (thermal drift may shift alignment ±10 μm overnight).\n\nSound speed calibration: Measure with known phantom (e.g., two parallel absorbing lines separated by known distance d = 50 μm in Z). Image, measure time-of-flight Δt between lines, calculate c_s = d / Δt. Adjust c_s setting in software (default 1500 m/s water; resin-embedded samples ~1800-2000 m/s, adjust for accurate depth scaling).\n\n**Step 2: Sample Mounting and Coupling** (10-20 minutes)\n\nMount sample on stage (XY scanning stage, sample stationary if beam-scanning OR-PAM). Cross-section: place polished surface facing objective (face-up if inverted microscope, face-down if upright). Apply coupling medium: Water bath: Submerge sample in shallow dish (10-20 mm water depth), transducer enters water from side/top (avoid bubbles trapped under transducer face → blocks ultrasound; tilt transducer, tap gently to dislodge bubbles). Gel coupling: Apply generous ultrasound gel (5 mm layer on sample surface), lower transducer into gel (ensure contact, no air pockets). Verify coupling quality: send ultrasound pulse (transducer transmit mode, if available), observe reflection from sample surface (strong echo = good coupling, weak = air gap → reapply gel, remove bubbles). Position objective: lower until sample in focus (camera view, white light illumination if available, or IR viewer for NIR lasers). Working distance: NA 0.3-0.5 objectives typically 5-15 mm WD (adequate for sample + coupling layer). High-NA 0.8-1.0: <1 mm WD (requires thin coverslip + immersion, challenging for cross-sections). Focus depth: initially at sample surface (Z=0), then adjust for subsurface imaging (increment Z in software, objective/stage moves).\n\n**Step 3: Scan Parameter Optimization** (15-30 minutes, iterate to optimize)\n\nDefine scan area (XY ROI): locate feature of interest via optical imaging (camera, brightfield), mark bounds in software (e.g., 500×500 μm for single pigment grain layer analysis, or 2×2 mm for full cross-section). Set step size: match to lateral resolution (~0.5-1× spot size for Nyquist sampling; 2 μm resolution → 1-2 μm step size). Smaller steps oversample (longer scan, no resolution gain); larger steps undersample (aliasing, missed features).\n\nLaser energy: Test single pixel (fire 10 pulses, measure PA signal amplitude). If weak (<10× noise, SNR <10:1): increase laser energy (up to safe limit ~100 mJ/cm² surface fluence; calculate from pulse energy and spot size), verify no sample damage (no color change, smoke, if organic). If saturates ADC (signal clips at +/- full scale): reduce energy or increase ADC gain range.\n\nAveraging: Acquire multiple pulses per pixel (1-100), average PA waveforms (√N SNR improvement). Trade-off: averaging improves SNR but increases acquisition time (10× average → 10× slower). Typical: 10-50 averages for deep/weak features, 1-10 for strong surface features.\n\nDepth range: Set time window for ADC (Z_max = c_s × t_window / 2; e.g., 10 μs window, c_s=1500 m/s → 7.5 mm depth range; only need ~1 mm for cross-sections → 1.3 μs adequate, reduces data size). Adjust delay (trigger to acquisition start) if surface echo arrives after trigger (typical: 5-10 μs delay for transducer 10 mm from sample).\n\n**Step 4: 2D Scan Acquisition (Single Depth Slice)** (5-60 minutes per 2D slice, depending on area, step size, averaging)\n\nInitiate XY raster scan (software-controlled motorized stages). At each (x,y) position: (1) Stage moves to position (1-10 ms settling time, encoder feedback ensures arrival ±0.1 μm). (2) Laser fires N pulses (N = averaging factor, 1-100). (3) ADC captures acoustic waveform each pulse (200-500 MHz sampling, 500-5000 points, 2-10 μs duration per waveform). (4) Waveforms averaged (if N>1). (5) PA signal envelope extracted (Hilbert transform: converts RF oscillation → amplitude envelope). (6) Peak amplitude (or integral) recorded as pixel intensity I(x,y). (7) Stage moves to next position. Scan pattern: raster (serpentine: →→← to minimize backlash) or spiral. Typical speeds: 100-1000 pixels/s depending on stage acceleration, laser rep rate, averaging. Real-time display: software shows image as it acquires (update every row or every N pixels). Monitor quality: if signal drops midway (coupling lost, transducer moved), stop, recouple, resume. Total time example: 500×500 pixels @ 2 μm step = 250,000 pixels. Laser 5 kHz, 10 averages → 2 ms per pixel → 500 s = 8 min per slice. 1×1 mm @ 1 μm = 1 million pixels → 33 min per slice (if 2 ms per pixel).\n\n**Step 5: 3D Volumetric Imaging (Z-Stack)** (30 minutes - 3 hours, for 5-20 depth slices)\n\nTo image 3D volume (not just surface): repeat 2D scans at multiple depths. Z-scanning methods: (1) Objective focus adjustment: Motorized Z-stage moves objective (or sample stage) to change focal depth. Increment Z (20-100 μm steps, match to acoustic axial resolution ~40 μm), repeat XY scan at each depth. (2) Acoustic time-gating: Keep optical focus fixed, extract different depth ranges from same waveform (early time window = shallow, late = deep; depth resolution limited by acoustic BW ~40 μm). Software processes: extract amplitude at multiple time delays → multiple depth slices from single XY scan (faster than mechanical Z-scan but lower depth resolution). Typical Z-stack: 5-20 slices, 20-50 μm spacing, total depth range 100-1000 μm (depends on penetration). Acquisition time: N_slices × time per 2D scan; e.g., 10 slices × 10 min = 100 min = 1.7 hr for 3D volume 500×500×200 μm³. Data size: 500×500 pixels × 10 slices × 2 bytes (16-bit amplitude) = 5 MB per volume (small; minimal storage issue).\n\n**Step 6: Multi-Wavelength Imaging (Optional, Spectroscopic OR-PAM)** (2-10 hours, for 5-10 wavelengths × 3D volume)\n\nTo identify materials via absorption spectra: repeat 3D volume at multiple wavelengths (e.g., 532, 560, 580, 600 nm if tunable dye laser or OPO). At each λ: full XYZ scan → one 3D volume A(x,y,z,λ). Wavelengths chosen to span absorption features (pigment spectra: vermilion peaks ~500-600 nm, ultramarine 590 nm, ochres broad 400-700 nm). Typically 5-10 wavelengths (balance spectral info vs. time). Analysis: At each voxel (x,y,z), measure A(λ₁), A(λ₂), ..., A(λ_N). Spectral unmixing: fit to linear combination of reference spectra (pigment basis set) → concentration maps for each pigment (separate co-located grains). Acquisition time: N_wavelengths × time per volume; e.g., 5 wavelengths × 1 hr = 5 hr total. Requires tunable laser (OPO, dye laser; Nd:YAG 532 nm only = single-wavelength, no unmixing, but faster).\n\n**Step 7: Data Processing and Image Reconstruction** (10-30 minutes per dataset)\n\nRaw data: 3D or 4D array (X × Y × time samples, or X × Y × Z if depth-resolved, or X × Y × Z × λ if multi-wavelength). Preprocessing: (1) Bandpass filter: RF waveforms contain transducer frequency content (5-100 MHz); apply digital filter (e.g., 10-80 MHz bandpass for 50 MHz transducer, Butterworth 4th order) → remove DC drift + high-freq noise. (2) Hilbert transform: extract envelope from RF signal (acoustic oscillation → amplitude envelope, represents local pressure maximum ∝ absorption). (3) Log compression: display log(A) instead of A (compress dynamic range 10⁴ → 60 dB, reveal faint features alongside strong). (4) Depth correction (optional): compensate acoustic attenuation + geometric spreading (multiply signal by e^(αz) · z², where z = depth; typically α~0.5 dB/(cm·MHz), z in mm). Reconstruction: For single-focus OR-PAM, reconstruction is straightforward (each pixel = one position + depth directly encoded). Unlike PAT (requires inverse problem solving), OR-PAM is direct imaging (confocal detection → point-by-point mapping). Visualization: Load into software (ImageJ, Amira, MATLAB). 2D images: display as grayscale or false-color (absorption intensity). 3D volumes: volume rendering, maximum intensity projection (MIP), or slice-by-slice. Image enhancement: Gaussian smoothing (σ=1-2 pixels, reduce noise), histogram equalization (auto-contrast), or median filter (remove speckle).",
     "typicalParameters": [
-      {"parameter": "Laser wavelength", "value": "532 nm", "notes": "532 nm (Nd:YAG doubled): strong pigment absorption, cheap laser. 580 nm: oxy-Hb biomedical. 700-900 nm NIR: deeper penetration (lower scattering), but weaker pigment absorption."},
-      {"parameter": "Pulse energy at sample", "value": "100-500 nJ", "notes": "Focused to 2-3 μm spot → fluence 10-100 mJ/cm². Higher energy → better SNR but damage risk. <100 mJ/cm² safe for most heritage. Test on edge/sacrificial area."},
-      {"parameter": "Repetition rate", "value": "5 kHz", "notes": "Higher rate → faster scanning (critical for large areas). 1 kHz: 1 ms per pixel minimum. 10 kHz: 0.1 ms per pixel (but stage settling, averaging add time)."},
-      {"parameter": "Objective NA", "value": "0.4-0.6", "notes": "NA 0.5: ~1.3 μm lateral res. @ 532 nm, 5-10 mm WD. High NA 0.8-1.0: 0.7-0.8 μm res. but <1 mm WD (immersion needed, challenging for cross-sections)."},
-      {"parameter": "Ultrasound frequency", "value": "50 MHz", "notes": "50 MHz: ~45 μm axial res., 500 μm - 1 mm penetration. 20-30 MHz: 70-100 μm res., >1 mm depth. 80 MHz: 25-30 μm res., <500 μm depth."},
-      {"parameter": "Scan step size", "value": "1-2 μm", "notes": "Match lateral resolution (0.5-1× spot diameter for Nyquist). 2 μm res. → 1-2 μm step. Smaller oversamples (longer, no gain), larger undersamples (miss features)."},
-      {"parameter": "Averaging", "value": "10-50 pulses", "notes": "Improves SNR √N. 10× average → 3.2× SNR. Weak signals (depth, low absorption): 50-100. Strong surface: 5-10. Trade-off: time."},
-      {"parameter": "Sampling rate (ADC)", "value": "250 MHz", "notes": "Nyquist: ≥2× max frequency. 80 MHz signal → 160 MHz minimum. 250-500 MHz typical (oversampling, margin, captures transients)."},
-      {"parameter": "Acquisition time window", "value": "5-10 μs", "notes": "Z_max = c_s·t/2. 10 μs @ 1500 m/s = 7.5 mm depth. Cross-sections <1 mm thick → 2-3 μs adequate (reduces data size, processing time)."}
+      {
+        "parameter": "Laser wavelength",
+        "value": "532 nm",
+        "notes": "532 nm (Nd:YAG doubled): strong pigment absorption, cheap laser. 580 nm: oxy-Hb biomedical. 700-900 nm NIR: deeper penetration (lower scattering), but weaker pigment absorption."
+      },
+      {
+        "parameter": "Pulse energy at sample",
+        "value": "100-500 nJ",
+        "notes": "Focused to 2-3 μm spot → fluence 10-100 mJ/cm². Higher energy → better SNR but damage risk. <100 mJ/cm² safe for most heritage. Test on edge/sacrificial area."
+      },
+      {
+        "parameter": "Repetition rate",
+        "value": "5 kHz",
+        "notes": "Higher rate → faster scanning (critical for large areas). 1 kHz: 1 ms per pixel minimum. 10 kHz: 0.1 ms per pixel (but stage settling, averaging add time)."
+      },
+      {
+        "parameter": "Objective NA",
+        "value": "0.4-0.6",
+        "notes": "NA 0.5: ~1.3 μm lateral res. @ 532 nm, 5-10 mm WD. High NA 0.8-1.0: 0.7-0.8 μm res. but <1 mm WD (immersion needed, challenging for cross-sections)."
+      },
+      {
+        "parameter": "Ultrasound frequency",
+        "value": "50 MHz",
+        "notes": "50 MHz: ~45 μm axial res., 500 μm - 1 mm penetration. 20-30 MHz: 70-100 μm res., >1 mm depth. 80 MHz: 25-30 μm res., <500 μm depth."
+      },
+      {
+        "parameter": "Scan step size",
+        "value": "1-2 μm",
+        "notes": "Match lateral resolution (0.5-1× spot diameter for Nyquist). 2 μm res. → 1-2 μm step. Smaller oversamples (longer, no gain), larger undersamples (miss features)."
+      },
+      {
+        "parameter": "Averaging",
+        "value": "10-50 pulses",
+        "notes": "Improves SNR √N. 10× average → 3.2× SNR. Weak signals (depth, low absorption): 50-100. Strong surface: 5-10. Trade-off: time."
+      },
+      {
+        "parameter": "Sampling rate (ADC)",
+        "value": "250 MHz",
+        "notes": "Nyquist: ≥2× max frequency. 80 MHz signal → 160 MHz minimum. 250-500 MHz typical (oversampling, margin, captures transients)."
+      },
+      {
+        "parameter": "Acquisition time window",
+        "value": "5-10 μs",
+        "notes": "Z_max = c_s·t/2. 10 μs @ 1500 m/s = 7.5 mm depth. Cross-sections <1 mm thick → 2-3 μs adequate (reduces data size, processing time)."
+      }
     ],
     "calibration": "Standards: Point absorber (10 μm carbon particle, gold nanoparticle on slide; confocal alignment, PSF measurement). Resolution target (USAF 1951 or custom: parallel carbon lines 1-10 μm spacing; verify lateral resolution). Depth phantom (known absorbers at multiple depths: 50, 100, 200 μm in agar or resin; verify axial resolution, sound speed). Absorption phantom (pigment suspensions at known concentrations: μ_a calibration if quantitative needed).\n\nFrequency: Daily: confocal alignment check (point absorber, maximize signal, record transducer position). Weekly: resolution test (USAF target or line phantom, measure PSF, compare to spec: lateral ≤3 μm, axial ≤50 μm). Monthly: full calibration (sound speed, depth scaling, energy stability).\n\nProcedure: Confocal alignment: Mount 10 μm carbon particle on glass slide, submerge in water. Focus laser (visible spot, or IR viewer). Fire laser (low energy, 100 nJ), observe PA signal (oscilloscope or ADC live view). Adjust transducer XYZ (6-axis manipulator), maximize signal amplitude (100 mV typical optimum, <10 mV if misaligned). Iterate: X (lateral), Y (perpendicular), Z (depth, along acoustic axis). Record final position (software saves encoder coordinates), apply as reference. Re-check daily (thermal drift ±10 μm overnight). Lateral resolution: Image USAF target (Group 7, Element 6 = 2.19 μm line pairs), or custom parallel lines (2-5 μm spacing, carbon ink on glass). Measure modulation transfer function (MTF: signal modulation vs. spatial frequency) or directly measure smallest resolved lines. If resolution degraded (>3 μm when spec 2 μm), check: objective (dirty, damaged?), confocal alignment (re-optimize), laser focus (aberrations? refractive index mismatch?).",
     "qualityControl": [
@@ -141,11 +237,31 @@
     ],
     "analysisWorkflow": "**Step 1: Visual Inspection**\n\nLoad 2D image or 3D volume into viewer (ImageJ, Amira, Horos). Adjust window/level (contrast, brightness) to reveal features. Identify: high-absorption regions (bright = pigment grains, dyes, inks), low-absorption (dark = lead white, binders, voids). Check artifacts (streaks, blurring, noise; see QC section if present).\n\n**Step 2: Feature Segmentation**\n\nDelineate regions of interest (pigment grains, layers, structures). Methods: (1) Manual (draw ROIs in ImageJ, Amira; slow but accurate). (2) Thresholding (intensity >threshold = feature; iterative adjustment). (3) Automated (watershed, region-growing, or ML-based; U-Net trained on labeled OR-PAM images → automatic segmentation; research-level). For pigment grains: threshold + particle analysis (ImageJ Analyze Particles: filters by size 1-50 μm², counts, measures areas).\n\n**Step 3: Quantitative Measurements**\n\nExtract metrics: Pigment grain size: Measure diameter or area (ImageJ ROI tools, Analyze → Measure). Compare size distributions (vermilion 5-20 μm natural, <5 μm synthetic → dating). Layer thickness: Measure Z-extent of absorption band (depth profile, FWHM). Accuracy ±20 μm (limited by axial resolution). Absorption intensity: Mean pixel value in ROI (proportional to μ_a if calibrated; otherwise relative). Compare pigment types (vermilion 5-10× more absorbing than ochre at 532 nm). Spatial distribution: Centroid positions, nearest-neighbor distances (pigment mixing analysis: clustered vs. uniformly mixed).\n\n**Step 4: Depth Profiling**\n\nExtract 1D profiles A(z) at selected (x,y) positions (line tool perpendicular to surface through 3D volume). Plot absorption vs. depth: peaks indicate absorbing layers (pigment, underdrawing), valleys indicate transparent (binder, ground). Measure: peak positions (layer depths ±20 μm), peak widths (layer thicknesses), peak amplitudes (relative concentrations).\n\n**Step 5: Spectroscopic Analysis (if multi-wavelength)**\n\nAt each voxel, extract absorption spectrum A(λ). Compare to reference pigment spectra (library: vermilion, ochre, ultramarine, etc.). Spectral unmixing: linear least-squares fit A(λ) = Σ_i c_i·ε_i(λ), solve for concentrations c_i. Generate concentration maps (e.g., c_vermilion(x,y,z), c_ochre(x,y,z)). Separate co-located pigments (OR-PAM spatial resolution resolves grains, spectroscopic resolves overlapping absorption if adjacent grains <1 μm apart).\n\n**Step 6: Correlation with Other Techniques**\n\nCo-register OR-PAM with: (1) Optical microscopy: Overlay OR-PAM absorption map on brightfield image (same cross-section, register via fiducial marks, software alignment). Correlate absorption with color (red = vermilion = high 532 nm absorption). (2) SEM-EDS: Register OR-PAM (molecular, absorption) with EDS (elemental, Hg→vermilion, Fe→ochre). Confirm IDs (Hg + high absorption + red color = vermilion). (3) Raman: OR-PAM identifies grain locations, Raman analyzes specific grains (molecular structure, polymorph). Complementary: OR-PAM fast wide-field, Raman slow point-by-point but definitive. (4) FTIR: OR-PAM pigments, FTIR binders (organics). Combined: complete composition (pigment + binder per layer).",
     "softwareTools": [
-      {"name": "ImageJ/Fiji", "url": "https://imagej.net/software/fiji/", "notes": "Open-source. Visualization (2D, 3D volume viewer), ROI analysis, particle counting, measurements, image processing (filters, math operations). Standard for microscopy, compatible with OR-PAM. Cost: Free."},
-      {"name": "MATLAB", "url": "https://www.mathworks.com/products/matlab.html", "notes": "Commercial. Acquisition control (instrument communication, DAQ triggering), real-time processing (Hilbert, log compression, display), custom analysis scripts, spectroscopic unmixing. Cost: $2,500 academic, $5,000 commercial."},
-      {"name": "Amira", "url": "https://www.thermofisher.com/amira-software", "notes": "Commercial. Advanced 3D visualization, segmentation (interactive, semi-automated), quantitative analysis (volume, surface area, distances), registration (multi-modal co-alignment). Cost: $10,000-$20,000."},
-      {"name": "Python (NumPy, SciPy, scikit-image, napari)", "url": "https://www.python.org/", "notes": "Open-source. Custom processing (scripting), ML-based segmentation (TensorFlow, PyTorch), 3D visualization (napari, Mayavi), automation. Flexible, requires programming. Cost: Free."},
-      {"name": "Horos (Mac)", "url": "https://horosproject.org/", "notes": "Open-source. Medical imaging viewer (DICOM), 3D rendering, MPR (multi-planar reconstruction). Works with OR-PAM volumes if exported as DICOM. Cost: Free."}
+      {
+        "name": "ImageJ/Fiji",
+        "url": "https://imagej.net/software/fiji/",
+        "notes": "Open-source. Visualization (2D, 3D volume viewer), ROI analysis, particle counting, measurements, image processing (filters, math operations). Standard for microscopy, compatible with OR-PAM. Cost: Free."
+      },
+      {
+        "name": "MATLAB",
+        "url": "https://www.mathworks.com/products/matlab.html",
+        "notes": "Commercial. Acquisition control (instrument communication, DAQ triggering), real-time processing (Hilbert, log compression, display), custom analysis scripts, spectroscopic unmixing. Cost: $2,500 academic, $5,000 commercial."
+      },
+      {
+        "name": "Amira",
+        "url": "https://www.thermofisher.com/amira-software",
+        "notes": "Commercial. Advanced 3D visualization, segmentation (interactive, semi-automated), quantitative analysis (volume, surface area, distances), registration (multi-modal co-alignment). Cost: $10,000-$20,000."
+      },
+      {
+        "name": "Python (NumPy, SciPy, scikit-image, napari)",
+        "url": "https://www.python.org/",
+        "notes": "Open-source. Custom processing (scripting), ML-based segmentation (TensorFlow, PyTorch), 3D visualization (napari, Mayavi), automation. Flexible, requires programming. Cost: Free."
+      },
+      {
+        "name": "Horos (Mac)",
+        "url": "https://horosproject.org/",
+        "notes": "Open-source. Medical imaging viewer (DICOM), 3D rendering, MPR (multi-planar reconstruction). Works with OR-PAM volumes if exported as DICOM. Cost: Free."
+      }
     ],
     "interpretationGuidelines": "OR-PAM image = absorption coefficient map A(x,y,z), where A ∝ μ_a (proportional, not absolute unless calibrated). Brightness interpretation: Bright pixels (high A) = strong absorbers at excitation wavelength (pigments: vermilion, ochre, carbon black, dyes at 532 nm; oxy-Hb in biomedical). Dark pixels (low A) = weak/non-absorbers (lead white, barium sulfate, transparent binders NIR-transparent). Spatial patterns: Individual grains resolved (1-50 μm pigment particles visible if >1 μm and spatially separated). Co-located grains <1 μm apart appear as single bright feature (resolution limit; spectroscopic unmixing helps separate). Depth dependence: Signal decreases with depth (optical attenuation e^(-μ_eff·z), geometric spreading ~1/z²). Surface features (z=0-50 μm): SNR 50-100. Deep (z=200-500 μm): SNR 10-30. Beyond penetration depth (z>500 μm turbid media): signal noise-level, artifacts. Comparison to optical microscopy: OR-PAM shows absorption (functional contrast, molecular). Optical brightfield shows scattering + absorption (structural + functional, but depth-limited <10 μm due to scattering). OR-PAM penetrates 50-500 μm (exceeds optical), resolves subsurface structures invisible in brightfield. Artifacts vs. features: Real features: spatially coherent (appear in adjacent slices), match expected (pigment grain morphology, layer continuity), correlate with other techniques (EDS elements match OR-PAM absorption). Artifacts: random (noise speckle), geometric (streaks aligned with scan axes = stage motion issue), inconsistent (appear/disappear between scans = coupling failure, laser instability).",
     "commonPitfalls": [
@@ -192,26 +308,16 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["or-pam", "raman-spectroscopy"],
+        "techniques": [
+          "or-pam",
+          "raman-spectroscopy"
+        ],
         "rationale": "OR-PAM fast, wide-field (minutes for large area), but absorption non-specific (multiple pigments absorb 532 nm). Raman slow, point-by-point (hours for 100 points), but definitive (vibrational fingerprint). Combined: OR-PAM screens → Raman confirms (efficient: OR-PAM 10 min + Raman 2 hr for 50 points = 2.2 hr total vs. blind Raman survey 10 hr for 500×500 μm @ 5 μm step). Synergy: OR-PAM guides Raman to 'interesting' features (avoids wasting time on homogeneous binder regions, focuses on pigment grains).",
         "examples": "Paint cross-section analysis (Dutch Golden Age, suspected vermilion + minium mixture). OR-PAM (532 nm) shows two types of grains: (1) very bright, 10-20 μm (strong 532 nm absorption), (2) moderately bright, 5-10 μm (weaker). Ambiguous: vermilion (HgS, strong @ 532 nm) vs. minium (Pb₃O₄, moderate @ 532 nm)? Raman targeted: bright grains → 254/284/344 cm⁻¹ = vermilion (HgS). Moderate grains → 121/313/547 cm⁻¹ = minium (Pb₃O₄). Conclusion: mixture confirmed (vermilion 30%, minium 20%, lead white 50% by grain count). OR-PAM alone ambiguous, Raman alone slow, combined optimal."
       }
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Maslov, K., et al. 2008. 'Optical-Resolution Photoacoustic Microscopy for In Vivo Imaging of Single Capillaries.' Optics Letters 33: 929-931.",
-        "doi": "10.1364/OL.33.000929",
-        "notes": "First OR-PAM demonstration: sub-capillary resolution (~5 μm) via optical focusing; established OR-PAM as distinct from acoustic-resolution PAT"
-      },
-      {
-        "citation": "Lucassen, G., et al. 2022. 'Optical-Resolution Photoacoustic Microscopy of Historical Paint Cross-Sections.' Heritage Science (in preparation, conference presentations ICOM-CC 2022).",
-        "doi": "TBD",
-        "notes": "Heritage OR-PAM application: Vermeer cross-sections, pigment grain mapping (see case study above); demonstrates feasibility, establishes protocols"
-      }
-    ],
-    "reviews": [],
     "onlineResources": []
   },
   "tags": [
@@ -227,4 +333,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

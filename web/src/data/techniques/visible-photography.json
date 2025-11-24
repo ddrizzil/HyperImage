@@ -30,62 +30,166 @@
         "latex": "$$m = \\frac{v}{u} = \\frac{f}{u-f}$$",
         "description": "Lens Magnification (thin lens approximation)",
         "variables": [
-          {"symbol": "m", "meaning": "magnification (image size / object size)", "units": "dimensionless"},
-          {"symbol": "v", "meaning": "image distance (lens to sensor)", "units": "mm"},
-          {"symbol": "u", "meaning": "object distance (lens to subject)", "units": "mm or m"},
-          {"symbol": "f", "meaning": "lens focal length", "units": "mm"}
+          {
+            "symbol": "m",
+            "meaning": "magnification (image size / object size)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "v",
+            "meaning": "image distance (lens to sensor)",
+            "units": "mm"
+          },
+          {
+            "symbol": "u",
+            "meaning": "object distance (lens to subject)",
+            "units": "mm or m"
+          },
+          {
+            "symbol": "f",
+            "meaning": "lens focal length",
+            "units": "mm"
+          }
         ]
       },
       {
         "latex": "$$\\text{DoF} \\approx \\frac{2 u^2 N c}{f^2}$$",
         "description": "Depth of Field (simplified, near-far symmetric approximation)",
         "variables": [
-          {"symbol": "\\text{DoF}", "meaning": "depth of field (range in acceptable focus)", "units": "mm or m"},
-          {"symbol": "u", "meaning": "subject distance from lens", "units": "mm or m"},
-          {"symbol": "N", "meaning": "f-number (aperture: f/N)", "units": "dimensionless"},
-          {"symbol": "c", "meaning": "circle of confusion (acceptable blur diameter on sensor)", "units": "μm"},
-          {"symbol": "f", "meaning": "focal length", "units": "mm"}
+          {
+            "symbol": "\\text{DoF}",
+            "meaning": "depth of field (range in acceptable focus)",
+            "units": "mm or m"
+          },
+          {
+            "symbol": "u",
+            "meaning": "subject distance from lens",
+            "units": "mm or m"
+          },
+          {
+            "symbol": "N",
+            "meaning": "f-number (aperture: f/N)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "c",
+            "meaning": "circle of confusion (acceptable blur diameter on sensor)",
+            "units": "μm"
+          },
+          {
+            "symbol": "f",
+            "meaning": "focal length",
+            "units": "mm"
+          }
         ]
       },
       {
         "latex": "$$\\text{GSD} = \\frac{u \\cdot p}{f}$$",
         "description": "Ground Sampling Distance (spatial resolution on object)",
         "variables": [
-          {"symbol": "\\text{GSD}", "meaning": "ground sampling distance (object dimension per pixel)", "units": "μm/pixel or mm/pixel"},
-          {"symbol": "u", "meaning": "object distance", "units": "mm or m"},
-          {"symbol": "p", "meaning": "pixel pitch (physical pixel size on sensor)", "units": "μm"},
-          {"symbol": "f", "meaning": "focal length", "units": "mm"}
+          {
+            "symbol": "\\text{GSD}",
+            "meaning": "ground sampling distance (object dimension per pixel)",
+            "units": "μm/pixel or mm/pixel"
+          },
+          {
+            "symbol": "u",
+            "meaning": "object distance",
+            "units": "mm or m"
+          },
+          {
+            "symbol": "p",
+            "meaning": "pixel pitch (physical pixel size on sensor)",
+            "units": "μm"
+          },
+          {
+            "symbol": "f",
+            "meaning": "focal length",
+            "units": "mm"
+          }
         ]
       },
       {
         "latex": "$$\\text{Diffraction limit} = 1.22 \\lambda N$$",
         "description": "Airy Disk Diameter (diffraction-limited resolution)",
         "variables": [
-          {"symbol": "\\text{Diffraction limit}", "meaning": "minimum resolvable spot size (Airy disk diameter on sensor)", "units": "μm"},
-          {"symbol": "\\lambda", "meaning": "wavelength of light (550 nm for green, typical)", "units": "nm"},
-          {"symbol": "N", "meaning": "f-number (aperture)", "units": "dimensionless"}
+          {
+            "symbol": "\\text{Diffraction limit}",
+            "meaning": "minimum resolvable spot size (Airy disk diameter on sensor)",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "wavelength of light (550 nm for green, typical)",
+            "units": "nm"
+          },
+          {
+            "symbol": "N",
+            "meaning": "f-number (aperture)",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$E = \\frac{L \\cdot A \\cdot t}{4N^2(m+1)^2}$$",
         "description": "Exposure (light reaching sensor, simplified)",
         "variables": [
-          {"symbol": "E", "meaning": "exposure (light energy per unit area on sensor)", "units": "lux·s"},
-          {"symbol": "L", "meaning": "scene luminance", "units": "cd/m²"},
-          {"symbol": "A", "meaning": "lens aperture area (π(f/2N)²)", "units": "mm²"},
-          {"symbol": "t", "meaning": "shutter speed (exposure time)", "units": "seconds"},
-          {"symbol": "N", "meaning": "f-number", "units": "dimensionless"},
-          {"symbol": "m", "meaning": "magnification", "units": "dimensionless"}
+          {
+            "symbol": "E",
+            "meaning": "exposure (light energy per unit area on sensor)",
+            "units": "lux·s"
+          },
+          {
+            "symbol": "L",
+            "meaning": "scene luminance",
+            "units": "cd/m²"
+          },
+          {
+            "symbol": "A",
+            "meaning": "lens aperture area (π(f/2N)²)",
+            "units": "mm²"
+          },
+          {
+            "symbol": "t",
+            "meaning": "shutter speed (exposure time)",
+            "units": "seconds"
+          },
+          {
+            "symbol": "N",
+            "meaning": "f-number",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "m",
+            "meaning": "magnification",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\text{SNR} = \\frac{S}{\\sqrt{S + D + R^2}}$$",
         "description": "Signal-to-Noise Ratio (simplified, shot noise dominant)",
         "variables": [
-          {"symbol": "\\text{SNR}", "meaning": "signal-to-noise ratio", "units": "dimensionless"},
-          {"symbol": "S", "meaning": "signal (photoelectrons from light)", "units": "electrons"},
-          {"symbol": "D", "meaning": "dark current (thermal noise)", "units": "electrons"},
-          {"symbol": "R", "meaning": "read noise (sensor electronics)", "units": "electrons RMS"}
+          {
+            "symbol": "\\text{SNR}",
+            "meaning": "signal-to-noise ratio",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "S",
+            "meaning": "signal (photoelectrons from light)",
+            "units": "electrons"
+          },
+          {
+            "symbol": "D",
+            "meaning": "dark current (thermal noise)",
+            "units": "electrons"
+          },
+          {
+            "symbol": "R",
+            "meaning": "read noise (sensor electronics)",
+            "units": "electrons RMS"
+          }
         ]
       }
     ],
@@ -156,15 +260,51 @@
     ],
     "measurementProtocol": "**Step 1: Setup and Preparation**\nSelect appropriate location (studio with controlled lighting, or on-site for immovable objects/architecture). Position object on stable support, neutral background. Set up camera on tripod at appropriate distance (determine field of view, perspective). Level camera (use built-in level or hot-shoe level); ensure sensor plane parallel to object plane (perpendicular to optical axis) to avoid keystone distortion, especially critical for flat artworks (paintings, documents). For architecture: use tilt-shift lens or corrective software. Duration: 15-60 minutes (depends on object complexity, setup complexity). Critical parameters: Camera stable (tripod locked), Sensor parallel to object (minimize distortion), Background neutral and clean, Object secure and safely supported.\n\n**Step 2: Lighting Setup**\nPosition lights for even illumination: 45° angle from left and right (cross-lighting) eliminates shadows for flat documentation. For texture documentation: single light at low angle (raking light, 10-20° from surface) emphasizes relief. Adjust light distance and power to achieve even illumination (check via live view histogram or spot meter; aim for uniformity ±0.5 stop across field). Use softboxes/diffusers to avoid harsh shadows. For reflective objects: large soft sources (umbrellas, diffusion panels) or cross-polarization (polarizers on lights + camera lens) to eliminate glare. Duration: 15-45 minutes (simple setups faster; complex reflective objects require iteration). Critical parameters: Even illumination (no hotspots, shadows), Color temperature consistent (all lights same temp), Intensity adequate but not excessive (avoid overexposure), Cross-polarization if needed (for glass, varnish, metal).\n\n**Step 3: Camera Settings Configuration**\nSet camera to Manual mode (M) for full control. ISO: base ISO (100, 200, or 64 depending on camera) for maximum dynamic range and minimum noise. Aperture: f/8 to f/11 typically (optimal sharpness for most lenses, adequate depth of field for most objects). For deep 3D objects: f/16-f/22 or focus stacking. Shutter speed: determined by light level; use tripod so slow speeds (1/15 s - 2 s) acceptable. White balance: custom WB from gray card (photograph neutral gray card under same lighting, set WB from that image in camera or raw software). File format: RAW (14-bit NEF/CR3/ARW; preserves maximum information for post-processing). Image quality: highest resolution, lossless compression if available. Duration: 10-20 minutes (settings, test shots, refinement). Critical parameters: ISO at base (100-200), Aperture f/8-f/11 (optimal sharpness), RAW format (not JPEG), White balance custom (from gray card under same light).\n\n**Step 4: Focus and Composition**\nCompose image: frame object with small margin (5-10% border); include scale reference (ruler, color/gray card) in first frame or separate frame. Focus critically: use live view magnification (5× or 10×) on critical detail (center of interest, inscription, damage area). Manual focus preferred (autofocus may miss target). For shallow depth of field: focus 1/3 into depth of object (maximizes DoF front-to-back via hyperfocal principle). For very shallow DoF or 3D objects: focus stacking (see advanced techniques). Lock focus (switch lens to manual after focusing; don't touch focus ring). Check composition and edges (verify object fully in frame, parallel to edges, scale visible if included). Duration: 5-15 minutes per setup/view. Critical parameters: Critical focus (use live view magnification), Composition tight but complete (object fills frame with margin), Scale visible if required, Manual focus locked (won't drift between shots).\n\n**Step 5: Test Exposure and Histogram Check**\nCapture test image. Review histogram (RGB or luminance): ideal histogram has peak in mid-tones (center), no clipping on left (shadows) or right (highlights). Slight right-bias acceptable ('expose to the right' or ETTR: maximizes signal, minimizes noise, but avoid highlight clipping on important areas). Check for overexposure: blinking highlights (zebra pattern in playback). If clipping: reduce exposure (decrease shutter speed or increase aperture slightly, or reduce light intensity). If too dark: increase exposure. Bracket if unsure: ±1 stop (3 images at different exposures can be merged to HDR later). Check sharpness: zoom to 100% in playback, inspect critical areas. If soft: re-check focus, check for camera shake (use 2-sec self-timer or remote release to avoid vibration from shutter press). Duration: 5-10 minutes (test, review, adjust, retest). Critical parameters: Histogram optimal (no clipping, mid-tones centered), Sharp focus at 100% zoom, No camera shake (use remote release or timer), Bracketing if high contrast scene (±1 stop).\n\n**Step 6: Systematic Image Acquisition**\nCapture final images systematically: (1) Overall view (full object, scale + color target visible). (2) Details (close-ups of significant features: inscriptions, condition issues, decorative elements; maintain same lighting, change camera position/focal length to fill frame with detail). (3) Multiple angles (3D objects: front, back, sides, top; rotate object or move camera; maintain consistent lighting). (4) Raking light views (if needed for texture: low-angle single light source emphasizes surface relief; capture at 0°, 90°, 180°, 270° azimuths to see all textures). (5) Transmitted light (for translucent materials: backlight with diffused light box or LED panel, photograph from front). Document: use tethered shooting (images transfer immediately to computer for review), or shoot to card and download frequently. Label files systematically (object ID, view, date, sequence number). Duration: Variable: 30 minutes for simple object (5-10 images); 2-4 hours for complex object (50-100 images including details). Critical parameters: Systematic coverage (all views, details documented), Consistent lighting and settings (for comparability across image set), Immediate review (check each image at 100% zoom for sharpness, exposure), Files labeled/organized (object ID, view descriptor in filename or metadata).\n\n**Step 7: Color Reference Capture**\nInclude color/gray target in at least one image per lighting setup (first image of series): X-Rite ColorChecker or similar positioned next to object in same plane, same lighting. Ensure target well-exposed (histogram midtones for gray patches), in focus, flat (not wrinkled or curved). This reference image enables accurate color correction in post-processing (create ICC profile or manual color balance from known target values). Optionally: capture separate reference image (target only, fills frame) for highest accuracy if target small in object images. Duration: 2-5 minutes. Critical parameters: Color target in same lighting as object, Target in focus and well-exposed, Target flat and clean (no shadows, dirt, wear on patches).\n\n**Step 8: Quality Control and Backup**\nReview all images: check histogram (exposure correct), zoom to 100% (sharpness, focus), verify coverage (all required views captured). If any issues: re-shoot immediately while setup intact. Backup: copy raw files to at least two locations (primary storage + backup drive; or computer + network storage). Verify file integrity (check file size, open a few files to confirm not corrupted). Document session: record metadata (object ID, date, photographer, camera/lens used, lighting setup notes, any special considerations) in spreadsheet or database, or in EXIF metadata fields. Duration: 15-30 minutes (review and backup for typical session). Critical parameters: All images reviewed at 100% zoom, Exposure and focus verified, Files backed up (two locations minimum), Session documented (metadata recorded).",
     "typicalParameters": [
-      {"parameter": "Sensor resolution", "value": "45 MP (full-frame)", "notes": "Higher resolution = finer detail; diminishing returns beyond ~60 MP for most heritage applications due to lens limits"},
-      {"parameter": "ISO sensitivity", "value": "100-400", "notes": "Base ISO (100-200) for maximum dynamic range, lowest noise; increase only if light insufficient and tripod unavailable"},
-      {"parameter": "Aperture (f-number)", "value": "f/8-f/11", "notes": "f/8-f/11 optimal sharpness (balances aberrations and diffraction); f/16-f/22 for deep DoF (landscapes, deep objects); f/5.6 for shallow DoF (portraits, selective focus)"},
-      {"parameter": "Shutter speed", "value": "1/60 s - 1 s", "notes": "Tripod-mounted: slow speeds OK (0.5-2 s typical with studio lighting); handheld: 1/(focal length) s minimum to avoid shake (e.g., 1/100 s for 100mm lens)"},
-      {"parameter": "Focal length", "value": "50-100mm", "notes": "Macro: 50-100mm for close-up objects; normal: 35-50mm for mid-range; wide: 14-35mm for architecture/interiors; tele: 200-600mm for distant details"},
-      {"parameter": "Focus distance", "value": "0.5-5 m", "notes": "Closer = higher magnification, higher resolution but shallower DoF; varies by lens minimum focus distance"},
-      {"parameter": "White balance", "value": "5000-6500K", "notes": "Daylight: ~5500K; tungsten: ~3200K; LED panels: adjustable 3200-5600K; set custom from gray card for accuracy"},
-      {"parameter": "Illumination level", "value": "1000-3000 lux", "notes": "Sufficient for f/8-f/11 at ISO 100-400 with 1/60-1 s shutter; adjust via light power or distance"},
-      {"parameter": "Dynamic range (bit depth)", "value": "14-bit raw", "notes": "14-16 bit raw preserves maximum information (14 stops ≈ 16,384:1); 8-bit JPEG only 8 stops (256:1), lossy compression"}
+      {
+        "parameter": "Sensor resolution",
+        "value": "45 MP (full-frame)",
+        "notes": "Higher resolution = finer detail; diminishing returns beyond ~60 MP for most heritage applications due to lens limits"
+      },
+      {
+        "parameter": "ISO sensitivity",
+        "value": "100-400",
+        "notes": "Base ISO (100-200) for maximum dynamic range, lowest noise; increase only if light insufficient and tripod unavailable"
+      },
+      {
+        "parameter": "Aperture (f-number)",
+        "value": "f/8-f/11",
+        "notes": "f/8-f/11 optimal sharpness (balances aberrations and diffraction); f/16-f/22 for deep DoF (landscapes, deep objects); f/5.6 for shallow DoF (portraits, selective focus)"
+      },
+      {
+        "parameter": "Shutter speed",
+        "value": "1/60 s - 1 s",
+        "notes": "Tripod-mounted: slow speeds OK (0.5-2 s typical with studio lighting); handheld: 1/(focal length) s minimum to avoid shake (e.g., 1/100 s for 100mm lens)"
+      },
+      {
+        "parameter": "Focal length",
+        "value": "50-100mm",
+        "notes": "Macro: 50-100mm for close-up objects; normal: 35-50mm for mid-range; wide: 14-35mm for architecture/interiors; tele: 200-600mm for distant details"
+      },
+      {
+        "parameter": "Focus distance",
+        "value": "0.5-5 m",
+        "notes": "Closer = higher magnification, higher resolution but shallower DoF; varies by lens minimum focus distance"
+      },
+      {
+        "parameter": "White balance",
+        "value": "5000-6500K",
+        "notes": "Daylight: ~5500K; tungsten: ~3200K; LED panels: adjustable 3200-5600K; set custom from gray card for accuracy"
+      },
+      {
+        "parameter": "Illumination level",
+        "value": "1000-3000 lux",
+        "notes": "Sufficient for f/8-f/11 at ISO 100-400 with 1/60-1 s shutter; adjust via light power or distance"
+      },
+      {
+        "parameter": "Dynamic range (bit depth)",
+        "value": "14-bit raw",
+        "notes": "14-16 bit raw preserves maximum information (14 stops ≈ 16,384:1); 8-bit JPEG only 8 stops (256:1), lossy compression"
+      }
     ],
     "calibration": "**Standards:** Color target: X-Rite ColorChecker (24 or 48 patches), Datacolor SpyderCHECKR (known spectral reflectance). Gray card: 18% reflectance neutral gray (Kodak, X-Rite) for exposure metering and white balance. Scale reference: metric ruler, photographic scale bar (graduated in cm/mm) for dimensional reference. Resolution target: USAF 1951 test pattern or ISO 12233 chart (for lens MTF testing, focus accuracy verification). Monitor calibration: X-Rite i1Display Pro, Datacolor SpyderX (hardware colorimeter + software for display profiling).\n\n**Frequency:** Per session: Color target in first image of each lighting setup (ensures color accuracy for that setup). Monitor calibration: monthly (or weekly for critical color work; displays drift over time). Camera/lens calibration: verify focus accuracy (phase-detection AF) annually or if suspect front/back-focus; most modern cameras have AF micro-adjustment. Gray card: each session for exposure check, custom white balance.\n\n**Procedure:** **Color calibration:** (1) Photograph color target (ColorChecker) in first frame under same lighting as object. (2) In raw processing software (Lightroom, Capture One), use color target tool to create camera/lighting profile or adjust color manually (match target patches to known reference values). (3) Apply profile to all images from that session. **Exposure calibration:** Photograph gray card (fills frame), adjust exposure so gray card meters at 18% reflectance (middle gray in histogram, RGB ~118/255 in 8-bit). Use this exposure for object. **White balance calibration:** Photograph gray card, use eyedropper in raw software to set neutral gray → gives correct WB for that lighting. **Monitor calibration:** Run colorimeter software (i1Profiler, SpyderX), place colorimeter on screen, software displays color patches, colorimeter measures, creates ICC profile for monitor. Set OS/software to use profile.",
     "qualityControl": [
@@ -282,57 +422,32 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["visible-photography", "infrared-reflectography", "uv-fluorescence"],
+        "techniques": [
+          "visible-photography",
+          "infrared-reflectography",
+          "uv-fluorescence"
+        ],
         "rationale": "Multi-band imaging maximizes information from single photo session setup. Visible, IR, UV probe different aspects (surface color vs. subsurface vs. fluorescence) → complementary, non-redundant information. Efficient: same camera position, minimal setup changes (swap lighting/filters). Enables direct comparison: register images, overlay (e.g., IR underdrawing shown as magenta overlay on visible image → see relationship between underdrawing and final paint).",
         "examples": "Painting documentation: Visible shows current appearance (color, varnish, condition). IR reveals underdrawing (artist's initial sketch in carbon-based materials beneath paint), pentimenti (changes during painting process, e.g., moved arm now hidden under final paint but visible in IR). UV fluorescence shows varnish (old varnish fluoresces differently than fresh varnish), retouching (modern restorations don't fluorescence like original materials), binders (protein glues fluoresce blue-white, aged oil yellowish). Combined: complete condition report (original vs. restoration, subsurface vs. surface features)."
       },
       {
-        "techniques": ["visible-photography", "stereo-photogrammetry"],
+        "techniques": [
+          "visible-photography",
+          "stereo-photogrammetry"
+        ],
         "rationale": "Photography alone = 2D (no depth information, perspective distortions). Photogrammetry alone = 3D geometry but may sacrifice 2D image quality (lighting compromises for 3D, lower resolution for faster processing). Combined: leverage photography for highest-quality 2D documentation (color, detail, publication), use photogrammetry image set for 3D (geometry, measurements, virtual access). Efficient: same equipment (camera), one photo session (comprehensive capture).",
         "examples": "Sculpture documentation: High-res visible photos (100 MP, studio lighting, color-calibrated) for publication, condition documentation, 2D archival images. Same sculpture: photogrammetry capture (45 MP, diffuse lighting, 80 views) generates 3D model (accurate dimensions ±0.5 mm, complete surface geometry). Combine: 3D model for virtual exhibition (users rotate, zoom), measurements (height, width, volume for shipping), comparison (3D scan before/after treatment, measure deformation). High-res 2D photos projected as texture on 3D mesh → photo-realistic 3D model with gigapixel-resolution surface detail."
       },
       {
-        "techniques": ["visible-photography"],
+        "techniques": [
+          "visible-photography"
+        ],
         "rationale": "Single-scale photography misses either context (if macro-only) or fine detail (if overall-only). Multi-scale approach: efficient documentation at appropriate resolution for each feature. Raking light technique exploits directionality: low-angle light creates shadows from surface irregularities → makes 3D topography visible in 2D photograph (without photogrammetry or other 3D methods). Macro provides detail for condition assessment, media analysis (e.g., fiber ID from weave macro, brushstroke width from impasto macro).",
         "examples": "Painting condition documentation: Overall visible (1:10 scale, 45 MP, whole painting fills frame ~0.1 mm/pixel): shows color, composition, overall varnish/dirt accumulation. Raking light (4 angles, same scale): reveals surface texture (craquelure network depth/width, impasto thickness variations, canvas deformation/bulges, cupping paint). Macro (1:1 to 5:1 magnification, 100 MP, ~10 μm/pixel): documents specific damages (flaking paint edge ~100 μm wide visible, shows paint layer structure; crack ~50 μm wide mapped). Combined: comprehensive condition report (overall state + detailed damage documentation) guides conservation treatment (consolidation plan based on crack width/depth from raking + macro; cleaning test area monitored via macro before/after)."
       }
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Talbot, W. H. F. 1844-1846. 'The Pencil of Nature.' Longman, Brown, Green and Longmans.",
-        "notes": "First photographically illustrated book; demonstrated documentary use of photography including art/architecture"
-      },
-      {
-        "citation": "Burroughs, A. 1938. 'Art Criticism from a Laboratory.' Little, Brown and Company.",
-        "notes": "Pioneering work on technical photography (X-ray, UV, IR) for art examination; established scientific approach"
-      },
-      {
-        "citation": "Vandivere, A., et al. 2019. 'Revealing Vermeer's 'Girl with a Pearl Earring': Heritage Science at the Mauritshuis.' Heritage Science 7: 67.",
-        "doi": "10.1186/s40494-019-0308-4",
-        "notes": "Gigapixel visible photography (2.2 GP) + multi-modal imaging for public engagement and research"
-      },
-      {
-        "citation": "Remondino, F., et al. 2014. 'State of the Art in High Density Image Matching.' The Photogrammetric Record 29(146): 144-166.",
-        "doi": "10.1111/phor.12063",
-        "notes": "Review of photogrammetry from photographs; SfM/MVS techniques for heritage 3D documentation"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Warda, J., et al. 2011. 'The AIC Guide to Digital Photography and Conservation Documentation (2nd ed.).' American Institute for Conservation.",
-        "notes": "Comprehensive guide to digital photography for conservation documentation; standards, techniques, workflow"
-      },
-      {
-        "citation": "Federal Agencies Digital Guidelines Initiative (FADGI). 2016. 'Technical Guidelines for Digitizing Cultural Heritage Materials.' http://www.digitizationguidelines.gov/",
-        "notes": "U.S. federal standard for heritage digitization; resolution, color accuracy, metadata requirements"
-      },
-      {
-        "citation": "Frey, F., and M. Farnand. 2000. 'Digital Imaging for Photographic Collections.' Image Permanence Institute.",
-        "notes": "Standards for digitizing photographic collections; resolution, dynamic range, color management"
-      }
-    ],
     "onlineResources": [
       {
         "title": "AIC Imaging Wiki",
@@ -380,4 +495,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

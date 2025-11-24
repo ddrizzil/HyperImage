@@ -24,50 +24,130 @@
         "latex": "$$P^{(2)}(2\\omega) = \\epsilon_0 \\chi^{(2)} E^2(\\omega)$$",
         "description": "Second-Order Nonlinear Polarization",
         "variables": [
-          {"symbol": "P^{(2)}(2\\omega)", "meaning": "induced polarization at second harmonic frequency", "units": "C/m²"},
-          {"symbol": "\\epsilon_0", "meaning": "permittivity of free space", "units": "8.854 × 10⁻¹² F/m"},
-          {"symbol": "\\chi^{(2)}", "meaning": "second-order nonlinear susceptibility tensor", "units": "m/V"},
-          {"symbol": "E(\\omega)", "meaning": "electric field amplitude at fundamental frequency", "units": "V/m"}
+          {
+            "symbol": "P^{(2)}(2\\omega)",
+            "meaning": "induced polarization at second harmonic frequency",
+            "units": "C/m²"
+          },
+          {
+            "symbol": "\\epsilon_0",
+            "meaning": "permittivity of free space",
+            "units": "8.854 × 10⁻¹² F/m"
+          },
+          {
+            "symbol": "\\chi^{(2)}",
+            "meaning": "second-order nonlinear susceptibility tensor",
+            "units": "m/V"
+          },
+          {
+            "symbol": "E(\\omega)",
+            "meaning": "electric field amplitude at fundamental frequency",
+            "units": "V/m"
+          }
         ]
       },
       {
         "latex": "$$I_{SHG} \\propto (I_\\omega)^2 \\cdot (\\chi^{(2)})^2 \\cdot L^2 \\cdot \\text{sinc}^2\\left(\\frac{\\Delta k L}{2}\\right)$$",
         "description": "SHG Intensity Dependence",
         "variables": [
-          {"symbol": "I_{SHG}", "meaning": "second harmonic intensity", "units": "W/cm²"},
-          {"symbol": "I_\\omega", "meaning": "fundamental beam intensity", "units": "W/cm²"},
-          {"symbol": "\\chi^{(2)}", "meaning": "second-order susceptibility", "units": "m/V"},
-          {"symbol": "L", "meaning": "interaction length (coherence length)", "units": "μm"},
-          {"symbol": "\\Delta k", "meaning": "phase mismatch (k₂ω - 2kω)", "units": "rad/μm"}
+          {
+            "symbol": "I_{SHG}",
+            "meaning": "second harmonic intensity",
+            "units": "W/cm²"
+          },
+          {
+            "symbol": "I_\\omega",
+            "meaning": "fundamental beam intensity",
+            "units": "W/cm²"
+          },
+          {
+            "symbol": "\\chi^{(2)}",
+            "meaning": "second-order susceptibility",
+            "units": "m/V"
+          },
+          {
+            "symbol": "L",
+            "meaning": "interaction length (coherence length)",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\Delta k",
+            "meaning": "phase mismatch (k₂ω - 2kω)",
+            "units": "rad/μm"
+          }
         ]
       },
       {
         "latex": "$$\\lambda_{SHG} = \\frac{\\lambda_{exc}}{2}$$",
         "description": "Wavelength Conversion",
         "variables": [
-          {"symbol": "\\lambda_{SHG}", "meaning": "second harmonic wavelength", "units": "nm"},
-          {"symbol": "\\lambda_{exc}", "meaning": "excitation wavelength", "units": "nm"}
+          {
+            "symbol": "\\lambda_{SHG}",
+            "meaning": "second harmonic wavelength",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\lambda_{exc}",
+            "meaning": "excitation wavelength",
+            "units": "nm"
+          }
         ]
       },
       {
         "latex": "$$L_c = \\frac{\\pi}{|\\Delta k|} = \\frac{\\lambda}{4|n_{2\\omega} - n_\\omega|}$$",
         "description": "Coherence Length (phase matching distance)",
         "variables": [
-          {"symbol": "L_c", "meaning": "coherence length", "units": "μm"},
-          {"symbol": "\\Delta k", "meaning": "wave vector mismatch", "units": "rad/μm"},
-          {"symbol": "\\lambda", "meaning": "fundamental wavelength", "units": "nm"},
-          {"symbol": "n_{2\\omega}", "meaning": "refractive index at SHG wavelength", "units": "dimensionless"},
-          {"symbol": "n_\\omega", "meaning": "refractive index at fundamental wavelength", "units": "dimensionless"}
+          {
+            "symbol": "L_c",
+            "meaning": "coherence length",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\Delta k",
+            "meaning": "wave vector mismatch",
+            "units": "rad/μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "fundamental wavelength",
+            "units": "nm"
+          },
+          {
+            "symbol": "n_{2\\omega}",
+            "meaning": "refractive index at SHG wavelength",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "n_\\omega",
+            "meaning": "refractive index at fundamental wavelength",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$z_{res} = \\frac{2\\lambda n}{NA^2}$$",
         "description": "Axial (Depth) Resolution",
         "variables": [
-          {"symbol": "z_{res}", "meaning": "axial resolution", "units": "μm"},
-          {"symbol": "\\lambda", "meaning": "excitation wavelength", "units": "nm"},
-          {"symbol": "n", "meaning": "refractive index of medium", "units": "dimensionless"},
-          {"symbol": "NA", "meaning": "numerical aperture of objective", "units": "dimensionless"}
+          {
+            "symbol": "z_{res}",
+            "meaning": "axial resolution",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "excitation wavelength",
+            "units": "nm"
+          },
+          {
+            "symbol": "n",
+            "meaning": "refractive index of medium",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "NA",
+            "meaning": "numerical aperture of objective",
+            "units": "dimensionless"
+          }
         ]
       }
     ],
@@ -283,17 +363,26 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["shg-microscopy", "tpef-microscopy"],
+        "techniques": [
+          "shg-microscopy",
+          "tpef-microscopy"
+        ],
         "rationale": "SHG highlights ordered collagen; TPEF reveals elastin, cellular autofluorescence, degraded proteins. Together provide comprehensive structural and chemical context.",
         "examples": "SHG + TPEF Dual-Channel Imaging: 1. Excite sample with single femtosecond laser (typically 800 nm). 2. Split emission using dichroic mirror: SHG (380-420 nm) to PMT1, TPEF (450-650 nm) to PMT2. 3. Acquire simultaneous SHG and TPEF images. 4. Overlay channels in false color (SHG = green, TPEF = red) to visualize collagen (structured) vs. other proteins/organics (disordered). Leather analysis: SHG shows intact collagen fibrils in grain layer; TPEF reveals lipid-rich regions and degraded material in junction zone."
       },
       {
-        "techniques": ["shg-microscopy", "polarization-control"],
+        "techniques": [
+          "shg-microscopy",
+          "polarization-control"
+        ],
         "rationale": "SHG intensity strongly depends on excitation polarization relative to molecular axis. Extracting this reveals collagen fibril alignment, important for mechanical properties and degradation susceptibility.",
         "examples": "Polarization-Resolved SHG for Molecular Orientation Mapping: 1. Install motorized half-wave plate in excitation path. 2. Acquire SHG images at multiple excitation polarization angles (0°, 15°, 30°...180°). 3. Fit intensity vs. angle to determine molecular orientation and χ⁽²⁾ tensor components. 4. Generate false-color orientation maps. Parchment damage assessment: aligned collagen (high anisotropy) indicates intact structure; randomized orientation (low anisotropy) indicates degradation."
       },
       {
-        "techniques": ["shg-microscopy", "raman-microscopy"],
+        "techniques": [
+          "shg-microscopy",
+          "raman-microscopy"
+        ],
         "rationale": "SHG rapidly surveys large area for non-centrosymmetric crystals. Raman provides definitive molecular ID. Together: fast screening + targeted identification.",
         "examples": "SHG + Raman for Pigment Crystal Identification: 1. SHG imaging (800 nm) identifies crystalline regions in paint cross-section. 2. Use SHG map to target Raman spectroscopy (632 nm) to SHG-bright particles. 3. Raman confirms molecular identity (e.g., HgS for cinnabar). 4. Correlate SHG intensity with crystal size and orientation. Medieval manuscript illumination: SHG detects cinnabar (HgS, trigonal, strong SHG) and malachite (Cu₂CO₃(OH)₂, monoclinic) particles; Raman confirms and distinguishes from SHG-inactive pigments (carbon black, organic dyes)."
       }
@@ -322,38 +411,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Franken, P. A., A. E. Hill, C. W. Peters, and G. Weinreich. 1961. 'Generation of Optical Harmonics.' Physical Review Letters 7 (4): 118-119.",
-        "doi": "10.1103/PhysRevLett.7.118",
-        "notes": "First experimental demonstration of second harmonic generation in quartz crystal - birth of nonlinear optics"
-      },
-      {
-        "citation": "Freund, I., and M. Deutsch. 1986. 'Second-Harmonic Microscopy of Biological Tissue.' Optics Letters 11 (2): 94-96.",
-        "doi": "10.1364/OL.11.000094",
-        "notes": "First SHG imaging of collagen in biological tissue; established basis for biomedical SHG microscopy"
-      },
-      {
-        "citation": "Campagnola, P. J., and L. M. Loew. 2003. 'Second-Harmonic Imaging Microscopy for Visualizing Biomolecular Arrays in Cells, Tissues and Organisms.' Nature Biotechnology 21 (11): 1356-1360.",
-        "doi": "10.1038/nbt894",
-        "notes": "Comprehensive demonstration of SHG for tissue imaging; established methodology for biological applications"
-      },
-      {
-        "citation": "Masic, A., L. Bertassoni, R. Barthelat, et al. 2016. 'Spectrally Resolved Second Harmonic Generation Microscopy as a Non-Destructive Probe of Collagen Organization in Ancient Parchment Manuscripts.' Science Advances 2 (11): e1501374.",
-        "doi": "10.1126/sciadv.1501374",
-        "notes": "Landmark study applying SHG to Dead Sea Scrolls parchment; established methodology for heritage collagen assessment"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Chen, X., O. Nadiarynkh, S. Plotnikov, and P. J. Campagnola. 2012. 'Second Harmonic Generation Microscopy for Quantitative Analysis of Collagen Fibrillar Structure.' Nature Protocols 7 (4): 654-669.",
-        "doi": "10.1038/nprot.2012.009"
-      },
-      {
-        "citation": "Zipfel, W. R., R. M. Williams, and W. W. Webb. 2003. 'Nonlinear Magic: Multiphoton Microscopy in the Biosciences.' Nature Biotechnology 21 (11): 1369-1377.",
-        "doi": "10.1038/nbt899"
-      }
-    ],
     "onlineResources": [
       {
         "title": "Olympus Multiphoton Learning Center",
@@ -388,4 +445,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

@@ -62,10 +62,10 @@ function getAllOpticsPages(): Record<string, OpticsPage[]> {
 export async function generateStaticParams() {
   const opticsDir = path.join(process.cwd(), 'src', 'content', 'optics')
   if (!fs.existsSync(opticsDir)) {
-    return []
+    return [{ slug: [] }]  // Return empty slug for index page
   }
   
-  const pages: Array<{ slug: string[] }> = []
+  const pages: Array<{ slug: string[] }> = [{ slug: [] }]  // Include root index page
   
   function scanDirectory(dir: string, basePath: string[] = []) {
     const entries = fs.readdirSync(dir, { withFileTypes: true })

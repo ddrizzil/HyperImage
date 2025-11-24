@@ -43,7 +43,7 @@
           },
           {
             "symbol": "\\Gamma",
-            "meaning": "Gr\u00fcneisen parameter (\\(\\Gamma = \\beta c_s^2 / C_p\\); converts absorbed thermal energy density into pressure)",
+            "meaning": "Grüneisen parameter (\\(\\Gamma = \\beta c_s^2 / C_p\\); converts absorbed thermal energy density into pressure)",
             "units": "dimensionless"
           },
           {
@@ -60,7 +60,7 @@
       },
       {
         "latex": "$$p(\\vec{r}_d, t) = \\int p_0(\\vec{r}) \\, h(\\vec{r}, \\vec{r}_d, t) \\, d\\vec{r}$$",
-        "description": "Forward model: detected pressure at detector position \\(\\vec{r}_d\\) and time \\(t\\) as a convolution of the source distribution with the acoustic Green\u2019s function",
+        "description": "Forward model: detected pressure at detector position \\(\\vec{r}_d\\) and time \\(t\\) as a convolution of the source distribution with the acoustic Green’s function",
         "variables": [
           {
             "symbol": "p(\\vec{r}_d, t)",
@@ -74,7 +74,7 @@
           },
           {
             "symbol": "h(\\vec{r}, \\vec{r}_d, t)",
-            "meaning": "acoustic Green\u2019s function describing propagation from source point \\(\\vec{r}\\) to detector \\(\\vec{r}_d\\)",
+            "meaning": "acoustic Green’s function describing propagation from source point \\(\\vec{r}\\) to detector \\(\\vec{r}_d\\)",
             "units": "dimensionless (impulse response kernel)"
           }
         ]
@@ -105,7 +105,7 @@
           },
           {
             "symbol": "f_{\\text{center}}",
-            "meaning": "center frequency of the ultrasound transducer (e.g. 5\u201310 MHz)",
+            "meaning": "center frequency of the ultrasound transducer (e.g. 5–10 MHz)",
             "units": "Hz"
           }
         ]
@@ -798,14 +798,6 @@
         "significance": "Authoritative overview of photoacoustic imaging fundamentals, instrumentation, and image reconstruction, widely cited in both biomedical and emerging heritage applications."
       }
     ],
-    "methodologyReviews": [
-      {
-        "citation": "L. V. Wang and H.-I. Wu, \"Biomedical Optics: Principles and Imaging,\" Wiley (2007).",
-        "doi": "N/A (book)",
-        "year": 2007,
-        "scope": "Textbook covering optical and photoacoustic imaging, including theoretical foundations and practical implementation details."
-      }
-    ],
     "recentApplications": [
       {
         "citation": "G. Lucassen et al., \"Photoacoustic imaging reveals hidden underdrawing in Old Master paintings,\" Scientific Reports 11, 10909 (2021).",
@@ -839,10 +831,6 @@
       "oct"
     ],
     "references": {
-      "keyPapers": [
-        "L. V. Wang and S. Hu, \"Photoacoustic tomography: in vivo imaging from organelles to organs,\" Science 335, 1458–1462 (2012).",
-        "G. Lucassen et al., \"Photoacoustic imaging reveals hidden underdrawing in Old Master paintings,\" Scientific Reports 11, 10909 (2021)."
-      ],
       "onlineResources": [
         {
           "label": "k-Wave MATLAB Toolbox (photoacoustic simulation and reconstruction)",
@@ -861,5 +849,3 @@
     ]
   }
 }
-
-

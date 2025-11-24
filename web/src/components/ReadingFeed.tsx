@@ -54,10 +54,14 @@ export function ReadingFeed() {
           const author = item.querySelector('author')?.textContent || ''
           const category = item.querySelector('category')?.textContent || ''
           
+          // Parse description to extract summary (first part before " | ")
+          const descriptionParts = description.split(' | ')
+          const summary = descriptionParts[0] || description
+          
           parsedItems.push({
             title,
             link,
-            description: description.substring(0, 150) + (description.length > 150 ? '...' : ''),
+            description: summary.substring(0, 200) + (summary.length > 200 ? '...' : ''),
             pubDate,
             author,
             category,
@@ -136,14 +140,19 @@ export function ReadingFeed() {
                 {item.title}
               </h4>
               {item.description && (
-                <p className="text-xs text-gray-600 line-clamp-2 mb-1">
+                <p className="text-xs text-gray-600 line-clamp-2 mb-2">
                   {item.description}
                 </p>
               )}
-              <div className="flex items-center gap-2 text-xs text-gray-500">
+              <div className="flex items-center gap-2 text-xs text-gray-500 flex-wrap">
                 {item.category && (
-                  <span className="bg-gray-100 px-2 py-0.5 rounded">
+                  <span className="bg-primary-100 text-primary-700 px-2 py-0.5 rounded font-medium">
                     {item.category}
+                  </span>
+                )}
+                {item.author && (
+                  <span className="text-gray-500">
+                    {item.author}
                   </span>
                 )}
                 {item.pubDate && (
@@ -151,10 +160,11 @@ export function ReadingFeed() {
                     {new Date(item.pubDate).toLocaleDateString('en-US', {
                       month: 'short',
                       day: 'numeric',
+                      year: 'numeric',
                     })}
                   </span>
                 )}
-                <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity ml-auto" />
               </div>
             </a>
           </div>

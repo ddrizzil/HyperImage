@@ -432,7 +432,6 @@ from sklearn.ensemble import RandomForestClassifier
 classifier = RandomForestClassifier()
 classifier.fit(fused_features, labels)
 ```""",
-    
     "strengths_limitations": {
         "strengths": [
             "Non-destructive analysis (with appropriate laser power settings)",
@@ -458,36 +457,7 @@ classifier.fit(fused_features, labels)
             "Dark or highly absorbing materials may heat up",
             "Portable systems have lower spatial resolution than lab systems"
         ]
-    },
-    
-    "references": [
-        {
-            "citation": "Smith, E., & Dent, G. (2019). Modern Raman Spectroscopy: A Practical Approach. John Wiley & Sons.",
-            "doi": "10.1002/9781119440598"
-        },
-        {
-            "citation": "Vandenabeele, P., & Edwards, H. G. M. (2013). Raman spectroscopy in art and archaeology. Journal of Raman Spectroscopy, 44(10), 1349-1350.",
-            "doi": "10.1002/jrs.4390"
-        },
-        {
-            "citation": "Casadio, F., Daher, C., & Bellot-Gurlet, L. (2016). Raman spectroscopy of cultural heritage materials: Overview of applications and new frontiers in instrumentation, sampling modalities, and data processing. Topics in Current Chemistry, 374(5), 62.",
-            "doi": "10.1007/s41061-016-0061-z"
-        },
-        {
-            "citation": "Bersani, D., & Lottici, P. P. (2016). Raman spectroscopy of minerals and mineral pigments in archaeometry. Journal of Raman Spectroscopy, 47(5), 499-530.",
-            "doi": "10.1002/jrs.4914"
-        },
-        {
-            "citation": "Centeno, S. A., & Shamir, J. (2008). Surface enhanced Raman scattering (SERS) and FTIR characterization of the sepia melanin pigment used in works of art. Journal of Molecular Structure, 873(1-3), 149-159.",
-            "doi": "10.1016/j.molstruc.2007.03.026"
-        },
-        {
-            "citation": "Coupry, C., & Brissaud, D. (1996). Raman microspectrometry in art and archaeology. Journal of Raman Spectroscopy, 27(2), 79-84.",
-            "doi": "10.1002/(SICI)1097-4555(199602)27:2<79::AID-JRS950>3.0.CO;2-0"
-        }
-    ],
-    
-    "lab_checklist": [
+    }, "lab_checklist": [
         "Verify laser alignment and power settings",
         "Perform wavenumber calibration with standard reference (Si or polystyrene)",
         "Check sample focus and working distance",

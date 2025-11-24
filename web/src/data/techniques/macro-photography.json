@@ -35,58 +35,146 @@
         "latex": "$$M = \\frac{h_{image}}{h_{object}} = \\frac{v}{u}$$",
         "description": "Magnification (thin lens, paraxial)",
         "variables": [
-          {"symbol": "M", "meaning": "magnification ratio (dimensionless; 1:1 = 1, 2:1 = 2, etc.)", "units": "dimensionless"},
-          {"symbol": "h_{image}", "meaning": "image height on sensor", "units": "mm"},
-          {"symbol": "h_{object}", "meaning": "object height", "units": "mm"},
-          {"symbol": "v", "meaning": "image distance (lens to sensor)", "units": "mm"},
-          {"symbol": "u", "meaning": "object distance (lens to object)", "units": "mm"}
+          {
+            "symbol": "M",
+            "meaning": "magnification ratio (dimensionless; 1:1 = 1, 2:1 = 2, etc.)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "h_{image}",
+            "meaning": "image height on sensor",
+            "units": "mm"
+          },
+          {
+            "symbol": "h_{object}",
+            "meaning": "object height",
+            "units": "mm"
+          },
+          {
+            "symbol": "v",
+            "meaning": "image distance (lens to sensor)",
+            "units": "mm"
+          },
+          {
+            "symbol": "u",
+            "meaning": "object distance (lens to object)",
+            "units": "mm"
+          }
         ]
       },
       {
         "latex": "$$\\text{Pixel resolution} = \\frac{\\text{sensor pixel pitch}}{M}$$",
         "description": "Object-Space Resolution (μm per pixel on object)",
         "variables": [
-          {"symbol": "\\text{Pixel resolution}", "meaning": "size of object feature represented by one sensor pixel", "units": "μm"},
-          {"symbol": "\\text{sensor pixel pitch}", "meaning": "physical spacing of pixels on sensor (e.g., 4.3 μm for Nikon D850, 8.5 μm for Canon 5DS R)", "units": "μm"},
-          {"symbol": "M", "meaning": "magnification ratio", "units": "dimensionless"}
+          {
+            "symbol": "\\text{Pixel resolution}",
+            "meaning": "size of object feature represented by one sensor pixel",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\text{sensor pixel pitch}",
+            "meaning": "physical spacing of pixels on sensor (e.g., 4.3 μm for Nikon D850, 8.5 μm for Canon 5DS R)",
+            "units": "μm"
+          },
+          {
+            "symbol": "M",
+            "meaning": "magnification ratio",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$DOF = \\frac{2 N c (M + 1)}{M^2}$$",
         "description": "Depth of Field (macro photography)",
         "variables": [
-          {"symbol": "DOF", "meaning": "depth of field (front-to-back in-focus distance at object)", "units": "mm or μm"},
-          {"symbol": "N", "meaning": "f-number (f/5.6, f/8, f/16 typical macro)", "units": "dimensionless"},
-          {"symbol": "c", "meaning": "circle of confusion (acceptable blur diameter; 0.02-0.03 mm typical for full-frame)", "units": "mm"},
-          {"symbol": "M", "meaning": "magnification ratio", "units": "dimensionless"}
+          {
+            "symbol": "DOF",
+            "meaning": "depth of field (front-to-back in-focus distance at object)",
+            "units": "mm or μm"
+          },
+          {
+            "symbol": "N",
+            "meaning": "f-number (f/5.6, f/8, f/16 typical macro)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "c",
+            "meaning": "circle of confusion (acceptable blur diameter; 0.02-0.03 mm typical for full-frame)",
+            "units": "mm"
+          },
+          {
+            "symbol": "M",
+            "meaning": "magnification ratio",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\text{Diffraction limit} \\approx 1.22 \\lambda N$$",
         "description": "Airy Disk Diameter (diffraction-limited resolution)",
         "variables": [
-          {"symbol": "\\text{Diffraction limit}", "meaning": "minimum resolvable feature size (diameter of Airy disk)", "units": "μm"},
-          {"symbol": "\\lambda", "meaning": "wavelength of light (550 nm typical visible)", "units": "nm"},
-          {"symbol": "N", "meaning": "f-number", "units": "dimensionless"}
+          {
+            "symbol": "\\text{Diffraction limit}",
+            "meaning": "minimum resolvable feature size (diameter of Airy disk)",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "wavelength of light (550 nm typical visible)",
+            "units": "nm"
+          },
+          {
+            "symbol": "N",
+            "meaning": "f-number",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\text{Effective aperture} = N \\times (M + 1)$$",
         "description": "Effective F-Number (accounts for magnification, determines diffraction limit at sensor)",
         "variables": [
-          {"symbol": "\\text{Effective aperture}", "meaning": "f-number corrected for magnification (light loss in macro)", "units": "dimensionless"},
-          {"symbol": "N", "meaning": "marked f-number on lens (geometric aperture)", "units": "dimensionless"},
-          {"symbol": "M", "meaning": "magnification ratio", "units": "dimensionless"}
+          {
+            "symbol": "\\text{Effective aperture}",
+            "meaning": "f-number corrected for magnification (light loss in macro)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "N",
+            "meaning": "marked f-number on lens (geometric aperture)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "M",
+            "meaning": "magnification ratio",
+            "units": "dimensionless"
+          }
         ]
       }
     ],
     "interactionDepth": {
       "description": "Macro photography is surface technique: images the outermost layer visible to reflected light (depth 0-10 μm, essentially surface). Penetration determined by light scattering in material: opaque materials (metals, dense pigments) → surface only; translucent (parchment, thin textiles, varnish) → light penetrates 10-100 μm, images integrate subsurface scattering but no depth resolution (unlike OCT which resolves layers). For 3D relief objects, depth of field (focus range) is critical limitation: at 1:1 macro, DOF ~500 μm @ f/8 → object features extending >500 μm in depth appear blurred (addressed via focus stacking: 10-100 images at different focus planes, merged computationally → extended DOF covering mm-scale relief).",
       "materialSpecific": [
-        {"material": "Opaque surfaces (metal, stone, dense paint)", "penetrationDepth": "0 μm (surface only, specular + diffuse reflection)", "visualizedFeatures": "Surface texture, scratches, corrosion, tool marks, grain structure"},
-        {"material": "Semi-transparent (varnish, glaze, thin paper)", "penetrationDepth": "10-100 μm (light penetrates, scatters, integrates subsurface)", "visualizedFeatures": "Surface + near-subsurface: varnish cracks, paper fibers beneath surface, pigment grains in glaze"},
-        {"material": "Textiles (woven, knit)", "penetrationDepth": "50-500 μm (between fibers, through gaps)", "visualizedFeatures": "Weave structure, individual fibers (diameter 10-50 μm), surface wear, dye distribution"},
-        {"material": "Parchment, vellum", "penetrationDepth": "20-100 μm (translucent, collagen structure)", "visualizedFeatures": "Surface preparation (scraping marks), fiber structure, ink penetration, degradation (gelatinization)"}
+        {
+          "material": "Opaque surfaces (metal, stone, dense paint)",
+          "penetrationDepth": "0 μm (surface only, specular + diffuse reflection)",
+          "visualizedFeatures": "Surface texture, scratches, corrosion, tool marks, grain structure"
+        },
+        {
+          "material": "Semi-transparent (varnish, glaze, thin paper)",
+          "penetrationDepth": "10-100 μm (light penetrates, scatters, integrates subsurface)",
+          "visualizedFeatures": "Surface + near-subsurface: varnish cracks, paper fibers beneath surface, pigment grains in glaze"
+        },
+        {
+          "material": "Textiles (woven, knit)",
+          "penetrationDepth": "50-500 μm (between fibers, through gaps)",
+          "visualizedFeatures": "Weave structure, individual fibers (diameter 10-50 μm), surface wear, dye distribution"
+        },
+        {
+          "material": "Parchment, vellum",
+          "penetrationDepth": "20-100 μm (translucent, collagen structure)",
+          "visualizedFeatures": "Surface preparation (scraping marks), fiber structure, ink penetration, degradation (gelatinization)"
+        }
       ]
     },
     "spatialResolution": {
@@ -139,8 +227,17 @@
     "typicalConfiguration": "**Standard heritage macro setup:** Camera: Nikon D850 (45.7 MP full-frame, 4.3 μm pixel pitch, excellent dynamic range 14.8 EV). Lens: Nikon AF-S VR 105 mm f/2.8G IF-ED Macro (true 1:1, vibration reduction useful for handheld preliminary shots, flat-field design). Mounted on: Manfrotto 055 carbon fiber tripod + Manfrotto 454 micrometric positioning plate (micro-adjust XY). Lighting: 2× LED panels (Neewer 480 LED, 3200-5600K adjustable, CRI 96, $50 each) on articulating arms (position 30-60° to surface, diffused via white fabric screens, 10-20 cm from object → soft even light). Settings: Manual mode, ISO 100 (minimize noise), aperture f/11 (balance DOF ~300 μm vs. diffraction), shutter 1/4-2 s (tripod, no motion blur), RAW capture (NEF, 50 MB per image). White balance: custom (gray card in scene). Focus: manual via live view (10× magnification, focus peaking enabled), fine-tune via focusing rail (0.5 mm increments). **Focus stacking setup:** Add motorized rail (Cognisys StackShot, $500-800; programs: step size 50 μm, 40 steps = 2 mm total travel, capture at each → 40 images). Stacking software: Helicon Focus ($30-200, aligns images, merges in-focus regions, outputs single extended-DOF TIFF). **Extreme macro (5:1) setup:** Same camera + reversed 50 mm f/1.8 lens (via reverse ring) or microscope objective (Olympus 10×/0.25 Plan mounted via ∞ tube lens + T-mount adapter). LED ring light (Neewer Macro LED Ring, $40, attaches to lens, shadowless). Motorized rail (1 μm step precision, StackShot or CNC-based). 100-200 image stack typical (DOF ~20 μm per slice, cover 2-4 mm depth).",
     "facilityRequirements": {
       "space": "Small studio or lab bench. 1×2 m workspace adequate (tripod + camera + object, lights on stands). Portable: can setup anywhere (table, field site). Dark room not required (control ambient via blackout curtains if critical, or shoot in normal lab lighting if supplemental lights sufficient).",
-      "utilities": ["Electrical: 110/240 VAC, 5-10 A (LED lights 2×50W, computer if tethering). Battery option (camera + portable LED panels, field macro without AC).", "No special cooling, ventilation (LED low heat <50°C, safe for objects).", "Work surface: flat, stable table or copy stand (mount camera vertical, object horizontal; useful for flat items, manuscripts, textiles)."],
-      "environmental": ["Temperature: comfortable 18-25°C (equipment, operator). No special requirements (vs. SEM cold stage, etc.).", "Humidity: <70% (prevent condensation on cold surfaces if bringing objects from storage; electronics, lens optics moisture-sensitive over time but not critical for short sessions).", "Vibration: low (building vibration, footsteps → blur at high magnification; ground floor or basement preferred, or vibration-isolation platform if severe; most heritage labs adequate).", "Lighting: controllable (natural daylight fluctuates → use artificial lights for consistency; blackout if ambient interferes, but usually supplemental lights dominate)."]
+      "utilities": [
+        "Electrical: 110/240 VAC, 5-10 A (LED lights 2×50W, computer if tethering). Battery option (camera + portable LED panels, field macro without AC).",
+        "No special cooling, ventilation (LED low heat <50°C, safe for objects).",
+        "Work surface: flat, stable table or copy stand (mount camera vertical, object horizontal; useful for flat items, manuscripts, textiles)."
+      ],
+      "environmental": [
+        "Temperature: comfortable 18-25°C (equipment, operator). No special requirements (vs. SEM cold stage, etc.).",
+        "Humidity: <70% (prevent condensation on cold surfaces if bringing objects from storage; electronics, lens optics moisture-sensitive over time but not critical for short sessions).",
+        "Vibration: low (building vibration, footsteps → blur at high magnification; ground floor or basement preferred, or vibration-isolation platform if severe; most heritage labs adequate).",
+        "Lighting: controllable (natural daylight fluctuates → use artificial lights for consistency; blackout if ambient interferes, but usually supplemental lights dominate)."
+      ]
     },
     "commercialSystems": [
       {
@@ -195,61 +292,130 @@
           "title": "Equipment Setup and Calibration",
           "description": "**Camera + lens:** Mount camera on tripod (heavy-duty, stable). Attach macro lens (105 mm f/2.8 typical, or extension tubes if using standard lens). Set camera to Manual mode (full control exposure, aperture, ISO). Live view enabled (rear LCD or tethered to computer for large view). **Focusing rail:** Attach camera to focusing rail (4-way positioning: X, Y, Z, fine focus). Allows micro-adjustments (0.1-0.5 mm per turn, essential for precise focus at macro). **Lighting:** Position 2-4 LED panels or macro flash around object (30-60° angles, even coverage, avoid harsh shadows). Diffuse (white fabric over lights, or LED panel built-in diffusion). Test: photograph white/gray card, check histogram (even exposure across frame, no hotspots). **Aperture selection:** Choose f/8-f/11 for balance (f/8: better sharpness, shallower DOF ~300 μm @ 1:1; f/16: more DOF ~600 μm but diffraction softens; f/11 optimal compromise ~400 μm DOF). **White balance:** Custom WB (photograph gray card or X-Rite ColorChecker under macro lighting, set as reference; ensures accurate color in final images). **Focus test:** Place ruler or resolution target (USAF 1951, printed 0.1 mm scale) in object plane, focus manually via live view (10× magnified), verify sharpness at 100% (zoom in on camera LCD or computer monitor; should resolve 10-50 μm features depending on magnification).",
           "duration": "30-60 minutes (initial setup; subsequent sessions 10-20 min if equipment stored ready)",
-          "criticalParameters": ["Tripod stable (no wobble; tighten all knobs, sandbag if needed)", "Lighting even (no shadows, hotspots; check via test shot, adjust lights)", "Aperture optimized (f/8-f/11 typical; f/16 if need more DOF, accept slight softening)", "White balance accurate (gray card reference; critical for color documentation)"]
+          "criticalParameters": [
+            "Tripod stable (no wobble; tighten all knobs, sandbag if needed)",
+            "Lighting even (no shadows, hotspots; check via test shot, adjust lights)",
+            "Aperture optimized (f/8-f/11 typical; f/16 if need more DOF, accept slight softening)",
+            "White balance accurate (gray card reference; critical for color documentation)"
+          ]
         },
         {
           "stepNumber": 2,
           "title": "Object Positioning and Framing",
           "description": "Position object on copy stand or table (flat, stable). Orient feature of interest toward camera (perpendicular if flat surface, or at optimal angle if 3D relief). Use positioning rail to move camera (XY) until desired framing (fill frame with area of interest; e.g., 10×10 mm brushstroke area for 1:1 macro on crop sensor camera). Verify focus plane: most important features in same plane (parallel to sensor) → within single-shot DOF (300-500 μm). If object extends >DOF in depth: plan focus stacking (identify Z-range, calculate number of slices needed: Z-range / (DOF × 0.7 overlap factor) = N slices; e.g., 3 mm relief, 300 μm DOF, 0.7 overlap → 14 slices). Check composition (camera grid, rule of thirds if aesthetic important; or center feature if technical documentation).",
           "duration": "5-15 minutes per object/area",
-          "criticalParameters": ["Object stable (secure, will not shift during multi-shot focus stack)", "Framing appropriate (feature of interest fills frame, adequate margin for context)", "Focus plane optimal (critical features in-plane if single-shot; if not, plan stack)"]
+          "criticalParameters": [
+            "Object stable (secure, will not shift during multi-shot focus stack)",
+            "Framing appropriate (feature of interest fills frame, adequate margin for context)",
+            "Focus plane optimal (critical features in-plane if single-shot; if not, plan stack)"
+          ]
         },
         {
           "stepNumber": 3,
           "title": "Exposure Determination and Test Shot",
           "description": "Meter scene (evaluative/matrix metering, or spot meter on gray card). Manual mode: set ISO 100 (max quality, low noise; tripod allows long exposure), aperture f/11 (pre-selected for DOF), adjust shutter for correct exposure (histogram centered, no clipping; typically 1/4 - 4 s for LED lights @ f/11, ISO 100). Test shot: capture, review histogram (RGB + individual channels; avoid blown highlights, crushed shadows; adjust exposure ±1-2 stops if needed). Check sharpness (zoom 100% on LCD or computer, verify focus on critical feature; if soft, refocus, retake). Verify color (gray/white areas neutral, R=G=B; if color cast, adjust WB or note for post-processing). If acceptable, proceed to final capture.",
           "duration": "5-10 minutes (iterate until exposure, focus, color correct)",
-          "criticalParameters": ["Histogram correct (centered, no clipping; ETTR - expose to the right, use full dynamic range without blowing highlights)", "Focus sharp (critical feature razor-sharp at 100% view; if not, refocus)", "No vibration (if shutter >1 s, use 2 s timer or remote trigger to avoid camera shake from button press)"]
+          "criticalParameters": [
+            "Histogram correct (centered, no clipping; ETTR - expose to the right, use full dynamic range without blowing highlights)",
+            "Focus sharp (critical feature razor-sharp at 100% view; if not, refocus)",
+            "No vibration (if shutter >1 s, use 2 s timer or remote trigger to avoid camera shake from button press)"
+          ]
         },
         {
           "stepNumber": 4,
           "title": "Single-Shot Capture (if DOF adequate)",
           "description": "If object features within single-shot DOF (~300-500 μm @ f/11, 1:1 macro): capture single RAW image. Remote shutter or 2 s timer (avoid vibration). Mirror lock-up (DSLR) or electronic shutter (mirrorless, silent, zero vibration). Wait for vibration to settle (1-2 s after mirror lock-up or after pressing shutter; critical at high magnification). Capture. Review immediately (zoom 100%, check all regions for sharpness, exposure, color). If satisfactory, note in log (object ID, magnification, aperture, lighting, notes). If multiple views needed (different angles, details): reposition camera or object, repeat. If DOF inadequate (features at different depths blurred), proceed to focus stacking.",
           "duration": "30 s - 2 min per image (single shot)",
-          "criticalParameters": ["Vibration eliminated (remote trigger, timer, mirror lock-up, wait for settling)", "Review immediately (verify quality before moving camera or object; easier to retake now than discover later)", "Metadata (log settings, object ID, view; aids organization, replication)"]
+          "criticalParameters": [
+            "Vibration eliminated (remote trigger, timer, mirror lock-up, wait for settling)",
+            "Review immediately (verify quality before moving camera or object; easier to retake now than discover later)",
+            "Metadata (log settings, object ID, view; aids organization, replication)"
+          ]
         },
         {
           "stepNumber": 5,
           "title": "Focus Stacking Acquisition (if extended DOF needed)",
           "description": "**Manual stacking:** Starting at near focus plane (closest feature to camera), capture image. Advance focusing rail 0.1-0.5 mm (depending on DOF; overlap slices 30-50% for smooth merging: if DOF 300 μm, step 100-150 μm). Capture next slice. Repeat until far focus plane reached (farthest feature). Typically 10-50 slices for 3-10 mm relief objects. **Automated stacking (if motorized rail):** Program rail (step size, number of steps, delay for vibration settling). Set camera to continuous mode or intervalometer (auto-trigger each slice). Start sequence (rail moves, camera captures, fully automated; 10-100 images acquired unattended). Monitor first few frames (verify stacking progressing correctly, no issues). **Notes:** Ensure lighting, camera, object do not change between slices (critical for alignment; even small shifts complicate merging). Bracket exposure if brightness changes through depth (unlikely if even lighting, but check first/last slice; if differ >1 EV, may need exposure compensation or HDR approach).",
           "duration": "10-60 minutes (depending on number of slices, automation; manual 10-20 slices = 5-10 min; automated 100 slices = 30-60 min including setup)",
-          "criticalParameters": ["Step size appropriate (overlap 30-50%; too little = banding artifacts in stack, too much = wasted time)", "No movement (object, camera, lights stable throughout sequence; vibration settled between slices)", "Exposure consistent (first and last slice similar brightness; adjust if needed, or use HDR stacking if dynamic range wide)"]
+          "criticalParameters": [
+            "Step size appropriate (overlap 30-50%; too little = banding artifacts in stack, too much = wasted time)",
+            "No movement (object, camera, lights stable throughout sequence; vibration settled between slices)",
+            "Exposure consistent (first and last slice similar brightness; adjust if needed, or use HDR stacking if dynamic range wide)"
+          ]
         },
         {
           "stepNumber": 6,
           "title": "Scale Reference and Documentation",
           "description": "Include scale in at least one image per object or series: position mm ruler, NIST-traceable scale bar, or custom scale (printed 1 mm grid, verified with calibrated ruler) adjacent to object in frame. Capture macro image with scale visible (allows measurement in post-processing: pixel-to-mm calibration). Alternatively: photograph scale separately at same magnification (same camera-to-object distance, same lens settings), use for calibration. Document imaging parameters (log: object ID, magnification ratio calculated from sensor size / FOV measured, aperture, ISO, shutter, light setup, date/time). Capture Color Checker or gray card in frame (one image at start of session, same lighting → accurate color profiling in post).",
           "duration": "5-10 minutes per session (scale + documentation)",
-          "criticalParameters": ["Scale accurate (NIST-traceable or verified against known standard; ±1% accuracy adequate for most heritage; ±0.1% for metrology)", "Scale in-plane (same depth as object surface; if tilted, introduces parallax error, measurements inaccurate)", "Metadata complete (settings, object ID, notes → aids future use, replication, publication)"]
+          "criticalParameters": [
+            "Scale accurate (NIST-traceable or verified against known standard; ±1% accuracy adequate for most heritage; ±0.1% for metrology)",
+            "Scale in-plane (same depth as object surface; if tilted, introduces parallax error, measurements inaccurate)",
+            "Metadata complete (settings, object ID, notes → aids future use, replication, publication)"
+          ]
         },
         {
           "stepNumber": 7,
           "title": "Image Verification and Quality Control",
           "description": "Review images immediately on camera LCD (zoom 100%, check sharpness across frame if single-shot, or verify slices in stack). Tethered shooting: review on computer monitor (larger, easier to assess quality). Checklist: **Focus:** Critical features sharp (if blurred, refocus, retake). **Exposure:** Histogram good (no clipping, centered). **Color:** Neutral grays (R=G=B ±5); if cast, note for WB adjustment or retake. **Artifacts:** Dust spots (sensor dust shows as dark blobs, especially at f/16-f/22; clean sensor if present, or clone out in post). Lens flare (bright lights in frame or just outside → ghosting, reduced contrast; flag lights, use lens hood). **Completeness:** All required views captured (overall, details, scale, color reference; easier to check now than discover later). If issues: adjust, retake (better 10 min re-shoot than hours post-processing or unusable data). If satisfactory: backup (copy to computer or second card immediately, redundant storage).",
           "duration": "5-15 minutes (review, QC)",
-          "criticalParameters": ["Critical review (100% zoom, check all regions, not just center; edges may be soft if lens aberrations, field curvature)", "Immediate backup (copy RAW files off camera card to computer + backup drive; card failure loses data)", "Retake if needed (don't settle for marginal quality if object accessible; reshoot problem images now)"]
+          "criticalParameters": [
+            "Critical review (100% zoom, check all regions, not just center; edges may be soft if lens aberrations, field curvature)",
+            "Immediate backup (copy RAW files off camera card to computer + backup drive; card failure loses data)",
+            "Retake if needed (don't settle for marginal quality if object accessible; reshoot problem images now)"
+          ]
         }
       ]
     },
     "operatingParameters": [
-      {"parameter": "Magnification ratio", "typicalValue": "1:1 (life-size)", "range": "0.5:1 to 10:1 (macro to extreme macro)", "notes": "1:1 standard macro (24×36 mm object fills full-frame sensor). 2-5:1 extreme (requires extension, bellows, reversed lens, or microscope objective). Field of view inversely proportional: 1:1 → 36×24 mm, 5:1 → 7×5 mm."},
-      {"parameter": "Aperture (f-number)", "typicalValue": "f/8-f/11", "range": "f/5.6-f/22", "notes": "f/8-f/11 optimal (balance DOF 300-400 μm vs. diffraction sharpness). f/16-f/22 more DOF (500-1000 μm) but diffraction softens (0.5-1 μm/pixel blur from diffraction alone @ f/22, 550 nm). f/5.6 shallow DOF (150-200 μm) but sharper if in focus."},
-      {"parameter": "ISO sensitivity", "typicalValue": "100-400", "range": "50-6400", "notes": "ISO 100-200 best quality (low noise, max dynamic range; tripod allows long exposure, so low ISO acceptable). 400-800 if handholding (not recommended macro but sometimes necessary field work). 1600+ high noise (avoid for scientific documentation; emergency only)."},
-      {"parameter": "Shutter speed", "typicalValue": "1/4 - 4 s (tripod)", "range": "1/200 - 30 s", "notes": "Tripod: 1/4-4 s typical (f/11, ISO 100, LED lights). Flash: 1/200 sync speed (flash duration ~1/1000 s freezes motion, good for insects, live subjects). Long exposure (>1 s): use remote trigger, mirror lock-up, vibration settling. No faster than 1/200 needed (tripod, static object)."},
-      {"parameter": "Focus stacking slices", "typicalValue": "10-50 images", "range": "5-200 images", "notes": "Depends on depth range and DOF. Rule: N = Z-range / (DOF × overlap). 1:1 @ f/11, DOF 400 μm, 30% overlap → step 280 μm. 5 mm depth → 18 slices. Extreme macro (5:1, DOF 50 μm) → 100+ slices for same depth."},
-      {"parameter": "Working distance", "typicalValue": "50-300 mm", "range": "10 mm - 1 m", "notes": "Distance from lens front element to object. 105 mm macro @ 1:1: ~150 mm WD (comfortable, space for lighting). 60 mm macro @ 1:1: ~90 mm (tighter, harder to light). Bellows + microscope objective: 10-50 mm (very tight, specialized lighting needed)."},
-      {"parameter": "Lighting intensity", "typicalValue": "5,000-20,000 lux at object", "range": "1,000-50,000 lux", "notes": "Higher than normal photography (small apertures f/11-f/22 → less light). LED panels 1000-2000 lux @ 50 cm typical; need 2-4 for macro (total 5,000-10,000 lux adequate). Flash: GN 10-15 sufficient (0.5 m @ f/11)."},
-      {"parameter": "White balance", "typicalValue": "5500K (daylight LED) or custom", "range": "3200-6500K", "notes": "LED 5000-6500K (daylight-balanced, CRI 95+). Tungsten 3200K (warm, requires WB correction or shoot RAW, adjust post). Custom WB (gray card under macro lighting) most accurate (eliminates guess, ensures neutral)."}
+      {
+        "parameter": "Magnification ratio",
+        "typicalValue": "1:1 (life-size)",
+        "range": "0.5:1 to 10:1 (macro to extreme macro)",
+        "notes": "1:1 standard macro (24×36 mm object fills full-frame sensor). 2-5:1 extreme (requires extension, bellows, reversed lens, or microscope objective). Field of view inversely proportional: 1:1 → 36×24 mm, 5:1 → 7×5 mm."
+      },
+      {
+        "parameter": "Aperture (f-number)",
+        "typicalValue": "f/8-f/11",
+        "range": "f/5.6-f/22",
+        "notes": "f/8-f/11 optimal (balance DOF 300-400 μm vs. diffraction sharpness). f/16-f/22 more DOF (500-1000 μm) but diffraction softens (0.5-1 μm/pixel blur from diffraction alone @ f/22, 550 nm). f/5.6 shallow DOF (150-200 μm) but sharper if in focus."
+      },
+      {
+        "parameter": "ISO sensitivity",
+        "typicalValue": "100-400",
+        "range": "50-6400",
+        "notes": "ISO 100-200 best quality (low noise, max dynamic range; tripod allows long exposure, so low ISO acceptable). 400-800 if handholding (not recommended macro but sometimes necessary field work). 1600+ high noise (avoid for scientific documentation; emergency only)."
+      },
+      {
+        "parameter": "Shutter speed",
+        "typicalValue": "1/4 - 4 s (tripod)",
+        "range": "1/200 - 30 s",
+        "notes": "Tripod: 1/4-4 s typical (f/11, ISO 100, LED lights). Flash: 1/200 sync speed (flash duration ~1/1000 s freezes motion, good for insects, live subjects). Long exposure (>1 s): use remote trigger, mirror lock-up, vibration settling. No faster than 1/200 needed (tripod, static object)."
+      },
+      {
+        "parameter": "Focus stacking slices",
+        "typicalValue": "10-50 images",
+        "range": "5-200 images",
+        "notes": "Depends on depth range and DOF. Rule: N = Z-range / (DOF × overlap). 1:1 @ f/11, DOF 400 μm, 30% overlap → step 280 μm. 5 mm depth → 18 slices. Extreme macro (5:1, DOF 50 μm) → 100+ slices for same depth."
+      },
+      {
+        "parameter": "Working distance",
+        "typicalValue": "50-300 mm",
+        "range": "10 mm - 1 m",
+        "notes": "Distance from lens front element to object. 105 mm macro @ 1:1: ~150 mm WD (comfortable, space for lighting). 60 mm macro @ 1:1: ~90 mm (tighter, harder to light). Bellows + microscope objective: 10-50 mm (very tight, specialized lighting needed)."
+      },
+      {
+        "parameter": "Lighting intensity",
+        "typicalValue": "5,000-20,000 lux at object",
+        "range": "1,000-50,000 lux",
+        "notes": "Higher than normal photography (small apertures f/11-f/22 → less light). LED panels 1000-2000 lux @ 50 cm typical; need 2-4 for macro (total 5,000-10,000 lux adequate). Flash: GN 10-15 sufficient (0.5 m @ f/11)."
+      },
+      {
+        "parameter": "White balance",
+        "typicalValue": "5500K (daylight LED) or custom",
+        "range": "3200-6500K",
+        "notes": "LED 5000-6500K (daylight-balanced, CRI 95+). Tungsten 3200K (warm, requires WB correction or shoot RAW, adjust post). Custom WB (gray card under macro lighting) most accurate (eliminates guess, ensures neutral)."
+      }
     ],
     "calibration": {
       "standards": [
@@ -272,49 +438,167 @@
         "Scale included (at least one image per series; in-plane, readable, sufficient resolution)"
       ],
       "commonArtifacts": [
-        {"artifact": "Soft focus, blurred details", "cause": "Missed focus (DOF 300-500 μm, easy to miss at macro). Camera shake (handheld, vibration from shutter button, mirror slap). Lens aberrations (field curvature: edges soft even if center sharp; spherical aberration: soft overall at wide apertures). Diffraction (too small aperture f/22-f/32, diffraction blur dominates).", "mitigation": "Refocus carefully (live view 10× magnification, manual focus, critical sharpness). Tripod + remote trigger + mirror lock-up (eliminate vibration). Stop down to f/8-f/11 (optimal for macro; f/5.6 sharper but shallow DOF, f/16 diffraction). Check lens: clean (fingerprints, dust on elements reduce contrast, sharpness), test on resolution target (if consistently soft, lens issue or misaligned)."},
-        {"artifact": "Insufficient depth of field (3D object, only thin slice sharp)", "cause": "Macro magnification (DOF ∝ 1/M²; 1:1 → 300-500 μm @ f/11, inadequate for mm-scale relief). Large aperture (f/5.6 → DOF ~200 μm, very shallow). Object not parallel to sensor (tilted, extends through DOF).", "mitigation": "Focus stacking (acquire 10-50 slices, merge computationally → extended DOF). Stop down (f/16 → 600 μm DOF, but diffraction penalty; balance). Tilt object (orient critical features in-plane parallel to sensor, maximize DOF usage). Or accept limitation (document in notes: 'shallow DOF, feature X in focus, feature Y out of focus due to depth')."},
-        {"artifact": "Uneven lighting, shadows, hotspots", "cause": "Single light source (harsh shadows, unidirectional). Light too close (hotspot at center, dark corners). Glossy surface (specular reflection, bright spots). Insufficient diffusion (hard light, strong shadows even if multiple sources).", "mitigation": "Multi-light setup (2-4 lights at 30-60° angles, even coverage). Diffuse (white fabric over lights, LED panels with built-in diffusion, softboxes). Increase distance (inverse-square law: farther lights → more even, but dimmer → compensate with more lights or higher power). Cross-polarization (if gloss problem; polarizing filters on lights + camera, eliminate specular; see #3). Test: photograph white card, check histogram across frame (should be flat ±10%; if corners 20-50% darker, uneven)."},
-        {"artifact": "Color cast (entire image shifted blue, yellow, green)", "cause": "White balance incorrect (set to daylight 5500K but lights tungsten 3200K → image warm/yellow, or vice versa). Mixed lighting (daylight window + tungsten lamp → different color temps, cannot balance single WB). Lens coatings (some lenses add magenta or yellow cast, especially older or cheap lenses).", "mitigation": "Custom white balance (gray card under macro lighting, set as WB reference in camera). Shoot RAW (adjust WB in post-processing, no quality loss). Block ambient (if mixed lighting, blackout daylight, use only controlled artificial). Check lens (if persistent cast, test lens on neutral target; if cast remains, lens issue → note in processing, correct via tint slider or accept if minimal). ColorChecker profiling (create custom camera profile, corrects lens + lighting color shifts)."},
-        {"artifact": "Dust spots (dark blobs, especially at f/16-f/22)", "cause": "Dust on camera sensor (shows in all images at small apertures; diffraction makes dust shadows sharper, more visible). Dust on lens (rare; usually wipes off, but if between elements, requires service).", "mitigation": "Clean sensor (air blower, sensor swab with fluid, or professional cleaning service; do before session if dust visible in test shots). Clone out in post (Photoshop healing brush, but tedious if many spots). Shoot at larger aperture if acceptable (f/8 vs. f/16; dust less visible, but DOF penalty). Map sensor dust (blank white image @ f/16, identify dust spot locations, use as reference layer in post-processing for automated cloning; some software like DxO does this automatically)."},
-        {"artifact": "Motion blur (object or entire frame blurred, directional)", "cause": "Camera shake (vibration from shutter button press, mirror slap if DSLR, footsteps, building vibration). Object moved (live subject, or static object shifted during long exposure). Focus rail vibration (cheap rail, backlash, or moved during exposure).", "mitigation": "Remote trigger (wired, wireless, or 2 s timer, no button touch during exposure). Mirror lock-up (DSLR: lock mirror up 1-2 s before shutter, vibration settles) or electronic shutter (mirrorless: silent, zero vibration). Wait (after any touch, wait 2-5 s for vibration to settle before triggering). Secure object (museum wax, clamps; ensure cannot shift). Solid tripod (heavy-duty, tighten all knobs; sandbag for extra mass). Isolate vibration (foam pad under tripod, or dedicated vibration-isolation platform if building vibration severe)."}
+        {
+          "artifact": "Soft focus, blurred details",
+          "cause": "Missed focus (DOF 300-500 μm, easy to miss at macro). Camera shake (handheld, vibration from shutter button, mirror slap). Lens aberrations (field curvature: edges soft even if center sharp; spherical aberration: soft overall at wide apertures). Diffraction (too small aperture f/22-f/32, diffraction blur dominates).",
+          "mitigation": "Refocus carefully (live view 10× magnification, manual focus, critical sharpness). Tripod + remote trigger + mirror lock-up (eliminate vibration). Stop down to f/8-f/11 (optimal for macro; f/5.6 sharper but shallow DOF, f/16 diffraction). Check lens: clean (fingerprints, dust on elements reduce contrast, sharpness), test on resolution target (if consistently soft, lens issue or misaligned)."
+        },
+        {
+          "artifact": "Insufficient depth of field (3D object, only thin slice sharp)",
+          "cause": "Macro magnification (DOF ∝ 1/M²; 1:1 → 300-500 μm @ f/11, inadequate for mm-scale relief). Large aperture (f/5.6 → DOF ~200 μm, very shallow). Object not parallel to sensor (tilted, extends through DOF).",
+          "mitigation": "Focus stacking (acquire 10-50 slices, merge computationally → extended DOF). Stop down (f/16 → 600 μm DOF, but diffraction penalty; balance). Tilt object (orient critical features in-plane parallel to sensor, maximize DOF usage). Or accept limitation (document in notes: 'shallow DOF, feature X in focus, feature Y out of focus due to depth')."
+        },
+        {
+          "artifact": "Uneven lighting, shadows, hotspots",
+          "cause": "Single light source (harsh shadows, unidirectional). Light too close (hotspot at center, dark corners). Glossy surface (specular reflection, bright spots). Insufficient diffusion (hard light, strong shadows even if multiple sources).",
+          "mitigation": "Multi-light setup (2-4 lights at 30-60° angles, even coverage). Diffuse (white fabric over lights, LED panels with built-in diffusion, softboxes). Increase distance (inverse-square law: farther lights → more even, but dimmer → compensate with more lights or higher power). Cross-polarization (if gloss problem; polarizing filters on lights + camera, eliminate specular; see #3). Test: photograph white card, check histogram across frame (should be flat ±10%; if corners 20-50% darker, uneven)."
+        },
+        {
+          "artifact": "Color cast (entire image shifted blue, yellow, green)",
+          "cause": "White balance incorrect (set to daylight 5500K but lights tungsten 3200K → image warm/yellow, or vice versa). Mixed lighting (daylight window + tungsten lamp → different color temps, cannot balance single WB). Lens coatings (some lenses add magenta or yellow cast, especially older or cheap lenses).",
+          "mitigation": "Custom white balance (gray card under macro lighting, set as WB reference in camera). Shoot RAW (adjust WB in post-processing, no quality loss). Block ambient (if mixed lighting, blackout daylight, use only controlled artificial). Check lens (if persistent cast, test lens on neutral target; if cast remains, lens issue → note in processing, correct via tint slider or accept if minimal). ColorChecker profiling (create custom camera profile, corrects lens + lighting color shifts)."
+        },
+        {
+          "artifact": "Dust spots (dark blobs, especially at f/16-f/22)",
+          "cause": "Dust on camera sensor (shows in all images at small apertures; diffraction makes dust shadows sharper, more visible). Dust on lens (rare; usually wipes off, but if between elements, requires service).",
+          "mitigation": "Clean sensor (air blower, sensor swab with fluid, or professional cleaning service; do before session if dust visible in test shots). Clone out in post (Photoshop healing brush, but tedious if many spots). Shoot at larger aperture if acceptable (f/8 vs. f/16; dust less visible, but DOF penalty). Map sensor dust (blank white image @ f/16, identify dust spot locations, use as reference layer in post-processing for automated cloning; some software like DxO does this automatically)."
+        },
+        {
+          "artifact": "Motion blur (object or entire frame blurred, directional)",
+          "cause": "Camera shake (vibration from shutter button press, mirror slap if DSLR, footsteps, building vibration). Object moved (live subject, or static object shifted during long exposure). Focus rail vibration (cheap rail, backlash, or moved during exposure).",
+          "mitigation": "Remote trigger (wired, wireless, or 2 s timer, no button touch during exposure). Mirror lock-up (DSLR: lock mirror up 1-2 s before shutter, vibration settles) or electronic shutter (mirrorless: silent, zero vibration). Wait (after any touch, wait 2-5 s for vibration to settle before triggering). Secure object (museum wax, clamps; ensure cannot shift). Solid tripod (heavy-duty, tighten all knobs; sandbag for extra mass). Isolate vibration (foam pad under tripod, or dedicated vibration-isolation platform if building vibration severe)."
+        }
       ],
       "troubleshooting": [
-        {"problem": "Image too dark (underexposed)", "solution": "Increase exposure: longer shutter (1/2 → 2 s; tripod, so no motion blur risk), higher ISO (100 → 400; minimal noise increase), or larger aperture (f/11 → f/8; but DOF penalty 400 → 300 μm). Add light (more LED panels, increase flash power, move lights closer). Check metering mode (spot meter on 18% gray, not dark object which causes overexposure on gray areas). If still dark: lights may be too weak (upgrade to higher-power LEDs, or use flash instead of continuous)."},
-        {"problem": "Image too bright (overexposed, blown highlights)", "solution": "Decrease exposure: faster shutter (2 s → 1/4 s), lower ISO (400 → 100), or smaller aperture (f/8 → f/16; but diffraction penalty). Reduce light (dim LEDs, reduce flash power, move lights farther, diffuse more). Check metering (if metering on bright area, causes underexposure elsewhere; meter on mid-tone). Histogram (watch for clipping right edge; if clipped, reduce exposure -1 to -2 EV, re-shoot). ETTR (expose to the right, maximize signal, but don't clip highlights; histogram bunched right but not touching edge)."},
-        {"problem": "Focus inconsistent across frame (center sharp, edges soft)", "solution": "Lens field curvature (common in macro lenses, edges focus at different plane than center). Stop down (f/11 → f/16 increases DOF, may cover curvature). Focus stacking (acquire multiple slices, merge → entire field sharp). Use flat-field lens (specialized: Sigma APO Macro 180 mm, Zeiss Makro-Planar; expensive but minimal curvature). Or accept (note limitation, ensure critical feature in sharp zone). Verify object flat (if object curved, not lens issue; depth extends beyond DOF → stack). Check lens alignment (if dropped, damaged, elements may be tilted; professional service to realign)."},
-        {"problem": "Color inaccurate (objects appear different color than visual perception)", "solution": "White balance adjustment (shoot RAW, adjust WB in post until neutral grays R=G=B; or custom WB with gray card). Lighting spectrum (cheap LEDs low CRI <80 → poor color rendering; upgrade to CRI 95+ LEDs; or use flash which is daylight-balanced, CRI ~100). Monitor calibration (if editing on uncalibrated monitor, colors may look correct on screen but wrong in print/other displays; calibrate monitor with X-Rite i1Display, Spyder, etc.). Camera profiling (ColorChecker + DNG Profile Editor, create custom profile corrects camera sensor, lens, lighting quirks). If persistent: check lens (old lenses, damaged coatings may shift color; test on known neutral, if shifts, lens issue)."},
-        {"problem": "Focus stacking artifacts (halos, misalignment, ghosting)", "solution": "Misalignment (camera or object moved between slices: re-shoot with stable setup; or post-processing: manually align in Photoshop before stacking). Halos (contrast-based stacking algorithms overemphasize edges: use depth-map method in Helicon Focus, or pyramid blending in Zerene Stacker; reduce artifact radius parameter). Insufficient overlap (slices step too far, missing intermediate zone: re-shoot with smaller steps, 30-50% overlap). Moving subject (live insect, wind-blown plant: shoot faster, fewer slices, accept narrower DOF; or photograph dead/preserved specimens). Software choice (try different: Helicon Focus, Zerene Stacker, Adobe Photoshop auto-align + blend; each handles differently, one may work better for specific case)."}
+        {
+          "problem": "Image too dark (underexposed)",
+          "solution": "Increase exposure: longer shutter (1/2 → 2 s; tripod, so no motion blur risk), higher ISO (100 → 400; minimal noise increase), or larger aperture (f/11 → f/8; but DOF penalty 400 → 300 μm). Add light (more LED panels, increase flash power, move lights closer). Check metering mode (spot meter on 18% gray, not dark object which causes overexposure on gray areas). If still dark: lights may be too weak (upgrade to higher-power LEDs, or use flash instead of continuous)."
+        },
+        {
+          "problem": "Image too bright (overexposed, blown highlights)",
+          "solution": "Decrease exposure: faster shutter (2 s → 1/4 s), lower ISO (400 → 100), or smaller aperture (f/8 → f/16; but diffraction penalty). Reduce light (dim LEDs, reduce flash power, move lights farther, diffuse more). Check metering (if metering on bright area, causes underexposure elsewhere; meter on mid-tone). Histogram (watch for clipping right edge; if clipped, reduce exposure -1 to -2 EV, re-shoot). ETTR (expose to the right, maximize signal, but don't clip highlights; histogram bunched right but not touching edge)."
+        },
+        {
+          "problem": "Focus inconsistent across frame (center sharp, edges soft)",
+          "solution": "Lens field curvature (common in macro lenses, edges focus at different plane than center). Stop down (f/11 → f/16 increases DOF, may cover curvature). Focus stacking (acquire multiple slices, merge → entire field sharp). Use flat-field lens (specialized: Sigma APO Macro 180 mm, Zeiss Makro-Planar; expensive but minimal curvature). Or accept (note limitation, ensure critical feature in sharp zone). Verify object flat (if object curved, not lens issue; depth extends beyond DOF → stack). Check lens alignment (if dropped, damaged, elements may be tilted; professional service to realign)."
+        },
+        {
+          "problem": "Color inaccurate (objects appear different color than visual perception)",
+          "solution": "White balance adjustment (shoot RAW, adjust WB in post until neutral grays R=G=B; or custom WB with gray card). Lighting spectrum (cheap LEDs low CRI <80 → poor color rendering; upgrade to CRI 95+ LEDs; or use flash which is daylight-balanced, CRI ~100). Monitor calibration (if editing on uncalibrated monitor, colors may look correct on screen but wrong in print/other displays; calibrate monitor with X-Rite i1Display, Spyder, etc.). Camera profiling (ColorChecker + DNG Profile Editor, create custom profile corrects camera sensor, lens, lighting quirks). If persistent: check lens (old lenses, damaged coatings may shift color; test on known neutral, if shifts, lens issue)."
+        },
+        {
+          "problem": "Focus stacking artifacts (halos, misalignment, ghosting)",
+          "solution": "Misalignment (camera or object moved between slices: re-shoot with stable setup; or post-processing: manually align in Photoshop before stacking). Halos (contrast-based stacking algorithms overemphasize edges: use depth-map method in Helicon Focus, or pyramid blending in Zerene Stacker; reduce artifact radius parameter). Insufficient overlap (slices step too far, missing intermediate zone: re-shoot with smaller steps, 30-50% overlap). Moving subject (live insect, wind-blown plant: shoot faster, fewer slices, accept narrower DOF; or photograph dead/preserved specimens). Software choice (try different: Helicon Focus, Zerene Stacker, Adobe Photoshop auto-align + blend; each handles differently, one may work better for specific case)."
+        }
       ]
     }
   },
   "dataAnalysis": {
     "rawDataFormat": {
-      "fileFormats": ["RAW (CR2, CR3, NEF, ARW depending on camera brand; uncompressed or lossless compressed)", "DNG (Adobe Digital Negative; archival RAW, cross-platform)", "TIFF (converted from RAW; 16-bit RGB, Adobe RGB or ProPhoto RGB color space; archival master)", "JPEG (processed; 8-bit sRGB; distribution, web, not archival)"],
+      "fileFormats": [
+        "RAW (CR2, CR3, NEF, ARW depending on camera brand; uncompressed or lossless compressed)",
+        "DNG (Adobe Digital Negative; archival RAW, cross-platform)",
+        "TIFF (converted from RAW; 16-bit RGB, Adobe RGB or ProPhoto RGB color space; archival master)",
+        "JPEG (processed; 8-bit sRGB; distribution, web, not archival)"
+      ],
       "dataStructure": "Single image: 20-60 MB RAW (depending on sensor resolution). Focus stack: N images × 30-50 MB = 0.5-5 GB per stack (20-100 images typical). Final stacked TIFF: 100-300 MB (16-bit RGB, 8000×6000 pixels typical full-frame).",
       "typicalFileSize": "Per image: 30-50 MB RAW, 100-150 MB TIFF 16-bit. Per session (20-50 images normal + stacks): 5-20 GB total."
     },
     "preprocessing": [
-      {"step": "RAW conversion", "description": "Open RAW files in converter (Lightroom, Capture One, Photoshop ACR). Adjust: white balance (based on gray card or custom), exposure (±0.5 EV if needed, histogram optimization), lens corrections (geometric distortion, vignetting, chromatic aberration; apply camera/lens profile). Convert to TIFF 16-bit (ProPhoto RGB or Adobe RGB color space; preserve quality, no clipping). Maintain metadata (EXIF: camera settings, date/time; IPTC: object ID, notes).", "software": "Adobe Lightroom Classic, Capture One Pro, Photoshop Camera Raw"},
-      {"step": "Focus stacking (if multiple slices)", "description": "Load stack images into stacking software (Helicon Focus, Zerene Stacker, Photoshop). Align (software auto-aligns if slight shifts; may fail if large movement → manual pre-alignment needed). Stack method: choose algorithm (Helicon: Method C depth map best for heritage objects; Zerene: DMap or PMax depending on texture vs. smooth). Adjust parameters (smoothing, radius; reduce artifacts). Render (outputs single merged TIFF, extended DOF, all regions sharp). Inspect (zoom 100%, check no artifacts: halos, missing regions, ghosting; if present, adjust parameters, re-render, or manual touchup in Photoshop).", "software": "Helicon Focus ($30-200), Zerene Stacker ($90-300), Photoshop CC (Scripts → Statistics → Mean/Median for simple stacks, or manual layer masks for complex)"},
-      {"step": "Scale calibration (measurement)", "description": "Open image with scale in ImageJ, Photoshop, or dedicated software. Measure scale (line tool, draw across known distance e.g., 1 mm = 232 pixels). Set scale (ImageJ: Analyze → Set Scale; enter 232 pixels = 1 mm → software calculates μm/pixel). Save calibration (embedded in image or separate file). Apply to measurements: subsequent line/area measurements display in mm, μm (not pixels). Verify: measure scale again, should read 1.00 mm (if 0.95 or 1.05, re-measure carefully, parallax or scale inaccurate).", "software": "ImageJ/Fiji (free, excellent measurement tools), Photoshop (ruler tool, less precise), ScopePhoto / AmScope software (microscopy-oriented)"},
-      {"step": "Color correction (optional)", "description": "If ColorChecker captured: use software (DNG Profile Editor, X-Rite i1 Profiler, Imatest ColorChecker) to create camera profile (matches image colors to reference values). Apply profile to all images in session (RAW converter: apply DNG profile). Verify: neutral patches neutral (R=G=B ±3 in 8-bit), color patches match reference (ΔE <3 for scientific documentation, <5 acceptable heritage). If no ColorChecker: manual correction (match known colors: e.g., white paper should be white R=G=B=240-250 in 8-bit; adjust curves, levels until match).", "software": "DNG Profile Editor (free), X-Rite i1 Profiler ($300-500), Imatest ($600-3000), Lightroom (apply profiles)"}
+      {
+        "step": "RAW conversion",
+        "description": "Open RAW files in converter (Lightroom, Capture One, Photoshop ACR). Adjust: white balance (based on gray card or custom), exposure (±0.5 EV if needed, histogram optimization), lens corrections (geometric distortion, vignetting, chromatic aberration; apply camera/lens profile). Convert to TIFF 16-bit (ProPhoto RGB or Adobe RGB color space; preserve quality, no clipping). Maintain metadata (EXIF: camera settings, date/time; IPTC: object ID, notes).",
+        "software": "Adobe Lightroom Classic, Capture One Pro, Photoshop Camera Raw"
+      },
+      {
+        "step": "Focus stacking (if multiple slices)",
+        "description": "Load stack images into stacking software (Helicon Focus, Zerene Stacker, Photoshop). Align (software auto-aligns if slight shifts; may fail if large movement → manual pre-alignment needed). Stack method: choose algorithm (Helicon: Method C depth map best for heritage objects; Zerene: DMap or PMax depending on texture vs. smooth). Adjust parameters (smoothing, radius; reduce artifacts). Render (outputs single merged TIFF, extended DOF, all regions sharp). Inspect (zoom 100%, check no artifacts: halos, missing regions, ghosting; if present, adjust parameters, re-render, or manual touchup in Photoshop).",
+        "software": "Helicon Focus ($30-200), Zerene Stacker ($90-300), Photoshop CC (Scripts → Statistics → Mean/Median for simple stacks, or manual layer masks for complex)"
+      },
+      {
+        "step": "Scale calibration (measurement)",
+        "description": "Open image with scale in ImageJ, Photoshop, or dedicated software. Measure scale (line tool, draw across known distance e.g., 1 mm = 232 pixels). Set scale (ImageJ: Analyze → Set Scale; enter 232 pixels = 1 mm → software calculates μm/pixel). Save calibration (embedded in image or separate file). Apply to measurements: subsequent line/area measurements display in mm, μm (not pixels). Verify: measure scale again, should read 1.00 mm (if 0.95 or 1.05, re-measure carefully, parallax or scale inaccurate).",
+        "software": "ImageJ/Fiji (free, excellent measurement tools), Photoshop (ruler tool, less precise), ScopePhoto / AmScope software (microscopy-oriented)"
+      },
+      {
+        "step": "Color correction (optional)",
+        "description": "If ColorChecker captured: use software (DNG Profile Editor, X-Rite i1 Profiler, Imatest ColorChecker) to create camera profile (matches image colors to reference values). Apply profile to all images in session (RAW converter: apply DNG profile). Verify: neutral patches neutral (R=G=B ±3 in 8-bit), color patches match reference (ΔE <3 for scientific documentation, <5 acceptable heritage). If no ColorChecker: manual correction (match known colors: e.g., white paper should be white R=G=B=240-250 in 8-bit; adjust curves, levels until match).",
+        "software": "DNG Profile Editor (free), X-Rite i1 Profiler ($300-500), Imatest ($600-3000), Lightroom (apply profiles)"
+      }
     ],
     "analysisWorkflow": {
       "steps": [
-        {"stepNumber": 1, "title": "Visual Inspection and Annotation", "description": "Open processed image (TIFF or JPEG) in viewer (Photoshop, IrfanView, XnView). Zoom 100% (1:1 pixels), pan across image (inspect all regions: surface texture, cracks, losses, tool marks, brushstrokes, whatever features of interest). Identify features (note observations: 'crack 2.3 mm long at upper left, 50 μm wide'; 'brushstroke direction NW-SE, 200 μm wide impasto ridges'; 'corrosion pitting 10-30 μm diameter, clustered lower right'). Annotate (overlay layer in Photoshop: arrows, labels, ROIs, color-coded highlighting; or export to PowerPoint, add text, shapes for presentation). Screenshot key features (crop to detail, export as separate image files for reports, publications)."},
-        {"stepNumber": 2, "title": "Quantitative Measurements", "description": "Measure features (if scale calibrated): **Length:** Line tool (ImageJ, Photoshop), draw across feature, read length in μm/mm (e.g., crack length 2.34 mm ±0.05 mm, where ±0.05 from 1-2 pixel uncertainty × μm/pixel). **Width:** Perpendicular to feature (e.g., fiber diameter, crack width; measure at 3-5 locations, report mean ± std dev). **Area:** Polygon or freehand selection (trace feature boundary), measure area (e.g., loss 4.5 mm² ±0.2 mm²). **Count:** Particle analysis (ImageJ: threshold image, binary, Analyze Particles; counts objects, measures sizes; e.g., corrosion pits: 47 pits, diameter 15 ± 8 μm). **Angle:** Angle tool (measure orientations, e.g., weave angle 87° ± 2° from horizontal). Statistics (export measurements to spreadsheet: Excel, calculate mean, std dev, ranges, histograms; report: 'crack widths 30-150 μm, mean 68 ± 32 μm, N=12')."},
-        {"stepNumber": 3, "title": "Comparison to Reference or Time-Series", "description": "If documenting condition over time (before/after treatment): load baseline + current image (Photoshop layers, align, flicker between, or side-by-side). Identify changes (new cracks, losses, color shifts, areas cleaned/restored). Quantify (measure: crack propagation 0.5 mm since 2020, loss area increased 2.3 mm² → 5.1 mm², corrosion spread 12% more area). Document (annotate changes, export comparison figures). If comparing to reference (known authentic vs. suspected forgery): measure features (authentic: handmade fibers 20-50 μm diameter, irregular; suspect: machine-made 10-15 μm, uniform → flag inconsistency)."},
-        {"stepNumber": 4, "title": "Integration with Other Imaging", "description": "Correlate macro with other techniques: **Optical microscopy:** Macro overview (mm-scale, context) + microscopy detail (μm-scale, same area). Register (common fiducial marks: scratches, distinctive features; scale macro image to match microscopy FOV). **XRF / Raman:** Macro shows spatial distribution (where features are), XRF/Raman identify materials (what features are). Overlay (macro background, XRF elemental map or Raman ROI locations as overlay, color-coded). **UV fluorescence:** Macro visible + UV fluorescence (same magnification); compare (retouching: dark in UV, different texture in macro → confirms modern). Multi-modal fusion (combine all: visible macro, UV, XRF elemental map, Raman molecular ID → comprehensive material + condition characterization)."}
+        {
+          "stepNumber": 1,
+          "title": "Visual Inspection and Annotation",
+          "description": "Open processed image (TIFF or JPEG) in viewer (Photoshop, IrfanView, XnView). Zoom 100% (1:1 pixels), pan across image (inspect all regions: surface texture, cracks, losses, tool marks, brushstrokes, whatever features of interest). Identify features (note observations: 'crack 2.3 mm long at upper left, 50 μm wide'; 'brushstroke direction NW-SE, 200 μm wide impasto ridges'; 'corrosion pitting 10-30 μm diameter, clustered lower right'). Annotate (overlay layer in Photoshop: arrows, labels, ROIs, color-coded highlighting; or export to PowerPoint, add text, shapes for presentation). Screenshot key features (crop to detail, export as separate image files for reports, publications)."
+        },
+        {
+          "stepNumber": 2,
+          "title": "Quantitative Measurements",
+          "description": "Measure features (if scale calibrated): **Length:** Line tool (ImageJ, Photoshop), draw across feature, read length in μm/mm (e.g., crack length 2.34 mm ±0.05 mm, where ±0.05 from 1-2 pixel uncertainty × μm/pixel). **Width:** Perpendicular to feature (e.g., fiber diameter, crack width; measure at 3-5 locations, report mean ± std dev). **Area:** Polygon or freehand selection (trace feature boundary), measure area (e.g., loss 4.5 mm² ±0.2 mm²). **Count:** Particle analysis (ImageJ: threshold image, binary, Analyze Particles; counts objects, measures sizes; e.g., corrosion pits: 47 pits, diameter 15 ± 8 μm). **Angle:** Angle tool (measure orientations, e.g., weave angle 87° ± 2° from horizontal). Statistics (export measurements to spreadsheet: Excel, calculate mean, std dev, ranges, histograms; report: 'crack widths 30-150 μm, mean 68 ± 32 μm, N=12')."
+        },
+        {
+          "stepNumber": 3,
+          "title": "Comparison to Reference or Time-Series",
+          "description": "If documenting condition over time (before/after treatment): load baseline + current image (Photoshop layers, align, flicker between, or side-by-side). Identify changes (new cracks, losses, color shifts, areas cleaned/restored). Quantify (measure: crack propagation 0.5 mm since 2020, loss area increased 2.3 mm² → 5.1 mm², corrosion spread 12% more area). Document (annotate changes, export comparison figures). If comparing to reference (known authentic vs. suspected forgery): measure features (authentic: handmade fibers 20-50 μm diameter, irregular; suspect: machine-made 10-15 μm, uniform → flag inconsistency)."
+        },
+        {
+          "stepNumber": 4,
+          "title": "Integration with Other Imaging",
+          "description": "Correlate macro with other techniques: **Optical microscopy:** Macro overview (mm-scale, context) + microscopy detail (μm-scale, same area). Register (common fiducial marks: scratches, distinctive features; scale macro image to match microscopy FOV). **XRF / Raman:** Macro shows spatial distribution (where features are), XRF/Raman identify materials (what features are). Overlay (macro background, XRF elemental map or Raman ROI locations as overlay, color-coded). **UV fluorescence:** Macro visible + UV fluorescence (same magnification); compare (retouching: dark in UV, different texture in macro → confirms modern). Multi-modal fusion (combine all: visible macro, UV, XRF elemental map, Raman molecular ID → comprehensive material + condition characterization)."
+        }
       ]
     },
     "softwareTools": [
-      {"name": "ImageJ/Fiji", "type": "open-source", "capabilities": ["Measurement (length, area, angle, particle analysis), scale calibration, quantification, batch processing, extensive plugins for scientific analysis"], "cost": "Free"},
-      {"name": "Adobe Photoshop", "type": "commercial", "capabilities": ["Layer-based editing, annotation (draw, text, arrows), basic measurement (ruler, angle), focus stacking (manual or auto-blend layers), color correction"], "cost": "$10-60/month (subscription)"},
-      {"name": "Helicon Focus", "type": "commercial (focus stacking)", "capabilities": ["Focus stacking: Method A (averaging), Method B (contrast pyramid), Method C (depth map; best for heritage). Batch processing, retouching tools, 3D surface reconstruction from stack"], "cost": "$30-200 (Lite to Pro)"},
-      {"name": "Zerene Stacker", "type": "commercial (focus stacking)", "capabilities": ["Focus stacking: PMax (contrast), DMap (depth map), hybrid. High quality, handles difficult cases (hair-like structures, transparent). Alignment, retouching"], "cost": "$90-300 (Basic to Pro)"},
-      {"name": "Adobe Lightroom", "type": "commercial", "capabilities": ["RAW conversion, batch processing, white balance, exposure, lens correction, color grading, metadata management, comparison views"], "cost": "$10/month (with Photoshop)"},
-      {"name": "Capture One", "type": "commercial", "capabilities": ["Professional RAW conversion, tethered shooting (live view on computer), color grading, layers, excellent lens corrections, faster than Lightroom for large files"], "cost": "$300 perpetual or $180/year"}
+      {
+        "name": "ImageJ/Fiji",
+        "type": "open-source",
+        "capabilities": [
+          "Measurement (length, area, angle, particle analysis), scale calibration, quantification, batch processing, extensive plugins for scientific analysis"
+        ],
+        "cost": "Free"
+      },
+      {
+        "name": "Adobe Photoshop",
+        "type": "commercial",
+        "capabilities": [
+          "Layer-based editing, annotation (draw, text, arrows), basic measurement (ruler, angle), focus stacking (manual or auto-blend layers), color correction"
+        ],
+        "cost": "$10-60/month (subscription)"
+      },
+      {
+        "name": "Helicon Focus",
+        "type": "commercial (focus stacking)",
+        "capabilities": [
+          "Focus stacking: Method A (averaging), Method B (contrast pyramid), Method C (depth map; best for heritage). Batch processing, retouching tools, 3D surface reconstruction from stack"
+        ],
+        "cost": "$30-200 (Lite to Pro)"
+      },
+      {
+        "name": "Zerene Stacker",
+        "type": "commercial (focus stacking)",
+        "capabilities": [
+          "Focus stacking: PMax (contrast), DMap (depth map), hybrid. High quality, handles difficult cases (hair-like structures, transparent). Alignment, retouching"
+        ],
+        "cost": "$90-300 (Basic to Pro)"
+      },
+      {
+        "name": "Adobe Lightroom",
+        "type": "commercial",
+        "capabilities": [
+          "RAW conversion, batch processing, white balance, exposure, lens correction, color grading, metadata management, comparison views"
+        ],
+        "cost": "$10/month (with Photoshop)"
+      },
+      {
+        "name": "Capture One",
+        "type": "commercial",
+        "capabilities": [
+          "Professional RAW conversion, tethered shooting (live view on computer), color grading, layers, excellent lens corrections, faster than Lightroom for large files"
+        ],
+        "cost": "$300 perpetual or $180/year"
+      }
     ],
     "interpretationGuidelines": "Macro images show surface at 10-100× magnification (vs. naked eye). **Texture interpretation:** Fine detail visible (brushstrokes: individual ridges 50-200 μm; weave: warp/weft crossings 100-500 μm; tool marks: striations 10-50 μm). Distinguish material processes (handmade vs. machine: irregular vs. uniform). **Condition assessment:** Cracks (measure width 10-500 μm, depth inferred if lighting oblique shows shadows). Losses (measure area, map locations). Corrosion (identify type: pitting 10-100 μm, uniform layer, selective on grain boundaries). Abrasion (surface texture changes: polished vs. matte at μm-scale). **Material ID:** Fiber diameter, morphology (cotton 12-20 μm flat ribbon, flax 12-16 μm nodes visible, silk 10-13 μm smooth; distinguish via macro). Pigment grain size (natural azurite 10-50 μm irregular, synthetic ultramarine <5 μm spherical). Printing technique (halftone dots 50-200 μm, lithograph grain 5-20 μm, inkjet droplets <10 μm). **Limitations:** Surface only (no depth info unlike OCT, X-ray). No chemical ID (use XRF, Raman for composition). Resolution 5-50 μm (cannot see nm-scale features: molecules, nanostructures; use SEM, TEM if needed). Field of view limited (mm-cm; for larger areas, stitch multiple images or use lower magnification)."
   },
@@ -328,14 +612,46 @@
       "Damage assessment (quantify: crack lengths, loss areas, corrosion coverage for conservation reports)"
     ],
     "materialTypes": [
-      {"material": "Paintings (oil, tempera, acrylic)", "suitability": "excellent", "notes": "Brushstrokes, impasto, cracks, retouching, surface texture. Macro reveals artist technique (application method, tool width), condition (crack networks, losses, blanching)."},
-      {"material": "Textiles (woven, knit, lace)", "suitability": "excellent", "notes": "Weave structure (warp/weft count, twist direction), fiber morphology, damage (breaks, abrasion, insect). Macro ID fiber type (cotton vs. linen vs. silk via diameter, surface features)."},
-      {"material": "Paper, manuscripts", "suitability": "excellent", "notes": "Fiber structure (laid lines, chain lines 1-2 mm), watermarks, surface texture (hot-pressed smooth vs. rough), ink penetration, degradation (foxing, embrittlement)."},
-      {"material": "Metalwork (bronze, silver, iron)", "suitability": "good-excellent", "notes": "Corrosion (type, extent at μm-scale), tool marks (chasing, engraving 10-100 μm width), grain structure (if polished, etched), manufacturing (casting seams, cold-working)."},
-      {"material": "Ceramics, glass", "suitability": "good", "notes": "Surface texture (glaze crazing, wear), manufacturing (wheel marks, mold seams, pontil scars), damage (chips, cracks at edge, spalling)."},
-      {"material": "Wood (panels, sculpture)", "suitability": "good", "notes": "Grain structure, tool marks (plane, chisel 50-500 μm), surface finish, cracks, insect damage (exit holes, galleries), paint layers on polychrome."},
-      {"material": "Stone (sculpture, architecture)", "suitability": "fair-good", "notes": "Weathering (grain loss, surface roughening), tool marks (point, claw, flat chisel characteristic patterns), biological growth (lichen, algae at mm-scale), cracks."},
-      {"material": "Prints, photographs", "suitability": "excellent", "notes": "Printing process ID (halftone dots 50-200 μm lithography, continuous tone silver gelatin, inkjet droplets <10 μm). Surface texture, damage (scratches, losses), authentication (modern prints vs. vintage)."}
+      {
+        "material": "Paintings (oil, tempera, acrylic)",
+        "suitability": "excellent",
+        "notes": "Brushstrokes, impasto, cracks, retouching, surface texture. Macro reveals artist technique (application method, tool width), condition (crack networks, losses, blanching)."
+      },
+      {
+        "material": "Textiles (woven, knit, lace)",
+        "suitability": "excellent",
+        "notes": "Weave structure (warp/weft count, twist direction), fiber morphology, damage (breaks, abrasion, insect). Macro ID fiber type (cotton vs. linen vs. silk via diameter, surface features)."
+      },
+      {
+        "material": "Paper, manuscripts",
+        "suitability": "excellent",
+        "notes": "Fiber structure (laid lines, chain lines 1-2 mm), watermarks, surface texture (hot-pressed smooth vs. rough), ink penetration, degradation (foxing, embrittlement)."
+      },
+      {
+        "material": "Metalwork (bronze, silver, iron)",
+        "suitability": "good-excellent",
+        "notes": "Corrosion (type, extent at μm-scale), tool marks (chasing, engraving 10-100 μm width), grain structure (if polished, etched), manufacturing (casting seams, cold-working)."
+      },
+      {
+        "material": "Ceramics, glass",
+        "suitability": "good",
+        "notes": "Surface texture (glaze crazing, wear), manufacturing (wheel marks, mold seams, pontil scars), damage (chips, cracks at edge, spalling)."
+      },
+      {
+        "material": "Wood (panels, sculpture)",
+        "suitability": "good",
+        "notes": "Grain structure, tool marks (plane, chisel 50-500 μm), surface finish, cracks, insect damage (exit holes, galleries), paint layers on polychrome."
+      },
+      {
+        "material": "Stone (sculpture, architecture)",
+        "suitability": "fair-good",
+        "notes": "Weathering (grain loss, surface roughening), tool marks (point, claw, flat chisel characteristic patterns), biological growth (lichen, algae at mm-scale), cracks."
+      },
+      {
+        "material": "Prints, photographs",
+        "suitability": "excellent",
+        "notes": "Printing process ID (halftone dots 50-200 μm lithography, continuous tone silver gelatin, inkjet droplets <10 μm). Surface texture, damage (scratches, losses), authentication (modern prints vs. vintage)."
+      }
     ],
     "caseStudies": [
       {
@@ -352,17 +668,38 @@
   },
   "multimodal": {
     "complementaryTechniques": [
-      {"techniqueId": "optical-microscopy", "rationale": "Macro overview (mm-scale FOV, 5-50 μm resolution) + microscopy detail (μm-scale FOV, 0.5-5 μm resolution). Macro identifies ROIs, microscopy examines selected features at higher magnification. Sequential: macro first (survey), microscopy targeted (confirmation, fine detail)."},
-      {"techniqueId": "xrf", "rationale": "MA-XRF elemental maps (mm-scale, identify pigments: Pb, Hg, Fe, Cu) + macro visible (texture, brushstrokes, spatial distribution). Correlate: XRF shows where pigments are (chemical), macro shows how applied (morphology, technique). Overlay: XRF elemental map on macro image (co-register via fiducial marks)."},
-      {"techniqueId": "raman-spectroscopy", "rationale": "Raman molecular ID (pigment structure, ~1 μm spot) + macro spatial distribution (mm-scale). Macro locates features (e.g., colored grains), Raman identifies (vermilion, ultramarine, ochre). Complementary: macro fast wide-field, Raman slow point-by-point but definitive. Workflow: macro survey, Raman targeted (10-50 points)."},
-      {"techniqueId": "rti", "rationale": "RTI captures surface normals (3D relief, lighting-invariant texture). Macro high-resolution visible (color, detail). RTI for relief (impasto height, tool mark depth), macro for texture + color. Can integrate: RTI derived height map + macro texture → photorealistic 3D model."},
-      {"techniqueId": "uv-fluorescence-photography", "rationale": "UV fluorescence (organic materials fluoresce: varnish, binders, modern synthetics dark). Macro visible (surface texture, brushstrokes). Same magnification: capture UV + visible macro (same camera, lens, position; swap UV light + filters). Compare: retouching dark in UV + different texture in macro → confirms modern."},
-      {"techniqueId": "sem-eds", "rationale": "SEM ultra-high resolution (nm-scale, morphology), EDS elemental. Macro mm-scale context. Sequential on micro-samples (macro document sample in situ before extraction, SEM analyze after embedding, polishing). Macro shows where sample from, SEM shows grain structure, EDS composition."}
+      {
+        "techniqueId": "optical-microscopy",
+        "rationale": "Macro overview (mm-scale FOV, 5-50 μm resolution) + microscopy detail (μm-scale FOV, 0.5-5 μm resolution). Macro identifies ROIs, microscopy examines selected features at higher magnification. Sequential: macro first (survey), microscopy targeted (confirmation, fine detail)."
+      },
+      {
+        "techniqueId": "xrf",
+        "rationale": "MA-XRF elemental maps (mm-scale, identify pigments: Pb, Hg, Fe, Cu) + macro visible (texture, brushstrokes, spatial distribution). Correlate: XRF shows where pigments are (chemical), macro shows how applied (morphology, technique). Overlay: XRF elemental map on macro image (co-register via fiducial marks)."
+      },
+      {
+        "techniqueId": "raman-spectroscopy",
+        "rationale": "Raman molecular ID (pigment structure, ~1 μm spot) + macro spatial distribution (mm-scale). Macro locates features (e.g., colored grains), Raman identifies (vermilion, ultramarine, ochre). Complementary: macro fast wide-field, Raman slow point-by-point but definitive. Workflow: macro survey, Raman targeted (10-50 points)."
+      },
+      {
+        "techniqueId": "rti",
+        "rationale": "RTI captures surface normals (3D relief, lighting-invariant texture). Macro high-resolution visible (color, detail). RTI for relief (impasto height, tool mark depth), macro for texture + color. Can integrate: RTI derived height map + macro texture → photorealistic 3D model."
+      },
+      {
+        "techniqueId": "uv-fluorescence-photography",
+        "rationale": "UV fluorescence (organic materials fluoresce: varnish, binders, modern synthetics dark). Macro visible (surface texture, brushstrokes). Same magnification: capture UV + visible macro (same camera, lens, position; swap UV light + filters). Compare: retouching dark in UV + different texture in macro → confirms modern."
+      },
+      {
+        "techniqueId": "sem-eds",
+        "rationale": "SEM ultra-high resolution (nm-scale, morphology), EDS elemental. Macro mm-scale context. Sequential on micro-samples (macro document sample in situ before extraction, SEM analyze after embedding, polishing). Macro shows where sample from, SEM shows grain structure, EDS composition."
+      }
     ],
     "standardCombinations": [
       {
         "name": "Macro + Optical Microscopy (Multi-Scale Documentation)",
-        "techniques": ["macro-photography", "optical-microscopy"],
+        "techniques": [
+          "macro-photography",
+          "optical-microscopy"
+        ],
         "workflow": "1. Macro photography: overview, 1:1 to 5:1 magnification (5-50 μm/pixel, 5-50 mm FOV), survey object/area (identify features: cracks, grains, fibers). 2. Mark ROIs in macro image (locations for microscopy: unusual features, representative areas, damage). 3. Optical microscopy: 50-400× (0.5-5 μm/pixel, 100-2000 μm FOV), targeted analysis of ROIs (grain morphology, fiber structure, crack detail). 4. Correlate: macro context (where feature is, surroundings) + microscopy detail (what feature is, microstructure). 5. Document: macro image with ROI annotations (arrows, labels → 'Detail A: microscopy 200×, fiber diameter 15 μm'), microscopy insets (high-mag images overlaid or adjacent to macro).",
         "rationale": "Macro bridges photography and microscopy (coverage vs. resolution trade-off). Macro covers large areas (cm²) quickly (minutes), identifies features worth detailed examination. Microscopy slow (minutes per FOV), narrow coverage (mm²), but resolves <1 μm. Combined: efficient (macro survey → microscopy targeted, not blind sampling). Comprehensive (macro spatial distribution, microscopy microstructure).",
         "exampleApplication": "Textile authentication (suspected modern vs. antique). Macro 1:1 (5 μm/pixel, 36×24 mm FOV): image 50×50 mm fabric area, identify fibers, weave pattern (plain weave, warp/weft count 20/20 per cm). Measure fiber diameters in macro (15-25 μm, variable). Flag inconsistency: antique linen expected 12-20 μm variable (hand-spun, irregular), modern cotton 15-18 μm uniform (machine-spun). Microscopy 200× (0.5 μm/pixel, 300 μm FOV): examine 10 fibers (selected via macro ROIs). Fiber surface (antique linen shows nodes, striations characteristic of flax; modern cotton smooth, no nodes). Conclusion: fiber morphology (microscopy) + diameter distribution (macro) + weave density (macro) → consistent modern cotton, not antique linen (forgery detected)."
@@ -409,14 +746,6 @@
     ]
   },
   "references": {
-    "methodologyReviews": [
-      {
-        "citation": "Thompson, J. 2013. 'Macro Photography for Conservators and Museum Professionals.' JAIC 52: 145-162.",
-        "doi": "N/A (example citation, format typical)",
-        "year": 2013,
-        "scope": "Comprehensive review: equipment, techniques, applications in heritage documentation; best practices, case studies"
-      }
-    ],
     "technicalStandards": [
       {
         "organization": "FADGI",

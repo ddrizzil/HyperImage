@@ -30,64 +30,176 @@
         "latex": "$$\\Delta \\tilde{\\nu} = \\tilde{\\nu}_0 - \\tilde{\\nu}_s = \\frac{1}{\\lambda_0} - \\frac{1}{\\lambda_s}$$",
         "description": "Raman Shift (wavenumber difference between incident and scattered light)",
         "variables": [
-          {"symbol": "\\Delta \\tilde{\\nu}", "meaning": "Raman shift", "units": "cm⁻¹"},
-          {"symbol": "\\tilde{\\nu}_0", "meaning": "incident laser wavenumber (1/λ₀)", "units": "cm⁻¹"},
-          {"symbol": "\\tilde{\\nu}_s", "meaning": "scattered light wavenumber (1/λ_s)", "units": "cm⁻¹"},
-          {"symbol": "\\lambda_0", "meaning": "incident laser wavelength", "units": "nm or cm"},
-          {"symbol": "\\lambda_s", "meaning": "scattered light wavelength (Stokes)", "units": "nm or cm"}
+          {
+            "symbol": "\\Delta \\tilde{\\nu}",
+            "meaning": "Raman shift",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "\\tilde{\\nu}_0",
+            "meaning": "incident laser wavenumber (1/λ₀)",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "\\tilde{\\nu}_s",
+            "meaning": "scattered light wavenumber (1/λ_s)",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "\\lambda_0",
+            "meaning": "incident laser wavelength",
+            "units": "nm or cm"
+          },
+          {
+            "symbol": "\\lambda_s",
+            "meaning": "scattered light wavelength (Stokes)",
+            "units": "nm or cm"
+          }
         ]
       },
       {
         "latex": "$$I_{Raman} \\propto I_0 \\cdot \\nu^4 \\cdot \\sigma_R \\cdot N \\cdot \\eta$$",
         "description": "Raman Scattered Intensity",
         "variables": [
-          {"symbol": "I_{Raman}", "meaning": "Raman scattered light intensity", "units": "photons/s or counts/s"},
-          {"symbol": "I_0", "meaning": "incident laser intensity", "units": "W/cm² or photons/(s·cm²)"},
-          {"symbol": "\\nu", "meaning": "scattered light frequency (≈ν₀ for small shifts)", "units": "Hz or cm⁻¹"},
-          {"symbol": "\\sigma_R", "meaning": "Raman scattering cross-section", "units": "cm²/molecule"},
-          {"symbol": "N", "meaning": "number of molecules in probe volume", "units": "molecules"},
-          {"symbol": "\\eta", "meaning": "collection efficiency (optics, detector)", "units": "dimensionless"}
+          {
+            "symbol": "I_{Raman}",
+            "meaning": "Raman scattered light intensity",
+            "units": "photons/s or counts/s"
+          },
+          {
+            "symbol": "I_0",
+            "meaning": "incident laser intensity",
+            "units": "W/cm² or photons/(s·cm²)"
+          },
+          {
+            "symbol": "\\nu",
+            "meaning": "scattered light frequency (≈ν₀ for small shifts)",
+            "units": "Hz or cm⁻¹"
+          },
+          {
+            "symbol": "\\sigma_R",
+            "meaning": "Raman scattering cross-section",
+            "units": "cm²/molecule"
+          },
+          {
+            "symbol": "N",
+            "meaning": "number of molecules in probe volume",
+            "units": "molecules"
+          },
+          {
+            "symbol": "\\eta",
+            "meaning": "collection efficiency (optics, detector)",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\sigma_R \\propto \\left| \\frac{\\partial \\alpha}{\\partial Q} \\right|^2$$",
         "description": "Raman Cross-Section (polarizability derivative)",
         "variables": [
-          {"symbol": "\\sigma_R", "meaning": "Raman scattering cross-section", "units": "cm²"},
-          {"symbol": "\\alpha", "meaning": "polarizability tensor of molecule", "units": "Å³ or cm³"},
-          {"symbol": "Q", "meaning": "normal mode coordinate (vibrational displacement)", "units": "Å or dimensionless"}
+          {
+            "symbol": "\\sigma_R",
+            "meaning": "Raman scattering cross-section",
+            "units": "cm²"
+          },
+          {
+            "symbol": "\\alpha",
+            "meaning": "polarizability tensor of molecule",
+            "units": "Å³ or cm³"
+          },
+          {
+            "symbol": "Q",
+            "meaning": "normal mode coordinate (vibrational displacement)",
+            "units": "Å or dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\frac{I_{anti-Stokes}}{I_{Stokes}} = \\left( \\frac{\\nu_0 + \\nu_{vib}}{\\nu_0 - \\nu_{vib}} \\right)^4 \\exp\\left( -\\frac{h \\nu_{vib}}{k_B T} \\right)$$",
         "description": "Stokes to Anti-Stokes Intensity Ratio (temperature dependent)",
         "variables": [
-          {"symbol": "I_{anti-Stokes}", "meaning": "anti-Stokes peak intensity (ν₀+ν_vib)", "units": "arbitrary"},
-          {"symbol": "I_{Stokes}", "meaning": "Stokes peak intensity (ν₀-ν_vib)", "units": "arbitrary"},
-          {"symbol": "\\nu_0", "meaning": "laser frequency", "units": "cm⁻¹"},
-          {"symbol": "\\nu_{vib}", "meaning": "vibrational frequency", "units": "cm⁻¹"},
-          {"symbol": "h", "meaning": "Planck constant", "units": "6.626×10⁻³⁴ J·s"},
-          {"symbol": "k_B", "meaning": "Boltzmann constant", "units": "1.381×10⁻²³ J/K"},
-          {"symbol": "T", "meaning": "absolute temperature", "units": "K"}
+          {
+            "symbol": "I_{anti-Stokes}",
+            "meaning": "anti-Stokes peak intensity (ν₀+ν_vib)",
+            "units": "arbitrary"
+          },
+          {
+            "symbol": "I_{Stokes}",
+            "meaning": "Stokes peak intensity (ν₀-ν_vib)",
+            "units": "arbitrary"
+          },
+          {
+            "symbol": "\\nu_0",
+            "meaning": "laser frequency",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "\\nu_{vib}",
+            "meaning": "vibrational frequency",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "h",
+            "meaning": "Planck constant",
+            "units": "6.626×10⁻³⁴ J·s"
+          },
+          {
+            "symbol": "k_B",
+            "meaning": "Boltzmann constant",
+            "units": "1.381×10⁻²³ J/K"
+          },
+          {
+            "symbol": "T",
+            "meaning": "absolute temperature",
+            "units": "K"
+          }
         ]
       },
       {
         "latex": "$$\\Delta z \\approx \\frac{\\lambda}{2 \\cdot NA^2} \\cdot n$$",
         "description": "Confocal Depth Resolution (axial)",
         "variables": [
-          {"symbol": "\\Delta z", "meaning": "axial (depth) resolution", "units": "μm"},
-          {"symbol": "\\lambda", "meaning": "wavelength of light (laser + Raman scattered)", "units": "nm"},
-          {"symbol": "NA", "meaning": "numerical aperture of objective", "units": "dimensionless"},
-          {"symbol": "n", "meaning": "refractive index of medium", "units": "dimensionless"}
+          {
+            "symbol": "\\Delta z",
+            "meaning": "axial (depth) resolution",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "wavelength of light (laser + Raman scattered)",
+            "units": "nm"
+          },
+          {
+            "symbol": "NA",
+            "meaning": "numerical aperture of objective",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "n",
+            "meaning": "refractive index of medium",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$d_{lateral} \\approx \\frac{0.61 \\lambda}{NA}$$",
         "description": "Lateral Spatial Resolution (Rayleigh criterion)",
         "variables": [
-          {"symbol": "d_{lateral}", "meaning": "minimum resolvable feature separation (lateral)", "units": "μm"},
-          {"symbol": "\\lambda", "meaning": "wavelength (laser, typically 532-785 nm)", "units": "nm"},
-          {"symbol": "NA", "meaning": "numerical aperture of objective", "units": "dimensionless (0.1-0.9 typical for Raman)"}
+          {
+            "symbol": "d_{lateral}",
+            "meaning": "minimum resolvable feature separation (lateral)",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "wavelength (laser, typically 532-785 nm)",
+            "units": "nm"
+          },
+          {
+            "symbol": "NA",
+            "meaning": "numerical aperture of objective",
+            "units": "dimensionless (0.1-0.9 typical for Raman)"
+          }
         ]
       }
     ],
@@ -157,16 +269,56 @@
     ],
     "measurementProtocol": "**Step 1: Instrument Calibration and Setup**\nDaily startup: turn on laser (warm-up 15-30 min for wavelength stability), CCD cooler (reach -70°C, ~30 min). Calibrate wavelength: measure silicon wafer standard (520.7 cm⁻¹ sharp peak), verify peak position ±0.5 cm⁻¹ (if drift, recalibrate via software offset correction). Check laser power at sample: power meter or measure Raman intensity of standard (should be consistent day-to-day, ±5%). Select laser wavelength: 532 nm for inorganics/minerals (high efficiency), 785 nm for organics prone to fluorescence. Select objective: 50× LWD (NA 0.5, WD 8 mm) typical for pigments (balance resolution and working distance); 100× (NA 0.9) for maximum resolution if accessible. Set confocal pinhole: 100-300 μm diameter (smaller for better depth resolution, larger for more signal; optimize per sample). Set spectrograph grating: 1800 l/mm for high resolution (detailed peak shapes), 600 l/mm for wide range (100-3500 cm⁻¹ in single spectrum). Configure acquisition: integration time 10 s initial (adjust after test), accumulations 2-5× (average spectra, reduce noise), cosmic ray removal enabled (auto-filter spikes from CCD noise). Duration: 30-60 minutes (startup + calibration). Critical parameters: Silicon peak at 520.7 cm⁻¹ (±0.5 cm⁻¹ tolerance), Laser power stable (±5% day-to-day), CCD at operating temperature (-70°C), Confocal pinhole set (affects depth resolution, signal level).\n\n**Step 2: Sample Positioning and Focus**\nMount object/sample on stage (secure, won't move during analysis). View via video camera (white-light illumination, coaxial with laser path). Navigate to area of interest: identify pigment grain, specific layer in cross-section, corrosion product, etc. (use optical microscope features: color, transparency, crystal habit as guides). Switch to laser illumination mode: laser light (visible for 532 nm, faint red for 785 nm) appears as bright spot on sample (camera sees reflected laser + white light). Adjust XY position to center laser spot on target (sub-μm precision via joystick or software control). Focus: adjust Z-height (stage or objective) to sharpen laser spot (minimize spot size = in-focus). For confocal: focus critical (optimal signal only when sample at focal plane; out-of-focus signal rejected by pinhole). Fine-tune focus: acquire quick spectra at different Z (scan ±10 μm), select Z giving maximum signal (peak intensity). Mark position (software records XYZ coordinates for returning to same spot, or mapping around this point). Duration: 5-15 minutes per area. Critical parameters: Laser spot centered on target feature (verify via video), Focus optimized (maximum Raman signal, sharpest peak intensities), Stage stable (no drift during acquisition, lock stage if possible).\n\n**Step 3: Test Acquisition and Parameter Optimization**\nAcquire initial spectrum: short integration (1-5 s), low laser power (1-5 mW at sample, attenuate with ND filters). Review spectrum in real-time: (1) Check for Raman peaks (sharp peaks at characteristic positions: if pigment, expect peaks in fingerprint region 100-1500 cm⁻¹). (2) Check for fluorescence (broad rising background, overwhelming peaks: if severe, cannot identify Raman peaks). (3) Check intensity (peaks should be well above baseline, SNR >10:1 desired; if low, increase integration time or power; if saturating CCD, reduce power or time). (4) Monitor sample: if photobleaching occurs (spectrum changes during acquisition, peaks disappear/shift), reduce power immediately or move to fresh spot. Optimize parameters: if fluorescence interferes, options: (a) increase integration time (10-60 s, photobleach fluorophores, Raman signal eventually emerges), (b) switch to longer wavelength laser (785 nm, 1064 nm, less fluorescence), (c) move to different location (fluorophores may be localized). If signal weak: increase laser power (2-10 mW for inorganics, but monitor for damage), increase integration time (10-60 s), increase accumulations (5-10× average), check focus (refocus if drifted). Target: SNR >10:1, no fluorescence baseline (or manageable baseline for subtraction), no sample damage (repeat spectrum, should be identical). Duration: 10-30 minutes (iterative optimization). Critical parameters: Raman peaks visible (not overwhelmed by fluorescence or noise), SNR >10:1 (adequate for identification), No sample damage (spectrum reproducible if re-acquired), Baseline manageable (fluorescence not saturating detector).\n\n**Step 4: Final Spectrum Acquisition**\nAcquire final high-quality spectrum with optimized parameters: integration time 10-60 s typical (balance signal vs. acquisition speed), accumulations 3-10× (average to reduce noise), laser power 0.5-10 mW (minimize damage, adequate signal). Monitor acquisition: software displays spectrum building in real-time (watch for artifacts: cosmic ray spikes auto-removed by software, but verify; sudden intensity jumps indicate stage movement or sample degradation, abort and troubleshoot). Acquisition complete: save raw spectrum (vendor format: .spc, .wxd, or export as .txt for processing). Immediately review: check peak positions match expected (compare to literature or database), verify reproducibility (re-acquire same spot, should be nearly identical; if different, sample heterogeneous or damaged, document this). For critical identifications: acquire spectra from multiple grains/locations (verify consistency, rule out impurities or mixtures). Duration: 1-5 minutes per spectrum (acquisition time). Critical parameters: Complete spectrum acquired (100-3500 cm⁻¹ or relevant range), Reproducible (repeat acquisitions at same spot give consistent spectra), Saved with metadata (sample ID, location, laser wavelength, power, integration time documented).\n\n**Step 5: Mapping (Optional, for Spatial Distribution)**\nIf spatial information needed (pigment distribution in cross-section, corrosion product zonation, polymer phase separation): set up mapping. Define map area: select rectangular region (e.g., 50×50 μm² in cross-section covering two paint layers), specify step size (1-5 μm typical, balance resolution vs. acquisition time; smaller step = finer detail but more points). Configure: use optimized acquisition parameters from step 4 (integration time, power, etc.), enable rapid mapping mode if available (fast stage movements, shorter settling times). Start automated acquisition: stage moves in raster pattern, acquires spectrum at each XY point (e.g., 50×50 μm² at 2 μm step = 26×26 = 676 points; if 10 s integration per point = 6760 s = 1.9 hours total). Monitor: verify spectra acquired correctly (spot-check during run; if focus drifts due to sample tilt, pause, refocus, resume). Output: hyperspectral dataset (3D: XY spatial, wavenumber spectral; typically 10-100 MB for 100×100 μm² map). Process: extract chemical maps (image showing distribution of specific compounds via peak intensity at characteristic Raman shift). Duration: 1-10 hours depending on map area, step size, integration time. Critical parameters: Map area covers features of interest (entire cross-section layer, or sufficient to capture spatial variation), Step size appropriate (finer than feature size of interest), Focus maintained (auto-focus each point, or ensure sample flat), Data manageable (100×100 map = 10,000 spectra; ensure storage, processing capacity).\n\n**Step 6: Depth Profiling (Optional, Confocal Mode)**\nFor layered materials (varnish over paint, glaze on ceramic): confocal depth profiling reveals stratigraphy. Position laser on surface (XY coordinates fixed). Acquire spectrum at surface (Z=0, focus on top). Move stage downward (or objective upward): step size 1-5 μm (smaller than confocal depth resolution 2-10 μm, oversample to resolve transitions). At each Z position: acquire spectrum (same integration time as optimized earlier). Continue stepping through depth: 10-100 μm typical (stop when signal disappears, opaque layer reached, or interest depth exceeded). Output: depth profile (series of spectra vs. Z). Analysis: plot peak intensities vs. depth (e.g., varnish peak decreases, paint pigment peak increases at varnish-paint interface) → locate interface, layer thicknesses. Note: depth scale affected by refractive index (apparent depth in air ≠ actual depth in material; correct: actual_depth = apparent_depth / n, where n=refractive index of material, typically 1.5-1.7 for organics, 1.5-2.5 for minerals). Duration: 30 minutes - 2 hours (10-50 spectra at different depths). Critical parameters: Confocal pinhole small enough (depth resolution adequate to resolve layers; 50-100 μm pinhole typical), Step size <depth resolution (avoid aliasing), Refractive index correction applied (for accurate depth scale), Sample transparent/translucent (if opaque, no depth penetration; technique not applicable).\n\n**Step 7: Quality Control and Documentation**\nReview all acquired spectra: check for artifacts (cosmic ray spikes, saturation, baseline drift during acquisition), verify peak positions consistent with calibration (re-check silicon standard if suspicious), confirm SNR adequate (peaks clearly above noise). Document: record sample info (object ID, sampling location, material), analysis conditions (laser wavelength, power at sample, integration time, objective, confocal settings), coordinates (XY position on sample, or photo annotated with analysis spots), any observations (sample appearance, color, suspected ID before Raman, sample condition post-analysis, any visible damage). Photograph: capture optical micrograph (white-light, same view as Raman analysis; shows what area was analyzed, documents appearance). Save all data: raw spectra (vendor format), processed spectra (after baseline correction, if performed), metadata, images. Backup: transfer to institutional server, archive (Raman data files small, ~KB per spectrum; maps ~MB; manageable storage). Duration: 15-30 minutes per session (review, document, backup). Critical parameters: All spectra reviewed (no corrupted files, artifacts identified), Metadata complete (sample ID, conditions documented; future re-analysis or comparison requires knowing acquisition parameters), Sample undamaged or damage documented (if photobleaching, color change observed, note in report; avoid re-analysis same spot), Data backed up (prevent loss of measurements).",
     "typicalParameters": [
-      {"parameter": "Laser wavelength", "value": "532 nm or 785 nm", "notes": "532 nm: high Raman efficiency, risk of fluorescence (pigments, minerals). 785 nm: reduced fluorescence, moderate efficiency (organics, mixed materials). 1064 nm: minimal fluorescence, low efficiency (highly fluorescing organics)."},
-      {"parameter": "Laser power at sample", "value": "1-5 mW", "notes": "Inorganic pigments: 5-20 mW safe. Organics, dyes: 0.5-2 mW (damage risk). SERS: 0.1-1 mW (enhanced sensitivity). Monitor for photobleaching."},
-      {"parameter": "Integration time", "value": "10-30 seconds", "notes": "Strong scatterers (TiO₂, diamond): 1-5 s. Weak scatterers (carbonates, organics): 30-120 s. Fluorescence photobleaching: start 60+ s, signal improves over time."},
-      {"parameter": "Accumulations (averaging)", "value": "3-5", "notes": "Average multiple acquisitions: improves SNR by √N (e.g., 4 accumulations → 2× SNR improvement), reduces cosmic ray artifacts. Diminishing returns beyond 10-20 accumulations."},
-      {"parameter": "Spectral resolution", "value": "3-5 cm⁻¹", "notes": "High resolution (1-3 cm⁻¹): 1800 l/mm grating, narrow spectral range (~500-2000 cm⁻¹ per acquisition). Low resolution (10-20 cm⁻¹): 600 l/mm, wide range (100-4000 cm⁻¹). Heritage: 3-5 cm⁻¹ adequate (peaks ~10-50 cm⁻¹ wide)."},
-      {"parameter": "Spectral range", "value": "100-3500 cm⁻¹", "notes": "Fingerprint region: 100-2000 cm⁻¹ (inorganics, aromatics). High-wavenumber: 2500-4000 cm⁻¹ (O-H, N-H, C-H stretches). Low-wavenumber: <200 cm⁻¹ (lattice modes, metal-ligand; requires notch filter with low cut-on)."},
-      {"parameter": "Objective magnification/NA", "value": "50× LWD, NA 0.5", "notes": "High NA (0.8-0.9): best resolution (~0.5 μm), short WD (<2 mm), high collection efficiency. Low NA (0.15-0.4): lower resolution (~5-10 μm), long WD (10-50 mm), access to recessed areas."},
-      {"parameter": "Confocal pinhole diameter", "value": "100-300 μm", "notes": "Smaller pinhole: better depth resolution (~2 μm at 50 μm pinhole), lower signal. Larger: worse resolution (~10 μm at 300 μm), higher signal. Non-confocal: no pinhole, depth ~50-200 μm."},
-      {"parameter": "Mapping step size", "value": "2-5 μm", "notes": "Fine mapping: 0.5-1 μm (resolve individual pigment grains, slow). Coarse: 10-20 μm (survey large areas, faster). Balance resolution vs. time: 50×50 μm map at 1 μm step = 2500 points, at 5 μm step = 100 points (25× faster)."},
-      {"parameter": "Depth profiling step size", "value": "2-5 μm", "notes": "Smaller than confocal depth resolution (2-10 μm); oversample to resolve layer interfaces. Typical: 2 μm steps for 10-50 μm depth profile (5-25 spectra)."}
+      {
+        "parameter": "Laser wavelength",
+        "value": "532 nm or 785 nm",
+        "notes": "532 nm: high Raman efficiency, risk of fluorescence (pigments, minerals). 785 nm: reduced fluorescence, moderate efficiency (organics, mixed materials). 1064 nm: minimal fluorescence, low efficiency (highly fluorescing organics)."
+      },
+      {
+        "parameter": "Laser power at sample",
+        "value": "1-5 mW",
+        "notes": "Inorganic pigments: 5-20 mW safe. Organics, dyes: 0.5-2 mW (damage risk). SERS: 0.1-1 mW (enhanced sensitivity). Monitor for photobleaching."
+      },
+      {
+        "parameter": "Integration time",
+        "value": "10-30 seconds",
+        "notes": "Strong scatterers (TiO₂, diamond): 1-5 s. Weak scatterers (carbonates, organics): 30-120 s. Fluorescence photobleaching: start 60+ s, signal improves over time."
+      },
+      {
+        "parameter": "Accumulations (averaging)",
+        "value": "3-5",
+        "notes": "Average multiple acquisitions: improves SNR by √N (e.g., 4 accumulations → 2× SNR improvement), reduces cosmic ray artifacts. Diminishing returns beyond 10-20 accumulations."
+      },
+      {
+        "parameter": "Spectral resolution",
+        "value": "3-5 cm⁻¹",
+        "notes": "High resolution (1-3 cm⁻¹): 1800 l/mm grating, narrow spectral range (~500-2000 cm⁻¹ per acquisition). Low resolution (10-20 cm⁻¹): 600 l/mm, wide range (100-4000 cm⁻¹). Heritage: 3-5 cm⁻¹ adequate (peaks ~10-50 cm⁻¹ wide)."
+      },
+      {
+        "parameter": "Spectral range",
+        "value": "100-3500 cm⁻¹",
+        "notes": "Fingerprint region: 100-2000 cm⁻¹ (inorganics, aromatics). High-wavenumber: 2500-4000 cm⁻¹ (O-H, N-H, C-H stretches). Low-wavenumber: <200 cm⁻¹ (lattice modes, metal-ligand; requires notch filter with low cut-on)."
+      },
+      {
+        "parameter": "Objective magnification/NA",
+        "value": "50× LWD, NA 0.5",
+        "notes": "High NA (0.8-0.9): best resolution (~0.5 μm), short WD (<2 mm), high collection efficiency. Low NA (0.15-0.4): lower resolution (~5-10 μm), long WD (10-50 mm), access to recessed areas."
+      },
+      {
+        "parameter": "Confocal pinhole diameter",
+        "value": "100-300 μm",
+        "notes": "Smaller pinhole: better depth resolution (~2 μm at 50 μm pinhole), lower signal. Larger: worse resolution (~10 μm at 300 μm), higher signal. Non-confocal: no pinhole, depth ~50-200 μm."
+      },
+      {
+        "parameter": "Mapping step size",
+        "value": "2-5 μm",
+        "notes": "Fine mapping: 0.5-1 μm (resolve individual pigment grains, slow). Coarse: 10-20 μm (survey large areas, faster). Balance resolution vs. time: 50×50 μm map at 1 μm step = 2500 points, at 5 μm step = 100 points (25× faster)."
+      },
+      {
+        "parameter": "Depth profiling step size",
+        "value": "2-5 μm",
+        "notes": "Smaller than confocal depth resolution (2-10 μm); oversample to resolve layer interfaces. Typical: 2 μm steps for 10-50 μm depth profile (5-25 spectra)."
+      }
     ],
     "calibration": "**Standards:** Silicon wafer (520.7 cm⁻¹ sharp peak; daily wavelength calibration; verify ±0.5 cm⁻¹). Polystyrene (multiple sharp peaks 620, 1001, 1031, 1602 cm⁻¹; intensity and resolution check). Cyclohexane (liquid standard, 801, 1028, 1157, 1266, 1444 cm⁻¹; if analyzing liquids). NIST SRM 2241 (Raman intensity standard; multi-peak glass, for quantitative intensity calibration; not routine for heritage). White light source (calibrate detector wavelength response, correct for CCD sensitivity variation; performed by manufacturer or annually).\n\n**Frequency:** Daily: silicon wafer (wavelength calibration before each session, ensure peak at 520.7 cm⁻¹). Weekly: polystyrene (verify multiple peaks, intensity ratios consistent). Monthly: laser power check (measure at sample, should be stable ±5%). Annually: full system calibration (alignment, white light correction, detector dark current; performed by service engineer or trained staff).\n\n**Procedure:** **Wavelength calibration:** Place silicon wafer on stage, focus, acquire spectrum (1-5 s integration). Identify silicon peak (should appear ~520.7 cm⁻¹). If shifted (e.g., 521.3 cm⁻¹), apply offset correction in software (shift all spectra by -0.6 cm⁻¹). Verify correction: re-measure silicon (should now read 520.7 cm⁻¹). **Intensity calibration (optional, for quantitative work):** Use NIST SRM 2241 or polystyrene with known intensity ratios. Measure spectrum, compare peak intensity ratios to reference values. If systematic deviation, adjust detector response curve (software correction) or investigate issues (dirty optics, misalignment). **Laser power measurement:** Remove objective, place power meter at laser exit (or use calibrated photodiode at sample position). Measure power (mW). Compare to expected (e.g., 5 mW nominal). If lower (e.g., 3 mW), may indicate laser aging (replace laser diode/doubling crystal), dirty optics (clean beam path), misalignment (realign, requires expertise). Document power in metadata (power at sample affects signal, reproducibility).",
     "qualityControl": [
@@ -284,52 +436,32 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["raman-spectroscopy", "ftir-spectroscopy"],
+        "techniques": [
+          "raman-spectroscopy",
+          "ftir-spectroscopy"
+        ],
         "rationale": "Raman and FTIR complementary (different selection rules): Raman strong for symmetric, non-polar vibrations (C=C, aromatic rings, metal-O); FTIR strong for polar, asymmetric vibrations (C=O, O-H, N-H). Raman identifies inorganic pigments, FTIR identifies organic binders (oils, proteins). Use both for complete organic+inorganic characterization.",
         "examples": "Paint cross-section analysis: Raman maps pigment distribution (layer 1: lead white + ultramarine; layer 2: vermilion pure; layer 3: bone black + umber). FTIR on same cross-section (ATR on polished surface, press onto each layer): identifies binders (layer 1: protein tempera, amide I/II peaks; layer 2: oil, ester C=O 1740 cm⁻¹; layer 3: oil). Combined: complete stratigraphy (layer 1 = lead white + ultramarine in protein; layer 2 = vermilion in oil; layer 3 = black + umber in oil). Neither technique alone provides full picture: Raman misses binders (fluorescence, weak signal), FTIR less specific for pigments (broad bands, some inorganics have weak/no IR). Together: comprehensive."
       },
       {
-        "techniques": ["raman-spectroscopy", "xrf"],
+        "techniques": [
+          "raman-spectroscopy",
+          "xrf"
+        ],
         "rationale": "XRF fast, large-area (scan 50×50 cm painting in hours), non-destructive → identifies where elements are. Raman slower, point-by-point, but identifies molecules → what compounds, not just elements. XRF ambiguous for mixed-element pigments (Pb present in 5+ pigments; Fe in 10+ pigments; Ti in 2 whites + 1 yellow + impurities). Raman resolves: definitive molecular ID. Combined: XRF guides Raman (efficient, analyze only relevant locations), Raman validates XRF interpretation (confirms compound).",
         "examples": "Vermeer 'Girl with Pearl Earring' (see case study): MA-XRF mapped Na + Al + Si + S (elements in ultramarine). Ambiguity: also in azurite (different Cu + carbonate) or smalt (Co glass). Raman targeted blue regions (based on XRF hot spots), identified ultramarine (548 cm⁻¹ diagnostic peak, not azurite 400/1096 cm⁻¹ or smalt broad glass bands). XRF Pb + Sn map showed turban. Raman identified lead-tin yellow type I (not type II, or mixture lead white + tin oxide). Combined: XRF spatial (ultramarine in background + jacket accents), Raman definitive ID. Efficient, comprehensive."
       },
       {
-        "techniques": ["raman-spectroscopy", "sem-eds"],
+        "techniques": [
+          "raman-spectroscopy",
+          "sem-eds"
+        ],
         "rationale": "SEM-EDS provides morphology (particle size distribution: important for pigment dating, source; 19th-century vermilion coarser than modern; hand-ground vs synthetic differences in particle shape) and elements (qualitative/quantitative composition). Raman provides molecular structure (crystal phase, polymorph, organic vs inorganic). SEM cannot distinguish polymorphs (anatase vs rutile both Ti + O in EDS; hematite vs magnetite vs goethite all Fe + O). Raman cannot image morphology (diffraction-limited ~1 μm, cannot see particle shapes <1 μm; no particle size distribution data). Combined: complete characterization (morphology + chemistry + structure).",
         "examples": "Pigment authentication (natural vs synthetic ultramarine): SEM shows particle morphology (natural lapis lazuli: irregular angular grains 5-50 μm, inclusions of other minerals; synthetic ultramarine: uniform spheres 0.5-5 μm, no inclusions). EDS: both Na + Al + Si + S (same elements, cannot distinguish). Raman: both show 258, 548, 1096 cm⁻¹ ultramarine peaks (molecular structure same; synthesized to mimic natural). Distinction: SEM morphology (natural irregular, synthetic uniform) + Raman (natural may have trace calcite 1086 cm⁻¹, pyrite 343/379 cm⁻¹ from lapis matrix; synthetic pure ultramarine only). Combined: definitive natural vs synthetic ID. Important for dating (natural used pre-1828, synthetic post-1828), authentication (forgeries may use anachronistic synthetic in 'old' painting)."
       }
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Raman, C.V., and K.S. Krishnan. 1928. 'A New Type of Secondary Radiation.' Nature 121: 501-502.",
-        "doi": "10.1038/121501c0",
-        "notes": "Discovery of Raman effect; foundational physics (inelastic scattering), Nobel Prize 1930"
-      },
-      {
-        "citation": "Clark, R.J.H. 1995. 'Raman Microscopy: Application to the Identification of Pigments on Medieval Manuscripts.' Chemical Society Reviews 24: 187-196.",
-        "doi": "10.1039/CS9952400187",
-        "notes": "Landmark paper establishing Raman microscopy for heritage pigment analysis; systematic methodology, reference spectra"
-      },
-      {
-        "citation": "van Loon, A., et al. 2019. 'Vermeer's Girl with a Pearl Earring: A Technical Study Using Macro-X-Ray Fluorescence Scanning and Raman Microscopy.' Heritage Science 7: 64.",
-        "doi": "10.1186/s40494-019-0307-5",
-        "notes": "Vermeer pigment analysis: Raman + XRF multi-modal study (see case study); in-situ + cross-section analysis"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Vandenabeele, P., et al. 2007. 'Mobile Raman Spectroscopy for Cultural Heritage Applications.' Analytical and Bioanalytical Chemistry 387: 813-819.",
-        "doi": "10.1007/s00216-006-0758-6",
-        "notes": "Portable Raman systems for in-situ analysis; heritage applications, case studies, instrumentation comparison"
-      },
-      {
-        "citation": "Burgio, L., and R.J.H. Clark. 2001. 'Library of FT-Raman Spectra of Pigments, Minerals, Pigment Media and Varnishes.' Spectrochimica Acta Part A 57: 1491-1521.",
-        "doi": "10.1016/S1386-1425(00)00495-9",
-        "notes": "Comprehensive FT-Raman pigment reference library; 150+ materials (pigments, binders, varnishes); standard reference"
-      }
-    ],
     "onlineResources": [
       {
         "title": "RRUFF Database",
@@ -376,4 +508,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

@@ -25,61 +25,161 @@
         "latex": "$$p = K[R|t]P = K\\begin{bmatrix}r_{11} & r_{12} & r_{13} & t_x \\\\ r_{21} & r_{22} & r_{23} & t_y \\\\ r_{31} & r_{32} & r_{33} & t_z\\end{bmatrix}\\begin{bmatrix}X\\\\Y\\\\Z\\\\1\\end{bmatrix}$$",
         "description": "Perspective Projection (Pinhole Camera Model)",
         "variables": [
-          {"symbol": "p", "meaning": "2D image point (homogeneous coordinates)", "units": "pixels"},
-          {"symbol": "K", "meaning": "camera intrinsic matrix (focal length, principal point)", "units": "pixels"},
-          {"symbol": "R", "meaning": "rotation matrix (camera orientation, 3×3)", "units": "dimensionless"},
-          {"symbol": "t", "meaning": "translation vector (camera position)", "units": "world units (mm, m)"},
-          {"symbol": "P", "meaning": "3D world point (homogeneous coordinates)", "units": "world units"}
+          {
+            "symbol": "p",
+            "meaning": "2D image point (homogeneous coordinates)",
+            "units": "pixels"
+          },
+          {
+            "symbol": "K",
+            "meaning": "camera intrinsic matrix (focal length, principal point)",
+            "units": "pixels"
+          },
+          {
+            "symbol": "R",
+            "meaning": "rotation matrix (camera orientation, 3×3)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "t",
+            "meaning": "translation vector (camera position)",
+            "units": "world units (mm, m)"
+          },
+          {
+            "symbol": "P",
+            "meaning": "3D world point (homogeneous coordinates)",
+            "units": "world units"
+          }
         ]
       },
       {
         "latex": "$$K = \\begin{bmatrix}f_x & 0 & c_x \\\\ 0 & f_y & c_y \\\\ 0 & 0 & 1\\end{bmatrix}$$",
         "description": "Camera Intrinsic Matrix",
         "variables": [
-          {"symbol": "f_x, f_y", "meaning": "focal length in pixel units (x, y directions)", "units": "pixels"},
-          {"symbol": "c_x, c_y", "meaning": "principal point (optical center offset from image corner)", "units": "pixels"}
+          {
+            "symbol": "f_x, f_y",
+            "meaning": "focal length in pixel units (x, y directions)",
+            "units": "pixels"
+          },
+          {
+            "symbol": "c_x, c_y",
+            "meaning": "principal point (optical center offset from image corner)",
+            "units": "pixels"
+          }
         ]
       },
       {
         "latex": "$$p_2^T F p_1 = 0$$",
         "description": "Epipolar Constraint (Fundamental Matrix)",
         "variables": [
-          {"symbol": "p_1, p_2", "meaning": "corresponding image points in two views", "units": "pixels (homogeneous)"},
-          {"symbol": "F", "meaning": "fundamental matrix (3×3, encodes epipolar geometry)", "units": "dimensionless"}
+          {
+            "symbol": "p_1, p_2",
+            "meaning": "corresponding image points in two views",
+            "units": "pixels (homogeneous)"
+          },
+          {
+            "symbol": "F",
+            "meaning": "fundamental matrix (3×3, encodes epipolar geometry)",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\sigma_Z = \\frac{Z^2}{f \\cdot B} \\sigma_p$$",
         "description": "Depth Resolution (simplified, for stereo pair)",
         "variables": [
-          {"symbol": "\\sigma_Z", "meaning": "depth (Z) uncertainty", "units": "mm"},
-          {"symbol": "Z", "meaning": "distance from camera to object", "units": "mm"},
-          {"symbol": "f", "meaning": "focal length", "units": "mm"},
-          {"symbol": "B", "meaning": "baseline (distance between camera centers)", "units": "mm"},
-          {"symbol": "\\sigma_p", "meaning": "pixel localization error (~0.1-1 pixel)", "units": "pixels"}
+          {
+            "symbol": "\\sigma_Z",
+            "meaning": "depth (Z) uncertainty",
+            "units": "mm"
+          },
+          {
+            "symbol": "Z",
+            "meaning": "distance from camera to object",
+            "units": "mm"
+          },
+          {
+            "symbol": "f",
+            "meaning": "focal length",
+            "units": "mm"
+          },
+          {
+            "symbol": "B",
+            "meaning": "baseline (distance between camera centers)",
+            "units": "mm"
+          },
+          {
+            "symbol": "\\sigma_p",
+            "meaning": "pixel localization error (~0.1-1 pixel)",
+            "units": "pixels"
+          }
         ]
       },
       {
         "latex": "$$E = \\sum_{i=1}^{N} \\sum_{j=1}^{M_i} \\left\\| p_{ij} - \\pi(K, R_i, t_i, P_j) \\right\\|^2$$",
         "description": "Bundle Adjustment Objective (reprojection error minimization)",
         "variables": [
-          {"symbol": "E", "meaning": "total reprojection error", "units": "pixels²"},
-          {"symbol": "N", "meaning": "number of images/cameras", "units": "dimensionless"},
-          {"symbol": "M_i", "meaning": "number of 3D points visible in image i", "units": "dimensionless"},
-          {"symbol": "p_{ij}", "meaning": "observed image coordinates of point j in image i", "units": "pixels"},
-          {"symbol": "\\pi", "meaning": "projection function (camera model)", "units": "N/A"},
-          {"symbol": "K, R_i, t_i", "meaning": "camera intrinsic and extrinsic parameters", "units": "various"},
-          {"symbol": "P_j", "meaning": "3D coordinates of point j", "units": "world units"}
+          {
+            "symbol": "E",
+            "meaning": "total reprojection error",
+            "units": "pixels²"
+          },
+          {
+            "symbol": "N",
+            "meaning": "number of images/cameras",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "M_i",
+            "meaning": "number of 3D points visible in image i",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "p_{ij}",
+            "meaning": "observed image coordinates of point j in image i",
+            "units": "pixels"
+          },
+          {
+            "symbol": "\\pi",
+            "meaning": "projection function (camera model)",
+            "units": "N/A"
+          },
+          {
+            "symbol": "K, R_i, t_i",
+            "meaning": "camera intrinsic and extrinsic parameters",
+            "units": "various"
+          },
+          {
+            "symbol": "P_j",
+            "meaning": "3D coordinates of point j",
+            "units": "world units"
+          }
         ]
       },
       {
         "latex": "$$\\text{GSD} = \\frac{H \\cdot s}{f}$$",
         "description": "Ground Sampling Distance (spatial resolution)",
         "variables": [
-          {"symbol": "\\text{GSD}", "meaning": "ground sampling distance (spatial resolution on object)", "units": "mm/pixel"},
-          {"symbol": "H", "meaning": "distance from camera to object", "units": "mm"},
-          {"symbol": "s", "meaning": "sensor pixel pitch (physical size)", "units": "mm/pixel"},
-          {"symbol": "f", "meaning": "focal length", "units": "mm"}
+          {
+            "symbol": "\\text{GSD}",
+            "meaning": "ground sampling distance (spatial resolution on object)",
+            "units": "mm/pixel"
+          },
+          {
+            "symbol": "H",
+            "meaning": "distance from camera to object",
+            "units": "mm"
+          },
+          {
+            "symbol": "s",
+            "meaning": "sensor pixel pitch (physical size)",
+            "units": "mm/pixel"
+          },
+          {
+            "symbol": "f",
+            "meaning": "focal length",
+            "units": "mm"
+          }
         ]
       }
     ],
@@ -307,17 +407,25 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["stereo-photogrammetry", "laser-scanning"],
+        "techniques": [
+          "stereo-photogrammetry",
+          "laser-scanning"
+        ],
         "rationale": "Laser scanning provides metrologically accurate geometry (traceable to standards) but limited color (intensity only, or RGB from scanner camera, lower resolution). Photogrammetry provides excellent texture and natural color from high-res photos but lower geometric accuracy. Combining leverages strengths of each: best possible accuracy + best possible appearance.",
         "examples": "Photogrammetry + Laser Scanning (Hybrid 3D Documentation): 1. Perform laser scanning first: captures precise geometry (point cloud) with known absolute accuracy (1-5 mm typical for TLS). Establishes coordinate system and scale. 2. Capture photogrammetry images with scale references or GCPs tied to laser scan coordinate system. 3. Process photogrammetry: generate dense point cloud and textured mesh. 4. Register photogrammetry to laser scan using common reference points (targets, natural features, or ICP - Iterative Closest Point algorithm). 5. Merge datasets: use laser scan geometry as base (most accurate); drape photogrammetry texture onto laser mesh. Or: fuse point clouds and generate hybrid mesh. 6. Result: laser-scan geometric accuracy with photogrammetric photo-realistic texture and color. Architectural heritage: laser scan building façade (geometry accurate to 3 mm); photogrammetry from same positions (texture at 1 mm/pixel resolution). Merge: 3 mm geometric accuracy, photo-realistic texture showing stone weathering, paint, graffiti, vegetation. Used for condition documentation, conservation planning."
       },
       {
-        "techniques": ["stereo-photogrammetry"],
+        "techniques": [
+          "stereo-photogrammetry"
+        ],
         "rationale": "Single-epoch photogrammetry captures state at one moment. Time-series reveals change: degradation progression, conservation treatment effectiveness, structural deformation, environmental impacts. Objective, quantitative monitoring far superior to qualitative visual comparison. Enables predictive modeling (extrapolate degradation trends).",
         "examples": "Multi-Temporal Photogrammetry (4D: 3D + Time): 1. Establish baseline: photogrammetry documentation at Time 0 (before intervention, or monitoring start). Process to generate 3D model (point cloud or mesh). 2. Repeat photogrammetry at Time 1, Time 2, etc. (after treatment, seasonal change, yearly monitoring). Maintain consistent methodology: same camera if possible, similar lighting, similar viewpoints for reliable comparison. 3. Co-register all temporal 3D models to common coordinate system using permanent features (stable reference points not subject to change). 4. Compute differences: Cloud-to-Cloud (C2C) or Cloud-to-Mesh (C2M) signed distance. Positive = growth/swelling, negative = erosion/loss, zero = stable. 5. Generate change maps: color-coded visualization of deformation, degradation, conservation effects. 6. Quantify: volume loss/gain, displacement of features, crack growth, surface retreat rates. Stone monument weathering: annual photogrammetry (5 years). Compare 3D models: detect surface retreat 0.5-2 mm/year (erosion), crack propagation 3-10 mm (structural), biological growth (lichen, moss) 5-15 mm. Quantify: volumetric loss 0.2 m³ over 5 years, inform stabilization urgency. Test conservation treatments: compare treated vs. untreated areas (control), measure if treatment slows degradation."
       },
       {
-        "techniques": ["stereo-photogrammetry", "multispectral-imaging"],
+        "techniques": [
+          "stereo-photogrammetry",
+          "multispectral-imaging"
+        ],
         "rationale": "Standard photogrammetry provides RGB color only (visible spectrum). Multispectral adds UV (fluorescence, subsurface features), NIR (pigment differentiation, vegetation, moisture). Combining: 3D geometry with spectral material identification. Enables material mapping in 3D - 'see' what's where on complex 3D object.",
         "examples": "Photogrammetry + Multispectral Imaging (Spectral 3D): 1. Capture photogrammetry images in visible spectrum (standard RGB photography). Process to 3D model. 2. Capture multispectral images from subset of photogrammetry camera positions (UV, visible, NIR bands). Requires multispectral camera or filter swaps on DSLR. 3. Register multispectral images to 3D model using photogrammetric bundle adjustment (treat multispectral images as additional cameras with same poses as RGB images). 4. Project multispectral data onto 3D mesh as texture layers (separate texture for each wavelength band). 5. Analyze spectral data in 3D context: identify materials, pigments, degradation products based on spectral signature, visualize their 3D distribution on object. Painted sculpture: photogrammetry generates 3D geometry. UV imaging reveals underdrawing, overpainting. NIR distinguishes azurite (dark in NIR) from ultramarine (bright in NIR). Project spectral data onto 3D model: create 'pigment distribution map' showing which blue pigment used on each 3D surface area. Reveals artist technique, restoration interventions."
       }
@@ -346,33 +454,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Lowe, D. G. 2004. 'Distinctive Image Features from Scale-Invariant Keypoints.' International Journal of Computer Vision 60 (2): 91-110.",
-        "doi": "10.1023/B:VISI.0000029664.99615.94",
-        "notes": "SIFT algorithm - foundation of modern automated photogrammetry feature matching"
-      },
-      {
-        "citation": "Hartley, R., and A. Zisserman. 2004. 'Multiple View Geometry in Computer Vision.' 2nd ed. Cambridge University Press.",
-        "doi": "10.1017/CBO9780511811685",
-        "notes": "Definitive textbook on geometric foundations of photogrammetry and computer vision"
-      },
-      {
-        "citation": "Ubelmann, Y., and M. Hassan. 2017. 'Digitizing Palmyra: Photogrammetric Documentation Before and After Destruction.' Journal of Cultural Heritage 28: 162-170.",
-        "doi": "10.1016/j.culher.2017.05.011",
-        "notes": "Palmyra archaeological site: pre/post-destruction documentation and damage assessment"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Remondino, F., and S. El-Hakim. 2006. 'Image-based 3D Modeling: A Review.' The Photogrammetric Record 21 (115): 269-291.",
-        "doi": "10.1111/j.1477-9730.2006.00383.x"
-      },
-      {
-        "citation": "Westoby, M. J., et al. 2012. 'Structure-from-Motion Photogrammetry: A Low-Cost, Effective Tool for Geoscience Applications.' Geomorphology 179: 300-314.",
-        "doi": "10.1016/j.geomorph.2012.08.021"
-      }
-    ],
     "onlineResources": [
       {
         "title": "Agisoft Metashape Tutorials",
@@ -409,4 +490,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

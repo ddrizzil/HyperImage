@@ -17,7 +17,6 @@ export function Navigation() {
     { href: '/optics', label: 'Optics Reference' },
     { href: '/pages', label: 'Pigments & Chemistry' },
     { href: '/multimodal', label: 'Multimodal' },
-    { href: '/ml', label: 'Machine Learning' },
   ]
 
   return (

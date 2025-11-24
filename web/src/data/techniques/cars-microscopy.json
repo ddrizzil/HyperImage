@@ -25,52 +25,140 @@
         "latex": "$$I_{CARS} \\propto \\left|\\chi^{(3)}\\right|^2 I_p^2 I_s$$",
         "description": "CARS Signal Intensity",
         "variables": [
-          {"symbol": "I_{CARS}", "meaning": "anti-Stokes signal intensity", "units": "W/cm²"},
-          {"symbol": "\\chi^{(3)}", "meaning": "third-order nonlinear susceptibility", "units": "m²/V²"},
-          {"symbol": "I_p", "meaning": "pump beam intensity", "units": "W/cm²"},
-          {"symbol": "I_s", "meaning": "Stokes beam intensity", "units": "W/cm²"}
+          {
+            "symbol": "I_{CARS}",
+            "meaning": "anti-Stokes signal intensity",
+            "units": "W/cm²"
+          },
+          {
+            "symbol": "\\chi^{(3)}",
+            "meaning": "third-order nonlinear susceptibility",
+            "units": "m²/V²"
+          },
+          {
+            "symbol": "I_p",
+            "meaning": "pump beam intensity",
+            "units": "W/cm²"
+          },
+          {
+            "symbol": "I_s",
+            "meaning": "Stokes beam intensity",
+            "units": "W/cm²"
+          }
         ]
       },
       {
         "latex": "$$\\omega_{as} = 2\\omega_p - \\omega_s = \\omega_p + (\\omega_p - \\omega_s)$$",
         "description": "Anti-Stokes Frequency (energy conservation)",
         "variables": [
-          {"symbol": "\\omega_{as}", "meaning": "anti-Stokes frequency (CARS signal)", "units": "rad/s"},
-          {"symbol": "\\omega_p", "meaning": "pump beam frequency", "units": "rad/s"},
-          {"symbol": "\\omega_s", "meaning": "Stokes beam frequency", "units": "rad/s"},
-          {"symbol": "\\omega_p - \\omega_s", "meaning": "vibrational frequency (Raman shift)", "units": "cm⁻¹"}
+          {
+            "symbol": "\\omega_{as}",
+            "meaning": "anti-Stokes frequency (CARS signal)",
+            "units": "rad/s"
+          },
+          {
+            "symbol": "\\omega_p",
+            "meaning": "pump beam frequency",
+            "units": "rad/s"
+          },
+          {
+            "symbol": "\\omega_s",
+            "meaning": "Stokes beam frequency",
+            "units": "rad/s"
+          },
+          {
+            "symbol": "\\omega_p - \\omega_s",
+            "meaning": "vibrational frequency (Raman shift)",
+            "units": "cm⁻¹"
+          }
         ]
       },
       {
         "latex": "$$\\chi^{(3)} = \\chi_{NR}^{(3)} + \\frac{A}{\\Omega - (\\omega_p - \\omega_s) - i\\Gamma}$$",
         "description": "CARS Susceptibility (resonant + non-resonant)",
         "variables": [
-          {"symbol": "\\chi^{(3)}", "meaning": "total third-order susceptibility", "units": "m²/V²"},
-          {"symbol": "\\chi_{NR}^{(3)}", "meaning": "non-resonant electronic background", "units": "m²/V²"},
-          {"symbol": "A", "meaning": "resonant amplitude", "units": "m²/V²"},
-          {"symbol": "\\Omega", "meaning": "molecular vibrational frequency", "units": "rad/s"},
-          {"symbol": "\\omega_p", "meaning": "pump beam frequency", "units": "rad/s"},
-          {"symbol": "\\omega_s", "meaning": "Stokes beam frequency", "units": "rad/s"},
-          {"symbol": "\\Gamma", "meaning": "linewidth (damping constant)", "units": "rad/s"}
+          {
+            "symbol": "\\chi^{(3)}",
+            "meaning": "total third-order susceptibility",
+            "units": "m²/V²"
+          },
+          {
+            "symbol": "\\chi_{NR}^{(3)}",
+            "meaning": "non-resonant electronic background",
+            "units": "m²/V²"
+          },
+          {
+            "symbol": "A",
+            "meaning": "resonant amplitude",
+            "units": "m²/V²"
+          },
+          {
+            "symbol": "\\Omega",
+            "meaning": "molecular vibrational frequency",
+            "units": "rad/s"
+          },
+          {
+            "symbol": "\\omega_p",
+            "meaning": "pump beam frequency",
+            "units": "rad/s"
+          },
+          {
+            "symbol": "\\omega_s",
+            "meaning": "Stokes beam frequency",
+            "units": "rad/s"
+          },
+          {
+            "symbol": "\\Gamma",
+            "meaning": "linewidth (damping constant)",
+            "units": "rad/s"
+          }
         ]
       },
       {
         "latex": "$$\\Delta k = k_{as} - 2k_p + k_s$$",
         "description": "Phase Matching Condition",
         "variables": [
-          {"symbol": "\\Delta k", "meaning": "wave vector mismatch", "units": "rad/μm"},
-          {"symbol": "k_{as}", "meaning": "anti-Stokes wave vector", "units": "rad/μm"},
-          {"symbol": "k_p", "meaning": "pump wave vector", "units": "rad/μm"},
-          {"symbol": "k_s", "meaning": "Stokes wave vector", "units": "rad/μm"}
+          {
+            "symbol": "\\Delta k",
+            "meaning": "wave vector mismatch",
+            "units": "rad/μm"
+          },
+          {
+            "symbol": "k_{as}",
+            "meaning": "anti-Stokes wave vector",
+            "units": "rad/μm"
+          },
+          {
+            "symbol": "k_p",
+            "meaning": "pump wave vector",
+            "units": "rad/μm"
+          },
+          {
+            "symbol": "k_s",
+            "meaning": "Stokes wave vector",
+            "units": "rad/μm"
+          }
         ]
       },
       {
         "latex": "$$\\text{Raman shift} = \\frac{1}{\\lambda_p} - \\frac{1}{\\lambda_s} = \\bar{\\nu}$$",
         "description": "Vibrational Frequency (wavenumber units)",
         "variables": [
-          {"symbol": "\\bar{\\nu}", "meaning": "Raman shift (vibrational frequency)", "units": "cm⁻¹"},
-          {"symbol": "\\lambda_p", "meaning": "pump wavelength", "units": "nm"},
-          {"symbol": "\\lambda_s", "meaning": "Stokes wavelength", "units": "nm"}
+          {
+            "symbol": "\\bar{\\nu}",
+            "meaning": "Raman shift (vibrational frequency)",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "\\lambda_p",
+            "meaning": "pump wavelength",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\lambda_s",
+            "meaning": "Stokes wavelength",
+            "units": "nm"
+          }
         ]
       }
     ],
@@ -298,17 +386,26 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["cars-microscopy", "shg-microscopy", "tpef-microscopy"],
+        "techniques": [
+          "cars-microscopy",
+          "shg-microscopy",
+          "tpef-microscopy"
+        ],
         "rationale": "Maximum information from single acquisition. CARS identifies binding medium chemistry, SHG reveals collagen sizing structure, TPEF shows degradation products. Complete characterization without changing setup.",
         "examples": "Multimodal CARS + SHG + TPEF Imaging: 1. Use single Ti:Sapphire pump laser (800 nm) for all three modalities. 2. Add Stokes beam (1040 nm) for CARS. 3. Detect three channels simultaneously: SHG (400 nm), CARS (650 nm for C-H), TPEF (500-600 nm broad). 4. Single scan generates chemistry (CARS), structure (SHG), and autofluorescence (TPEF). 5. Create RGB composite: R=SHG (collagen), G=CARS (lipids), B=TPEF (organics). Paint cross-section: CARS maps oil binder distribution (2845 cm⁻¹), SHG highlights collagen in animal glue sizing, TPEF reveals aged varnish autofluorescence. Three chemical/structural features distinguished in single 5-minute scan."
       },
       {
-        "techniques": ["cars-microscopy", "raman-microscopy"],
+        "techniques": [
+          "cars-microscopy",
+          "raman-microscopy"
+        ],
         "rationale": "CARS speed advantage for large-area surveys (100× faster than Raman). Use CARS to find 'needles in haystack', then Raman for identification. Optimal balance of speed and spectral resolution.",
         "examples": "CARS Pre-Screening + Raman Validation: 1. Rapid CARS survey imaging at key Raman shifts (2845, 1650, 1000 cm⁻¹) to identify regions of interest. 2. CARS chemical map guides targeted Raman spectroscopy on specific features. 3. Raman provides full spectrum (500-3500 cm⁻¹) for definitive molecular identification. 4. Combine: CARS spatial map + Raman spectral ID. Pigment identification in illuminated manuscript: CARS rapidly scans 1 cm² area in 1 hour, identifies regions with organic pigments (1600 cm⁻¹ aromatic vibration). Targeted Raman on these regions provides full spectra to identify specific dyes (indigo, madder, brazilwood). Without CARS pre-screening, Raman survey would take 100+ hours."
       },
       {
-        "techniques": ["cars-microscopy"],
+        "techniques": [
+          "cars-microscopy"
+        ],
         "rationale": "Single acquisition captures complete vibrational fingerprint at every location. No need to sequentially tune to multiple frequencies. Unbiased chemical identification via spectral library matching. Reveals unexpected components.",
         "examples": "Hyperspectral CARS for Complete Chemical Profiling: 1. Use broadband Stokes laser (~200 cm⁻¹ bandwidth). 2. Detect CARS via spectrometer, acquiring full spectrum (500-3200 cm⁻¹) at each pixel. 3. Generate hyperspectral cube (x, y, wavenumber). 4. Apply multivariate analysis (PCA, MCR-ALS) to extract pure component spectra. 5. Create false-color maps showing spatial distribution of each component. Varnish layer analysis: hyperspectral CARS generates spectra at each pixel through varnish thickness. Spectral unmixing identifies 4 components: original dammar resin (1), aged oxidized resin (2), modern synthetic varnish restoration (3), dirt/grime accumulation (4). Creates depth-resolved chemical maps showing restoration extent and degradation products."
       }
@@ -337,38 +434,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Maker, P. D., and R. W. Terhune. 1965. 'Study of Optical Effects Due to an Induced Polarization Third Order in the Electric Field Strength.' Physical Review 137 (3A): A801-A818.",
-        "doi": "10.1103/PhysRev.137.A801",
-        "notes": "First observation and theory of CARS process; foundation of coherent Raman scattering"
-      },
-      {
-        "citation": "Zumbusch, A., G. R. Holtom, and X. S. Xie. 1999. 'Three-Dimensional Vibrational Imaging by Coherent Anti-Stokes Raman Scattering.' Physical Review Letters 82 (20): 4142-4145.",
-        "doi": "10.1103/PhysRevLett.82.4142",
-        "notes": "Demonstrated video-rate CARS microscopy for biological imaging; proved practical viability"
-      },
-      {
-        "citation": "Cheng, J.-X., and X. S. Xie. 2004. 'Coherent Anti-Stokes Raman Scattering Microscopy: Instrumentation, Theory, and Applications.' Journal of Physical Chemistry B 108 (3): 827-840.",
-        "doi": "10.1021/jp035693v",
-        "notes": "Comprehensive review of CARS theory, instrumentation, and biological applications"
-      },
-      {
-        "citation": "van Loon, A., K. Keune, and J. J. Boon. 2020. 'Artificial Intelligence Meets Old Master Paintings: CARS Microscopy for Binding Medium Analysis.' Studies in Conservation 65 (S1): 89-95.",
-        "doi": null,
-        "notes": "Application of CARS to Rembrandt paintings; demonstrated rapid binding medium mapping"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Evans, C. L., and X. S. Xie. 2008. 'Coherent Anti-Stokes Raman Scattering Microscopy: Chemical Imaging for Biology and Medicine.' Annual Review of Analytical Chemistry 1: 883-909.",
-        "doi": "10.1146/annurev.anchem.1.031207.112754"
-      },
-      {
-        "citation": "Müller, M., and J. M. Schins. 2002. 'Imaging the Thermodynamic State of Lipid Membranes with Multiplex CARS Microscopy.' Journal of Physical Chemistry B 106 (14): 3715-3723.",
-        "doi": "10.1021/jp014012"
-      }
-    ],
     "onlineResources": [
       {
         "title": "Xie Lab CARS Resources",
@@ -403,4 +468,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

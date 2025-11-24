@@ -25,65 +25,181 @@
         "latex": "$$Y = \\frac{\\text{sputtered atoms}}{\\text{incident ion}} = \\frac{3\\alpha}{4\\pi^2} \\frac{4M_1 M_2}{(M_1 + M_2)^2} \\frac{E}{U_0}$$",
         "description": "Sputter Yield (Sigmund theory, simplified)",
         "variables": [
-          {"symbol": "Y", "meaning": "sputter yield", "units": "atoms/ion"},
-          {"symbol": "\\alpha", "meaning": "function of mass ratio and energy transfer", "units": "dimensionless"},
-          {"symbol": "M_1", "meaning": "mass of incident ion (Ga: 69 amu)", "units": "amu"},
-          {"symbol": "M_2", "meaning": "mass of target atom", "units": "amu"},
-          {"symbol": "E", "meaning": "incident ion energy (typically 30 keV)", "units": "keV"},
-          {"symbol": "U_0", "meaning": "surface binding energy (~3-5 eV)", "units": "eV"}
+          {
+            "symbol": "Y",
+            "meaning": "sputter yield",
+            "units": "atoms/ion"
+          },
+          {
+            "symbol": "\\alpha",
+            "meaning": "function of mass ratio and energy transfer",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "M_1",
+            "meaning": "mass of incident ion (Ga: 69 amu)",
+            "units": "amu"
+          },
+          {
+            "symbol": "M_2",
+            "meaning": "mass of target atom",
+            "units": "amu"
+          },
+          {
+            "symbol": "E",
+            "meaning": "incident ion energy (typically 30 keV)",
+            "units": "keV"
+          },
+          {
+            "symbol": "U_0",
+            "meaning": "surface binding energy (~3-5 eV)",
+            "units": "eV"
+          }
         ]
       },
       {
         "latex": "$$t_{slice} = \\frac{I \\cdot t_{mill} \\cdot Y \\cdot V_{atomic}}{A_{mill}}$$",
         "description": "Slice Thickness (milled depth per cycle)",
         "variables": [
-          {"symbol": "t_{slice}", "meaning": "thickness of material removed per milling cycle", "units": "nm"},
-          {"symbol": "I", "meaning": "ion beam current", "units": "nA"},
-          {"symbol": "t_{mill}", "meaning": "milling time per cycle", "units": "seconds"},
-          {"symbol": "Y", "meaning": "sputter yield (material-dependent)", "units": "atoms/ion"},
-          {"symbol": "V_{atomic}", "meaning": "atomic volume of target material", "units": "nm³/atom"},
-          {"symbol": "A_{mill}", "meaning": "milled area (cross-section)", "units": "nm²"}
+          {
+            "symbol": "t_{slice}",
+            "meaning": "thickness of material removed per milling cycle",
+            "units": "nm"
+          },
+          {
+            "symbol": "I",
+            "meaning": "ion beam current",
+            "units": "nA"
+          },
+          {
+            "symbol": "t_{mill}",
+            "meaning": "milling time per cycle",
+            "units": "seconds"
+          },
+          {
+            "symbol": "Y",
+            "meaning": "sputter yield (material-dependent)",
+            "units": "atoms/ion"
+          },
+          {
+            "symbol": "V_{atomic}",
+            "meaning": "atomic volume of target material",
+            "units": "nm³/atom"
+          },
+          {
+            "symbol": "A_{mill}",
+            "meaning": "milled area (cross-section)",
+            "units": "nm²"
+          }
         ]
       },
       {
         "latex": "$$V_{total} = w \\cdot h \\cdot d = w \\cdot h \\cdot (n_{slices} \\cdot t_{slice})$$",
         "description": "Total Imaged Volume",
         "variables": [
-          {"symbol": "V_{total}", "meaning": "total 3D volume reconstructed", "units": "μm³"},
-          {"symbol": "w", "meaning": "image width (lateral dimension)", "units": "μm"},
-          {"symbol": "h", "meaning": "image height (vertical dimension)", "units": "μm"},
-          {"symbol": "d", "meaning": "total depth (n × t_slice)", "units": "μm"},
-          {"symbol": "n_{slices}", "meaning": "number of slices acquired", "units": "dimensionless"},
-          {"symbol": "t_{slice}", "meaning": "thickness per slice", "units": "nm"}
+          {
+            "symbol": "V_{total}",
+            "meaning": "total 3D volume reconstructed",
+            "units": "μm³"
+          },
+          {
+            "symbol": "w",
+            "meaning": "image width (lateral dimension)",
+            "units": "μm"
+          },
+          {
+            "symbol": "h",
+            "meaning": "image height (vertical dimension)",
+            "units": "μm"
+          },
+          {
+            "symbol": "d",
+            "meaning": "total depth (n × t_slice)",
+            "units": "μm"
+          },
+          {
+            "symbol": "n_{slices}",
+            "meaning": "number of slices acquired",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "t_{slice}",
+            "meaning": "thickness per slice",
+            "units": "nm"
+          }
         ]
       },
       {
         "latex": "$$t_{total} = n_{slices} \\times (t_{mill} + t_{image} + t_{overhead})$$",
         "description": "Total Acquisition Time",
         "variables": [
-          {"symbol": "t_{total}", "meaning": "total time for complete 3D acquisition", "units": "hours"},
-          {"symbol": "n_{slices}", "meaning": "number of slices", "units": "dimensionless"},
-          {"symbol": "t_{mill}", "meaning": "milling time per slice (10-60 seconds)", "units": "seconds"},
-          {"symbol": "t_{image}", "meaning": "SEM imaging time per slice (5-30 seconds)", "units": "seconds"},
-          {"symbol": "t_{overhead}", "meaning": "stage movement, autofocus, drift correction (5-15 seconds)", "units": "seconds"}
+          {
+            "symbol": "t_{total}",
+            "meaning": "total time for complete 3D acquisition",
+            "units": "hours"
+          },
+          {
+            "symbol": "n_{slices}",
+            "meaning": "number of slices",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "t_{mill}",
+            "meaning": "milling time per slice (10-60 seconds)",
+            "units": "seconds"
+          },
+          {
+            "symbol": "t_{image}",
+            "meaning": "SEM imaging time per slice (5-30 seconds)",
+            "units": "seconds"
+          },
+          {
+            "symbol": "t_{overhead}",
+            "meaning": "stage movement, autofocus, drift correction (5-15 seconds)",
+            "units": "seconds"
+          }
         ]
       },
       {
         "latex": "$$\\Delta x = \\frac{0.61\\lambda}{\\beta} \\approx \\frac{\\text{pixel size}}{\\text{magnification}}$$",
         "description": "Lateral Resolution (SEM-limited)",
         "variables": [
-          {"symbol": "\\Delta x", "meaning": "lateral (xy) resolution", "units": "nm"},
-          {"symbol": "\\lambda", "meaning": "electron wavelength (pm for keV electrons)", "units": "pm"},
-          {"symbol": "\\beta", "meaning": "convergence semi-angle of electron beam", "units": "radians"},
-          {"symbol": "\\text{pixel size}", "meaning": "physical pixel dimension on sample", "units": "nm"}
+          {
+            "symbol": "\\Delta x",
+            "meaning": "lateral (xy) resolution",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "electron wavelength (pm for keV electrons)",
+            "units": "pm"
+          },
+          {
+            "symbol": "\\beta",
+            "meaning": "convergence semi-angle of electron beam",
+            "units": "radians"
+          },
+          {
+            "symbol": "\\text{pixel size}",
+            "meaning": "physical pixel dimension on sample",
+            "units": "nm"
+          }
         ]
       },
       {
         "latex": "$$\\Delta z = t_{slice}$$",
         "description": "Depth (Z) Resolution",
         "variables": [
-          {"symbol": "\\Delta z", "meaning": "depth resolution", "units": "nm"},
-          {"symbol": "t_{slice}", "meaning": "slice thickness (directly sets z-resolution)", "units": "nm"}
+          {
+            "symbol": "\\Delta z",
+            "meaning": "depth resolution",
+            "units": "nm"
+          },
+          {
+            "symbol": "t_{slice}",
+            "meaning": "slice thickness (directly sets z-resolution)",
+            "units": "nm"
+          }
         ]
       }
     ],
@@ -314,17 +430,26 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["fib-sem-tomography", "sem-edx"],
+        "techniques": [
+          "fib-sem-tomography",
+          "sem-edx"
+        ],
         "rationale": "FIB-SEM alone shows 'what shape and where'; EDX adds 'what element'. Combining enables phase identification (e.g., distinguish Cu₂O vs. CuCl₂ corrosion products based on Cl presence) and quantification (volume fraction of each phase). Same acquisition, perfect registration.",
         "examples": "FIB-SEM + EDX Tomography (4D: 3D structure + composition): 1. Perform FIB-SEM slice-and-view as standard. 2. After each SEM image acquisition, acquire EDX map of same area (2-5 minutes per map). 3. System alternates: mill → SEM image → EDX map → mill → SEM image → EDX map. 4. Stack SEM images for 3D morphology. Stack EDX maps for 3D elemental distribution. 5. Co-register SEM and EDX volumes (same geometry, already aligned). 6. Visualize and analyze: overlay elemental maps on morphological structure. 7. Identify phases by combined morphology + composition. Paint layer analysis: FIB-SEM shows particles (bright, medium, dark in BSE). EDX tomography identifies: bright = Pb (lead white), medium = Cu (azurite), dark = Fe (ochre). Maps pigment distribution in 3D, quantifies mixing, reveals layering."
       },
       {
-        "techniques": ["fib-sem-tomography", "x-ray-ct", "tem"],
+        "techniques": [
+          "fib-sem-tomography",
+          "x-ray-ct",
+          "tem"
+        ],
         "rationale": "Bridges scales: XCT provides context and guides sampling; FIB-SEM provides 3D microstructure; TEM provides atomic structure and crystallography. Each technique informs the next. FIB enables site-specific TEM sample prep (targeted analysis of feature seen in FIB-SEM).",
         "examples": "Multi-Scale 3D: XCT → FIB-SEM → TEM (Correlative Imaging): 1. X-ray CT of full sample (mm-cm size, μm resolution) - identify features of interest. 2. Extract micro-sample containing feature. Mount in FIB-SEM. 3. FIB-SEM tomography of selected region (10-50 μm FOV, nm resolution) - characterize feature in detail. 4. Within FIB-SEM volume, identify specific nanostructure for atomic-scale analysis. 5. Use FIB to mill TEM lamella (~100 nm thick, 5-10 μm wide) from that exact location. 6. Transfer lamella to TEM for <0.1 nm resolution imaging and diffraction. 7. Integrate data: macro (XCT) → micro (FIB-SEM) → nano/atomic (TEM). Corrosion study: XCT shows corrosion penetration 500 μm into metal. FIB-SEM tomography at corrosion front reveals porous CuCl₂ layer. TEM of specific grain boundary from FIB-SEM volume shows atomic structure of Cl segregation - explains why corrosion preferentially attacks boundaries."
       },
       {
-        "techniques": ["fib-sem-tomography"],
+        "techniques": [
+          "fib-sem-tomography"
+        ],
         "rationale": "FIB-SEM datasets large (1000+ slices, 2048 × 2048 pixels each = 4+ billion pixels). Manual segmentation infeasible. Machine learning automates segmentation, saving weeks of manual labor. Especially powerful for complex morphologies (irregular particles, interpenetrating phases).",
         "examples": "FIB-SEM + Machine Learning Segmentation: 1. Acquire FIB-SEM tomography dataset (standard workflow). 2. Manually label small subset of images (~10-50 slices): annotate pixels as phase 1, phase 2, pores, etc. 3. Train machine learning segmentation model (U-Net, random forest, ilastik) on labeled data. 4. Apply trained model to entire stack (automatic segmentation of all slices). 5. Manually inspect and correct errors (quality control). 6. Use segmented volume for quantitative analysis. Paint microstructure: train neural network to distinguish pigment particles, binder, voids based on 50 manually labeled slices. Apply to 1000-slice FIB-SEM volume. Automatic segmentation in hours vs. weeks of manual work. Extract particle size distributions, binder network topology automatically."
       }
@@ -353,33 +478,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Holzer, L., et al. 2004. 'The Application of FIB Nanotomography to Materials Characterization.' Materials Science and Technology 20: 355-366.",
-        "doi": "10.1179/026708304225010516",
-        "notes": "Early demonstration of FIB-SEM slice-and-view for 3D materials characterization"
-      },
-      {
-        "citation": "Inkson, B. J., et al. 2001. 'Subsurface Nanoindentation Deformation of Cu-Al Multilayers Mapped in 3D by Focused Ion Beam Microscopy.' Journal of Materials Research 16: 3464-3471.",
-        "doi": "10.1557/JMR.2001.0476",
-        "notes": "Pioneering use of FIB serial sectioning for 3D reconstruction"
-      },
-      {
-        "citation": "van Loon, A., et al. 2019. 'Artificial Aging of Artists' Paints: Evaluating Changes in Paint Microstructure Using FIB-SEM Tomography.' Heritage Science 7: 89.",
-        "doi": "10.1186/s40494-019-0333-1",
-        "notes": "3D visualization of paint microstructure; Vermeer painting pigment-binder networks"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Holzer, L., et al. 2013. 'FIB-Nanotomography of Particulate Systems.' Journal of Microscopy 216: 84-95.",
-        "doi": "10.1111/j.1365-2818.2006.01602.x"
-      },
-      {
-        "citation": "Burnett, T. L., and P. J. Withers. 2019. 'Completing the Picture Through Correlative Characterization.' Nature Materials 18: 1041-1049.",
-        "doi": "10.1038/s41563-019-0402-8"
-      }
-    ],
     "onlineResources": [
       {
         "title": "FEI (Thermo Fisher) Auto Slice & View",
@@ -414,4 +512,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

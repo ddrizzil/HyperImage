@@ -25,56 +25,136 @@
         "latex": "$$t_R = t_M(1 + k')$$",
         "description": "Retention Time",
         "variables": [
-          {"symbol": "t_R", "meaning": "retention time of analyte", "units": "minutes"},
-          {"symbol": "t_M", "meaning": "dead time (unretained compound, carrier gas holdup)", "units": "minutes"},
-          {"symbol": "k'", "meaning": "retention factor (capacity factor)", "units": "dimensionless"}
+          {
+            "symbol": "t_R",
+            "meaning": "retention time of analyte",
+            "units": "minutes"
+          },
+          {
+            "symbol": "t_M",
+            "meaning": "dead time (unretained compound, carrier gas holdup)",
+            "units": "minutes"
+          },
+          {
+            "symbol": "k'",
+            "meaning": "retention factor (capacity factor)",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$k' = \\frac{K \\cdot V_S}{V_M}$$",
         "description": "Retention Factor (Capacity Factor)",
         "variables": [
-          {"symbol": "k'", "meaning": "retention factor", "units": "dimensionless"},
-          {"symbol": "K", "meaning": "partition coefficient (analyte distribution between phases)", "units": "dimensionless"},
-          {"symbol": "V_S", "meaning": "volume of stationary phase", "units": "mL"},
-          {"symbol": "V_M", "meaning": "volume of mobile phase (gas)", "units": "mL"}
+          {
+            "symbol": "k'",
+            "meaning": "retention factor",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "K",
+            "meaning": "partition coefficient (analyte distribution between phases)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "V_S",
+            "meaning": "volume of stationary phase",
+            "units": "mL"
+          },
+          {
+            "symbol": "V_M",
+            "meaning": "volume of mobile phase (gas)",
+            "units": "mL"
+          }
         ]
       },
       {
         "latex": "$$R_S = \\frac{2(t_{R2} - t_{R1})}{w_1 + w_2}$$",
         "description": "Chromatographic Resolution",
         "variables": [
-          {"symbol": "R_S", "meaning": "resolution between two peaks", "units": "dimensionless"},
-          {"symbol": "t_{R1}, t_{R2}", "meaning": "retention times of peaks 1 and 2", "units": "minutes"},
-          {"symbol": "w_1, w_2", "meaning": "peak widths at baseline", "units": "minutes"}
+          {
+            "symbol": "R_S",
+            "meaning": "resolution between two peaks",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "t_{R1}, t_{R2}",
+            "meaning": "retention times of peaks 1 and 2",
+            "units": "minutes"
+          },
+          {
+            "symbol": "w_1, w_2",
+            "meaning": "peak widths at baseline",
+            "units": "minutes"
+          }
         ]
       },
       {
         "latex": "$$\\frac{m}{z} = \\text{mass-to-charge ratio}$$",
         "description": "Mass-to-Charge Ratio (measured quantity in MS)",
         "variables": [
-          {"symbol": "m", "meaning": "ion mass", "units": "atomic mass units (amu) or Daltons (Da)"},
-          {"symbol": "z", "meaning": "number of charges on ion (typically 1 for EI)", "units": "elementary charges"}
+          {
+            "symbol": "m",
+            "meaning": "ion mass",
+            "units": "atomic mass units (amu) or Daltons (Da)"
+          },
+          {
+            "symbol": "z",
+            "meaning": "number of charges on ion (typically 1 for EI)",
+            "units": "elementary charges"
+          }
         ]
       },
       {
         "latex": "$$\\text{Match Factor} = 1000 \\times \\left(1 - \\frac{\\sum|A_i - L_i|}{\\sum A_i + \\sum L_i}\\right)$$",
         "description": "Library Match Quality (simplified)",
         "variables": [
-          {"symbol": "\\text{Match Factor}", "meaning": "similarity score (0-1000, higher = better match)", "units": "dimensionless"},
-          {"symbol": "A_i", "meaning": "intensity of peak i in analyte spectrum", "units": "counts"},
-          {"symbol": "L_i", "meaning": "intensity of peak i in library spectrum", "units": "counts"}
+          {
+            "symbol": "\\text{Match Factor}",
+            "meaning": "similarity score (0-1000, higher = better match)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "A_i",
+            "meaning": "intensity of peak i in analyte spectrum",
+            "units": "counts"
+          },
+          {
+            "symbol": "L_i",
+            "meaning": "intensity of peak i in library spectrum",
+            "units": "counts"
+          }
         ]
       },
       {
         "latex": "$$C = \\frac{A \\cdot C_{std}}{A_{std}} \\cdot \\frac{1}{RF}$$",
         "description": "Quantification via Internal Standard",
         "variables": [
-          {"symbol": "C", "meaning": "concentration of analyte in sample", "units": "μg/mg or %"},
-          {"symbol": "A", "meaning": "peak area of analyte", "units": "counts·s"},
-          {"symbol": "C_{std}", "meaning": "known concentration of internal standard", "units": "μg/mg"},
-          {"symbol": "A_{std}", "meaning": "peak area of internal standard", "units": "counts·s"},
-          {"symbol": "RF", "meaning": "relative response factor (analyte vs. standard)", "units": "dimensionless"}
+          {
+            "symbol": "C",
+            "meaning": "concentration of analyte in sample",
+            "units": "μg/mg or %"
+          },
+          {
+            "symbol": "A",
+            "meaning": "peak area of analyte",
+            "units": "counts·s"
+          },
+          {
+            "symbol": "C_{std}",
+            "meaning": "known concentration of internal standard",
+            "units": "μg/mg"
+          },
+          {
+            "symbol": "A_{std}",
+            "meaning": "peak area of internal standard",
+            "units": "counts·s"
+          },
+          {
+            "symbol": "RF",
+            "meaning": "relative response factor (analyte vs. standard)",
+            "units": "dimensionless"
+          }
         ]
       }
     ],
@@ -306,17 +386,26 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["gc-ms", "ftir-spectroscopy"],
+        "techniques": [
+          "gc-ms",
+          "ftir-spectroscopy"
+        ],
         "rationale": "FTIR fast, easy, low sample consumption (μg), provides overview (functional groups, material class). GC-MS slower, more sample (mg), complex sample prep, but gives definitive molecular identification. Sequential use maximizes information while minimizing sample consumption. FTIR guides GC-MS sample prep (knowing material class from FTIR → select correct derivatization procedure for GC-MS).",
         "examples": "GC-MS + FTIR (Comprehensive Organic Analysis): 1. FTIR first (non-destructive or micro-sample): rapid screening, identifies material class (oil, protein, resin, wax, polysaccharide, modern polymer). FTIR spectrum shows functional groups: C=O (1710-1740 cm⁻¹) → ester, carboxyl; N-H (3300, 1550 cm⁻¹) → protein; C-O-C (1000-1200 cm⁻¹) → polysaccharide. Narrows possibilities. 2. GC-MS for definitive ID: based on FTIR result, select appropriate sample prep (oil → transesterification; protein → hydrolysis + derivatization; resin → direct injection or derivatization). GC-MS provides molecular identification: specific fatty acids (linseed vs. walnut), terpene markers (pine vs. dammar), amino acid profile (animal glue vs. egg). 3. Combine interpretation: FTIR confirms functional groups match GC-MS identified compounds. Example: FTIR shows ester C=O → GC-MS shows FAME profile → confirms oil binding medium; FTIR carbonyl position (1735 cm⁻¹ vs. 1715 cm⁻¹) + GC-MS P/S ratio → distinguishes linseed vs. walnut. Paint cross-section: FTIR microspectroscopy on intact cross-section (non-destructive) shows layer 1 (ground): carbonyl + OH → lead white + oil; layer 2 (blue): no carbonyl → inorganic pigment (ultramarine) + protein (weak amide); layer 3 (glaze): strong ester carbonyl → resin or oil. Sample layers separately for GC-MS: ground → FAMEs (linseed oil confirmed); blue layer → amino acids (animal glue confirmed); glaze → terpenoid acids (pine resin confirmed). Combined FTIR + GC-MS: complete stratigraphy (pigments via FTIR/XRF, binders via GC-MS)."
       },
       {
-        "techniques": ["gc-ms", "py-gc-ms"],
+        "techniques": [
+          "gc-ms",
+          "py-gc-ms"
+        ],
         "rationale": "GC-MS limited to volatile, thermally stable, or derivatizable compounds (MW <500-600 Da typically). Many heritage/conservation materials are high-MW polymers (proteins, polysaccharides, synthetic resins, plastics) not amenable to GC-MS without degradation. Pyrolysis-GC-MS deliberately fragments non-volatile polymers → GC-amenable products → enables GC-MS analysis of otherwise intractable materials. Complementary: GC-MS for small molecules, Py-GC-MS for polymers.",
         "examples": "GC-MS + Py-GC-MS (Comprehensive Polymer Analysis): 1. Standard GC-MS first (if any volatiles expected): sample extracted with solvent (CHCl₃/MeOH), derivatized if needed, analyzed by GC-MS. Identifies: low-MW components (additives, plasticizers, residual monomers), derivatizable compounds (fatty acids, some resins). 2. If GC-MS yields no/few peaks (sample contains only non-volatile polymers): proceed to Py-GC-MS. Pyrolyze 100-500 μg sample at 550-700°C in inert atmosphere (He). Thermal fragmentation produces characteristic low-MW pyrolysis products. GC separates, MS identifies pyrolysates. Pyrolysis pattern ('pyrogram') fingerprints polymer type: polystyrene → styrene monomer + dimer + trimer; alkyd resin → phthalic anhydride + fatty acid products; acrylic → methyl methacrylate, ethyl acrylate monomers. 3. Combine: GC-MS identifies extractable (additives, low-MW fraction), Py-GC-MS identifies polymer matrix. Complete characterization. Modern paint sample (20th century): GC-MS extraction shows phthalate plasticizers (DBP, DOP) and styrene (residual monomer). Py-GC-MS of solid residue shows pyrolysis products: styrene (major), α-methylstyrene, toluene → polystyrene; phthalic anhydride, hexanoic acid, octanoic acid → alkyd resin. Combined: paint is alkyd (polymer binder) with polystyrene (filler or co-resin) + phthalate plasticizers (additives). Could not determine from GC-MS alone (polymers non-volatile), or Py-GC-MS alone (miss extractable additives)."
       },
       {
-        "techniques": ["gc-ms", "hplc-ms"],
+        "techniques": [
+          "gc-ms",
+          "hplc-ms"
+        ],
         "rationale": "GC-MS and LC-MS have orthogonal selectivity (GC: volatility, LC: polarity). Many heritage samples contain BOTH GC-amenable (oils, resins) AND LC-amenable (dyes, proteins, gums) materials. Single technique incomplete. Example: painted textile - oil binder (GC-MS) + dye (LC-MS). Neither technique alone gives full composition.",
         "examples": "GC-MS + LC-MS (Orthogonal Molecular Coverage): 1. Assess sample, target analytes: GC-MS appropriate for: volatiles, non-polar, thermally stable, derivatizable (oils, resins, waxes, derivatized amino acids). LC-MS appropriate for: polar, thermally labile, high MW, ionic (dyes, flavonoids, proteins, polysaccharides, modern synthetic colorants). 2. Divide sample or use sequential extraction: (a) Divide sample (~5-10 mg total): 2 mg for GC-MS, 2 mg for LC-MS. (b) Sequential: extract sample with non-polar solvent (hexane, CHCl₃) → GC-MS fraction. Re-extract residue with polar solvent (MeOH, H₂O) → LC-MS fraction. 3. Analyze via both techniques. GC-MS: transesterify oil fraction → FAMEs. LC-MS (reverse-phase, ESI-MS): dye extraction → flavonoids, anthraquinones identified. 4. Combine results: complete molecular inventory (non-polar GC-amenable + polar LC-amenable). Illuminated manuscript paint: GC-MS analysis of extract shows gum arabic (after acid hydrolysis → monosaccharides: arabinose, galactose detected as TMS derivatives). But GC-MS shows no dye (anthraquinones thermally labile, degrade in GC inlet). LC-MS analysis of same extract (reverse-phase HPLC, ESI-MS negative mode): alizarin (m/z 239), purpurin (m/z 255) → madder dye identified. Combined: paint is madder lake in gum arabic binder (GC-MS found binder, LC-MS found dye). Complete characterization requires both."
       }
@@ -345,33 +434,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "McLafferty, F. W. 1956. 'Mass Spectrometric Analysis: Broad Applicability to Chemical Research.' Analytical Chemistry 28: 306-316.",
-        "doi": "10.1021/ac60111a005",
-        "notes": "Early demonstration of GC-MS coupling; foundational work in mass spectrometry"
-      },
-      {
-        "citation": "Mills, J. S., and R. White. 1977. 'Natural Resins of Art and Archaeology: Their Sources, Chemistry, and Identification.' Studies in Conservation 22: 12-31.",
-        "doi": "10.1179/sic.1977.002",
-        "notes": "Early systematic application of GC-MS to heritage resins; established methodology"
-      },
-      {
-        "citation": "Buckley, S. A., and R. P. Evershed. 2001. 'Organic Chemistry of Embalming Agents in Pharaonic and Graeco-Roman Mummies.' Nature 413: 837-841.",
-        "doi": "10.1038/35101588",
-        "notes": "GC-MS analysis of Egyptian mummy balms; multi-component resin mixtures identified"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Mills, J. S., and R. White. 1994. 'The Organic Chemistry of Museum Objects.' 2nd ed. Butterworth-Heinemann.",
-        "doi": "N/A"
-      },
-      {
-        "citation": "Colombini, M. P., and F. Modugno (eds.). 2009. 'Organic Mass Spectrometry in Art and Archaeology.' Wiley.",
-        "doi": "10.1002/9780470741917"
-      }
-    ],
     "onlineResources": [
       {
         "title": "NIST Chemistry WebBook",
@@ -409,4 +471,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

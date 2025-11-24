@@ -30,54 +30,126 @@
         "latex": "$$L = \\frac{h}{\\tan(\\theta)}$$",
         "description": "Shadow Length from Surface Feature",
         "variables": [
-          {"symbol": "L", "meaning": "shadow length on surface", "units": "μm or mm"},
-          {"symbol": "h", "meaning": "feature height above local surface", "units": "μm or mm"},
-          {"symbol": "\\theta", "meaning": "illumination angle from surface (grazing angle)", "units": "degrees"}
+          {
+            "symbol": "L",
+            "meaning": "shadow length on surface",
+            "units": "μm or mm"
+          },
+          {
+            "symbol": "h",
+            "meaning": "feature height above local surface",
+            "units": "μm or mm"
+          },
+          {
+            "symbol": "\\theta",
+            "meaning": "illumination angle from surface (grazing angle)",
+            "units": "degrees"
+          }
         ]
       },
       {
         "latex": "$$h = L \\cdot \\tan(\\theta)$$",
         "description": "Feature Height from Shadow Measurement",
         "variables": [
-          {"symbol": "h", "meaning": "estimated feature height", "units": "μm or mm"},
-          {"symbol": "L", "meaning": "measured shadow length in image", "units": "μm or mm (calibrated via scale reference)"},
-          {"symbol": "\\theta", "meaning": "known illumination angle", "units": "degrees"}
+          {
+            "symbol": "h",
+            "meaning": "estimated feature height",
+            "units": "μm or mm"
+          },
+          {
+            "symbol": "L",
+            "meaning": "measured shadow length in image",
+            "units": "μm or mm (calibrated via scale reference)"
+          },
+          {
+            "symbol": "\\theta",
+            "meaning": "known illumination angle",
+            "units": "degrees"
+          }
         ]
       },
       {
         "latex": "$$\\text{Amplification} = \\frac{L}{h} = \\frac{1}{\\tan(\\theta)}$$",
         "description": "Shadow Amplification Factor",
         "variables": [
-          {"symbol": "\\text{Amplification}", "meaning": "ratio of shadow length to feature height", "units": "dimensionless"},
-          {"symbol": "\\theta", "meaning": "illumination angle", "units": "degrees"}
+          {
+            "symbol": "\\text{Amplification}",
+            "meaning": "ratio of shadow length to feature height",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\theta",
+            "meaning": "illumination angle",
+            "units": "degrees"
+          }
         ]
       },
       {
         "latex": "$$\\theta = \\arctan\\left(\\frac{d}{D}\\right)$$",
         "description": "Illumination Angle from Geometry",
         "variables": [
-          {"symbol": "\\theta", "meaning": "illumination angle from surface", "units": "degrees"},
-          {"symbol": "d", "meaning": "light source height above surface", "units": "cm or m"},
-          {"symbol": "D", "meaning": "horizontal distance from light to illuminated area", "units": "cm or m"}
+          {
+            "symbol": "\\theta",
+            "meaning": "illumination angle from surface",
+            "units": "degrees"
+          },
+          {
+            "symbol": "d",
+            "meaning": "light source height above surface",
+            "units": "cm or m"
+          },
+          {
+            "symbol": "D",
+            "meaning": "horizontal distance from light to illuminated area",
+            "units": "cm or m"
+          }
         ]
       },
       {
         "latex": "$$C = \\frac{I_{lit}}{I_{shadow}}$$",
         "description": "Shadow Contrast Ratio",
         "variables": [
-          {"symbol": "C", "meaning": "local contrast at shadow edge", "units": "dimensionless"},
-          {"symbol": "I_{lit}", "meaning": "intensity of illuminated area", "units": "arbitrary units or cd/m²"},
-          {"symbol": "I_{shadow}", "meaning": "intensity within shadow (scattered light only)", "units": "arbitrary units or cd/m²"}
+          {
+            "symbol": "C",
+            "meaning": "local contrast at shadow edge",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "I_{lit}",
+            "meaning": "intensity of illuminated area",
+            "units": "arbitrary units or cd/m²"
+          },
+          {
+            "symbol": "I_{shadow}",
+            "meaning": "intensity within shadow (scattered light only)",
+            "units": "arbitrary units or cd/m²"
+          }
         ]
       },
       {
         "latex": "$$h_{min} = \\tan(\\theta) \\cdot \\text{GSD} \\cdot N_{pixels}$$",
         "description": "Minimum Detectable Feature Height",
         "variables": [
-          {"symbol": "h_{min}", "meaning": "minimum feature height detectable as shadow", "units": "μm"},
-          {"symbol": "\\theta", "meaning": "illumination angle", "units": "degrees"},
-          {"symbol": "\\text{GSD}", "meaning": "ground sampling distance (image resolution)", "units": "μm/pixel"},
-          {"symbol": "N_{pixels}", "meaning": "minimum shadow size for visibility (typically 2-3 pixels)", "units": "pixels"}
+          {
+            "symbol": "h_{min}",
+            "meaning": "minimum feature height detectable as shadow",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\theta",
+            "meaning": "illumination angle",
+            "units": "degrees"
+          },
+          {
+            "symbol": "\\text{GSD}",
+            "meaning": "ground sampling distance (image resolution)",
+            "units": "μm/pixel"
+          },
+          {
+            "symbol": "N_{pixels}",
+            "meaning": "minimum shadow size for visibility (typically 2-3 pixels)",
+            "units": "pixels"
+          }
         ]
       }
     ],
@@ -141,15 +213,51 @@
     ],
     "measurementProtocol": "**Step 1: Camera and Object Setup**\nPosition object securely (easel, stand, or support; stable, won't shift during multi-angle capture). Position camera on tripod perpendicular to object surface (90° incidence; sensor parallel to object plane for flat objects). Frame object: fill frame with area of interest (whole object or detail; leave margin for light angle changes). Focus critically on object surface (autofocus or manual focus with live view magnification). Lock focus (switch to manual focus after achieving focus; won't drift). Lock camera position (tighten tripod, don't touch camera between raking light captures from different angles). Duration: 10-15 minutes (setup, framing, focusing). Critical parameters: Camera perpendicular to object (minimize keystoning, ensure entire surface in focus at reasonable f-stop), Critical focus on surface, Camera locked (no movement between multi-angle captures for image registration).\n\n**Step 2: Ambient Light Elimination**\nDarken room: turn off overhead lights, close window blinds/curtains. Goal: no ambient light except raking light source (verified by turning off raking light → object should be dark/barely visible in camera live view). Position black flags, panels, or velvet around object and camera (absorb scattered light from raking source). This step critical for maximum shadow contrast. Test: capture image with room lights on vs. off, compare shadow clarity. Duration: 5-10 minutes (light control setup). Critical parameters: Ambient light minimized (shadows should appear nearly black, not gray), Black flags/background in place (no bright surfaces near object to cause interreflections).\n\n**Step 3: Raking Light Positioning (First Azimuth)**\nPosition light source for first azimuth angle (typically 0°, arbitrarily defined as 'bottom' of object, or 'north' for horizontal object). Set illumination angle θ = 10-15° from surface (typical; adjust based on feature scale: smaller θ for very fine features, larger θ for coarse or to reduce penumbra blur). Methods to set angle: (1) **Goniometer:** mount light on goniometer head (protractor scale), set to desired angle relative to object surface. (2) **Geometric calculation:** measure light height h above surface, horizontal distance d from illuminated area; angle θ = arctan(h/d). Example: h=15 cm, d=100 cm → θ≈8.5°. (3) **Visual estimation:** light grazes surface, creates long shadows; fine-tune by observing shadow length on test feature. Position light to illuminate entire field of view (or at least area of interest; beam may need to be relatively broad). Distance: typically 0.5-2 m (closer = more intense, but smaller coverage; farther = weaker, broader coverage). Duration: 10-20 minutes (positioning, angle measurement/calculation, fine-tuning). Critical parameters: Illumination angle 10-15° typical (range 5-20° depending on application), Light positioned consistently (same angle will be used for all azimuth rotations), Coverage adequate (entire field of view illuminated, or document coverage limits).\n\n**Step 4: Camera Settings and Test Exposure**\nCamera settings: Manual mode. ISO: 100-400 (base ISO for low noise; increase if exposure too long). Aperture: f/8-f/11 (adequate depth of field for most flat/low-relief objects; optimal lens sharpness). Shutter speed: adjust to properly expose mid-tones (1/15 s - 2 s typical; raking light often dimmer than normal documentation due to oblique angle, light distance). White balance: not critical (raking light often converted to B&W for texture emphasis; if color needed: custom WB or daylight preset). Format: RAW (preserve maximum information for contrast adjustment in post). Capture test image: review histogram (aim for mid-tones in center; shadows will be dark/clipped by design; ensure illuminated areas not overexposed). Zoom to 100%: check sharpness, shadow definition. Adjust exposure if needed (typically adjust shutter speed; keep ISO low, aperture at optimal f/8-f/11). Duration: 5-10 minutes (settings, test, adjustment). Critical parameters: Histogram: illuminated areas well-exposed (mid-tones, no clipping); shadows intentionally dark, Sharp focus verified at 100% zoom, Shutter speed appropriate (not too fast, causes underexposure; not excessively long, increases noise/camera shake risk even on tripod).\n\n**Step 5: Capture First Azimuth Image**\nUsing remote shutter release or self-timer (2-10 sec; avoids vibration from button press), capture final image at first azimuth (0°). Review image: check exposure, sharpness, shadow contrast. Verify shadow pattern reveals expected features (cracks, texture). If satisfactory, proceed to next azimuth. If issues (poor shadows, specular glare, underexposure): troubleshoot (adjust light angle/distance, add polarization, adjust exposure), recapture. Label image: note azimuth angle in filename or metadata (e.g., 'ObjectID_Raking_000deg.CR3'). Duration: 2-5 minutes (capture, review, verify). Critical parameters: Image sharp (no camera shake), Shadows clear and well-defined, Exposure appropriate (illuminated areas visible, shadows dark), Metadata/filename indicates azimuth angle.\n\n**Step 6: Rotate Light to Next Azimuth and Repeat**\nRotate light source to next azimuth angle: 90° from first position (e.g., if 0° was bottom, 90° is right side). Maintain same illumination angle θ (same height above surface, same distance, but rotated around object). Do NOT move camera (remains fixed, looking perpendicular at object). Repeat capture (steps 4-5): test exposure if lighting intensity changed (should be consistent if same distance/angle), capture image, verify. Continue for remaining azimuths: typical sequence 0°, 90°, 180°, 270° (four cardinal directions, ensure all crack/feature orientations visible in at least one view). Optional: more azimuths for comprehensive coverage (8 directions every 45°, or 12 every 30°; diminishing returns beyond 8-12 for most applications). Label each image with azimuth angle. Duration: 20-60 minutes total for 4-8 azimuths (5-10 min per angle: reposition, capture, verify). Critical parameters: Light angle θ consistent across azimuths (same relative geometry), Camera unmoved (images from different azimuths will be registered/comparable), All azimuths captured (comprehensive directional coverage), Each image labeled (azimuth angle recorded).\n\n**Step 7: Optional: Normal Lighting Reference Image**\nAfter raking light series, optionally capture reference image under normal lighting (diffuse, perpendicular illumination; standard documentation lighting). This provides color reference and shows object appearance without shadow emphasis. Useful for comparing raking light features to overall appearance, orienting viewer, or for publications (normal + raking light side-by-side). Use same camera position (images will register perfectly). Duration: 5-10 minutes (change lighting, capture, verify). Critical parameters: Same camera position (for registration to raking light images), Normal lighting (cross-lighting 45° or diffuse; no shadows).\n\n**Step 8: Quality Control and File Management**\nReview all images: check sharpness (100% zoom on critical areas), verify shadow visibility (features of interest clearly visible in at least one azimuth), exposure consistency (all azimuths similarly exposed, not one much brighter/darker). Check registration: if planning to combine/compare azimuths, verify camera didn't shift (load images in layers in Photoshop, toggle visibility → should align perfectly; or check fiducial marks if present). Backup: copy RAW files to two locations (primary storage + backup drive). Organize: folder structure by object, sub-folder for raking light, filenames indicate azimuth (e.g., ObjectID/Raking/Obj001_Raking_000deg.CR3, Obj001_Raking_090deg.CR3, etc.). Metadata: record camera settings, light type, illumination angle, azimuth angles captured, date, photographer. Duration: 10-20 minutes (review, backup, organize, document). Critical parameters: All images sharp and properly exposed, Images registered (if camera unmoved), Files backed up (two locations), Metadata complete (illumination angle, azimuths documented).",
     "typicalParameters": [
-      {"parameter": "Illumination angle (θ)", "value": "10-15°", "notes": "Smaller angle (5-10°) emphasizes fine features, creates longer shadows; larger angle (15-25°) reduces penumbra blur, better for coarse features"},
-      {"parameter": "Number of azimuths", "value": "4 (cardinal: 0°, 90°, 180°, 270°)", "notes": "4 azimuths standard (cover all perpendicular directions); 8 for comprehensive (every 45°); 1-2 if only specific feature orientation of interest"},
-      {"parameter": "Light source distance", "value": "0.5-2 m", "notes": "Closer = brighter, smaller coverage area; farther = dimmer, broader coverage. Distance and height determine illumination angle."},
-      {"parameter": "Camera aperture", "value": "f/8", "notes": "f/8-f/11 optimal sharpness; f/5.6 if need faster shutter speed (but shallower DoF); f/16 for deep DoF (but diffraction may reduce sharpness)"},
-      {"parameter": "Camera ISO", "value": "200-400", "notes": "Base ISO (100-200) for low noise; increase (400-1600) if raking light too dim and shutter speed excessively long (>2 s)"},
-      {"parameter": "Shutter speed", "value": "1/15 s - 1 s", "notes": "Depends on light intensity; raking light often requires slower shutter than normal (oblique angle = less light on surface); use tripod + remote/timer"},
-      {"parameter": "Light intensity at object", "value": "500-2000 lux", "notes": "Sufficient for ISO 200-400, f/8, 1/15-1 s exposure; adjust via light power or distance"},
-      {"parameter": "Background", "value": "Black (velvet, foam core)", "notes": "Black absorbs scattered light, maximizes shadow contrast; neutral gray acceptable if black unavailable"},
-      {"parameter": "Ambient light level", "value": "<10 lux", "notes": "Minimize ambient light (darkened room); <10 lux ideal (shadows appear black); up to 50 lux acceptable if shadows still clear"}
+      {
+        "parameter": "Illumination angle (θ)",
+        "value": "10-15°",
+        "notes": "Smaller angle (5-10°) emphasizes fine features, creates longer shadows; larger angle (15-25°) reduces penumbra blur, better for coarse features"
+      },
+      {
+        "parameter": "Number of azimuths",
+        "value": "4 (cardinal: 0°, 90°, 180°, 270°)",
+        "notes": "4 azimuths standard (cover all perpendicular directions); 8 for comprehensive (every 45°); 1-2 if only specific feature orientation of interest"
+      },
+      {
+        "parameter": "Light source distance",
+        "value": "0.5-2 m",
+        "notes": "Closer = brighter, smaller coverage area; farther = dimmer, broader coverage. Distance and height determine illumination angle."
+      },
+      {
+        "parameter": "Camera aperture",
+        "value": "f/8",
+        "notes": "f/8-f/11 optimal sharpness; f/5.6 if need faster shutter speed (but shallower DoF); f/16 for deep DoF (but diffraction may reduce sharpness)"
+      },
+      {
+        "parameter": "Camera ISO",
+        "value": "200-400",
+        "notes": "Base ISO (100-200) for low noise; increase (400-1600) if raking light too dim and shutter speed excessively long (>2 s)"
+      },
+      {
+        "parameter": "Shutter speed",
+        "value": "1/15 s - 1 s",
+        "notes": "Depends on light intensity; raking light often requires slower shutter than normal (oblique angle = less light on surface); use tripod + remote/timer"
+      },
+      {
+        "parameter": "Light intensity at object",
+        "value": "500-2000 lux",
+        "notes": "Sufficient for ISO 200-400, f/8, 1/15-1 s exposure; adjust via light power or distance"
+      },
+      {
+        "parameter": "Background",
+        "value": "Black (velvet, foam core)",
+        "notes": "Black absorbs scattered light, maximizes shadow contrast; neutral gray acceptable if black unavailable"
+      },
+      {
+        "parameter": "Ambient light level",
+        "value": "<10 lux",
+        "notes": "Minimize ambient light (darkened room); <10 lux ideal (shadows appear black); up to 50 lux acceptable if shadows still clear"
+      }
     ],
     "calibration": "**Standards:** Scale reference (ruler, scale bar) in frame for shadow length measurement (enables height estimation via h = L·tan(θ)). Known height reference features (if available: step wedge, calibrated surface with known topography) for empirical height calibration. Illumination angle measurement: protractor, angle gauge, or geometric calculation (verify illumination angle accurate within ±1-2°). Flat reference surface (optical flat, mirror, or known-flat substrate) to verify illumination uniformity, assess stray light/interreflections.\n\n**Frequency:** Illumination angle calibration: per object or session (set light position, measure/calculate angle, record). No routine calibration needed (technique qualitative/semi-quantitative). For quantitative height measurement studies: empirical calibration using reference features (measure known heights, verify h = L·tan(θ) relationship, determine effective angle accounting for light source size, scattered light).\n\n**Procedure:** **Illumination angle calibration:** Method 1 (geometric): Measure light height h above object surface (ruler, tape measure from surface to light center). Measure horizontal distance d from illuminated area to point directly below light. Calculate θ = arctan(h/d). Record in metadata. Method 2 (goniometer): Mount light on goniometer head (protractor scale), align reference axis with object surface, read angle directly. **Shadow-to-height calibration (optional, for quantitative studies):** Photograph object with known surface features (measured via profilometer or micrometer). Measure shadow lengths in image (calibrated via scale reference in frame). Compute h_measured / (L_measured · tan(θ)) for multiple features. If ratio ≈ 1.0 ± 10%, geometry accurately calibrated. If systematic deviation: adjust effective θ (may differ from geometric θ due to light source size, scattered light). **Uniformity check:** Photograph flat reference (white paper, optical flat). Inspect for brightness gradients (illumination non-uniformity) or bright spots (interreflections). Adjust light position or add flags to improve uniformity/reduce stray light if needed.",
     "qualityControl": [
@@ -251,40 +359,32 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["visible-photography", "raking-light"],
+        "techniques": [
+          "visible-photography",
+          "raking-light"
+        ],
         "rationale": "Standard conservation documentation: normal lighting provides context (what object looks like to viewer, color information), raking light provides condition/technical information (cracks, texture). Efficient: same setup, just change lighting (15-30 min total for both). Always document both: normal alone misses surface detail, raking alone lacks color/context. Combined: complete visual record (appearance + structure).",
         "examples": "Painting documentation: Normal lighting (cross-polarized, color-calibrated) shows varnish color (yellowed), overall tonality, composition. Raking light (4 azimuths) reveals extensive craquelure network (fine cracks invisible in normal lighting), impasto thickness (shadows from brushstrokes), prior restoration (smooth retouching vs. textured original). Conservator uses normal for color assessment (varnish removal will brighten colors), raking for condition assessment (cracks require consolidation). Report includes both: normal image captioned 'Current appearance', raking image captioned 'Surface condition (raking light, 10° from left) reveals extensive craquelure requiring stabilization'."
       },
       {
-        "techniques": ["raking-light", "rti"],
+        "techniques": [
+          "raking-light",
+          "rti"
+        ],
         "rationale": "Raking light fast, simple (standard camera + single light, 30 min for 4 azimuths). RTI comprehensive but time-intensive (50+ images, specialized processing, 2-4 hours capture + processing). Combined approach: raking light for triage (which objects, which areas need detailed study?), RTI for high-priority items (flagship objects, critical condition issues, research questions). Cost-effective: most objects adequately documented with raking light, RTI reserved for cases where interactive relighting adds value.",
         "examples": "Sculpture conservation: Initial survey (100+ objects) uses 4-azimuth raking light (rapid, screens for condition issues: cracks, erosion, prior repairs). Identifies 10 objects with significant condition concerns. Follow-up: RTI on those 10 (interactive relighting reveals crack depths, erosion patterns, toolmark details for treatment planning, authentication). Efficient: 100 objects documented in 2 weeks with raking light (30 min each); 10 critical objects get full RTI (2 hours each = 20 hours additional). Comprehensive documentation achieved in 3 weeks total, balanced effort vs. information."
       },
       {
-        "techniques": ["raking-light", "stereo-photogrammetry"],
+        "techniques": [
+          "raking-light",
+          "stereo-photogrammetry"
+        ],
         "rationale": "Photogrammetry excellent for overall 3D geometry (shape, dimensions), but texture from diffuse lighting (required for photogrammetry) doesn't emphasize surface relief. Raking light perfect for texture emphasis but 2D (no depth information). Combined: photogrammetry provides 3D scaffold (accurate geometry, measurable dimensions), raking light provides high-contrast texture (surface detail, condition features). Synergistic: 3D geometry + detailed texture = comprehensive surface documentation.",
         "examples": "Stone sculpture documentation: Photogrammetry (100 images, diffuse lighting) creates accurate 3D model (0.5 mm precision, full geometry captured). Model texture adequate for overall appearance but subtle toolmarks, weathering patterns not obvious (even lighting, no shadow emphasis). Raking light (4 azimuths, fixed camera on sculpture front) reveals toolmark patterns, erosion, biological growth via shadows. Project raking light texture onto 3D model → user examines sculpture in 3D viewer, rotates to any angle, sees raking-light-emphasized texture (toolmarks pop out in 3D context). Combined deliverable: 3D model for measurements (dimensions, volume), raking light texture for condition assessment (weathering severity, conservation priorities)."
       }
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Burroughs, A. 1938. 'Art Criticism from a Laboratory.' Little, Brown and Company.",
-        "notes": "Pioneering work establishing technical photography (including raking light) for art examination; systematic approach to craquelure, surface documentation"
-      },
-      {
-        "citation": "Noble, P., et al. 2020. 'An Integrated Approach for the Study and Conservation of Rembrandt's Night Watch.' Studies in Conservation 65: S1-S13.",
-        "doi": "10.1080/00393630.2020.1784123",
-        "notes": "Operation Night Watch: large-scale raking light documentation (120 images, 4 azimuths) integrated with MA-XRF, IR; guided conservation treatment"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Warda, J., et al. 2011. 'The AIC Guide to Digital Photography and Conservation Documentation (2nd ed.).' American Institute for Conservation.",
-        "notes": "Comprehensive guide including raking light protocols: equipment, angles, multi-azimuth approach, processing; standard reference for conservation photography"
-      }
-    ],
     "onlineResources": [
       {
         "title": "AIC Imaging Wiki - Raking Light",
@@ -326,4 +426,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

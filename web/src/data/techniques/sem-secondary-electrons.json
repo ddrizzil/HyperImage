@@ -25,48 +25,120 @@
         "latex": "$$\\delta = \\delta_m \\left(\\frac{E_0}{E_m}\\right)^{-n} \\exp\\left[-\\left(\\frac{E_0}{E_m}\\right)^{1-n}\\right]$$",
         "description": "Secondary Electron Yield (universal curve approximation)",
         "variables": [
-          {"symbol": "\\delta", "meaning": "secondary electron yield (SE per primary electron)", "units": "dimensionless"},
-          {"symbol": "\\delta_m", "meaning": "maximum SE yield (material-dependent, ~0.5-3)", "units": "dimensionless"},
-          {"symbol": "E_0", "meaning": "primary electron beam energy", "units": "keV"},
-          {"symbol": "E_m", "meaning": "energy at which δ is maximum (~0.3-2 keV)", "units": "keV"},
-          {"symbol": "n", "meaning": "empirical parameter (~0.7-1.5)", "units": "dimensionless"}
+          {
+            "symbol": "\\delta",
+            "meaning": "secondary electron yield (SE per primary electron)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\delta_m",
+            "meaning": "maximum SE yield (material-dependent, ~0.5-3)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "E_0",
+            "meaning": "primary electron beam energy",
+            "units": "keV"
+          },
+          {
+            "symbol": "E_m",
+            "meaning": "energy at which δ is maximum (~0.3-2 keV)",
+            "units": "keV"
+          },
+          {
+            "symbol": "n",
+            "meaning": "empirical parameter (~0.7-1.5)",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\delta(\\theta) = \\delta(0) \\cdot \\sec(\\theta) = \\frac{\\delta(0)}{\\cos(\\theta)}$$",
         "description": "Angular Dependence of SE Yield",
         "variables": [
-          {"symbol": "\\delta(\\theta)", "meaning": "SE yield at tilt angle θ", "units": "dimensionless"},
-          {"symbol": "\\delta(0)", "meaning": "SE yield at normal incidence", "units": "dimensionless"},
-          {"symbol": "\\theta", "meaning": "angle between surface normal and electron beam", "units": "degrees"},
-          {"symbol": "\\sec(\\theta)", "meaning": "secant function (1/cos(θ))", "units": "dimensionless"}
+          {
+            "symbol": "\\delta(\\theta)",
+            "meaning": "SE yield at tilt angle θ",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\delta(0)",
+            "meaning": "SE yield at normal incidence",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\theta",
+            "meaning": "angle between surface normal and electron beam",
+            "units": "degrees"
+          },
+          {
+            "symbol": "\\sec(\\theta)",
+            "meaning": "secant function (1/cos(θ))",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\lambda_{SE} = \\frac{143}{E_{SE}^2} + \\frac{0.054}{\\sqrt{E_{SE}}}$$",
         "description": "Secondary Electron Escape Depth (empirical for metals)",
         "variables": [
-          {"symbol": "\\lambda_{SE}", "meaning": "mean free path (escape depth) of secondary electrons", "units": "nm"},
-          {"symbol": "E_{SE}", "meaning": "kinetic energy of secondary electron", "units": "eV"}
+          {
+            "symbol": "\\lambda_{SE}",
+            "meaning": "mean free path (escape depth) of secondary electrons",
+            "units": "nm"
+          },
+          {
+            "symbol": "E_{SE}",
+            "meaning": "kinetic energy of secondary electron",
+            "units": "eV"
+          }
         ]
       },
       {
         "latex": "$$d = \\frac{0.61 \\lambda}{\\beta} \\approx \\frac{\\lambda}{2NA_{obj}}$$",
         "description": "Lateral Resolution (electron probe size dominated)",
         "variables": [
-          {"symbol": "d", "meaning": "lateral resolution", "units": "nm"},
-          {"symbol": "\\lambda", "meaning": "electron wavelength (picometers for keV electrons)", "units": "pm"},
-          {"symbol": "\\beta", "meaning": "convergence semi-angle of beam", "units": "radians"},
-          {"symbol": "NA_{obj}", "meaning": "numerical aperture of objective lens", "units": "dimensionless"}
+          {
+            "symbol": "d",
+            "meaning": "lateral resolution",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "electron wavelength (picometers for keV electrons)",
+            "units": "pm"
+          },
+          {
+            "symbol": "\\beta",
+            "meaning": "convergence semi-angle of beam",
+            "units": "radians"
+          },
+          {
+            "symbol": "NA_{obj}",
+            "meaning": "numerical aperture of objective lens",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$DOF = \\frac{0.2}{M \\cdot \\alpha}$$",
         "description": "Depth of Field",
         "variables": [
-          {"symbol": "DOF", "meaning": "depth of field", "units": "μm"},
-          {"symbol": "M", "meaning": "magnification", "units": "dimensionless"},
-          {"symbol": "\\alpha", "meaning": "beam convergence angle", "units": "radians"}
+          {
+            "symbol": "DOF",
+            "meaning": "depth of field",
+            "units": "μm"
+          },
+          {
+            "symbol": "M",
+            "meaning": "magnification",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\alpha",
+            "meaning": "beam convergence angle",
+            "units": "radians"
+          }
         ]
       }
     ],
@@ -288,17 +360,25 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["sem-secondary-electrons", "sem-edx"],
+        "techniques": [
+          "sem-secondary-electrons",
+          "sem-edx"
+        ],
         "rationale": "SE and EDX highly synergistic. SE shows 'what it looks like', EDX shows 'what it is'. Combining enables complete particle/phase characterization: size, shape, distribution (SE) + composition (EDX). Same vacuum, same sample position = perfect registration.",
         "examples": "SEM-SE + SEM-EDX (Standard Combination): 1. Acquire SE images to characterize morphology, identify features of interest (particles, phases, structures). 2. On same SEM, switch to EDX mode or acquire EDX simultaneously. 3. Perform point analyses on specific features identified in SE images (e.g., bright particle, dark inclusion). 4. Perform EDX mapping (elemental distribution) of same area imaged with SE. 5. Overlay elemental maps on SE image for correlative visualization (morphology + chemistry). Paint cross-section analysis: SE reveals layered structure with distinct particle morphologies. EDX identifies layers: top = Pb (lead white), middle = Fe (ochre), bottom = Ca+Si (ground). Particles in ochre layer: round (5-10 μm, identified as Fe₂O₃ by EDX) vs. angular (2-5 μm, SiO₂ by EDX)."
       },
       {
-        "techniques": ["sem-secondary-electrons", "optical-microscopy"],
+        "techniques": [
+          "sem-secondary-electrons",
+          "optical-microscopy"
+        ],
         "rationale": "Optical microscopy provides color information (crucial for pigment ID), larger context, and faster survey. SEM provides nanometer resolution and better depth of field. Correlating shows what features look like in visible light vs. electron microscopy - bridges conservators' visual observations to microstructural analysis.",
         "examples": "Correlative Light and Electron Microscopy (CLEM): 1. Image sample with optical microscope (color, large field of view). Photograph at low mag for context and at high mag (oil immersion, ~1000×) for feature identification. 2. Mark fiducial points (scratches, particles) visible in both optical and SEM. 3. Transfer sample to SEM, coat if necessary. 4. Relocate fiducial points in SEM. 5. Acquire high-resolution SE images of same areas imaged optically. 6. Computationally register optical and SEM images using fiducials. 7. Overlay or present side-by-side for comparison. Textile fiber identification: Optical shows fiber color (white, dyed blue). SEM-SE reveals surface morphology: scales (wool), smooth ribbon-twisted (cotton), or longitudinal striations (flax). Combining optical color + SEM morphology definitively identifies fiber type and dyeing."
       },
       {
-        "techniques": ["sem-secondary-electrons"],
+        "techniques": [
+          "sem-secondary-electrons"
+        ],
         "rationale": "Single SE images provide qualitative 3D appearance (shadowing, depth of field) but are 2D projections. Stereo pairs provide true stereoscopic 3D visualization, enabling better assessment of topography, height, and spatial relationships. Quantitative photogrammetry extracts numerical height data.",
         "examples": "SEM Stereo Imaging for 3D Visualization: 1. Image sample at 0° tilt (vertical). Record position, focus, magnification. 2. Tilt sample ±5-10° (or use dual-detector with slightly different viewing angles). 3. Acquire second image maintaining same center position and magnification. 4. Create stereo pair: side-by-side for cross-eyed viewing, red-cyan anaglyph for 3D glasses, or computational 3D reconstruction. 5. For quantitative 3D: use photogrammetry software to extract height map from stereo pair. Corrosion morphology on bronze: Stereo SE images reveal pitting corrosion topography. 3D reconstruction measures pit depths (10-50 μm), determines volume loss, and distinguishes raised corrosion products from recessed pits - critical for conservation treatment planning."
       }
@@ -327,33 +407,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "von Ardenne, M. 1938. 'Das Elektronen-Rastermikroskop: Theoretische Grundlagen.' Zeitschrift für Physik 109 (9-10): 553-572.",
-        "doi": "10.1007/BF01341584",
-        "notes": "First description of scanning electron microscope principle; foundation of SEM"
-      },
-      {
-        "citation": "Everhart, T. E., and R. F. M. Thornley. 1960. 'Wide-Band Detector for Micro-Microampere Low-Energy Electron Currents.' Journal of Scientific Instruments 37 (7): 246-248.",
-        "doi": "10.1088/0950-7671/37/7/307",
-        "notes": "Development of Everhart-Thornley detector; standard SE detector still used today"
-      },
-      {
-        "citation": "Van der Snickt, G., et al. 2017. 'Combined Use of Synchrotron Radiation Based Micro-X-ray Fluorescence and SEM-EDX for Revealing an Alternative Degradation Pathway of the Pigment Cadmium Yellow in a Painting by Van Gogh.' Analytical Chemistry 84: 10221-10228.",
-        "doi": "10.1021/ac3015627",
-        "notes": "SEM-SE characterization of Van Gogh paint degradation; morphology of lead soap protrusions"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Goldstein, J. I., et al. 2018. 'Scanning Electron Microscopy and X-Ray Microanalysis.' 4th ed. Springer.",
-        "doi": "10.1007/978-1-4939-6676-9"
-      },
-      {
-        "citation": "Egerton, R. F. 2016. 'Physical Principles of Electron Microscopy: An Introduction to TEM, SEM, and AEM.' 2nd ed. Springer.",
-        "doi": "10.1007/978-3-319-39877-8"
-      }
-    ],
     "onlineResources": [
       {
         "title": "Microscopy Society of America (MSA)",
@@ -392,4 +445,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

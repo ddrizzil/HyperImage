@@ -25,62 +25,166 @@
         "latex": "$$E_{sample}(\\omega) = E_{ref}(\\omega) \\cdot T(\\omega) \\cdot e^{-i\\omega n(\\omega) d / c}$$",
         "description": "THz Transmission Through Sample",
         "variables": [
-          {"symbol": "E_{sample}(\\omega)", "meaning": "transmitted THz field through sample (frequency domain)", "units": "a.u."},
-          {"symbol": "E_{ref}(\\omega)", "meaning": "reference THz field (no sample)", "units": "a.u."},
-          {"symbol": "T(\\omega)", "meaning": "Fresnel transmission coefficient (interfaces)", "units": "dimensionless"},
-          {"symbol": "n(\\omega)", "meaning": "complex refractive index of sample", "units": "dimensionless"},
-          {"symbol": "d", "meaning": "sample thickness", "units": "mm"},
-          {"symbol": "c", "meaning": "speed of light", "units": "3×10⁸ m/s"}
+          {
+            "symbol": "E_{sample}(\\omega)",
+            "meaning": "transmitted THz field through sample (frequency domain)",
+            "units": "a.u."
+          },
+          {
+            "symbol": "E_{ref}(\\omega)",
+            "meaning": "reference THz field (no sample)",
+            "units": "a.u."
+          },
+          {
+            "symbol": "T(\\omega)",
+            "meaning": "Fresnel transmission coefficient (interfaces)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "n(\\omega)",
+            "meaning": "complex refractive index of sample",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "d",
+            "meaning": "sample thickness",
+            "units": "mm"
+          },
+          {
+            "symbol": "c",
+            "meaning": "speed of light",
+            "units": "3×10⁸ m/s"
+          }
         ]
       },
       {
         "latex": "$$\\tilde{n}(\\omega) = n(\\omega) + i\\kappa(\\omega)$$",
         "description": "Complex Refractive Index",
         "variables": [
-          {"symbol": "\\tilde{n}(\\omega)", "meaning": "complex refractive index", "units": "dimensionless"},
-          {"symbol": "n(\\omega)", "meaning": "real part: refractive index (phase velocity)", "units": "dimensionless"},
-          {"symbol": "\\kappa(\\omega)", "meaning": "imaginary part: extinction coefficient (absorption)", "units": "dimensionless"}
+          {
+            "symbol": "\\tilde{n}(\\omega)",
+            "meaning": "complex refractive index",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "n(\\omega)",
+            "meaning": "real part: refractive index (phase velocity)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\kappa(\\omega)",
+            "meaning": "imaginary part: extinction coefficient (absorption)",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\alpha(\\omega) = \\frac{2\\omega\\kappa(\\omega)}{c}$$",
         "description": "Absorption Coefficient",
         "variables": [
-          {"symbol": "\\alpha(\\omega)", "meaning": "absorption coefficient (Beer-Lambert law)", "units": "cm⁻¹"},
-          {"symbol": "\\omega", "meaning": "angular frequency (2πf)", "units": "rad/s"},
-          {"symbol": "\\kappa(\\omega)", "meaning": "extinction coefficient", "units": "dimensionless"},
-          {"symbol": "c", "meaning": "speed of light", "units": "cm/s"}
+          {
+            "symbol": "\\alpha(\\omega)",
+            "meaning": "absorption coefficient (Beer-Lambert law)",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "\\omega",
+            "meaning": "angular frequency (2πf)",
+            "units": "rad/s"
+          },
+          {
+            "symbol": "\\kappa(\\omega)",
+            "meaning": "extinction coefficient",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "c",
+            "meaning": "speed of light",
+            "units": "cm/s"
+          }
         ]
       },
       {
         "latex": "$$I(d) = I_0 e^{-\\alpha(\\omega) d}$$",
         "description": "Beer-Lambert Law (intensity attenuation)",
         "variables": [
-          {"symbol": "I(d)", "meaning": "transmitted intensity at depth d", "units": "W/cm²"},
-          {"symbol": "I_0", "meaning": "incident intensity", "units": "W/cm²"},
-          {"symbol": "\\alpha(\\omega)", "meaning": "absorption coefficient", "units": "cm⁻¹"},
-          {"symbol": "d", "meaning": "propagation distance (sample thickness)", "units": "cm"}
+          {
+            "symbol": "I(d)",
+            "meaning": "transmitted intensity at depth d",
+            "units": "W/cm²"
+          },
+          {
+            "symbol": "I_0",
+            "meaning": "incident intensity",
+            "units": "W/cm²"
+          },
+          {
+            "symbol": "\\alpha(\\omega)",
+            "meaning": "absorption coefficient",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "d",
+            "meaning": "propagation distance (sample thickness)",
+            "units": "cm"
+          }
         ]
       },
       {
         "latex": "$$\\Delta \\phi = \\frac{\\omega}{c}[n(\\omega) - 1]d$$",
         "description": "Phase Delay (time-of-flight through sample)",
         "variables": [
-          {"symbol": "\\Delta \\phi", "meaning": "phase shift relative to free space", "units": "radians"},
-          {"symbol": "\\omega", "meaning": "angular frequency", "units": "rad/s"},
-          {"symbol": "c", "meaning": "speed of light", "units": "cm/s"},
-          {"symbol": "n(\\omega)", "meaning": "refractive index", "units": "dimensionless"},
-          {"symbol": "d", "meaning": "sample thickness", "units": "cm"}
+          {
+            "symbol": "\\Delta \\phi",
+            "meaning": "phase shift relative to free space",
+            "units": "radians"
+          },
+          {
+            "symbol": "\\omega",
+            "meaning": "angular frequency",
+            "units": "rad/s"
+          },
+          {
+            "symbol": "c",
+            "meaning": "speed of light",
+            "units": "cm/s"
+          },
+          {
+            "symbol": "n(\\omega)",
+            "meaning": "refractive index",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "d",
+            "meaning": "sample thickness",
+            "units": "cm"
+          }
         ]
       },
       {
         "latex": "$$\\text{SNR} \\propto \\sqrt{P_{THz} \\cdot \\tau \\cdot \\Delta\\nu}$$",
         "description": "Signal-to-Noise Ratio (simplified)",
         "variables": [
-          {"symbol": "\\text{SNR}", "meaning": "signal-to-noise ratio", "units": "dimensionless"},
-          {"symbol": "P_{THz}", "meaning": "average THz power", "units": "μW"},
-          {"symbol": "\\tau", "meaning": "integration time per pixel", "units": "seconds"},
-          {"symbol": "\\Delta\\nu", "meaning": "detection bandwidth", "units": "Hz"}
+          {
+            "symbol": "\\text{SNR}",
+            "meaning": "signal-to-noise ratio",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "P_{THz}",
+            "meaning": "average THz power",
+            "units": "μW"
+          },
+          {
+            "symbol": "\\tau",
+            "meaning": "integration time per pixel",
+            "units": "seconds"
+          },
+          {
+            "symbol": "\\Delta\\nu",
+            "meaning": "detection bandwidth",
+            "units": "Hz"
+          }
         ]
       }
     ],
@@ -298,17 +402,26 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["thz-tds", "x-ray-radiography"],
+        "techniques": [
+          "thz-tds",
+          "x-ray-radiography"
+        ],
         "rationale": "X-ray and THz have complementary contrast mechanisms. X-ray: attenuation by electron density (high-Z elements absorb strongly; organics transparent). THz: absorption by molecular vibrations and refractive index (organics visible; metals reflective). Neither alone gives complete picture of complex heritage objects (paintings, illuminated manuscripts, composite artifacts). Combined: comprehensive subsurface characterization.",
         "examples": "THz-TDS + X-ray Radiography (Multi-Modal Subsurface Imaging): 1. X-ray radiography first: generates 2D projection showing high-Z materials (lead white, vermilion, metal substrates, nails, repairs). Identifies dense features, overall structure. 2. THz imaging (transmission or reflection): maps organic/low-Z materials (binders, cellulose, parchment, carbon-based underdrawings). Identifies layer thicknesses via time-domain analysis. 3. Register datasets: align THz and X-ray images using fiducial features (edges, known points). 4. Overlay: X-ray shows 'skeleton' (dense materials), THz shows 'soft tissue' (organics, interfaces). 5. Combine interpretation: complete picture of multi-layer structure (metal leaf detected by X-ray, overlying varnish by THz; lead white ground by X-ray, organic binder by THz). Illuminated manuscript: X-ray reveals metal leaf (gold, silver) in illuminations and metal gall ink (Fe). THz reveals parchment structure (layer thickness, fiber orientation), cellulose-based pigments (azurite, malachite), and organic binders. Overlay: map which areas have metal leaf (X-ray bright) + organic glazes over metal (THz signal attenuation). Identifies technique: shell gold (powdered gold in binder, THz-visible) vs. leaf gold (pure metal, THz-opaque)."
       },
       {
-        "techniques": ["thz-tds", "infrared-reflectography"],
+        "techniques": [
+          "thz-tds",
+          "infrared-reflectography"
+        ],
         "rationale": "IRR and THz-TDS are most common techniques for underdrawing visualization, but have different strengths/weaknesses. IRR: very high resolution, fast, sensitive to carbon, but shallow penetration and blind to lead white. THz: deeper penetration, sees all materials (carbon and lead white), quantitative depth, but lower resolution and slower. Combining maximizes underdrawing information: get fine detail (IRR) and deep/non-carbon features (THz).",
         "examples": "THz Imaging + Infrared Reflectography (IRR) - Complementary Underdrawing Analysis: 1. IRR first (faster, simpler): image painting in near-infrared (1.0-2.5 μm). Reveals carbon-based underdrawing (charcoal, ink) beneath paint layers (penetration ~50-200 μm). High spatial resolution (~50 μm). 2. Identify areas where IRR fails: thick paint, lead white ground, non-carbon underdrawing (lead white sketch, colored pigment sketch). 3. THz imaging of those problematic areas: penetrates deeper (0.5-1.5 mm), sees lead white, provides quantitative layer structure. Lower resolution (~0.5 mm) but complementary information. 4. Combine results: IRR for fine carbon underdrawing details, THz for deeper features and lead white blocking-in. 5. Create composite underdrawing map: overlay IRR (carbon lines) + THz (lead white shapes, deeper features). Renaissance panel painting: IRR reveals detailed carbon contour lines of figures (charcoal initial sketch) with 50 μm resolution. THz imaging (same areas) reveals lead white blocking-in beneath carbon contours (painter first sketched with charcoal, then blocked in major forms with thick lead white before applying colored paints). THz shows lead white extends 0.3 mm deep (two preparatory layers), invisible to IRR. Combined: complete reconstruction of artist's working method (dual-material underdrawing, layer sequence)."
       },
       {
-        "techniques": ["thz-tds", "raman-microscopy"],
+        "techniques": [
+          "thz-tds",
+          "raman-microscopy"
+        ],
         "rationale": "THz and Raman probe molecular vibrations but at different frequencies (THz: 0.1-10 THz = 3-300 cm⁻¹, low-frequency modes; Raman: 100-3000 cm⁻¹, mid-frequency modes). THz: bulk, subsurface, low spectral resolution but non-invasive. Raman: surface, high spectral resolution, specific molecular ID. Combining: THz identifies bulk composition non-invasively, Raman validates and refines identification at surface.",
         "examples": "THz Spectroscopy + Raman Spectroscopy (Subsurface + Surface Molecular ID): 1. THz-TDS spectroscopy (transmission): measure THz absorption spectrum α(ω) of sample. Reveals bulk composition (averaged over beam path, ~mm-scale depth). Identify materials via spectral fingerprinting (match to database). 2. Raman microscopy (surface): micro-Raman point analysis at sample surface (or exposed cross-section). Identify specific molecular species (pigments, binders, degradation products) with high specificity (unique vibrational fingerprints). 3. Correlate: if THz shows 'organic material with absorption peak at 1.2 THz', Raman pinpoints 'cellulose + protein (collagen)' at surface. Validates THz interpretation. 4. Use Raman to build reference library: measure pure materials (pigments, binders) with both THz and Raman. Enables future THz identification via spectral matching. Painted sculpture: THz transmission spectroscopy shows absorption peaks at 1.1 THz and 2.3 THz (organic material). Raman microanalysis of paint surface identifies gum arabic (polysaccharide binder) and lead white pigment. Correlation: THz 1.1 THz peak consistent with polysaccharide signature (literature); 2.3 THz from lattice phonons in lead carbonate (lead white). Combined: confirms paint is lead white in gum arabic binder, THz bulk measurement validated by surface Raman."
       }
@@ -337,33 +450,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Auston, D. H., et al. 1984. 'Cherenkov Radiation from Femtosecond Optical Pulses in Electro-Optic Media.' Physical Review Letters 53 (16): 1555-1558.",
-        "doi": "10.1103/PhysRevLett.53.1555",
-        "notes": "Early demonstration of THz generation via optical rectification; foundation for THz-TDS"
-      },
-      {
-        "citation": "Grischkowsky, D., et al. 1990. 'Far-Infrared Time-Domain Spectroscopy with Terahertz Beams of Dielectrics and Semiconductors.' Journal of the Optical Society of America B 7 (10): 2006-2015.",
-        "doi": "10.1364/JOSAB.7.002006",
-        "notes": "Foundational THz-TDS methodology; material characterization in time-domain"
-      },
-      {
-        "citation": "Dik, J., et al. 2016. 'Revealing Hidden Paint Layers in Oil Paintings by Means of Scanning Macro-XRF and Terahertz Imaging.' Analytical Chemistry 88: 13285-13295.",
-        "doi": "10.1021/acs.analchem.6b02722",
-        "notes": "THz imaging of Rembrandt's Night Watch; underdrawing and layer structure revealed"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Fukunaga, K., and M. Picollo. 2011. 'Terahertz Spectroscopy Applied to the Analysis of Artists' Materials.' Applied Physics A 100 (2): 591-597.",
-        "doi": "10.1007/s00339-010-5878-9"
-      },
-      {
-        "citation": "Jackson, J. B., et al. 2011. 'A Survey of Terahertz Applications in Cultural Heritage Conservation Science.' IEEE Transactions on Terahertz Science and Technology 1 (1): 220-231.",
-        "doi": "10.1109/TTHZ.2011.2159538"
-      }
-    ],
     "onlineResources": [
       {
         "title": "TeraView Application Notes (Art Conservation)",
@@ -397,4 +483,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

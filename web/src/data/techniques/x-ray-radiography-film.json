@@ -24,38 +24,94 @@
         "latex": "$$I = I_0 e^{-\\mu x}$$",
         "description": "Beer-Lambert Law for X-ray Attenuation",
         "variables": [
-          {"symbol": "I", "meaning": "transmitted intensity", "units": "W/m²"},
-          {"symbol": "I_0", "meaning": "incident intensity", "units": "W/m²"},
-          {"symbol": "\\mu", "meaning": "linear attenuation coefficient", "units": "cm⁻¹"},
-          {"symbol": "x", "meaning": "material thickness", "units": "cm"}
+          {
+            "symbol": "I",
+            "meaning": "transmitted intensity",
+            "units": "W/m²"
+          },
+          {
+            "symbol": "I_0",
+            "meaning": "incident intensity",
+            "units": "W/m²"
+          },
+          {
+            "symbol": "\\mu",
+            "meaning": "linear attenuation coefficient",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "x",
+            "meaning": "material thickness",
+            "units": "cm"
+          }
         ]
       },
       {
         "latex": "$$\\mu = \\mu_{pe} + \\mu_{cs} + \\mu_{pp}$$",
         "description": "Total Attenuation Coefficient Components",
         "variables": [
-          {"symbol": "\\mu", "meaning": "total linear attenuation coefficient", "units": "cm⁻¹"},
-          {"symbol": "\\mu_{pe}", "meaning": "photoelectric absorption coefficient", "units": "cm⁻¹"},
-          {"symbol": "\\mu_{cs}", "meaning": "Compton scattering coefficient", "units": "cm⁻¹"},
-          {"symbol": "\\mu_{pp}", "meaning": "pair production coefficient (negligible at <150 kV)", "units": "cm⁻¹"}
+          {
+            "symbol": "\\mu",
+            "meaning": "total linear attenuation coefficient",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "\\mu_{pe}",
+            "meaning": "photoelectric absorption coefficient",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "\\mu_{cs}",
+            "meaning": "Compton scattering coefficient",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "\\mu_{pp}",
+            "meaning": "pair production coefficient (negligible at <150 kV)",
+            "units": "cm⁻¹"
+          }
         ]
       },
       {
         "latex": "$$\\mu/\\rho \\propto \\frac{Z^3}{E^3}$$",
         "description": "Photoelectric Absorption Dependence (dominant below ~100 keV)",
         "variables": [
-          {"symbol": "\\mu/\\rho", "meaning": "mass attenuation coefficient", "units": "cm²/g"},
-          {"symbol": "Z", "meaning": "atomic number", "units": "dimensionless"},
-          {"symbol": "E", "meaning": "photon energy", "units": "keV"}
+          {
+            "symbol": "\\mu/\\rho",
+            "meaning": "mass attenuation coefficient",
+            "units": "cm²/g"
+          },
+          {
+            "symbol": "Z",
+            "meaning": "atomic number",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "E",
+            "meaning": "photon energy",
+            "units": "keV"
+          }
         ]
       },
       {
         "latex": "$$C = \\frac{I_{max} - I_{min}}{I_{max} + I_{min}}$$",
         "description": "Radiographic Contrast",
         "variables": [
-          {"symbol": "C", "meaning": "contrast", "units": "dimensionless"},
-          {"symbol": "I_{max}", "meaning": "maximum transmitted intensity", "units": "arbitrary units"},
-          {"symbol": "I_{min}", "meaning": "minimum transmitted intensity", "units": "arbitrary units"}
+          {
+            "symbol": "C",
+            "meaning": "contrast",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "I_{max}",
+            "meaning": "maximum transmitted intensity",
+            "units": "arbitrary units"
+          },
+          {
+            "symbol": "I_{min}",
+            "meaning": "minimum transmitted intensity",
+            "units": "arbitrary units"
+          }
         ]
       }
     ],
@@ -256,12 +312,19 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["x-ray-radiography-film", "irr-nir", "visible-photography"],
+        "techniques": [
+          "x-ray-radiography-film",
+          "irr-nir",
+          "visible-photography"
+        ],
         "rationale": "XRR shows structural features and lead-based paints; IRR reveals carbon underdrawings invisible to XRR; visible shows surface appearance. Together provide comprehensive technical documentation.",
         "examples": "Old Master paintings technical study. Standard protocol at major museums since 1970s. Workflow: 1. Acquire high-resolution visible photographs. 2. Perform IR reflectography (detects carbon underdrawings). 3. X-radiography (reveals structure and heavy pigments). 4. Compare all three modalities side-by-side and registered."
       },
       {
-        "techniques": ["x-ray-radiography-film", "ma-xrf"],
+        "techniques": [
+          "x-ray-radiography-film",
+          "ma-xrf"
+        ],
         "rationale": "XRR shows where heavy pigments are located but cannot distinguish between them (e.g., lead white vs. red lead). MA-XRF provides elemental specificity.",
         "examples": "Determining whether bright areas in radiograph are lead white, vermilion (Hg), or chrome yellow (Pb+Cr). Workflow: 1. X-radiography identifies regions with high-density pigments. 2. MA-XRF scanning provides element-specific maps (Pb, Hg, Fe, Cu, Ca). 3. Correlate XRR density with XRF elemental composition to identify specific pigments."
       }
@@ -288,28 +351,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Bridgman, C. F., and H. L. Gibson. 1963. 'X-Radiography of Panel Paintings.' Studies in Conservation 8 (3): 85-90.",
-        "doi": "10.2307/1505325",
-        "notes": "Established standardized radiographic techniques for art examination, including optimal kV settings and exposure parameters for different object types."
-      },
-      {
-        "citation": "Burroughs, A. 1938. Art Criticism from a Laboratory. Boston: Little, Brown and Company.",
-        "notes": "First comprehensive book on technical examination of paintings including X-radiography; established Fogg Museum as leader in field."
-      },
-      {
-        "citation": "Daffara, C., E. Pampaloni, L. Pezzati, M. Barucci, and R. Fontana. 2011. 'Scanning Multispectral IR Reflectography SMIRR: An Advanced Tool for Art Diagnostics.' Accounts of Chemical Research 43 (6): 847-856.",
-        "doi": "10.1021/ar100010t",
-        "notes": "Demonstrates integration of X-radiography with multi-spectral infrared imaging for comprehensive painting documentation."
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Saunders, D., and J. Kirby. 2004. 'Light, Photography and Paintings.' In The Examination of Paintings by Infrared and Ultraviolet Radiation, edited by R. White. London: National Gallery Technical Bulletin.",
-        "doi": null
-      }
-    ],
     "onlineResources": [
       {
         "title": "Conservation OnLine (CoOL) - X-ray Resources",
@@ -345,4 +386,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

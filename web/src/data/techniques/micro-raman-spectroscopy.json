@@ -28,19 +28,47 @@
         "latex": "$$d_{lateral} = \\frac{0.61 \\lambda}{NA}$$",
         "description": "Lateral (XY) Spatial Resolution",
         "variables": [
-          {"symbol": "d_{lateral}", "meaning": "minimum resolvable feature separation", "units": "μm"},
-          {"symbol": "\\lambda", "meaning": "laser wavelength (532, 633, 785 nm typical)", "units": "nm"},
-          {"symbol": "NA", "meaning": "numerical aperture (0.5-0.9 typical for μ-Raman)", "units": "dimensionless"}
+          {
+            "symbol": "d_{lateral}",
+            "meaning": "minimum resolvable feature separation",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "laser wavelength (532, 633, 785 nm typical)",
+            "units": "nm"
+          },
+          {
+            "symbol": "NA",
+            "meaning": "numerical aperture (0.5-0.9 typical for μ-Raman)",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\Delta z = \\frac{2 \\lambda n}{NA^2}$$",
         "description": "Axial (Depth) Resolution (Confocal)",
         "variables": [
-          {"symbol": "\\Delta z", "meaning": "depth resolution (confocal mode)", "units": "μm"},
-          {"symbol": "\\lambda", "meaning": "wavelength", "units": "nm"},
-          {"symbol": "n", "meaning": "refractive index of medium (~1.5 typical)", "units": "dimensionless"},
-          {"symbol": "NA", "meaning": "numerical aperture", "units": "dimensionless"}
+          {
+            "symbol": "\\Delta z",
+            "meaning": "depth resolution (confocal mode)",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "wavelength",
+            "units": "nm"
+          },
+          {
+            "symbol": "n",
+            "meaning": "refractive index of medium (~1.5 typical)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "NA",
+            "meaning": "numerical aperture",
+            "units": "dimensionless"
+          }
         ]
       }
     ],
@@ -80,11 +108,31 @@
     ],
     "measurementProtocol": "**Step 1: Calibration and Objective Selection**\nCalibrate wavelength (silicon 520.7 cm⁻¹). Select objective: 50× LWD (NA 0.5, WD 8 mm) for general use; 100× (NA 0.9, WD 0.3 mm) for maximum resolution on flat samples. Verify laser alignment (center spot in field of view). Duration: 15 minutes. Critical parameters: Silicon peak at 520.7 ± 0.5 cm⁻¹, Laser spot centered, Objective selected for application.\n\n**Step 2: Sample Positioning and Focus**\nLocate feature of interest via optical microscopy (video camera, white light). Position laser spot on target (XY joystick, sub-μm precision). Focus critically: Z-scan ±10 μm, select Z giving maximum Raman intensity. For confocal: pinhole rejection out-of-focus → signal very sensitive to focus. Duration: 5-15 minutes per feature. Critical parameters: Laser spot on target feature, Focus optimized (maximum signal), Stage stable.\n\n**Step 3: Acquisition**\nTest spectrum (1-5 s, low power 0.5-2 mW). Optimize: if fluorescence, try 785 nm or photobleach; if weak, increase power (monitor damage) or integration time (10-60 s). Acquire final spectrum (3-5 accumulations). For maps: define area, step size (0.5-5 μm), automate (1-10 hours for 50×50 μm² at 1 μm steps). Duration: 1-60 minutes per point/map. Critical parameters: SNR >10:1, No sample damage, Appropriate parameters.\n\n**Step 4: Depth Profiling (Optional)**\nFix XY, acquire spectra at multiple Z (step 1-5 μm through depth). Confocal pinhole rejects signal from out-of-focus planes → Z-resolved chemical profile (e.g., layer stack in cross-section). Duration: 30 minutes - 2 hours. Critical parameters: Confocal pinhole set, Step size <depth resolution, Refractive index correction applied.",
     "typicalParameters": [
-      {"parameter": "Laser power at sample", "value": "0.5-5 mW", "notes": "Lower than macro (smaller spot = higher intensity). Sensitive materials <2 mW."},
-      {"parameter": "Integration time", "value": "10-30 s", "notes": "Longer than macro (fewer molecules in small volume)."},
-      {"parameter": "Objective", "value": "50×/0.5 NA LWD", "notes": "100× for max resolution; 50× LWD for balance resolution/access."},
-      {"parameter": "Confocal pinhole", "value": "100 μm", "notes": "Smaller = better depth res., lower signal."},
-      {"parameter": "Map step size", "value": "1-2 μm", "notes": "Match to lateral resolution (~1 μm)."}
+      {
+        "parameter": "Laser power at sample",
+        "value": "0.5-5 mW",
+        "notes": "Lower than macro (smaller spot = higher intensity). Sensitive materials <2 mW."
+      },
+      {
+        "parameter": "Integration time",
+        "value": "10-30 s",
+        "notes": "Longer than macro (fewer molecules in small volume)."
+      },
+      {
+        "parameter": "Objective",
+        "value": "50×/0.5 NA LWD",
+        "notes": "100× for max resolution; 50× LWD for balance resolution/access."
+      },
+      {
+        "parameter": "Confocal pinhole",
+        "value": "100 μm",
+        "notes": "Smaller = better depth res., lower signal."
+      },
+      {
+        "parameter": "Map step size",
+        "value": "1-2 μm",
+        "notes": "Match to lateral resolution (~1 μm)."
+      }
     ],
     "calibration": "**Standards:** Silicon wafer (520.7 cm⁻¹, daily), Polystyrene (multi-peak, weekly check). **Frequency:** Daily wavelength calibration essential (thermal drift affects μm-scale positioning). **Procedure:** Focus on Si wafer, acquire spectrum, verify 520.7 ± 0.5 cm⁻¹. Check laser spot size via knife-edge scan or fluorescent slide (ensure ~1 μm FWHM).",
     "qualityControl": [
@@ -173,42 +221,32 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["micro-raman-spectroscopy", "sem-eds"],
+        "techniques": [
+          "micro-raman-spectroscopy",
+          "sem-eds"
+        ],
         "rationale": "SEM shows where to analyze (morphology-guided Raman). Raman resolves chemical ambiguities (e.g., EDS shows Ti+O, Raman distinguishes anatase vs rutile). Combined: morphology (SEM) + elements (EDS) + molecules (Raman) = complete microscale characterization.",
         "examples": "Paint cross-section: SEM shows two particle types (large angular, small spherical). EDS: both Pb+O. μ-Raman: large = lead white (carbonate 1050 cm⁻¹), small = massicot (PbO, 142/285 cm⁻¹). SEM+EDS alone ambiguous; Raman definitive. Sequential analysis on same cross-section (SEM first, then μ-Raman on identified ROIs)."
       },
       {
-        "techniques": ["micro-raman-spectroscopy", "ftir-microscopy"],
+        "techniques": [
+          "micro-raman-spectroscopy",
+          "ftir-microscopy"
+        ],
         "rationale": "FTIR-micro identifies organics (binders, 10-20 μm spot). μ-Raman identifies inorganics (pigments, 1 μm spot). Complementary for paint layers: FTIR for binder per layer, μ-Raman for pigment per layer.",
         "examples": "Paint cross-section: μ-Raman maps pigment distribution (layer 1: lead white + ultramarine; layer 2: vermilion). FTIR-micro on same cross-section (ATR on polished surface, press onto each layer): identifies binders (layer 1: protein tempera; layer 2: oil). Combined: complete stratigraphy (pigment + binder per layer)."
       },
       {
-        "techniques": ["micro-raman-spectroscopy", "xrf"],
+        "techniques": [
+          "micro-raman-spectroscopy",
+          "xrf"
+        ],
         "rationale": "MA-XRF elemental maps (mm-scale) guide μ-Raman point selection (where to sample). μ-Raman provides molecular ID for XRF hot spots. Efficient workflow: XRF survey identifies regions of interest, μ-Raman provides definitive molecular ID at selected points.",
         "examples": "Painting analysis: MA-XRF maps Pb distribution (lead white or lead-tin yellow?). μ-Raman targets high-Pb regions (based on XRF map), identifies lead-tin yellow type I (130-452 cm⁻¹) vs lead white (1050 cm⁻¹). XRF spatial (where Pb is), μ-Raman definitive (what compound)."
       }
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Delhaye, M., and P. Dhamelincourt. 1975. 'Raman Microprobe and Microscope.' Journal of Raman Spectroscopy 3: 33-43.",
-        "doi": "10.1002/jrs.1250030105",
-        "notes": "First Raman microscope design; established μm-scale Raman spectroscopy"
-      },
-      {
-        "citation": "Keune, K., et al. 2018. 'Microchemical Imaging of Vermilion Degradation.' Heritage Science 6: 3.",
-        "doi": "10.1186/s40494-018-0168-4",
-        "notes": "Van Gogh vermilion degradation (see case study); demonstrates μm-scale spatial resolution critical for degradation mechanism"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Casadio, F., et al. 2016. 'Raman Microscopy of Cultural Heritage Materials.' Topics in Current Chemistry 374: 1-36.",
-        "doi": "10.1007/128_2015_653",
-        "notes": "Comprehensive review: μ-Raman methodology, heritage applications, case studies"
-      }
-    ],
     "onlineResources": [
       {
         "title": "RRUFF Database",
@@ -240,4 +278,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

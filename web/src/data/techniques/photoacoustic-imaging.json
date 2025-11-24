@@ -25,59 +25,151 @@
         "latex": "$$p_0(\\mathbf{r}) = \\Gamma(\\mathbf{r}) \\cdot \\mu_a(\\mathbf{r}) \\cdot F(\\mathbf{r})$$",
         "description": "Initial Photoacoustic Pressure",
         "variables": [
-          {"symbol": "p_0(\\mathbf{r})", "meaning": "initial pressure rise at position r", "units": "Pa"},
-          {"symbol": "\\Gamma(\\mathbf{r})", "meaning": "Grüneisen parameter (thermal-to-acoustic conversion efficiency)", "units": "dimensionless"},
-          {"symbol": "\\mu_a(\\mathbf{r})", "meaning": "optical absorption coefficient", "units": "cm⁻¹"},
-          {"symbol": "F(\\mathbf{r})", "meaning": "local optical fluence", "units": "J/cm²"}
+          {
+            "symbol": "p_0(\\mathbf{r})",
+            "meaning": "initial pressure rise at position r",
+            "units": "Pa"
+          },
+          {
+            "symbol": "\\Gamma(\\mathbf{r})",
+            "meaning": "Grüneisen parameter (thermal-to-acoustic conversion efficiency)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\mu_a(\\mathbf{r})",
+            "meaning": "optical absorption coefficient",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "F(\\mathbf{r})",
+            "meaning": "local optical fluence",
+            "units": "J/cm²"
+          }
         ]
       },
       {
         "latex": "$$\\Gamma = \\frac{\\beta v_s^2}{C_p}$$",
         "description": "Grüneisen Parameter",
         "variables": [
-          {"symbol": "\\Gamma", "meaning": "Grüneisen parameter", "units": "dimensionless"},
-          {"symbol": "\\beta", "meaning": "thermal expansion coefficient", "units": "K⁻¹"},
-          {"symbol": "v_s", "meaning": "speed of sound in medium", "units": "m/s"},
-          {"symbol": "C_p", "meaning": "specific heat capacity at constant pressure", "units": "J/(kg·K)"}
+          {
+            "symbol": "\\Gamma",
+            "meaning": "Grüneisen parameter",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\beta",
+            "meaning": "thermal expansion coefficient",
+            "units": "K⁻¹"
+          },
+          {
+            "symbol": "v_s",
+            "meaning": "speed of sound in medium",
+            "units": "m/s"
+          },
+          {
+            "symbol": "C_p",
+            "meaning": "specific heat capacity at constant pressure",
+            "units": "J/(kg·K)"
+          }
         ]
       },
       {
         "latex": "$$z = \\frac{v_s \\cdot t}{2}$$",
         "description": "Depth Resolution (time-of-flight)",
         "variables": [
-          {"symbol": "z", "meaning": "depth of absorber", "units": "mm"},
-          {"symbol": "v_s", "meaning": "speed of sound in material", "units": "m/s (typically ~1500 m/s in paint/canvas)"},
-          {"symbol": "t", "meaning": "time delay of acoustic signal", "units": "μs"}
+          {
+            "symbol": "z",
+            "meaning": "depth of absorber",
+            "units": "mm"
+          },
+          {
+            "symbol": "v_s",
+            "meaning": "speed of sound in material",
+            "units": "m/s (typically ~1500 m/s in paint/canvas)"
+          },
+          {
+            "symbol": "t",
+            "meaning": "time delay of acoustic signal",
+            "units": "μs"
+          }
         ]
       },
       {
         "latex": "$$\\Delta z = \\frac{v_s}{2 \\cdot B}$$",
         "description": "Axial Resolution (depth resolution)",
         "variables": [
-          {"symbol": "\\Delta z", "meaning": "minimum resolvable depth separation", "units": "μm"},
-          {"symbol": "v_s", "meaning": "speed of sound", "units": "m/s"},
-          {"symbol": "B", "meaning": "ultrasonic bandwidth of transducer", "units": "Hz"}
+          {
+            "symbol": "\\Delta z",
+            "meaning": "minimum resolvable depth separation",
+            "units": "μm"
+          },
+          {
+            "symbol": "v_s",
+            "meaning": "speed of sound",
+            "units": "m/s"
+          },
+          {
+            "symbol": "B",
+            "meaning": "ultrasonic bandwidth of transducer",
+            "units": "Hz"
+          }
         ]
       },
       {
         "latex": "$$\\Delta x \\approx \\frac{\\lambda_{acoustic}}{2} = \\frac{v_s}{2f_c}$$",
         "description": "Lateral Resolution (acoustic diffraction limit)",
         "variables": [
-          {"symbol": "\\Delta x", "meaning": "lateral resolution", "units": "μm"},
-          {"symbol": "\\lambda_{acoustic}", "meaning": "acoustic wavelength", "units": "μm"},
-          {"symbol": "v_s", "meaning": "speed of sound", "units": "m/s"},
-          {"symbol": "f_c", "meaning": "center frequency of transducer", "units": "MHz"}
+          {
+            "symbol": "\\Delta x",
+            "meaning": "lateral resolution",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda_{acoustic}",
+            "meaning": "acoustic wavelength",
+            "units": "μm"
+          },
+          {
+            "symbol": "v_s",
+            "meaning": "speed of sound",
+            "units": "m/s"
+          },
+          {
+            "symbol": "f_c",
+            "meaning": "center frequency of transducer",
+            "units": "MHz"
+          }
         ]
       },
       {
         "latex": "$$\\text{SNR} \\propto \\sqrt{N_{avg}} \\cdot \\mu_a \\cdot F \\cdot \\Gamma$$",
         "description": "Signal-to-Noise Ratio Scaling",
         "variables": [
-          {"symbol": "\\text{SNR}", "meaning": "signal-to-noise ratio", "units": "dimensionless"},
-          {"symbol": "N_{avg}", "meaning": "number of averages", "units": "dimensionless"},
-          {"symbol": "\\mu_a", "meaning": "absorption coefficient", "units": "cm⁻¹"},
-          {"symbol": "F", "meaning": "optical fluence", "units": "mJ/cm²"},
-          {"symbol": "\\Gamma", "meaning": "Grüneisen parameter", "units": "dimensionless"}
+          {
+            "symbol": "\\text{SNR}",
+            "meaning": "signal-to-noise ratio",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "N_{avg}",
+            "meaning": "number of averages",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\mu_a",
+            "meaning": "absorption coefficient",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "F",
+            "meaning": "optical fluence",
+            "units": "mJ/cm²"
+          },
+          {
+            "symbol": "\\Gamma",
+            "meaning": "Grüneisen parameter",
+            "units": "dimensionless"
+          }
         ]
       }
     ],
@@ -304,17 +396,26 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["photoacoustic-imaging", "ultrasound-imaging"],
+        "techniques": [
+          "photoacoustic-imaging",
+          "ultrasound-imaging"
+        ],
         "rationale": "PAI highlights optically absorbing features; US highlights acoustic interfaces (layer boundaries, voids). Together: complete subsurface characterization. US also provides sound speed map for PAI depth calibration.",
         "examples": "PAI + Ultrasound Pulse-Echo Imaging: 1. Most PAI systems can also perform conventional ultrasound (pulse-echo). 2. Send ultrasound pulse from transducer, detect echoes from acoustic impedance mismatches. 3. Acquire both PAI (optical absorption contrast) and US (mechanical contrast) simultaneously. 4. Overlay images: PAI shows pigmented layers, US shows structural interfaces (canvas-ground, delamination, cracks). 5. Complementary contrasts provide complete structural + compositional information. Panel painting condition assessment: PAI reveals underdrawing and pigment layers. US detects wood grain, panel cracks, insect damage, delamination. Combined imaging shows spatial relationship between artistic structure and physical condition."
       },
       {
-        "techniques": ["photoacoustic-imaging"],
+        "techniques": [
+          "photoacoustic-imaging"
+        ],
         "rationale": "Single-wavelength PAI shows 'something is there'; multispectral PAI identifies 'what is there'. Spectroscopic approach enables pigment identification based on absorption spectra, analogous to visible spectroscopy but with depth information.",
         "examples": "Multispectral PAI for Pigment Identification: 1. Acquire PAI images at multiple wavelengths (e.g., 500, 550, 600, 650, 700, 800, 1000 nm). 2. Extract PA spectrum (PA amplitude vs. wavelength) for each pixel. 3. Build reference library of pigment PA spectra using pure pigment samples. 4. Perform spectral unmixing: decompose mixed spectrum into pure component contributions. 5. Generate false-color maps showing concentration of each pigment. 6. Depth-resolved pigment identification. Multi-layer painting analysis: Spectral PAI identifies top layer = ultramarine (PA peak 590 nm), middle layer = ochre (PA peak 550 nm), underdrawing = carbon black (flat spectrum). Creates depth-resolved pigment map showing layer-by-layer composition non-invasively."
       },
       {
-        "techniques": ["photoacoustic-imaging", "x-ray-radiography-film", "irr-nir"],
+        "techniques": [
+          "photoacoustic-imaging",
+          "x-ray-radiography-film",
+          "irr-nir"
+        ],
         "rationale": "IRR: carbon at surface. XRR: heavy elements throughout depth (no depth resolution). PAI: all absorbers with depth resolution. Together: complete compositional and structural characterization from surface to substrate.",
         "examples": "PAI + XRR + IRR Multimodal Integration: 1. Acquire IRR to detect exposed carbon underdrawing and map surface features. 2. Acquire XRR to visualize dense pigments (lead white, vermilion) and support structure. 3. Acquire PAI to detect subsurface absorbing layers (underdrawing beneath paint, organic pigments). 4. Computationally register all three modalities using fiducial markers or image features. 5. Create composite visualization showing complementary information. Old Master painting technical study: IRR shows partial underdrawing visible in thin paint. XRR shows lead white distribution and canvas weave. PAI reveals complete underdrawing (including parts covered by thick paint) with precise depth localization. Integration provides comprehensive understanding of artist's technique and materials."
       }
@@ -343,34 +444,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Bell, A. G. 1880. 'On the Production and Reproduction of Sound by Light.' American Journal of Science 20 (118): 305-324.",
-        "doi": "10.2475/ajs.s3-20.118.305",
-        "notes": "Discovery of photoacoustic effect; historical foundation of PAI"
-      },
-      {
-        "citation": "Wang, L. V., and S. Hu. 2012. 'Photoacoustic Tomography: In Vivo Imaging from Organelles to Organs.' Science 335 (6075): 1458-1462.",
-        "doi": "10.1126/science.1216210",
-        "notes": "Comprehensive review of modern PA imaging principles and biomedical applications"
-      },
-      {
-        "citation": "Beard, P. 2011. 'Biomedical Photoacoustic Imaging.' Interface Focus 1 (4): 602-631.",
-        "doi": "10.1098/rsfs.2011.0028",
-        "notes": "Detailed technical review of PA physics, instrumentation, and reconstruction"
-      },
-      {
-        "citation": "Nuster, R., et al. 2019. 'Photoacoustic Microscopy of Medieval Manuscript Illuminations.' Heritage Science 7: 87.",
-        "doi": "10.1186/s40494-019-0329-5",
-        "notes": "Multispectral PA of manuscripts; pigment identification via PA spectroscopy"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Attia, A. B. E., et al. 2019. 'A Review of Clinical Photoacoustic Imaging: Current and Future Trends.' Photoacoustics 16: 100144.",
-        "doi": "10.1016/j.pacs.2019.100144"
-      }
-    ],
     "onlineResources": [
       {
         "title": "Wang Lab PA Resources (Caltech)",
@@ -405,4 +478,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

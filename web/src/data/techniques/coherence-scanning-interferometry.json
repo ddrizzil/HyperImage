@@ -25,60 +25,156 @@
         "latex": "$$I(x,y,z) = I_0\\left[1 + \\gamma(z-h(x,y))\\cos\\left(\\frac{4\\pi}{\\lambda}(z-h(x,y))\\right)\\right]$$",
         "description": "Interferogram Intensity (simplified)",
         "variables": [
-          {"symbol": "I(x,y,z)", "meaning": "detected intensity at pixel (x,y) and scan position z", "units": "counts"},
-          {"symbol": "I_0", "meaning": "average intensity (DC component)", "units": "counts"},
-          {"symbol": "\\gamma(z-h)", "meaning": "fringe visibility (coherence envelope)", "units": "dimensionless (0-1)"},
-          {"symbol": "\\lambda", "meaning": "effective wavelength of light source", "units": "nm"},
-          {"symbol": "h(x,y)", "meaning": "surface height at position (x,y)", "units": "nm"},
-          {"symbol": "z", "meaning": "vertical scan position of objective", "units": "nm"}
+          {
+            "symbol": "I(x,y,z)",
+            "meaning": "detected intensity at pixel (x,y) and scan position z",
+            "units": "counts"
+          },
+          {
+            "symbol": "I_0",
+            "meaning": "average intensity (DC component)",
+            "units": "counts"
+          },
+          {
+            "symbol": "\\gamma(z-h)",
+            "meaning": "fringe visibility (coherence envelope)",
+            "units": "dimensionless (0-1)"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "effective wavelength of light source",
+            "units": "nm"
+          },
+          {
+            "symbol": "h(x,y)",
+            "meaning": "surface height at position (x,y)",
+            "units": "nm"
+          },
+          {
+            "symbol": "z",
+            "meaning": "vertical scan position of objective",
+            "units": "nm"
+          }
         ]
       },
       {
         "latex": "$$\\gamma(\\Delta z) = \\exp\\left[-\\left(\\frac{\\pi\\Delta z}{l_c}\\right)^2\\right]$$",
         "description": "Coherence Envelope (Gaussian approximation)",
         "variables": [
-          {"symbol": "\\gamma(\\Delta z)", "meaning": "fringe visibility at optical path difference Δz", "units": "dimensionless"},
-          {"symbol": "\\Delta z", "meaning": "optical path difference = z - h(x,y)", "units": "μm"},
-          {"symbol": "l_c", "meaning": "coherence length of light source", "units": "μm"}
+          {
+            "symbol": "\\gamma(\\Delta z)",
+            "meaning": "fringe visibility at optical path difference Δz",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "\\Delta z",
+            "meaning": "optical path difference = z - h(x,y)",
+            "units": "μm"
+          },
+          {
+            "symbol": "l_c",
+            "meaning": "coherence length of light source",
+            "units": "μm"
+          }
         ]
       },
       {
         "latex": "$$l_c = \\frac{\\lambda_0^2}{\\Delta\\lambda} = \\frac{2\\ln(2)}{\\pi}\\frac{\\lambda_0^2}{\\Delta\\lambda_{FWHM}}$$",
         "description": "Coherence Length",
         "variables": [
-          {"symbol": "l_c", "meaning": "coherence length (1/e² width of envelope)", "units": "μm"},
-          {"symbol": "\\lambda_0", "meaning": "center wavelength of source", "units": "nm"},
-          {"symbol": "\\Delta\\lambda", "meaning": "spectral bandwidth (FWHM)", "units": "nm"},
-          {"symbol": "\\Delta\\lambda_{FWHM}", "meaning": "full-width half-maximum of spectrum", "units": "nm"}
+          {
+            "symbol": "l_c",
+            "meaning": "coherence length (1/e² width of envelope)",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda_0",
+            "meaning": "center wavelength of source",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\Delta\\lambda",
+            "meaning": "spectral bandwidth (FWHM)",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\Delta\\lambda_{FWHM}",
+            "meaning": "full-width half-maximum of spectrum",
+            "units": "nm"
+          }
         ]
       },
       {
         "latex": "$$\\sigma_z = \\frac{\\lambda}{2\\pi\\cdot\\text{SNR}\\cdot NA}$$",
         "description": "Vertical Resolution (height noise)",
         "variables": [
-          {"symbol": "\\sigma_z", "meaning": "vertical (height) resolution (RMS noise)", "units": "nm"},
-          {"symbol": "\\lambda", "meaning": "wavelength of light", "units": "nm"},
-          {"symbol": "\\text{SNR}", "meaning": "signal-to-noise ratio of detection", "units": "dimensionless"},
-          {"symbol": "NA", "meaning": "numerical aperture of objective", "units": "dimensionless"}
+          {
+            "symbol": "\\sigma_z",
+            "meaning": "vertical (height) resolution (RMS noise)",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "wavelength of light",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\text{SNR}",
+            "meaning": "signal-to-noise ratio of detection",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "NA",
+            "meaning": "numerical aperture of objective",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\Delta x = \\frac{0.61\\lambda}{NA}$$",
         "description": "Lateral Resolution (Rayleigh criterion)",
         "variables": [
-          {"symbol": "\\Delta x", "meaning": "lateral (xy) resolution", "units": "μm"},
-          {"symbol": "\\lambda", "meaning": "wavelength of light", "units": "nm"},
-          {"symbol": "NA", "meaning": "numerical aperture of objective", "units": "dimensionless"}
+          {
+            "symbol": "\\Delta x",
+            "meaning": "lateral (xy) resolution",
+            "units": "μm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "wavelength of light",
+            "units": "nm"
+          },
+          {
+            "symbol": "NA",
+            "meaning": "numerical aperture of objective",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$S_q = \\sqrt{\\frac{1}{A}\\int\\int [z(x,y) - \\bar{z}]^2\\,dx\\,dy}$$",
         "description": "Surface Roughness (RMS, S_q parameter)",
         "variables": [
-          {"symbol": "S_q", "meaning": "root-mean-square roughness (3D areal)", "units": "nm"},
-          {"symbol": "A", "meaning": "measured area", "units": "μm²"},
-          {"symbol": "z(x,y)", "meaning": "surface height at position (x,y)", "units": "nm"},
-          {"symbol": "\\bar{z}", "meaning": "mean height over area", "units": "nm"}
+          {
+            "symbol": "S_q",
+            "meaning": "root-mean-square roughness (3D areal)",
+            "units": "nm"
+          },
+          {
+            "symbol": "A",
+            "meaning": "measured area",
+            "units": "μm²"
+          },
+          {
+            "symbol": "z(x,y)",
+            "meaning": "surface height at position (x,y)",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\bar{z}",
+            "meaning": "mean height over area",
+            "units": "nm"
+          }
         ]
       }
     ],
@@ -303,17 +399,26 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["coherence-scanning-interferometry", "optical-microscopy"],
+        "techniques": [
+          "coherence-scanning-interferometry",
+          "optical-microscopy"
+        ],
         "rationale": "Optical and CSI synergistic: optical shows what conservator sees (color, appearance); CSI quantifies what's invisible (nanometer-scale texture). Combined: complete documentation (appearance + topography). Same instrument, same field of view = perfect registration.",
         "examples": "CSI + Optical Microscopy (Integrated Instrument): 1. CSI instruments typically include optical microscopy mode (switch from interference to bright-field illumination). 2. First, use optical mode to survey sample, identify regions of interest, capture color images for documentation. 3. Navigate to features for detailed analysis. 4. Switch to CSI mode, acquire 3D topography. 5. Overlay color optical image on 3D height map for combined visualization (textured 3D rendering). 6. Extract quantitative data (roughness) from CSI; use optical for context and interpretation. Paint analysis: optical shows brushstroke color and craquelure pattern. CSI measures brushstroke height (impasto, 10-100 μm) and crack depth (1-20 μm). Combined: relates visual appearance to surface relief, quantifies texture contribution to gloss."
       },
       {
-        "techniques": ["coherence-scanning-interferometry", "sem-secondary-electrons"],
+        "techniques": [
+          "coherence-scanning-interferometry",
+          "sem-secondary-electrons"
+        ],
         "rationale": "CSI and SEM complementary scales: CSI 1-10 μm lateral resolution, excellent z-resolution; SEM 10-100 nm lateral, qualitative z only. CSI identifies features and measures depths/heights; SEM characterizes fine structure. Together: complete multi-scale characterization.",
         "examples": "CSI + SEM Correlative Microscopy: 1. CSI measurement first (non-destructive, no preparation). Acquire 3D topography, document region with optical images including fiducial markers. 2. Transfer sample to SEM. Coat if needed (insulator). 3. Relocate same area using fiducials (scratches, particles, distinctive features). 4. SEM high-resolution imaging of features identified in CSI. 5. Correlate: CSI provides quantitative depth (pit depths, ridge heights); SEM provides high-res morphology (crystal faces, grain boundaries). 6. Combine data: depth measurement (CSI) + material identification (SEM-EDX if available). Corrosion analysis: CSI maps corrosion pit distribution (locations, depths 1-50 μm, morphology). SEM zooms into individual pit: reveals crystalline corrosion products (morphology), grain structure. EDX identifies Cu-Cl (atacamite). Combined: pitting depth (CSI, quantitative) + corrosion product ID (SEM-EDX)."
       },
       {
-        "techniques": ["coherence-scanning-interferometry", "afm"],
+        "techniques": [
+          "coherence-scanning-interferometry",
+          "afm"
+        ],
         "rationale": "CSI and AFM cover different spatial scales with some overlap. CSI: large field, fast, μm lateral resolution. AFM: small field, slow, nm lateral resolution. Multi-scale approach: CSI for survey and context; AFM for atomic-scale detail. Combined PSD reveals roughness spectrum from nm to mm.",
         "examples": "Multi-Scale Surface Analysis: CSI + AFM: 1. CSI measurement at intermediate scale (10× to 50×, FOV 0.1-1 mm, lateral resolution 1-5 μm). Survey large area, identify features, measure roughness. 2. Select specific features (particles, defects) for higher-resolution analysis. 3. Transfer to AFM. Relocate features using optical microscope on AFM (or coordinates from CSI if on same instrument). 4. AFM scan at nm-scale lateral resolution (e.g., 10 × 10 μm scan at 512 × 512 pixels = 20 nm/pixel). 5. Compare roughness across scales: CSI Sa (mm-scale), AFM Sa (μm-scale). 6. Analyze scale-dependent behavior via multi-scale PSD. Paper surface analysis: CSI (1 × 1 mm field) shows fiber network topology, Sa = 2.5 μm (fiber height). AFM (10 × 10 μm field on single fiber surface) shows nano-fibrils and cellulose structure, Sa = 15 nm (fibril roughness). Multi-scale characterization from fibrils to fibers."
       }
@@ -342,33 +447,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Davidson, M., et al. 1987. 'An Application of Interference Microscopy to Integrated Circuit Inspection and Metrology.' Proceedings of SPIE 775: 233-247.",
-        "doi": "10.1117/12.940433",
-        "notes": "Early demonstration of white-light interferometry for surface profiling; foundation for CSI"
-      },
-      {
-        "citation": "de Groot, P., and L. Deck. 1995. 'Surface Profiling by Analysis of White-Light Interferograms in the Spatial Frequency Domain.' Journal of Modern Optics 42 (2): 389-401.",
-        "doi": "10.1080/09500349514550341",
-        "notes": "Key algorithm development for CSI data analysis; widely cited foundational work"
-      },
-      {
-        "citation": "Piqué, F., et al. 2018. 'Quantitative Assessment of Marble Surface Weathering Using Coherence Scanning Interferometry: Michelangelo's David.' Heritage Science 6: 28.",
-        "doi": "10.1186/s40494-018-0194-3",
-        "notes": "CSI quantification of stone weathering; Michelangelo's David surface degradation"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Leach, R. (ed.). 2011. 'Optical Measurement of Surface Topography.' Springer.",
-        "doi": "10.1007/978-3-642-12012-1"
-      },
-      {
-        "citation": "de Groot, P. 2015. 'Principles of Interference Microscopy for the Measurement of Surface Topography.' Advances in Optics and Photonics 7: 1-65.",
-        "doi": "10.1364/AOP.7.000001"
-      }
-    ],
     "onlineResources": [
       {
         "title": "NPL Surface Texture Research",
@@ -401,4 +479,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

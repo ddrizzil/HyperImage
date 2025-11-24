@@ -25,64 +25,176 @@
         "latex": "$$I_{holo} = |E_{ref}|^2 + |E_{obj}|^2 + 2|E_{ref}||E_{obj}|\\cos(\\Delta\\phi)$$",
         "description": "Holographic Interference Pattern",
         "variables": [
-          {"symbol": "I_{holo}", "meaning": "intensity at hologram plane", "units": "photons/pixel"},
-          {"symbol": "E_{ref}", "meaning": "electric field amplitude of reference wave", "units": "V/m"},
-          {"symbol": "E_{obj}", "meaning": "electric field amplitude of object wave", "units": "V/m"},
-          {"symbol": "\\Delta\\phi", "meaning": "phase difference between object and reference", "units": "radians"}
+          {
+            "symbol": "I_{holo}",
+            "meaning": "intensity at hologram plane",
+            "units": "photons/pixel"
+          },
+          {
+            "symbol": "E_{ref}",
+            "meaning": "electric field amplitude of reference wave",
+            "units": "V/m"
+          },
+          {
+            "symbol": "E_{obj}",
+            "meaning": "electric field amplitude of object wave",
+            "units": "V/m"
+          },
+          {
+            "symbol": "\\Delta\\phi",
+            "meaning": "phase difference between object and reference",
+            "units": "radians"
+          }
         ]
       },
       {
         "latex": "$$\\Delta\\phi = \\frac{2\\pi}{\\lambda} \\int \\delta(\\mathbf{r}) \\, d\\mathbf{r}$$",
         "description": "Phase Shift from Refractive Index",
         "variables": [
-          {"symbol": "\\Delta\\phi", "meaning": "accumulated phase shift", "units": "radians"},
-          {"symbol": "\\lambda", "meaning": "X-ray wavelength", "units": "nm"},
-          {"symbol": "\\delta(\\mathbf{r})", "meaning": "refractive index decrement at position r", "units": "dimensionless (~10⁻⁶)"},
-          {"symbol": "\\mathbf{r}", "meaning": "position along beam path", "units": "nm"}
+          {
+            "symbol": "\\Delta\\phi",
+            "meaning": "accumulated phase shift",
+            "units": "radians"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "X-ray wavelength",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\delta(\\mathbf{r})",
+            "meaning": "refractive index decrement at position r",
+            "units": "dimensionless (~10⁻⁶)"
+          },
+          {
+            "symbol": "\\mathbf{r}",
+            "meaning": "position along beam path",
+            "units": "nm"
+          }
         ]
       },
       {
         "latex": "$$\\delta = \\frac{r_e \\lambda^2}{2\\pi} \\sum_i n_i f_i'$$",
         "description": "Refractive Index Decrement (dispersive part)",
         "variables": [
-          {"symbol": "\\delta", "meaning": "refractive index decrement (real part)", "units": "dimensionless"},
-          {"symbol": "r_e", "meaning": "classical electron radius", "units": "2.818 × 10⁻¹⁵ m"},
-          {"symbol": "\\lambda", "meaning": "X-ray wavelength", "units": "nm"},
-          {"symbol": "n_i", "meaning": "number density of element i", "units": "atoms/m³"},
-          {"symbol": "f_i'", "meaning": "anomalous scattering factor (real part) for element i", "units": "electrons"}
+          {
+            "symbol": "\\delta",
+            "meaning": "refractive index decrement (real part)",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "r_e",
+            "meaning": "classical electron radius",
+            "units": "2.818 × 10⁻¹⁵ m"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "X-ray wavelength",
+            "units": "nm"
+          },
+          {
+            "symbol": "n_i",
+            "meaning": "number density of element i",
+            "units": "atoms/m³"
+          },
+          {
+            "symbol": "f_i'",
+            "meaning": "anomalous scattering factor (real part) for element i",
+            "units": "electrons"
+          }
         ]
       },
       {
         "latex": "$$E_{obj}(\\mathbf{r}) = \\mathcal{F}^{-1}\\left\\{\\frac{\\mathcal{F}\\{I_{holo}\\}}{\\mathcal{F}\\{E_{ref}\\}}\\right\\}$$",
         "description": "Holographic Reconstruction (Fourier method, simplified)",
         "variables": [
-          {"symbol": "E_{obj}(\\mathbf{r})", "meaning": "reconstructed object field at position r", "units": "V/m"},
-          {"symbol": "\\mathcal{F}", "meaning": "Fourier transform operator", "units": "N/A"},
-          {"symbol": "\\mathcal{F}^{-1}", "meaning": "inverse Fourier transform", "units": "N/A"},
-          {"symbol": "I_{holo}", "meaning": "measured hologram intensity", "units": "photons/pixel"},
-          {"symbol": "E_{ref}", "meaning": "reference wave (known)", "units": "V/m"}
+          {
+            "symbol": "E_{obj}(\\mathbf{r})",
+            "meaning": "reconstructed object field at position r",
+            "units": "V/m"
+          },
+          {
+            "symbol": "\\mathcal{F}",
+            "meaning": "Fourier transform operator",
+            "units": "N/A"
+          },
+          {
+            "symbol": "\\mathcal{F}^{-1}",
+            "meaning": "inverse Fourier transform",
+            "units": "N/A"
+          },
+          {
+            "symbol": "I_{holo}",
+            "meaning": "measured hologram intensity",
+            "units": "photons/pixel"
+          },
+          {
+            "symbol": "E_{ref}",
+            "meaning": "reference wave (known)",
+            "units": "V/m"
+          }
         ]
       },
       {
         "latex": "$$\\Delta x = \\frac{0.61\\lambda}{NA} = \\frac{0.61\\lambda D}{2L}$$",
         "description": "Spatial Resolution (diffraction-limited)",
         "variables": [
-          {"symbol": "\\Delta x", "meaning": "lateral resolution", "units": "nm"},
-          {"symbol": "\\lambda", "meaning": "X-ray wavelength", "units": "nm"},
-          {"symbol": "NA", "meaning": "numerical aperture", "units": "dimensionless"},
-          {"symbol": "D", "meaning": "detector width", "units": "mm"},
-          {"symbol": "L", "meaning": "sample-to-detector distance", "units": "mm"}
+          {
+            "symbol": "\\Delta x",
+            "meaning": "lateral resolution",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "X-ray wavelength",
+            "units": "nm"
+          },
+          {
+            "symbol": "NA",
+            "meaning": "numerical aperture",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "D",
+            "meaning": "detector width",
+            "units": "mm"
+          },
+          {
+            "symbol": "L",
+            "meaning": "sample-to-detector distance",
+            "units": "mm"
+          }
         ]
       },
       {
         "latex": "$$\\Delta z = \\frac{\\lambda}{NA^2} = \\frac{4\\lambda L^2}{D^2}$$",
         "description": "Depth Resolution (axial)",
         "variables": [
-          {"symbol": "\\Delta z", "meaning": "axial (depth) resolution", "units": "nm"},
-          {"symbol": "\\lambda", "meaning": "X-ray wavelength", "units": "nm"},
-          {"symbol": "NA", "meaning": "numerical aperture", "units": "dimensionless"},
-          {"symbol": "L", "meaning": "sample-to-detector distance", "units": "mm"},
-          {"symbol": "D", "meaning": "detector size", "units": "mm"}
+          {
+            "symbol": "\\Delta z",
+            "meaning": "axial (depth) resolution",
+            "units": "nm"
+          },
+          {
+            "symbol": "\\lambda",
+            "meaning": "X-ray wavelength",
+            "units": "nm"
+          },
+          {
+            "symbol": "NA",
+            "meaning": "numerical aperture",
+            "units": "dimensionless"
+          },
+          {
+            "symbol": "L",
+            "meaning": "sample-to-detector distance",
+            "units": "mm"
+          },
+          {
+            "symbol": "D",
+            "meaning": "detector size",
+            "units": "mm"
+          }
         ]
       }
     ],
@@ -297,17 +409,25 @@
     ],
     "commonCombinations": [
       {
-        "techniques": ["x-ray-holography", "xrf-tomography"],
+        "techniques": [
+          "x-ray-holography",
+          "xrf-tomography"
+        ],
         "rationale": "Holography provides structural context (particle boundaries, voids, interfaces) at nanoscale. XRF identifies what elements are present and where. Together: complete structure-chemistry characterization. Example: holography reveals dense nanoparticle; XRF identifies it as PbO vs. Fe₂O₃.",
         "examples": "X-ray Holography + XRF Tomography (Correlative Imaging): 1. Perform X-ray holographic tomography first (records structure without altering sample). 2. On same sample, perform XRF tomography at same beamline or nearby (fluorescence excited by X-rays, map elemental distribution). 3. Computationally register both datasets to common coordinate system using fiducial features. 4. Overlay structure (holography) with chemistry (XRF): visualize elemental localization within nanostructures. 5. Quantify element concentrations in specific structural features (particles, pores, interfaces). Pigment analysis: Holography segments individual pigment particles in 3D (50-500 nm diameter). XRF maps elements (Pb, Cu, Fe) within same volume. Overlay shows lead white particles (Pb map) intermixed with azurite (Cu map) at nanoscale - reveals mixing technique and extent of particle aggregation."
       },
       {
-        "techniques": ["x-ray-holography"],
+        "techniques": [
+          "x-ray-holography"
+        ],
         "rationale": "Exploits energy-dependent X-ray interactions (absorption edges, anomalous scattering) to add elemental/chemical specificity to holography's structural information. Can distinguish oxidation states or coordination environments of same element in different regions.",
         "examples": "Multi-Energy X-ray Holography (Spectroscopic Holography): 1. Acquire holograms at multiple X-ray energies across absorption edge of element of interest. 2. Below edge: normal phase and absorption contrast. 3. Across edge: absorption jumps, phase changes (anomalous scattering). 4. Reconstruct amplitude and phase at each energy. 5. Use difference in absorption (XANES-like analysis) or phase (dispersion correction) to identify chemical state and spatial distribution of specific element. Iron pigment speciation: Acquire holograms at 7.05 keV (below Fe K-edge), 7.11 keV (pre-edge), 7.13 keV (edge), 7.20 keV (post-edge). Difference images show Fe²⁺ (magnetite) vs. Fe³⁺ (hematite) with nanoscale spatial resolution. Reveals partial oxidation patterns in ochre pigments."
       },
       {
-        "techniques": ["x-ray-holography", "sem-edx"],
+        "techniques": [
+          "x-ray-holography",
+          "sem-edx"
+        ],
         "rationale": "SEM provides ultimate surface resolution (nm-scale) but limited depth information. Holography provides 3D context (μm depth) at moderate resolution. Together: high-resolution surface + volumetric structure. SEM can validate holography reconstruction accuracy.",
         "examples": "X-ray Holography + SEM Correlative Microscopy: 1. Perform X-ray holographic tomography to obtain 3D structure at 50-100 nm resolution. 2. Transfer same sample to SEM for surface imaging at 1-10 nm resolution. 3. Register SEM image to holography virtual slice of surface using fiducial markers or feature matching. 4. Use SEM's superior resolution to validate holography results and identify fine features. 5. Use holography's depth information to guide SEM tilt-series tomography or FIB milling for targeted cross-sectioning. Pigment particle characterization: Holography identifies particle of interest within 3D volume (100 μm deep). Provides coordinates for SEM examination. SEM images surface of same particle at 5 nm resolution, reveals crystalline facets. EDX identifies elemental composition. Combined data: 3D morphology (holography) + surface crystallography (SEM) + chemistry (EDX)."
       }
@@ -336,38 +456,6 @@
     ]
   },
   "references": {
-    "keyPapers": [
-      {
-        "citation": "Gabor, D. 1948. 'A New Microscopic Principle.' Nature 161 (4098): 777-778.",
-        "doi": "10.1038/161777a0",
-        "notes": "Invention of holography; proposed for electron microscopy; foundational principle"
-      },
-      {
-        "citation": "McNulty, I., et al. 1992. 'High-Resolution Imaging by Fourier Transform X-ray Holography.' Science 256 (5059): 1009-1012.",
-        "doi": "10.1126/science.256.5059.1009",
-        "notes": "Demonstrated practical X-ray holography using synchrotron source; established feasibility"
-      },
-      {
-        "citation": "Cloetens, P., et al. 1999. 'Holotomography: Quantitative Phase Tomography with Micrometer Resolution Using Hard Synchrotron Radiation X Rays.' Applied Physics Letters 75 (19): 2912-2914.",
-        "doi": "10.1063/1.125225",
-        "notes": "Combined X-ray holography with tomography for 3D phase imaging; widely cited method"
-      },
-      {
-        "citation": "Gonzalez, V., et al. 2020. 'Revealing the Composition and State of Pigmentary Materials at the Nanoscale Using Synchrotron Radiation: The Case of Rembrandt's Lead White.' Analytical Chemistry 92: 13057-13065.",
-        "doi": "10.1021/acs.analchem.0c02148",
-        "notes": "X-ray holographic nano-tomography of lead white pigment; first heritage application; 50 nm resolution 3D"
-      }
-    ],
-    "reviews": [
-      {
-        "citation": "Nugent, K. A. 2010. 'Coherent Methods in the X-ray Sciences.' Advances in Physics 59 (1): 1-99.",
-        "doi": "10.1080/00018730903270926"
-      },
-      {
-        "citation": "Sakdinawat, A., and D. Attwood. 2010. 'Nanoscale X-ray Imaging.' Nature Photonics 4: 840-848.",
-        "doi": "10.1038/nphoton.2010.267"
-      }
-    ],
     "onlineResources": [
       {
         "title": "ESRF Heritage Science Portal",
@@ -402,4 +490,3 @@
   ],
   "lastUpdated": "2025-01-15"
 }
-

@@ -28,43 +28,103 @@
         "latex": "$$\\mu_{th} = \\sqrt{\\frac{\\alpha}{\\pi f}}$$",
         "description": "Thermal Diffusion Length (Depth Sensitivity)",
         "variables": [
-          {"symbol": "\\mu_{th}", "meaning": "thermal diffusion length (probing depth)", "units": "μm or mm"},
-          {"symbol": "\\alpha", "meaning": "thermal diffusivity (κ/ρC_p, ~10⁻⁷-10⁻⁶ m²/s for organics)", "units": "m²/s"},
-          {"symbol": "f", "meaning": "modulation frequency (chopper or pulse repetition rate)", "units": "Hz"}
+          {
+            "symbol": "\\mu_{th}",
+            "meaning": "thermal diffusion length (probing depth)",
+            "units": "μm or mm"
+          },
+          {
+            "symbol": "\\alpha",
+            "meaning": "thermal diffusivity (κ/ρC_p, ~10⁻⁷-10⁻⁶ m²/s for organics)",
+            "units": "m²/s"
+          },
+          {
+            "symbol": "f",
+            "meaning": "modulation frequency (chopper or pulse repetition rate)",
+            "units": "Hz"
+          }
         ]
       },
       {
         "latex": "$$S_{PA} \\propto I_0 \\cdot \\beta(\\lambda) \\cdot \\eta_{th}$$",
         "description": "Photoacoustic Signal Amplitude",
         "variables": [
-          {"symbol": "S_{PA}", "meaning": "photoacoustic signal (microphone voltage or piezo charge)", "units": "V or pC"},
-          {"symbol": "I_0", "meaning": "incident light intensity", "units": "W/cm²"},
-          {"symbol": "\\beta(\\lambda)", "meaning": "absorption coefficient at wavelength λ", "units": "cm⁻¹"},
-          {"symbol": "\\eta_{th}", "meaning": "thermal-to-acoustic conversion efficiency", "units": "dimensionless"}
+          {
+            "symbol": "S_{PA}",
+            "meaning": "photoacoustic signal (microphone voltage or piezo charge)",
+            "units": "V or pC"
+          },
+          {
+            "symbol": "I_0",
+            "meaning": "incident light intensity",
+            "units": "W/cm²"
+          },
+          {
+            "symbol": "\\beta(\\lambda)",
+            "meaning": "absorption coefficient at wavelength λ",
+            "units": "cm⁻¹"
+          },
+          {
+            "symbol": "\\eta_{th}",
+            "meaning": "thermal-to-acoustic conversion efficiency",
+            "units": "dimensionless"
+          }
         ]
       },
       {
         "latex": "$$\\mu_{th}(10\\,\\text{Hz}) \\approx 500\\,\\mu\\text{m}, \\quad \\mu_{th}(10\\,\\text{kHz}) \\approx 5\\,\\mu\\text{m}$$",
         "description": "Typical Depth Scales (organic materials, α ~ 10⁻⁷ m²/s)",
         "variables": [
-          {"symbol": "\\mu_{th}", "meaning": "probing depth", "units": "μm"},
-          {"symbol": "f", "meaning": "modulation frequency", "units": "Hz"}
+          {
+            "symbol": "\\mu_{th}",
+            "meaning": "probing depth",
+            "units": "μm"
+          },
+          {
+            "symbol": "f",
+            "meaning": "modulation frequency",
+            "units": "Hz"
+          }
         ]
       }
     ],
     "interactionDepth": {
       "description": "Depth-resolved spectroscopy via frequency scanning. Low frequency (10-100 Hz) → thermal diffusion length 200-1000 μm (probes bulk, subsurface layers). High frequency (1-100 kHz) → 1-20 μm (surface-sensitive, top paint layer). Intermediate frequency → intermediate depths. Thermal wave attenuates exponentially: signal from depth z ∝ exp(-z/μ_th).",
       "materialSpecific": [
-        {"material": "Organic paint layers (oil, tempera)", "thermalDiffusivity": "α ~ 10⁻⁷ m²/s", "depthAt10Hz": "~500 μm", "depthAt10kHz": "~5 μm"},
-        {"material": "Pigments (dense inorganics)", "thermalDiffusivity": "α ~ 5×10⁻⁷ m²/s", "depthAt10Hz": "~1000 μm", "depthAt10kHz": "~10 μm"},
-        {"material": "Paper, textiles (porous)", "thermalDiffusivity": "α ~ 5×10⁻⁸ m²/s", "depthAt10Hz": "~200 μm", "depthAt10kHz": "~2 μm"},
-        {"material": "Metals (high conductivity)", "thermalDiffusivity": "α ~ 10⁻⁴ m²/s", "depthAt10Hz": "~50 mm", "depthAt10kHz": "~500 μm"}
+        {
+          "material": "Organic paint layers (oil, tempera)",
+          "thermalDiffusivity": "α ~ 10⁻⁷ m²/s",
+          "depthAt10Hz": "~500 μm",
+          "depthAt10kHz": "~5 μm"
+        },
+        {
+          "material": "Pigments (dense inorganics)",
+          "thermalDiffusivity": "α ~ 5×10⁻⁷ m²/s",
+          "depthAt10Hz": "~1000 μm",
+          "depthAt10kHz": "~10 μm"
+        },
+        {
+          "material": "Paper, textiles (porous)",
+          "thermalDiffusivity": "α ~ 5×10⁻⁸ m²/s",
+          "depthAt10Hz": "~200 μm",
+          "depthAt10kHz": "~2 μm"
+        },
+        {
+          "material": "Metals (high conductivity)",
+          "thermalDiffusivity": "α ~ 10⁻⁴ m²/s",
+          "depthAt10Hz": "~50 mm",
+          "depthAt10kHz": "~500 μm"
+        }
       ]
     },
     "spatialResolution": {
       "lateral": "Beam diameter: 1-10 mm typical (broader than focused techniques like Raman). Micro-PAS: 50-500 μm (focused laser, research systems).",
       "depth": "Controlled by modulation frequency: 1 μm (100 kHz) to 1 mm (10 Hz). Depth profiling: scan frequency, extract spectra vs depth (deconvolution required).",
-      "limitingFactors": ["Thermal diffusion (not optical, so not diffraction-limited)", "Sample thermal properties (α varies → depth varies)", "Frequency range (detectors limit: microphones 10 Hz - 50 kHz; piezo 10 kHz - 10 MHz)"]
+      "limitingFactors": [
+        "Thermal diffusion (not optical, so not diffraction-limited)",
+        "Sample thermal properties (α varies → depth varies)",
+        "Frequency range (detectors limit: microphones 10 Hz - 50 kHz; piezo 10 kHz - 10 MHz)"
+      ]
     },
     "sensitivity": {
       "detectionLimits": "Absorption coefficient β ~ 10⁻⁴ cm⁻¹ detectable (very weakly absorbing materials). Major component: 0.1-1 wt%. Trace: 100-1000 ppm with signal averaging.",
@@ -80,7 +140,11 @@
       "powerRange": "Low power density: 1-100 mW/cm² (safe, non-destructive; vs. 1-10 W/cm² for Raman which can damage)."
     },
     "detector": {
-      "type": ["Microphone (gas-coupled PAS): electret or condenser microphone in sealed cell, detects acoustic pressure in air/He/N₂", "Piezoelectric transducer (contact PAS): PZT or PVDF film attached to sample back, detects mechanical vibration", "Fiber-optic acoustic sensor (remote PAS): interferometric, detects air pressure at distance"],
+      "type": [
+        "Microphone (gas-coupled PAS): electret or condenser microphone in sealed cell, detects acoustic pressure in air/He/N₂",
+        "Piezoelectric transducer (contact PAS): PZT or PVDF film attached to sample back, detects mechanical vibration",
+        "Fiber-optic acoustic sensor (remote PAS): interferometric, detects air pressure at distance"
+      ],
       "spectralRange": "Detection independent of wavelength (acoustic signal, not optical). Excitation range: UV-Vis-NIR 200-2500 nm or MIR 2.5-25 μm.",
       "efficiency": "Microphone sensitivity: ~10 mV/Pa (detect Pa-level pressure waves). Piezo: pC/N (charge per force). Typical SNR 50:1 for strong absorbers.",
       "timeResolution": "Frequency response: microphones 10 Hz - 50 kHz; piezo 10 kHz - 10 MHz. Temporal resolution limited by thermal diffusion time (~ms for μm-scale, ~s for mm-scale)."
@@ -106,8 +170,16 @@
     "typicalConfiguration": "UV-Vis-NIR PAS: 150 W Xe arc lamp → Czerny-Turner monochromator (200-800 nm, 1200 l/mm grating) → mechanical chopper (20-200 Hz variable) → quartz window → gas-coupled PA cell (electret microphone, He atmosphere for better thermal coupling) → preamplifier → Stanford Research SR830 lock-in amplifier → PC. Scan 200-800 nm at 5 nm steps, 1 s integration per point (10 min total). Alternative FTIR-PAS: FTIR spectrometer (4000-400 cm⁻¹) with PAS accessory module (MTEC 300 or Bruker PAS cell), He-purged, rapid-scan FTIR modulation (~1 kHz effective).",
     "facilityRequirements": {
       "space": "Benchtop: 0.5 × 1 m (UV-Vis-NIR); 1 × 1.5 m (FTIR-PAS, larger spectrometer). Lab bench adequate.",
-      "utilities": ["110/240 VAC, 5-10 A (lamp, electronics)", "Compressed gas (He or N₂, optional but improves signal; 10-50 psi, <1 L/min flow for cell purge)", "No water cooling required"],
-      "environmental": ["Temp 18-25°C (thermal stability for PA cell, lock-in drift)", "Acoustic isolation desirable (quiet room, reduces ambient noise pickup; <40 dB background preferred)", "No special humidity control (sealed PA cell isolates sample from ambient)"]
+      "utilities": [
+        "110/240 VAC, 5-10 A (lamp, electronics)",
+        "Compressed gas (He or N₂, optional but improves signal; 10-50 psi, <1 L/min flow for cell purge)",
+        "No water cooling required"
+      ],
+      "environmental": [
+        "Temp 18-25°C (thermal stability for PA cell, lock-in drift)",
+        "Acoustic isolation desirable (quiet room, reduces ambient noise pickup; <40 dB background preferred)",
+        "No special humidity control (sealed PA cell isolates sample from ambient)"
+      ]
     },
     "commercialSystems": [
       {
@@ -139,7 +211,10 @@
       "sampleSize": "Micro-sample (mg-scale) or in situ (paintings, textiles analyzed directly). PA cell accommodates 5-20 mm diameter sample (disk, powder, or object surface if accessible).",
       "mountingProcedure": "Gas-cell PAS: place sample flat in cell chamber (powder pressed lightly or loose; solid fragment on holder). Seal cell (O-ring, ensure gas-tight). Purge with He (5-10 min, displace air → improves thermal coupling). Piezo-PAS: attach transducer to sample back with couplant (ultrasound gel or pressure contact).",
       "surfacePreparation": "None required (major advantage vs. FTIR-ATR which needs intimate contact). Rough, curved, powdered surfaces acceptable. Dust/contamination on surface contributes to signal (may need cleaning if surface layer not of interest).",
-      "contaminationConcerns": ["Surface contamination (dust, fingerprints) analyzed along with bulk if low-frequency (bulk-sensitive). High-frequency isolates surface, so contamination dominates.", "Atmospheric moisture in cell (affects NIR overtone region 1300-1900 nm; He purge eliminates)."]
+      "contaminationConcerns": [
+        "Surface contamination (dust, fingerprints) analyzed along with bulk if low-frequency (bulk-sensitive). High-frequency isolates surface, so contamination dominates.",
+        "Atmospheric moisture in cell (affects NIR overtone region 1300-1900 nm; He purge eliminates)."
+      ]
     },
     "measurementProtocol": {
       "steps": [
@@ -148,53 +223,111 @@
           "title": "System Setup and Calibration",
           "description": "Turn on lamp (warm 15-30 min for spectral stability). Calibrate wavelength (use emission line standards: Hg, Ar lamps; verify monochromator at known lines ±1 nm). Set chopper frequency (20-200 Hz typical for paintings, 100-1000 Hz for surface-sensitive). Tune lock-in amplifier (time constant 100 ms - 1 s, phase adjustment for maximum signal on reference absorber like carbon black).",
           "duration": "30-60 minutes",
-          "criticalParameters": ["Lamp warm-up (avoid drift during measurement)", "Chopper frequency stable (±1%, determines depth consistently)", "Lock-in phase optimized (90° out of phase with chopper gives max signal)"]
+          "criticalParameters": [
+            "Lamp warm-up (avoid drift during measurement)",
+            "Chopper frequency stable (±1%, determines depth consistently)",
+            "Lock-in phase optimized (90° out of phase with chopper gives max signal)"
+          ]
         },
         {
           "stepNumber": 2,
           "title": "Sample Loading and Cell Preparation",
           "description": "Mount sample in PA cell (flat against window for gas-cell; powder lightly pressed). Seal cell, purge with He (5-10 min, flow rate 50-100 mL/min, vent to exhaust). Verify seal (acoustic isolation: tap table, if microphone signal spikes, seal poor). Adjust light focus (maximize illuminated area on sample, typically 5-10 mm spot).",
           "duration": "15-30 minutes",
-          "criticalParameters": ["Gas-tight seal (prevents ambient noise, ensures stable gas atmosphere)", "He purge complete (dry gas improves thermal coupling, removes H₂O vapor IR bands)", "Sample position (centered, flat, uniform illumination)"]
+          "criticalParameters": [
+            "Gas-tight seal (prevents ambient noise, ensures stable gas atmosphere)",
+            "He purge complete (dry gas improves thermal coupling, removes H₂O vapor IR bands)",
+            "Sample position (centered, flat, uniform illumination)"
+          ]
         },
         {
           "stepNumber": 3,
           "title": "Reference Spectrum Acquisition",
           "description": "Acquire PA spectrum of reference absorber (carbon black powder, or instrument's internal reference). This normalizes lamp intensity, monochromator efficiency, detector response vs wavelength. Reference S_ref(λ) accounts for system spectral response (lamp + optics + detector). Sample spectrum S_sample(λ) divided by S_ref(λ) gives corrected absorption spectrum.",
           "duration": "5-10 minutes (full wavelength scan)",
-          "criticalParameters": ["Reference strongly absorbing (flat absorption spectrum ideal; carbon black approximates)", "Stable reference (measure at start of session, verify at end; if drifted >5%, re-measure)"]
+          "criticalParameters": [
+            "Reference strongly absorbing (flat absorption spectrum ideal; carbon black approximates)",
+            "Stable reference (measure at start of session, verify at end; if drifted >5%, re-measure)"
+          ]
         },
         {
           "stepNumber": 4,
           "title": "Sample Spectrum Acquisition",
           "description": "Scan wavelength (UV-Vis-NIR: 200-800 nm or 400-2500 nm, step size 5 nm typical). At each wavelength: lock-in integrates signal for t_int (0.3-3 s, longer for low-absorbing samples or better SNR). Record lock-in output (proportional to PA signal amplitude) vs wavelength. Monitor signal (software displays real-time spectrum, check for artifacts: sudden jumps indicate acoustic noise, drift indicates thermal instability).",
           "duration": "5-15 minutes (depending on wavelength range, steps, integration time)",
-          "criticalParameters": ["Wavelength step size (5 nm adequate for broad pigment bands; 1-2 nm for detailed structure)", "Integration time (balance speed vs SNR; typically 1 s per point sufficient for pigments)", "Signal stability (if noisy: reduce ambient acoustic noise, increase averaging, or lower chopper frequency)"]
+          "criticalParameters": [
+            "Wavelength step size (5 nm adequate for broad pigment bands; 1-2 nm for detailed structure)",
+            "Integration time (balance speed vs SNR; typically 1 s per point sufficient for pigments)",
+            "Signal stability (if noisy: reduce ambient acoustic noise, increase averaging, or lower chopper frequency)"
+          ]
         },
         {
           "stepNumber": 5,
           "title": "Depth Profiling (Optional)",
           "description": "To probe different depths: repeat spectrum at multiple chopper frequencies (e.g., 20 Hz, 100 Hz, 500 Hz, 2000 Hz). Low frequency → deeper; high frequency → surface. Each frequency gives spectrum weighted toward corresponding depth. Deconvolution algorithms (inverse problem, thermal wave modeling) extract depth-resolved spectra. Requires expertise, specialized software. Simple approach: compare spectra at two frequencies (low = bulk + surface; high = surface only; subtract to estimate bulk contribution).",
           "duration": "30 minutes - 2 hours (4-10 frequencies × 10 min per spectrum)",
-          "criticalParameters": ["Frequency range (span 1-2 orders of magnitude; e.g., 20-2000 Hz covers ~10-100 μm depth range for organics)", "Sample thermal properties (if α unknown, depth interpretation qualitative only)", "Deconvolution validity (model assumes homogeneous layers, known α; complex structures harder to resolve)"]
+          "criticalParameters": [
+            "Frequency range (span 1-2 orders of magnitude; e.g., 20-2000 Hz covers ~10-100 μm depth range for organics)",
+            "Sample thermal properties (if α unknown, depth interpretation qualitative only)",
+            "Deconvolution validity (model assumes homogeneous layers, known α; complex structures harder to resolve)"
+          ]
         },
         {
           "stepNumber": 6,
           "title": "Data Processing and Quality Control",
           "description": "Normalize sample spectrum: A_norm(λ) = S_sample(λ) / S_ref(λ). This corrected spectrum approximates absorption coefficient vs wavelength (proportional, not absolute unless calibrated with known absorber). Baseline correction if needed (PAS sometimes shows sloping baseline due to thermal effects; polynomial fit and subtract). Identify absorption features: peaks correspond to electronic transitions (pigments in UV-Vis) or overtone/combination bands (organics in NIR). Compare to reference spectra (databases, literature). Verify reproducibility: re-measure same sample (spectra should match ±5%); if not, check seal, He purge, sample position.",
           "duration": "15-30 minutes per sample",
-          "criticalParameters": ["Normalization accuracy (reference spectrum quality affects all samples; poor reference → systematic errors)", "Baseline flat (if strongly curved, thermal artifacts present; check cell design, sample mounting)", "Reproducibility (±5-10% typical; larger variation indicates unstable measurement conditions)"]
+          "criticalParameters": [
+            "Normalization accuracy (reference spectrum quality affects all samples; poor reference → systematic errors)",
+            "Baseline flat (if strongly curved, thermal artifacts present; check cell design, sample mounting)",
+            "Reproducibility (±5-10% typical; larger variation indicates unstable measurement conditions)"
+          ]
         }
       ]
     },
     "operatingParameters": [
-      {"parameter": "Chopper frequency", "typicalValue": "50-200 Hz", "range": "10 Hz - 10 kHz", "notes": "Low (10-100 Hz) = bulk (100-1000 μm depth). High (1-10 kHz) = surface (1-20 μm). Mid-range (100-500 Hz) = typical pigment layer (~50-200 μm)."},
-      {"parameter": "Light intensity at sample", "typicalValue": "10-100 mW/cm²", "range": "1-500 mW/cm²", "notes": "Higher intensity → stronger signal but risk heating damage. Pigments tolerate 100 mW/cm²; organics/dyes <50 mW/cm²."},
-      {"parameter": "Integration time per wavelength", "typicalValue": "1 s", "range": "0.1-10 s", "notes": "Longer improves SNR (√t). Typical: 1 s adequate for pigments, 3-10 s for weak absorbers (binders, dilute dyes)."},
-      {"parameter": "Wavelength range", "typicalValue": "400-800 nm (Vis) or 400-2500 nm (Vis-NIR)", "range": "200-25000 nm (UV to MIR)", "notes": "UV-Vis (200-800 nm): pigment electronic transitions. NIR (800-2500 nm): organic overtones (C-H, O-H). MIR (2.5-25 μm): fundamental vibrations (FTIR-PAS)."},
-      {"parameter": "Wavelength step size", "typicalValue": "5 nm", "range": "1-20 nm", "notes": "5 nm sufficient for broad pigment bands. 1-2 nm for detailed structure (sharp peaks, derivatives). 10-20 nm for rapid survey."},
-      {"parameter": "Cell atmosphere", "typicalValue": "Helium (He)", "range": "Air, N₂, He, vacuum", "notes": "He preferred (high thermal conductivity, low heat capacity → stronger signal). Air acceptable but ~2-5× weaker. N₂ intermediate. Vacuum eliminates gas-coupling (use piezo instead)."},
-      {"parameter": "Sample size", "typicalValue": "8-15 mm diameter", "range": "1-25 mm", "notes": "Must fit PA cell. Larger samples need larger cell (custom). Smaller samples (1-5 mm) possible but require micro-PAS cell (research systems)."}
+      {
+        "parameter": "Chopper frequency",
+        "typicalValue": "50-200 Hz",
+        "range": "10 Hz - 10 kHz",
+        "notes": "Low (10-100 Hz) = bulk (100-1000 μm depth). High (1-10 kHz) = surface (1-20 μm). Mid-range (100-500 Hz) = typical pigment layer (~50-200 μm)."
+      },
+      {
+        "parameter": "Light intensity at sample",
+        "typicalValue": "10-100 mW/cm²",
+        "range": "1-500 mW/cm²",
+        "notes": "Higher intensity → stronger signal but risk heating damage. Pigments tolerate 100 mW/cm²; organics/dyes <50 mW/cm²."
+      },
+      {
+        "parameter": "Integration time per wavelength",
+        "typicalValue": "1 s",
+        "range": "0.1-10 s",
+        "notes": "Longer improves SNR (√t). Typical: 1 s adequate for pigments, 3-10 s for weak absorbers (binders, dilute dyes)."
+      },
+      {
+        "parameter": "Wavelength range",
+        "typicalValue": "400-800 nm (Vis) or 400-2500 nm (Vis-NIR)",
+        "range": "200-25000 nm (UV to MIR)",
+        "notes": "UV-Vis (200-800 nm): pigment electronic transitions. NIR (800-2500 nm): organic overtones (C-H, O-H). MIR (2.5-25 μm): fundamental vibrations (FTIR-PAS)."
+      },
+      {
+        "parameter": "Wavelength step size",
+        "typicalValue": "5 nm",
+        "range": "1-20 nm",
+        "notes": "5 nm sufficient for broad pigment bands. 1-2 nm for detailed structure (sharp peaks, derivatives). 10-20 nm for rapid survey."
+      },
+      {
+        "parameter": "Cell atmosphere",
+        "typicalValue": "Helium (He)",
+        "range": "Air, N₂, He, vacuum",
+        "notes": "He preferred (high thermal conductivity, low heat capacity → stronger signal). Air acceptable but ~2-5× weaker. N₂ intermediate. Vacuum eliminates gas-coupling (use piezo instead)."
+      },
+      {
+        "parameter": "Sample size",
+        "typicalValue": "8-15 mm diameter",
+        "range": "1-25 mm",
+        "notes": "Must fit PA cell. Larger samples need larger cell (custom). Smaller samples (1-5 mm) possible but require micro-PAS cell (research systems)."
+      }
     ],
     "calibration": {
       "standards": [
@@ -221,41 +354,133 @@
         "Wavelength shift vs. reflectance spectrum (PAS peaks may shift 5-10 nm from literature reflectance spectra): PAS measures absorption directly; reflectance affected by scattering, Kubelka-Munk transformation approximates absorption. Small shifts normal, but large (>20 nm) indicates calibration error or wrong material."
       ],
       "troubleshooting": [
-        {"problem": "No signal or very weak signal", "cause": "Sample non-absorbing at measured wavelengths; poor gas-thermal coupling; microphone failed; lock-in phase wrong; light not reaching sample", "solution": "Test with carbon black (should give strong signal across UV-Vis-NIR; if not, problem with system not sample). Check He purge (air in cell → weak signal, purge 10 min). Verify light path (observe sample under illumination, should see bright spot). Adjust lock-in phase (scan phase 0-360°, maximize signal). Check microphone connection (loose cable common failure)."},
-        {"problem": "Signal too strong (saturates lock-in or ADC)", "cause": "Sample too strongly absorbing; light intensity too high; lock-in gain too high", "solution": "Reduce light intensity (neutral density filter, or close monochromator slits). Increase chopper frequency (shallower probe → less total absorption). Decrease lock-in sensitivity (lower gain setting). If sample dilutable (powder), mix with BaSO₄ or other non-absorber."},
-        {"problem": "Noisy spectrum (low SNR, erratic signal)", "cause": "Ambient acoustic noise; mechanical vibration; electronic interference (60 Hz hum); low sample absorption (weak signal)", "solution": "Acoustic isolation (foam wrap cell, close doors, measure at night). Ground loops (check electrical grounds, use isolation transformer). Increase averaging (longer integration time, 3-10 s per point). Increase light intensity (if sample tolerates). Lower chopper frequency (deeper probe → more molecules → stronger signal, but less surface-sensitive)."},
-        {"problem": "Spectrum changes between scans (irreproducible)", "cause": "Sample damage (photodegradation, thermal); ambient temperature drift; He purge inconsistent; sample movement", "solution": "Reduce light intensity immediately (if photodamage suspected; organics, dyes especially sensitive). Stabilize room temperature (±1°C). Ensure consistent He purge (same flow, time for each sample). Secure sample (check mounting, vibration may shift position). If truly time-varying (e.g., photochromic material), measure quickly or in dark between scans."},
-        {"problem": "Depth profiling shows unexpected trends (e.g., surface more absorbing than bulk, but expect opposite)", "cause": "Deconvolution artifacts; incorrect thermal diffusivity assumption; sample not layered structure (gradual composition change vs. discrete layers)", "solution": "Verify thermal properties (measure or estimate α more carefully; if uncertain, depth interpretation qualitative only). Check model assumptions (deconvolution assumes homogeneous layers with sharp interfaces; real samples may have gradients, voids, mixtures → complicates interpretation). Simplify analysis: qualitative comparison of low-freq (bulk-like) vs high-freq (surface-like) spectra, avoid quantitative depth extraction unless confident in model."}
+        {
+          "problem": "No signal or very weak signal",
+          "cause": "Sample non-absorbing at measured wavelengths; poor gas-thermal coupling; microphone failed; lock-in phase wrong; light not reaching sample",
+          "solution": "Test with carbon black (should give strong signal across UV-Vis-NIR; if not, problem with system not sample). Check He purge (air in cell → weak signal, purge 10 min). Verify light path (observe sample under illumination, should see bright spot). Adjust lock-in phase (scan phase 0-360°, maximize signal). Check microphone connection (loose cable common failure)."
+        },
+        {
+          "problem": "Signal too strong (saturates lock-in or ADC)",
+          "cause": "Sample too strongly absorbing; light intensity too high; lock-in gain too high",
+          "solution": "Reduce light intensity (neutral density filter, or close monochromator slits). Increase chopper frequency (shallower probe → less total absorption). Decrease lock-in sensitivity (lower gain setting). If sample dilutable (powder), mix with BaSO₄ or other non-absorber."
+        },
+        {
+          "problem": "Noisy spectrum (low SNR, erratic signal)",
+          "cause": "Ambient acoustic noise; mechanical vibration; electronic interference (60 Hz hum); low sample absorption (weak signal)",
+          "solution": "Acoustic isolation (foam wrap cell, close doors, measure at night). Ground loops (check electrical grounds, use isolation transformer). Increase averaging (longer integration time, 3-10 s per point). Increase light intensity (if sample tolerates). Lower chopper frequency (deeper probe → more molecules → stronger signal, but less surface-sensitive)."
+        },
+        {
+          "problem": "Spectrum changes between scans (irreproducible)",
+          "cause": "Sample damage (photodegradation, thermal); ambient temperature drift; He purge inconsistent; sample movement",
+          "solution": "Reduce light intensity immediately (if photodamage suspected; organics, dyes especially sensitive). Stabilize room temperature (±1°C). Ensure consistent He purge (same flow, time for each sample). Secure sample (check mounting, vibration may shift position). If truly time-varying (e.g., photochromic material), measure quickly or in dark between scans."
+        },
+        {
+          "problem": "Depth profiling shows unexpected trends (e.g., surface more absorbing than bulk, but expect opposite)",
+          "cause": "Deconvolution artifacts; incorrect thermal diffusivity assumption; sample not layered structure (gradual composition change vs. discrete layers)",
+          "solution": "Verify thermal properties (measure or estimate α more carefully; if uncertain, depth interpretation qualitative only). Check model assumptions (deconvolution assumes homogeneous layers with sharp interfaces; real samples may have gradients, voids, mixtures → complicates interpretation). Simplify analysis: qualitative comparison of low-freq (bulk-like) vs high-freq (surface-like) spectra, avoid quantitative depth extraction unless confident in model."
+        }
       ]
     }
   },
   "dataAnalysis": {
     "rawDataFormat": {
-      "fileFormats": ["ASCII text (.txt, .csv): wavelength (nm) vs. lock-in output (V)", "Vendor formats (if using FTIR-PAS: .spa, .spc from Bruker/Thermo; standard FTIR formats)", "Processed: normalized absorption spectrum (.txt, .csv)"],
+      "fileFormats": [
+        "ASCII text (.txt, .csv): wavelength (nm) vs. lock-in output (V)",
+        "Vendor formats (if using FTIR-PAS: .spa, .spc from Bruker/Thermo; standard FTIR formats)",
+        "Processed: normalized absorption spectrum (.txt, .csv)"
+      ],
       "dataStructure": "1D spectrum: typically 100-500 data points (wavelength vs PA signal amplitude). Multi-frequency depth profiling: 2D (wavelength × frequency) or 3D (wavelength × depth after deconvolution).",
       "typicalFileSize": "10-100 KB per spectrum (small; ASCII text). Multi-frequency set: 0.5-2 MB."
     },
     "preprocessing": [
-      {"step": "Normalization", "description": "Divide sample spectrum by reference (carbon black or system response function): A_norm(λ) = S_sample(λ) / S_ref(λ). Corrects for lamp spectrum, monochromator efficiency, detector response. Essential step.", "software": "Excel, OriginLab, MATLAB, Python (simple division)"},
-      {"step": "Baseline correction", "description": "If normalized spectrum shows sloping baseline (thermal artifacts, incomplete normalization), fit polynomial (order 1-3) to baseline regions (wavelength ranges with no peaks), subtract from spectrum. Makes peaks easier to identify, quantify.", "software": "OriginLab (baseline subtraction tool), MATLAB, Python"},
-      {"step": "Smoothing", "description": "If noisy: apply Savitzky-Golay filter (window 5-15 points) or moving average. Trade-off: reduces noise but can broaden peaks. Use judiciously (only if SNR <10:1).", "software": "OriginLab, MATLAB (sgolayfilt), Python (scipy.signal)"},
-      {"step": "Wavelength-to-wavenumber conversion (for FTIR-PAS)", "description": "MIR data often in wavenumber (cm⁻¹). Convert: ν̃ (cm⁻¹) = 10⁷ / λ (nm). Or use as-is if spectrometer outputs wavenumber.", "software": "FTIR software (Bruker OPUS, Thermo OMNIC) handles automatically"},
-      {"step": "Derivative spectra (optional)", "description": "First or second derivative enhances overlapping peaks, resolves shoulders. Useful for complex mixtures. Common in FTIR analysis.", "software": "OriginLab, MATLAB, Python"}
+      {
+        "step": "Normalization",
+        "description": "Divide sample spectrum by reference (carbon black or system response function): A_norm(λ) = S_sample(λ) / S_ref(λ). Corrects for lamp spectrum, monochromator efficiency, detector response. Essential step.",
+        "software": "Excel, OriginLab, MATLAB, Python (simple division)"
+      },
+      {
+        "step": "Baseline correction",
+        "description": "If normalized spectrum shows sloping baseline (thermal artifacts, incomplete normalization), fit polynomial (order 1-3) to baseline regions (wavelength ranges with no peaks), subtract from spectrum. Makes peaks easier to identify, quantify.",
+        "software": "OriginLab (baseline subtraction tool), MATLAB, Python"
+      },
+      {
+        "step": "Smoothing",
+        "description": "If noisy: apply Savitzky-Golay filter (window 5-15 points) or moving average. Trade-off: reduces noise but can broaden peaks. Use judiciously (only if SNR <10:1).",
+        "software": "OriginLab, MATLAB (sgolayfilt), Python (scipy.signal)"
+      },
+      {
+        "step": "Wavelength-to-wavenumber conversion (for FTIR-PAS)",
+        "description": "MIR data often in wavenumber (cm⁻¹). Convert: ν̃ (cm⁻¹) = 10⁷ / λ (nm). Or use as-is if spectrometer outputs wavenumber.",
+        "software": "FTIR software (Bruker OPUS, Thermo OMNIC) handles automatically"
+      },
+      {
+        "step": "Derivative spectra (optional)",
+        "description": "First or second derivative enhances overlapping peaks, resolves shoulders. Useful for complex mixtures. Common in FTIR analysis.",
+        "software": "OriginLab, MATLAB, Python"
+      }
     ],
     "analysisWorkflow": {
       "steps": [
-        {"stepNumber": 1, "title": "Visual Inspection", "description": "Plot normalized spectrum. Identify major peaks, shoulders, overall shape. Note wavelength ranges of absorption (e.g., visible pigment peaks 400-700 nm, NIR organic overtones 1400-1800 nm). Check for artifacts (spikes, unusual baseline)."},
-        {"stepNumber": 2, "title": "Peak Identification", "description": "List peak wavelengths (maxima). Compare to reference spectra: pigment databases (Kremer, Golden Paints spectra), literature (journal articles, books on pigment spectroscopy). Assign peaks to electronic/vibrational transitions (e.g., 490 nm = vermilion, 590 nm = minium, 1720 nm = C-H overtone in oil)."},
-        {"stepNumber": 3, "title": "Quantitative Analysis (optional)", "description": "Peak area/intensity ratios for mixture quantification (semi-quantitative; need calibration with known mixtures for accuracy). Kubelka-Munk transformation (if comparing to reflectance data): K/S = (1-R)² / 2R, but PAS directly gives ~K (absorption), so transformation less critical."},
-        {"stepNumber": 4, "title": "Depth Profiling Analysis", "description": "If multi-frequency data: plot spectra at each frequency. Identify features unique to surface (high-freq spectrum) vs bulk (low-freq). Deconvolution (advanced): use thermal wave model + inverse problem algorithms (Fourier deconvolution, least-squares fitting) to extract depth-resolved spectra. Requires expertise, software (MATLAB custom scripts, or specialized PAS software like WinPAS)."},
-        {"stepNumber": 5, "title": "Comparison to Other Techniques", "description": "Correlate PAS spectrum with XRF (elemental composition), Raman (molecular structure), FTIR (if both available). PAS absorption spectrum should match material ID from other techniques (e.g., PAS shows vermilion absorption peak, XRF shows Hg, Raman shows HgS 254 cm⁻¹ → consistent)."}
+        {
+          "stepNumber": 1,
+          "title": "Visual Inspection",
+          "description": "Plot normalized spectrum. Identify major peaks, shoulders, overall shape. Note wavelength ranges of absorption (e.g., visible pigment peaks 400-700 nm, NIR organic overtones 1400-1800 nm). Check for artifacts (spikes, unusual baseline)."
+        },
+        {
+          "stepNumber": 2,
+          "title": "Peak Identification",
+          "description": "List peak wavelengths (maxima). Compare to reference spectra: pigment databases (Kremer, Golden Paints spectra), literature (journal articles, books on pigment spectroscopy). Assign peaks to electronic/vibrational transitions (e.g., 490 nm = vermilion, 590 nm = minium, 1720 nm = C-H overtone in oil)."
+        },
+        {
+          "stepNumber": 3,
+          "title": "Quantitative Analysis (optional)",
+          "description": "Peak area/intensity ratios for mixture quantification (semi-quantitative; need calibration with known mixtures for accuracy). Kubelka-Munk transformation (if comparing to reflectance data): K/S = (1-R)² / 2R, but PAS directly gives ~K (absorption), so transformation less critical."
+        },
+        {
+          "stepNumber": 4,
+          "title": "Depth Profiling Analysis",
+          "description": "If multi-frequency data: plot spectra at each frequency. Identify features unique to surface (high-freq spectrum) vs bulk (low-freq). Deconvolution (advanced): use thermal wave model + inverse problem algorithms (Fourier deconvolution, least-squares fitting) to extract depth-resolved spectra. Requires expertise, software (MATLAB custom scripts, or specialized PAS software like WinPAS)."
+        },
+        {
+          "stepNumber": 5,
+          "title": "Comparison to Other Techniques",
+          "description": "Correlate PAS spectrum with XRF (elemental composition), Raman (molecular structure), FTIR (if both available). PAS absorption spectrum should match material ID from other techniques (e.g., PAS shows vermilion absorption peak, XRF shows Hg, Raman shows HgS 254 cm⁻¹ → consistent)."
+        }
       ]
     },
     "softwareTools": [
-      {"name": "OriginLab", "type": "commercial", "capabilities": ["Spectral plotting, baseline correction, peak fitting, simple processing"], "cost": "$600-$1,400"},
-      {"name": "MATLAB / Python", "type": "scripting", "capabilities": ["Custom processing, deconvolution algorithms, multivariate analysis, automation"], "cost": "MATLAB $2,500 academic; Python free"},
-      {"name": "OPUS (Bruker) / OMNIC (Thermo)", "type": "vendor (FTIR)", "capabilities": ["FTIR-PAS data acquisition, processing, library search (MIR region)"], "cost": "Included with FTIR spectrometer"},
-      {"name": "WinPAS", "type": "specialized (rare)", "capabilities": ["PAS-specific analysis, depth deconvolution, thermal modeling"], "cost": "Research tool, limited availability"}
+      {
+        "name": "OriginLab",
+        "type": "commercial",
+        "capabilities": [
+          "Spectral plotting, baseline correction, peak fitting, simple processing"
+        ],
+        "cost": "$600-$1,400"
+      },
+      {
+        "name": "MATLAB / Python",
+        "type": "scripting",
+        "capabilities": [
+          "Custom processing, deconvolution algorithms, multivariate analysis, automation"
+        ],
+        "cost": "MATLAB $2,500 academic; Python free"
+      },
+      {
+        "name": "OPUS (Bruker) / OMNIC (Thermo)",
+        "type": "vendor (FTIR)",
+        "capabilities": [
+          "FTIR-PAS data acquisition, processing, library search (MIR region)"
+        ],
+        "cost": "Included with FTIR spectrometer"
+      },
+      {
+        "name": "WinPAS",
+        "type": "specialized (rare)",
+        "capabilities": [
+          "PAS-specific analysis, depth deconvolution, thermal modeling"
+        ],
+        "cost": "Research tool, limited availability"
+      }
     ],
     "interpretationGuidelines": "PAS spectrum = absorption spectrum (direct, not affected by scattering). UV-Vis region (200-800 nm): electronic transitions (pigments, dyes, chromophores). NIR (800-2500 nm): overtone/combination bands (C-H, O-H, N-H in binders, organics; weaker than fundamentals, ~10-100× less intense). MIR (2.5-25 μm, FTIR-PAS): fundamental vibrations (strong, characteristic; similar to FTIR transmission but no sample prep). Peak positions match literature ±5-10 nm (PAS sometimes shifts slightly vs reflectance due to different measurement geometry, but close). Depth profiling: compare low-freq (bulk) vs high-freq (surface); surface peaks present in high-freq but absent/reduced in low-freq indicate surface layer (e.g., varnish 1720 nm C-H over paint). Artifacts: moisture bands (1400, 1900 nm), acoustic noise (random spikes), thermal drift (sloping baseline)."
   },
@@ -269,12 +494,36 @@
       "Non-contact analysis (laser-PAS: remote detection for delicate/large objects)"
     ],
     "materialTypes": [
-      {"material": "Pigment powders", "suitability": "excellent", "notes": "Ideal: PAS insensitive to powder particle size, packing density (unlike diffuse reflectance). Direct absorption spectrum."},
-      {"material": "Paintings (in situ)", "suitability": "good-excellent", "notes": "Surface analysis possible (fiber-coupled system or portable PAS under development). Depth profiling reveals varnish/paint/ground layers."},
-      {"material": "Textiles, paper", "suitability": "excellent", "notes": "Highly scattering materials; PAS superior to reflectance (scattering doesn't affect PAS signal). Dye ID, fiber characterization."},
-      {"material": "Opaque/dark materials", "suitability": "excellent", "notes": "Transmission spectroscopy impossible (opaque). Reflectance weak (dark). PAS detects absorption directly regardless of darkness."},
-      {"material": "Organic binders (oils, proteins)", "suitability": "good", "notes": "NIR overtones detectable (C-H 1700-1800 nm, O-H 1400-1500 nm). Weaker than pigments, but PAS sensitivity adequate. FTIR-PAS (MIR) better for fundamentals."},
-      {"material": "Highly fluorescent materials", "suitability": "excellent", "notes": "Raman fails (fluorescence overwhelms). PAS unaffected (non-radiative relaxation → heat regardless of fluorescence). Advantage over optical techniques."}
+      {
+        "material": "Pigment powders",
+        "suitability": "excellent",
+        "notes": "Ideal: PAS insensitive to powder particle size, packing density (unlike diffuse reflectance). Direct absorption spectrum."
+      },
+      {
+        "material": "Paintings (in situ)",
+        "suitability": "good-excellent",
+        "notes": "Surface analysis possible (fiber-coupled system or portable PAS under development). Depth profiling reveals varnish/paint/ground layers."
+      },
+      {
+        "material": "Textiles, paper",
+        "suitability": "excellent",
+        "notes": "Highly scattering materials; PAS superior to reflectance (scattering doesn't affect PAS signal). Dye ID, fiber characterization."
+      },
+      {
+        "material": "Opaque/dark materials",
+        "suitability": "excellent",
+        "notes": "Transmission spectroscopy impossible (opaque). Reflectance weak (dark). PAS detects absorption directly regardless of darkness."
+      },
+      {
+        "material": "Organic binders (oils, proteins)",
+        "suitability": "good",
+        "notes": "NIR overtones detectable (C-H 1700-1800 nm, O-H 1400-1500 nm). Weaker than pigments, but PAS sensitivity adequate. FTIR-PAS (MIR) better for fundamentals."
+      },
+      {
+        "material": "Highly fluorescent materials",
+        "suitability": "excellent",
+        "notes": "Raman fails (fluorescence overwhelms). PAS unaffected (non-radiative relaxation → heat regardless of fluorescence). Advantage over optical techniques."
+      }
     ],
     "caseStudies": [
       {
@@ -286,21 +535,39 @@
         "methodology": "Portable UV-Vis-NIR PAS system (Xe lamp, fiber-coupled to painting surface via contact PA cell, piezoelectric transducer). Measured 10 locations (overpainted areas + original areas for comparison). Frequency range: 20 Hz (bulk, ~500 μm depth), 50 Hz, 100 Hz, 500 Hz, 2 kHz (surface, ~10 μm). Acquisition: 400-800 nm, 5 nm steps, 2 s integration per wavelength. Normalized to carbon black reference. Analysis: compare spectra at different frequencies; identify pigments via peak positions.",
         "keyFindings": "Low-frequency spectra (20-100 Hz, probing 100-500 μm) showed ultramarine absorption (590 nm peak) + red ochre (broad 400-600 nm) at 8 locations, despite surface appearing light gray. High-frequency spectra (500-2000 Hz, surface 5-20 μm) showed only calcite/lime white (no distinct absorption peaks, flat 400-800 nm) + trace charcoal black (broad absorption). Interpretation: original fresco underneath (ultramarine + ochre) covered by later lime whitewash (calcite overpaint, 20-100 μm thick estimated from frequency dependence). Comparison to 2 visually 'original' areas (no suspected overpaint): all frequencies showed ultramarine + ochre (surface and bulk same → no overpaint). Depth profiling quantitative via thermal diffusion modeling: estimated overpaint thickness 40-80 μm (thermal diffusivity of lime mortar α ~ 6×10⁻⁷ m²/s; at 100 Hz, μ_th ~ 140 μm, signal attenuates from overpaint and underlying original; at 500 Hz, μ_th ~ 60 μm, mostly overpaint; fitting signal ratio 500 Hz / 100 Hz to two-layer model gives overpaint thickness). Conservation decision: mechanically removed overpaint (40-80 μm depth) in test areas, exposed ultramarine/ochre original as predicted. Guided full cleaning (PAS mapped extent of overpaint, prioritized areas, avoided original). Non-destructive preview crucial (prevented unnecessary damage to original areas, targeted intervention).",
         "significance": "Depth profiling demonstrated: PAS penetrates opaque overpaint (lime, calcite are weakly absorbing 400-800 nm, some light reaches original layer underneath; original pigments strongly absorbing, contribute to low-freq signal). Conventional reflectance spectroscopy sees only surface (overpaint, misses underlying). Raman struggles (lime fluorescence, pigment grains deep). XRF elemental (shows Ca surface + Cu/Fe underneath from azurite/ochre, but ambiguous: could be inhomogeneous single layer). PAS depth-resolved absorption = functional stratigraphy. Portable application: in-situ on vertical mural surface (no sampling, 10 min per location, non-contact piezo transducer). Limitations noted: depth resolution ~50 μm (cannot resolve very thin layers <20 μm); requires known thermal properties for quantitative depth (estimated here, ±30% uncertainty); complex layer stacks (>2 layers) harder to deconvolve unambiguously.",
-        "reference": {"citation": "Romani, A., et al. 2015. 'Depth Profiling of Wall Paintings by Photoacoustic Spectroscopy.' J. Cultural Heritage 16: 54-60.", "doi": "10.1016/j.culher.2014.01.007"}
+        "reference": {
+          "citation": "Romani, A., et al. 2015. 'Depth Profiling of Wall Paintings by Photoacoustic Spectroscopy.' J. Cultural Heritage 16: 54-60.",
+          "doi": "10.1016/j.culher.2014.01.007"
+        }
       }
     ]
   },
   "multimodal": {
     "complementaryTechniques": [
-      {"techniqueId": "xrf", "rationale": "XRF elemental, PAS molecular absorption. XRF identifies elements (Pb, Hg, Fe) → suggests pigments. PAS confirms via absorption spectrum (lead white vs minium both Pb, but different spectra). Depth: XRF ~10-100 μm fixed, PAS tunable 1-1000 μm."},
-      {"techniqueId": "raman-spectroscopy", "rationale": "Raman molecular structure (vibrational), PAS electronic/vibrational (UV-Vis-NIR). Complementary: Raman inorganics excellent, organics often fluoresce. PAS works on fluorescent materials (Raman fails). Depth: Raman surface ~μm, PAS tunable."},
-      {"techniqueId": "ftir-spectroscopy", "rationale": "FTIR fundamental vibrations (MIR), PAS overtones/combinations (NIR). FTIR-PAS (MIR) = FTIR without sample prep (powders, rough surfaces). PAS-NIR = overtones (weaker but bulk-sensitive, depth profiling). Use together: MIR for strong binder peaks, NIR for depth."},
-      {"techniqueId": "uv-vis-spectroscopy", "rationale": "Reflectance UV-Vis vs PAS UV-Vis: both probe electronic transitions. Reflectance affected by scattering (Kubelka-Munk approximation, indirect absorption). PAS direct absorption (scattering-insensitive). PAS superior for powders, dark/opaque materials. Reflectance easier (no special cell)."}
+      {
+        "techniqueId": "xrf",
+        "rationale": "XRF elemental, PAS molecular absorption. XRF identifies elements (Pb, Hg, Fe) → suggests pigments. PAS confirms via absorption spectrum (lead white vs minium both Pb, but different spectra). Depth: XRF ~10-100 μm fixed, PAS tunable 1-1000 μm."
+      },
+      {
+        "techniqueId": "raman-spectroscopy",
+        "rationale": "Raman molecular structure (vibrational), PAS electronic/vibrational (UV-Vis-NIR). Complementary: Raman inorganics excellent, organics often fluoresce. PAS works on fluorescent materials (Raman fails). Depth: Raman surface ~μm, PAS tunable."
+      },
+      {
+        "techniqueId": "ftir-spectroscopy",
+        "rationale": "FTIR fundamental vibrations (MIR), PAS overtones/combinations (NIR). FTIR-PAS (MIR) = FTIR without sample prep (powders, rough surfaces). PAS-NIR = overtones (weaker but bulk-sensitive, depth profiling). Use together: MIR for strong binder peaks, NIR for depth."
+      },
+      {
+        "techniqueId": "uv-vis-spectroscopy",
+        "rationale": "Reflectance UV-Vis vs PAS UV-Vis: both probe electronic transitions. Reflectance affected by scattering (Kubelka-Munk approximation, indirect absorption). PAS direct absorption (scattering-insensitive). PAS superior for powders, dark/opaque materials. Reflectance easier (no special cell)."
+      }
     ],
     "standardCombinations": [
       {
         "name": "PAS + XRF (Molecular + Elemental Depth Profiling)",
-        "techniques": ["photoacoustic-spectroscopy", "xrf"],
+        "techniques": [
+          "photoacoustic-spectroscopy",
+          "xrf"
+        ],
         "workflow": "1. XRF scan painting area (elemental map, identify pigment-rich regions, Pb/Hg/Cu hot spots). 2. PAS analyze selected locations: low-freq (bulk, ~500 μm) + high-freq (surface, ~10 μm) spectra. 3. Correlate: XRF elements + PAS absorption peaks → definitive pigment ID. 4. Depth compare: XRF fixed depth (~50 μm), PAS variable (tune frequency) → resolve discrepancies (e.g., XRF shows Pb surface + Fe underneath, PAS low-freq shows lead white + ochre, high-freq shows lead white only → confirms stratification).",
         "rationale": "XRF fast spatial survey (seconds per point, map large areas). PAS slower (minutes per location) but depth-tunable, molecular ID. XRF guides PAS sampling (where to measure). PAS resolves XRF ambiguities (multiple Pb pigments, PAS spectra distinguish).",
         "exampleApplication": "Painting with suspected underdrawing. XRF shows C (carbon) in underpaint region + Pb (lead white) overpaint. PAS low-freq (200 Hz, ~300 μm depth) shows broad carbon absorption (UV-Vis flat, no peaks, consistent with charcoal) + lead white absorption shoulder. PAS high-freq (2 kHz, ~20 μm, surface layer only) shows lead white dominant, carbon weak. Confirms carbon underdrawing beneath lead white paint (~50-200 μm deep estimated from frequency dependence)."
@@ -331,14 +598,42 @@
   },
   "historicalDevelopment": {
     "timeline": [
-      {"year": "1880", "event": "Alexander Graham Bell discovers photoacoustic effect (light → sound in materials)", "significance": "Foundational physics; demonstrated acoustic signal from modulated light absorption"},
-      {"year": "1938", "event": "Viengerov develops first gas-phase PAS for trace gas detection", "significance": "Analytical application; infrared PAS for CO₂, H₂O monitoring"},
-      {"year": "1970s", "event": "Rosencwaig & Gersho develop theory for condensed-phase PAS; commercial FTIR-PAS accessories", "significance": "Modern PAS spectroscopy emerges; thermal diffusion model, depth profiling concepts established"},
-      {"year": "1980s-1990s", "event": "Heritage applications begin: pigment analysis (powders), paper/textiles (scattering materials)", "significance": "PAS introduced to conservation science; advantages for opaque/scattering samples recognized"},
-      {"year": "2000s", "event": "Portable PAS development (fiber-coupled, laser-based); depth profiling for paintings", "significance": "In-situ capability; subsurface layer detection in artworks without sampling"},
-      {"year": "2010s-present", "event": "Integration with other techniques (PAS + XRF, PAS + Raman); advanced depth deconvolution algorithms", "significance": "Multi-modal workflows; computational methods improve depth resolution, quantification"}
+      {
+        "year": "1880",
+        "event": "Alexander Graham Bell discovers photoacoustic effect (light → sound in materials)",
+        "significance": "Foundational physics; demonstrated acoustic signal from modulated light absorption"
+      },
+      {
+        "year": "1938",
+        "event": "Viengerov develops first gas-phase PAS for trace gas detection",
+        "significance": "Analytical application; infrared PAS for CO₂, H₂O monitoring"
+      },
+      {
+        "year": "1970s",
+        "event": "Rosencwaig & Gersho develop theory for condensed-phase PAS; commercial FTIR-PAS accessories",
+        "significance": "Modern PAS spectroscopy emerges; thermal diffusion model, depth profiling concepts established"
+      },
+      {
+        "year": "1980s-1990s",
+        "event": "Heritage applications begin: pigment analysis (powders), paper/textiles (scattering materials)",
+        "significance": "PAS introduced to conservation science; advantages for opaque/scattering samples recognized"
+      },
+      {
+        "year": "2000s",
+        "event": "Portable PAS development (fiber-coupled, laser-based); depth profiling for paintings",
+        "significance": "In-situ capability; subsurface layer detection in artworks without sampling"
+      },
+      {
+        "year": "2010s-present",
+        "event": "Integration with other techniques (PAS + XRF, PAS + Raman); advanced depth deconvolution algorithms",
+        "significance": "Multi-modal workflows; computational methods improve depth resolution, quantification"
+      }
     ],
-    "firstHeritageApplication": {"year": "1980s", "researchers": "Faraldo-Gómez (Spain), Tam (Canada), heritage applications", "reference": "Systematic heritage use began 1980s: pigment powder analysis (direct absorption, no Kubelka-Munk needed), paper/textile dye characterization (scattering-free spectra). Recognized advantages for opaque, scattering materials common in cultural heritage."},
+    "firstHeritageApplication": {
+      "year": "1980s",
+      "researchers": "Faraldo-Gómez (Spain), Tam (Canada), heritage applications",
+      "reference": "Systematic heritage use began 1980s: pigment powder analysis (direct absorption, no Kubelka-Munk needed), paper/textile dye characterization (scattering-free spectra). Recognized advantages for opaque, scattering materials common in cultural heritage."
+    },
     "currentStateOfArt": "PAS established niche technique in heritage science: FTIR-PAS accessories available (Bruker, MTEC; $15-40K add-on to FTIR for powders, fibers, rough samples). UV-Vis-NIR PAS mostly custom-built (research labs; few commercial portable systems). Depth profiling demonstrated (paintings, murals; frequency-scanned 10 Hz - 10 kHz resolves 10-1000 μm). Limitations: slower than reflectance, requires expertise, less widespread than Raman/FTIR (fewer labs have equipment). Future: portable laser-PAS (remote, non-contact), AI-driven depth deconvolution, integration with hyperspectral imaging."
   },
   "practicalConsiderations": {
@@ -349,9 +644,18 @@
       "perSampleCost": "$50-$200. Staff time: 1-3 hours (setup 30 min, measurement 10-30 min, processing 30-60 min) @ $50-100/hr. Consumables: negligible ($1-5 He gas per sample). Equipment use: amortized ~$20-50/session."
     },
     "safetyRegulatory": {
-      "hazards": ["Light intensity (10-100 mW/cm², ~1/10 sunlight; safe, but prolonged exposure can heat sample slightly; risk of photodegradation for highly photosensitive materials like fugitive dyes)", "Compressed gas (He cylinder: asphyxiation in confined space, high pressure; standard gas handling safety)", "Electrical (110/240 VAC, standard lab safety; lamp high voltage during replacement)"],
-      "safetyEquipment": ["Safety glasses (UV light if measuring <400 nm; block UV)", "Gloves (handling samples with toxic pigments: Pb, Hg, As)"],
-      "regulatoryCompliance": ["No special regulations (non-ionizing light, low power). Standard lab electrical safety (grounded equipment). Gas cylinder safety (secure, ventilated area)."]
+      "hazards": [
+        "Light intensity (10-100 mW/cm², ~1/10 sunlight; safe, but prolonged exposure can heat sample slightly; risk of photodegradation for highly photosensitive materials like fugitive dyes)",
+        "Compressed gas (He cylinder: asphyxiation in confined space, high pressure; standard gas handling safety)",
+        "Electrical (110/240 VAC, standard lab safety; lamp high voltage during replacement)"
+      ],
+      "safetyEquipment": [
+        "Safety glasses (UV light if measuring <400 nm; block UV)",
+        "Gloves (handling samples with toxic pigments: Pb, Hg, As)"
+      ],
+      "regulatoryCompliance": [
+        "No special regulations (non-ionizing light, low power). Standard lab electrical safety (grounded equipment). Gas cylinder safety (secure, ventilated area)."
+      ]
     }
   },
   "futureDirections": {
@@ -370,23 +674,51 @@
   },
   "references": {
     "foundationalPapers": [
-      {"citation": "Rosencwaig, A., and A. Gersho. 1976. 'Theory of the Photoacoustic Effect with Solids.' J. Appl. Phys. 47: 64-69.", "doi": "10.1063/1.322296", "year": 1976, "significance": "Foundational theory: thermal diffusion model, depth profiling via frequency; basis for modern PAS"},
-      {"citation": "Tam, A.C. 1986. 'Applications of Photoacoustic Sensing Techniques.' Rev. Mod. Phys. 58: 381-431.", "doi": "10.1103/RevModPhys.58.381", "year": 1986, "significance": "Comprehensive review: PAS principles, applications (including materials analysis); established methodology"}
-    ],
-    "methodologyReviews": [
-      {"citation": "Christensen, D., ed. 1986. 'Photoacoustic and Photothermal Phenomena.' Springer Series in Optical Sciences. Springer.", "doi": "N/A (book)", "year": 1986, "scope": "Conference proceedings: theory, instrumentation, applications across fields (heritage not main focus but materials analysis relevant)"},
-      {"citation": "Michaelian, K.H. 2003. 'Photoacoustic IR Spectroscopy: Instrumentation, Applications and Data Analysis.' Wiley-VCH.", "doi": "N/A (book)", "year": 2003, "scope": "FTIR-PAS focus: instrumentation, sample analysis, heritage applications chapter (pigments, papers, textiles)"}
+      {
+        "citation": "Rosencwaig, A., and A. Gersho. 1976. 'Theory of the Photoacoustic Effect with Solids.' J. Appl. Phys. 47: 64-69.",
+        "doi": "10.1063/1.322296",
+        "year": 1976,
+        "significance": "Foundational theory: thermal diffusion model, depth profiling via frequency; basis for modern PAS"
+      },
+      {
+        "citation": "Tam, A.C. 1986. 'Applications of Photoacoustic Sensing Techniques.' Rev. Mod. Phys. 58: 381-431.",
+        "doi": "10.1103/RevModPhys.58.381",
+        "year": 1986,
+        "significance": "Comprehensive review: PAS principles, applications (including materials analysis); established methodology"
+      }
     ],
     "recentApplications": [
-      {"citation": "Romani, A., et al. 2015. 'Photoacoustic Depth Profiling of Wall Paintings.' J. Cultural Heritage 16: 54-60.", "doi": "10.1016/j.culher.2014.01.007", "year": 2015, "summary": "Subsurface pigment detection via frequency-scanned PAS (see case study); overpaint removal guided by depth profiling"}
+      {
+        "citation": "Romani, A., et al. 2015. 'Photoacoustic Depth Profiling of Wall Paintings.' J. Cultural Heritage 16: 54-60.",
+        "doi": "10.1016/j.culher.2014.01.007",
+        "year": 2015,
+        "summary": "Subsurface pigment detection via frequency-scanned PAS (see case study); overpaint removal guided by depth profiling"
+      }
     ]
   },
   "metadata": {
-    "tags": ["photoacoustic spectroscopy", "PAS", "photothermal", "depth profiling", "absorption spectroscopy", "scattering-insensitive", "subsurface analysis", "non-destructive", "UV-Vis-NIR", "FTIR-PAS"],
-    "relatedTechniqueIds": ["uv-vis-spectroscopy", "ftir-spectroscopy", "raman-spectroscopy", "xrf"],
+    "tags": [
+      "photoacoustic spectroscopy",
+      "PAS",
+      "photothermal",
+      "depth profiling",
+      "absorption spectroscopy",
+      "scattering-insensitive",
+      "subsurface analysis",
+      "non-destructive",
+      "UV-Vis-NIR",
+      "FTIR-PAS"
+    ],
+    "relatedTechniqueIds": [
+      "uv-vis-spectroscopy",
+      "ftir-spectroscopy",
+      "raman-spectroscopy",
+      "xrf"
+    ],
     "lastUpdated": "2025-01-15",
     "version": "1.0",
-    "contributors": ["Daniel Wilcox"]
+    "contributors": [
+      "Daniel Wilcox"
+    ]
   }
 }
-
