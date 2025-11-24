@@ -151,7 +151,10 @@ KEYWORD_GROUPS = {
     "cultural_heritage": [
         "cultural heritage", "artwork preservation", "conservation science",
         "art conservation", "heritage digitization", "archaeological remote sensing",
-        "museum imaging", "collection risk assessment", "preventive conservation"
+        "museum imaging", "collection risk assessment", "preventive conservation",
+        # Core art terms for better scoring
+        "art", "artwork", "artworks", "painting", "paintings",
+        "museum", "museums", "gallery", "galleries", "artist", "artistic"
     ],
     "rf_systems_core": [
         "RF component", "microwave component", "nonlinear radar", "harmonic radar",
@@ -1208,8 +1211,8 @@ def classify_paper_topic(paper: dict) -> Tuple[str, float, List[Tuple[str, int]]
             'material characterization art', 'chemical analysis art'
         ],
         'paint_analysis': [
-            'paint layer', 'stratigraphy', 'brushstroke', 'impasto',
-            'pentimenti', 'underdrawing', 'artist technique', 'painting technique',
+            'paint layer', 'stratigraphy', 'brushstroke', 'brushstrokes', 'brush strokes', 'brush stroke', 'impasto',
+            'pentimento', 'pentimenti', 'underdrawing', 'underdrawings', 'artist technique', 'painting technique',
             'canvas analysis', 'craquelure', 'surface topology painting',
             'paint layer analysis', 'layer structure art'
         ],
