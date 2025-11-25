@@ -2345,17 +2345,31 @@ def email_digest(sections: List[Tuple[str, List[dict]]],
     msg.attach(MIMEText(html_body, "html"))
 
     if not smtp_host:
-        logger.warning("SMTP_HOST is not set; skipping email send.")
+        logger.error("SMTP_HOST is not set; skipping email send.")
+        logger.error("Environment variables checked: SMTP_HOST=%s", os.getenv("SMTP_HOST"))
         return
 
-    with smtplib.SMTP(smtp_host, smtp_port) as server:
-        server.starttls()
-        if not smtp_user or not smtp_pass:
-            logger.warning("SMTP credentials missing; skipping email send.")
-            return
-        server.login(smtp_user, smtp_pass)
-        server.sendmail(SENDER, recipients, msg.as_string())
-    logger.info("Email sent to %s", ", ".join(recipients))
+    if not recipients:
+        logger.error("No recipients found; skipping email send.")
+        logger.error("Checked EMAIL_RECIPIENTS=%s and config/emails.txt", os.getenv("EMAIL_RECIPIENTS"))
+        return
+
+    if not smtp_user or not smtp_pass:
+        logger.error("SMTP credentials missing; skipping email send.")
+        logger.error("SMTP_USER=%s (from SMTP_USER or EMAIL_USER), SMTP_PASS=%s (from SMTP_PASS or EMAIL_PASS)", 
+                    "SET" if smtp_user else "NOT SET", "SET" if smtp_pass else "NOT SET")
+        return
+
+    try:
+        logger.info("Attempting to send email via SMTP server: %s:%s to %s", smtp_host, smtp_port, ", ".join(recipients))
+        with smtplib.SMTP(smtp_host, smtp_port) as server:
+            server.starttls()
+            server.login(smtp_user, smtp_pass)
+            server.sendmail(SENDER, recipients, msg.as_string())
+        logger.info("✓ Email successfully sent to %s", ", ".join(recipients))
+    except Exception as e:
+        logger.error("Failed to send email: %s", e, exc_info=True)
+        raise
 
 def has_priority_topic(paper: dict) -> bool:
     text = f"{paper.get('title', '')} {paper.get('summary', '')}".lower()
