@@ -5,18 +5,9 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent opportunities.</description>
         <language>en-us</language>
-        <lastBuildDate>Tue, 25 Nov 2025 03:08:17 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 25 Nov 2025 13:34:18 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
-    <item>
-        <title>Wideband RF Radiance Field Modeling Using Frequency-embedded 3D Gaussian Splatting</title>
-        <link>https://arxiv.org/abs/2505.20714</link>
-        <description>Although 3D Gaussian Splatting (3DGS) techniques effectively reconstruct RF radiance fields at a single frequency, they cannot model fields at arbitrary or unknown frequencies across a wide range. Experimental results show that the proposed model trained on multiple frequencies achieves a Structural Similarity Index Measure (SSIM) of 0.922 for PAS reconstruction, surpassing state-of-the-art single-frequency 3DGS models with SSIM of 0.863. | Score: 5.59</description>
-        <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Zechen Li, Lanqing Yang, Yiheng Bian, Hao Pan, Yongjian Fu, Yezhou Wang, Zhuxi Chen, Yi-Chao Chen, G</author>
-        <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2505.20714</guid>
-    </item>
     <item>
         <title>Snow Depth Estimation Based on STCTNet for Sentinel-1 and Multisource Data</title>
         <link>http://ieeexplore.ieee.org/document/11227141</link>
@@ -43,6 +34,16 @@
         <author>Jiaojiao Li;Hangyun Liu;Haitao Xu;Chengyuan Wang;Yunsong Li;Qian Du;</author>
         <category>RF Systems &amp; Nonlinear Phenomena</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236413</guid>
+    </item>
+    <item>
+        <title>A multiresolution weather dataset for the Southwestern South Atlantic (2017-2018)</title>
+        <link>https://arxiv.org/abs/2511.18704</link>
+        <description>arXiv:2511.18704v1 Announce Type: new 
+Abstract: The Southwestern South Atlantic (SWSA) is a key region for climate research and renewable energy assessment, yet high-resolution meteorological data are scarce. The dataset supports regional climate studies, wind energy resource assessment, and machine-learning applications in forecasting and downscaling, with usage examples included to aid practical adoption. | Score: 5.06</description>
+        <pubDate>Tue, 25 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Luan C. V. Silva, L\&#x27;ivia Sancho, Mauricio S. Silva, Elisa Passos, Larissa F. R. Jacinto, Rebeca S. </author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">https://arxiv.org/abs/2511.18704</guid>
     </item>
     <item>
         <title>A Spike-Driven Transformer Network for Edge Computing-Based Partial Discharge Monitoring Using Ultrahigh Frequency Pulse Signals</title>
@@ -72,22 +73,22 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11225891</guid>
     </item>
     <item>
-        <title>GPR-OdomNet: Difference and Similarity-Driven Odometry Estimation Network for Ground Penetrating Radar-Based Localization</title>
-        <link>https://arxiv.org/abs/2511.17457</link>
-        <description>The experimental results show that our method consistently outperforms state-of-the-art counterparts in all tests. Specifically, our method achieves a root mean square error (RMSE), and achieves an overall weighted RMSE of 0.449 m across all data sets, which is a 10.2\% reduction in RMSE when compared to the best state-of-the-art method. | Score: 4.97</description>
-        <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Huaichao Wang, Xuanxin Fan, Ji Liu, Haifeng Li, Dezhen Song</author>
+        <title>BeamCKM: A Framework of Channel Knowledge Map Construction for Multi-Antenna Systems</title>
+        <link>https://arxiv.org/abs/2511.18376</link>
+        <description>To address the inherent conflict between traditional real-value pathloss map and multi-degree-of-freedom (DoF) coherent beamforming in B5G/6G systems, this paper proposes a novel concept of BeamCKM and CKMTransUNet architecture. For reproducibility, the code is publicly accessible at https://github.com/github-whh/BeamCKM. | Score: 4.96</description>
+        <pubDate>Tue, 25 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Haohan Wang, Xu Shi, Hengyu Zhang, Yashuai Cao, Sufang Yang, Jintao Wang, Kaibin Huang</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2511.17457</guid>
+        <guid isPermaLink="true">https://arxiv.org/abs/2511.18376</guid>
     </item>
     <item>
-        <title>Generalizable Radio-Frequency Radiance Fields for Spatial Spectrum Synthesis</title>
-        <link>https://arxiv.org/abs/2502.05708</link>
-        <description>Unlike state-of-the-art methods that adapt vanilla Neural Radiance Fields (NeRF) to the RF domain with scene-specific training, GRaF generalizes across scenes to synthesize spectra. Experimental results demonstrate that GRaF outperforms existing methods on single-scene benchmarks and achieves state-of-the-art performance on unseen scene layouts. | Score: 4.62</description>
-        <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Kang Yang, Yuning Chen, Wan Du</author>
+        <title>WaveTuner: Comprehensive Wavelet Subband Tuning for Time Series Forecasting</title>
+        <link>https://arxiv.org/abs/2511.18846</link>
+        <description>To address this problem, we propose WaveTuner, a Wavelet decomposition framework empowered by full-spectrum subband Tuning for time series forecasting. Extensive experiments on eight real-world datasets demonstrate WaveTuner achieves state-of-the-art forecasting performance in time series forecasting. | Score: 4.31</description>
+        <pubDate>Tue, 25 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Yubo Wang, Hui He, Chaoxi Niu, Zhendong Niu</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2502.05708</guid>
+        <guid isPermaLink="true">https://arxiv.org/abs/2511.18846</guid>
     </item>
     <item>
         <title>ULADiff: Unmixing-Guided Learnable Abundance-Latent Diffusion for Hyperspectral Image Denoising</title>
@@ -126,16 +127,6 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11227123</guid>
     </item>
     <item>
-        <title>MRI Super-Resolution with Deep Learning: A Comprehensive Survey</title>
-        <link>https://arxiv.org/abs/2511.16854</link>
-        <description>This survey reviews recent advances in MRI SR techniques, with a focus on deep learning (DL) approaches. Additionally, we provide a collection of essential open-access resources, tools, and tutorials, available on our GitHub: https://github.com/mkhateri/Awesome-MRI-Super-Resolution.
-  IEEE keywords: MRI, Super-Resolution, Deep Learning, Computational Imaging, Inverse Problem, Survey. | Score: 3.31</description>
-        <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Mohammad Khateri, Serge Vasylechko, Morteza Ghahremani, Liam Timms, Deniz Kocanaogullari, Simon K. W</author>
-        <category>Adjacent Opportunities</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2511.16854</guid>
-    </item>
-    <item>
         <title>Identification of nighttime urban flood inundation extent using deep learning</title>
         <link>https://doi.org/10.5194/nhess-25-4361-2025</link>
         <description>&lt;b&gt;Identification of nighttime urban flood inundation extent using deep learning&lt;/b&gt;&lt;br /&gt;
@@ -144,6 +135,15 @@
         <author>nan</author>
         <category>Adjacent Opportunities</category>
         <guid isPermaLink="true">https://doi.org/10.5194/nhess-25-4361-2025</guid>
+    </item>
+    <item>
+        <title>AI-Enhanced Wide-Area Data Imaging via Massive Non-Orthogonal Direct Device-to-HAPS Transmission</title>
+        <link>http://ieeexplore.ieee.org/document/11173268</link>
+        <description>Furthermore, to enable AI-enhanced $\text{MAP}-X$, we propose a ground-HAPS cooperation framework, where terrestrial stations collect, process, and relay training data to the HAPS. With its enhanced capability in reconstructing field data, AI-enhanced $\text{MAP}-X$ is applicable to various real-world use cases, including disaster response and network management. | Score: 2.42</description>
+        <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
+        <author>Hyung-Joo Moon;Chan-Byoung Chae;Kai-Kit Wong;Robert W. Heath;</author>
+        <category>Adjacent Opportunities</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11173268</guid>
     </item>
     </channel>
 </rss>
