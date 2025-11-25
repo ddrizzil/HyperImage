@@ -1457,26 +1457,16 @@ def classify_paper_topic(paper: dict) -> Tuple[str, float, List[Tuple[str, int]]
     ])
     has_art_painting_context = has_strong_art_term or has_art_context_phrase or (has_standalone_art and has_explicit_heritage_for_art)
     
-    # ABSOLUTE REQUIREMENT: If paper lacks art/painting/heritage context, it CANNOT be classified as heritage
+    # ABSOLUTE REQUIREMENT: ALL heritage papers MUST have art/painting context - NO EXCEPTIONS
     # This check happens FIRST, before any other processing
-    # ALL heritage papers MUST have explicit art/heritage context - no exceptions
-    if not has_art_painting_context and not has_heritage_context:
-        # Paper has NO art/painting/heritage context - immediately exclude from heritage
+    # Even if paper has generic "heritage" terms, it CANNOT be heritage without art/painting keywords
+    if not has_art_painting_context:
+        # Paper lacks art/painting context - immediately exclude from heritage
+        # This is MANDATORY - no heritage paper can exist without art, artwork, painting, museum, etc.
         if heritage_subscore > 0:
             logger.debug(
-                "EXCLUDING from heritage (no art/heritage context): %s (heritage_subscore=%d, subcategories=%s)",
-                paper.get('title', '')[:60], heritage_subscore, [sc[0] for sc in heritage_subcategories]
-            )
-        heritage_subscore = 0
-        heritage_subcategories = []
-        has_heritage_context = False
-    elif not has_art_painting_context:
-        # Paper has heritage context but NO art/painting context - still exclude
-        # Heritage papers MUST mention art, painting, museum, gallery, artist, etc.
-        if heritage_subscore > 0:
-            logger.debug(
-                "EXCLUDING from heritage (heritage context but NO art/painting context): %s (heritage_subscore=%d)",
-                paper.get('title', '')[:60], heritage_subscore
+                "EXCLUDING from heritage (MISSING art/painting context): %s (heritage_subscore=%d, subcategories=%s, has_heritage_context=%s)",
+                paper.get('title', '')[:60], heritage_subscore, [sc[0] for sc in heritage_subcategories], has_heritage_context
             )
         heritage_subscore = 0
         heritage_subcategories = []
@@ -1528,12 +1518,13 @@ def classify_paper_topic(paper: dict) -> Tuple[str, float, List[Tuple[str, int]]
             heritage_subscore = 0
             heritage_subcategories = []
     
-    # FINAL VERIFICATION: Ensure heritage_subscore is 0 if paper lacks required context
+    # FINAL VERIFICATION: Ensure heritage_subscore is 0 if paper lacks art/painting context
     # This is a redundant check to ensure nothing slips through
+    # CRITICAL: Art/painting context is MANDATORY - no exceptions
     if heritage_subscore > 0:
-        if not has_art_painting_context or not has_heritage_context:
+        if not has_art_painting_context:
             logger.warning(
-                "FINAL CHECK: Excluding paper from heritage (missing required context): %s (has_art=%s, has_heritage=%s)",
+                "FINAL CHECK: Excluding paper from heritage (MISSING art/painting context): %s (has_art=%s, has_heritage=%s)",
                 paper.get('title', '')[:60], has_art_painting_context, has_heritage_context
             )
             heritage_subscore = 0
@@ -1545,10 +1536,11 @@ def classify_paper_topic(paper: dict) -> Tuple[str, float, List[Tuple[str, int]]
     paper['adjacent_subcategories'] = adjacent_subcategories
 
     rf_total = rf_subscore * 1.5 + (score if rf_subscore > 0 else 0)
-    # Heritage requires: subscore > 0 AND heritage context AND art/painting context
+    # Heritage requires: subscore > 0 AND art/painting context (MANDATORY - no exceptions)
+    # Note: has_heritage_context is optional, but has_art_painting_context is REQUIRED
     heritage_total = (
         (heritage_subscore * 1.5 + (score if heritage_subscore > 0 else 0))
-        if (heritage_subscore > 0 and has_heritage_context and has_art_painting_context)
+        if (heritage_subscore > 0 and has_art_painting_context)
         else 0
     )
     adjacent_total = adjacent_subscore * 1.0 + (score if adjacent_subscore > 0 else 0)
@@ -1559,9 +1551,10 @@ def classify_paper_topic(paper: dict) -> Tuple[str, float, List[Tuple[str, int]]
             score = min(10, score + 1.0)
         return 'rf_systems', score, sorted(rf_subcategories, key=lambda x: x[1], reverse=True)
     
-    # Heritage requires: subscore > 0 AND heritage context AND art/painting context
+    # Heritage requires: subscore > 0 AND art/painting context (MANDATORY)
+    # has_art_painting_context is REQUIRED - no heritage paper can exist without it
     if (heritage_total > rf_total and heritage_total > adjacent_total and 
-        heritage_subscore > 0 and has_heritage_context and has_art_painting_context):
+        heritage_subscore > 0 and has_art_painting_context):
         if heritage_subscore >= 3:
             score = min(10, score + 1.0)
         return 'cultural_heritage', score, sorted(heritage_subcategories, key=lambda x: x[1], reverse=True)
@@ -2331,9 +2324,15 @@ def email_digest(sections: List[Tuple[str, List[dict]]],
 
     smtp_host = os.getenv("SMTP_HOST")
     smtp_port = int(os.getenv("SMTP_PORT", "587"))
-    smtp_user = os.getenv("SMTP_USER")
-    smtp_pass = os.getenv("SMTP_PASS")
-    recipients = load_recipients()
+    # Support both EMAIL_USER/EMAIL_PASS and SMTP_USER/SMTP_PASS
+    smtp_user = os.getenv("SMTP_USER") or os.getenv("EMAIL_USER")
+    smtp_pass = os.getenv("SMTP_PASS") or os.getenv("EMAIL_PASS")
+    # Support EMAIL_RECIPIENTS environment variable, otherwise load from file
+    email_recipients = os.getenv("EMAIL_RECIPIENTS")
+    if email_recipients:
+        recipients = [email.strip() for email in email_recipients.split(",") if email.strip()]
+    else:
+        recipients = load_recipients()
 
     msg = MIMEMultipart("alternative")
     subject_prefix = "Weekly" if mode == "weekly" else "Daily"
