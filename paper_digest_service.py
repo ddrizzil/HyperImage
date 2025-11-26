@@ -2042,8 +2042,9 @@ def build_email_sections_html(sections: List[Tuple[str, List[dict]]],
     """
 
     total_papers = sum(len(items) for _, items in sections)
-    all_scores = [paper.get("score", 0) for _, items in sections for paper in items]
-    avg_score = sum(all_scores) / len(all_scores) if all_scores else 0.0
+    # Calculate average score excluding random paper (which has None score)
+    scored_papers = [p.get("score", 0) for _, items in sections for p in items if p.get("score") is not None]
+    avg_score = sum(scored_papers) / len(scored_papers) if scored_papers else 0.0
 
     section_descriptions = {
         "RF Systems & Nonlinear Phenomena": (
@@ -2058,18 +2059,33 @@ def build_email_sections_html(sections: List[Tuple[str, List[dict]]],
             "<em>Papers on commercial radar, climate monitoring, precision agriculture, autonomous "
             "systems, and other cross-domain opportunities.</em>"
         ),
+        "Random Discovery": (
+            "<em>A randomly selected paper from the feed—not algorithmically scored. "
+            "Included to surface unexpected connections and broaden discovery.</em>"
+        ),
     }
+
+    # Count papers by section for summary
+    rf_count = len([p for label, items in sections if label == "RF Systems & Nonlinear Phenomena" for p in items])
+    heritage_count = len([p for label, items in sections if label == "Cultural Heritage & Conservation Science" for p in items])
+    adjacent_count = len([p for label, items in sections if label == "Adjacent Opportunities" for p in items])
+    random_count = len([p for label, items in sections if label == "Random Discovery" for p in items])
+    
+    summary_text = f"{total_papers} papers (3 RF + 3 Heritage + 3 Adjacent"
+    if random_count > 0:
+        summary_text += " + 1 Random"
+    summary_text += ")"
+    
+    summary_banner = (
+        "<div style='background:#e8f5e9; padding:15px; border-radius:5px; margin-bottom:20px'>"
+        f"<strong>Today's Summary:</strong> {summary_text} | "
+        f"Avg relevance: {avg_score:.2f}"
+        "</div>"
+    )
 
     body = [css, "<h1>Daily Paper Digest</h1>"]
     if mode == "weekly":
         body[1] = "<h1>Weekly Paper Digest</h1>"
-
-    summary_banner = (
-        "<div style='background:#e8f5e9; padding:15px; border-radius:5px; margin-bottom:20px'>"
-        f"<strong>Today's Summary:</strong> {total_papers} papers (5 RF + 5 Heritage + 5 Adjacent) | "
-        f"Avg relevance: {avg_score:.2f}"
-        "</div>"
-    )
     body.append(summary_banner)
 
     if daily_task:
@@ -2340,8 +2356,7 @@ def email_digest(sections: List[Tuple[str, List[dict]]],
     msg["From"] = SENDER
     msg["To"] = ", ".join(recipients)
 
-    daily_task = generate_daily_task(datetime.now(timezone.utc), all_papers)
-    html_body = build_email_sections_html(sections, weight_stats, mode, daily_task)
+    html_body = build_email_sections_html(sections, weight_stats, mode, None)
     msg.attach(MIMEText(html_body, "html"))
 
     if not smtp_host:
@@ -2389,7 +2404,7 @@ def classify_interest_group(paper: dict) -> str:
     return "other"
 
 def create_topic_based_sections(papers: List[dict], previously_sent_keys: Optional[set] = None) -> List[Tuple[str, List[dict]]]:
-    """Build fixed-count topic sections (5 each) for RF, heritage, and adjacent topics."""
+    """Build fixed-count topic sections (3 each) for RF, heritage, and adjacent topics, plus one random unscored paper."""
     prev_keys = previously_sent_keys or set()
 
     rf_papers: List[dict] = []
@@ -2488,24 +2503,24 @@ def create_topic_based_sections(papers: List[dict], previously_sent_keys: Option
     unrelated_papers.sort(key=lambda x: x.get('score', 0), reverse=True)
 
     selections = {
-        'rf_systems': rf_papers[:5],
-        'cultural_heritage': heritage_papers[:5],
-        'adjacent': adjacent_papers[:5],
+        'rf_systems': rf_papers[:3],
+        'cultural_heritage': heritage_papers[:3],
+        'adjacent': adjacent_papers[:3],
     }
 
     remaining = {
-        'rf_systems': rf_papers[5:],
-        'cultural_heritage': heritage_papers[5:],
-        'adjacent': adjacent_papers[5:],
+        'rf_systems': rf_papers[3:],
+        'cultural_heritage': heritage_papers[3:],
+        'adjacent': adjacent_papers[3:],
     }
 
     used_keys = {normalize_key(paper) for bucket in selections.values() for paper in bucket}
 
     fallback_pool = [
         p for p in (
-            rf_papers[5:] +
-            heritage_papers[5:] +
-            adjacent_papers[5:] +
+            rf_papers[3:] +
+            heritage_papers[3:] +
+            adjacent_papers[3:] +
             unrelated_papers
         )
         if normalize_key(p) not in used_keys and normalize_key(p) not in prev_keys
@@ -2547,14 +2562,14 @@ def create_topic_based_sections(papers: List[dict], previously_sent_keys: Option
 
     for category in ('rf_systems', 'cultural_heritage', 'adjacent'):
         bucket = selections[category]
-        while len(bucket) < 5 and remaining[category]:
+        while len(bucket) < 3 and remaining[category]:
             candidate = remaining[category].pop(0)
             key = normalize_key(candidate)
             if key in used_keys or key in prev_keys:
                 continue
             bucket.append(candidate)
             used_keys.add(key)
-        if category == 'cultural_heritage' and len(bucket) < 5:
+        if category == 'cultural_heritage' and len(bucket) < 3:
             # REQUIRED: Only use fallback candidates that explicitly mention art/painting
             filtered = []
             for candidate in list(fallback_pool):
@@ -2602,7 +2617,7 @@ def create_topic_based_sections(papers: List[dict], previously_sent_keys: Option
             # Sort by score and take highest scoring ones
             filtered.sort(key=lambda x: x.get('score', 0), reverse=True)
             for candidate in filtered:
-                if len(bucket) >= 5:
+                if len(bucket) >= 3:
                     break
                 if candidate not in fallback_pool:
                     continue
@@ -2621,7 +2636,7 @@ def create_topic_based_sections(papers: List[dict], previously_sent_keys: Option
             pass
         else:
             # For RF and Adjacent: use generic fallback if needed
-            while len(bucket) < 5 and fallback_pool:
+            while len(bucket) < 3 and fallback_pool:
                 candidate = fallback_pool.pop(0)
                 key = normalize_key(candidate)
                 if key in used_keys or key in prev_keys:
@@ -2646,14 +2661,36 @@ def create_topic_based_sections(papers: List[dict], previously_sent_keys: Option
         ('cultural_heritage', 'Cultural Heritage & Conservation Science'),
         ('adjacent', 'Adjacent Opportunities'),
     ]:
-        if len(selections[category]) < 5:
-            logger.warning("Only found %d papers for %s (wanted 5).", len(selections[category]), label)
+        if len(selections[category]) < 3:
+            logger.warning("Only found %d papers for %s (wanted 3).", len(selections[category]), label)
 
-    return [
-        ("RF Systems & Nonlinear Phenomena", selections['rf_systems'][:5]),
-        ("Cultural Heritage & Conservation Science", selections['cultural_heritage'][:5]),
-        ("Adjacent Opportunities", selections['adjacent'][:5]),
+    # Add a random unscored paper from the pool (exclude already selected papers)
+    random_paper = None
+    available_for_random = [
+        p for p in (rf_papers[3:] + heritage_papers[3:] + adjacent_papers[3:] + unrelated_papers)
+        if normalize_key(p) not in used_keys and normalize_key(p) not in prev_keys
     ]
+    if available_for_random:
+        import random
+        random_paper = random.choice(available_for_random)
+        random_paper['category'] = 'random'
+        # Mark as unscored/random - remove score so it's clear this wasn't algorithmically selected
+        original_score = random_paper.get('score', 0)
+        random_paper['score'] = None
+        logger.info("Selected random unscored paper: %s (original score: %s)", 
+                   random_paper.get('title', 'Untitled')[:60], original_score)
+
+    sections = [
+        ("RF Systems & Nonlinear Phenomena", selections['rf_systems'][:3]),
+        ("Cultural Heritage & Conservation Science", selections['cultural_heritage'][:3]),
+        ("Adjacent Opportunities", selections['adjacent'][:3]),
+    ]
+    
+    # Add random paper section if available
+    if random_paper:
+        sections.append(("Random Discovery", [random_paper]))
+    
+    return sections
 
 # ---------------- RESET & AUDIT FUNCTIONS ----------------
 def reset_all_state(confirm: bool = False) -> None:
@@ -2926,8 +2963,10 @@ def run_once() -> None:
 
     # Log section status
     for label, items in sections:
-        if len(items) < 5:
-            logger.warning("Section '%s' has only %d papers (wanted 5). Total candidates: %d", 
+        if label == "Random Discovery":
+            logger.info("Section '%s' has 1 random paper", label)
+        elif len(items) < 3:
+            logger.warning("Section '%s' has only %d papers (wanted 3). Total candidates: %d", 
                          label, len(items), len(candidate_papers))
         else:
             logger.info("Section '%s' has %d papers", label, len(items))
@@ -2965,11 +3004,16 @@ def run_once() -> None:
 def format_paper_html(paper: dict) -> str:
     """Render a single paper entry with badges and discovery links."""
     score = paper.get("score", 0)
+    if score is None:
+        score = 0  # Random/unscored papers have None score
     citations = paper.get("citations", 0) or 0
     source = paper.get("source", "feed").upper()
     subcategories = paper.get("subcategories", []) or []
 
-    if score >= 7:
+    # Random papers get a special border color
+    if paper.get("category") == "random" or score is None:
+        border_color = "#9C27B0"  # Purple for random/unscored
+    elif score >= 7:
         border_color = "#4CAF50"
     elif score >= 5:
         border_color = "#2196F3"
@@ -3042,7 +3086,7 @@ def format_paper_html(paper: dict) -> str:
             <span style='background:#e8f4f8; padding:2px 6px; border-radius:3px; margin-right:8px'>{source}</span>
             {subcat_html}
             <span style='margin-right:12px'>📅 {published.strftime('%Y-%m-%d')}</span>
-            <span style='margin-right:12px'>⭐ Score: {score:.2f}</span>
+            {f"<span style='margin-right:12px'>🎲 Random Discovery</span>" if (paper.get("category") == "random" or paper.get("score") is None) else f"<span style='margin-right:12px'>⭐ Score: {score:.2f}</span>"}
             {citation_html}
         </div>
         {authors_html}
