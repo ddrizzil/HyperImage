@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent opportunities.</description>
         <language>en-us</language>
-        <lastBuildDate>Tue, 25 Nov 2025 13:34:18 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 26 Nov 2025 13:37:56 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -36,25 +36,6 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236413</guid>
     </item>
     <item>
-        <title>A multiresolution weather dataset for the Southwestern South Atlantic (2017-2018)</title>
-        <link>https://arxiv.org/abs/2511.18704</link>
-        <description>arXiv:2511.18704v1 Announce Type: new 
-Abstract: The Southwestern South Atlantic (SWSA) is a key region for climate research and renewable energy assessment, yet high-resolution meteorological data are scarce. The dataset supports regional climate studies, wind energy resource assessment, and machine-learning applications in forecasting and downscaling, with usage examples included to aid practical adoption. | Score: 5.06</description>
-        <pubDate>Tue, 25 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Luan C. V. Silva, L\&#x27;ivia Sancho, Mauricio S. Silva, Elisa Passos, Larissa F. R. Jacinto, Rebeca S. </author>
-        <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2511.18704</guid>
-    </item>
-    <item>
-        <title>A Spike-Driven Transformer Network for Edge Computing-Based Partial Discharge Monitoring Using Ultrahigh Frequency Pulse Signals</title>
-        <link>http://ieeexplore.ieee.org/document/11084948</link>
-        <description>To address these issues, this article develops a novel UHF monitoring system by combining a low-noise UHF sensing frontend and a spike-driven Transformer network toward edge computing, enabling a robust, energy-efficient and cost-effective PD recognition. Experimental results demonstrate the highest recognition accuracy, and reductions in computational complexity and energy consumption by 56.25% and 52.0%, respectively. | Score: 5.03</description>
-        <pubDate>Fri, 18 Jul 2025 00:00:00 GMT</pubDate>
-        <author>Changdong Wang;Jingli Yang;Yu’ang Li;Zhou Wang;Huamin Jie;Zhi Zheng;Zhenyu Zhao;Zhou Shu;Yongxin Guo</author>
-        <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11084948</guid>
-    </item>
-    <item>
         <title>StylizedGS: Controllable Stylization for 3D Gaussian Splatting</title>
         <link>http://ieeexplore.ieee.org/document/11143957</link>
         <description>Our method achieves high-quality stylization results characterized by faithful brushstrokes and geometric consistency with flexible controls. Extensive experiments across various scenes and styles demonstrate the effectiveness and efficiency of our method concerning both stylization quality and inference speed. | Score: 0.51</description>
@@ -64,6 +45,15 @@ Abstract: The Southwestern South Atlantic (SWSA) is a key region for climate res
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11143957</guid>
     </item>
     <item>
+        <title>A Spike-Driven Transformer Network for Edge Computing-Based Partial Discharge Monitoring Using Ultrahigh Frequency Pulse Signals</title>
+        <link>http://ieeexplore.ieee.org/document/11084948</link>
+        <description>To address these issues, this article develops a novel UHF monitoring system by combining a low-noise UHF sensing frontend and a spike-driven Transformer network toward edge computing, enabling a robust, energy-efficient and cost-effective PD recognition. Experimental results demonstrate the highest recognition accuracy, and reductions in computational complexity and energy consumption by 56.25% and 52.0%, respectively. | Score: 5.03</description>
+        <pubDate>Fri, 18 Jul 2025 00:00:00 GMT</pubDate>
+        <author>Changdong Wang;Jingli Yang;Yu’ang Li;Zhou Wang;Huamin Jie;Zhi Zheng;Zhenyu Zhao;Zhou Shu;Yongxin Guo</author>
+        <category>Cultural Heritage &amp; Conservation Science</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11084948</guid>
+    </item>
+    <item>
         <title>Despeckling of Synthetic Aperture Radar Images Using Linear–Angular Attention Transformer</title>
         <link>http://ieeexplore.ieee.org/document/11225891</link>
         <description>In this study, we propose a linear–angular attention transformer network for SAR despeckling. Unlike models that rely on optical images for training and lack domain-specific features for real SAR despeckling, the proposed network is trained directly on SAR images in a self-supervised manner. | Score: 5.02</description>
@@ -71,33 +61,6 @@ Abstract: The Southwestern South Atlantic (SWSA) is a key region for climate res
         <author>Souraja Kundu;M. K. Bhuyan;Karl F. MacDorman;Neeraj Kumar Sharma;Manish Bhatt;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11225891</guid>
-    </item>
-    <item>
-        <title>BeamCKM: A Framework of Channel Knowledge Map Construction for Multi-Antenna Systems</title>
-        <link>https://arxiv.org/abs/2511.18376</link>
-        <description>To address the inherent conflict between traditional real-value pathloss map and multi-degree-of-freedom (DoF) coherent beamforming in B5G/6G systems, this paper proposes a novel concept of BeamCKM and CKMTransUNet architecture. For reproducibility, the code is publicly accessible at https://github.com/github-whh/BeamCKM. | Score: 4.96</description>
-        <pubDate>Tue, 25 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Haohan Wang, Xu Shi, Hengyu Zhang, Yashuai Cao, Sufang Yang, Jintao Wang, Kaibin Huang</author>
-        <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2511.18376</guid>
-    </item>
-    <item>
-        <title>WaveTuner: Comprehensive Wavelet Subband Tuning for Time Series Forecasting</title>
-        <link>https://arxiv.org/abs/2511.18846</link>
-        <description>To address this problem, we propose WaveTuner, a Wavelet decomposition framework empowered by full-spectrum subband Tuning for time series forecasting. Extensive experiments on eight real-world datasets demonstrate WaveTuner achieves state-of-the-art forecasting performance in time series forecasting. | Score: 4.31</description>
-        <pubDate>Tue, 25 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Yubo Wang, Hui He, Chaoxi Niu, Zhendong Niu</author>
-        <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2511.18846</guid>
-    </item>
-    <item>
-        <title>ULADiff: Unmixing-Guided Learnable Abundance-Latent Diffusion for Hyperspectral Image Denoising</title>
-        <link>http://ieeexplore.ieee.org/document/11244146</link>
-        <description>Thus, how to effectively incorporate physical priors into the DDPM to improve denoising performance remains an underexplored issue. Comprehensive evaluations on synthetic and real-world datasets demonstrate that ULADiff outperforms state-of-the-art methods in both quantitative performance and visual fidelity. | Score: 4.13</description>
-        <pubDate>Wed, 12 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Zhe-Min Wei;Heng-Chao Li;Yu-Bang Zheng;Jian-Li Wang;Qian Du;</author>
-        <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11244146</guid>
     </item>
     <item>
         <title>U-SET: Uncertainty-Aware SAR-to-EO Translation</title>
@@ -127,23 +90,13 @@ Abstract: The Southwestern South Atlantic (SWSA) is a key region for climate res
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11227123</guid>
     </item>
     <item>
-        <title>Identification of nighttime urban flood inundation extent using deep learning</title>
-        <link>https://doi.org/10.5194/nhess-25-4361-2025</link>
-        <description>&lt;b&gt;Identification of nighttime urban flood inundation extent using deep learning&lt;/b&gt;&lt;br /&gt;
-                    Jiaquan Wan, Xing Wang, Yannian Cheng, Cuiyan Zhang, Fengchang Xue, Tao Yang, Fei Tong, and Quan J. This research offers a practical solution for real-time flood monitoring, helping improve urban disaster response and management. | Score: 2.81</description>
-        <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
-        <author>nan</author>
-        <category>Adjacent Opportunities</category>
-        <guid isPermaLink="true">https://doi.org/10.5194/nhess-25-4361-2025</guid>
-    </item>
-    <item>
-        <title>AI-Enhanced Wide-Area Data Imaging via Massive Non-Orthogonal Direct Device-to-HAPS Transmission</title>
-        <link>http://ieeexplore.ieee.org/document/11173268</link>
-        <description>Furthermore, to enable AI-enhanced $\text{MAP}-X$, we propose a ground-HAPS cooperation framework, where terrestrial stations collect, process, and relay training data to the HAPS. With its enhanced capability in reconstructing field data, AI-enhanced $\text{MAP}-X$ is applicable to various real-world use cases, including disaster response and network management. | Score: 2.42</description>
-        <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
-        <author>Hyung-Joo Moon;Chan-Byoung Chae;Kai-Kit Wong;Robert W. Heath;</author>
-        <category>Adjacent Opportunities</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11173268</guid>
+        <title>Stochastic Channel Models for Satellite Mega-Constellations</title>
+        <link>http://ieeexplore.ieee.org/document/11087620</link>
+        <description>Global channel parameters such as path loss and channel spread are analysed in terms of the scattering function. The channel statistics and the global channel parameters closely match realistic orbit simulations of the Starlink constellation. | Score: nan</description>
+        <pubDate>Mon, 21 Jul 2025 00:00:00 GMT</pubDate>
+        <author>Brendon McBain;Yi Hong;Emanuele Viterbo;</author>
+        <category>Random Discovery</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11087620</guid>
     </item>
     </channel>
 </rss>
