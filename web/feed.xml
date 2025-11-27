@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent opportunities.</description>
         <language>en-us</language>
-        <lastBuildDate>Wed, 26 Nov 2025 13:37:56 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 27 Nov 2025 13:33:43 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -90,13 +90,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11227123</guid>
     </item>
     <item>
-        <title>Stochastic Channel Models for Satellite Mega-Constellations</title>
-        <link>http://ieeexplore.ieee.org/document/11087620</link>
-        <description>Global channel parameters such as path loss and channel spread are analysed in terms of the scattering function. The channel statistics and the global channel parameters closely match realistic orbit simulations of the Starlink constellation. | Score: nan</description>
-        <pubDate>Mon, 21 Jul 2025 00:00:00 GMT</pubDate>
-        <author>Brendon McBain;Yi Hong;Emanuele Viterbo;</author>
+        <title>Alternative Framework to Quantize Fermionic Fields</title>
+        <link>https://arxiv.org/abs/2503.02362</link>
+        <description>We also show that the framework can be applied to develop theories of interaction between fermionic fields and other external fields such as electromagnetic fields, non-Abelian gauge fields, or another fermionic field. These results further establish that the present variational framework is a novel alternative to derive quantum field theories. | Score: nan</description>
+        <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Jianhao M. Yang</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11087620</guid>
+        <guid isPermaLink="true">https://arxiv.org/abs/2503.02362</guid>
     </item>
     </channel>
 </rss>
