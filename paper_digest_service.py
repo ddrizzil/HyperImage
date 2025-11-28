@@ -1911,30 +1911,41 @@ def load_history_papers(exclude_links: set) -> Tuple[List[dict], set]:
     history_papers only contains papers NOT in current feeds (to avoid re-scoring).
     """
     if not os.path.exists(LOG_FILE):
+        logger.warning("Log file %s does not exist - no deduplication history available", LOG_FILE)
         return [], set()
+    
     history: List[dict] = []
     sent_keys: set = set()
-    with open(LOG_FILE, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            link = row.get("link") or ""
-            title = row.get("title", "")
-            summary = row.get("summary", "")
-            authors = row.get("authors", "")
-            
-            # Create minimal paper dict for key normalization (even if data is missing)
-            # We need at least title or link to create a key
-            if not title and not link:
-                continue
-            
-            paper_key = {
-                "title": title,
-                "link": link,
-                "doi": row.get("doi") or f"https://scholar.google.com/scholar?q={quote_plus(title)}" if title else "",
-            }
-            
-            # ALWAYS add to sent_keys to prevent re-sending, even if data is missing
-            sent_keys.add(normalize_key(paper_key))
+    row_count = 0
+    
+    try:
+        with open(LOG_FILE, newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                row_count += 1
+                link = row.get("link") or ""
+                title = row.get("title", "")
+                summary = row.get("summary", "")
+                authors = row.get("authors", "")
+                doi = row.get("doi") or ""
+                
+                # Create minimal paper dict for key normalization (even if data is missing)
+                # We need at least title or link to create a key
+                if not title and not link:
+                    logger.debug("Skipping row %d: no title or link", row_count)
+                    continue
+                
+                # CRITICAL: Use actual DOI from CSV, don't create synthetic ones for deduplication
+                # Synthetic DOIs would cause mismatches with real papers that don't have DOIs
+                paper_key = {
+                    "title": title,
+                    "link": link,
+                    "doi": doi,  # Use actual DOI, empty string if not present
+                }
+                
+                # ALWAYS add to sent_keys to prevent re-sending, even if data is missing
+                normalized = normalize_key(paper_key)
+                sent_keys.add(normalized)
             
             # Only add to history list if we have a valid published date AND NOT in current feeds
             try:
@@ -1957,15 +1968,24 @@ def load_history_papers(exclude_links: set) -> Tuple[List[dict], set]:
                     "published": published,
                     "citations": 0,
              "authors": authors,
-                    "doi": row.get("doi") or f"https://scholar.google.com/scholar?q={quote_plus(title)}",
+                    "doi": doi,  # Use actual DOI from CSV
                     "source": "history",
                     "score": score,
                 }
                 ensure_summary_text(paper)
                 history.append(paper)
     
-    logger.info("Loaded %d previously sent papers from history, %d available for re-scoring", 
-                len(sent_keys), len(history))
+    except Exception as e:
+        logger.error("Error reading log file %s: %s", LOG_FILE, e, exc_info=True)
+        # Return what we have so far - partial deduplication is better than none
+        logger.warning("Continuing with %d deduplication keys loaded", len(sent_keys))
+    
+    logger.info("Loaded %d previously sent papers from history (%d rows processed), %d available for re-scoring", 
+                len(sent_keys), row_count, len(history))
+    
+    if len(sent_keys) == 0 and row_count > 0:
+        logger.error("WARNING: Processed %d CSV rows but created 0 deduplication keys! Deduplication will fail!", row_count)
+    
     return history, sent_keys
 
 def detect_trending_topics(papers: List[dict], now: datetime) -> List[str]:
@@ -2944,20 +2964,28 @@ def run_once() -> None:
     candidate_papers: List[dict] = []
     seen_candidate_keys: set = set()
     filtered_count = 0
+    duplicate_in_run = 0
+    
     for paper in ranked_papers:
         key = normalize_key(paper)
         if key in seen_candidate_keys:
+            duplicate_in_run += 1
+            logger.debug("Duplicate in current run: %s", paper.get('title', '')[:60])
             continue
         seen_candidate_keys.add(key)
         if key in sent_history_keys:
             filtered_count += 1
+            logger.debug("Filtered (previously sent): %s", paper.get('title', '')[:60])
             continue
         candidate_papers.append(paper)
     
     logger.info(
-        "Paper filtering: total=%d, previously_sent=%d, filtered=%d, candidates=%d",
-        len(ranked_papers), len(sent_history_keys), filtered_count, len(candidate_papers)
+        "Paper filtering: total=%d, previously_sent_keys=%d, filtered=%d, duplicates_in_run=%d, candidates=%d",
+        len(ranked_papers), len(sent_history_keys), filtered_count, duplicate_in_run, len(candidate_papers)
     )
+    
+    if len(sent_history_keys) == 0:
+        logger.warning("WARNING: No deduplication keys loaded! All papers will be considered new. Check if %s exists and is readable.", LOG_FILE)
 
     sections = create_topic_based_sections(candidate_papers, sent_history_keys)
 
