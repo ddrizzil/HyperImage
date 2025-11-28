@@ -3,7 +3,7 @@
     <channel>
         <title>Daily Paper Digest</title>
         <link>https://github.com/ddrizzil/HyperImage</link>
-        <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent opportunities.</description>
+        <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
         <lastBuildDate>Fri, 28 Nov 2025 13:29:12 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
@@ -68,7 +68,7 @@
         <description>By leveraging the uncertainty estimation capabilities of deep-learning models, U-SET effectively prioritizes structurally complex and ambiguous regions during training. Comprehensive evaluations on our newly compiled KOMPSAT dataset demonstrate that U-SET achieves state-of-the-art performance, outperforming existing methods across six image quality metrics in both quantitative and qualitative assessments. | Score: 3.56</description>
         <pubDate>Thu, 30 Oct 2025 00:00:00 GMT</pubDate>
         <author>Minyoung Jeon;Hyun-Ho Kim;Juheon Park;Doochun Seo;Jaehyup Lee;</author>
-        <category>Adjacent Opportunities</category>
+        <category>Adjacent Topics</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11222869</guid>
     </item>
     <item>
@@ -77,7 +77,7 @@
         <description>However, the MBPU methods still cannot effectively balance PU accuracy and efficiency when processing large-size interferograms. Theoretical analysis and experimental results show that this method has more advantages than the existing MBPU methods in efficiency, accuracy, and adaptability to baseline ratios when processing large-size interferograms. | Score: 3.52</description>
         <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
         <author>Zhihui Yuan;Zhengguo Wang;Hanwen Yu;Xuemin Xing;Lifan Zhou;Lifu Chen;Junyi Xu;</author>
-        <category>Adjacent Opportunities</category>
+        <category>Adjacent Topics</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236427</guid>
     </item>
     <item>
@@ -86,7 +86,7 @@
         <description>Among them, direct inversion methods train a specific network for each sensor, and generally provide a point estimation of the restored image without the associated uncertainties. They demonstrate that VBLE-xz represents a compelling alternative to direct inversion methods when uncertainty quantification (UQ) is required. | Score: 3.18</description>
         <pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate>
         <author>Maud Biquard;Marie Chabert;Florence Genin;Christophe Latry;Thomas Oberlin;</author>
-        <category>Adjacent Opportunities</category>
+        <category>Adjacent Topics</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11258607</guid>
     </item>
     <item>

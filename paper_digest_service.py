@@ -665,7 +665,7 @@ def generate_daily_task(current_date, papers: List[dict]) -> Dict[str, str]:
         "Tuesday": "See Cultural Heritage section for imaging papers",
         "Wednesday": "See RF Systems section for nonlinear/harmonic radar papers",
         "Thursday": "See Cultural Heritage section for spectroscopy papers",
-        "Friday": "See Adjacent Opportunities section for precision ag or commercial sensing",
+        "Friday": "See Adjacent Topics section for precision ag or commercial sensing",
         "Saturday": "See RF Systems section for measurement papers",
         "Sunday": "See Cultural Heritage section for advanced imaging papers",
     }
@@ -1014,13 +1014,13 @@ __RELATED_PAPERS__
             """,
         },
         "Friday": {
-            "domain": "Adjacent Opportunities",
+            "domain": "Adjacent Topics",
             "skill": "Cross-domain Applications",
             "task": "Explore commercial or climate applications",
             "time": "30 minutes",
             "difficulty": "Intermediate",
             "description": """
-Today's focus: **Adjacent Opportunities - Commercial & Climate Applications**
+Today's focus: **Adjacent Topics - Commercial & Climate Applications**
 
 **30-minute task:** Design a precision agriculture radar system concept.
 ```python
@@ -2075,7 +2075,7 @@ def build_email_sections_html(sections: List[Tuple[str, List[dict]]],
             "<em>Papers on optical imaging, spectroscopy, pigment analysis, authentication, and "
             "conservation science for artworks.</em>"
         ),
-        "Adjacent Opportunities": (
+        "Adjacent Topics": (
             "<em>Papers on commercial radar, climate monitoring, precision agriculture, autonomous "
             "systems, and other cross-domain opportunities.</em>"
         ),
@@ -2088,7 +2088,7 @@ def build_email_sections_html(sections: List[Tuple[str, List[dict]]],
     # Count papers by section for summary
     rf_count = len([p for label, items in sections if label == "RF Systems & Nonlinear Phenomena" for p in items])
     heritage_count = len([p for label, items in sections if label == "Cultural Heritage & Conservation Science" for p in items])
-    adjacent_count = len([p for label, items in sections if label == "Adjacent Opportunities" for p in items])
+    adjacent_count = len([p for label, items in sections if label == "Adjacent Topics" for p in items])
     random_count = len([p for label, items in sections if label == "Random Discovery" for p in items])
     
     summary_text = f"{total_papers} papers (3 RF + 3 Heritage + 3 Adjacent"
@@ -2281,7 +2281,7 @@ def generate_rss_feed(max_items: int = 15) -> None:
     <channel>
         <title>Daily Paper Digest</title>
         <link>https://github.com/ddrizzil/HyperImage</link>
-        <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent opportunities.</description>
+        <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
         <lastBuildDate>{now.strftime("%a, %d %b %Y %H:%M:%S GMT")}</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
@@ -2679,7 +2679,7 @@ def create_topic_based_sections(papers: List[dict], previously_sent_keys: Option
     for category, label in [
         ('rf_systems', 'RF Systems & Nonlinear Phenomena'),
         ('cultural_heritage', 'Cultural Heritage & Conservation Science'),
-        ('adjacent', 'Adjacent Opportunities'),
+        ('adjacent', 'Adjacent Topics'),
     ]:
         if len(selections[category]) < 3:
             logger.warning("Only found %d papers for %s (wanted 3).", len(selections[category]), label)
@@ -2703,7 +2703,7 @@ def create_topic_based_sections(papers: List[dict], previously_sent_keys: Option
     sections = [
         ("RF Systems & Nonlinear Phenomena", selections['rf_systems'][:3]),
         ("Cultural Heritage & Conservation Science", selections['cultural_heritage'][:3]),
-        ("Adjacent Opportunities", selections['adjacent'][:3]),
+        ("Adjacent Topics", selections['adjacent'][:3]),
     ]
     
     # Add random paper section if available
@@ -3021,7 +3021,7 @@ def run_once() -> None:
         len(ranked_papers),
         counts.get("RF Systems & Nonlinear Phenomena", 0),
         counts.get("Cultural Heritage & Conservation Science", 0),
-        counts.get("Adjacent Opportunities", 0),
+        counts.get("Adjacent Topics", 0),
     )
 
     log_papers(dedup_sections)
