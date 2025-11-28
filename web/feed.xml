@@ -5,17 +5,26 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent opportunities.</description>
         <language>en-us</language>
-        <lastBuildDate>Thu, 27 Nov 2025 13:33:43 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 28 Nov 2025 13:29:12 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
-        <title>Snow Depth Estimation Based on STCTNet for Sentinel-1 and Multisource Data</title>
-        <link>http://ieeexplore.ieee.org/document/11227141</link>
-        <description>The trained model was then used to predict the average SD for February from 2017 to 2022 at a spatial resolution of 20 m. The application of active microwave data and deep learning techniques in this study provides an approach that improves both the spatial resolution and estimation accuracy of SD. | Score: 5.54</description>
-        <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Qing Cheng;Xinchen Xu;Linwei Yue;Weifeng Hao;</author>
+        <title>MVPTransformer: Long-Term Multivariate Time-Series Pattern for Plasma Array-Based Intelligent Protection Against HPM</title>
+        <link>http://ieeexplore.ieee.org/document/11126173</link>
+        <description>In this work, we propose a novel time-series modeling approach that integrates multiperspective feature extraction with multihead attention-based information fusion, complemented by an autonomous thinking strategy (ATS). By conducting case studies and comparing our method with three state-of-the-art time-series models, we validate the superior accuracy and generalizability of our proposed approach. | Score: 6.14</description>
+        <pubDate>Mon, 18 Aug 2025 00:00:00 GMT</pubDate>
+        <author>Naixing Feng;Chunzhi Dong;Jianyuan Fu;Fanghua Zheng;Zhixiang Huang;</author>
         <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11227141</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11126173</guid>
+    </item>
+    <item>
+        <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
+        <link>http://ieeexplore.ieee.org/document/11128914</link>
+        <description>The simulation and multiple measured experiments demonstrate the proposed method achieves efficient interference suppression performance. Compared to state-of-the-art methods, the time required to process a single frame of measured data is only 0.0872 s, with the best interference suppression performance. | Score: 5.35</description>
+        <pubDate>Tue, 19 Aug 2025 00:00:00 GMT</pubDate>
+        <author>Hao Zhang;Shunjun Wei;Rui Min;Xiang Cai;Shuangqiao Li;Jin Li;Mou Wang;Jun Shi;Guolong Cui;</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11128914</guid>
     </item>
     <item>
         <title>Training Signal Optimization for Behavioral Modeling and Digital Predistortion of RF Power Amplifiers</title>
@@ -27,15 +36,6 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11184392</guid>
     </item>
     <item>
-        <title>Adaptive Temperature-Driven Ternary Contrastive Autoencoder Framework for Hyperspectral Target Detection</title>
-        <link>http://ieeexplore.ieee.org/document/11236413</link>
-        <description>Hyperspectral target detection (HTD) is a critical task in remote sensing, where numerous deep learning (DL)-based methods have emerged for their powerful ability to extract hierarchical and discriminative features. Experimental results on four real-world benchmark datasets demonstrate that our approach outperforms state-of-the-art methods in terms of detection performance and efficiency. | Score: 5.24</description>
-        <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Jiaojiao Li;Hangyun Liu;Haitao Xu;Chengyuan Wang;Yunsong Li;Qian Du;</author>
-        <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236413</guid>
-    </item>
-    <item>
         <title>StylizedGS: Controllable Stylization for 3D Gaussian Splatting</title>
         <link>http://ieeexplore.ieee.org/document/11143957</link>
         <description>Our method achieves high-quality stylization results characterized by faithful brushstrokes and geometric consistency with flexible controls. Extensive experiments across various scenes and styles demonstrate the effectiveness and efficiency of our method concerning both stylization quality and inference speed. | Score: 0.51</description>
@@ -45,22 +45,22 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11143957</guid>
     </item>
     <item>
-        <title>A Spike-Driven Transformer Network for Edge Computing-Based Partial Discharge Monitoring Using Ultrahigh Frequency Pulse Signals</title>
-        <link>http://ieeexplore.ieee.org/document/11084948</link>
-        <description>To address these issues, this article develops a novel UHF monitoring system by combining a low-noise UHF sensing frontend and a spike-driven Transformer network toward edge computing, enabling a robust, energy-efficient and cost-effective PD recognition. Experimental results demonstrate the highest recognition accuracy, and reductions in computational complexity and energy consumption by 56.25% and 52.0%, respectively. | Score: 5.03</description>
-        <pubDate>Fri, 18 Jul 2025 00:00:00 GMT</pubDate>
-        <author>Changdong Wang;Jingli Yang;Yu’ang Li;Zhou Wang;Huamin Jie;Zhi Zheng;Zhenyu Zhao;Zhou Shu;Yongxin Guo</author>
+        <title>Adaptive Temperature-Driven Ternary Contrastive Autoencoder Framework for Hyperspectral Target Detection</title>
+        <link>http://ieeexplore.ieee.org/document/11236413</link>
+        <description>Hyperspectral target detection (HTD) is a critical task in remote sensing, where numerous deep learning (DL)-based methods have emerged for their powerful ability to extract hierarchical and discriminative features. Experimental results on four real-world benchmark datasets demonstrate that our approach outperforms state-of-the-art methods in terms of detection performance and efficiency. | Score: 5.24</description>
+        <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Jiaojiao Li;Hangyun Liu;Haitao Xu;Chengyuan Wang;Yunsong Li;Qian Du;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11084948</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236413</guid>
     </item>
     <item>
-        <title>Despeckling of Synthetic Aperture Radar Images Using Linear–Angular Attention Transformer</title>
-        <link>http://ieeexplore.ieee.org/document/11225891</link>
-        <description>In this study, we propose a linear–angular attention transformer network for SAR despeckling. Unlike models that rely on optical images for training and lack domain-specific features for real SAR despeckling, the proposed network is trained directly on SAR images in a self-supervised manner. | Score: 5.02</description>
-        <pubDate>Tue, 04 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Souraja Kundu;M. K. Bhuyan;Karl F. MacDorman;Neeraj Kumar Sharma;Manish Bhatt;</author>
+        <title>ULADiff: Unmixing-Guided Learnable Abundance-Latent Diffusion for Hyperspectral Image Denoising</title>
+        <link>http://ieeexplore.ieee.org/document/11244146</link>
+        <description>Thus, how to effectively incorporate physical priors into the DDPM to improve denoising performance remains an underexplored issue. Comprehensive evaluations on synthetic and real-world datasets demonstrate that ULADiff outperforms state-of-the-art methods in both quantitative performance and visual fidelity. | Score: 4.13</description>
+        <pubDate>Wed, 12 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Zhe-Min Wei;Heng-Chao Li;Yu-Bang Zheng;Jian-Li Wang;Qian Du;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11225891</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11244146</guid>
     </item>
     <item>
         <title>U-SET: Uncertainty-Aware SAR-to-EO Translation</title>
@@ -81,22 +81,22 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236427</guid>
     </item>
     <item>
-        <title>Multiscale Integration of Spatially Dense InSAR Data and Temporally Intensive GNSS Data Enhances Landslide Displacement Prediction</title>
-        <link>http://ieeexplore.ieee.org/document/11227123</link>
-        <description>Due to complex landslide dynamics and the lack of high-quality monitoring data, the timely and accurate prediction of landslide displacement remains challenging. These findings underscore the necessity and feasibility of multisource monitoring data in landslide displacement prediction, providing a robust and scalable framework for landslide disaster prevention. | Score: 3.46</description>
-        <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Qianru Ding;Gang Ma;Chengqian Guo;Hua Chen;Fudong Chi;Wei Zhou;Xiaolin Chang;</author>
+        <title>Deep Priors for Satellite Image Restoration With Accurate Uncertainties</title>
+        <link>http://ieeexplore.ieee.org/document/11258607</link>
+        <description>Among them, direct inversion methods train a specific network for each sensor, and generally provide a point estimation of the restored image without the associated uncertainties. They demonstrate that VBLE-xz represents a compelling alternative to direct inversion methods when uncertainty quantification (UQ) is required. | Score: 3.18</description>
+        <pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Maud Biquard;Marie Chabert;Florence Genin;Christophe Latry;Thomas Oberlin;</author>
         <category>Adjacent Opportunities</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11227123</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11258607</guid>
     </item>
     <item>
-        <title>Alternative Framework to Quantize Fermionic Fields</title>
-        <link>https://arxiv.org/abs/2503.02362</link>
-        <description>We also show that the framework can be applied to develop theories of interaction between fermionic fields and other external fields such as electromagnetic fields, non-Abelian gauge fields, or another fermionic field. These results further establish that the present variational framework is a novel alternative to derive quantum field theories. | Score: nan</description>
-        <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Jianhao M. Yang</author>
+        <title>Self-Reflection Neural Network for Class-Incremental Object Counting</title>
+        <link>http://ieeexplore.ieee.org/document/11175512</link>
+        <description>In crowded scenarios, achieving the counting task of dynamically evolving categories is extremely challenging. Our extensive experiments validate the effectiveness of our proposed method, achieving state-of-the-art results. | Score: nan</description>
+        <pubDate>Mon, 22 Sep 2025 00:00:00 GMT</pubDate>
+        <author>Shengqin Jiang;Linfei Li;Fengna Cheng;Yuankai Qi;Qingshan Liu;</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2503.02362</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11175512</guid>
     </item>
     </channel>
 </rss>
