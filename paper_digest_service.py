@@ -2358,6 +2358,13 @@ def email_digest(sections: List[Tuple[str, List[dict]]],
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
 
+    # Check if we have any papers to send
+    total_papers = sum(len(items) for _, items in sections)
+    if total_papers == 0:
+        logger.warning("No papers to send in email digest. Skipping email send.")
+        logger.info("Sections received: %s", [label for label, _ in sections])
+        return
+
     smtp_host = os.getenv("SMTP_HOST")
     smtp_port = int(os.getenv("SMTP_PORT", "587"))
     # Support both EMAIL_USER/EMAIL_PASS and SMTP_USER/SMTP_PASS
@@ -2369,6 +2376,11 @@ def email_digest(sections: List[Tuple[str, List[dict]]],
         recipients = [email.strip() for email in email_recipients.split(",") if email.strip()]
     else:
         recipients = load_recipients()
+
+    if not recipients:
+        logger.error("No recipients found; skipping email send.")
+        logger.error("Checked EMAIL_RECIPIENTS=%s and config/emails.txt", os.getenv("EMAIL_RECIPIENTS"))
+        return
 
     msg = MIMEMultipart("alternative")
     subject_prefix = "Weekly" if mode == "weekly" else "Daily"
@@ -2384,26 +2396,57 @@ def email_digest(sections: List[Tuple[str, List[dict]]],
         logger.error("Environment variables checked: SMTP_HOST=%s", os.getenv("SMTP_HOST"))
         return
 
-    if not recipients:
-        logger.error("No recipients found; skipping email send.")
-        logger.error("Checked EMAIL_RECIPIENTS=%s and config/emails.txt", os.getenv("EMAIL_RECIPIENTS"))
-        return
-
     if not smtp_user or not smtp_pass:
         logger.error("SMTP credentials missing; skipping email send.")
         logger.error("SMTP_USER=%s (from SMTP_USER or EMAIL_USER), SMTP_PASS=%s (from SMTP_PASS or EMAIL_PASS)", 
                     "SET" if smtp_user else "NOT SET", "SET" if smtp_pass else "NOT SET")
         return
 
+    # Check if we have any papers to send
+    total_papers = sum(len(items) for _, items in sections)
+    if total_papers == 0:
+        logger.warning("No papers to send in email digest. Skipping email send.")
+        logger.info("Sections received: %s", [label for label, _ in sections])
+        return
+
     try:
-        logger.info("Attempting to send email via SMTP server: %s:%s to %s", smtp_host, smtp_port, ", ".join(recipients))
-        with smtplib.SMTP(smtp_host, smtp_port) as server:
-            server.starttls()
-            server.login(smtp_user, smtp_pass)
-            server.sendmail(SENDER, recipients, msg.as_string())
-        logger.info("✓ Email successfully sent to %s", ", ".join(recipients))
+        logger.info("Attempting to send email via SMTP server: %s:%s to %s (%d papers)", 
+                   smtp_host, smtp_port, ", ".join(recipients), total_papers)
+        logger.info("Email sections: %s", [f"{label}: {len(items)}" for label, items in sections])
+        
+        # Create SMTP connection
+        server = smtplib.SMTP(smtp_host, smtp_port)
+        server.set_debuglevel(0)  # Set to 1 for verbose debugging
+        
+        # Start TLS and authenticate
+        server.starttls()
+        logger.debug("TLS started successfully")
+        
+        server.login(smtp_user, smtp_pass)
+        logger.debug("SMTP login successful")
+        
+        # Send email
+        server.sendmail(SENDER, recipients, msg.as_string())
+        logger.debug("Email message sent to server")
+        
+        server.quit()
+        logger.info("✓ Email successfully sent to %s (%d papers in %d sections)", 
+                   ", ".join(recipients), total_papers, len(sections))
+    except smtplib.SMTPAuthenticationError as e:
+        logger.error("SMTP Authentication failed: %s", e)
+        logger.error("Check that EMAIL_USER and EMAIL_PASS are correct")
+        raise
+    except smtplib.SMTPConnectError as e:
+        logger.error("SMTP Connection failed: %s", e)
+        logger.error("Check that SMTP_HOST (%s) and SMTP_PORT (%s) are correct", smtp_host, smtp_port)
+        raise
+    except smtplib.SMTPException as e:
+        logger.error("SMTP Error: %s", e)
+        raise
     except Exception as e:
         logger.error("Failed to send email: %s", e, exc_info=True)
+        logger.error("Email details: host=%s, port=%s, user=%s, recipients=%s", 
+                    smtp_host, smtp_port, smtp_user, recipients)
         raise
 
 def has_priority_topic(paper: dict) -> bool:
