@@ -1946,34 +1946,34 @@ def load_history_papers(exclude_links: set) -> Tuple[List[dict], set]:
                 # ALWAYS add to sent_keys to prevent re-sending, even if data is missing
                 normalized = normalize_key(paper_key)
                 sent_keys.add(normalized)
-            
-            # Only add to history list if we have a valid published date AND NOT in current feeds
-            try:
-                published = datetime.strptime(row.get("published", ""), "%Y-%m-%d").replace(tzinfo=timezone.utc)
-            except ValueError:
-                # Skip adding to history, but we already added to sent_keys above
-                continue
-            
-            try:
-                score = float(row.get("relevance", 0))
-            except (TypeError, ValueError):
-                score = 0.0
-            
-            # Only add to history list if NOT in current feeds (avoid re-scoring)
-            if link not in exclude_links:
-                paper = {
-             "title": title,
-             "summary": summary,
-             "link": link,
-                    "published": published,
-                    "citations": 0,
-             "authors": authors,
-                    "doi": doi,  # Use actual DOI from CSV
-                    "source": "history",
-                    "score": score,
-                }
-                ensure_summary_text(paper)
-                history.append(paper)
+                
+                # Only add to history list if we have a valid published date AND NOT in current feeds
+                try:
+                    published = datetime.strptime(row.get("published", ""), "%Y-%m-%d").replace(tzinfo=timezone.utc)
+                except ValueError:
+                    # Skip adding to history, but we already added to sent_keys above
+                    continue
+                
+                try:
+                    score = float(row.get("relevance", 0))
+                except (TypeError, ValueError):
+                    score = 0.0
+                
+                # Only add to history list if NOT in current feeds (avoid re-scoring)
+                if link not in exclude_links:
+                    paper = {
+                        "title": title,
+                        "summary": summary,
+                        "link": link,
+                        "published": published,
+                        "citations": 0,
+                        "authors": authors,
+                        "doi": doi,  # Use actual DOI from CSV
+                        "source": "history",
+                        "score": score,
+                    }
+                    ensure_summary_text(paper)
+                    history.append(paper)
     
     except Exception as e:
         logger.error("Error reading log file %s: %s", LOG_FILE, e, exc_info=True)
