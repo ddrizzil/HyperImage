@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Fri, 28 Nov 2025 13:29:12 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 04 Dec 2025 13:35:04 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -54,13 +54,23 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236413</guid>
     </item>
     <item>
-        <title>ULADiff: Unmixing-Guided Learnable Abundance-Latent Diffusion for Hyperspectral Image Denoising</title>
-        <link>http://ieeexplore.ieee.org/document/11244146</link>
-        <description>Thus, how to effectively incorporate physical priors into the DDPM to improve denoising performance remains an underexplored issue. Comprehensive evaluations on synthetic and real-world datasets demonstrate that ULADiff outperforms state-of-the-art methods in both quantitative performance and visual fidelity. | Score: 4.13</description>
-        <pubDate>Wed, 12 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Zhe-Min Wei;Heng-Chao Li;Yu-Bang Zheng;Jian-Li Wang;Qian Du;</author>
+        <title>SSMRadNet : A Sample-wise State-Space Framework for Efficient and Ultra-Light Radar Segmentation and Object Detection</title>
+        <link>https://arxiv.org/abs/2511.08769</link>
+        <description>The latent representations of a radar frame are decoded to perform segmentation and detection tasks. Comprehensive evaluations on the RADIal dataset show SSMRadNet has 10-33x fewer parameters and 60-88x less computation (GFLOPs) while being 3.7x faster than state-of-the-art transformer and convolution-based radar detectors at competitive performance for segmentation tasks. | Score: 4.63</description>
+        <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Anuab Sen, Mir Sayeed Mohammad, Saibal Mukhopadhyay</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11244146</guid>
+        <guid isPermaLink="true">https://arxiv.org/abs/2511.08769</guid>
+    </item>
+    <item>
+        <title>Leveraging AI multimodal geospatial foundation models for improved near-real-time flood mapping at a global scale</title>
+        <link>https://arxiv.org/abs/2512.02055</link>
+        <description>U-Net achieved higher recall than all GFM configurations, though with slightly lower accuracy and precision.
+  Our results demonstrate that integrating multimodal optical and SAR data and fine-tuning a GFM can enhance near-real-time flood mapping. This study provides one of the first global-scale evaluations of a GFM for flood segmentation, highlighting both its potential and current limitations for climate adaptation and disaster resilience. | Score: 4.36</description>
+        <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Mirela G. Tulbure, Julio Caineta, Mark Broich, Mollie D. Gaines, Philippe Rufin, Leon-Friedrich Thom</author>
+        <category>Adjacent Topics</category>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.02055</guid>
     </item>
     <item>
         <title>U-SET: Uncertainty-Aware SAR-to-EO Translation</title>
@@ -81,22 +91,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236427</guid>
     </item>
     <item>
-        <title>Deep Priors for Satellite Image Restoration With Accurate Uncertainties</title>
-        <link>http://ieeexplore.ieee.org/document/11258607</link>
-        <description>Among them, direct inversion methods train a specific network for each sensor, and generally provide a point estimation of the restored image without the associated uncertainties. They demonstrate that VBLE-xz represents a compelling alternative to direct inversion methods when uncertainty quantification (UQ) is required. | Score: 3.18</description>
-        <pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Maud Biquard;Marie Chabert;Florence Genin;Christophe Latry;Thomas Oberlin;</author>
-        <category>Adjacent Topics</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11258607</guid>
-    </item>
-    <item>
-        <title>Self-Reflection Neural Network for Class-Incremental Object Counting</title>
-        <link>http://ieeexplore.ieee.org/document/11175512</link>
-        <description>In crowded scenarios, achieving the counting task of dynamically evolving categories is extremely challenging. Our extensive experiments validate the effectiveness of our proposed method, achieving state-of-the-art results. | Score: nan</description>
-        <pubDate>Mon, 22 Sep 2025 00:00:00 GMT</pubDate>
-        <author>Shengqin Jiang;Linfei Li;Fengna Cheng;Yuankai Qi;Qingshan Liu;</author>
+        <title>AR-SMFWI: A Hybrid Artifact Removal and Spatial Multiscale FWI Approach for Common-Offset GPR Data</title>
+        <link>http://ieeexplore.ieee.org/document/11236412</link>
+        <description>Full waveform inversion (FWI) has shown great potential for high-resolution imaging in ground-penetrating radar (GPR) applications. The proposed approach provides a viable solution for large-scale Co-GPR inversion under limited computational resources and offers new insights for extending FWI to practical GPR imaging scenarios. | Score: nan</description>
+        <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Yu Yang;Xu Bai;Yulong Gao;Hongrui Li;Guanting Liu;</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11175512</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236412</guid>
     </item>
     </channel>
 </rss>
