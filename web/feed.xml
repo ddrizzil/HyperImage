@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Thu, 04 Dec 2025 13:35:04 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 05 Dec 2025 13:35:27 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -36,41 +36,49 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11184392</guid>
     </item>
     <item>
-        <title>StylizedGS: Controllable Stylization for 3D Gaussian Splatting</title>
-        <link>http://ieeexplore.ieee.org/document/11143957</link>
-        <description>Our method achieves high-quality stylization results characterized by faithful brushstrokes and geometric consistency with flexible controls. Extensive experiments across various scenes and styles demonstrate the effectiveness and efficiency of our method concerning both stylization quality and inference speed. | Score: 0.51</description>
-        <pubDate>Thu, 28 Aug 2025 00:00:00 GMT</pubDate>
-        <author>Dingxi Zhang;Yu-Jie Yuan;Zhuoxun Chen;Fang-Lue Zhang;Zhenliang He;Shiguang Shan;Lin Gao;</author>
+        <title>Efficient 3D Surface Super-Resolution via Normal-Based Multimodal Restoration</title>
+        <link>http://ieeexplore.ieee.org/document/11192222</link>
+        <description>This paper introduces an efficient multimodal normal-based 3D surface super-resolution (mn3DSSR) framework, designed to address the challenges of microgeometry enhancement and computational overhead. Extensive experiments conducted on seven benchmark datasets across four different 3D data representations demonstrate that mn3DSSR consistently outperforms state-of-the-art super-resolution methods in terms of restoration accuracy with high computational efficiency. | Score: 1.88</description>
+        <pubDate>Thu, 02 Oct 2025 00:00:00 GMT</pubDate>
+        <author>Miaohui Wang;Yunheng Liu;Wuyuan Xie;Boxin Shi;Jianmin Jiang;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11143957</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11192222</guid>
     </item>
     <item>
-        <title>Adaptive Temperature-Driven Ternary Contrastive Autoencoder Framework for Hyperspectral Target Detection</title>
-        <link>http://ieeexplore.ieee.org/document/11236413</link>
-        <description>Hyperspectral target detection (HTD) is a critical task in remote sensing, where numerous deep learning (DL)-based methods have emerged for their powerful ability to extract hierarchical and discriminative features. Experimental results on four real-world benchmark datasets demonstrate that our approach outperforms state-of-the-art methods in terms of detection performance and efficiency. | Score: 5.24</description>
-        <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Jiaojiao Li;Hangyun Liu;Haitao Xu;Chengyuan Wang;Yunsong Li;Qian Du;</author>
+        <title>Uncertainty-Aware With Adaptive Geometric Correction for Multimodal Land-Cover Classification</title>
+        <link>http://ieeexplore.ieee.org/document/11269698</link>
+        <description>We evaluate UAG on the WHU-OPT-SAR and DFC23 datasets, where experimental results demonstrate substantial improvements over state-of-the-art methods. The code will be released at https://github.com/cccwbin/UAGNet | Score: 4.54</description>
+        <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Wenbin Cao;Xu Wang;Yi Xiao;Wenxin Huang;Bihan Wen;Xian Zhong;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236413</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11269698</guid>
     </item>
     <item>
-        <title>SSMRadNet : A Sample-wise State-Space Framework for Efficient and Ultra-Light Radar Segmentation and Object Detection</title>
-        <link>https://arxiv.org/abs/2511.08769</link>
-        <description>The latent representations of a radar frame are decoded to perform segmentation and detection tasks. Comprehensive evaluations on the RADIal dataset show SSMRadNet has 10-33x fewer parameters and 60-88x less computation (GFLOPs) while being 3.7x faster than state-of-the-art transformer and convolution-based radar detectors at competitive performance for segmentation tasks. | Score: 4.63</description>
-        <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Anuab Sen, Mir Sayeed Mohammad, Saibal Mukhopadhyay</author>
+        <title>Chirplet Fourier Analysis Network for Cross-Scene Classification of Multisource Remote Sensing Data</title>
+        <link>http://ieeexplore.ieee.org/document/11270899</link>
+        <description>Extensive experiments demonstrate that the ChirpFAN framework achieves state-of-the-art (SOTA) performance with 3% average improvements on three challenging cross-scene MSRS datasets. The code is released on https://github.com/xudongzhao461/. | Score: 4.35</description>
+        <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Xudong Zhao;Qi Ming;Yixiao Yang;Wenshuai Hu;Wei Li;Ran Tao;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2511.08769</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11270899</guid>
     </item>
     <item>
-        <title>Leveraging AI multimodal geospatial foundation models for improved near-real-time flood mapping at a global scale</title>
-        <link>https://arxiv.org/abs/2512.02055</link>
-        <description>U-Net achieved higher recall than all GFM configurations, though with slightly lower accuracy and precision.
-  Our results demonstrate that integrating multimodal optical and SAR data and fine-tuning a GFM can enhance near-real-time flood mapping. This study provides one of the first global-scale evaluations of a GFM for flood segmentation, highlighting both its potential and current limitations for climate adaptation and disaster resilience. | Score: 4.36</description>
-        <pubDate>Thu, 04 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Mirela G. Tulbure, Julio Caineta, Mark Broich, Mollie D. Gaines, Philippe Rufin, Leon-Friedrich Thom</author>
+        <title>Soil Moisture Affects Multitemporal InSAR Deformation Monitoring via Dielectric Property Changes</title>
+        <link>http://ieeexplore.ieee.org/document/11262238</link>
+        <description>Our findings indicate that dielectric property changes constitute a critical factor in InSAR deformation monitoring that cannot be overlooked. This insight holds significant implications for enhancing the effectiveness of InSAR technology in slope disaster monitoring and early warning systems. | Score: 4.24</description>
+        <pubDate>Thu, 20 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Meng Ao;Xiangben Zhang;Yuan Dai;Lianhuan Wei;Yian Wang;Xiaosong Feng;Shanjun Liu;Mingsheng Liao;Lu Z</author>
         <category>Adjacent Topics</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2512.02055</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11262238</guid>
+    </item>
+    <item>
+        <title>Improving Ground Deformation Classification by Integrating InSAR Time Series With Geospatial Information</title>
+        <link>http://ieeexplore.ieee.org/document/11262252</link>
+        <description>To fully use the rich information contained in the TS and to exploit the complementary strengths of spatial and temporal data, we propose a dual-branch deep learning (DL) approach that integrates InSAR ground deformation TS with geospatial information for classifying slow-moving ground deformation processes. This work highlights the strength of multimodal data fusion method to classify ground deformation processes, while setting the stage for future research. | Score: 4.20</description>
+        <pubDate>Thu, 20 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Yingbo Dong;Lorenzo Nava;Riccardo Palamà;Oriol Monserrat;Davide Festa;Mario Floris;Ascanio Rosi;Fili</author>
+        <category>Adjacent Topics</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11262252</guid>
     </item>
     <item>
         <title>U-SET: Uncertainty-Aware SAR-to-EO Translation</title>
@@ -82,22 +90,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11222869</guid>
     </item>
     <item>
-        <title>A WaveCluster-Based Robust and Fast Multibaseline InSAR Phase Unwrapping Algorithm</title>
-        <link>http://ieeexplore.ieee.org/document/11236427</link>
-        <description>However, the MBPU methods still cannot effectively balance PU accuracy and efficiency when processing large-size interferograms. Theoretical analysis and experimental results show that this method has more advantages than the existing MBPU methods in efficiency, accuracy, and adaptability to baseline ratios when processing large-size interferograms. | Score: 3.52</description>
-        <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Zhihui Yuan;Zhengguo Wang;Hanwen Yu;Xuemin Xing;Lifan Zhou;Lifu Chen;Junyi Xu;</author>
-        <category>Adjacent Topics</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236427</guid>
-    </item>
-    <item>
-        <title>AR-SMFWI: A Hybrid Artifact Removal and Spatial Multiscale FWI Approach for Common-Offset GPR Data</title>
-        <link>http://ieeexplore.ieee.org/document/11236412</link>
-        <description>Full waveform inversion (FWI) has shown great potential for high-resolution imaging in ground-penetrating radar (GPR) applications. The proposed approach provides a viable solution for large-scale Co-GPR inversion under limited computational resources and offers new insights for extending FWI to practical GPR imaging scenarios. | Score: nan</description>
-        <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Yu Yang;Xu Bai;Yulong Gao;Hongrui Li;Guanting Liu;</author>
+        <title>Rapid Simulation for Passive Millimeter-Wave Imaging of Large-Scale Kelvin Wake Using Wave Height and Brightness Temperature Similarity</title>
+        <link>http://ieeexplore.ieee.org/document/11130634</link>
+        <description>Simulation experiments involving Wigley and KCS ship models demonstrate that the proposed rapid simulation method can substantially decrease the number of model elements, reduce computational complexity, and shorten simulation duration, all while preserving the high accuracy of PMMW imaging simulations. Furthermore, the proposed method can incorporate various environmental complexities, such as different sea conditions, weather conditions, and seasonal variations into the equivalent simulation. | Score: nan</description>
+        <pubDate>Wed, 20 Aug 2025 00:00:00 GMT</pubDate>
+        <author>Huimin Xiong;Yayun Cheng;Liang Wu;Jiaran Qi;Jinghui Qiu;</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11236412</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11130634</guid>
     </item>
     </channel>
 </rss>
