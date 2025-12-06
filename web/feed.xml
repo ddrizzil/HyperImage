@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Fri, 05 Dec 2025 13:35:27 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 06 Dec 2025 13:24:33 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -90,13 +90,17 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11222869</guid>
     </item>
     <item>
-        <title>Rapid Simulation for Passive Millimeter-Wave Imaging of Large-Scale Kelvin Wake Using Wave Height and Brightness Temperature Similarity</title>
-        <link>http://ieeexplore.ieee.org/document/11130634</link>
-        <description>Simulation experiments involving Wigley and KCS ship models demonstrate that the proposed rapid simulation method can substantially decrease the number of model elements, reduce computational complexity, and shorten simulation duration, all while preserving the high accuracy of PMMW imaging simulations. Furthermore, the proposed method can incorporate various environmental complexities, such as different sea conditions, weather conditions, and seasonal variations into the equivalent simulation. | Score: nan</description>
-        <pubDate>Wed, 20 Aug 2025 00:00:00 GMT</pubDate>
-        <author>Huimin Xiong;Yayun Cheng;Liang Wu;Jiaran Qi;Jinghui Qiu;</author>
+        <title>Atmospheric Blocks Increase the Odds of Extreme Wildfire Danger at High Latitudes in the Northern Hemisphere</title>
+        <link>https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025GL115117?af=R</link>
+        <description>Geophysical Research Letters, Volume 52, Issue 23, 16 December 2025. | Score: nan</description>
+        <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Michael Herrmann, 
+Helga Weber, 
+Stefan Brönnimann, 
+Olivia Martius, 
+Daniel Steinfeld</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11130634</guid>
+        <guid isPermaLink="true">https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025GL115117?af=R</guid>
     </item>
     </channel>
 </rss>
