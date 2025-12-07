@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Sat, 06 Dec 2025 13:24:33 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 07 Dec 2025 13:23:05 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -90,17 +90,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11222869</guid>
     </item>
     <item>
-        <title>Atmospheric Blocks Increase the Odds of Extreme Wildfire Danger at High Latitudes in the Northern Hemisphere</title>
-        <link>https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025GL115117?af=R</link>
-        <description>Geophysical Research Letters, Volume 52, Issue 23, 16 December 2025. | Score: nan</description>
-        <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Michael Herrmann, 
-Helga Weber, 
-Stefan Brönnimann, 
-Olivia Martius, 
-Daniel Steinfeld</author>
+        <title>Charting the Future: A Review Of Comsoc&#x27;s Strategic TC Restructuring</title>
+        <link>http://ieeexplore.ieee.org/document/11227010</link>
+        <description>Led by the Vice President (VP-TEA), the TEA Council oversees several important boards – including the Educational Services Board (ESB), Industry Communities Board (ICB), and Technical Committees Board (TCB) – as well as vital standing committees. They will share details on the comprehensive Technical Committee restructuring, which the Board of Governors approved in June 2025. | Score: nan</description>
+        <pubDate>Tue, 04 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Robert Schober;Wei Zhang;Shiwen Mao;</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025GL115117?af=R</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11227010</guid>
     </item>
     </channel>
 </rss>
