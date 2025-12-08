@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Sun, 07 Dec 2025 13:23:05 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 08 Dec 2025 13:34:32 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -18,6 +18,15 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11126173</guid>
     </item>
     <item>
+        <title>Bayesian Optimization and Convolutional Neural Networks for Zernike-Based Wavefront Correction in High Harmonic Generation</title>
+        <link>https://arxiv.org/abs/2512.05127</link>
+        <description>We present a machine learning approach to optimize aberration correction using a spatial light modulator. Our CNN achieved promising results with 80.39% accuracy on test data, demonstrating the potential for automated aberration correction in HHG systems. | Score: 5.64</description>
+        <pubDate>Mon, 08 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Guilherme Grancho D. Fernandes, Duarte Alexandrino, Eduardo Silva, Jo\~ao Matias, Joaquim Pereira</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.05127</guid>
+    </item>
+    <item>
         <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
         <link>http://ieeexplore.ieee.org/document/11128914</link>
         <description>The simulation and multiple measured experiments demonstrate the proposed method achieves efficient interference suppression performance. Compared to state-of-the-art methods, the time required to process a single frame of measured data is only 0.0872 s, with the best interference suppression performance. | Score: 5.35</description>
@@ -25,15 +34,6 @@
         <author>Hao Zhang;Shunjun Wei;Rui Min;Xiang Cai;Shuangqiao Li;Jin Li;Mou Wang;Jun Shi;Guolong Cui;</author>
         <category>RF Systems &amp; Nonlinear Phenomena</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11128914</guid>
-    </item>
-    <item>
-        <title>Training Signal Optimization for Behavioral Modeling and Digital Predistortion of RF Power Amplifiers</title>
-        <link>http://ieeexplore.ieee.org/document/11184392</link>
-        <description>The signal is similar to orthogonal frequency-division multiplexing-based signal standards, facilitating its use in training during the regular operation of the wireless transmitter. Experimental validation of this method is also provided in hardware, with a PA using a 100-MHz bandwidth millimeter wave 5G signal. | Score: 5.27</description>
-        <pubDate>Mon, 29 Sep 2025 00:00:00 GMT</pubDate>
-        <author>Jonathan Guimaraes Ribeiro;Yiyue Jiang;Rahul Mushini;Miriam Leeser;John Dooley;</author>
-        <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11184392</guid>
     </item>
     <item>
         <title>Efficient 3D Surface Super-Resolution via Normal-Based Multimodal Restoration</title>
@@ -45,6 +45,15 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11192222</guid>
     </item>
     <item>
+        <title>Underwater Image Reconstruction Using a Swin Transformer-Based Generator and PatchGAN Discriminator</title>
+        <link>https://arxiv.org/abs/2512.05866</link>
+        <description>This paper presented a novel deep learning framework that integrated a Swin Transformer architecture within a generative adversarial network (GAN) for underwater image reconstruction. The proposed method offers robust underwater image reconstruction suitable for various marine applications. | Score: 4.99</description>
+        <pubDate>Mon, 08 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Md. Mahbub Hasan Akash, Aria Tasnim Mridula, Sheekar Banerjee, Ishtiak Al Mamoon</author>
+        <category>Cultural Heritage &amp; Conservation Science</category>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.05866</guid>
+    </item>
+    <item>
         <title>Uncertainty-Aware With Adaptive Geometric Correction for Multimodal Land-Cover Classification</title>
         <link>http://ieeexplore.ieee.org/document/11269698</link>
         <description>We evaluate UAG on the WHU-OPT-SAR and DFC23 datasets, where experimental results demonstrate substantial improvements over state-of-the-art methods. The code will be released at https://github.com/cccwbin/UAGNet | Score: 4.54</description>
@@ -52,15 +61,6 @@
         <author>Wenbin Cao;Xu Wang;Yi Xiao;Wenxin Huang;Bihan Wen;Xian Zhong;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11269698</guid>
-    </item>
-    <item>
-        <title>Chirplet Fourier Analysis Network for Cross-Scene Classification of Multisource Remote Sensing Data</title>
-        <link>http://ieeexplore.ieee.org/document/11270899</link>
-        <description>Extensive experiments demonstrate that the ChirpFAN framework achieves state-of-the-art (SOTA) performance with 3% average improvements on three challenging cross-scene MSRS datasets. The code is released on https://github.com/xudongzhao461/. | Score: 4.35</description>
-        <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Xudong Zhao;Qi Ming;Yixiao Yang;Wenshuai Hu;Wei Li;Ran Tao;</author>
-        <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11270899</guid>
     </item>
     <item>
         <title>Soil Moisture Affects Multitemporal InSAR Deformation Monitoring via Dielectric Property Changes</title>
@@ -90,13 +90,14 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11222869</guid>
     </item>
     <item>
-        <title>Charting the Future: A Review Of Comsoc&#x27;s Strategic TC Restructuring</title>
-        <link>http://ieeexplore.ieee.org/document/11227010</link>
-        <description>Led by the Vice President (VP-TEA), the TEA Council oversees several important boards – including the Educational Services Board (ESB), Industry Communities Board (ICB), and Technical Committees Board (TCB) – as well as vital standing committees. They will share details on the comprehensive Technical Committee restructuring, which the Board of Governors approved in June 2025. | Score: nan</description>
-        <pubDate>Tue, 04 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Robert Schober;Wei Zhang;Shiwen Mao;</author>
+        <title>Measuring the Effect of Background on Classification and Feature Importance in Deep Learning for AV Perception</title>
+        <link>https://arxiv.org/abs/2512.05937</link>
+        <description>[...] Therefore, we systematically generate six synthetic datasets for the task of traffic sign recognition, which differ only in their degree of camera variation and background correlation [...] to quantify the isolated influence of background correlation, different levels of camera variation, and considered traffic sign shapes on the classification performance, as well as background feature importance. [...] Results include a quantification of when and how much background features gain importance to support the classification task based on changes in the training domain [...].
+  Download: synset.de/datasets/synset-signset-ger/background-effect | Score: nan</description>
+        <pubDate>Mon, 08 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Anne Sielemann, Valentin Barner, Stefan Wolf, Masoud Roschani, Jens Ziehn, Juergen Beyerer</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11227010</guid>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.05937</guid>
     </item>
     </channel>
 </rss>
