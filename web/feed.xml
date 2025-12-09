@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Mon, 08 Dec 2025 13:34:32 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 09 Dec 2025 13:36:20 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -18,15 +18,6 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11126173</guid>
     </item>
     <item>
-        <title>Bayesian Optimization and Convolutional Neural Networks for Zernike-Based Wavefront Correction in High Harmonic Generation</title>
-        <link>https://arxiv.org/abs/2512.05127</link>
-        <description>We present a machine learning approach to optimize aberration correction using a spatial light modulator. Our CNN achieved promising results with 80.39% accuracy on test data, demonstrating the potential for automated aberration correction in HHG systems. | Score: 5.64</description>
-        <pubDate>Mon, 08 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Guilherme Grancho D. Fernandes, Duarte Alexandrino, Eduardo Silva, Jo\~ao Matias, Joaquim Pereira</author>
-        <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2512.05127</guid>
-    </item>
-    <item>
         <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
         <link>http://ieeexplore.ieee.org/document/11128914</link>
         <description>The simulation and multiple measured experiments demonstrate the proposed method achieves efficient interference suppression performance. Compared to state-of-the-art methods, the time required to process a single frame of measured data is only 0.0872 s, with the best interference suppression performance. | Score: 5.35</description>
@@ -34,6 +25,16 @@
         <author>Hao Zhang;Shunjun Wei;Rui Min;Xiang Cai;Shuangqiao Li;Jin Li;Mou Wang;Jun Shi;Guolong Cui;</author>
         <category>RF Systems &amp; Nonlinear Phenomena</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11128914</guid>
+    </item>
+    <item>
+        <title>In-Context and Few-Shots Learning for Forecasting Time Series Data based on Large Language Models</title>
+        <link>https://arxiv.org/abs/2512.07705</link>
+        <description>More specifically, the paper explores training LLMs through in-context, zero-shot and few-shot learning and forecasting time series data with OpenAI {\tt o4-mini} and Gemini 2.5 Flash Lite, as well as the recent Google&#x27;s Transformer-based TimesFM, a time series-specific foundation model, along with two deep learning models, namely TCN and LSTM networks. Furthermore, OpenAI&#x27;s o4-mini also exhibits a good performance based on Zero Shot learning.
+  These findings highlight pre-trained time series foundation models as a promising direction for real-time forecasting, enabling accurate and scalable deployment with minimal model adaptation. | Score: 5.30</description>
+        <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Saroj Gopali, Bipin Chhetri, Deepika Giri, Sima Siami-Namini, Akbar Siami Namin</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.07705</guid>
     </item>
     <item>
         <title>Efficient 3D Surface Super-Resolution via Normal-Based Multimodal Restoration</title>
@@ -45,13 +46,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11192222</guid>
     </item>
     <item>
-        <title>Underwater Image Reconstruction Using a Swin Transformer-Based Generator and PatchGAN Discriminator</title>
-        <link>https://arxiv.org/abs/2512.05866</link>
-        <description>This paper presented a novel deep learning framework that integrated a Swin Transformer architecture within a generative adversarial network (GAN) for underwater image reconstruction. The proposed method offers robust underwater image reconstruction suitable for various marine applications. | Score: 4.99</description>
-        <pubDate>Mon, 08 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Md. Mahbub Hasan Akash, Aria Tasnim Mridula, Sheekar Banerjee, Ishtiak Al Mamoon</author>
+        <title>SpectraIrisPAD: Leveraging Vision Foundation Models for Spectrally Conditioned Multispectral Iris Presentation Attack Detection</title>
+        <link>https://arxiv.org/abs/2512.06103</link>
+        <description>However, its growing deployment in real-world applications raises significant concerns regarding its vulnerability to Presentation Attacks (PAs). SpectraIrisPAD consistently outperforms several state-of-the-art baselines across all performance metrics, demonstrating superior robustness and generalizability in detecting a wide range of presentation attacks. | Score: 4.81</description>
+        <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Raghavendra Ramachandra, Sushma Venkatesh</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2512.05866</guid>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.06103</guid>
     </item>
     <item>
         <title>Uncertainty-Aware With Adaptive Geometric Correction for Multimodal Land-Cover Classification</title>
@@ -90,14 +91,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11222869</guid>
     </item>
     <item>
-        <title>Measuring the Effect of Background on Classification and Feature Importance in Deep Learning for AV Perception</title>
-        <link>https://arxiv.org/abs/2512.05937</link>
-        <description>[...] Therefore, we systematically generate six synthetic datasets for the task of traffic sign recognition, which differ only in their degree of camera variation and background correlation [...] to quantify the isolated influence of background correlation, different levels of camera variation, and considered traffic sign shapes on the classification performance, as well as background feature importance. [...] Results include a quantification of when and how much background features gain importance to support the classification task based on changes in the training domain [...].
-  Download: synset.de/datasets/synset-signset-ger/background-effect | Score: nan</description>
-        <pubDate>Mon, 08 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Anne Sielemann, Valentin Barner, Stefan Wolf, Masoud Roschani, Jens Ziehn, Juergen Beyerer</author>
+        <title>Structure-Reduced Dual-Parameter Photonic Crystal Fiber SPR Sensor: Inverse Optimization via Artificial Neural Network and Monte Carlo Hybrid Approach</title>
+        <link>http://ieeexplore.ieee.org/document/11215591</link>
+        <description>This work presents an efficient design and optimization framework for dual-parameter photonic crystal fiber (PCF) sensors, integrating structural parameter reduction with artificial intelligence (AI)-based optimization. This design framework not only effectively reduces computational complexity and improves the design efficiency and performance of multiparameter PCF sensors but also provides a general methodological reference for rapid inverse optimization and intelligent integration of other photonic devices. | Score: nan</description>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 GMT</pubDate>
+        <author>Tengfei Xu;Shengli Pu;Siyang Huang;Dan Dong;Xiaolin Lv;Pan Zhou;Hong Zhang;</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2512.05937</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11215591</guid>
     </item>
     </channel>
 </rss>
