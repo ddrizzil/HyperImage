@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Tue, 09 Dec 2025 13:36:20 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 10 Dec 2025 13:36:20 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -18,6 +18,15 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11126173</guid>
     </item>
     <item>
+        <title>RF sensing with dense IoT network graphs: An EM-informed analysis</title>
+        <link>https://arxiv.org/abs/2512.08746</link>
+        <description>These bounds enable the prediction of the system performance during network pre-deployment stages. The paper also presents the results of an indoor case study, which demonstrate the effectiveness of the approach and confirm the model&#x27;s predictive potential in the network design stages. | Score: 5.48</description>
+        <pubDate>Wed, 10 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Federica Fieramosca, Vittorio Rampa, Michele D&#x27;Amico, Stefano Savazzi</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.08746</guid>
+    </item>
+    <item>
         <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
         <link>http://ieeexplore.ieee.org/document/11128914</link>
         <description>The simulation and multiple measured experiments demonstrate the proposed method achieves efficient interference suppression performance. Compared to state-of-the-art methods, the time required to process a single frame of measured data is only 0.0872 s, with the best interference suppression performance. | Score: 5.35</description>
@@ -25,16 +34,6 @@
         <author>Hao Zhang;Shunjun Wei;Rui Min;Xiang Cai;Shuangqiao Li;Jin Li;Mou Wang;Jun Shi;Guolong Cui;</author>
         <category>RF Systems &amp; Nonlinear Phenomena</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11128914</guid>
-    </item>
-    <item>
-        <title>In-Context and Few-Shots Learning for Forecasting Time Series Data based on Large Language Models</title>
-        <link>https://arxiv.org/abs/2512.07705</link>
-        <description>More specifically, the paper explores training LLMs through in-context, zero-shot and few-shot learning and forecasting time series data with OpenAI {\tt o4-mini} and Gemini 2.5 Flash Lite, as well as the recent Google&#x27;s Transformer-based TimesFM, a time series-specific foundation model, along with two deep learning models, namely TCN and LSTM networks. Furthermore, OpenAI&#x27;s o4-mini also exhibits a good performance based on Zero Shot learning.
-  These findings highlight pre-trained time series foundation models as a promising direction for real-time forecasting, enabling accurate and scalable deployment with minimal model adaptation. | Score: 5.30</description>
-        <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Saroj Gopali, Bipin Chhetri, Deepika Giri, Sima Siami-Namini, Akbar Siami Namin</author>
-        <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2512.07705</guid>
     </item>
     <item>
         <title>Efficient 3D Surface Super-Resolution via Normal-Based Multimodal Restoration</title>
@@ -46,15 +45,6 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11192222</guid>
     </item>
     <item>
-        <title>SpectraIrisPAD: Leveraging Vision Foundation Models for Spectrally Conditioned Multispectral Iris Presentation Attack Detection</title>
-        <link>https://arxiv.org/abs/2512.06103</link>
-        <description>However, its growing deployment in real-world applications raises significant concerns regarding its vulnerability to Presentation Attacks (PAs). SpectraIrisPAD consistently outperforms several state-of-the-art baselines across all performance metrics, demonstrating superior robustness and generalizability in detecting a wide range of presentation attacks. | Score: 4.81</description>
-        <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Raghavendra Ramachandra, Sushma Venkatesh</author>
-        <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2512.06103</guid>
-    </item>
-    <item>
         <title>Uncertainty-Aware With Adaptive Geometric Correction for Multimodal Land-Cover Classification</title>
         <link>http://ieeexplore.ieee.org/document/11269698</link>
         <description>We evaluate UAG on the WHU-OPT-SAR and DFC23 datasets, where experimental results demonstrate substantial improvements over state-of-the-art methods. The code will be released at https://github.com/cccwbin/UAGNet | Score: 4.54</description>
@@ -62,6 +52,15 @@
         <author>Wenbin Cao;Xu Wang;Yi Xiao;Wenxin Huang;Bihan Wen;Xian Zhong;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11269698</guid>
+    </item>
+    <item>
+        <title>Chirplet Fourier Analysis Network for Cross-Scene Classification of Multisource Remote Sensing Data</title>
+        <link>http://ieeexplore.ieee.org/document/11270899</link>
+        <description>Extensive experiments demonstrate that the ChirpFAN framework achieves state-of-the-art (SOTA) performance with 3% average improvements on three challenging cross-scene MSRS datasets. The code is released on https://github.com/xudongzhao461/. | Score: 4.35</description>
+        <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Xudong Zhao;Qi Ming;Yixiao Yang;Wenshuai Hu;Wei Li;Ran Tao;</author>
+        <category>Cultural Heritage &amp; Conservation Science</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11270899</guid>
     </item>
     <item>
         <title>Soil Moisture Affects Multitemporal InSAR Deformation Monitoring via Dielectric Property Changes</title>
@@ -91,13 +90,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11222869</guid>
     </item>
     <item>
-        <title>Structure-Reduced Dual-Parameter Photonic Crystal Fiber SPR Sensor: Inverse Optimization via Artificial Neural Network and Monte Carlo Hybrid Approach</title>
-        <link>http://ieeexplore.ieee.org/document/11215591</link>
-        <description>This work presents an efficient design and optimization framework for dual-parameter photonic crystal fiber (PCF) sensors, integrating structural parameter reduction with artificial intelligence (AI)-based optimization. This design framework not only effectively reduces computational complexity and improves the design efficiency and performance of multiparameter PCF sensors but also provides a general methodological reference for rapid inverse optimization and intelligent integration of other photonic devices. | Score: nan</description>
-        <pubDate>Thu, 23 Oct 2025 00:00:00 GMT</pubDate>
-        <author>Tengfei Xu;Shengli Pu;Siyang Huang;Dan Dong;Xiaolin Lv;Pan Zhou;Hong Zhang;</author>
+        <title>Adaptive Learning Control for Time-Varying Parameter Pneumatic Artificial Muscle Robots With Force/Torque Perturbation and Input Delays</title>
+        <link>http://ieeexplore.ieee.org/document/11111715</link>
+        <description>It is proven that the tracking errors exponentially converge to zero; moreover, all closed-loop signals are uniformly ultimately bounded (UUB) when disturbance forces/torques are injected into the system. Some experimental verification is also conducted on a self-built platform. | Score: nan</description>
+        <pubDate>Mon, 04 Aug 2025 00:00:00 GMT</pubDate>
+        <author>Tong Yang;Changda Fan;Yongchun Fang;Ning Sun;</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11215591</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11111715</guid>
     </item>
     </channel>
 </rss>
