@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Wed, 10 Dec 2025 13:36:20 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 11 Dec 2025 13:39:30 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -18,13 +18,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11126173</guid>
     </item>
     <item>
-        <title>RF sensing with dense IoT network graphs: An EM-informed analysis</title>
-        <link>https://arxiv.org/abs/2512.08746</link>
-        <description>These bounds enable the prediction of the system performance during network pre-deployment stages. The paper also presents the results of an indoor case study, which demonstrate the effectiveness of the approach and confirm the model&#x27;s predictive potential in the network design stages. | Score: 5.48</description>
-        <pubDate>Wed, 10 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Federica Fieramosca, Vittorio Rampa, Michele D&#x27;Amico, Stefano Savazzi</author>
+        <title>A Generic Machine Learning Framework for Radio Frequency Fingerprinting</title>
+        <link>https://arxiv.org/abs/2510.09775</link>
+        <description>RFF and SEI have a long history, with numerous defence and civilian applications such as signal intelligence, electronic surveillance, physical-layer authentication of wireless devices, to name a few. We then demonstrate the introduced framework for several tasks using real RF datasets for spaceborne surveillance, signal intelligence and countering drones applications. | Score: 5.92</description>
+        <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Alex Hiles, Bashar I. Ahmad</author>
         <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2512.08746</guid>
+        <guid isPermaLink="true">https://arxiv.org/abs/2510.09775</guid>
     </item>
     <item>
         <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
@@ -45,6 +45,15 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11192222</guid>
     </item>
     <item>
+        <title>Improved Physics-Driven Neural Network to Solve Inverse Scattering Problems</title>
+        <link>https://arxiv.org/abs/2512.09333</link>
+        <description>Moreover, transfer learning is incorporated to extend the solver&#x27;s applicability to practical scenarios, integrating the physical interpretability of iterative algorithms with the real-time inference capability of neural networks. Numerical simulations and experimental results demonstrate that the proposed solver achieves superior reconstruction accuracy, robustness, and efficiency compared with existing state-of-the-art methods. | Score: 5.20</description>
+        <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Yutong Du, Zicheng Liu, Bo Wu, Jingwei Kou, Hang Li, Changyou Li, Yali Zong, Bo Qi</author>
+        <category>Cultural Heritage &amp; Conservation Science</category>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.09333</guid>
+    </item>
+    <item>
         <title>Uncertainty-Aware With Adaptive Geometric Correction for Multimodal Land-Cover Classification</title>
         <link>http://ieeexplore.ieee.org/document/11269698</link>
         <description>We evaluate UAG on the WHU-OPT-SAR and DFC23 datasets, where experimental results demonstrate substantial improvements over state-of-the-art methods. The code will be released at https://github.com/cccwbin/UAGNet | Score: 4.54</description>
@@ -52,15 +61,6 @@
         <author>Wenbin Cao;Xu Wang;Yi Xiao;Wenxin Huang;Bihan Wen;Xian Zhong;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11269698</guid>
-    </item>
-    <item>
-        <title>Chirplet Fourier Analysis Network for Cross-Scene Classification of Multisource Remote Sensing Data</title>
-        <link>http://ieeexplore.ieee.org/document/11270899</link>
-        <description>Extensive experiments demonstrate that the ChirpFAN framework achieves state-of-the-art (SOTA) performance with 3% average improvements on three challenging cross-scene MSRS datasets. The code is released on https://github.com/xudongzhao461/. | Score: 4.35</description>
-        <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Xudong Zhao;Qi Ming;Yixiao Yang;Wenshuai Hu;Wei Li;Ran Tao;</author>
-        <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11270899</guid>
     </item>
     <item>
         <title>Soil Moisture Affects Multitemporal InSAR Deformation Monitoring via Dielectric Property Changes</title>
@@ -90,13 +90,14 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11222869</guid>
     </item>
     <item>
-        <title>Adaptive Learning Control for Time-Varying Parameter Pneumatic Artificial Muscle Robots With Force/Torque Perturbation and Input Delays</title>
-        <link>http://ieeexplore.ieee.org/document/11111715</link>
-        <description>It is proven that the tracking errors exponentially converge to zero; moreover, all closed-loop signals are uniformly ultimately bounded (UUB) when disturbance forces/torques are injected into the system. Some experimental verification is also conducted on a self-built platform. | Score: nan</description>
-        <pubDate>Mon, 04 Aug 2025 00:00:00 GMT</pubDate>
-        <author>Tong Yang;Changda Fan;Yongchun Fang;Ning Sun;</author>
+        <title>Extending the Surface Energy Budget View on Arctic Atmospheric Rivers: Climatological Classifications and Dependence on the Flavor</title>
+        <link>https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025GL118799?af=R</link>
+        <description>Geophysical Research Letters, Volume 52, Issue 23, 16 December 2025. | Score: nan</description>
+        <pubDate>Sat, 06 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Sofie Tiedeck, 
+Annette Rinke</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11111715</guid>
+        <guid isPermaLink="true">https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025GL118799?af=R</guid>
     </item>
     </channel>
 </rss>
