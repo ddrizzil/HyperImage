@@ -5,9 +5,18 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Thu, 11 Dec 2025 13:39:30 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 12 Dec 2025 13:34:17 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
+    <item>
+        <title>Field Reconstruction for High-Frequency Electromagnetic Exposure Assessment Based on Deep Learning</title>
+        <link>https://arxiv.org/abs/2512.10634</link>
+        <description>The impacts of training strategy, initial-value algorithm, reconstruction distance, and measurement sampling density on model performance are analyzed. Additionally, the effects of practical uncertainty factors, including probe misalignment, inter-probe coupling, and measurement noise, are quantitatively assessed. | Score: 6.29</description>
+        <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Miao Cao, Zicheng Liu, Bazargul Matkerim, Tongning Wu, Changyou Li, Yali Zong, Bo Qi</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.10634</guid>
+    </item>
     <item>
         <title>MVPTransformer: Long-Term Multivariate Time-Series Pattern for Plasma Array-Based Intelligent Protection Against HPM</title>
         <link>http://ieeexplore.ieee.org/document/11126173</link>
@@ -18,22 +27,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11126173</guid>
     </item>
     <item>
-        <title>A Generic Machine Learning Framework for Radio Frequency Fingerprinting</title>
-        <link>https://arxiv.org/abs/2510.09775</link>
-        <description>RFF and SEI have a long history, with numerous defence and civilian applications such as signal intelligence, electronic surveillance, physical-layer authentication of wireless devices, to name a few. We then demonstrate the introduced framework for several tasks using real RF datasets for spaceborne surveillance, signal intelligence and countering drones applications. | Score: 5.92</description>
-        <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Alex Hiles, Bashar I. Ahmad</author>
+        <title>Learning-Based Rich Scattering Channel Estimation for U6G FDD XL-MIMO Systems</title>
+        <link>http://ieeexplore.ieee.org/document/11202937</link>
+        <description>These conditions pose challenges for downlink channel estimation in frequency division duplex (FDD) mode, as near-field research under U6G remains limited. Numerical results demonstrate that the proposed FDD downlink estimation scheme achieves high accuracy and low overhead, providing a practical solution for near-field XL-MIMO under rich-scattering U6G conditions. | Score: 5.60</description>
+        <pubDate>Tue, 14 Oct 2025 00:00:00 GMT</pubDate>
+        <author>Qianfan Lu;Mengyuan Li;Yu Han;Shi Jin;</author>
         <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2510.09775</guid>
-    </item>
-    <item>
-        <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
-        <link>http://ieeexplore.ieee.org/document/11128914</link>
-        <description>The simulation and multiple measured experiments demonstrate the proposed method achieves efficient interference suppression performance. Compared to state-of-the-art methods, the time required to process a single frame of measured data is only 0.0872 s, with the best interference suppression performance. | Score: 5.35</description>
-        <pubDate>Tue, 19 Aug 2025 00:00:00 GMT</pubDate>
-        <author>Hao Zhang;Shunjun Wei;Rui Min;Xiang Cai;Shuangqiao Li;Jin Li;Mou Wang;Jun Shi;Guolong Cui;</author>
-        <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11128914</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11202937</guid>
     </item>
     <item>
         <title>Efficient 3D Surface Super-Resolution via Normal-Based Multimodal Restoration</title>
@@ -45,40 +45,22 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11192222</guid>
     </item>
     <item>
-        <title>Improved Physics-Driven Neural Network to Solve Inverse Scattering Problems</title>
-        <link>https://arxiv.org/abs/2512.09333</link>
-        <description>Moreover, transfer learning is incorporated to extend the solver&#x27;s applicability to practical scenarios, integrating the physical interpretability of iterative algorithms with the real-time inference capability of neural networks. Numerical simulations and experimental results demonstrate that the proposed solver achieves superior reconstruction accuracy, robustness, and efficiency compared with existing state-of-the-art methods. | Score: 5.20</description>
-        <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Yutong Du, Zicheng Liu, Bo Wu, Jingwei Kou, Hang Li, Changyou Li, Yali Zong, Bo Qi</author>
+        <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
+        <link>http://ieeexplore.ieee.org/document/11128914</link>
+        <description>The simulation and multiple measured experiments demonstrate the proposed method achieves efficient interference suppression performance. Compared to state-of-the-art methods, the time required to process a single frame of measured data is only 0.0872 s, with the best interference suppression performance. | Score: 5.35</description>
+        <pubDate>Tue, 19 Aug 2025 00:00:00 GMT</pubDate>
+        <author>Hao Zhang;Shunjun Wei;Rui Min;Xiang Cai;Shuangqiao Li;Jin Li;Mou Wang;Jun Shi;Guolong Cui;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2512.09333</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11128914</guid>
     </item>
     <item>
-        <title>Uncertainty-Aware With Adaptive Geometric Correction for Multimodal Land-Cover Classification</title>
-        <link>http://ieeexplore.ieee.org/document/11269698</link>
-        <description>We evaluate UAG on the WHU-OPT-SAR and DFC23 datasets, where experimental results demonstrate substantial improvements over state-of-the-art methods. The code will be released at https://github.com/cccwbin/UAGNet | Score: 4.54</description>
-        <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Wenbin Cao;Xu Wang;Yi Xiao;Wenxin Huang;Bihan Wen;Xian Zhong;</author>
+        <title>Cascaded Digital Beamforming on Receive With the ROSE-L Multichannel SAR System for Along-Track Deformation Retrieval</title>
+        <link>http://ieeexplore.ieee.org/document/11270845</link>
+        <description>Recent analyses have shown the feasibility of retrieving along-track deformation with the ROSE-L system using two-look ScanSAR, however, with limited accuracy toward the burst edges due to reduced antenna gain and increased azimuth ambiguities. It is shown that the increased signal-to-noise ratio (SNR) leads to an increased interferometric coherence for scenes with a low SNR, thus improving the accuracy of the retrieved along-track deformation in this case. | Score: 4.89</description>
+        <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Simon Trumpf;Pau Prats-Iraola;Alberto Moreira;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11269698</guid>
-    </item>
-    <item>
-        <title>Soil Moisture Affects Multitemporal InSAR Deformation Monitoring via Dielectric Property Changes</title>
-        <link>http://ieeexplore.ieee.org/document/11262238</link>
-        <description>Our findings indicate that dielectric property changes constitute a critical factor in InSAR deformation monitoring that cannot be overlooked. This insight holds significant implications for enhancing the effectiveness of InSAR technology in slope disaster monitoring and early warning systems. | Score: 4.24</description>
-        <pubDate>Thu, 20 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Meng Ao;Xiangben Zhang;Yuan Dai;Lianhuan Wei;Yian Wang;Xiaosong Feng;Shanjun Liu;Mingsheng Liao;Lu Z</author>
-        <category>Adjacent Topics</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11262238</guid>
-    </item>
-    <item>
-        <title>Improving Ground Deformation Classification by Integrating InSAR Time Series With Geospatial Information</title>
-        <link>http://ieeexplore.ieee.org/document/11262252</link>
-        <description>To fully use the rich information contained in the TS and to exploit the complementary strengths of spatial and temporal data, we propose a dual-branch deep learning (DL) approach that integrates InSAR ground deformation TS with geospatial information for classifying slow-moving ground deformation processes. This work highlights the strength of multimodal data fusion method to classify ground deformation processes, while setting the stage for future research. | Score: 4.20</description>
-        <pubDate>Thu, 20 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Yingbo Dong;Lorenzo Nava;Riccardo Palamà;Oriol Monserrat;Davide Festa;Mario Floris;Ascanio Rosi;Fili</author>
-        <category>Adjacent Topics</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11262252</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11270845</guid>
     </item>
     <item>
         <title>U-SET: Uncertainty-Aware SAR-to-EO Translation</title>
@@ -90,14 +72,31 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11222869</guid>
     </item>
     <item>
-        <title>Extending the Surface Energy Budget View on Arctic Atmospheric Rivers: Climatological Classifications and Dependence on the Flavor</title>
-        <link>https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025GL118799?af=R</link>
-        <description>Geophysical Research Letters, Volume 52, Issue 23, 16 December 2025. | Score: nan</description>
-        <pubDate>Sat, 06 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Sofie Tiedeck, 
-Annette Rinke</author>
+        <title>Regularization-Based Coherence Bias Mitigation for InSAR in Low-Coherence Regions</title>
+        <link>http://ieeexplore.ieee.org/document/11272882</link>
+        <description>This study proposes a regularization-based approach to reduce coherence estimation bias, especially in areas with few homogeneous samples. Validated using Monte Carlo simulations and real data from 16 TerraSAR-X images of Shanghai, the proposed approach outperforms conventional techniques, achieving lower residual bias and lower estimation standard deviation (STD) across diverse scenes. | Score: 3.49</description>
+        <pubDate>Tue, 02 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Hongyu Liang;Xin Gao;Xin Li;Lei Zhang;</author>
+        <category>Adjacent Topics</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11272882</guid>
+    </item>
+    <item>
+        <title>Wide Field-of-View MMW SISO-SAR Image Reconstruction Based on Curved Linear Array</title>
+        <link>http://ieeexplore.ieee.org/document/11264290</link>
+        <description>This letter presents a wide field-of-view (FoV) millimeter-wave array synthetic aperture radar (SAR) imaging system based on curved linear array. Experiments demonstrate high-quality imaging with an extended FoV. | Score: 3.06</description>
+        <pubDate>Fri, 21 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Hao Wu;Fengjiao Gan;Xu Chen;</author>
+        <category>Adjacent Topics</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11264290</guid>
+    </item>
+    <item>
+        <title>IEEE Connect</title>
+        <link>http://ieeexplore.ieee.org/document/11230156</link>
+        <description>nan | Score: nan</description>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
+        <author>nan</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2025GL118799?af=R</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11230156</guid>
     </item>
     </channel>
 </rss>
