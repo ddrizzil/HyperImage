@@ -5,18 +5,9 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Fri, 12 Dec 2025 13:34:17 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 13 Dec 2025 13:24:50 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
-    <item>
-        <title>Field Reconstruction for High-Frequency Electromagnetic Exposure Assessment Based on Deep Learning</title>
-        <link>https://arxiv.org/abs/2512.10634</link>
-        <description>The impacts of training strategy, initial-value algorithm, reconstruction distance, and measurement sampling density on model performance are analyzed. Additionally, the effects of practical uncertainty factors, including probe misalignment, inter-probe coupling, and measurement noise, are quantitatively assessed. | Score: 6.29</description>
-        <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
-        <author>Miao Cao, Zicheng Liu, Bazargul Matkerim, Tongning Wu, Changyou Li, Yali Zong, Bo Qi</author>
-        <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">https://arxiv.org/abs/2512.10634</guid>
-    </item>
     <item>
         <title>MVPTransformer: Long-Term Multivariate Time-Series Pattern for Plasma Array-Based Intelligent Protection Against HPM</title>
         <link>http://ieeexplore.ieee.org/document/11126173</link>
@@ -36,6 +27,15 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11202937</guid>
     </item>
     <item>
+        <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
+        <link>http://ieeexplore.ieee.org/document/11128914</link>
+        <description>The simulation and multiple measured experiments demonstrate the proposed method achieves efficient interference suppression performance. Compared to state-of-the-art methods, the time required to process a single frame of measured data is only 0.0872 s, with the best interference suppression performance. | Score: 5.35</description>
+        <pubDate>Tue, 19 Aug 2025 00:00:00 GMT</pubDate>
+        <author>Hao Zhang;Shunjun Wei;Rui Min;Xiang Cai;Shuangqiao Li;Jin Li;Mou Wang;Jun Shi;Guolong Cui;</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11128914</guid>
+    </item>
+    <item>
         <title>Efficient 3D Surface Super-Resolution via Normal-Based Multimodal Restoration</title>
         <link>http://ieeexplore.ieee.org/document/11192222</link>
         <description>This paper introduces an efficient multimodal normal-based 3D surface super-resolution (mn3DSSR) framework, designed to address the challenges of microgeometry enhancement and computational overhead. Extensive experiments conducted on seven benchmark datasets across four different 3D data representations demonstrate that mn3DSSR consistently outperforms state-of-the-art super-resolution methods in terms of restoration accuracy with high computational efficiency. | Score: 1.88</description>
@@ -45,15 +45,6 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11192222</guid>
     </item>
     <item>
-        <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
-        <link>http://ieeexplore.ieee.org/document/11128914</link>
-        <description>The simulation and multiple measured experiments demonstrate the proposed method achieves efficient interference suppression performance. Compared to state-of-the-art methods, the time required to process a single frame of measured data is only 0.0872 s, with the best interference suppression performance. | Score: 5.35</description>
-        <pubDate>Tue, 19 Aug 2025 00:00:00 GMT</pubDate>
-        <author>Hao Zhang;Shunjun Wei;Rui Min;Xiang Cai;Shuangqiao Li;Jin Li;Mou Wang;Jun Shi;Guolong Cui;</author>
-        <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11128914</guid>
-    </item>
-    <item>
         <title>Cascaded Digital Beamforming on Receive With the ROSE-L Multichannel SAR System for Along-Track Deformation Retrieval</title>
         <link>http://ieeexplore.ieee.org/document/11270845</link>
         <description>Recent analyses have shown the feasibility of retrieving along-track deformation with the ROSE-L system using two-look ScanSAR, however, with limited accuracy toward the burst edges due to reduced antenna gain and increased azimuth ambiguities. It is shown that the increased signal-to-noise ratio (SNR) leads to an increased interferometric coherence for scenes with a low SNR, thus improving the accuracy of the retrieved along-track deformation in this case. | Score: 4.89</description>
@@ -61,6 +52,15 @@
         <author>Simon Trumpf;Pau Prats-Iraola;Alberto Moreira;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11270845</guid>
+    </item>
+    <item>
+        <title>Uncertainty-Aware With Adaptive Geometric Correction for Multimodal Land-Cover Classification</title>
+        <link>http://ieeexplore.ieee.org/document/11269698</link>
+        <description>We evaluate UAG on the WHU-OPT-SAR and DFC23 datasets, where experimental results demonstrate substantial improvements over state-of-the-art methods. The code will be released at https://github.com/cccwbin/UAGNet | Score: 4.54</description>
+        <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
+        <author>Wenbin Cao;Xu Wang;Yi Xiao;Wenxin Huang;Bihan Wen;Xian Zhong;</author>
+        <category>Cultural Heritage &amp; Conservation Science</category>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11269698</guid>
     </item>
     <item>
         <title>U-SET: Uncertainty-Aware SAR-to-EO Translation</title>
@@ -90,13 +90,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11264290</guid>
     </item>
     <item>
-        <title>IEEE Connect</title>
-        <link>http://ieeexplore.ieee.org/document/11230156</link>
-        <description>nan | Score: nan</description>
+        <title>Fostering Innovation and Community: A Review of the Latest Activities of the IEEE AP/ED/MTT North Italy Chapter [MTT-S Society News]</title>
+        <link>http://ieeexplore.ieee.org/document/11230142</link>
+        <description>Provides society information that may include news, reviews or technical notes that should be of interest to practitioners and researchers. | Score: nan</description>
         <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
-        <author>nan</author>
+        <author>Giacomo Oliveri;Fabrizio Bonani;Luciano Tarricone;</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11230156</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11230142</guid>
     </item>
     </channel>
 </rss>
