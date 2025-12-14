@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Sat, 13 Dec 2025 13:24:50 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 14 Dec 2025 13:24:58 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -90,13 +90,13 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11264290</guid>
     </item>
     <item>
-        <title>Fostering Innovation and Community: A Review of the Latest Activities of the IEEE AP/ED/MTT North Italy Chapter [MTT-S Society News]</title>
-        <link>http://ieeexplore.ieee.org/document/11230142</link>
-        <description>Provides society information that may include news, reviews or technical notes that should be of interest to practitioners and researchers. | Score: nan</description>
-        <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Giacomo Oliveri;Fabrizio Bonani;Luciano Tarricone;</author>
+        <title>Phase Correction and DNN Heartbeat Estimation for Vital Signs’ Monitoring Using FMCW Radar</title>
+        <link>http://ieeexplore.ieee.org/document/11220186</link>
+        <description>To address these problems, this work presents an improved frequency-modulated continuouswave (FMCW) radar vital signs’ monitoring solution incorporating phase error correction and heartbeat event probability prediction. The presented method provides a robust solution for reliable, high-accuracy, and continuous vital signs’ monitoring in real environments. | Score: nan</description>
+        <pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate>
+        <author>Shihao Zhang;Zhaozong Meng;Yongwei Zhang;Murat Temiz;Orhan Kaplan;Nan Gao;Zonghua Zhang;</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11230142</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11220186</guid>
     </item>
     </channel>
 </rss>
