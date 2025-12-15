@@ -5,7 +5,7 @@
         <link>https://github.com/ddrizzil/HyperImage</link>
         <description>Algorithmically selected papers from 20+ journal feeds, focused on RF systems, cultural heritage conservation, and adjacent topics.</description>
         <language>en-us</language>
-        <lastBuildDate>Sun, 14 Dec 2025 13:24:58 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 15 Dec 2025 13:39:18 GMT</lastBuildDate>
         <atom:link href="https://raw.githubusercontent.com/ddrizzil/HyperImage/main/web/feed.xml" rel="self" type="application/rss+xml"/>
         <generator>Paper Digest Service</generator>
     <item>
@@ -18,6 +18,15 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11126173</guid>
     </item>
     <item>
+        <title>ACCOR: Attention-Enhanced Complex-Valued Contrastive Learning for Occluded Object Classification Using mmWave Radar IQ Signals</title>
+        <link>https://arxiv.org/abs/2512.11556</link>
+        <description>In this paper, we propose ACCOR, an attention-enhanced complex-valued contrastive learning approach for radar, enabling robust occluded object classification. These results demonstrate the benefits of complex-valued deep learning with attention and contrastive learning for mmWave radar-based occluded object classification in industrial and automated environments. | Score: 5.72</description>
+        <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Stefan H\&quot;agele, Adam Misik, Constantin Patsch, Eckehard Steinbach</author>
+        <category>RF Systems &amp; Nonlinear Phenomena</category>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.11556</guid>
+    </item>
+    <item>
         <title>Learning-Based Rich Scattering Channel Estimation for U6G FDD XL-MIMO Systems</title>
         <link>http://ieeexplore.ieee.org/document/11202937</link>
         <description>These conditions pose challenges for downlink channel estimation in frequency division duplex (FDD) mode, as near-field research under U6G remains limited. Numerical results demonstrate that the proposed FDD downlink estimation scheme achieves high accuracy and low overhead, providing a practical solution for near-field XL-MIMO under rich-scattering U6G conditions. | Score: 5.60</description>
@@ -25,15 +34,6 @@
         <author>Qianfan Lu;Mengyuan Li;Yu Han;Shi Jin;</author>
         <category>RF Systems &amp; Nonlinear Phenomena</category>
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11202937</guid>
-    </item>
-    <item>
-        <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
-        <link>http://ieeexplore.ieee.org/document/11128914</link>
-        <description>The simulation and multiple measured experiments demonstrate the proposed method achieves efficient interference suppression performance. Compared to state-of-the-art methods, the time required to process a single frame of measured data is only 0.0872 s, with the best interference suppression performance. | Score: 5.35</description>
-        <pubDate>Tue, 19 Aug 2025 00:00:00 GMT</pubDate>
-        <author>Hao Zhang;Shunjun Wei;Rui Min;Xiang Cai;Shuangqiao Li;Jin Li;Mou Wang;Jun Shi;Guolong Cui;</author>
-        <category>RF Systems &amp; Nonlinear Phenomena</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11128914</guid>
     </item>
     <item>
         <title>Efficient 3D Surface Super-Resolution via Normal-Based Multimodal Restoration</title>
@@ -45,22 +45,22 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11192222</guid>
     </item>
     <item>
-        <title>Cascaded Digital Beamforming on Receive With the ROSE-L Multichannel SAR System for Along-Track Deformation Retrieval</title>
-        <link>http://ieeexplore.ieee.org/document/11270845</link>
-        <description>Recent analyses have shown the feasibility of retrieving along-track deformation with the ROSE-L system using two-look ScanSAR, however, with limited accuracy toward the burst edges due to reduced antenna gain and increased azimuth ambiguities. It is shown that the increased signal-to-noise ratio (SNR) leads to an increased interferometric coherence for scenes with a low SNR, thus improving the accuracy of the retrieved along-track deformation in this case. | Score: 4.89</description>
-        <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Simon Trumpf;Pau Prats-Iraola;Alberto Moreira;</author>
+        <title>Adaptive FMCW Radar Interference Suppression via Coupled Range-Doppler Unsupervised Sparse Learning and Reconstruction</title>
+        <link>http://ieeexplore.ieee.org/document/11128914</link>
+        <description>The simulation and multiple measured experiments demonstrate the proposed method achieves efficient interference suppression performance. Compared to state-of-the-art methods, the time required to process a single frame of measured data is only 0.0872 s, with the best interference suppression performance. | Score: 5.35</description>
+        <pubDate>Tue, 19 Aug 2025 00:00:00 GMT</pubDate>
+        <author>Hao Zhang;Shunjun Wei;Rui Min;Xiang Cai;Shuangqiao Li;Jin Li;Mou Wang;Jun Shi;Guolong Cui;</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11270845</guid>
+        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11128914</guid>
     </item>
     <item>
-        <title>Uncertainty-Aware With Adaptive Geometric Correction for Multimodal Land-Cover Classification</title>
-        <link>http://ieeexplore.ieee.org/document/11269698</link>
-        <description>We evaluate UAG on the WHU-OPT-SAR and DFC23 datasets, where experimental results demonstrate substantial improvements over state-of-the-art methods. The code will be released at https://github.com/cccwbin/UAGNet | Score: 4.54</description>
-        <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
-        <author>Wenbin Cao;Xu Wang;Yi Xiao;Wenxin Huang;Bihan Wen;Xian Zhong;</author>
+        <title>RadarFuseNet: Complex-Valued Attention-Based Fusion of IQ Time- and Frequency-Domain Radar Features for Classification Tasks</title>
+        <link>https://arxiv.org/abs/2512.11537</link>
+        <description>The proposed method achieves improved performance and robustness compared to standalone complex-valued CNNs. Furthermore, the accuracy for occluded object classification improves from 91.99% using standalone complex-valued CNNs to 94.20% using our proposed approach. | Score: 5.08</description>
+        <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Stefan H\&quot;agele, Adam Misik, Eckehard Steinbach</author>
         <category>Cultural Heritage &amp; Conservation Science</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11269698</guid>
+        <guid isPermaLink="true">https://arxiv.org/abs/2512.11537</guid>
     </item>
     <item>
         <title>U-SET: Uncertainty-Aware SAR-to-EO Translation</title>
@@ -90,13 +90,14 @@
         <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11264290</guid>
     </item>
     <item>
-        <title>Phase Correction and DNN Heartbeat Estimation for Vital Signs’ Monitoring Using FMCW Radar</title>
-        <link>http://ieeexplore.ieee.org/document/11220186</link>
-        <description>To address these problems, this work presents an improved frequency-modulated continuouswave (FMCW) radar vital signs’ monitoring solution incorporating phase error correction and heartbeat event probability prediction. The presented method provides a robust solution for reliable, high-accuracy, and continuous vital signs’ monitoring in real environments. | Score: nan</description>
-        <pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate>
-        <author>Shihao Zhang;Zhaozong Meng;Yongwei Zhang;Murat Temiz;Orhan Kaplan;Nan Gao;Zonghua Zhang;</author>
+        <title>HyperSBINN: A Hypernetwork-Enhanced Systems Biology-Informed Neural Network for Efficient Drug Cardiosafety Assessment</title>
+        <link>https://arxiv.org/abs/2408.14266</link>
+        <description>arXiv:2408.14266v2 Announce Type: replace-cross 
+Abstract: Mathematical modeling in systems toxicology enables a comprehensive understanding of the effects of pharmaceutical substances on cardiac health. This framework represents an advancement in computational modeling, offering a scalable and efficient solution for simulating and understanding complex biological systems. | Score: nan</description>
+        <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
+        <author>Inass Soukarieh, Gerhard Hessler, Herv\&#x27;e Minoux, Marcel Mohr, Friedemann Schmidt, Jan Wenzel, Pierr</author>
         <category>Random Discovery</category>
-        <guid isPermaLink="true">http://ieeexplore.ieee.org/document/11220186</guid>
+        <guid isPermaLink="true">https://arxiv.org/abs/2408.14266</guid>
     </item>
     </channel>
 </rss>
